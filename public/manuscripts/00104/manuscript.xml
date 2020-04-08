@@ -1,0 +1,777 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD v1.1 20151215//EN"  "JATS-archivearticle1.dtd">
+<article article-type="article-commentary" dtd-version="1.2" xmlns:ali="http://www.niso.org/schemas/ali/1.0/" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <front>
+        <journal-meta>
+            <journal-id journal-id-type="nlm-ta">elife</journal-id>
+            <journal-id journal-id-type="publisher-id">eLife</journal-id>
+            <journal-title-group>
+                <journal-title>eLife</journal-title>
+            </journal-title-group>
+            <issn pub-type="epub" publication-format="electronic">2050-084X</issn>
+            <publisher>
+                <publisher-name>eLife Sciences Publications, Ltd</publisher-name>
+            </publisher>
+        </journal-meta>
+        <article-meta>
+            <article-id pub-id-type="publisher-id">00104</article-id>
+            <article-id pub-id-type="doi">10.7554/eLife.00104</article-id>
+            <article-categories>
+                <subj-group subj-group-type="heading">
+                    <subject>Insight</subject>
+                </subj-group>
+                <subj-group subj-group-type="subject">
+                    <subject>Cell Biology</subject>
+                </subj-group>
+                <subj-group subj-group-type="subject">
+                    <subject>Genetics and Genomics</subject>
+                </subj-group>
+                <subj-group subj-group-type="sub-display-channel">
+                    <subject>Libero Editor</subject>
+                </subj-group>
+            </article-categories>
+            <title-group>
+                <article-title>Example eLife Insight article with a complete reference 'front' section</article-title>
+            </title-group>
+            <contrib-group content-type="authors">
+              <contrib contrib-type="author" corresp="yes" equal-contrib="yes">
+                <name><surname>Atherden</surname><given-names>Fred</given-names></name>
+                <contrib-id authenticated="true" contrib-id-type="orcid">https://orcid.org/0000-0002-6048-1470</contrib-id>
+                <email>f.atherden@elifesciences.org</email>
+                <xref ref-type="aff" rid="aff1">1</xref>
+                <xref ref-type="aff" rid="aff2">2</xref>
+                <xref ref-type="fn" rid="equal-contrib1">†</xref>
+                <xref ref-type="fn" rid="con1"/>
+                <bio><p><bold>Fred Atherden</bold> is in the Production Department, eLife Sciences, Cambridge, United Kingdom</p></bio>
+              </contrib>
+              <contrib contrib-type="author" equal-contrib="yes" deceased="yes">
+                <name><surname>Smith</surname><given-names>Jeanine</given-names><suffix>III</suffix></name>
+                <xref ref-type="aff" rid="aff2">2</xref>
+                <xref ref-type="fn" rid="equal-contrib1">†</xref>
+                <xref ref-type="fn" rid="con2"/>
+                <bio><p><bold>Jeanine Smith III</bold> is in the Department, University, City, Country</p></bio>
+              </contrib>
+              <aff id="aff1">
+                <label>1</label>
+                <institution content-type="dept">Production Department</institution>
+                <institution>eLife Sciences</institution>
+                <addr-line><named-content content-type="city">Cambridge</named-content></addr-line>
+                <country>United Kingdom</country>
+              </aff>
+              <aff id="aff2">
+                <label>2</label>
+                <institution content-type="dept">Department</institution>
+                <institution>University</institution>
+                <addr-line><named-content content-type="city">City</named-content></addr-line>
+                <country>Country</country>
+              </aff>
+            </contrib-group>
+          <author-notes>
+            <fn fn-type="COI-statement" id="con1">
+              <p>Is an employee of eLife. No other competing interests exist</p>
+            </fn>
+            <fn fn-type="COI-statement" id="con2">
+              <p>No competing interests declared</p>
+            </fn>
+            <fn fn-type="con" id="equal-contrib1">
+              <label>†</label>
+              <p>These authors contributed equally to this work</p>
+            </fn>
+          </author-notes>
+          <pub-date date-type="pub" publication-format="electronic">
+            <day>30</day>
+            <month>11</month>
+            <year>2019</year>
+          </pub-date>
+          <pub-date pub-type="collection">
+            <year>2019</year>
+          </pub-date>
+          <volume>8</volume>
+          <elocation-id>e00104</elocation-id>
+          <!-- We don't want this information in Insights, but including here as it has been added historically and it seems that Libero Editor will have to deal with them. -->
+          <history>
+            <date date-type="received" iso-8601-date="2019-05-14">
+              <day>14</day>
+              <month>05</month>
+              <year>2019</year>
+            </date>
+            <date date-type="accepted" iso-8601-date="2019-11-20">
+              <day>20</day>
+              <month>11</month>
+              <year>2019</year>
+            </date>
+          </history>
+          <permissions>
+            <copyright-statement>© 2019, Atherden and Smith</copyright-statement>
+            <copyright-year>2019</copyright-year>
+            <copyright-holder>Atherden and Smith</copyright-holder>
+            <ali:free_to_read/>
+            <license xlink:href="http://creativecommons.org/licenses/by/4.0/">
+              <ali:license_ref>http://creativecommons.org/licenses/by/4.0/</ali:license_ref>
+              <license-p>This article is distributed under the terms of the <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License</ext-link>, which permits unrestricted use and redistribution provided that the original author and source are credited.</license-p>
+            </license>
+          </permissions>
+          <self-uri content-type="pdf" xlink:href="elife-52631-v1.pdf"/>
+          <related-article ext-link-type="doi" id="ra1" related-article-type="commentary-article" xlink:href="10.7554/eLife.42697"/>
+          <related-article ext-link-type="doi" id="ra2" related-article-type="commentary-article" xlink:href="10.7554/eLife.00067"/>
+          <abstract>
+            <p>New studies examine how the different sub-structures in the <italic>sed nisi</italic> neque<sub>2</sub>, ornare id enim<sup>1</sup> et, dapibus rutrum urna.</p>
+          </abstract>
+          <!-- Impact statement, which in Insights is the same as the abstract -->
+          <abstract abstract-type="toc">
+            <p>New studies examine how the different sub-structures in the <italic>sed nisi</italic> neque<sub>2</sub>, ornare id enim<sup>1</sup> et, dapibus rutrum urna.</p>
+          </abstract>
+          <kwd-group kwd-group-type="author-keywords">
+            <kwd>cerebellum</kwd>
+            <kwd>climbing fiber</kwd>
+            <kwd>reinforcement learning</kwd>
+            <kwd><italic>vitae</italic></kwd>
+            <kwd>Purkinje cells</kwd>
+          </kwd-group>
+          <kwd-group kwd-group-type="research-organism">
+            <title>Research organism</title>
+            <kwd>Mouse</kwd>
+          </kwd-group>
+          <custom-meta-group>
+            <custom-meta specific-use="meta-only">
+              <meta-name>Template</meta-name>
+              <meta-value>1</meta-value>
+            </custom-meta>
+          </custom-meta-group>
+        </article-meta>
+    </front>
+  <body>
+    <boxed-text><p><bold>Related research article</bold> Srinivasan S, Kaplan CN, Mahadevan L. 2019. A multiphase theory for spreadingmicrobial swarms and films. <italic>eLife</italic> <bold>8</bold>:e42697. doi: <ext-link ext-link-type="uri" xlink:href="http://doi.org/10.7554/eLife.42697">10.7554/eLife.42697</ext-link></p><p><bold>Related research article</bold> Zoolander D, Hansel, Mugatu J. 2019. Second related article title (if present). <italic>eLife</italic> <bold>8</bold>:e00067. doi: <ext-link ext-link-type="uri" xlink:href="http://doi.org/10.7554/eLife.00067">10.7554/eLife.00067</ext-link></p></boxed-text>
+    <p>Lorem ipsum dolor <italic>sit amet</italic>, consectetur adipiscing elit (<xref ref-type="bibr" rid="bib20">Srinivasan et al., 2019</xref>; <xref ref-type="bibr" rid="bib25">Zoolander et al., 2019</xref>). Etiam imperdiet tortor nec enim feugiat euismod <xref ref-type="bibr" rid="bib2">Feyerabend (2010)</xref>. Etiam malesuada tristique quam non fringilla (<xref ref-type="bibr" rid="bib3">Foley et al., 2018</xref>). Curabitur sem neque, pretium et lorem ac, porta lobortis nisl. Curabitur suscipit semper sodales. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus cursus faucibus felis, consequat rutrum neque vehicula eget (<ext-link ext-link-type="uri" xlink:href="http://www.broadinstitute.org/igv/">http://www.broadinstitute.org/igv/</ext-link>). Donec in neque et ligula tristique semper id sit amet quam. Proin varius, arcu posuere faucibus rhoncus, leo neque porttitor augue, sit amet cursus neque neque quis turpis. Maecenas dignissim aliquam orci, maximus scelerisque nisl imperdiet in. (<xref ref-type="bibr" rid="bib1">Berk et al., 2012</xref>; <xref ref-type="bibr" rid="bib4">Gavrilov et al., 2014</xref>; <xref ref-type="bibr" rid="bib24">Zhang et al., 2014</xref>).</p>
+    <list list-type="bullet">
+      <list-item><p>First entry</p>
+        <list list-type="bullet">
+          <list-item><p>First sub-entry</p></list-item>
+          <list-item><p>Second sub-entry</p>
+          </list-item>
+        </list>
+      </list-item>
+      <list-item><p>Second entry</p></list-item>
+    </list>
+    <p><xref ref-type="bibr" rid="bib5">Harmon (2019)</xref> integer suscipit purus a semper dictum . Duis finibus elementum ex sit amet pulvinar (<xref ref-type="bibr" rid="bib5">Harmon, 2019</xref>; <xref ref-type="bibr" rid="bib7">Heissler and Sellers, 2016b</xref>). Cras <xref ref-type="bibr" rid="bib7">Heissler and Sellers (2016b)</xref> nec est in sem iaculis fermentum (<xref ref-type="bibr" rid="bib8">Hogarth et al., 2012</xref>). Aenean sit amet turpis pulvinar, ornare nisl ac, porta nisl. Vivamus sit amet maximus elit (<xref ref-type="fig" rid="fig1">Figure 1</xref>). Duis a ultrices augue. Duis id ipsum iaculis, imperdiet leo a, cursus purus (<xref ref-type="bibr" rid="bib9">Kok et al., 2015</xref>).</p>
+    <fig id="fig1" position="float"><?float page=“2” width='90' position="top"?><!--'page' - use this attribute to place a float on a specific page. 'width' - set a float to specific width - values are 70 to 150. Note: tables/boxes cannot be resized with this option. 'position' - use to define the float position (i.e placed at the top or bottom of the page), values are top or bottom. -->
+      <label>Figure 1.</label>
+      <caption>
+        <title>Bacterial cells on the surface of a plant leaf.</title>
+        <p><?proof word-spacing=“0.23”?><!--Tracking paragraph to tighten/loosen line(s). Inputs can be between 0.23 and 0.43. ‘0.43’ is the maximum value used to loosen a paragraph, while  ‘0.23’ is the minimum value used to tighten a paragraph. Values between this range can also be applied.-->Pellentesque porta interdum sodales (<xref ref-type="bibr" rid="bib6">Heissler and Sellers, 2016a</xref>). Vestibulum<sub>id</sub> interdum<sup>felis</sup>. <bold>Vestibulum</bold> at <underline>viverra</underline> lorem. <sc>Aliquam Gravida</sc> nulla orci, quis tristique tortor ornare at <ext-link ext-link-type="uri" xlink:href="https://www.biobam.com/">https://www.biobam.com/</ext-link>. Pellentesque accumsan sed ipsum eget hendrerit (<xref ref-type="bibr" rid="bib3">Foley et al., 2018</xref>). Pellentesque cursus, nibh eu <monospace>mattis condimentum</monospace>, massa libero faucibus enim, et tempor orci neque eget<sup>mi</sup>. Phasellus lacus<sub>mi</sub>, ultrices quis placerat id, dignissim ac erat.</p>
+      </caption>
+      <graphic mime-subtype="jpg" mimetype="image" xlink:href="fig1.jpg"/>
+    </fig>
+    <p><?proof force-justify=“true”?><!--‘Force Justify’ option  can be used to break lines within a paragraph. Value will be true or false. -->Etiam nunc eros, porttitor tincidunt libero eu (<xref ref-type="bibr" rid="bib10">Li, 2013</xref>), varius pretium nibh (<xref ref-type="bibr" rid="bib12">Miller et al., 2011</xref>; <xref ref-type="bibr" rid="bib14">Murray et al., 2019</xref>; <xref ref-type="bibr" rid="bib15">Onoda, 2015</xref>). Curabitur nibh libero, gravida eu ex vel, rhoncus finibus est. Aliquam viverra augue vel posuere tempus (proin pharetra posuere eros vitae semper [<xref ref-type="bibr" rid="bib11">Linares, 2019</xref>]). Duis aliquam ac ex non tristique. Nulla dignissim vel ipsum at vulputate (<xref ref-type="bibr" rid="bib13">Mulvihill, 2010</xref>; <xref ref-type="bibr" rid="bib22">World Health Organization, 2015</xref>). Nam orci ipsum, dapibus ac sagittis non, blandit non enim (<xref ref-type="bibr" rid="bib16">R Development Core Team, 2014</xref>).</p>
+    <p>Phasellus ac nisl a erat congue fringilla<?proof non-breaking-space=“true”?><!--‘Non-breaking Space’  can be used to keep words together on proof.-->/fringilla. Maecenas nulla leo <xref ref-type="bibr" rid="bib26">Zz et al. (2019)</xref>, viverra ut tortor at, tristique maximus urna. Aenean commodo mauris sapien, a vulputate sapien porttitor nec (see <xref ref-type="fig" rid="fig1 fig2">Figures 1 and 2</xref>). Integer id aliquam libero. Duis euismod velit augue, id ultricies enim varius sit amet.</p>
+    <fig id="fig2" position="float"><?float stack-with=“fig1” orientation=“portrait”?><!--'stack-with' - Stacking the current float with another float, in this case with Figure 1. 'orientation' - Placing float either in the portrait or landscape view. Values are landscape or portrait -->
+      <label>Figure 2.</label>
+      <caption>
+        <title>The dynamics of memory T cells.</title>
+      </caption>
+      <graphic xlink:href="fig2.jpg" mimetype="image" mime-subtype="jpg"/>
+      <permissions>
+        <copyright-statement xml:lang="en">© 2010 Verso</copyright-statement>
+        <copyright-year>2015</copyright-year>
+        <copyright-holder xml:lang="en">Verso</copyright-holder>
+        <license xml:lang="en">
+          <license-p>Panel A reprinted from <xref ref-type="bibr" rid="bib2">Feyerabend (2010)</xref> with permission.</license-p>
+        </license>
+      </permissions>
+      <permissions>
+        <copyright-statement>&#x00A9; 2007, Seans Potato Business, Wikimedia Commons, Creative Commons Attribution-Share Alike 3.0 Unported</copyright-statement>
+        <copyright-year>2007</copyright-year>
+        <copyright-holder>Seans Potato Business, Wikimedia Commons</copyright-holder>
+        <license>
+          <license-p>Mouse used in Figure 1 parts B-C is reproduced with permission from Seans Potato Business.</license-p>
+        </license>
+      </permissions>
+    </fig>
+    <p>Integer in dui quis velit iaculis rhoncus (European Galaxy Server <ext-link ext-link-type="uri" xlink:href="https://usegalaxy.eu">https://usegalaxy.eu</ext-link>). Vestibulum nec nulla eget nisi <xref ref-type="bibr" rid="bib18">Schwartz, (19933</xref> cursus dignissim non sed felis (donec tincidunt vulputate lectus non malesuada [<xref ref-type="bibr" rid="bib20">Srinivasan et al., 2019</xref>; <xref ref-type="bibr" rid="bib21">Wahls, 2016</xref>]). Nulla condimentum porttitor arcu a posuere. Duis dictum diam sit amet mauris elementum luctus. Mauris placerat arcu ut lobortis ultricies. Nunc ultricies, ante eget mollis viverra, elit urna feugiat nibh, malesuada dictum nulla est at lorem. Proin id ligula ligula. Nulla eu risus porta, ornare eros id, sodales risus(<xref ref-type="bibr" rid="bib17">Read, 2015</xref>; <xref ref-type="bibr" rid="bib19">Spangler, 2014</xref>). Proin id metus in neque rutrum venenatis eget sed ante (<xref ref-type="bibr" rid="bib23">Walker, 1994</xref>). Pellentesque nec justo a orci sodales dapibus. Etiam quis felis feugiat, lobortis dui semper, imperdiet est.</p>
+    <p>The resolution of a microscope, <inline-formula><tex-math id="inf1"><![CDATA[d]]></tex-math></inline-formula>, is defined as the shortest distance between two points on a specimen that can still be seen as two distinct points in the image. In 1873 Ernst Abbe showed that diffraction limited the resolution of a microscope to <inline-formula><tex-math id="inf2"><![CDATA[d=\frac{\lambda}{2 n \sin \alpha}]]></tex-math></inline-formula>, where <inline-formula><tex-math id="inf3"><![CDATA[\lambda]]></tex-math></inline-formula> is the wavelength of the light, <inline-formula><tex-math id="inf4"><![CDATA[n]]></tex-math></inline-formula> is the refractive index of the medium the light travels through, and <inline-formula><tex-math id="inf5"><![CDATA[\alpha]]></tex-math></inline-formula> is the half-angle at which the objective captures light from the sample: <inline-formula><tex-math id="inf6"><![CDATA[n \sin \alpha]]></tex-math></inline-formula> is also known as the &quot;numerical aperture&quot; of the objective.</p>
+    <p>Cras at diam eu mauris scelerisque fermentum <inline-formula><tex-math id="inf7"><![CDATA[p(\hat{\theta})=(1-\gamma) \phi_{k}(\hat{\theta}-\theta)+\gamma \frac{1}{2 \pi}]]></tex-math></inline-formula>. Sed semper mauris eget nulla faucibus, sed ultricies ligula pellentesque. Donec posuere mi non quam dapibus egestas scelerisque non magna. Vestibulum sit amet bibendum tortor. Interdum et malesuada fames ac ante ipsum primis in faucibus (<xref ref-type="bibr" rid="bib1">Berk et al., 2012</xref>; <xref ref-type="bibr" rid="bib4">Gavrilov et al., 2014</xref>; <xref ref-type="bibr" rid="bib24">Zhang et al., 2014</xref>).</p>
+    <p><?proof para-indent=“true”?><!--‘Remove Para Indent’ option can be used to remove paragraph indentation. Values are true or false. I think true -> no indent, false -> indent. -->Praesent lobortis tempus nisi ac pulvinar (<xref ref-type="bibr" rid="bib15">Onoda, 2015</xref>). Praesent at nulla ac lorem faucibus finibus. Ut vel maximus tortor, in dictum arcu. Proin condimentum felis eu dignissim posuere. Vivamus a tincidunt justo, eu eleifend mauris. Mauris porttitor erat eu purus dignissim, sed consectetur odio pharetra. Integer a lorem commodo, tempus nulla sed, vehicula metus. Nunc laoreet erat sed nibh iaculis aliquam. Nullam maximus ligula eu sem dictum dignissim.</p>
+    <fig id="fig3" position="float"><?float column-start=“0” column-spanto=“1”?><!-- 'column-start' - on which column float has to be placed (starts from 0). 'column-spanto' - This option lets you to choose the number of columns you want your float to span. For example, if '0' float will be spanned to 1-column, if '1' float will be spanned to one more column, that float will be set in 2-columns. Values are 0, 1 or 2.-->
+      <caption>
+        <title>Rats raised socially seek out more new experiences and their cells age more slowly.</title>
+      </caption>
+      <graphic mime-subtype="jpg" mimetype="image" xlink:href="fig3.jpg"/>
+      <attrib>Image credit: Peggy Mason</attrib>
+    </fig>
+    <list list-type="order">
+      <list-item><p>First entry</p>
+        <list list-type="bullet">
+          <list-item><p>First sub-entry</p></list-item>
+          <list-item><p>Second sub-entry</p>
+          </list-item>
+        </list>
+      </list-item>
+      <list-item><p>Second entry</p></list-item>
+    </list>
+    <sec id="s1">
+      <title><?proof margin=“10”?><!--Adjusting above space for section head (increasing). Can have a value between -6 to 12-->Disclaimer</title>
+      <p>The content of this publication does not necessarily reflect the views or policies of the Department of Health and Human Services, nor does mention of trade names, commercial products, or organizations imply endorsement by the US Government.</p>
+    </sec>
+  </body>
+    <back>
+        <ack id="ack">
+            <title>Acknowledgements</title>
+            <p>Acknowledgements section containing only paragraph type elements (no block content such as tables, figures and so on).</p>
+        </ack>
+        <ref-list>
+            <title>References</title>
+              <ref id="bib1">
+                <element-citation publication-type="journal">
+                  <person-group person-group-type="author">
+                    <name>
+                      <surname>Berk</surname>
+                      <given-names>V</given-names>
+                    </name>
+                    <name>
+                      <surname>Fong</surname>
+                      <given-names>JC</given-names>
+                    </name>
+                    <name>
+                      <surname>Dempsey</surname>
+                      <given-names>GT</given-names>
+                    </name>
+                    <name>
+                      <surname>Develioglu</surname>
+                      <given-names>ON</given-names>
+                    </name>
+                    <name>
+                      <surname>Zhuang</surname>
+                      <given-names>X</given-names>
+                    </name>
+                    <name>
+                      <surname>Liphardt</surname>
+                      <given-names>J</given-names>
+                    </name>
+                    <name>
+                      <surname>Yildiz</surname>
+                      <given-names>FH</given-names>
+                    </name>
+                    <name>
+                      <surname>Chu</surname>
+                      <given-names>S</given-names>
+                    </name>
+                  </person-group>
+                  <year iso-8601-date="2012">2012</year>
+                  <article-title>Molecular architecture and assembly principles of <italic>Vibrio cholerae</italic> biofilms</article-title>
+                  <source>Science</source>
+                  <volume>337</volume>
+                  <fpage>236</fpage>
+                  <lpage>239</lpage>
+                </element-citation>
+              </ref>
+              <ref id="bib2">
+                <element-citation publication-type="book">
+                  <person-group person-group-type="author">
+                    <name>
+                      <surname>Feyerabend</surname>
+                      <given-names>PK</given-names>
+                    </name>
+                  </person-group>
+                  <year iso-8601-date="2010">2010</year>
+                  <source>Against Method</source>
+                  <edition>4th Edition</edition>
+                  <publisher-loc>London</publisher-loc>
+                  <publisher-name>Verso</publisher-name>
+                  <pub-id pub-id-type="isbn">978-1844674428</pub-id>
+                </element-citation>
+              </ref>
+              <ref id="bib3">
+                <element-citation publication-type="report">
+                  <person-group person-group-type="author">
+                    <name>
+                      <surname>Foley</surname>
+                      <given-names>B</given-names>
+                    </name>
+                    <name>
+                      <surname>Leitner</surname>
+                      <given-names>T</given-names>
+                    </name>
+                    <name>
+                      <surname>Apetrei</surname>
+                      <given-names>C</given-names>
+                    </name>
+                    <name>
+                      <surname>Hahn</surname>
+                      <given-names>B</given-names>
+                    </name>
+                    <name>
+                      <surname>Mizrachi</surname>
+                      <given-names>I</given-names>
+                    </name>
+                    <name>
+                      <surname>Mullins</surname>
+                      <given-names>J</given-names>
+                    </name>
+                    <name>
+                      <surname>Rambaut</surname>
+                      <given-names>A</given-names>
+                    </name>
+                    <name>
+                      <surname>Wolinsky</surname>
+                      <given-names>S</given-names>
+                    </name>
+                    <name>
+                      <surname>Korber</surname>
+                      <given-names>B</given-names>
+                    </name>
+                  </person-group>
+                  <year iso-8601-date="2018">2018</year>
+                  <source>Hiv Sequence Compendium 2018</source>
+                  <publisher-name>US Department of Energy</publisher-name>
+                  <pub-id pub-id-type="doi">10.2172/1458915</pub-id>
+                </element-citation>
+              </ref>
+              <ref id="bib4">
+                <element-citation publication-type="data" specific-use="supporting">
+                  <person-group person-group-type="author">
+                    <name>
+                      <surname>Gavrilov</surname>
+                      <given-names>S</given-names>
+                    </name>
+                    <name>
+                      <surname>Harvey</surname>
+                      <given-names>RP</given-names>
+                    </name>
+                    <name>
+                      <surname>Papaioannou</surname>
+                      <given-names>VE</given-names>
+                    </name>
+                  </person-group>
+                  <year iso-8601-date="2014">2014</year>
+                  <data-title>Mus musculus T-box 2 (Tbx2), mRNA</data-title>
+                  <source>NCBI Nucleotide</source>
+                  <pub-id pub-id-type="accession" assigning-authority="NCBI" xlink:href="http://www.ncbi.nlm.nih.gov/nuccore/120407038">NM_009324</pub-id>
+                  <version designator="NM_009324.2">NM_009324.2</version>
+                </element-citation>
+              </ref>
+              <ref id="bib5">
+                <element-citation publication-type="web">
+                  <person-group person-group-type="author">
+                    <name>
+                      <surname>Harmon</surname>
+                      <given-names>A</given-names>
+                    </name>
+                  </person-group>
+                  <year iso-8601-date="2019">2019</year>
+                  <article-title>James Watson had a chance to salvage his reputation on race. He made things worse</article-title>
+                  <source>The New York Times</source>
+                  <ext-link ext-link-type="uri" xlink:href="https://www.nytimes.com/2019/01/01/science/watson-dna-genetics-race.html">https://www.nytimes.com/2019/01/01/science/watson-dna-genetics-race.html</ext-link>
+                  <date-in-citation iso-8601-date="2019-01-01">January 1, 2019</date-in-citation>
+                </element-citation>
+              </ref>
+              <ref id="bib6">
+                <element-citation publication-type="journal">
+                  <person-group person-group-type="author">
+                    <name>
+                      <surname>Heissler</surname>
+                      <given-names>SM</given-names>
+                    </name>
+                    <name>
+                      <surname>Sellers</surname>
+                      <given-names>JR</given-names>
+                    </name>
+                  </person-group>
+                  <year iso-8601-date="2016">2016a</year>
+                  <article-title>Various Themes of Myosin Regulation</article-title>
+                  <source>Journal of Molecular Biology</source>
+                  <volume>428</volume>
+                  <fpage>1927</fpage>
+                  <lpage>1946</lpage>
+                  <pub-id pub-id-type="doi">10.1016/j.jmb.2016.01.022</pub-id>
+                </element-citation>
+              </ref>
+              <ref id="bib7">
+                <element-citation publication-type="journal">
+                  <person-group person-group-type="author">
+                    <name>
+                      <surname>Heissler</surname>
+                      <given-names>SM</given-names>
+                    </name>
+                    <name>
+                      <surname>Sellers</surname>
+                      <given-names>JR</given-names>
+                    </name>
+                  </person-group>
+                  <year iso-8601-date="2016">2016b</year>
+                  <article-title>Kinetic Adaptations of Myosins for Their Diverse Cellular Functions</article-title>
+                  <source>Traffic</source>
+                  <volume>17</volume>
+                  <fpage>839</fpage>
+                  <lpage>859</lpage>
+                  <pub-id pub-id-type="doi">10.1111/tra.12388</pub-id>
+                </element-citation>
+              </ref>
+              <ref id="bib8">
+                <element-citation publication-type="book">
+                  <person-group person-group-type="author">
+                    <name>
+                      <surname>Hogarth</surname>
+                      <given-names>KM</given-names>
+                    </name>
+                    <name>
+                      <surname>Jaroszz</surname>
+                      <given-names>J</given-names>
+                    </name>
+                    <name>
+                      <surname>Butler</surname>
+                      <given-names>P</given-names>
+                    </name>
+                  </person-group>
+                  <year iso-8601-date="2012">2012</year>
+                  <chapter-title>The skull and brain</chapter-title>
+                  <person-group person-group-type="editor">
+                    <name>
+                      <surname>Butler</surname>
+                      <given-names>P</given-names>
+                    </name>
+                    <name>
+                      <surname>Mitchell</surname>
+                      <given-names>A</given-names>
+                    </name>
+                    <name>
+                      <surname>Healy</surname>
+                      <given-names>JC</given-names>
+                    </name>
+                  </person-group>
+                  <source>Applied Radiological Anatomy</source>
+                  <volume>1</volume>
+                  <edition>2nd Edition</edition>
+                  <publisher-loc>Cambridge, United Kingdom</publisher-loc>
+                  <publisher-name>Cambridge University Press</publisher-name>
+                  <fpage>1</fpage>
+                  <lpage>32</lpage>
+                  <pub-id pub-id-type="doi">10.1017/CBO9780511977930.001</pub-id>
+                  <pub-id pub-id-type="isbn">9780511977930</pub-id>
+                </element-citation>
+              </ref>
+              <ref id="bib9">
+                <element-citation publication-type="data" specific-use="supporting">
+                  <person-group person-group-type="author">
+                    <name>
+                      <surname>Kok</surname>
+                      <given-names>K</given-names>
+                    </name>
+                    <name>
+                      <surname>Ay</surname>
+                      <given-names>A</given-names>
+                    </name>
+                    <name>
+                      <surname>Li</surname>
+                      <given-names>L</given-names>
+                    </name>
+                  </person-group>
+                  <data-title>Genome-wide errant targeting by Hairy</data-title>
+                  <source>Dryad Digital Repository</source>
+                  <year iso-8601-date="2015">2015</year>
+                    <pub-id assigning-authority="Dryad" pub-id-type="doi">10.5061/dryad.53sq7kn</pub-id>
+                </element-citation>
+              </ref>
+              <ref id="bib10">
+                <element-citation publication-type="pre-print">
+                  <person-group person-group-type="author">
+                    <name>
+                      <surname>Li</surname>
+                      <given-names>H</given-names>
+                    </name>
+                  </person-group>
+                  <year iso-8601-date="2013">2013</year>
+                  <article-title>Aligning sequence reads clone sequences and assembly contigs with BWA-MEM</article-title>
+                  <source>arXiv</source>
+                  <elocation-id>1303.3997}</elocation-id>
+                  <ext-link ext-link-type="uri" xlink:href="https://arxiv.org/abs/1303.3997">https://arxiv.org/abs/1303.3997</ext-link>
+                </element-citation>
+              </ref>
+              <ref id="bib11">
+                <element-citation publication-type="software">
+                  <person-group person-group-type="author">
+                    <name>
+                      <surname>Linares</surname>
+                      <given-names>D</given-names>
+                    </name>
+                  </person-group>
+                  <year iso-8601-date="2019">2019</year>
+                  <source>Data and Code for 'Decoupling Sensory From Decisional Choice Biases in Perceptual Decision Making'</source>
+                  <version designator="3e48e64">3e48e64</version>
+                  <publisher-name>GitHub</publisher-name>
+                  <ext-link ext-link-type="uri" xlink:href="https://github.com/danilinares/2018LinaresAguilarLopezmoliner">https://github.com/danilinares/2018LinaresAguilarLopezmoliner</ext-link>
+                </element-citation>
+              </ref>
+              <ref id="bib12">
+                <element-citation publication-type="confproc">
+                  <person-group person-group-type="author">
+                    <name>
+                      <surname>Miller</surname>
+                      <given-names>MA</given-names>
+                    </name>
+                    <name>
+                      <surname>Pfeiffer</surname>
+                      <given-names>W</given-names>
+                    </name>
+                    <name>
+                      <surname>Schwartz</surname>
+                      <given-names>T</given-names>
+                    </name>
+                  </person-group>
+                  <year iso-8601-date="2011">2011</year>
+                  <article-title>The CIPRES science gateway: a community resource for phylogenetic analyses</article-title>
+                  <conf-name>Proceedings of the 2011 TeraGrid Conference: Extreme Digital Discovery</conf-name>
+                  <conf-loc>Salt Lake City, Utah</conf-loc>
+                  <fpage>1</fpage>
+                  <lpage>8</lpage>
+                  <ext-link ext-link-type="uri" xlink:href="https://dl.acm.org/citation.cfm?doid=2016741.2016785">https://dl.acm.org/citation.cfm?doid=2016741.2016785</ext-link>
+                </element-citation>
+              </ref>
+              <ref id="bib13">
+                <element-citation publication-type="data" specific-use="supporting">
+                  <person-group person-group-type="author">
+                    <name>
+                      <surname>Mulvihill</surname>
+                      <given-names>DP</given-names>
+                    </name>
+                  </person-group>
+                  <year iso-8601-date="2010">2010</year>
+                  <data-title>TORC2 dependent phosphorylation modulates calcium regulation of fission yeast myosin</data-title>
+                  <source>Kent Data Repository</source>
+                  <pub-id assigning-authority="other" pub-id-type="archive" xlink:href="https://data.kent.ac.uk/60/">60</pub-id>
+                </element-citation>
+              </ref>
+              <ref id="bib14">
+                <element-citation publication-type="pre-print">
+                  <person-group person-group-type="author">
+                    <name>
+                      <surname>Murray</surname>
+                      <given-names>D</given-names>
+                    </name>
+                      <name>
+                          <surname>Siler</surname>
+                          <given-names>K</given-names>
+                      </name>
+                      <name>
+                          <surname>Larivière</surname>
+                          <given-names>V</given-names>
+                      </name>
+                      <name>
+                          <surname>Chan</surname>
+                          <given-names>Wei Mun</given-names>
+                      </name>
+                      <name>
+                          <surname>Collings</surname>
+                          <given-names>AM</given-names>
+                      </name>
+                      <name>
+                          <surname>Rayond</surname>
+                          <given-names>Jennifer</given-names>
+                      </name>
+                      <name>
+                          <surname>Sugimoto</surname>
+                          <given-names>CR</given-names>
+                      </name>
+                  </person-group>
+                  <year iso-8601-date="2019">2019</year>
+                  <article-title>Gender and international diversity improves equity in peer review</article-title>
+                  <source>bioRxiv</source>
+                  <pub-id pub-id-type="doi">10.1101/400515</pub-id>
+                </element-citation>
+              </ref>
+              <ref id="bib15">
+                <element-citation publication-type="patent">
+                  <person-group person-group-type="inventor">
+                    <name>
+                      <surname>Onoda</surname>
+                      <given-names>T</given-names>
+                    </name>
+                  </person-group>
+                  <year iso-8601-date="2015">2015</year>
+                  <article-title>Imidazopyridine Derivative</article-title>
+                  <source>World Intellectual Property Organization</source>
+                  <patent country="Japan">2015087996</patent>
+                  <ext-link ext-link-type="uri" xlink:href="https://patents.google.com/patent/WO2015087996A1/en">https://patents.google.com/patent/WO2015087996A1/en</ext-link>
+                </element-citation>
+              </ref>
+              <ref id="bib16">
+                <element-citation publication-type="software">
+                  <person-group person-group-type="author">
+                    <collab>R Development Core Team</collab>
+                  </person-group>
+                  <year iso-8601-date="2014">2014</year>
+                  <data-title>R: A Language and Environment for Statistical Computing</data-title>
+                  <publisher-loc>Vienna, Austria</publisher-loc>
+                  <publisher-name>R Foundation for Statistical Computing</publisher-name>
+                  <ext-link ext-link-type="uri" xlink:href="http://www.R-project.org/">http://www.R-project.org/</ext-link>
+                </element-citation>
+              </ref>
+              <ref id="bib17">
+                <element-citation publication-type="data" specific-use="supporting" id="bib45">
+                  <person-group person-group-type="author">
+                    <name>
+                      <surname>Read</surname>
+                      <given-names>K</given-names>
+                    </name>
+                  </person-group>
+                  <data-title>Sizing the Problem of Improving Discovery and Access to NIH-funded Data: A Preliminary Study (Datasets)</data-title>
+                  <source>Figshare</source>
+                  <year iso-8601-date="2015">2015</year>
+                  <pub-id assigning-authority="figshare" pub-id-type="doi">10.6084/m9.figshare.1285515</pub-id>
+                </element-citation>
+              </ref>
+              <ref id="bib18">
+                <element-citation publication-type="periodical">
+                  <person-group person-group-type="author">
+                    <name>
+                      <surname>Schwartz</surname>
+                      <given-names>J</given-names>
+                    </name>
+                  </person-group>
+                  <string-date><month>September</month> <day>9</day>, <year iso-8601-date="1993-09-09">1993</year></string-date>
+                  <article-title>Obesity affects economic, social status</article-title>
+                  <source>The Washington Post</source>
+                  <fpage>A1</fpage>
+                  <lpage>A4</lpage>
+                </element-citation>
+              </ref>
+              <ref id="bib19">
+                <element-citation publication-type="confproc">
+                  <person-group person-group-type="author">
+                    <name>
+                      <surname>Spangler</surname>
+                      <given-names>S</given-names>
+                    </name>
+                  </person-group>
+                  <year iso-8601-date="2014">2014</year>
+                  <article-title>Automated hypothesis generation based on mining scientific literature</article-title>
+                  <conf-name>Proceedings of the 20th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining</conf-name>
+                  <fpage>1877</fpage>
+                  <lpage>1886</lpage>
+                  <pub-id pub-id-type="doi">10.1145/2623330.2623667</pub-id>
+                </element-citation>
+              </ref>
+              <ref id="bib20">
+                <element-citation publication-type="journal">
+                  <person-group person-group-type="author">
+                    <name>
+                      <surname>Srinivasan</surname>
+                      <given-names>S</given-names>
+                    </name>
+                    <name>
+                      <surname>Kaplan</surname>
+                      <given-names>C Nadir</given-names>
+                    </name>
+                    <name>
+                      <surname>Mahadevan</surname>
+                      <given-names>L</given-names>
+                    </name>
+                  </person-group>
+                  <year iso-8601-date="2019">2019</year>
+                  <article-title>A multiphase theory for spreadingmicrobial swarms and films</article-title>
+                  <source>eLife</source>
+                  <volume>8</volume>
+                  <elocation-id>e42697</elocation-id>
+                  <pub-id pub-id-type="doi">10.7554/eLife.42697</pub-id>
+                  <pub-id pub-id-type="pmid">31038122</pub-id>
+                  <pub-id pub-id-type="pmcid">PMC12345</pub-id>
+                </element-citation>
+              </ref>
+              <ref id="bib21">
+                <element-citation publication-type="periodical">
+                  <person-group person-group-type="author">
+                    <name>
+                      <surname>Wahls</surname>
+                      <given-names>WP</given-names>
+                    </name>
+                  </person-group>
+                  <string-date><month>October</month> <day>3</day>, <year iso-8601-date="2016-10-03">2016</year></string-date>
+                  <article-title>Send my tax dollars to Mississippi</article-title>
+                  <source>ASBMB Today</source>
+                  <volume>15</volume>
+                  <fpage>24</fpage>
+                  <lpage>25</lpage>
+                  <ext-link ext-link-type="uri" xlink:href="https://www.asbmb.org/asbmbtoday/201610/Essay/">https://www.asbmb.org/asbmbtoday/201610/Essay/</ext-link>
+                </element-citation>
+              </ref>
+              <ref id="bib22">
+                <element-citation publication-type="report">
+                  <person-group person-group-type="author">
+                    <collab>World Health Organization</collab>
+                  </person-group>
+                  <year iso-8601-date="2015">2015</year>
+                  <source>World Malaria Report 2015</source>
+                  <publisher-loc>Geneva</publisher-loc>
+                  <publisher-name>World Health Organization</publisher-name>
+                  <ext-link ext-link-type="uri" xlink:href="http://www.who.int/malaria/publications/world-malaria-report-2015/en/">http://www.who.int/malaria/publications/world-malaria-report-2015/en/</ext-link>
+                </element-citation>
+              </ref>
+          <ref id="bib23">
+            <element-citation publication-type="web">
+              <person-group person-group-type="author">
+                <name>
+                  <surname>Walker</surname>
+                  <given-names>J</given-names>
+                </name>
+              </person-group>
+              <year iso-8601-date="1994">1994</year>
+              <article-title>Solar System Live</article-title>
+              <ext-link ext-link-type="uri" xlink:href='https://www.fourmilab.ch/solar/'>https://www.fourmilab.ch/solar/</ext-link>
+              <date-in-citation iso-8601-date="1995-09-10">September 10, 1995</date-in-citation>
+            </element-citation>
+          </ref>
+          <ref id="bib24">
+            <element-citation publication-type="journal">
+              <person-group person-group-type="author">
+                <name>
+                  <surname>Zhang</surname> <given-names>S</given-names>
+                </name>
+                <name>
+                  <surname>Huang</surname> <given-names>CH</given-names>
+                </name>
+                <name>
+                  <surname>Aj</surname> <given-names>Y</given-names>
+                </name>
+              </person-group>
+              <year iso-8601-date="2014">2014</year>
+              <article-title>Sequential effects: a bayesian analysis of prior bias on reaction time and behavioral choice</article-title>
+              <source>Cognitive Science Society</source>
+            </element-citation>
+          </ref>
+          <ref id="bib25">
+            <element-citation publication-type="journal">
+              <person-group person-group-type="author">
+                <name>
+                  <surname>Zoolander</surname> <given-names>D</given-names>
+                </name>
+                <name>
+                  <surname>Hansel</surname>
+                </name>
+                <name>
+                  <surname>Mugatu</surname> <given-names>J</given-names>
+                </name>
+              </person-group>
+              <year iso-8601-date="2019">2019</year>
+              <article-title>Second related article title (if present)</article-title>
+              <source>eLife</source>
+              <volume>8</volume>
+              <elocation-id>e00067</elocation-id>
+              <pub-id pub-id-type="doi">10.7554/eLife.00067</pub-id>
+              <pub-id pub-id-type="pmid">00030000</pub-id>
+              <pub-id pub-id-type="pmcid">PMC00005</pub-id>
+            </element-citation>
+          </ref>
+          <ref id="bib26">
+            <element-citation publication-type="journal">
+              <person-group person-group-type="author">
+                <name><surname>Zz</surname> <given-names>J</given-names></name>
+                <name><surname>Daniel</surname> <given-names>CR</given-names></name>
+                <name><surname>Hess</surname> <given-names>KR</given-names></name>
+              </person-group>
+              <year iso-8601-date="2019">2019</year>
+              <article-title>The association of BMI and outcomes in metastatic melanoma: a retrospective, multicohort analysis of patients treated with targeted therapy, immunotherapy, or chemotherapy</article-title>
+              <source>The Lancet. Oncology</source>
+              <comment>In press</comment>
+            </element-citation>
+          </ref>
+            </ref-list>
+    </back>
+</article>
