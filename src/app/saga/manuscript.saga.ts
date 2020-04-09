@@ -4,7 +4,7 @@ import * as initActions from '../actions/init.actions';
 import {Action} from "../utils/action.utils";
 import {getManuscriptContent} from "../api/manuscript.api";
 
-function* loadManuscript(action: Action<string>) {
+export function* loadManuscriptSaga(action: Action<string>) {
   const id = action.payload || '00104';
   try {
     const manuscript = yield call(getManuscriptContent, id);
@@ -16,6 +16,7 @@ function* loadManuscript(action: Action<string>) {
 
 export default function*() {
   yield all([
-    takeLatest(initActions.initApplication.type, loadManuscript),
+    takeLatest(manuscriptActions.loadManuscript.request.type, loadManuscriptSaga),
+    takeLatest(initActions.initApplication.type, loadManuscriptSaga),
   ]);
 }
