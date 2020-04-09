@@ -20,7 +20,7 @@ export function updateManuscriptState(state: ManuscriptHistory, propName: string
   }
 }
 
-export function undoPreviousChange(state: ManuscriptHistory) {
+export function undoChange(state: ManuscriptHistory) {
   const past = [...state.past]
   const diff = past.pop();
   const undoDiff = invertDiff(state.present, diff);
@@ -34,7 +34,7 @@ export function undoPreviousChange(state: ManuscriptHistory) {
   };
 }
 
-export function redoPreviousChange(state: ManuscriptHistory) {
+export function redoChange(state: ManuscriptHistory) {
   const future = [...state.future]
   const diff = future.shift();
 

@@ -1,7 +1,7 @@
 import * as manuscriptActions from "../actions/manuscript.actions";
 import {ManuscriptHistory} from "../utils/state.utils";
 import {Transaction} from "prosemirror-state";
-import {redoPreviousChange, undoPreviousChange, updateManuscriptState} from "../utils/history.utils";
+import {redoChange, undoChange, updateManuscriptState} from "../utils/history.utils";
 
 export function manuscriptEditorReducer(state: ManuscriptHistory | undefined, action: manuscriptActions.ActionType): ManuscriptHistory {
   if (!state) {
@@ -12,9 +12,9 @@ export function manuscriptEditorReducer(state: ManuscriptHistory | undefined, ac
     case manuscriptActions.updateTitleAction.type:
       return updateManuscriptState(state, 'title', action.payload as Transaction)
     case manuscriptActions.undoAction.type:
-      return undoPreviousChange(state);
+      return undoChange(state);
     case manuscriptActions.redoAction.type:
-      return redoPreviousChange(state);
+      return redoChange(state);
     default:
       return state;
   }
