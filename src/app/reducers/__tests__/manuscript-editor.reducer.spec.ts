@@ -8,7 +8,7 @@ describe('manuscript editor reducer', () => {
     const state = {title: undefined} as Manuscript;
     const newTitle = new EditorState();
 
-    const newState = manuscriptEditorReducer(state, manuscriptActions.updateTitle(newTitle));
+    const newState = manuscriptEditorReducer(state, manuscriptActions.updateTitleAction(newTitle));
     expect(newState.title).toBe(newTitle);
   });
 })

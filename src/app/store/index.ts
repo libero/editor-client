@@ -2,12 +2,16 @@ import { combineReducers, createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { rootSaga } from '../saga';
-import {manuscriptReducer, ManuscriptState} from '../reducers/manuscript.reducer';
+import {manuscriptReducer} from '../reducers/manuscript.reducer';
+import {LoadableState, ManuscriptHistory} from "../utils/state.utils";
 
 const sagaMiddleware = createSagaMiddleware();
 
+
+export interface ManuscriptHistoryState extends LoadableState<ManuscriptHistory> {}
+
 export interface ApplicationState {
-  manuscript: ManuscriptState;
+  manuscript: ManuscriptHistoryState;
 }
 
 export const store = createStore(combineReducers({

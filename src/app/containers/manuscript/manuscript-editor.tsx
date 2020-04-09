@@ -12,8 +12,7 @@ export const ManuscriptEditor:React.FC = () => {
   const title:EditorState = useSelector(getManuscriptTitle);
 
   const handleTitleChange = (diff: Transaction) => {
-    const updatedTitle = title.apply(diff);
-    dispatch(manuscriptActions.updateTitle(updatedTitle));
+    dispatch(manuscriptActions.updateTitleAction(diff));
   };
   return <RichTextEditor editorState={title} onChange={handleTitleChange} />;
 }

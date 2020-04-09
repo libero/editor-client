@@ -11,7 +11,7 @@ describe('manuscript reducer', () => {
     const state = getInitialLoadableState();
 
     expect(state.isLoading).toBeFalsy();
-    const newState = manuscriptReducer(state, manuscriptActions.loadManuscript.request('SOME_ID'));
+    const newState = manuscriptReducer(state, manuscriptActions.loadManuscriptAction.request('SOME_ID'));
     expect(newState.isLoading).toBeTruthy();
   });
 
@@ -20,7 +20,7 @@ describe('manuscript reducer', () => {
     const data = {title: new EditorState()};
 
     expect(state.data).toBeFalsy();
-    const newState = manuscriptReducer(state, manuscriptActions.loadManuscript.success(data));
+    const newState = manuscriptReducer(state, manuscriptActions.loadManuscriptAction.success(data));
     expect(newState.data).toBe(data)
   });
 
@@ -29,7 +29,7 @@ describe('manuscript reducer', () => {
     const error = new Error('test error');
 
     expect(state.error).toBeFalsy();
-    const newState = manuscriptReducer(state, manuscriptActions.loadManuscript.error(error));
+    const newState = manuscriptReducer(state, manuscriptActions.loadManuscriptAction.error(error));
     expect(newState.error).toBe(error);
   });
 })

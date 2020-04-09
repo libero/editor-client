@@ -18,5 +18,15 @@ export const isManuscriptLoaded = createSelector(
 
 export const getManuscriptTitle = createSelector(
   getManuscriptData,
-  data => get(data, 'title')
+  data => get(data, 'present.title')
+);
+
+export const canUndoChanges = createSelector(
+  getManuscriptData,
+  data => get(data, 'past.length') > 0
+);
+
+export const canRedoChanges = createSelector(
+  getManuscriptData,
+  data => get(data, 'future.length') > 0
 );
