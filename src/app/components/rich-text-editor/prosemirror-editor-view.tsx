@@ -18,12 +18,6 @@ export class ProseMirrorEditorView extends React.Component<ProseMirrorEditorView
     this.props.onChange(tx);
   };
 
-  focus() {
-    if (this.editorView) {
-      this.editorView.focus();
-    }
-  }
-
   componentWillReceiveProps(nextProps: ProseMirrorEditorViewProps) {
     // In case we receive new EditorState through props — we apply it to the
     // EditorView instance.
