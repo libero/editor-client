@@ -1,7 +1,6 @@
 import {DOMOutputSpec, Schema, SchemaSpec} from 'prosemirror-model';
 
 const pDOM = ['p', 0] as DOMOutputSpec,
-  blockquoteDOM = ['blockquote', 0] as DOMOutputSpec,
   hrDOM = ['hr'] as DOMOutputSpec,
   preDOM = ['pre', ['code', 0]] as DOMOutputSpec,
   brDOM = ['br'] as DOMOutputSpec;
