@@ -8,15 +8,15 @@ export function* loadManuscriptSaga(action: Action<string>) {
   const id = action.payload || '00104';
   try {
     const manuscript = yield call(getManuscriptContent, id);
-    yield put(manuscriptActions.loadManuscript.success(manuscript));
+    yield put(manuscriptActions.loadManuscriptAction.success(manuscript));
   } catch (e) {
-    yield put(manuscriptActions.loadManuscript.error(e));
+    yield put(manuscriptActions.loadManuscriptAction.error(e));
   }
 }
 
 export default function*() {
   yield all([
-    takeLatest(manuscriptActions.loadManuscript.request.type, loadManuscriptSaga),
+    takeLatest(manuscriptActions.loadManuscriptAction.request.type, loadManuscriptSaga),
     takeLatest(initActions.initApplication.type, loadManuscriptSaga),
   ]);
 }

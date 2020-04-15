@@ -1,9 +1,8 @@
 
-import {getInitialLoadableState} from "../../utils/state.utils";
+import {getInitialHistory, getInitialLoadableState} from "../../utils/state.utils";
 import * as manuscriptActions from '../../actions/manuscript.actions';
-import {manuscriptReducer, ManuscriptState} from "../manuscript.reducer";
+import {manuscriptReducer} from "../manuscript.reducer";
 import {EditorState} from "prosemirror-state";
-
 
 describe('manuscript reducer', () => {
 
@@ -11,7 +10,7 @@ describe('manuscript reducer', () => {
     const state = getInitialLoadableState();
 
     expect(state.isLoading).toBeFalsy();
-    const newState = manuscriptReducer(state, manuscriptActions.loadManuscript.request('SOME_ID'));
+    const newState = manuscriptReducer(state, manuscriptActions.loadManuscriptAction.request('SOME_ID'));
     expect(newState.isLoading).toBeTruthy();
   });
 
@@ -20,8 +19,8 @@ describe('manuscript reducer', () => {
     const data = {title: new EditorState()};
 
     expect(state.data).toBeFalsy();
-    const newState = manuscriptReducer(state, manuscriptActions.loadManuscript.success(data));
-    expect(newState.data).toBe(data)
+    const newState = manuscriptReducer(state, manuscriptActions.loadManuscriptAction.success(data));
+    expect(newState.data).toEqual(getInitialHistory(data));
   });
 
   it('should set error on state', () => {
@@ -29,7 +28,7 @@ describe('manuscript reducer', () => {
     const error = new Error('test error');
 
     expect(state.error).toBeFalsy();
-    const newState = manuscriptReducer(state, manuscriptActions.loadManuscript.error(error));
+    const newState = manuscriptReducer(state, manuscriptActions.loadManuscriptAction.error(error));
     expect(newState.error).toBe(error);
   });
 })

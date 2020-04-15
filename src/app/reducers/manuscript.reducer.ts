@@ -1,42 +1,41 @@
 import {Manuscript} from '../models/manuscript';
 import * as manuscriptActions from '../actions/manuscript.actions';
 import {
+  getInitialHistory,
   getInitialLoadableState,
   getLoadableStateError,
   getLoadableStateProgress,
-  getLoadableStateSuccess,
-  LoadableState
+  getLoadableStateSuccess
 } from '../utils/state.utils';
 import {
   manuscriptEditorReducer,
 } from './manuscript-editor.reducer';
+import {ManuscriptHistoryState} from "../store";
 
-export interface ManuscriptState extends LoadableState<Manuscript> {
-}
+const initialState = getInitialLoadableState() as ManuscriptHistoryState;
 
-const initialState = getInitialLoadableState() as ManuscriptState;
-
-export function manuscriptReducer(state: ManuscriptState = initialState, action: manuscriptActions.ActionType): ManuscriptState {
+export function manuscriptReducer(state: ManuscriptHistoryState = initialState, action: manuscriptActions.ActionType): ManuscriptHistoryState {
   switch(action.type) {
-    case manuscriptActions.loadManuscript.request.type:
+    case manuscriptActions.loadManuscriptAction.request.type:
       return {
         ...state,
         ...getLoadableStateProgress()
       };
-    case manuscriptActions.loadManuscript.success.type:
+    case manuscriptActions.loadManuscriptAction.success.type:
       return {
         ...state,
-        ...getLoadableStateSuccess(action.payload as Manuscript)
+        ...getLoadableStateSuccess(getInitialHistory(action.payload  as Manuscript))
       };
 
-    case manuscriptActions.loadManuscript.error.type:
+    case manuscriptActions.loadManuscriptAction.error.type:
       return {
         ...state,
         ...getLoadableStateError(action.payload as Error)
       };
 
-    case manuscriptActions.updateTitle.type:
-
+    case manuscriptActions.updateTitleAction.type:
+    case manuscriptActions.redoAction.type:
+    case manuscriptActions.undoAction.type:
       return {
         ...state,
         data: manuscriptEditorReducer(state.data, action)
@@ -45,5 +44,4 @@ export function manuscriptReducer(state: ManuscriptState = initialState, action:
     default:
       return state;
   }
-
 }

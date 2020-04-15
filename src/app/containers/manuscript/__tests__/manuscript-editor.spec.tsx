@@ -5,10 +5,12 @@ import {Provider} from 'react-redux'
 
 import {ManuscriptEditor} from "../manuscript-editor";
 import {
+  getInitialHistory,
   getInitialLoadableState,
   getLoadableStateSuccess
 } from "../../../utils/state.utils";
 import {RichTextEditor} from "../../../components/rich-text-editor";
+import {updateTitleAction} from "../../../actions/manuscript.actions";
 
 describe('manuscript editor', () => {
   const mockStore = configureMockStore([]);
@@ -22,16 +24,19 @@ describe('manuscript editor', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should update state when RichTextEditor changes', () => {
-    const mockEditorState = {
+  it('should dispatch changes', () => {
+    const mockEditorState = getInitialHistory({
       title: { apply: jest.fn() }
-    };
+    });
 
     const store = mockStore({ manuscript: getLoadableStateSuccess(mockEditorState) });
+    jest.spyOn(store, 'dispatch');
+
     const wrapper = create(<Provider store={store}> <ManuscriptEditor /> </Provider>);
     const changeArg = Symbol();
+
     wrapper.root.findByType(RichTextEditor).props.onChange(changeArg);
 
-    expect(mockEditorState.title.apply).toBeCalledWith(changeArg);
+    expect(store.dispatch).toBeCalledWith({payload: changeArg, type: updateTitleAction.type});
   });
 })
