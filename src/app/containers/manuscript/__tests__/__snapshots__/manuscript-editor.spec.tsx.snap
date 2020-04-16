@@ -1,7 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`manuscript editor should render 1`] = `
-<div
-  className="editorview-wrapper"
-/>
+<div>
+  <label
+    className="manuscript-label"
+  >
+    Title
+  </label>
+  <div
+    className="editorview-wrapper"
+  />
+</div>
 `;
