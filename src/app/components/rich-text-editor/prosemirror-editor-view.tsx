@@ -2,6 +2,9 @@ import React from "react";
 import {EditorState, Transaction} from 'prosemirror-state';
 import {EditorView} from 'prosemirror-view';
 
+import 'prosemirror-view/style/prosemirror.css';
+import './prosemirror.scss';
+
 export interface ProseMirrorEditorViewProps {
   editorState: EditorState;
   onChange: (tx: Transaction) => void;

@@ -1,6 +1,6 @@
 import {Manuscript, ManuscriptDiff} from "../models/manuscript";
 import {ManuscriptHistory} from "./state.utils";
-import {EditorState, Transaction} from "prosemirror-state";
+import {Transaction} from "prosemirror-state";
 
 export function updateManuscriptState(state: ManuscriptHistory, propName: string, transaction: Transaction): ManuscriptHistory {
   const updatedManuscript = applyDiffToManuscript(state.present, {[propName]: transaction});
