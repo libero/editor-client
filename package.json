@@ -26,6 +26,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:coverage": "react-scripts test --coverage --watchAll=true",
     "eject": "react-scripts eject",
     "lint": "eslint "
   },
@@ -67,5 +68,9 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-mock-store": "^1.5.4",
     "typescript": "^3.8.3"
+  },
+  "jest": {
+    "restoreMocks": true,
+    "clearMocks": true
   }
 }

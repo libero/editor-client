@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App container renders 1`] = `
+<div
+  data-cmp="BrowserRouter"
+>
+  <div
+    className="app-container"
+  >
+    <div
+      data-cmp="Switch"
+    >
+      <div
+        data-cmp="Route"
+      >
+        <div
+          data-cmp="manuscript"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
