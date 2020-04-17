@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Manuscript container renders loading spinner when manuscript is loading 1`] = `
+<div
+  data-cmp="backdrop"
+>
+   
+  <div
+    data-cmp="circular-progress"
+  />
+   
+</div>
+`;
+
+exports[`Manuscript container renders when data is loaded 1`] = `
+<div>
+  <div
+    className="manuscript-container"
+  >
+    <div>
+      <label
+        className="manuscript-label"
+      >
+        Title
+      </label>
+      <div
+        className="editorview-wrapper"
+      />
+    </div>
+  </div>
+</div>
+`;

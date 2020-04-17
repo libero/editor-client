@@ -8,7 +8,7 @@ import {
 import {Provider} from 'react-redux';
 import {store} from './store';
 import './app.scss';
-import {Manuscript} from "./containers/manuscript";
+import {ManuscriptContainer} from "./containers/manuscript";
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
           <div className='app-container'>
             <Switch>
               <Route path="/">
-                <Manuscript />
+                <ManuscriptContainer />
               </Route>
             </Switch>
           </div>

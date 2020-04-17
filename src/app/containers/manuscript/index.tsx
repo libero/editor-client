@@ -11,7 +11,7 @@ import {ManuscriptEditor} from "./manuscript-editor";
 
 const renderBackdrop = () => (<Backdrop open={true}> <CircularProgress color="inherit" /> </Backdrop>);
 
-export const Manuscript: React.FC = () => {
+export const ManuscriptContainer: React.FC = () => {
   const isLoaded = useSelector(isManuscriptLoaded);
   const canUndo = useSelector(canUndoChanges);
   const canRedo = useSelector(canRedoChanges);

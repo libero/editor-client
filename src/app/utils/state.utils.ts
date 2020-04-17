@@ -45,6 +45,6 @@ export interface ManuscriptHistory {
   future: ManuscriptDiff[];
 };
 
-export function getInitialHistory<T>(present: T) {
+export function getInitialHistory(present: Manuscript) {
   return { past: [], present, future: []};
 }
