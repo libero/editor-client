@@ -1,4 +1,5 @@
-import {DOMOutputSpec, Schema, SchemaSpec} from 'prosemirror-model';
+/* eslint-disable */
+import { DOMOutputSpec, Schema, SchemaSpec } from 'prosemirror-model';
 
 const pDOM = ['p', 0] as DOMOutputSpec,
   hrDOM = ['hr'] as DOMOutputSpec,
@@ -135,7 +136,7 @@ export const nodes = {
       }
     ],
     toDOM(node) {
-      let { src, alt, title } = node.attrs;
+      const { src, alt, title } = node.attrs;
       return ['img', { src, alt, title }] as DOMOutputSpec;
     }
   },
@@ -171,7 +172,7 @@ export const nodes = {
       }
     ],
     toDOM(node) {
-      let { href } = node.attrs;
+      const { href } = node.attrs;
       return ['a', { href }, 0] as DOMOutputSpec;
     }
   },
@@ -197,7 +198,7 @@ export const nodes = {
       }
     ],
     toDOM(node) {
-      let { href } = node.attrs;
+      const { href } = node.attrs;
       return ['a', { href }, 0] as DOMOutputSpec;
     }
   },
@@ -281,7 +282,7 @@ export const nodes = {
       }
     ],
     toDOM(node) {
-      let { src } = node.attrs;
+      const { src } = node.attrs;
       return ['img', { src }] as DOMOutputSpec;
     }
   },
@@ -323,7 +324,7 @@ export const marks = {
       }
     ],
     toDOM(node) {
-      let { href, title } = node.attrs;
+      const { href, title } = node.attrs;
       return ['a', { href, title }, 0] as DOMOutputSpec;
     }
   },
@@ -375,3 +376,4 @@ export const marks = {
 type NodesType = keyof typeof nodes;
 type MarksType = keyof typeof marks;
 export const schema = new Schema<NodesType, MarksType>({ nodes, marks } as SchemaSpec<NodesType, MarksType>);
+/* eslint-enable */

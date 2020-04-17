@@ -1,4 +1,4 @@
-import {Manuscript, ManuscriptDiff} from "../models/manuscript";
+import { Manuscript, ManuscriptDiff } from '../models/manuscript';
 
 export interface LoadableState<T> {
   data: T | undefined;
@@ -6,15 +6,15 @@ export interface LoadableState<T> {
   error: Error | undefined;
 }
 
-export function getInitialLoadableState() {
+export function getInitialLoadableState<T>(): LoadableState<T> {
   return {
     data: undefined,
     isLoading: false,
     error: undefined
-  }
+  };
 }
 
-export function getLoadableStateProgress() {
+export function getLoadableStateProgress<T>(): LoadableState<T> {
   return {
     data: undefined,
     isLoading: true,
@@ -22,7 +22,7 @@ export function getLoadableStateProgress() {
   };
 }
 
-export function getLoadableStateSuccess<T>(data: T) {
+export function getLoadableStateSuccess<T>(data: T): LoadableState<T> {
   return {
     data,
     isLoading: false,
@@ -30,7 +30,7 @@ export function getLoadableStateSuccess<T>(data: T) {
   };
 }
 
-export function getLoadableStateError<T>(error: Error) {
+export function getLoadableStateError<T>(error: Error): LoadableState<T> {
   console.log(error);
   return {
     data: undefined,
@@ -43,8 +43,8 @@ export interface ManuscriptHistory {
   past: ManuscriptDiff[];
   present: Manuscript;
   future: ManuscriptDiff[];
-};
+}
 
-export function getInitialHistory(present: Manuscript) {
-  return { past: [], present, future: []};
+export function getInitialHistory(present: Manuscript): ManuscriptHistory {
+  return { past: [], present, future: [] };
 }

@@ -1,15 +1,15 @@
-import {EditorState} from 'prosemirror-state';
-import {cloneDeep} from 'lodash'
+import { EditorState } from 'prosemirror-state';
+import { cloneDeep } from 'lodash';
 import * as manuscriptActions from '../../actions/manuscript.actions';
-import {manuscriptEditorReducer} from '../manuscript-editor.reducer';
-import {getInitialHistory} from '../../utils/state.utils';
-import {redoChange, undoChange, updateManuscriptState} from '../../utils/history.utils';
+import { manuscriptEditorReducer } from '../manuscript-editor.reducer';
+import { getInitialHistory } from '../../utils/state.utils';
+import { redoChange, undoChange, updateManuscriptState } from '../../utils/history.utils';
 
 jest.mock('../../utils/history.utils');
 
 describe('manuscript editor reducer', () => {
   it('should update title', () => {
-    const state = getInitialHistory({title: undefined});
+    const state = getInitialHistory({ title: undefined });
     const updatedState = cloneDeep(state);
     updatedState.present.title = new EditorState();
     (updateManuscriptState as jest.Mock).mockReturnValueOnce(updatedState);
@@ -19,9 +19,8 @@ describe('manuscript editor reducer', () => {
   });
 
   it('should undo last changes', () => {
-
-    const state = getInitialHistory({title: new EditorState()});
-    state.past.push({title: undefined});
+    const state = getInitialHistory({ title: new EditorState() });
+    state.past.push({ title: undefined });
 
     const undoneState = cloneDeep(state);
     undoneState.past = [];
@@ -31,9 +30,8 @@ describe('manuscript editor reducer', () => {
   });
 
   it('should redo undone last changes', () => {
-
-    const state = getInitialHistory({title: new EditorState()});
-    state.future.push({title: undefined});
+    const state = getInitialHistory({ title: new EditorState() });
+    state.future.push({ title: undefined });
 
     const redoneState = cloneDeep(state);
     redoneState.future = [];
@@ -41,4 +39,4 @@ describe('manuscript editor reducer', () => {
 
     expect(manuscriptEditorReducer(state, manuscriptActions.redoAction())).toBe(redoneState);
   });
-})
+});

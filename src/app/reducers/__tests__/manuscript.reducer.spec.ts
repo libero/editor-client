@@ -1,11 +1,9 @@
-
-import {getInitialHistory, getInitialLoadableState} from "../../utils/state.utils";
+import { getInitialHistory, getInitialLoadableState } from '../../utils/state.utils';
 import * as manuscriptActions from '../../actions/manuscript.actions';
-import {manuscriptReducer} from "../manuscript.reducer";
-import {EditorState} from "prosemirror-state";
+import { manuscriptReducer } from '../manuscript.reducer';
+import { EditorState } from 'prosemirror-state';
 
 describe('manuscript reducer', () => {
-
   it('should set state to loading', () => {
     const state = getInitialLoadableState();
 
@@ -16,7 +14,7 @@ describe('manuscript reducer', () => {
 
   it('should set data on state', () => {
     const state = getInitialLoadableState();
-    const data = {title: new EditorState()};
+    const data = { title: new EditorState() };
 
     expect(state.data).toBeFalsy();
     const newState = manuscriptReducer(state, manuscriptActions.loadManuscriptAction.success(data));
@@ -31,4 +29,4 @@ describe('manuscript reducer', () => {
     const newState = manuscriptReducer(state, manuscriptActions.loadManuscriptAction.error(error));
     expect(newState.error).toBe(error);
   });
-})
+});

@@ -1,29 +1,23 @@
 import React from 'react';
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
-import {Provider} from 'react-redux';
-import {store} from './store';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { store } from './store';
 import './app.scss';
-import {ManuscriptContainer} from "./containers/manuscript";
+import { ManuscriptContainer } from './containers/manuscript';
 
-function App() {
+export const App: React.FC = () => {
   return (
     <Provider store={store}>
       <Router>
-          <div className='app-container'>
-            <Switch>
-              <Route path="/">
-                <ManuscriptContainer />
-              </Route>
-            </Switch>
-          </div>
+        <div className="app-container">
+          <Switch>
+            <Route path="/">
+              <ManuscriptContainer />
+            </Route>
+          </Switch>
+        </div>
       </Router>
     </Provider>
   );
-}
-
-export default App;
+};
