@@ -10,10 +10,10 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
   const parser = new DOMParser();
   const doc =  parser.parseFromString(data, 'text/xml');
   const title = doc.querySelector('title-group article-title');
-  const keywords = doc.querySelector('kwd-group');
+  const keywords = doc.querySelectorAll('kwd-group');
 
   return {
     title: createTitleState(title),
-    keywords: createKeywordsState(keywords)
+    keywords: createKeywordsState(Array.from(keywords))
   } as Manuscript;
 }

@@ -34,6 +34,8 @@ export function manuscriptReducer(state: ManuscriptHistoryState = initialState, 
       };
 
     case manuscriptActions.updateTitleAction.type:
+    case manuscriptActions.updateKeywordsAction.type:
+    case manuscriptActions.deleteKeywordAction.type:
     case manuscriptActions.redoAction.type:
     case manuscriptActions.undoAction.type:
       return {

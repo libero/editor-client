@@ -2,7 +2,9 @@ import {DOMParser as ProseMirrorDOMParser, Schema, SchemaSpec} from "prosemirror
 import {EditorState} from "prosemirror-state";
 import {pick} from 'lodash';
 import {gapCursor} from "prosemirror-gapcursor"
-import {dropCursor} from "prosemirror-dropcursor"
+import {dropCursor} from "prosemirror-dropcursor";
+import {keymap} from "prosemirror-keymap"
+import {baseKeymap} from "prosemirror-commands"
 
 import * as titleConfig from './config/title.config';
 import * as keywordConfig from './config/keywords.config';
@@ -11,7 +13,7 @@ import {marks} from "./config/marks";
 import {buildInputRules} from "./plugins/input-rules";
 
 export function createTitleState(content: Node) {
-  const schema = makeSchemaFromConfig(titleConfig.topNode, titleConfig.nodes, titleConfig.marks);
+  const schema = makeSchemaFromConfig(undefined, titleConfig.nodes, titleConfig.marks);
 
   const xmlContentDocument = document.implementation.createDocument('', '', null);
 
@@ -30,24 +32,27 @@ export function createTitleState(content: Node) {
   });
 }
 
-export function createKeywordsState(keywords: Node) {
+export function createKeywordsState(keywords: Element[]) {
   const schema = makeSchemaFromConfig(keywordConfig.topNode, keywordConfig.nodes, keywordConfig.marks);
 
-  const xmlContentDocument = document.implementation.createDocument('', '', null);
+  return keywords.reduce((acc, kwdGroup) => {
+    const kwdGroupType = kwdGroup.getAttribute('kwd-group-type');
+    acc[kwdGroupType] = Array.from(kwdGroup.querySelectorAll('kwd'))
+      .map((keyword: Element) => {
+        return EditorState.create({
+          doc: ProseMirrorDOMParser.fromSchema(schema).parse(keyword),
+          schema,
+          plugins: [
+            buildInputRules(schema),
+            gapCursor(),
+            dropCursor(),
+            keymap(baseKeymap)
+          ]
+        });
+      });
 
-  if(keywords) {
-    xmlContentDocument.appendChild(keywords);
-  }
-
-  return EditorState.create({
-    doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),
-    schema,
-    plugins: [
-      buildInputRules(schema),
-      gapCursor(),
-      dropCursor()
-    ]
-  })
+    return acc;
+  }, {});
 }
 
 function makeSchemaFromConfig(topNode: string, nodeNames: string[], markNames: string[]) {

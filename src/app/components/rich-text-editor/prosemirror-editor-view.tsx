@@ -15,6 +15,10 @@ export class ProseMirrorEditorView extends React.Component<ProseMirrorEditorView
 
   private editorView: EditorView;
 
+  focus() {
+    this.editorView.focus();
+  }
+
   dispatchTransaction = (tx: Transaction) => {
     // In case EditorView makes any modification to a state we funnel those
     // modifications up to the parent and apply to the EditorView itself.
@@ -57,6 +61,5 @@ export class ProseMirrorEditorView extends React.Component<ProseMirrorEditorView
       });
     }
   };
-
 }
 

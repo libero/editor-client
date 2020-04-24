@@ -1,3 +1,6 @@
+import {EditorState} from "prosemirror-state";
+import {cloneDeepWith} from "lodash";
+
 import {Manuscript, ManuscriptDiff} from "../models/manuscript";
 
 export interface LoadableState<T> {
@@ -47,4 +50,9 @@ export interface ManuscriptHistory {
 
 export function getInitialHistory(present: Manuscript) {
   return { past: [], present, future: []};
+}
+
+export function cloneManuscript(manuscript: Manuscript) {
+  const cloneCustomizer = (value) => (value instanceof EditorState ? value : undefined);
+  return cloneDeepWith(manuscript, cloneCustomizer);
 }

@@ -3,7 +3,7 @@ import {
   canRedoChanges,
   canUndoChanges,
   getManuscriptData,
-  getManuscriptTitle,
+  getTitle,
   isManuscriptLoaded
 } from "../manuscript.selectors";
 import {cloneDeep} from 'lodash';
@@ -21,7 +21,7 @@ describe('manuscript selectors', () => {
   it('gets manuscript data', () => {
     state.manuscript.data = getInitialHistory({ title: new EditorState() });
     expect(getManuscriptData(state)).toBe(state.manuscript.data);
-    expect(getManuscriptTitle(state)).toBe(state.manuscript.data.present.title);
+    expect(getTitle(state)).toBe(state.manuscript.data.present.title);
     expect(canUndoChanges(state)).toBeFalsy();
     expect(canRedoChanges(state)).toBeFalsy();
   });
