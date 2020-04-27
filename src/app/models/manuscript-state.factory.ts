@@ -5,28 +5,47 @@ import { gapCursor } from 'prosemirror-gapcursor';
 import { dropCursor } from 'prosemirror-dropcursor';
 
 import * as titleConfig from './config/title.config';
+import * as keywordConfig from './config/keywords.config';
 import { nodes } from './config/nodes';
 import { marks } from './config/marks';
 import { buildInputRules } from './plugins/input-rules';
 
-export function createTitleState(content: Node): EditorState {
-  const docSchema = makeSchemaFromConfig(titleConfig.topNode, titleConfig.nodes, titleConfig.marks);
+export function createTitleState(content: Node) {
+  const schema = makeSchemaFromConfig(titleConfig.topNode, titleConfig.nodes, titleConfig.marks);
 
   const xmlContentDocument = document.implementation.createDocument('', '', null);
+
   if (content) {
     xmlContentDocument.appendChild(content);
   }
 
   return EditorState.create({
-    doc: ProseMirrorDOMParser.fromSchema(docSchema).parse(xmlContentDocument),
-    schema: docSchema,
+    doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),
+    schema,
     plugins: [buildInputRules(), gapCursor(), dropCursor()]
   });
 }
 
-function makeSchemaFromConfig(topNode: string, nodeNames: string[], markNames: string[]): Schema {
+export function createKeywordsState(keywords: Node) {
+  const schema = makeSchemaFromConfig(keywordConfig.topNode, keywordConfig.nodes, keywordConfig.marks);
+
+  const xmlContentDocument = document.implementation.createDocument('', '', null);
+
+  if (keywords) {
+    xmlContentDocument.appendChild(keywords);
+  }
+
+  return EditorState.create({
+    doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),
+    schema,
+    plugins: [buildInputRules(), gapCursor(), dropCursor()]
+  });
+}
+
+function makeSchemaFromConfig(topNode: string, nodeNames: string[], markNames: string[]) {
   const filteredNodes = pick(nodes, nodeNames);
   const filteredMarks = pick(marks, markNames);
+
   return new Schema({
     nodes: filteredNodes,
     marks: filteredMarks,

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Manuscript } from '../models/manuscript';
-import { createTitleState } from '../models/manuscript-state.factory';
+import { createTitleState, createKeywordsState } from '../models/manuscript-state.factory';
 
 const manuscriptUrl = (id: string): string => `/manuscripts/${id}/manuscript.xml`;
 
@@ -10,8 +10,10 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
   const parser = new DOMParser();
   const doc = parser.parseFromString(data, 'text/xml');
   const title = doc.querySelector('title-group article-title');
+  const keywords = doc.querySelector('kwd-group');
 
   return {
-    title: createTitleState(title)
+    title: createTitleState(title),
+    keywords: createKeywordsState(keywords)
   } as Manuscript;
 }

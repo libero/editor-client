@@ -14,6 +14,24 @@ export const nodes = {
     }
   },
 
+  'kwd-group': {
+    group: 'block',
+    content: 'block*',
+    parseDom: [{ tag: 'div', attrs: { 'data-tag': 'keyword-group' } }],
+    toDOM(node) {
+      return ['div', { 'data-tag': 'keyword-group', class: 'keyword-group' }, 0];
+    }
+  },
+
+  kwd: {
+    group: 'block',
+    content: 'inline*',
+    parseDom: [{ tag: 'div', attrs: { 'data-tag': 'keyword' } }],
+    toDOM(node) {
+      return ['div', { 'data-tag': 'keyword', class: 'keyword' }, 0];
+    }
+  },
+
   text: {
     group: 'inline'
   }
