@@ -37,7 +37,7 @@ export function createKeywordsState(keywords: Element[]) {
     const kwdGroupType = kwdGroup.getAttribute('kwd-group-type') || 'keywords-1';
     const moreKeywords = Array.from(kwdGroup.querySelectorAll('kwd'))
       .map(createKeywordState)
-    acc[kwdGroupType] = (acc[kwdGroupType] || []).contact(moreKeywords);
+    acc[kwdGroupType] = (acc[kwdGroupType] || []).concat(moreKeywords);
     return acc;
   }, {});
 }
