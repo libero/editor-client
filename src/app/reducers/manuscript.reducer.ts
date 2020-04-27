@@ -1,4 +1,4 @@
-import {Manuscript} from '../models/manuscript';
+import { Manuscript } from '../models/manuscript';
 import * as manuscriptActions from '../actions/manuscript.actions';
 import {
   getInitialHistory,
@@ -7,15 +7,16 @@ import {
   getLoadableStateProgress,
   getLoadableStateSuccess
 } from '../utils/state.utils';
-import {
-  manuscriptEditorReducer,
-} from './manuscript-editor.reducer';
-import {ManuscriptHistoryState} from "../store";
+import { manuscriptEditorReducer } from './manuscript-editor.reducer';
+import { ManuscriptHistoryState } from '../store';
 
 const initialState = getInitialLoadableState() as ManuscriptHistoryState;
 
-export function manuscriptReducer(state: ManuscriptHistoryState = initialState, action: manuscriptActions.ActionType): ManuscriptHistoryState {
-  switch(action.type) {
+export function manuscriptReducer(
+  state: ManuscriptHistoryState = initialState,
+  action: manuscriptActions.ActionType
+): ManuscriptHistoryState {
+  switch (action.type) {
     case manuscriptActions.loadManuscriptAction.request.type:
       return {
         ...state,
@@ -24,7 +25,7 @@ export function manuscriptReducer(state: ManuscriptHistoryState = initialState, 
     case manuscriptActions.loadManuscriptAction.success.type:
       return {
         ...state,
-        ...getLoadableStateSuccess(getInitialHistory(action.payload  as Manuscript))
+        ...getLoadableStateSuccess(getInitialHistory(action.payload as Manuscript))
       };
 
     case manuscriptActions.loadManuscriptAction.error.type:
