@@ -3,11 +3,20 @@
   flex-flow: wrap;
   font-size: 13px;
   line-height: 32px;
+  cursor: text;
 
+  .new-keyword-container {
+    flex: 1;
+
+    .ProseMirror-focused {
+      outline: none;
+    }
+  }
 
   .keyword {
     display: flex;
-    color: rgba(0,0,0,0.87);
+    background: #087ACC;
+    color: #fff;
     font-size: 13px;
     line-height: normal;
     white-space: nowrap;
@@ -32,7 +41,8 @@
     .keyword-delete-cta {
       width: 20px;
       height: 20px;
-      background: #c5c5c5;
+      color: #087ACC;
+      background: rgb(107, 155, 212);
       color: white;
       border-radius: 20px;
       text-align: center;

@@ -1,12 +1,13 @@
 import React from "react";
 import {EditorState, Transaction} from 'prosemirror-state';
-import {EditorView} from 'prosemirror-view';
+import {EditorProps, EditorView} from 'prosemirror-view';
 
 import 'prosemirror-view/style/prosemirror.css';
 import './prosemirror.scss';
 
 export interface ProseMirrorEditorViewProps {
   editorState: EditorState;
+  options?: Partial<EditorProps>;
   onChange: (tx: Transaction) => void;
 }
 
@@ -55,7 +56,9 @@ export class ProseMirrorEditorView extends React.Component<ProseMirrorEditorView
 
   private createEditorView = (element: HTMLElement) => {
     if (element) {
+      const additionalOptions = this.props.options || {};
       this.editorView = new EditorView(element, {
+        ...additionalOptions,
         state: this.props.editorState,
         dispatchTransaction: this.dispatchTransaction,
       });

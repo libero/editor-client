@@ -33,26 +33,30 @@ export function createTitleState(content: Node) {
 }
 
 export function createKeywordsState(keywords: Element[]) {
-  const schema = makeSchemaFromConfig(keywordConfig.topNode, keywordConfig.nodes, keywordConfig.marks);
-
   return keywords.reduce((acc, kwdGroup) => {
     const kwdGroupType = kwdGroup.getAttribute('kwd-group-type');
     acc[kwdGroupType] = Array.from(kwdGroup.querySelectorAll('kwd'))
-      .map((keyword: Element) => {
-        return EditorState.create({
-          doc: ProseMirrorDOMParser.fromSchema(schema).parse(keyword),
-          schema,
-          plugins: [
-            buildInputRules(schema),
-            gapCursor(),
-            dropCursor(),
-            keymap(baseKeymap)
-          ]
-        });
-      });
-
+      .map(createKeywordState);
     return acc;
   }, {});
+}
+
+export function createNewKeywordState() {
+  return createKeywordState();
+}
+
+function createKeywordState(keyword?: Element) {
+  const schema = makeSchemaFromConfig(keywordConfig.topNode, keywordConfig.nodes, keywordConfig.marks);
+  return EditorState.create({
+    doc: keyword ? ProseMirrorDOMParser.fromSchema(schema).parse(keyword) : undefined,
+    schema,
+    plugins: [
+      buildInputRules(schema),
+      gapCursor(),
+      dropCursor(),
+      keymap(baseKeymap)
+    ]
+  });
 }
 
 function makeSchemaFromConfig(topNode: string, nodeNames: string[], markNames: string[]) {

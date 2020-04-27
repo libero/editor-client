@@ -26,12 +26,17 @@ export const ManuscriptEditor:React.FC = () => {
     dispatch(manuscriptActions.deleteKeywordAction({keywordGroup, index}));
   };
 
+  const handleKeywordAdd = (keywordGroup: string, keyword: EditorState) => {
+    dispatch(manuscriptActions.addNewKeywordAction({keywordGroup, keyword}));
+  };
+
   const renderKeywords = (keywordGroups: KeywordGroups) => {
     return Object.entries(keywordGroups).map(([groupType, keywords]) => {
       return <div className="manuscript-field" key={groupType}>
         <KeywordsEditor
           keywords={keywords}
           label={groupType}
+          onAdd={handleKeywordAdd.bind(null, groupType)}
           onChange={handleKeywordsChange.bind(null, groupType)}
           onDelete={handleKeywordDelete.bind(null, groupType)}
         />
