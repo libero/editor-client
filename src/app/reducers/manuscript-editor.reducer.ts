@@ -37,7 +37,7 @@ export function manuscriptEditorReducer(
   }
 }
 
-function handleDeleteKeywordAction(state: ManuscriptHistory, action: Action<KeywordDeletePayload>) {
+function handleDeleteKeywordAction(state: ManuscriptHistory, action: Action<KeywordDeletePayload>): ManuscriptHistory {
   const { keywordGroup, index } = action.payload as KeywordDeletePayload;
   const newManuscript = cloneManuscript(state.present);
   newManuscript.keywords[keywordGroup].splice(index, 1);
@@ -52,7 +52,7 @@ function handleDeleteKeywordAction(state: ManuscriptHistory, action: Action<Keyw
   };
 }
 
-function handleAddNewKeywordAction(state: ManuscriptHistory, action: Action<KeywordAddPayload>) {
+function handleAddNewKeywordAction(state: ManuscriptHistory, action: Action<KeywordAddPayload>): ManuscriptHistory {
   const { keywordGroup, keyword } = action.payload as KeywordAddPayload;
   const newManuscript = cloneManuscript(state.present);
   newManuscript.keywords[keywordGroup].push(keyword);

@@ -1,8 +1,8 @@
 import { createSelector } from 'reselect';
-import { ApplicationState } from '../store';
+import { ApplicationState, ManuscriptHistoryState } from '../store';
 import { get } from 'lodash';
 
-const getManuscriptState = (state: ApplicationState) => {
+const getManuscriptState = (state: ApplicationState): ManuscriptHistoryState => {
   return state.manuscript;
 };
 

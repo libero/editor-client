@@ -11,8 +11,9 @@ import * as keywordConfig from './config/keywords.config';
 import { nodes } from './config/nodes';
 import { marks } from './config/marks';
 import { buildInputRules } from './plugins/input-rules';
+import { KeywordGroups } from './manuscript';
 
-export function createTitleState(content: Node) {
+export function createTitleState(content: Node): EditorState {
   const schema = makeSchemaFromConfig(undefined, titleConfig.nodes, titleConfig.marks);
 
   const xmlContentDocument = document.implementation.createDocument('', '', null);
@@ -28,7 +29,7 @@ export function createTitleState(content: Node) {
   });
 }
 
-export function createKeywordsState(keywords: Element[]) {
+export function createKeywordsState(keywords: Element[]): KeywordGroups {
   return keywords.reduce((acc, kwdGroup) => {
     const kwdGroupType = kwdGroup.getAttribute('kwd-group-type') || 'keywords-1';
     const moreKeywords = Array.from(kwdGroup.querySelectorAll('kwd')).map(createKeywordState);
@@ -37,11 +38,11 @@ export function createKeywordsState(keywords: Element[]) {
   }, {});
 }
 
-export function createNewKeywordState() {
+export function createNewKeywordState(): EditorState {
   return createKeywordState();
 }
 
-function createKeywordState(keyword?: Element) {
+function createKeywordState(keyword?: Element): EditorState {
   const schema = makeSchemaFromConfig(keywordConfig.topNode, keywordConfig.nodes, keywordConfig.marks);
   return EditorState.create({
     doc: keyword ? ProseMirrorDOMParser.fromSchema(schema).parse(keyword) : undefined,
@@ -50,7 +51,7 @@ function createKeywordState(keyword?: Element) {
   });
 }
 
-function makeSchemaFromConfig(topNode: string, nodeNames: string[], markNames: string[]) {
+function makeSchemaFromConfig(topNode: string, nodeNames: string[], markNames: string[]): Schema {
   const filteredNodes = pick(nodes, nodeNames);
   const filteredMarks = pick(marks, markNames);
 

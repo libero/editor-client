@@ -9,7 +9,7 @@ export interface LoadableState<T> {
   error: Error | undefined;
 }
 
-export function getInitialLoadableState() {
+export function getInitialLoadableState<T>(): LoadableState<T> {
   return {
     data: undefined,
     isLoading: false,
@@ -17,7 +17,7 @@ export function getInitialLoadableState() {
   };
 }
 
-export function getLoadableStateProgress() {
+export function getLoadableStateProgress<T>(): LoadableState<T> {
   return {
     data: undefined,
     isLoading: true,
@@ -25,7 +25,7 @@ export function getLoadableStateProgress() {
   };
 }
 
-export function getLoadableStateSuccess<T>(data: T) {
+export function getLoadableStateSuccess<T>(data: T): LoadableState<T> {
   return {
     data,
     isLoading: false,
@@ -33,7 +33,7 @@ export function getLoadableStateSuccess<T>(data: T) {
   };
 }
 
-export function getLoadableStateError<T>(error: Error) {
+export function getLoadableStateError<T>(error: Error): LoadableState<T> {
   console.log(error);
   return {
     data: undefined,
@@ -48,11 +48,11 @@ export interface ManuscriptHistory {
   future: ManuscriptDiff[];
 }
 
-export function getInitialHistory(present: Manuscript) {
+export function getInitialHistory(present: Manuscript): ManuscriptHistory {
   return { past: [], present, future: [] };
 }
 
-export function cloneManuscript(manuscript: Manuscript) {
-  const cloneCustomizer = (value) => (value instanceof EditorState ? value : undefined);
+export function cloneManuscript(manuscript: Manuscript): Manuscript {
+  const cloneCustomizer = (value): EditorState | undefined => (value instanceof EditorState ? value : undefined);
   return cloneDeepWith(manuscript, cloneCustomizer);
 }

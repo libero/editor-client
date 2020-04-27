@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Manuscript } from '../models/manuscript';
 import { createTitleState, createKeywordsState, createNewKeywordState } from '../models/manuscript-state.factory';
 
-const manuscriptUrl = (id: string) => `/manuscripts/${id}/manuscript.xml`;
+const manuscriptUrl = (id: string): string => `/manuscripts/${id}/manuscript.xml`;
 
 export async function getManuscriptContent(id: string): Promise<Manuscript> {
   const { data } = await axios.get<string>(manuscriptUrl(id));

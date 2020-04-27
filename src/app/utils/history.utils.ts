@@ -26,7 +26,7 @@ export function updateManuscriptState(
   }
 }
 
-export function undoChange(state: ManuscriptHistory) {
+export function undoChange(state: ManuscriptHistory): ManuscriptHistory {
   const past = [...state.past];
   const diff = past.pop();
   const undoDiff = invertDiff(state.present, diff);
@@ -40,7 +40,7 @@ export function undoChange(state: ManuscriptHistory) {
   };
 }
 
-export function redoChange(state: ManuscriptHistory) {
+export function redoChange(state: ManuscriptHistory): ManuscriptHistory {
   const future = [...state.future];
   const diff = future.shift();
 
@@ -53,7 +53,7 @@ export function redoChange(state: ManuscriptHistory) {
   };
 }
 
-function invertDiff(manuscript: Manuscript, diff: ManuscriptDiff) {
+function invertDiff(manuscript: Manuscript, diff: ManuscriptDiff): ManuscriptDiff {
   return Object.keys(diff).reduce((acc, key) => {
     if (!diff[key]) {
       return acc;
