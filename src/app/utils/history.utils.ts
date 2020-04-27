@@ -33,10 +33,12 @@ export function undoChange(state: ManuscriptHistory): ManuscriptHistory {
 
   const updatedManuscript = applyDiffToManuscript(state.present, undoDiff);
 
+  const redoDiff = makeRedoDiff(state.present, diff);
+
   return {
     past,
     present: updatedManuscript,
-    future: [diff, ...state.future]
+    future: [redoDiff, ...state.future]
   };
 }
 
@@ -84,4 +86,12 @@ function applyDiffToManuscript(manuscript: Manuscript, diff: ManuscriptDiff): Ma
   });
 
   return newManuscript;
+}
+
+function makeRedoDiff(manuscript: Manuscript, undoDiff: ManuscriptDiff): ManuscriptDiff {
+  return Object.keys(undoDiff).reduce((acc, changePath) => {
+    acc[changePath] = undoDiff[changePath] instanceof Transaction ? undoDiff[changePath] : get(manuscript, changePath);
+
+    return acc;
+  }, {} as ManuscriptDiff);
 }
