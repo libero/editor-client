@@ -34,7 +34,7 @@ export function createTitleState(content: Node) {
 
 export function createKeywordsState(keywords: Element[]) {
   return keywords.reduce((acc, kwdGroup) => {
-    const kwdGroupType = kwdGroup.getAttribute('kwd-group-type');
+    const kwdGroupType = kwdGroup.getAttribute('kwd-group-type') || 'keywords-1';
     const moreKeywords = Array.from(kwdGroup.querySelectorAll('kwd'))
       .map(createKeywordState)
     acc[kwdGroupType] = (acc[kwdGroupType] || []).contact(moreKeywords);
