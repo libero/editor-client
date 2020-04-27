@@ -1,21 +1,23 @@
+import { DOMOutputSpecArray } from 'prosemirror-model';
+
 export const marks = {
   sub: {
     parseDOM: [{ tag: 'sub' }],
-    toDOM() {
+    toDOM(): DOMOutputSpecArray {
       return ['sub', 0];
     }
   },
 
   sup: {
     parseDOM: [{ tag: 'sup' }],
-    toDOM() {
+    toDOM(): DOMOutputSpecArray {
       return ['sup', 0];
     }
   },
 
   em: {
     parseDOM: [{ tag: 'italic' }],
-    toDOM() {
+    toDOM(): DOMOutputSpecArray {
       return ['em', 0];
     }
   }

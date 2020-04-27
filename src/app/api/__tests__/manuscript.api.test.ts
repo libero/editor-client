@@ -1,13 +1,12 @@
 import axios from 'axios';
-import {getManuscriptContent} from "../manuscript.api";
-import {EditorState} from "prosemirror-state";
+import { getManuscriptContent } from '../manuscript.api';
+import { EditorState } from 'prosemirror-state';
 
 jest.mock('axios');
 
 describe('manuscript API', () => {
-
   beforeEach(() => {
-    (axios.get as jest.Mock).mockResolvedValue(Promise.resolve({data: ''}));
+    (axios.get as jest.Mock).mockResolvedValue(Promise.resolve({ data: '' }));
   });
 
   it('loads manuscript data', async () => {
@@ -20,5 +19,4 @@ describe('manuscript API', () => {
 
     expect(axios.get).toHaveBeenCalledWith('/manuscripts/SOME_ID/manuscript.xml');
   });
-
 });

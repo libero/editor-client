@@ -1,8 +1,8 @@
-import {all, takeLatest, call, put} from 'redux-saga/effects';
+import { all, takeLatest, call, put } from 'redux-saga/effects';
 import * as manuscriptActions from '../actions/manuscript.actions';
 import * as initActions from '../actions/init.actions';
-import {Action} from "../utils/action.utils";
-import {getManuscriptContent} from "../api/manuscript.api";
+import { Action } from '../utils/action.utils';
+import { getManuscriptContent } from '../api/manuscript.api';
 
 export function* loadManuscriptSaga(action: Action<string>) {
   const id = action.payload || '00104';
@@ -14,9 +14,9 @@ export function* loadManuscriptSaga(action: Action<string>) {
   }
 }
 
-export default function*() {
+export default function* () {
   yield all([
     takeLatest(manuscriptActions.loadManuscriptAction.request.type, loadManuscriptSaga),
-    takeLatest(initActions.initApplication.type, loadManuscriptSaga),
+    takeLatest(initActions.initApplication.type, loadManuscriptSaga)
   ]);
 }
