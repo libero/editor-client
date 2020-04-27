@@ -3,7 +3,7 @@ export interface Action<T> {
   payload: T;
 }
 
-export type ActionFactory<T> = ( (payload :T) => Action<T> ) & {type: string};
+export type ActionFactory<T> = ((payload: T) => Action<T>) & { type: string };
 
 export interface AsyncAction<R, T> {
   request: ActionFactory<R>;
@@ -13,12 +13,12 @@ export interface AsyncAction<R, T> {
 
 export type ofActionType<A> = A extends AsyncAction<infer R, infer T>
   ? Action<R> | Action<T> | Action<Error>
-  : A extends ((...args: any[]) => any)
-    ? ReturnType<A>
-    : never;
+  : A extends (...args: unknown[]) => unknown
+  ? ReturnType<A>
+  : never;
 
 export function createAction<T>(type: string): ActionFactory<T> {
-  const actionFn = (payload: T): Action<T> => ({type, payload});
+  const actionFn = (payload: T): Action<T> => ({ type, payload });
   actionFn.type = type;
   return actionFn as ActionFactory<T>;
 }
@@ -30,5 +30,3 @@ export function createAsyncAction<R, T>(type: string): AsyncAction<R, T> {
     error: createAction<Error>(type + '_ERROR')
   } as AsyncAction<R, T>;
 }
-
-

@@ -1,6 +1,6 @@
-import {Manuscript} from '../models/manuscript';
-import {createAction, createAsyncAction, ofActionType} from '../utils/action.utils';
-import {EditorState, Transaction} from "prosemirror-state";
+import { Manuscript } from '../models/manuscript';
+import { createAction, createAsyncAction, ofActionType } from '../utils/action.utils';
+import { EditorState, Transaction } from 'prosemirror-state';
 
 export interface KeywordUpdatePayload {
   keywordGroup: string;
@@ -27,7 +27,8 @@ export const addNewKeywordAction = createAction<KeywordAddPayload>('ADD_KEYWORD'
 export const undoAction = createAction<void>('UNDO');
 export const redoAction = createAction<void>('REDO');
 
-export type ActionType = ofActionType<typeof loadManuscriptAction>
+export type ActionType =
+  | ofActionType<typeof loadManuscriptAction>
   | ofActionType<typeof undoAction>
   | ofActionType<typeof redoAction>
   | ofActionType<typeof addNewKeywordAction>

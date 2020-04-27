@@ -1,13 +1,13 @@
-import {getInitialHistory, getInitialLoadableState} from "../../utils/state.utils";
+import { getInitialHistory, getInitialLoadableState } from '../../utils/state.utils';
 import {
   canRedoChanges,
   canUndoChanges,
   getManuscriptData,
   getTitle,
   isManuscriptLoaded
-} from "../manuscript.selectors";
-import {cloneDeep} from 'lodash';
-import {EditorState} from "prosemirror-state";
+} from '../manuscript.selectors';
+import { cloneDeep } from 'lodash';
+import { EditorState } from 'prosemirror-state';
 
 describe('manuscript selectors', () => {
   let state;
@@ -15,7 +15,7 @@ describe('manuscript selectors', () => {
   beforeEach(() => {
     state = {
       manuscript: getInitialLoadableState()
-    }
+    };
   });
 
   it('gets manuscript data', () => {
@@ -37,15 +37,14 @@ describe('manuscript selectors', () => {
   it('checks if changes can be undone', () => {
     state.manuscript.data = getInitialHistory({ title: new EditorState() });
 
-    state.manuscript.data.past.push({title: undefined});
+    state.manuscript.data.past.push({ title: undefined });
     expect(canUndoChanges(state)).toBeTruthy();
   });
 
   it('checks if changes can be redone', () => {
     state.manuscript.data = getInitialHistory({ title: new EditorState() });
 
-    state.manuscript.data.future.push({title: undefined});
+    state.manuscript.data.future.push({ title: undefined });
     expect(canRedoChanges(state)).toBeTruthy();
   });
-
-})
+});

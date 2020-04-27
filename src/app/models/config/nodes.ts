@@ -8,7 +8,7 @@ export const nodes = {
     content: 'inline*',
     parseDOM: [{ tag: 'article-title' }],
     toDOM(node) {
-      return ['div', {'data-tag': 'article-title', class: 'article-title'}, 0];
+      return ['div', { 'data-tag': 'article-title', class: 'article-title' }, 0];
     }
   },
 
@@ -17,7 +17,7 @@ export const nodes = {
     content: 'keyword+',
     parseDOM: [{ tag: 'kwd-group' }],
     toDOM() {
-      return ['div', {'data-tag': 'keyword-group', class: 'keyword-group'}, 0];
+      return ['div', { 'data-tag': 'keyword-group', class: 'keyword-group' }, 0];
     }
   },
 

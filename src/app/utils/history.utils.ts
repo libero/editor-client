@@ -1,16 +1,20 @@
 import { set, get } from 'lodash';
-import {EditorState, Transaction} from "prosemirror-state";
+import { EditorState, Transaction } from 'prosemirror-state';
 
-import {cloneManuscript, ManuscriptHistory} from "./state.utils";
-import {Manuscript, ManuscriptDiff} from "../models/manuscript";
+import { cloneManuscript, ManuscriptHistory } from './state.utils';
+import { Manuscript, ManuscriptDiff } from '../models/manuscript';
 
-export function updateManuscriptState(state: ManuscriptHistory, propName: string, transaction: Transaction): ManuscriptHistory {
-  const updatedManuscript = applyDiffToManuscript(state.present, {[propName]: transaction});
+export function updateManuscriptState(
+  state: ManuscriptHistory,
+  propName: string,
+  transaction: Transaction
+): ManuscriptHistory {
+  const updatedManuscript = applyDiffToManuscript(state.present, { [propName]: transaction });
 
   // only update history when document changes
-  if(transaction.docChanged) {
+  if (transaction.docChanged) {
     return {
-      past: [...state.past, {[propName]: transaction}],
+      past: [...state.past, { [propName]: transaction }],
       present: updatedManuscript,
       future: []
     } as ManuscriptHistory;
@@ -23,7 +27,7 @@ export function updateManuscriptState(state: ManuscriptHistory, propName: string
 }
 
 export function undoChange(state: ManuscriptHistory) {
-  const past = [...state.past]
+  const past = [...state.past];
   const diff = past.pop();
   const undoDiff = invertDiff(state.present, diff);
 
@@ -37,7 +41,7 @@ export function undoChange(state: ManuscriptHistory) {
 }
 
 export function redoChange(state: ManuscriptHistory) {
-  const future = [...state.future]
+  const future = [...state.future];
   const diff = future.shift();
 
   const updatedManuscript = applyDiffToManuscript(state.present, diff);
@@ -55,10 +59,10 @@ function invertDiff(manuscript: Manuscript, diff: ManuscriptDiff) {
       return acc;
     }
 
-    if(diff[key] instanceof Transaction) {
+    if (diff[key] instanceof Transaction) {
       const invertedSteps = diff[key].steps.map((step) => step.invert(diff[key].doc));
       const invertedTransaction = get(manuscript, key).tr;
-      invertedSteps.reverse().forEach(step => invertedTransaction.maybeStep(step));
+      invertedSteps.reverse().forEach((step) => invertedTransaction.maybeStep(step));
       acc[key] = invertedTransaction;
     } else {
       acc[key] = diff[key];
@@ -70,8 +74,8 @@ function invertDiff(manuscript: Manuscript, diff: ManuscriptDiff) {
 function applyDiffToManuscript(manuscript: Manuscript, diff: ManuscriptDiff): Manuscript {
   const newManuscript = cloneManuscript(manuscript);
 
-  Object.keys(diff).forEach(changePath => {
-    if(diff[changePath] instanceof Transaction) {
+  Object.keys(diff).forEach((changePath) => {
+    if (diff[changePath] instanceof Transaction) {
       const updatedState = (get(newManuscript, changePath) as EditorState).apply(diff[changePath]);
       set(newManuscript, changePath, updatedState);
     } else {

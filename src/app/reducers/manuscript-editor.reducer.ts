@@ -1,16 +1,19 @@
-import * as manuscriptActions from "../actions/manuscript.actions";
-import {cloneManuscript, ManuscriptHistory} from "../utils/state.utils";
-import {Transaction} from "prosemirror-state";
-import {redoChange, undoChange, updateManuscriptState} from "../utils/history.utils";
-import {KeywordAddPayload, KeywordDeletePayload, KeywordUpdatePayload} from "../actions/manuscript.actions";
-import {Action} from "../utils/action.utils";
+import * as manuscriptActions from '../actions/manuscript.actions';
+import { cloneManuscript, ManuscriptHistory } from '../utils/state.utils';
+import { Transaction } from 'prosemirror-state';
+import { redoChange, undoChange, updateManuscriptState } from '../utils/history.utils';
+import { KeywordAddPayload, KeywordDeletePayload, KeywordUpdatePayload } from '../actions/manuscript.actions';
+import { Action } from '../utils/action.utils';
 
-export function manuscriptEditorReducer(state: ManuscriptHistory | undefined, action: manuscriptActions.ActionType): ManuscriptHistory {
+export function manuscriptEditorReducer(
+  state: ManuscriptHistory | undefined,
+  action: manuscriptActions.ActionType
+): ManuscriptHistory {
   if (!state) {
     return state;
   }
 
-  switch(action.type) {
+  switch (action.type) {
     case manuscriptActions.updateTitleAction.type:
       return updateManuscriptState(state, 'title', action.payload as Transaction);
 
@@ -35,7 +38,7 @@ export function manuscriptEditorReducer(state: ManuscriptHistory | undefined, ac
 }
 
 function handleDeleteKeywordAction(state: ManuscriptHistory, action: Action<KeywordDeletePayload>) {
-  const {keywordGroup, index} = action.payload as KeywordDeletePayload;
+  const { keywordGroup, index } = action.payload as KeywordDeletePayload;
   const newManuscript = cloneManuscript(state.present);
   newManuscript.keywords[keywordGroup].splice(index, 1);
   const newDiff = {
@@ -50,7 +53,7 @@ function handleDeleteKeywordAction(state: ManuscriptHistory, action: Action<Keyw
 }
 
 function handleAddNewKeywordAction(state: ManuscriptHistory, action: Action<KeywordAddPayload>) {
-  const {keywordGroup, keyword} = action.payload as KeywordAddPayload;
+  const { keywordGroup, keyword } = action.payload as KeywordAddPayload;
   const newManuscript = cloneManuscript(state.present);
   newManuscript.keywords[keywordGroup].push(keyword);
   const newDiff = {

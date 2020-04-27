@@ -1,7 +1,7 @@
-import {EditorState} from "prosemirror-state";
-import {cloneDeepWith} from "lodash";
+import { EditorState } from 'prosemirror-state';
+import { cloneDeepWith } from 'lodash';
 
-import {Manuscript, ManuscriptDiff} from "../models/manuscript";
+import { Manuscript, ManuscriptDiff } from '../models/manuscript';
 
 export interface LoadableState<T> {
   data: T | undefined;
@@ -14,7 +14,7 @@ export function getInitialLoadableState() {
     data: undefined,
     isLoading: false,
     error: undefined
-  }
+  };
 }
 
 export function getLoadableStateProgress() {
@@ -46,10 +46,10 @@ export interface ManuscriptHistory {
   past: ManuscriptDiff[];
   present: Manuscript;
   future: ManuscriptDiff[];
-};
+}
 
 export function getInitialHistory(present: Manuscript) {
-  return { past: [], present, future: []};
+  return { past: [], present, future: [] };
 }
 
 export function cloneManuscript(manuscript: Manuscript) {
