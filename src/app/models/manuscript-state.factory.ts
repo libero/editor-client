@@ -35,8 +35,9 @@ export function createTitleState(content: Node) {
 export function createKeywordsState(keywords: Element[]) {
   return keywords.reduce((acc, kwdGroup) => {
     const kwdGroupType = kwdGroup.getAttribute('kwd-group-type');
-    acc[kwdGroupType] = Array.from(kwdGroup.querySelectorAll('kwd'))
-      .map(createKeywordState);
+    const moreKeywords = Array.from(kwdGroup.querySelectorAll('kwd'))
+      .map(createKeywordState)
+    acc[kwdGroupType] = (acc[kwdGroupType] || []).contact(moreKeywords);
     return acc;
   }, {});
 }
