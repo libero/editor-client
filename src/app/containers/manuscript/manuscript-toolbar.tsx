@@ -34,27 +34,27 @@ export const ManuscriptToolbar: React.FC = () => {
   const renderContent = () => (
     <AppBar position='sticky'>
       <Toolbar className='manuscript-toolbar'>
-        <IconButton edge='start' disabled={true}>
+        <IconButton disabled={true}>
           {' '}
           <SaveAltIcon />{' '}
         </IconButton>
-        <IconButton edge='start' disabled={!canUndo} onClick={invokeUndo}>
+        <IconButton disabled={!canUndo} onClick={invokeUndo}>
           {' '}
           <UndoIcon />{' '}
         </IconButton>
-        <IconButton edge='start' disabled={!canRedo} onClick={invokeRedo}>
+        <IconButton disabled={!canRedo} onClick={invokeRedo}>
           {' '}
           <RedoIcon />{' '}
         </IconButton>
-        <IconButton edge='start' disabled={!canBold} onClick={invokeRedo}>
+        <IconButton disabled={!canBold} onClick={invokeRedo}>
           {' '}
           <FormatBoldIcon />{' '}
         </IconButton>
-        <IconButton edge='start' disabled={!canItalicize} onClick={invokeRedo}>
+        <IconButton disabled={!canItalicize} onClick={invokeRedo}>
           {' '}
           <FormatItalicIcon />{' '}
         </IconButton>
-        <IconButton edge='start' disabled={!canLink} onClick={invokeRedo}>
+        <IconButton disabled={!canLink} onClick={invokeRedo}>
           {' '}
           <LinkIcon />{' '}
         </IconButton>
