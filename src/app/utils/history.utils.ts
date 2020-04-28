@@ -1,6 +1,8 @@
+import { set, get } from 'lodash';
+import { EditorState, Transaction } from 'prosemirror-state';
+
+import { cloneManuscript, ManuscriptHistory } from './state.utils';
 import { Manuscript, ManuscriptDiff } from '../models/manuscript';
-import { ManuscriptHistory } from './state.utils';
-import { Transaction } from 'prosemirror-state';
 
 export function updateManuscriptState(
   state: ManuscriptHistory,
@@ -31,10 +33,12 @@ export function undoChange(state: ManuscriptHistory): ManuscriptHistory {
 
   const updatedManuscript = applyDiffToManuscript(state.present, undoDiff);
 
+  const redoDiff = makeRedoDiff(state.present, diff);
+
   return {
     past,
     present: updatedManuscript,
-    future: [diff, ...state.future]
+    future: [redoDiff, ...state.future]
   };
 }
 
@@ -57,18 +61,37 @@ function invertDiff(manuscript: Manuscript, diff: ManuscriptDiff): ManuscriptDif
       return acc;
     }
 
-    const invertedSteps = diff[key].steps.map((step) => step.invert(diff[key].doc));
-    const invertedTransaction = manuscript[key].tr;
-
-    invertedSteps.reverse().forEach((step) => invertedTransaction.maybeStep(step));
-    acc[key] = invertedTransaction;
+    if (diff[key] instanceof Transaction) {
+      const invertedSteps = diff[key].steps.map((step) => step.invert(diff[key].doc));
+      const invertedTransaction = get(manuscript, key).tr;
+      invertedSteps.reverse().forEach((step) => invertedTransaction.maybeStep(step));
+      acc[key] = invertedTransaction;
+    } else {
+      acc[key] = diff[key];
+    }
     return acc;
   }, {} as ManuscriptDiff);
 }
 
 function applyDiffToManuscript(manuscript: Manuscript, diff: ManuscriptDiff): Manuscript {
-  return Object.keys(manuscript).reduce((acc, propName) => {
-    acc[propName] = diff[propName] ? manuscript[propName].apply(diff[propName]) : manuscript[propName];
+  const newManuscript = cloneManuscript(manuscript);
+
+  Object.keys(diff).forEach((changePath) => {
+    if (diff[changePath] instanceof Transaction) {
+      const updatedState = (get(newManuscript, changePath) as EditorState).apply(diff[changePath]);
+      set(newManuscript, changePath, updatedState);
+    } else {
+      set(newManuscript, changePath, diff[changePath]);
+    }
+  });
+
+  return newManuscript;
+}
+
+function makeRedoDiff(manuscript: Manuscript, undoDiff: ManuscriptDiff): ManuscriptDiff {
+  return Object.keys(undoDiff).reduce((acc, changePath) => {
+    acc[changePath] = undoDiff[changePath] instanceof Transaction ? undoDiff[changePath] : get(manuscript, changePath);
+
     return acc;
-  }, {} as Manuscript);
+  }, {} as ManuscriptDiff);
 }

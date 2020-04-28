@@ -10,7 +10,9 @@ export const getManuscriptData = createSelector(getManuscriptState, (state) => g
 
 export const isManuscriptLoaded = createSelector(getManuscriptData, (data) => Boolean(data));
 
-export const getManuscriptTitle = createSelector(getManuscriptData, (data) => get(data, 'present.title'));
+export const getTitle = createSelector(getManuscriptData, (data) => get(data, 'present.title'));
+
+export const getKeywords = createSelector(getManuscriptData, (data) => get(data, 'present.keywords'));
 
 export const canUndoChanges = createSelector(getManuscriptData, (data) => get(data, 'past.length') > 0);
 

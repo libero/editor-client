@@ -3,15 +3,18 @@ import { EditorState } from 'prosemirror-state';
 import { pick } from 'lodash';
 import { gapCursor } from 'prosemirror-gapcursor';
 import { dropCursor } from 'prosemirror-dropcursor';
+import { keymap } from 'prosemirror-keymap';
+import { baseKeymap } from 'prosemirror-commands';
 
 import * as titleConfig from './config/title.config';
 import * as keywordConfig from './config/keywords.config';
 import { nodes } from './config/nodes';
 import { marks } from './config/marks';
 import { buildInputRules } from './plugins/input-rules';
+import { KeywordGroups } from './manuscript';
 
-export function createTitleState(content: Node) {
-  const schema = makeSchemaFromConfig(titleConfig.topNode, titleConfig.nodes, titleConfig.marks);
+export function createTitleState(content: Node): EditorState {
+  const schema = makeSchemaFromConfig(undefined, titleConfig.nodes, titleConfig.marks);
 
   const xmlContentDocument = document.implementation.createDocument('', '', null);
 
@@ -26,23 +29,29 @@ export function createTitleState(content: Node) {
   });
 }
 
-export function createKeywordsState(keywords: Node) {
+export function createKeywordsState(keywords: Element[]): KeywordGroups {
+  return keywords.reduce((acc, kwdGroup) => {
+    const kwdGroupType = kwdGroup.getAttribute('kwd-group-type') || 'keywords-1';
+    const moreKeywords = Array.from(kwdGroup.querySelectorAll('kwd')).map(createKeywordState);
+    acc[kwdGroupType] = (acc[kwdGroupType] || []).concat(moreKeywords);
+    return acc;
+  }, {});
+}
+
+export function createNewKeywordState(): EditorState {
+  return createKeywordState();
+}
+
+function createKeywordState(keyword?: Element): EditorState {
   const schema = makeSchemaFromConfig(keywordConfig.topNode, keywordConfig.nodes, keywordConfig.marks);
-
-  const xmlContentDocument = document.implementation.createDocument('', '', null);
-
-  if (keywords) {
-    xmlContentDocument.appendChild(keywords);
-  }
-
   return EditorState.create({
-    doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),
+    doc: keyword ? ProseMirrorDOMParser.fromSchema(schema).parse(keyword) : undefined,
     schema,
-    plugins: [buildInputRules(), gapCursor(), dropCursor()]
+    plugins: [buildInputRules(), gapCursor(), dropCursor(), keymap(baseKeymap)]
   });
 }
 
-function makeSchemaFromConfig(topNode: string, nodeNames: string[], markNames: string[]) {
+function makeSchemaFromConfig(topNode: string, nodeNames: string[], markNames: string[]): Schema {
   const filteredNodes = pick(nodes, nodeNames);
   const filteredMarks = pick(marks, markNames);
 
