@@ -32,7 +32,7 @@ export const ManuscriptToolbar: React.FC = () => {
   const invokeRedo = useCallback(() => dispatch(manuscriptActions.redoAction()), [dispatch]);
 
   const renderContent = () => (
-    <AppBar position='static'>
+    <AppBar position='sticky'>
       <Toolbar className='manuscript-toolbar'>
         <IconButton edge='start' disabled={true}>
           {' '}

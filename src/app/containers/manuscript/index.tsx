@@ -6,7 +6,6 @@ import { isManuscriptLoaded } from '../../selectors/manuscript.selectors';
 import './styles.scss';
 import { ManuscriptToolbar } from './manuscript-toolbar';
 import { ManuscriptEditor } from './manuscript-editor';
-import { ManuscriptTOC } from './manuscript-toc';
 
 const renderBackdrop = () => (
   <Backdrop open={true}>
@@ -20,7 +19,6 @@ export const ManuscriptContainer: React.FC = () => {
   const renderContent = () => (
     <div>
       <div className='manuscript-container'>
-        <ManuscriptTOC />
         <ManuscriptToolbar />
         <ManuscriptEditor />
       </div>
