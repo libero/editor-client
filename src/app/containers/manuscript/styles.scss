@@ -1,9 +1,23 @@
-
 .manuscript-container {
-  padding: 10px;
+  margin: 0px;
+  padding: 0px;
 
   .manuscript-field {
     padding: 20px 0;
   }
 }
 
+.manuscript-toc {
+}
+
+.manuscript-toolbar {
+  margin: 0px;
+  height: 64px;
+  width: 1190px;
+  background-color: #fafafa;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+.manuscript-editor {
+  padding: 10px;
+}

@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { IconButton } from '@material-ui/core';
+import { AppBar, Toolbar, IconButton } from '@material-ui/core';
 import UndoIcon from '@material-ui/icons/Undo';
 import RedoIcon from '@material-ui/icons/Redo';
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
@@ -32,43 +32,67 @@ export const ManuscriptToolbar: React.FC = () => {
   const invokeRedo = useCallback(() => dispatch(manuscriptActions.redoAction()), [dispatch]);
 
   const renderContent = () => (
-    <div>
-      <IconButton edge='start' disabled={true}>
-        {' '}
-        <SaveAltIcon />{' '}
-      </IconButton>
-      <IconButton edge='start' disabled={!canUndo} onClick={invokeUndo}>
-        {' '}
-        <UndoIcon />{' '}
-      </IconButton>
-      <IconButton edge='start' disabled={!canRedo} onClick={invokeRedo}>
-        {' '}
-        <RedoIcon />{' '}
-      </IconButton>
-      <IconButton edge='start' disabled={!canBold} onClick={invokeRedo}>
-        {' '}
-        <FormatBoldIcon />{' '}
-      </IconButton>
-      <IconButton edge='start' disabled={!canItalicize} onClick={invokeRedo}>
-        {' '}
-        <FormatItalicIcon />{' '}
-      </IconButton>
-      <IconButton edge='start' disabled={!canLink} onClick={invokeRedo}>
-        {' '}
-        <LinkIcon />{' '}
-      </IconButton>
-      <DropDownMenu
-        title='PARAGRAPH'
-        entries={[
-          {
-            title: 'opt1',
-            enabled: () => false,
-            onClick: () => {}
-          },
-          { title: 'opt2', enabled: () => false, onClick: () => {} }
-        ]}
-      />
-    </div>
+    <AppBar position='static'>
+      <Toolbar className='manuscript-toolbar'>
+        <IconButton edge='start' disabled={true}>
+          {' '}
+          <SaveAltIcon />{' '}
+        </IconButton>
+        <IconButton edge='start' disabled={!canUndo} onClick={invokeUndo}>
+          {' '}
+          <UndoIcon />{' '}
+        </IconButton>
+        <IconButton edge='start' disabled={!canRedo} onClick={invokeRedo}>
+          {' '}
+          <RedoIcon />{' '}
+        </IconButton>
+        <IconButton edge='start' disabled={!canBold} onClick={invokeRedo}>
+          {' '}
+          <FormatBoldIcon />{' '}
+        </IconButton>
+        <IconButton edge='start' disabled={!canItalicize} onClick={invokeRedo}>
+          {' '}
+          <FormatItalicIcon />{' '}
+        </IconButton>
+        <IconButton edge='start' disabled={!canLink} onClick={invokeRedo}>
+          {' '}
+          <LinkIcon />{' '}
+        </IconButton>
+        <DropDownMenu
+          title='PARAGRAPH'
+          entries={[
+            {
+              title: 'opt1',
+              enabled: () => false,
+              onClick: () => {}
+            },
+            { title: 'opt2', enabled: () => false, onClick: () => {} }
+          ]}
+        />
+        <DropDownMenu
+          title='FORMAT'
+          entries={[
+            {
+              title: 'opt1',
+              enabled: () => false,
+              onClick: () => {}
+            },
+            { title: 'opt2', enabled: () => false, onClick: () => {} }
+          ]}
+        />
+        <DropDownMenu
+          title='INSERT'
+          entries={[
+            {
+              title: 'opt1',
+              enabled: () => false,
+              onClick: () => {}
+            },
+            { title: 'opt2', enabled: () => false, onClick: () => {} }
+          ]}
+        />
+      </Toolbar>
+    </AppBar>
   );
 
   return renderContent();

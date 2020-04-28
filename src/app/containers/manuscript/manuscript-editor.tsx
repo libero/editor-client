@@ -33,7 +33,7 @@ export const ManuscriptEditor: React.FC = () => {
   const renderKeywords = (keywordGroups: KeywordGroups) => {
     return Object.entries(keywordGroups).map(([groupType, keywords]) => {
       return (
-        <div className="manuscript-field" key={groupType}>
+        <div className='manuscript-field' key={groupType}>
           <KeywordsEditor
             keywords={keywords}
             label={groupType}
@@ -48,8 +48,8 @@ export const ManuscriptEditor: React.FC = () => {
 
   return (
     <>
-      <div className="manuscript-field">
-        <RichTextEditor editorState={title} label="Title" onChange={handleTitleChange} />
+      <div className='manuscript-field'>
+        <RichTextEditor editorState={title} label='Title' onChange={handleTitleChange} />
       </div>
       {renderKeywords(allKeywords)}
     </>
