@@ -3,14 +3,28 @@ import { useDispatch, useSelector } from 'react-redux';
 import { IconButton } from '@material-ui/core';
 import UndoIcon from '@material-ui/icons/Undo';
 import RedoIcon from '@material-ui/icons/Redo';
+import SaveAltIcon from '@material-ui/icons/SaveAlt';
+import FormatBoldIcon from '@material-ui/icons/FormatBold';
+import FormatItalicIcon from '@material-ui/icons/FormatItalic';
+import LinkIcon from '@material-ui/icons/Link';
+import { DropDownMenu } from '../../components/drop-down-menu';
 
 import * as manuscriptActions from '../../actions/manuscript.actions';
-import { canRedoChanges, canUndoChanges } from '../../selectors/manuscript.selectors';
+import {
+  canRedoChanges,
+  canUndoChanges,
+  canBoldSelection,
+  canItalicizeSelection,
+  canLinkSelection
+} from '../../selectors/manuscript.selectors';
 import './styles.scss';
 
 export const ManuscriptToolbar: React.FC = () => {
   const canUndo = useSelector(canUndoChanges);
   const canRedo = useSelector(canRedoChanges);
+  const canBold = useSelector(canBoldSelection);
+  const canItalicize = useSelector(canItalicizeSelection);
+  const canLink = useSelector(canLinkSelection);
 
   const dispatch = useDispatch();
 
@@ -19,6 +33,10 @@ export const ManuscriptToolbar: React.FC = () => {
 
   const renderContent = () => (
     <div>
+      <IconButton edge='start' disabled={true}>
+        {' '}
+        <SaveAltIcon />{' '}
+      </IconButton>
       <IconButton edge='start' disabled={!canUndo} onClick={invokeUndo}>
         {' '}
         <UndoIcon />{' '}
@@ -27,6 +45,29 @@ export const ManuscriptToolbar: React.FC = () => {
         {' '}
         <RedoIcon />{' '}
       </IconButton>
+      <IconButton edge='start' disabled={!canBold} onClick={invokeRedo}>
+        {' '}
+        <FormatBoldIcon />{' '}
+      </IconButton>
+      <IconButton edge='start' disabled={!canItalicize} onClick={invokeRedo}>
+        {' '}
+        <FormatItalicIcon />{' '}
+      </IconButton>
+      <IconButton edge='start' disabled={!canLink} onClick={invokeRedo}>
+        {' '}
+        <LinkIcon />{' '}
+      </IconButton>
+      <DropDownMenu
+        title='PARAGRAPH'
+        entries={[
+          {
+            title: 'opt1',
+            enabled: () => false,
+            onClick: () => {}
+          },
+          { title: 'opt2', enabled: () => false, onClick: () => {} }
+        ]}
+      />
     </div>
   );
 
