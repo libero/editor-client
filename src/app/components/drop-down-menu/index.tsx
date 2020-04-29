@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
@@ -7,7 +7,7 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
 export interface DropDownMenuItemProps {
   title: string;
-  enabled(): boolean;
+  enabled: boolean;
   onClick(): void;
 }
 
@@ -19,24 +19,30 @@ export interface DropDownMenuProps {
 export const DropDownMenu: React.FC<DropDownMenuProps> = ({ title, entries }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const handleMenuClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+  const handleMenuClick = useCallback(
+    (event) => {
+      setAnchorEl(event.currentTarget);
+    },
+    [setAnchorEl]
+  );
 
-  const handleMenuClose = () => {
+  const handleMenuClose = useCallback(() => {
     setAnchorEl(null);
-  };
+  }, [setAnchorEl]);
 
-  const handleItemClick = (action) => {
-    if (action) {
-      action();
-    }
-    setAnchorEl(null);
-  };
+  const handleItemClick = useCallback(
+    (action) => {
+      if (action) {
+        action();
+      }
+      setAnchorEl(null);
+    },
+    [setAnchorEl]
+  );
 
   const items = entries.map((entry) => {
     return (
-      <MenuItem disabled={!entry.enabled()} onClick={() => handleItemClick(entry.onClick)}>
+      <MenuItem disabled={!entry.enabled} onClick={handleItemClick.bind(null, entry.onClick)}>
         {entry.title}
       </MenuItem>
     );

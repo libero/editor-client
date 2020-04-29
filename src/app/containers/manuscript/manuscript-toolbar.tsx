@@ -30,6 +30,9 @@ export const ManuscriptToolbar: React.FC = () => {
 
   const invokeUndo = useCallback(() => dispatch(manuscriptActions.undoAction()), [dispatch]);
   const invokeRedo = useCallback(() => dispatch(manuscriptActions.redoAction()), [dispatch]);
+  const invokeBold = useCallback(() => dispatch(manuscriptActions.boldAction()), [dispatch]);
+  const invokeItalicize = useCallback(() => dispatch(manuscriptActions.italicizeAction()), [dispatch]);
+  const invokeLink = useCallback(() => dispatch(manuscriptActions.linkAction()), [dispatch]);
 
   const renderContent = () => (
     <AppBar position='sticky'>
@@ -46,15 +49,15 @@ export const ManuscriptToolbar: React.FC = () => {
           {' '}
           <RedoIcon />{' '}
         </IconButton>
-        <IconButton disabled={!canBold} onClick={invokeRedo}>
+        <IconButton disabled={!canBold} onClick={invokeBold}>
           {' '}
           <FormatBoldIcon />{' '}
         </IconButton>
-        <IconButton disabled={!canItalicize} onClick={invokeRedo}>
+        <IconButton disabled={!canItalicize} onClick={invokeItalicize}>
           {' '}
           <FormatItalicIcon />{' '}
         </IconButton>
-        <IconButton disabled={!canLink} onClick={invokeRedo}>
+        <IconButton disabled={!canLink} onClick={invokeLink}>
           {' '}
           <LinkIcon />{' '}
         </IconButton>
@@ -63,10 +66,10 @@ export const ManuscriptToolbar: React.FC = () => {
           entries={[
             {
               title: 'opt1',
-              enabled: () => false,
+              enabled: false,
               onClick: () => {}
             },
-            { title: 'opt2', enabled: () => false, onClick: () => {} }
+            { title: 'opt2', enabled: false, onClick: () => {} }
           ]}
         />
         <DropDownMenu
@@ -74,10 +77,10 @@ export const ManuscriptToolbar: React.FC = () => {
           entries={[
             {
               title: 'opt1',
-              enabled: () => false,
+              enabled: false,
               onClick: () => {}
             },
-            { title: 'opt2', enabled: () => false, onClick: () => {} }
+            { title: 'opt2', enabled: false, onClick: () => {} }
           ]}
         />
         <DropDownMenu
@@ -85,10 +88,10 @@ export const ManuscriptToolbar: React.FC = () => {
           entries={[
             {
               title: 'opt1',
-              enabled: () => false,
+              enabled: false,
               onClick: () => {}
             },
-            { title: 'opt2', enabled: () => false, onClick: () => {} }
+            { title: 'opt2', enabled: false, onClick: () => {} }
           ]}
         />
       </Toolbar>
