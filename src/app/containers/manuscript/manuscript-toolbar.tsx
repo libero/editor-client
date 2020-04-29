@@ -38,28 +38,22 @@ export const ManuscriptToolbar: React.FC = () => {
     <AppBar position='sticky'>
       <Toolbar className='manuscript-toolbar'>
         <IconButton disabled={true}>
-          {' '}
-          <SaveAltIcon />{' '}
+          <SaveAltIcon />
         </IconButton>
         <IconButton disabled={!canUndo} onClick={invokeUndo}>
-          {' '}
-          <UndoIcon />{' '}
+          <UndoIcon />
         </IconButton>
         <IconButton disabled={!canRedo} onClick={invokeRedo}>
-          {' '}
-          <RedoIcon />{' '}
+          <RedoIcon />
         </IconButton>
         <IconButton disabled={!canBold} onClick={invokeBold}>
-          {' '}
-          <FormatBoldIcon />{' '}
+          <FormatBoldIcon />
         </IconButton>
         <IconButton disabled={!canItalicize} onClick={invokeItalicize}>
-          {' '}
-          <FormatItalicIcon />{' '}
+          <FormatItalicIcon />
         </IconButton>
         <IconButton disabled={!canLink} onClick={invokeLink}>
-          {' '}
-          <LinkIcon />{' '}
+          <LinkIcon />
         </IconButton>
         <DropDownMenu
           title='PARAGRAPH'
