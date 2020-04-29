@@ -64,34 +64,23 @@ export const ManuscriptToolbar: React.FC = () => {
         <DropDownMenu
           title='PARAGRAPH'
           entries={[
-            {
-              title: 'opt1',
-              enabled: false,
-              onClick: () => {}
-            },
-            { title: 'opt2', enabled: false, onClick: () => {} }
+            { title: 'opt1', enabled: false, action: undefined },
+            { title: 'opt2', enabled: false, action: undefined }
           ]}
         />
         <DropDownMenu
           title='FORMAT'
           entries={[
-            {
-              title: 'opt1',
-              enabled: false,
-              onClick: () => {}
-            },
-            { title: 'opt2', enabled: false, onClick: () => {} }
+            { title: 'Bold', enabled: canBold, action: invokeBold },
+            { title: 'Italics', enabled: canItalicize, action: invokeItalicize },
+            { title: 'Link', enabled: canItalicize, action: invokeLink }
           ]}
         />
         <DropDownMenu
           title='INSERT'
           entries={[
-            {
-              title: 'opt1',
-              enabled: false,
-              onClick: () => {}
-            },
-            { title: 'opt2', enabled: false, onClick: () => {} }
+            { title: 'opt1', enabled: false, action: undefined },
+            { title: 'opt2', enabled: false, action: undefined }
           ]}
         />
       </Toolbar>

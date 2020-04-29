@@ -8,7 +8,7 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 export interface DropDownMenuItemProps {
   title: string;
   enabled: boolean;
-  onClick(): void;
+  action(): void;
 }
 
 export interface DropDownMenuProps {
@@ -30,7 +30,7 @@ export const DropDownMenu: React.FC<DropDownMenuProps> = ({ title, entries }) =>
     setAnchorEl(null);
   }, [setAnchorEl]);
 
-  const handleItemClick = useCallback(
+  const handleMenuItemClick = useCallback(
     (action) => {
       if (action) {
         action();
@@ -40,9 +40,9 @@ export const DropDownMenu: React.FC<DropDownMenuProps> = ({ title, entries }) =>
     [setAnchorEl]
   );
 
-  const items = entries.map((entry) => {
+  const menuItems = entries.map((entry) => {
     return (
-      <MenuItem disabled={!entry.enabled} onClick={handleItemClick.bind(null, entry.onClick)}>
+      <MenuItem disabled={!entry.enabled} onClick={handleMenuItemClick.bind(null, entry.action)}>
         {entry.title}
       </MenuItem>
     );
@@ -63,7 +63,7 @@ export const DropDownMenu: React.FC<DropDownMenuProps> = ({ title, entries }) =>
         open={Boolean(anchorEl)}
         onClose={handleMenuClose}
       >
-        {items}
+        {menuItems}
       </Menu>
     </div>
   );
