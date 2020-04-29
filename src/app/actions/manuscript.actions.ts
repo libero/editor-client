@@ -27,11 +27,17 @@ export const addNewKeywordAction = createAction<KeywordAddPayload>('ADD_KEYWORD'
 
 export const undoAction = createAction<void>('UNDO');
 export const redoAction = createAction<void>('REDO');
+export const boldAction = createAction<void>('BOLD');
+export const italicizeAction = createAction<void>('ITALICIZE');
+export const linkAction = createAction<void>('LINK');
 
 export type ActionType =
   | ofActionType<typeof loadManuscriptAction>
   | ofActionType<typeof undoAction>
   | ofActionType<typeof redoAction>
+  | ofActionType<typeof boldAction>
+  | ofActionType<typeof italicizeAction>
+  | ofActionType<typeof linkAction>
   | ofActionType<typeof addNewKeywordAction>
   | ofActionType<typeof deleteKeywordAction>
   | ofActionType<typeof updateKeywordsAction>
