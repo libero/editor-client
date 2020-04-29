@@ -16,6 +16,8 @@ export function manuscriptEditorReducer(
   switch (action.type) {
     case manuscriptActions.updateTitleAction.type:
       return updateManuscriptState(state, 'title', action.payload as Transaction);
+    case manuscriptActions.updateAbstractAction.type:
+      return updateManuscriptState(state, 'abstract', action.payload as Transaction);
 
     case manuscriptActions.updateKeywordsAction.type:
       const updatePayload = action.payload as KeywordUpdatePayload;

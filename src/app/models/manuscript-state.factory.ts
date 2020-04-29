@@ -8,13 +8,30 @@ import { baseKeymap } from 'prosemirror-commands';
 
 import * as titleConfig from './config/title.config';
 import * as keywordConfig from './config/keywords.config';
+import * as abstractConfig from './config/abstract.config';
 import { nodes } from './config/nodes';
 import { marks } from './config/marks';
 import { buildInputRules } from './plugins/input-rules';
 import { KeywordGroups } from './manuscript';
 
 export function createTitleState(content: Node): EditorState {
-  const schema = makeSchemaFromConfig(undefined, titleConfig.nodes, titleConfig.marks);
+  const schema = makeSchemaFromConfig(titleConfig.topNode, titleConfig.nodes, titleConfig.marks);
+
+  const xmlContentDocument = document.implementation.createDocument('', '', null);
+
+  if (content) {
+    xmlContentDocument.appendChild(content);
+  }
+
+  return EditorState.create({
+    doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),
+    schema,
+    plugins: [buildInputRules(), gapCursor(), dropCursor()]
+  });
+}
+
+export function createAbstractState(content: Node): EditorState {
+  const schema = makeSchemaFromConfig(abstractConfig.topNode, abstractConfig.nodes, abstractConfig.marks);
 
   const xmlContentDocument = document.implementation.createDocument('', '', null);
 

@@ -11,6 +11,7 @@ describe('manuscript editor reducer', () => {
   it('should update title', () => {
     const state = getInitialHistory({
       title: undefined,
+      abstract: undefined,
       keywords: {}
     });
     const updatedState = cloneDeep(state);
@@ -21,9 +22,25 @@ describe('manuscript editor reducer', () => {
     expect(newState.present.title).toBe(updatedState.present.title);
   });
 
+  it('should update abstract', () => {
+    const state = getInitialHistory({
+      title: undefined,
+      abstract: undefined,
+      keywords: {}
+    });
+    const updatedState = cloneDeep(state);
+    updatedState.present.abstract = new EditorState();
+    (updateManuscriptState as jest.Mock).mockReturnValueOnce(updatedState);
+
+    const action = manuscriptActions.updateAbstractAction(updatedState.present.abstract.tr);
+    const newState = manuscriptEditorReducer(state, action);
+    expect(newState.present.title).toBe(updatedState.present.title);
+  });
+
   it('should undo last changes', () => {
     const state = getInitialHistory({
       title: new EditorState(),
+      abstract: undefined,
       keywords: {}
     });
     state.past.push({ title: undefined });
@@ -38,6 +55,7 @@ describe('manuscript editor reducer', () => {
   it('should redo undone last changes', () => {
     const state = getInitialHistory({
       title: new EditorState(),
+      abstract: undefined,
       keywords: {}
     });
     state.future.push({ title: undefined });
@@ -52,6 +70,7 @@ describe('manuscript editor reducer', () => {
   it('should delete keyword', () => {
     const state = getInitialHistory({
       title: new EditorState(),
+      abstract: undefined,
       keywords: {
         'kwd-group': [new EditorState(), new EditorState()]
       }
@@ -68,6 +87,7 @@ describe('manuscript editor reducer', () => {
   it('should add keyword', () => {
     const state = getInitialHistory({
       title: new EditorState(),
+      abstract: undefined,
       keywords: {
         'kwd-group': [new EditorState()]
       }
@@ -84,6 +104,7 @@ describe('manuscript editor reducer', () => {
   it('should update keyword', () => {
     const state = getInitialHistory({
       title: new EditorState(),
+      abstract: undefined,
       keywords: {
         'kwd-group': [new EditorState()]
       }

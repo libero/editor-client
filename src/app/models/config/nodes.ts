@@ -12,6 +12,15 @@ export const nodes = {
     }
   },
 
+  abstract: {
+    group: 'block',
+    content: 'inline*',
+    parseDOM: [{ tag: 'abstract' }],
+    toDOM(node) {
+      return ['div', { 'data-tag': 'abstract', class: 'abstract' }, 0];
+    }
+  },
+
   keyword_group: {
     group: 'block',
     content: 'keyword+',

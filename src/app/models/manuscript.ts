@@ -6,6 +6,7 @@ export interface KeywordGroups {
 
 export type Manuscript = {
   title: EditorState;
+  abstract: EditorState;
   keywords: KeywordGroups;
 };
 
