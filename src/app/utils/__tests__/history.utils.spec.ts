@@ -32,7 +32,8 @@ describe('history utils', () => {
   it('reverts changes', () => {
     const editorState = mockEditorState();
     const state = getInitialHistory({ title: editorState } as Manuscript) as ManuscriptHistory;
-    const tx = { ...editorState.tr, docChanged: true } as Transaction;
+    const tx = editorState.tr;
+    Object.defineProperty(tx, 'docChanged', { value: true });
     state.past = [{ title: tx }];
 
     const revertedState = undoChange(state);

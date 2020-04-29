@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`KeywordsEditorComponent renders keywords 1`] = `
+<div
+  className="editorview-wrapper"
+>
+  <div
+    className="editor-label"
+  >
+    Keywords label
+  </div>
+  <div
+    className="keyword-group"
+  >
+    <div
+      className="keyword"
+    >
+      <div />
+      <div
+        className="keyword-delete-cta"
+        onClick={[Function]}
+      >
+        ✖
+      </div>
+    </div>
+    <div
+      className="new-keyword-container"
+    >
+      <div />
+    </div>
+  </div>
+</div>
+`;

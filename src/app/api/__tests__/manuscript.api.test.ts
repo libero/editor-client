@@ -14,7 +14,7 @@ describe('manuscript API', () => {
 
     expect(result).toEqual({
       title: expect.any(EditorState),
-      keywords: expect.any(EditorState)
+      keywords: expect.any(Object)
     });
 
     expect(axios.get).toHaveBeenCalledWith('/manuscripts/SOME_ID/manuscript.xml');

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`KeywordsEditorComponent renders keyword 1`] = `
+<div
+  className="keyword"
+>
+  <div />
+  <div
+    className="keyword-delete-cta"
+    onClick={[MockFunction]}
+  >
+    ✖
+  </div>
+</div>
+`;

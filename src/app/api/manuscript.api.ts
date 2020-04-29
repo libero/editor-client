@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Manuscript } from '../models/manuscript';
-import { createTitleState, createKeywordsState, createNewKeywordState } from '../models/manuscript-state.factory';
+import { createTitleState, createKeywordsState } from '../models/manuscript-state.factory';
 
 const manuscriptUrl = (id: string): string => `/manuscripts/${id}/manuscript.xml`;
 
@@ -14,7 +14,6 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
 
   return {
     title: createTitleState(title),
-    keywords: createKeywordsState(Array.from(keywords)),
-    newKeyword: createNewKeywordState()
+    keywords: createKeywordsState(Array.from(keywords))
   } as Manuscript;
 }

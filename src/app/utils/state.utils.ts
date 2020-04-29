@@ -34,7 +34,6 @@ export function getLoadableStateSuccess<T>(data: T): LoadableState<T> {
 }
 
 export function getLoadableStateError<T>(error: Error): LoadableState<T> {
-  console.log(error);
   return {
     data: undefined,
     isLoading: false,
