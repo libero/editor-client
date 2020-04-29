@@ -20,13 +20,13 @@ import {
 import './styles.scss';
 
 export const ManuscriptToolbar: React.FC = () => {
+  const dispatch = useDispatch();
+
   const canUndo = useSelector(canUndoChanges);
   const canRedo = useSelector(canRedoChanges);
   const canBold = useSelector(canBoldSelection);
   const canItalicize = useSelector(canItalicizeSelection);
   const canLink = useSelector(canLinkSelection);
-
-  const dispatch = useDispatch();
 
   const invokeUndo = useCallback(() => dispatch(manuscriptActions.undoAction()), [dispatch]);
   const invokeRedo = useCallback(() => dispatch(manuscriptActions.redoAction()), [dispatch]);
@@ -64,8 +64,13 @@ export const ManuscriptToolbar: React.FC = () => {
         <DropDownMenu
           title='PARAGRAPH'
           entries={[
-            { title: 'opt1', enabled: false, action: undefined },
-            { title: 'opt2', enabled: false, action: undefined }
+            { title: 'Heading 1', enabled: false, action: undefined },
+            { title: 'Heading 2', enabled: false, action: undefined },
+            { title: 'Heading 3', enabled: false, action: undefined },
+            { title: 'Paragraph', enabled: false, action: undefined },
+            { title: 'Bulleted List', enabled: false, action: undefined },
+            { title: 'Numbered List', enabled: false, action: undefined },
+            { title: 'Preformat', enabled: false, action: undefined }
           ]}
         />
         <DropDownMenu
@@ -73,14 +78,37 @@ export const ManuscriptToolbar: React.FC = () => {
           entries={[
             { title: 'Bold', enabled: canBold, action: invokeBold },
             { title: 'Italics', enabled: canItalicize, action: invokeItalicize },
-            { title: 'Link', enabled: canItalicize, action: invokeLink }
+            { title: 'Subscript', enabled: false, action: undefined },
+            { title: 'Superscript', enabled: false, action: undefined },
+            { title: 'Monospace', enabled: false, action: undefined },
+            { title: 'Small Caps', enabled: false, action: undefined },
+            { title: 'Underline', enabled: false, action: undefined },
+            { title: 'Overline', enabled: false, action: undefined },
+            { title: 'Strike Through', enabled: false, action: undefined }
           ]}
         />
         <DropDownMenu
           title='INSERT'
           entries={[
-            { title: 'opt1', enabled: false, action: undefined },
-            { title: 'opt2', enabled: false, action: undefined }
+            { title: 'Figure', enabled: false, action: undefined },
+            { title: 'Table', enabled: false, action: undefined },
+            { title: 'Block Quote', enabled: false, action: undefined },
+            { title: 'Equation', enabled: false, action: undefined },
+            { title: 'File', enabled: false, action: undefined },
+            { title: 'Footnote', enabled: false, action: undefined },
+            { title: 'Math', enabled: false, action: undefined },
+            { title: 'Inline Graphic', enabled: false, action: undefined },
+            { title: 'Citation', enabled: false, action: undefined },
+            { title: 'Figure Reference', enabled: false, action: undefined },
+            { title: 'Table Reference', enabled: false, action: undefined },
+            { title: 'Footnote Reference', enabled: false, action: undefined },
+            { title: 'Equation Reference', enabled: false, action: undefined },
+            { title: 'Figure Reference', enabled: false, action: undefined },
+            { title: 'Table Reference', enabled: false, action: undefined },
+            { title: 'File Reference', enabled: false, action: undefined },
+            { title: 'Author', enabled: false, action: undefined },
+            { title: 'Affiliation', enabled: false, action: undefined },
+            { title: 'Reference', enabled: false, action: undefined }
           ]}
         />
       </Toolbar>
