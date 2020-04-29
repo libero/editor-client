@@ -9,8 +9,7 @@ import { ManuscriptEditor } from './manuscript-editor';
 
 const renderBackdrop = () => (
   <Backdrop open={true}>
-    {' '}
-    <CircularProgress color='inherit' />{' '}
+    <CircularProgress color='inherit' />
   </Backdrop>
 );
 
