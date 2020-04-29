@@ -47,11 +47,11 @@ export const ManuscriptEditor: React.FC = () => {
   };
 
   return (
-    <>
+    <div className='manuscript-editor'>
       <div className='manuscript-field'>
         <RichTextEditor editorState={title} label='Title' onChange={handleTitleChange} />
       </div>
       {renderKeywords(allKeywords)}
-    </>
+    </div>
   );
 };
