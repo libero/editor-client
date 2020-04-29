@@ -48,7 +48,15 @@ export const DropDownMenu: React.FC<DropDownMenuProps> = ({ title, entries }) =>
         {title}
         <ArrowDropDownIcon />
       </Button>
-      <Menu id='simple-menu' anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleMenuClose}>
+      <Menu
+        id='simple-menu'
+        anchorEl={anchorEl}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleMenuClose}
+      >
         {items}
       </Menu>
     </div>
