@@ -24,6 +24,7 @@ export const nodes = {
   keyword: {
     content: 'text*',
     atom: true,
+    // inline: true,
     parseDOM: [{ tag: 'kwd' }],
     toDOM() {
       return ['div', 0];
