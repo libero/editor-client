@@ -1,18 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`manuscript editor should render 1`] = `
-<div
-  className="manuscript-field"
->
+Array [
   <div
-    className="editorview-wrapper"
+    className="manuscript-field"
   >
     <div
-      className="editor-label"
+      className="editorview-wrapper"
     >
-      Title
+      <div
+        className="editor-label"
+      >
+        Title
+      </div>
+      <div />
     </div>
-    <div />
-  </div>
-</div>
+  </div>,
+  <div
+    className="manuscript-field"
+  >
+    <div
+      className="editorview-wrapper"
+    >
+      <div
+        className="editor-label"
+      >
+        Abstract
+      </div>
+      <div />
+    </div>
+  </div>,
+]
 `;

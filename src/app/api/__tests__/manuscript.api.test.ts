@@ -14,6 +14,7 @@ describe('manuscript API', () => {
 
     expect(result).toEqual({
       title: expect.any(EditorState),
+      abstract: expect.any(EditorState),
       keywords: expect.any(Object)
     });
 

@@ -38,6 +38,7 @@ export function manuscriptReducer(
     case manuscriptActions.updateKeywordsAction.type:
     case manuscriptActions.deleteKeywordAction.type:
     case manuscriptActions.addNewKeywordAction.type:
+    case manuscriptActions.updateAbstractAction.type:
     case manuscriptActions.redoAction.type:
     case manuscriptActions.undoAction.type:
       return {

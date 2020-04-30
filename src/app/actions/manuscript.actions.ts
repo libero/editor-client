@@ -20,6 +20,7 @@ export interface KeywordDeletePayload {
 
 export const loadManuscriptAction = createAsyncAction<string, Manuscript>('LOAD_MANUSCRIPT');
 export const updateTitleAction = createAction<Transaction>('UPDATE_TITLE');
+export const updateAbstractAction = createAction<Transaction>('UPDATE_ABSTRACT');
 export const updateKeywordsAction = createAction<KeywordUpdatePayload>('UPDATE_KEYWORD');
 export const deleteKeywordAction = createAction<KeywordDeletePayload>('DELETE_KEYWORD');
 export const addNewKeywordAction = createAction<KeywordAddPayload>('ADD_KEYWORD');

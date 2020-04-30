@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getKeywords, getTitle } from '../../selectors/manuscript.selectors';
+import { getAbstract, getKeywords, getTitle } from '../../selectors/manuscript.selectors';
 import * as manuscriptActions from '../../actions/manuscript.actions';
 import { RichTextEditor } from '../../components/rich-text-editor';
 
@@ -12,6 +12,7 @@ export const ManuscriptEditor: React.FC = () => {
   const dispatch = useDispatch();
 
   const title: EditorState = useSelector(getTitle);
+  const abstract: EditorState = useSelector(getAbstract);
   const allKeywords: KeywordGroups = useSelector(getKeywords);
 
   const handleTitleChange = (diff: Transaction) => {
@@ -20,6 +21,10 @@ export const ManuscriptEditor: React.FC = () => {
 
   const handleKeywordsChange = (keywordGroup: string, index: number, diff: Transaction) => {
     dispatch(manuscriptActions.updateKeywordsAction({ keywordGroup, index, change: diff }));
+  };
+
+  const handleAbstractChange = (diff: Transaction) => {
+    dispatch(manuscriptActions.updateAbstractAction(diff));
   };
 
   const handleKeywordDelete = (keywordGroup: string, index: number) => {
@@ -50,6 +55,9 @@ export const ManuscriptEditor: React.FC = () => {
     <div className='manuscript-editor'>
       <div className='manuscript-field'>
         <RichTextEditor editorState={title} label='Title' onChange={handleTitleChange} />
+      </div>
+      <div className="manuscript-field">
+        <RichTextEditor editorState={abstract} label="Abstract" onChange={handleAbstractChange} />
       </div>
       {renderKeywords(allKeywords)}
     </div>
