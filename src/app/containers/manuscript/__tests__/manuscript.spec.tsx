@@ -34,9 +34,9 @@ describe('Manuscript container', () => {
 
   it('renders loading spinner when manuscript is loading', () => {
     (Backdrop['render'] as jest.Mock).mockImplementationOnce(({ children }) => (
-      <div data-cmp="backdrop">{children}</div>
+      <div data-cmp='backdrop'>{children}</div>
     ));
-    (CircularProgress['render'] as jest.Mock).mockImplementationOnce(() => <div data-cmp="circular-progress"></div>);
+    (CircularProgress['render'] as jest.Mock).mockImplementationOnce(() => <div data-cmp='circular-progress'></div>);
 
     const store = mockStore({ manuscript: getLoadableStateProgress() });
     const wrapper = create(
@@ -49,61 +49,5 @@ describe('Manuscript container', () => {
 
     (Backdrop['render'] as jest.Mock).mockReset();
     (CircularProgress['render'] as jest.Mock).mockReset();
-  });
-
-  it('dispatches an event on undoClick', () => {
-    const store = mockStore({
-      manuscript: getLoadableStateSuccess({
-        past: [{}],
-        present: {
-          keywords: {}
-        },
-        future: [{}]
-      })
-    });
-    jest.spyOn(store, 'dispatch');
-
-    (IconButton['render'] as jest.Mock).mockImplementationOnce(({ children }) => <div data-cmp="icon-button"></div>);
-    const wrapper = mount(
-      <Provider store={store}>
-        <ManuscriptContainer />
-      </Provider>
-    );
-
-    const undoBtnProps = wrapper.find(IconButton).at(0).props();
-
-    expect(undoBtnProps.disabled).toBeFalsy();
-    //call undo
-    undoBtnProps.onClick(null);
-
-    expect(store.dispatch).toBeCalledWith(manuscriptActions.undoAction());
-  });
-
-  it('dispatches an event on redoClick', () => {
-    const store = mockStore({
-      manuscript: getLoadableStateSuccess({
-        past: [{}],
-        present: {
-          keywords: {}
-        },
-        future: [{}]
-      })
-    });
-    jest.spyOn(store, 'dispatch');
-
-    (IconButton['render'] as jest.Mock).mockImplementationOnce(({ children }) => <div data-cmp="icon-button"></div>);
-    const wrapper = mount(
-      <Provider store={store}>
-        <ManuscriptContainer />
-      </Provider>
-    );
-
-    const redoBtnProps = wrapper.find(IconButton).at(1).props();
-
-    expect(redoBtnProps.disabled).toBeFalsy();
-    //call redo
-    redoBtnProps.onClick(null);
-
-    expect(store.dispatch).toBeCalledWith(manuscriptActions.redoAction());
   });
 });
