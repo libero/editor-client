@@ -8,35 +8,34 @@ export const nodes = {
     content: 'inline*',
     parseDOM: [{ tag: 'article-title' }],
     toDOM(node) {
-      return ['div', { 'data-tag': 'article-title', class: 'article-title' }, 0];
+      return ['div', { class: 'article-title' }, 0];
     }
   },
 
   abstract: {
     group: 'block',
-    content: 'inline*',
+    content: 'paragraph',
     parseDOM: [{ tag: 'abstract' }],
     toDOM(node) {
-      return ['div', { 'data-tag': 'abstract', class: 'abstract' }, 0];
-    }
-  },
-
-  keyword_group: {
-    group: 'block',
-    content: 'keyword+',
-    parseDOM: [{ tag: 'kwd-group' }],
-    toDOM() {
-      return ['div', { 'data-tag': 'keyword-group', class: 'keyword-group' }, 0];
+      return ['div', { class: 'abstract' }, 0];
     }
   },
 
   keyword: {
     content: 'text*',
     atom: true,
-    // inline: true,
     parseDOM: [{ tag: 'kwd' }],
     toDOM() {
       return ['div', 0];
+    }
+  },
+
+  paragraph: {
+    content: 'inline*',
+    group: 'block',
+    parseDOM: [{ tag: 'p' }],
+    toDOM() {
+      return ['p', { class: 'paragraph' }, 0];
     }
   },
 

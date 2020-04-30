@@ -1,0 +1,247 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Manuscript state factory creates abstract state 1`] = `
+Object {
+  "doc": Object {
+    "content": Array [
+      Object {
+        "content": Array [
+          Object {
+            "content": Array [
+              Object {
+                "text": "A sample ",
+                "type": "text",
+              },
+              Object {
+                "marks": Array [
+                  Object {
+                    "type": "em",
+                  },
+                ],
+                "text": "text",
+                "type": "text",
+              },
+              Object {
+                "text": " with ",
+                "type": "text",
+              },
+              Object {
+                "marks": Array [
+                  Object {
+                    "type": "sub",
+                  },
+                ],
+                "text": "a",
+                "type": "text",
+              },
+              Object {
+                "text": " variety of ",
+                "type": "text",
+              },
+              Object {
+                "marks": Array [
+                  Object {
+                    "type": "sup",
+                  },
+                ],
+                "text": "tags",
+                "type": "text",
+              },
+            ],
+            "type": "paragraph",
+          },
+        ],
+        "type": "abstract",
+      },
+    ],
+    "type": "doc",
+  },
+  "selection": Object {
+    "anchor": 2,
+    "head": 2,
+    "type": "text",
+  },
+}
+`;
+
+exports[`Manuscript state factory creates empty keyword state 1`] = `
+Object {
+  "doc": Object {
+    "type": "keyword",
+  },
+  "selection": Object {
+    "anchor": 0,
+    "head": 0,
+    "type": "text",
+  },
+}
+`;
+
+exports[`Manuscript state factory creates keywords state 1`] = `
+Object {
+  "author-keywords": Array [
+    Object {
+      "doc": Object {
+        "content": Array [
+          Object {
+            "text": "cerebellum",
+            "type": "text",
+          },
+        ],
+        "type": "keyword",
+      },
+      "selection": Object {
+        "anchor": 0,
+        "head": 0,
+        "type": "text",
+      },
+    },
+    Object {
+      "doc": Object {
+        "content": Array [
+          Object {
+            "text": "climbing fiber",
+            "type": "text",
+          },
+        ],
+        "type": "keyword",
+      },
+      "selection": Object {
+        "anchor": 0,
+        "head": 0,
+        "type": "text",
+      },
+    },
+    Object {
+      "doc": Object {
+        "content": Array [
+          Object {
+            "text": "reinforcement learning",
+            "type": "text",
+          },
+        ],
+        "type": "keyword",
+      },
+      "selection": Object {
+        "anchor": 0,
+        "head": 0,
+        "type": "text",
+      },
+    },
+    Object {
+      "doc": Object {
+        "content": Array [
+          Object {
+            "marks": Array [
+              Object {
+                "type": "em",
+              },
+            ],
+            "text": "vitae",
+            "type": "text",
+          },
+        ],
+        "type": "keyword",
+      },
+      "selection": Object {
+        "anchor": 0,
+        "head": 0,
+        "type": "text",
+      },
+    },
+    Object {
+      "doc": Object {
+        "content": Array [
+          Object {
+            "text": "Purkinje cells",
+            "type": "text",
+          },
+        ],
+        "type": "keyword",
+      },
+      "selection": Object {
+        "anchor": 0,
+        "head": 0,
+        "type": "text",
+      },
+    },
+  ],
+  "research-organism": Array [
+    Object {
+      "doc": Object {
+        "content": Array [
+          Object {
+            "text": "Mouse",
+            "type": "text",
+          },
+        ],
+        "type": "keyword",
+      },
+      "selection": Object {
+        "anchor": 0,
+        "head": 0,
+        "type": "text",
+      },
+    },
+  ],
+}
+`;
+
+exports[`Manuscript state factory creates title state 1`] = `
+Object {
+  "doc": Object {
+    "content": Array [
+      Object {
+        "content": Array [
+          Object {
+            "text": "A sample ",
+            "type": "text",
+          },
+          Object {
+            "marks": Array [
+              Object {
+                "type": "em",
+              },
+            ],
+            "text": "text",
+            "type": "text",
+          },
+          Object {
+            "text": " with ",
+            "type": "text",
+          },
+          Object {
+            "marks": Array [
+              Object {
+                "type": "sub",
+              },
+            ],
+            "text": "a",
+            "type": "text",
+          },
+          Object {
+            "text": " variety of ",
+            "type": "text",
+          },
+          Object {
+            "marks": Array [
+              Object {
+                "type": "sup",
+              },
+            ],
+            "text": "tags",
+            "type": "text",
+          },
+        ],
+        "type": "article-title",
+      },
+    ],
+    "type": "doc",
+  },
+  "selection": Object {
+    "anchor": 1,
+    "head": 1,
+    "type": "text",
+  },
+}
+`;
