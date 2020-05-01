@@ -17,7 +17,7 @@ describe('<ManuscriptToolbar />', () => {
     (AppBar['render'] as jest.Mock).mockImplementationOnce((props) => <>{props.children}</>);
     (Toolbar['render'] as jest.Mock).mockImplementationOnce((props) => <>{props.children}</>);
     (IconButton['render'] as jest.Mock).mockImplementationOnce((props) => (
-      <div data-cmp='icon-button'>{props.children}</div>
+      <div data-cmp="icon-button">{props.children}</div>
     ));
   });
 

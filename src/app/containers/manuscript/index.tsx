@@ -7,7 +7,7 @@ import './styles.scss';
 import { ManuscriptToolbar } from './manuscript-toolbar';
 import { ManuscriptEditor } from './manuscript-editor';
 
-const renderBackdrop = () => (
+const renderBackdrop = (): JSX.Element => (
   <Backdrop open={true}>
     <CircularProgress color="inherit" />
   </Backdrop>
@@ -15,7 +15,7 @@ const renderBackdrop = () => (
 
 export const ManuscriptContainer: React.FC = () => {
   const isLoaded = useSelector(isManuscriptLoaded);
-  const renderContent = () => (
+  const renderContent = (): JSX.Element => (
     <div>
       <div className="manuscript-container">
         <ManuscriptToolbar />

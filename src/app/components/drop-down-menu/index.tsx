@@ -50,12 +50,12 @@ export const DropDownMenu: React.FC<DropDownMenuProps> = ({ title, entries }) =>
 
   return (
     <div>
-      <Button aria-controls='simple-menu' aria-haspopup='true' onClick={handleMenuClick}>
+      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleMenuClick}>
         {title}
         <ArrowDropDownIcon />
       </Button>
       <Menu
-        id='simple-menu'
+        id="simple-menu"
         anchorEl={anchorEl}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}

@@ -2,12 +2,10 @@ import React from 'react';
 import { create } from 'react-test-renderer';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
-import { Backdrop, CircularProgress, IconButton } from '@material-ui/core';
-import { mount } from 'enzyme';
+import { Backdrop, CircularProgress } from '@material-ui/core';
 
 import { getInitialHistory, getLoadableStateProgress, getLoadableStateSuccess } from '../../../utils/state.utils';
 import { ManuscriptContainer } from '../index';
-import * as manuscriptActions from '../../../actions/manuscript.actions';
 import { EditorState } from 'prosemirror-state';
 
 jest.mock('@material-ui/core');
@@ -34,9 +32,9 @@ describe('Manuscript container', () => {
 
   it('renders loading spinner when manuscript is loading', () => {
     (Backdrop['render'] as jest.Mock).mockImplementationOnce(({ children }) => (
-      <div data-cmp='backdrop'>{children}</div>
+      <div data-cmp="backdrop">{children}</div>
     ));
-    (CircularProgress['render'] as jest.Mock).mockImplementationOnce(() => <div data-cmp='circular-progress'></div>);
+    (CircularProgress['render'] as jest.Mock).mockImplementationOnce(() => <div data-cmp="circular-progress"></div>);
 
     const store = mockStore({ manuscript: getLoadableStateProgress() });
     const wrapper = create(
