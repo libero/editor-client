@@ -34,9 +34,9 @@ export const ManuscriptToolbar: React.FC = () => {
   const invokeItalicize = useCallback(() => dispatch(manuscriptActions.italicizeAction()), [dispatch]);
   const invokeLink = useCallback(() => dispatch(manuscriptActions.linkAction()), [dispatch]);
 
-  const renderContent = () => (
-    <AppBar position='sticky'>
-      <Toolbar className='manuscript-toolbar'>
+  const renderContent = (): JSX.Element => (
+    <AppBar position="sticky">
+      <Toolbar className="manuscript-toolbar">
         <IconButton disabled={true}>
           <SaveAltIcon />
         </IconButton>
@@ -56,7 +56,7 @@ export const ManuscriptToolbar: React.FC = () => {
           <LinkIcon />
         </IconButton>
         <DropDownMenu
-          title='PARAGRAPH'
+          title="PARAGRAPH"
           entries={[
             { title: 'Heading 1', enabled: false, action: undefined },
             { title: 'Heading 2', enabled: false, action: undefined },
@@ -68,7 +68,7 @@ export const ManuscriptToolbar: React.FC = () => {
           ]}
         />
         <DropDownMenu
-          title='FORMAT'
+          title="FORMAT"
           entries={[
             { title: 'Bold', enabled: canBold, action: invokeBold },
             { title: 'Italics', enabled: canItalicize, action: invokeItalicize },
@@ -82,7 +82,7 @@ export const ManuscriptToolbar: React.FC = () => {
           ]}
         />
         <DropDownMenu
-          title='INSERT'
+          title="INSERT"
           entries={[
             { title: 'Figure', enabled: false, action: undefined },
             { title: 'Table', enabled: false, action: undefined },
