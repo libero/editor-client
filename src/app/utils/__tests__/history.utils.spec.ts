@@ -47,7 +47,7 @@ describe('history utils', () => {
   it('roll on changes', () => {
     const editorState = mockEditorState();
     const state = getInitialHistory({ title: editorState } as Manuscript) as ManuscriptHistory;
-    const tx = { ...editorState.tr, docChanged: true } as Transaction;
+    const tx = editorState.tr;
     state.future = [{ title: tx }];
 
     const rolledOnState = redoChange(state);
