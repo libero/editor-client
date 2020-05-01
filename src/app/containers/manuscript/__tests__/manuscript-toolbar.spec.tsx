@@ -1,7 +1,7 @@
 import React from 'react';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
-import { IconButton } from '@material-ui/core';
+import { IconButton, AppBar, Toolbar } from '@material-ui/core';
 import { mount } from 'enzyme';
 
 import { getLoadableStateSuccess } from '../../../utils/state.utils';
@@ -13,6 +13,20 @@ jest.mock('@material-ui/core');
 describe('<ManuscriptToolbar />', () => {
   const mockStore = configureMockStore([]);
 
+  beforeEach(() => {
+    (AppBar['render'] as jest.Mock).mockImplementationOnce((props) => <>{props.children}</>);
+    (Toolbar['render'] as jest.Mock).mockImplementationOnce((props) => <>{props.children}</>);
+    (IconButton['render'] as jest.Mock).mockImplementationOnce((props) => (
+      <div data-cmp='icon-button'>{props.children}</div>
+    ));
+  });
+
+  afterEach(() => {
+    (AppBar['render'] as jest.Mock).mockReset();
+    (Toolbar['render'] as jest.Mock).mockReset();
+    (IconButton['render'] as jest.Mock).mockReset();
+  });
+
   it('dispatches an event on undoClick', () => {
     const store = mockStore({
       manuscript: getLoadableStateSuccess({
@@ -23,14 +37,12 @@ describe('<ManuscriptToolbar />', () => {
     });
     jest.spyOn(store, 'dispatch');
 
-    (IconButton['render'] as jest.Mock).mockImplementationOnce(({ children }) => <div data-cmp='icon-button'></div>);
     const wrapper = mount(
       <Provider store={store}>
         <ManuscriptToolbar />
       </Provider>
     );
 
-    console.log(wrapper.debug());
     const undoBtnProps = wrapper.find(IconButton).at(1).props();
 
     expect(undoBtnProps.disabled).toBeFalsy();
@@ -52,7 +64,6 @@ describe('<ManuscriptToolbar />', () => {
     });
     jest.spyOn(store, 'dispatch');
 
-    (IconButton['render'] as jest.Mock).mockImplementationOnce(({ children }) => <div data-cmp='icon-button'></div>);
     const wrapper = mount(
       <Provider store={store}>
         <ManuscriptToolbar />
