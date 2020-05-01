@@ -5,7 +5,8 @@ import { Action } from '../utils/action.utils';
 import { getManuscriptContent } from '../api/manuscript.api';
 
 export function* loadManuscriptSaga(action: Action<string>) {
-  const id = action.payload || '00104';
+  const params = new URLSearchParams(document.location.search.substring(1));
+  const id = action.payload || params.get('articleId') || '00104';
   try {
     const manuscript = yield call(getManuscriptContent, id);
     yield put(manuscriptActions.loadManuscriptAction.success(manuscript));
