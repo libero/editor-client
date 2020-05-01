@@ -2,7 +2,9 @@ import axios from 'axios';
 import { Manuscript } from '../models/manuscript';
 import { createTitleState, createKeywordsState, createAbstractState } from '../models/manuscript-state.factory';
 
-const manuscriptUrl = (id: string): string => `/manuscripts/${id}/manuscript.xml`;
+const manuscriptUrl = (id: string): string => {
+  return process.env.NODE_ENV === 'development' ? `./manuscripts/${id}/manuscript.xml` : `/api/v1/articles/${id}/`;
+};
 
 export async function getManuscriptContent(id: string): Promise<Manuscript> {
   const { data } = await axios.get<string>(manuscriptUrl(id));
