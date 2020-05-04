@@ -12,10 +12,12 @@ interface KeywordsEditorProps {
   onDelete: (index: number) => void;
   onChange: (index: number, change: Transaction) => void;
   onAdd: (state: EditorState) => void;
+  onFocus: (index: number) => void;
+  onBlur: (index: number) => void;
 }
 
 export const KeywordsEditor: React.FC<KeywordsEditorProps> = (props) => {
-  const { keywords, label, onChange, onDelete, onAdd } = props;
+  const { keywords, label, onChange, onDelete, onAdd, onFocus, onBlur } = props;
   const renderKeywords = (keywords: EditorState[]) => {
     return keywords.map((keywordEditorState, index) => {
       return (
@@ -24,6 +26,8 @@ export const KeywordsEditor: React.FC<KeywordsEditorProps> = (props) => {
           onChange={onChange.bind(null, index)}
           editorState={keywordEditorState}
           onDelete={onDelete.bind(null, index)}
+          onFocus={onFocus.bind(null, index)}
+          onBlur={onBlur.bind(null, index)}
         />
       );
     });

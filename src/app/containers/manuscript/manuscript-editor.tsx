@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAbstract, getKeywords, getTitle } from '../../selectors/manuscript.selectors';
 import * as manuscriptActions from '../../actions/manuscript.actions';
+import * as manuscriptEditorActions from '../../actions/manuscript-editor.actions';
 import { RichTextEditor } from '../../components/rich-text-editor';
 
 import { EditorState, Transaction } from 'prosemirror-state';
@@ -35,16 +36,30 @@ export const ManuscriptEditor: React.FC = () => {
     dispatch(manuscriptActions.addNewKeywordAction({ keywordGroup, keyword }));
   };
 
+  const handleFocus = (manuscriptFieldPath: string) => {
+    dispatch(manuscriptEditorActions.setFocusAction(manuscriptFieldPath));
+  };
+
+  const handleBlur = () => {
+    dispatch(manuscriptEditorActions.removeFocusAction());
+  };
+
+  const handleKeywordFocus = (group: string, index: number) => {
+    handleFocus(['keywords', group, index].join('.'));
+  };
+
   const renderKeywords = (keywordGroups: KeywordGroups) => {
     return Object.entries(keywordGroups).map(([groupType, keywords]) => {
       return (
-        <div className='manuscript-field' key={groupType}>
+        <div className="manuscript-field" key={groupType}>
           <KeywordsEditor
             keywords={keywords}
             label={groupType}
             onAdd={handleKeywordAdd.bind(null, groupType)}
             onChange={handleKeywordsChange.bind(null, groupType)}
             onDelete={handleKeywordDelete.bind(null, groupType)}
+            onFocus={handleKeywordFocus.bind(null, groupType)}
+            onBlur={handleBlur}
           />
         </div>
       );
@@ -52,12 +67,24 @@ export const ManuscriptEditor: React.FC = () => {
   };
 
   return (
-    <div className='manuscript-editor'>
-      <div className='manuscript-field'>
-        <RichTextEditor editorState={title} label='Title' onChange={handleTitleChange} />
+    <div className="manuscript-editor">
+      <div className="manuscript-field">
+        <RichTextEditor
+          editorState={title}
+          label="Title"
+          onChange={handleTitleChange}
+          onFocus={handleFocus.bind(null, 'title')}
+          onBlur={handleBlur}
+        />
       </div>
       <div className="manuscript-field">
-        <RichTextEditor editorState={abstract} label="Abstract" onChange={handleAbstractChange} />
+        <RichTextEditor
+          editorState={abstract}
+          label="Abstract"
+          onChange={handleAbstractChange}
+          onFocus={handleFocus.bind(null, 'abstract')}
+          onBlur={handleBlur}
+        />
       </div>
       {renderKeywords(allKeywords)}
     </div>

@@ -13,7 +13,9 @@ describe('KeywordsEditorComponent', () => {
       label: 'Keywords label',
       onDelete: jest.fn(),
       onChange: jest.fn(),
-      onAdd: jest.fn()
+      onAdd: jest.fn(),
+      onFocus: jest.fn(),
+      onBlur: jest.fn()
     };
 
     const component = create(<KeywordsEditor {...props} />);
@@ -26,7 +28,9 @@ describe('KeywordsEditorComponent', () => {
       label: 'Keywords label',
       onDelete: jest.fn(),
       onChange: jest.fn(),
-      onAdd: jest.fn()
+      onAdd: jest.fn(),
+      onFocus: jest.fn(),
+      onBlur: jest.fn()
     };
 
     const component = shallow(<KeywordsEditor {...props} />);
@@ -42,11 +46,13 @@ describe('KeywordsEditorComponent', () => {
 
   it('fires events when changes appear on an a new keyword', () => {
     const props = {
-      keywords: [new EditorState()], // EditorState[];
+      keywords: [new EditorState()],
       label: 'Keywords label',
       onDelete: jest.fn(),
       onChange: jest.fn(),
-      onAdd: jest.fn()
+      onAdd: jest.fn(),
+      onFocus: jest.fn(),
+      onBlur: jest.fn()
     };
 
     const component = shallow(<KeywordsEditor {...props} />);

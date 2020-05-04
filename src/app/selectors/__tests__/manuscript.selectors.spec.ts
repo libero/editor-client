@@ -1,7 +1,6 @@
 import { getInitialHistory, getInitialLoadableState } from '../../utils/state.utils';
 import {
-  canRedoChanges,
-  canUndoChanges,
+  getAbstract, getKeywords,
   getManuscriptData,
   getTitle,
   isManuscriptLoaded
@@ -19,32 +18,26 @@ describe('manuscript selectors', () => {
   });
 
   it('gets manuscript data', () => {
-    state.manuscript.data = getInitialHistory({ title: new EditorState() });
+    state.manuscript.data = getInitialHistory(givenManuscript());
     expect(getManuscriptData(state)).toBe(state.manuscript.data);
     expect(getTitle(state)).toBe(state.manuscript.data.present.title);
-    expect(canUndoChanges(state)).toBeFalsy();
-    expect(canRedoChanges(state)).toBeFalsy();
+    expect(getAbstract(state)).toBe(state.manuscript.data.present.abstract);
+    expect(getKeywords(state)).toBe(state.manuscript.data.present.keywords);
   });
 
   it('gets manuscript load status', () => {
     expect(isManuscriptLoaded(state)).toBeFalsy();
     const newState = cloneDeep(state);
 
-    newState.manuscript.data = getInitialHistory({ title: new EditorState() });
+    newState.manuscript.data = getInitialHistory(givenManuscript());
     expect(isManuscriptLoaded(newState)).toBeTruthy();
   });
-
-  it('checks if changes can be undone', () => {
-    state.manuscript.data = getInitialHistory({ title: new EditorState() });
-
-    state.manuscript.data.past.push({ title: undefined });
-    expect(canUndoChanges(state)).toBeTruthy();
-  });
-
-  it('checks if changes can be redone', () => {
-    state.manuscript.data = getInitialHistory({ title: new EditorState() });
-
-    state.manuscript.data.future.push({ title: undefined });
-    expect(canRedoChanges(state)).toBeTruthy();
-  });
 });
+
+function givenManuscript() {
+  return {
+    title: new EditorState(),
+    abstract: new EditorState(),
+    keywords: {}
+  };
+}

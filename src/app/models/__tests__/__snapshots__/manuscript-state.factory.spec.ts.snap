@@ -15,7 +15,7 @@ Object {
               Object {
                 "marks": Array [
                   Object {
-                    "type": "em",
+                    "type": "italic",
                   },
                 ],
                 "text": "text",
@@ -28,7 +28,7 @@ Object {
               Object {
                 "marks": Array [
                   Object {
-                    "type": "sub",
+                    "type": "subscript",
                   },
                 ],
                 "text": "a",
@@ -41,7 +41,7 @@ Object {
               Object {
                 "marks": Array [
                   Object {
-                    "type": "sup",
+                    "type": "superscript",
                   },
                 ],
                 "text": "tags",
@@ -134,7 +134,7 @@ Object {
           Object {
             "marks": Array [
               Object {
-                "type": "em",
+                "type": "italic",
               },
             ],
             "text": "vitae",
@@ -200,7 +200,7 @@ Object {
           Object {
             "marks": Array [
               Object {
-                "type": "em",
+                "type": "italic",
               },
             ],
             "text": "text",
@@ -213,7 +213,7 @@ Object {
           Object {
             "marks": Array [
               Object {
-                "type": "sub",
+                "type": "subscript",
               },
             ],
             "text": "a",
@@ -226,7 +226,7 @@ Object {
           Object {
             "marks": Array [
               Object {
-                "type": "sup",
+                "type": "superscript",
               },
             ],
             "text": "tags",
