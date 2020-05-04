@@ -1,7 +1,6 @@
 import { createSelector } from 'reselect';
 import { ApplicationState, ManuscriptHistoryState } from '../store';
 import { get } from 'lodash';
-import { EditorState } from 'prosemirror-state';
 
 const getManuscriptState = (state: ApplicationState): ManuscriptHistoryState => {
   return state.manuscript;

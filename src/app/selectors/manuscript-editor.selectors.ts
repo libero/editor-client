@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { ApplicationState, ManuscriptEditorState, ManuscriptHistoryState } from '../store';
+import { ApplicationState, ManuscriptEditorState } from '../store';
 import { get } from 'lodash';
 import { EditorState } from 'prosemirror-state';
 import { getManuscriptData } from './manuscript.selectors';
