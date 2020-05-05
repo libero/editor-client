@@ -38,7 +38,7 @@ jobs:
           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
           docker build --no-cache -t $DOCKER_USERNAME/$REPO_NAME:unstable .
           docker push $DOCKER_USERNAME/$REPO_NAME:unstable
-          .scripts/github/retag-and-push.sh $REPO_NAME $unstable
+          .scripts/github/retag-and-push.sh $REPO_NAME unstable
         env:
           REPO_NAME: ${{ github.event.repository.name }}
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
