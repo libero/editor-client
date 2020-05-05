@@ -18,6 +18,6 @@ describe('manuscript API', () => {
       keywords: expect.any(Object)
     });
 
-    expect(axios.get).toHaveBeenCalledWith('/api/v1/articles/SOME_ID/');
+    expect(axios.get).toHaveBeenCalledWith('/api/v1/articles/SOME_ID/', { headers: { Accept: 'application/xml' } });
   });
 });
