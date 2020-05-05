@@ -1,6 +1,6 @@
-import React from "react";
-import {EditorState, Transaction} from 'prosemirror-state';
-import {EditorProps, EditorView} from 'prosemirror-view';
+import React from 'react';
+import { EditorState, Transaction } from 'prosemirror-state';
+import { EditorProps, EditorView } from 'prosemirror-view';
 
 import 'prosemirror-view/style/prosemirror.css';
 import './prosemirror.scss';
@@ -60,9 +60,8 @@ export class ProseMirrorEditorView extends React.Component<ProseMirrorEditorView
       this.editorView = new EditorView(element, {
         ...additionalOptions,
         state: this.props.editorState,
-        dispatchTransaction: this.dispatchTransaction,
+        dispatchTransaction: this.dispatchTransaction
       });
     }
   };
 }
-

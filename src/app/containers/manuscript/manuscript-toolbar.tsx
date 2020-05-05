@@ -10,14 +10,15 @@ import LinkIcon from '@material-ui/icons/Link';
 import { DropDownMenu } from '../../components/drop-down-menu';
 
 import * as manuscriptActions from '../../actions/manuscript.actions';
+import './styles.scss';
+
 import {
+  canItalicizeSelection,
   canRedoChanges,
   canUndoChanges,
   canBoldSelection,
-  canItalicizeSelection,
   canLinkSelection
-} from '../../selectors/manuscript.selectors';
-import './styles.scss';
+} from '../../selectors/manuscript-editor.selectors';
 
 export const ManuscriptToolbar: React.FC = () => {
   const dispatch = useDispatch();

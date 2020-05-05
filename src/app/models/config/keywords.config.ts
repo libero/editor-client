@@ -1,3 +1,3 @@
-export const marks = ['em', 'sub', 'sup'];
+export const marks = ['italic', 'subscript', 'superscript'];
 export const nodes = ['keyword', 'text'];
 export const topNode = 'keyword';
