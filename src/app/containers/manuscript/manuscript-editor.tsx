@@ -8,8 +8,47 @@ import { RichTextEditor } from '../../components/rich-text-editor';
 import { EditorState, Transaction } from 'prosemirror-state';
 import { KeywordsEditor } from '../../components/keywords';
 import { KeywordGroups } from '../../models/manuscript';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { Container } from '@material-ui/core';
+
+const drawerWidth = 240;
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex'
+  },
+  drawer: {
+    [theme.breakpoints.up('sm')]: {
+      width: drawerWidth,
+      flexShrink: 0
+    }
+  },
+  appBar: {
+    [theme.breakpoints.up('sm')]: {
+      width: `calc(100% - ${drawerWidth}px)`,
+      marginLeft: drawerWidth
+    }
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+    [theme.breakpoints.up('sm')]: {
+      display: 'none'
+    }
+  },
+  // necessary for content to be below app bar
+  toolbar: theme.mixins.toolbar,
+  drawerPaper: {
+    width: drawerWidth
+  },
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing(3)
+  }
+}));
 
 export const ManuscriptEditor: React.FC = () => {
+  const classes = useStyles();
+  const theme = useTheme();
   const dispatch = useDispatch();
 
   const title: EditorState = useSelector(getTitle);
@@ -67,26 +106,29 @@ export const ManuscriptEditor: React.FC = () => {
   };
 
   return (
-    <div className="manuscript-editor">
-      <div className="manuscript-field">
-        <RichTextEditor
-          editorState={title}
-          label="Title"
-          onChange={handleTitleChange}
-          onFocus={handleFocus.bind(null, 'title')}
-          onBlur={handleBlur}
-        />
-      </div>
-      <div className="manuscript-field">
-        <RichTextEditor
-          editorState={abstract}
-          label="Abstract"
-          onChange={handleAbstractChange}
-          onFocus={handleFocus.bind(null, 'abstract')}
-          onBlur={handleBlur}
-        />
-      </div>
-      {renderKeywords(allKeywords)}
-    </div>
+    <main className={classes.content}>
+      <div className={classes.toolbar} />
+      <Container maxWidth="md">
+        <div className="manuscript-field">
+          <RichTextEditor
+            editorState={title}
+            label="Title"
+            onChange={handleTitleChange}
+            onFocus={handleFocus.bind(null, 'title')}
+            onBlur={handleBlur}
+          />
+        </div>
+        <div className="manuscript-field">
+          <RichTextEditor
+            editorState={abstract}
+            label="Abstract"
+            onChange={handleAbstractChange}
+            onFocus={handleFocus.bind(null, 'abstract')}
+            onBlur={handleBlur}
+          />
+        </div>
+        {renderKeywords(allKeywords)}
+      </Container>
+    </main>
   );
 };

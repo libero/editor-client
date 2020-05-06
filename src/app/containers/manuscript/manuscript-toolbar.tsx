@@ -7,7 +7,9 @@ import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import FormatBoldIcon from '@material-ui/icons/FormatBold';
 import FormatItalicIcon from '@material-ui/icons/FormatItalic';
 import LinkIcon from '@material-ui/icons/Link';
+import MenuIcon from '@material-ui/icons/Menu';
 import { DropDownMenu } from '../../components/drop-down-menu';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 
 import * as manuscriptActions from '../../actions/manuscript.actions';
 import './styles.scss';
@@ -20,7 +22,50 @@ import {
   canLinkSelection
 } from '../../selectors/manuscript-editor.selectors';
 
+const drawerWidth = 240;
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex'
+  },
+  drawer: {
+    [theme.breakpoints.up('sm')]: {
+      width: drawerWidth,
+      flexShrink: 0
+    }
+  },
+  appBar: {
+    [theme.breakpoints.up('sm')]: {
+      width: `calc(100% - ${drawerWidth}px)`,
+      marginLeft: drawerWidth
+    }
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+    [theme.breakpoints.up('sm')]: {
+      display: 'none'
+    }
+  },
+  // necessary for content to be below app bar
+  toolbar: theme.mixins.toolbar,
+  drawerPaper: {
+    width: drawerWidth
+  },
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing(3)
+  }
+}));
+
 export const ManuscriptToolbar: React.FC = () => {
+  const classes = useStyles();
+  const theme = useTheme();
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
+
   const dispatch = useDispatch();
 
   const canUndo = useSelector(canUndoChanges);
@@ -36,8 +81,17 @@ export const ManuscriptToolbar: React.FC = () => {
   const invokeLink = useCallback(() => dispatch(manuscriptActions.linkAction()), [dispatch]);
 
   const renderContent = (): JSX.Element => (
-    <AppBar position="sticky">
+    <AppBar color="inherit" position="fixed" className={classes.appBar}>
       <Toolbar className="manuscript-toolbar">
+        <IconButton
+          color="inherit"
+          aria-label="open drawer"
+          edge="start"
+          onClick={handleDrawerToggle}
+          className={classes.menuButton}
+        >
+          <MenuIcon />
+        </IconButton>
         <IconButton disabled={true}>
           <SaveAltIcon />
         </IconButton>
