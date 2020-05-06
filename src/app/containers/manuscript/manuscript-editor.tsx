@@ -51,42 +51,38 @@ export const ManuscriptEditor: React.FC = () => {
   const renderKeywords = (keywordGroups: KeywordGroups) => {
     return Object.entries(keywordGroups).map(([groupType, keywords]) => {
       return (
-        <div className="manuscript-field" key={groupType}>
-          <KeywordsEditor
-            keywords={keywords}
-            label={groupType}
-            onAdd={handleKeywordAdd.bind(null, groupType)}
-            onChange={handleKeywordsChange.bind(null, groupType)}
-            onDelete={handleKeywordDelete.bind(null, groupType)}
-            onFocus={handleKeywordFocus.bind(null, groupType)}
-            onBlur={handleBlur}
-          />
-        </div>
+        <KeywordsEditor
+          className="manuscript-field"
+          key={groupType}
+          keywords={keywords}
+          label={groupType}
+          onAdd={handleKeywordAdd.bind(null, groupType)}
+          onChange={handleKeywordsChange.bind(null, groupType)}
+          onDelete={handleKeywordDelete.bind(null, groupType)}
+          onFocus={handleKeywordFocus.bind(null, groupType)}
+          onBlur={handleBlur}
+        />
       );
     });
   };
 
   return (
-    <div className="manuscript-editor">
-      <div className="manuscript-field">
-        <RichTextEditor
-          editorState={title}
-          label="Title"
-          onChange={handleTitleChange}
-          onFocus={handleFocus.bind(null, 'title')}
-          onBlur={handleBlur}
-        />
-      </div>
-      <div className="manuscript-field">
-        <RichTextEditor
-          editorState={abstract}
-          label="Abstract"
-          onChange={handleAbstractChange}
-          onFocus={handleFocus.bind(null, 'abstract')}
-          onBlur={handleBlur}
-        />
-      </div>
+    <article className="manuscript-editor">
+      <RichTextEditor
+        editorState={title}
+        label="Title"
+        onChange={handleTitleChange}
+        onFocus={handleFocus.bind(null, 'title')}
+        onBlur={handleBlur}
+      />
+      <RichTextEditor
+        editorState={abstract}
+        label="Abstract"
+        onChange={handleAbstractChange}
+        onFocus={handleFocus.bind(null, 'abstract')}
+        onBlur={handleBlur}
+      />
       {renderKeywords(allKeywords)}
-    </div>
+    </article>
   );
 };

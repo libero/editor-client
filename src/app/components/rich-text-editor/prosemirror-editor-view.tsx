@@ -20,6 +20,10 @@ export class ProseMirrorEditorView extends React.Component<ProseMirrorEditorView
     this.editorView.focus();
   }
 
+  blur() {
+    (this.editorView.dom as HTMLDivElement).blur();
+  }
+
   dispatchTransaction = (tx: Transaction) => {
     // In case EditorView makes any modification to a state we funnel those
     // modifications up to the parent and apply to the EditorView itself.
@@ -62,6 +66,8 @@ export class ProseMirrorEditorView extends React.Component<ProseMirrorEditorView
         state: this.props.editorState,
         dispatchTransaction: this.dispatchTransaction
       });
+
+      this.editorView.dom.setAttribute('tabIndex', '0');
     }
   };
 }

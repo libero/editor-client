@@ -42,11 +42,11 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = (props) => {
   };
 
   return (
-    <div className="editorview-wrapper">
-      {label ? <div className="editor-label">{label}</div> : undefined}
+    <fieldset className="editorview-wrapper">
+      {label ? <legend className="editor-label">{label}</legend> : undefined}
       {editorState ? (
         <ProseMirrorEditorView options={options} editorState={editorState} onChange={onEditorChange} />
       ) : null}
-    </div>
+    </fieldset>
   );
 };

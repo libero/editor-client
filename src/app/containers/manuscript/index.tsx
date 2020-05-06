@@ -16,12 +16,10 @@ const renderBackdrop = (): JSX.Element => (
 export const ManuscriptContainer: React.FC = () => {
   const isLoaded = useSelector(isManuscriptLoaded);
   const renderContent = (): JSX.Element => (
-    <div>
-      <div className="manuscript-container">
-        <ManuscriptToolbar />
-        <ManuscriptEditor />
-      </div>
-    </div>
+    <React.Fragment>
+      <ManuscriptToolbar />
+      <ManuscriptEditor />
+    </React.Fragment>
   );
 
   return isLoaded ? renderContent() : renderBackdrop();
