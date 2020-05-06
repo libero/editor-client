@@ -9,7 +9,7 @@ import FormatItalicIcon from '@material-ui/icons/FormatItalic';
 import LinkIcon from '@material-ui/icons/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import { DropDownMenu } from '../../components/drop-down-menu';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 import * as manuscriptActions from '../../actions/manuscript.actions';
 import './styles.scss';
@@ -22,22 +22,13 @@ import {
   canLinkSelection
 } from '../../selectors/manuscript-editor.selectors';
 
-const drawerWidth = 240;
+import { tocWidth } from './manuscript-toc';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex'
-  },
-  drawer: {
-    [theme.breakpoints.up('sm')]: {
-      width: drawerWidth,
-      flexShrink: 0
-    }
-  },
   appBar: {
     [theme.breakpoints.up('sm')]: {
-      width: `calc(100% - ${drawerWidth}px)`,
-      marginLeft: drawerWidth
+      width: `calc(100% - ${tocWidth}px)`,
+      marginLeft: tocWidth
     }
   },
   menuButton: {
@@ -45,27 +36,17 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       display: 'none'
     }
-  },
-  // necessary for content to be below app bar
-  toolbar: theme.mixins.toolbar,
-  drawerPaper: {
-    width: drawerWidth
-  },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(3)
   }
 }));
 
 export interface ManuscriptToolbarProps {
-  mobileOpen: boolean;
-  handleDrawerToggle(): void;
+  tocOpen: boolean;
+  handleTocToggle(): void;
 }
 
 export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
   const classes = useStyles();
-  const theme = useTheme();
-  const { mobileOpen, handleDrawerToggle } = props;
+  const { handleTocToggle } = props;
 
   const dispatch = useDispatch();
 
@@ -88,7 +69,7 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
           color="inherit"
           aria-label="open drawer"
           edge="start"
-          onClick={handleDrawerToggle}
+          onClick={handleTocToggle}
           className={classes.menuButton}
         >
           <MenuIcon />

@@ -1,54 +1,39 @@
 import React from 'react';
 import { Drawer, Divider, Hidden, List, ListItem, ListItemText } from '@material-ui/core';
 
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 import './styles.scss';
 
-const drawerWidth = 240;
+export const tocWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex'
-  },
   drawer: {
     [theme.breakpoints.up('sm')]: {
-      width: drawerWidth,
+      width: tocWidth,
       flexShrink: 0
     }
   },
   appBar: {
     [theme.breakpoints.up('sm')]: {
-      width: `calc(100% - ${drawerWidth}px)`,
-      marginLeft: drawerWidth
+      width: `calc(100% - ${tocWidth}px)`,
+      marginLeft: tocWidth
     }
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
-    [theme.breakpoints.up('sm')]: {
-      display: 'none'
-    }
-  },
-  // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
-    width: drawerWidth
-  },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(3)
+    width: tocWidth
   }
 }));
 
 export interface ManuscriptTOCProps {
-  mobileOpen: boolean;
-  handleDrawerToggle(): void;
+  tocOpen: boolean;
+  handleTocToggle(): void;
 }
 
 export const ManuscriptTOC: React.FC<ManuscriptTOCProps> = (props) => {
-  const classes = useStyles();
-  const theme = useTheme();
-  const { mobileOpen, handleDrawerToggle } = props;
+  const classes = useStyles(props);
+  const { tocOpen, handleTocToggle } = props;
 
   const drawer = (
     <div>
@@ -69,11 +54,10 @@ export const ManuscriptTOC: React.FC<ManuscriptTOCProps> = (props) => {
       {}
       <Hidden smUp implementation="css">
         <Drawer
-          /*container={container}*/
           variant="temporary"
-          anchor={theme.direction === 'rtl' ? 'right' : 'left'}
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
+          anchor="left"
+          open={tocOpen}
+          onClose={handleTocToggle}
           classes={{
             paper: classes.drawerPaper
           }}

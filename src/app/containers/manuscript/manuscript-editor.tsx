@@ -8,37 +8,15 @@ import { RichTextEditor } from '../../components/rich-text-editor';
 import { EditorState, Transaction } from 'prosemirror-state';
 import { KeywordsEditor } from '../../components/keywords';
 import { KeywordGroups } from '../../models/manuscript';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import { Container } from '@material-ui/core';
 
-const drawerWidth = 240;
+import { tocWidth } from './manuscript-toc';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex'
-  },
-  drawer: {
-    [theme.breakpoints.up('sm')]: {
-      width: drawerWidth,
-      flexShrink: 0
-    }
-  },
-  appBar: {
-    [theme.breakpoints.up('sm')]: {
-      width: `calc(100% - ${drawerWidth}px)`,
-      marginLeft: drawerWidth
-    }
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-    [theme.breakpoints.up('sm')]: {
-      display: 'none'
-    }
-  },
-  // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
-    width: drawerWidth
+    width: tocWidth
   },
   content: {
     flexGrow: 1,
@@ -48,7 +26,6 @@ const useStyles = makeStyles((theme) => ({
 
 export const ManuscriptEditor: React.FC = () => {
   const classes = useStyles();
-  const theme = useTheme();
   const dispatch = useDispatch();
 
   const title: EditorState = useSelector(getTitle);
