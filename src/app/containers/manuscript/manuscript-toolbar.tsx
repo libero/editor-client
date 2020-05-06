@@ -12,7 +12,6 @@ import { DropDownMenu } from '../../components/drop-down-menu';
 import { makeStyles } from '@material-ui/core/styles';
 
 import * as manuscriptActions from '../../actions/manuscript.actions';
-import './styles.scss';
 
 import {
   canItalicizeSelection,
@@ -26,16 +25,19 @@ import { tocWidth } from './manuscript-toc';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
+    backgroundColor: '#fafafa',
     [theme.breakpoints.up('sm')]: {
       width: `calc(100% - ${tocWidth}px)`,
       marginLeft: tocWidth
     }
   },
   menuButton: {
-    marginRight: theme.spacing(2),
     [theme.breakpoints.up('sm')]: {
       display: 'none'
     }
+  },
+  toolbar: {
+    ...theme.mixins.toolbar
   }
 }));
 
@@ -63,15 +65,9 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
   const invokeLink = useCallback(() => dispatch(manuscriptActions.linkAction()), [dispatch]);
 
   const renderContent = (): JSX.Element => (
-    <AppBar color="inherit" position="fixed" className={classes.appBar}>
-      <Toolbar className="manuscript-toolbar">
-        <IconButton
-          color="inherit"
-          aria-label="open drawer"
-          edge="start"
-          onClick={handleTocToggle}
-          className={classes.menuButton}
-        >
+    <AppBar position="fixed" className={classes.appBar}>
+      <Toolbar className={classes.toolbar}>
+        <IconButton aria-label="open drawer" edge="start" onClick={handleTocToggle} className={classes.menuButton}>
           <MenuIcon />
         </IconButton>
         <IconButton disabled={true}>

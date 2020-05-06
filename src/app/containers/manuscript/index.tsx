@@ -3,14 +3,15 @@ import { useSelector } from 'react-redux';
 import { Backdrop, CircularProgress, makeStyles } from '@material-ui/core';
 
 import { isManuscriptLoaded } from '../../selectors/manuscript.selectors';
-import './styles.scss';
 import { ManuscriptToolbar } from './manuscript-toolbar';
 import { ManuscriptEditor } from './manuscript-editor';
 import { ManuscriptTOC } from './manuscript-toc';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex'
+    display: 'flex',
+    margin: '0px',
+    padding: '0px'
   }
 }));
 

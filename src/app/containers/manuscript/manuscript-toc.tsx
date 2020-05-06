@@ -1,9 +1,6 @@
 import React from 'react';
 import { Drawer, Divider, Hidden, List, ListItem, ListItemText } from '@material-ui/core';
-
 import { makeStyles } from '@material-ui/core/styles';
-
-import './styles.scss';
 
 export const tocWidth = 240;
 
@@ -14,13 +11,10 @@ const useStyles = makeStyles((theme) => ({
       flexShrink: 0
     }
   },
-  appBar: {
-    [theme.breakpoints.up('sm')]: {
-      width: `calc(100% - ${tocWidth}px)`,
-      marginLeft: tocWidth
-    }
+  toolbar: {
+    ...theme.mixins.toolbar,
+    backgroundColor: '#fafafa'
   },
-  toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: tocWidth
   }
@@ -49,9 +43,8 @@ export const ManuscriptTOC: React.FC<ManuscriptTOCProps> = (props) => {
     </div>
   );
 
-  const renderContent = () => (
+  const renderContent = (): JSX.Element => (
     <nav className={classes.drawer} aria-label="mailbox folders">
-      {}
       <Hidden smUp implementation="css">
         <Drawer
           variant="temporary"
