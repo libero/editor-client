@@ -7,7 +7,7 @@ const manuscriptUrl = (id: string): string => {
 };
 
 export async function getManuscriptContent(id: string): Promise<Manuscript> {
-  const { data } = await axios.get<string>(manuscriptUrl(id));
+  const { data } = await axios.get<string>(manuscriptUrl(id), { headers: { Accept: 'application/xml' } });
 
   const parser = new DOMParser();
   const doc = parser.parseFromString(data, 'text/xml');
