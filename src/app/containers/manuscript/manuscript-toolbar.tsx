@@ -57,14 +57,15 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export const ManuscriptToolbar: React.FC = () => {
+export interface ManuscriptToolbarProps {
+  mobileOpen: boolean;
+  handleDrawerToggle(): void;
+}
+
+export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
   const classes = useStyles();
   const theme = useTheme();
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
+  const { mobileOpen, handleDrawerToggle } = props;
 
   const dispatch = useDispatch();
 

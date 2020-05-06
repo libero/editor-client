@@ -40,14 +40,15 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export const ManuscriptTOC: React.FC = (props) => {
+export interface ManuscriptTOCProps {
+  mobileOpen: boolean;
+  handleDrawerToggle(): void;
+}
+
+export const ManuscriptTOC: React.FC<ManuscriptTOCProps> = (props) => {
   const classes = useStyles();
   const theme = useTheme();
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
+  const { mobileOpen, handleDrawerToggle } = props;
 
   const drawer = (
     <div>

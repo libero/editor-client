@@ -52,12 +52,18 @@ const renderBackdrop = (): JSX.Element => (
 export const ManuscriptContainer: React.FC = () => {
   const classes = useStyles();
   const theme = useTheme();
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
+
   const isLoaded = useSelector(isManuscriptLoaded);
   const renderContent = (): JSX.Element => (
     <div>
       <div className={classes.root}>
-        <ManuscriptToolbar />
-        <ManuscriptTOC />
+        <ManuscriptToolbar mobileOpen={mobileOpen} handleDrawerToggle={handleDrawerToggle.bind(null, this)} />
+        <ManuscriptTOC mobileOpen={mobileOpen} handleDrawerToggle={handleDrawerToggle.bind(null, this)} />
         <ManuscriptEditor />
       </div>
     </div>
