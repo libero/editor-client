@@ -22,7 +22,11 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     flexGrow: 1,
-    padding: 0
+    padding: 0,
+    [theme.breakpoints.up('sm')]: {
+      width: `calc(100% - ${tocWidth}px)`,
+      marginLeft: tocWidth
+    }
   },
   field: {
     padding: '20px 0'

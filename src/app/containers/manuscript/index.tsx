@@ -1,19 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Backdrop, CircularProgress, makeStyles } from '@material-ui/core';
+import { Backdrop, CircularProgress } from '@material-ui/core';
 
 import { isManuscriptLoaded } from '../../selectors/manuscript.selectors';
 import { ManuscriptToolbar } from './manuscript-toolbar';
 import { ManuscriptEditor } from './manuscript-editor';
 import { ManuscriptTOC } from './manuscript-toc';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    margin: '0px',
-    padding: '0px'
-  }
-}));
 
 const renderBackdrop = (): JSX.Element => (
   <Backdrop open={true}>
@@ -22,17 +14,16 @@ const renderBackdrop = (): JSX.Element => (
 );
 
 export const ManuscriptContainer: React.FC = () => {
-  const classes = useStyles();
   const [tocOpen, setTocOpen] = React.useState(false);
 
-  const handleTocToggle = () => {
+  const handleTocToggle = (): void => {
     setTocOpen(!tocOpen);
   };
 
   const isLoaded = useSelector(isManuscriptLoaded);
   const renderContent = (): JSX.Element => (
     <div>
-      <div className={classes.root}>
+      <div className="manuscript-container">
         <ManuscriptToolbar tocOpen={tocOpen} handleTocToggle={handleTocToggle.bind(null, this)} />
         <ManuscriptTOC tocOpen={tocOpen} handleTocToggle={handleTocToggle.bind(null, this)} />
         <ManuscriptEditor />
