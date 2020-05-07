@@ -25,7 +25,6 @@ import { tocWidth } from './manuscript-toc';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
-    backgroundColor: '#fafafa',
     [theme.breakpoints.up('sm')]: {
       width: `calc(100% - ${tocWidth}px)`,
       marginLeft: tocWidth
@@ -65,7 +64,7 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
   const invokeLink = useCallback(() => dispatch(manuscriptActions.linkAction()), [dispatch]);
 
   const renderContent = (): JSX.Element => (
-    <AppBar position="fixed" className={classes.appBar}>
+    <AppBar color="inherit" position="fixed" className={classes.appBar}>
       <Toolbar className={classes.toolbar}>
         <IconButton aria-label="open drawer" edge="start" onClick={handleTocToggle} className={classes.menuButton}>
           <MenuIcon />

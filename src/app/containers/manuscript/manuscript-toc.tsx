@@ -12,8 +12,7 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   toolbar: {
-    ...theme.mixins.toolbar,
-    backgroundColor: '#fafafa'
+    ...theme.mixins.toolbar
   },
   drawerPaper: {
     width: tocWidth
