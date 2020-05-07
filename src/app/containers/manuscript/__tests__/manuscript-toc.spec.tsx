@@ -4,8 +4,7 @@ import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { Hidden, Drawer, ListItem, Divider, List, ListItemText } from '@material-ui/core';
 
-import { getInitialHistory, getLoadableStateSuccess } from '../../../utils/state.utils';
-import { EditorState } from 'prosemirror-state';
+import { getLoadableStateSuccess } from '../../../utils/state.utils';
 import { ManuscriptTOC } from '../manuscript-toc';
 
 jest.mock('@material-ui/core');
