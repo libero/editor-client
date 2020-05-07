@@ -96,7 +96,14 @@ export const Keyword: React.FC<KeywordProps> = ({ editorState, onDelete, onChang
   return (
     <div className={classNames('keyword', { focused: isFocused })} ref={containerRef}>
       <ProseMirrorEditorView options={options} ref={prosemirrorRef} editorState={editorState} onChange={onChange} />
-      <IconButton onClick={onDelete} aria-label="delete keyword" tabIndex={0} color="primary" size="small" className="keyword-delete-cta">
+      <IconButton
+        onClick={onDelete}
+        aria-label="delete keyword"
+        tabIndex={0}
+        color="primary"
+        size="small"
+        className="keyword-delete-cta"
+      >
         <DeleteKeywordIcon />
       </IconButton>
     </div>

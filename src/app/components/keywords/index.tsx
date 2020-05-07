@@ -37,8 +37,14 @@ export const KeywordsEditor: React.FC<KeywordsEditorProps> = (props) => {
 
   const newKeyword = createNewKeywordState();
 
+  const ariaLabel = `Keywords group ${label}. Number of keywords ${keywords.length}`;
+
   return (
-    <fieldset className={classNames('editorview-wrapper', 'keywords-group-container', className)}>
+    <fieldset
+      aria-label={ariaLabel}
+      className={classNames('editorview-wrapper', 'keywords-group-container', className)}
+      tabIndex={0}
+    >
       {label ? <legend className="keyword-group-legend">{label}</legend> : undefined}
       <section className="keywords-section">
         {renderKeywords(keywords)}
