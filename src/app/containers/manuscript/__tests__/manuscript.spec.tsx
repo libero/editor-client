@@ -2,7 +2,7 @@ import React from 'react';
 import { create } from 'react-test-renderer';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
-import { Backdrop, CircularProgress } from '@material-ui/core';
+import { Backdrop, CircularProgress, Hidden, Container } from '@material-ui/core';
 
 import { getInitialHistory, getLoadableStateProgress, getLoadableStateSuccess } from '../../../utils/state.utils';
 import { ManuscriptContainer } from '../index';
@@ -12,6 +12,16 @@ jest.mock('@material-ui/core');
 
 describe('Manuscript container', () => {
   const mockStore = configureMockStore([]);
+
+  beforeEach(() => {
+    (Hidden as jest.Mock).mockImplementation(({ children }) => <div data-cmp="hidden">{children}</div>);
+    (Container['render'] as jest.Mock).mockImplementation(({ children }) => <div data-cmp="container">{children}</div>);
+  });
+
+  afterEach(() => {
+    (Hidden as jest.Mock).mockReset();
+    (Container['render'] as jest.Mock).mockReset();
+  });
 
   it('renders when data is loaded', () => {
     const mockState = getInitialHistory({

@@ -7,10 +7,11 @@ import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import FormatBoldIcon from '@material-ui/icons/FormatBold';
 import FormatItalicIcon from '@material-ui/icons/FormatItalic';
 import LinkIcon from '@material-ui/icons/Link';
+import MenuIcon from '@material-ui/icons/Menu';
 import { DropDownMenu } from '../../components/drop-down-menu';
+import { makeStyles } from '@material-ui/core/styles';
 
 import * as manuscriptActions from '../../actions/manuscript.actions';
-import './styles.scss';
 
 import {
   canItalicizeSelection,
@@ -20,7 +21,34 @@ import {
   canLinkSelection
 } from '../../selectors/manuscript-editor.selectors';
 
-export const ManuscriptToolbar: React.FC = () => {
+import { tocWidth } from './manuscript-toc';
+
+const useStyles = makeStyles((theme) => ({
+  appBar: {
+    [theme.breakpoints.up('sm')]: {
+      width: `calc(100% - ${tocWidth}px)`,
+      marginLeft: tocWidth
+    }
+  },
+  menuButton: {
+    [theme.breakpoints.up('sm')]: {
+      display: 'none'
+    }
+  },
+  toolbar: {
+    ...theme.mixins.toolbar
+  }
+}));
+
+export interface ManuscriptToolbarProps {
+  tocOpen: boolean;
+  handleTocToggle(): void;
+}
+
+export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
+  const classes = useStyles();
+  const { handleTocToggle } = props;
+
   const dispatch = useDispatch();
 
   const canUndo = useSelector(canUndoChanges);
@@ -36,8 +64,11 @@ export const ManuscriptToolbar: React.FC = () => {
   const invokeLink = useCallback(() => dispatch(manuscriptActions.linkAction()), [dispatch]);
 
   const renderContent = (): JSX.Element => (
-    <AppBar position="sticky">
-      <Toolbar className="manuscript-toolbar">
+    <AppBar color="inherit" position="fixed" className={classes.appBar}>
+      <Toolbar className={classes.toolbar}>
+        <IconButton aria-label="open drawer" edge="start" onClick={handleTocToggle} className={classes.menuButton}>
+          <MenuIcon />
+        </IconButton>
         <IconButton disabled={true}>
           <SaveAltIcon />
         </IconButton>
