@@ -39,11 +39,11 @@ describe('<ManuscriptToolbar />', () => {
 
     const wrapper = mount(
       <Provider store={store}>
-        <ManuscriptToolbar />
+        <ManuscriptToolbar tocOpen={false} handleTocToggle={() => undefined} />
       </Provider>
     );
 
-    const undoBtnProps = wrapper.find(IconButton).at(1).props();
+    const undoBtnProps = wrapper.find(IconButton).at(2).props();
 
     expect(undoBtnProps.disabled).toBeFalsy();
     //call undo
@@ -66,11 +66,11 @@ describe('<ManuscriptToolbar />', () => {
 
     const wrapper = mount(
       <Provider store={store}>
-        <ManuscriptToolbar />
+        <ManuscriptToolbar tocOpen={false} handleTocToggle={() => undefined} />
       </Provider>
     );
 
-    const redoBtnProps = wrapper.find(IconButton).at(2).props();
+    const redoBtnProps = wrapper.find(IconButton).at(3).props();
 
     expect(redoBtnProps.disabled).toBeFalsy();
     //call redo

@@ -15,37 +15,55 @@ exports[`Manuscript container renders when data is loaded 1`] = `
   <div
     className="manuscript-container"
   >
-    <div
-      className="manuscript-editor"
+    <nav
+      aria-label="mailbox folders"
+      className="makeStyles-drawer-4"
     >
       <div
-        className="manuscript-field"
-      >
-        <div
-          className="editorview-wrapper"
-        >
-          <div
-            className="editor-label"
-          >
-            Title
-          </div>
-          <div />
-        </div>
-      </div>
+        data-cmp="hidden"
+      />
       <div
-        className="manuscript-field"
+        data-cmp="hidden"
+      />
+    </nav>
+    <main
+      className="makeStyles-content-9"
+    >
+      <div
+        className="makeStyles-toolbar-7"
+      />
+      <div
+        data-cmp="container"
       >
         <div
-          className="editorview-wrapper"
+          className="makeStyles-field-10"
         >
           <div
-            className="editor-label"
+            className="editorview-wrapper"
           >
-            Abstract
+            <div
+              className="editor-label"
+            >
+              Title
+            </div>
+            <div />
+          </div>
+        </div>
+        <div
+          className="makeStyles-field-10"
+        >
+          <div
+            className="editorview-wrapper"
+          >
+            <div
+              className="editor-label"
+            >
+              Abstract
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </main>
   </div>
 </div>
 `;
