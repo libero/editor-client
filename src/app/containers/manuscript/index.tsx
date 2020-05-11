@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Backdrop, CircularProgress, Container } from '@material-ui/core';
+import { Backdrop, CircularProgress } from '@material-ui/core';
 
 import { isManuscriptLoaded } from '../../selectors/manuscript.selectors';
 import { ManuscriptToolbar } from './manuscript-toolbar';
