@@ -9,7 +9,6 @@ import FormatItalicIcon from '@material-ui/icons/FormatItalic';
 import LinkIcon from '@material-ui/icons/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import { DropDownMenu } from '../../components/drop-down-menu';
-import { makeStyles } from '@material-ui/core/styles';
 
 import * as manuscriptActions from '../../actions/manuscript.actions';
 
@@ -21,24 +20,7 @@ import {
   canLinkSelection
 } from '../../selectors/manuscript-editor.selectors';
 
-import { tocWidth } from './manuscript-toc';
-
-const useStyles = makeStyles((theme) => ({
-  appBar: {
-    [theme.breakpoints.up('sm')]: {
-      width: `calc(100% - ${tocWidth}px)`,
-      marginLeft: tocWidth
-    }
-  },
-  menuButton: {
-    [theme.breakpoints.up('sm')]: {
-      display: 'none'
-    }
-  },
-  toolbar: {
-    ...theme.mixins.toolbar
-  }
-}));
+import { useToolbarStyles } from './styles';
 
 export interface ManuscriptToolbarProps {
   tocOpen: boolean;
@@ -46,7 +28,7 @@ export interface ManuscriptToolbarProps {
 }
 
 export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
-  const classes = useStyles();
+  const classes = useToolbarStyles();
   const { handleTocToggle } = props;
 
   const dispatch = useDispatch();

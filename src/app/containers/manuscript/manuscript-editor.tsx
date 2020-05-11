@@ -8,33 +8,10 @@ import { RichTextEditor } from '../../components/rich-text-editor';
 import { EditorState, Transaction } from 'prosemirror-state';
 import { KeywordsEditor } from '../../components/keywords';
 import { KeywordGroups } from '../../models/manuscript';
-import { makeStyles } from '@material-ui/core/styles';
-import { Container } from '@material-ui/core';
-
-import { tocWidth } from './manuscript-toc';
-
-const useStyles = makeStyles((theme) => ({
-  toolbar: {
-    ...theme.mixins.toolbar
-  },
-  drawerPaper: {
-    width: tocWidth
-  },
-  content: {
-    flexGrow: 1,
-    padding: 0,
-    [theme.breakpoints.up('sm')]: {
-      width: `calc(100% - ${tocWidth}px)`,
-      marginLeft: tocWidth
-    }
-  },
-  field: {
-    padding: '20px 0'
-  }
-}));
+import { useManuscriptStyles } from './styles';
 
 export const ManuscriptEditor: React.FC = () => {
-  const classes = useStyles();
+  const classes = useManuscriptStyles();
   const dispatch = useDispatch();
 
   const title: EditorState = useSelector(getTitle);
@@ -76,45 +53,41 @@ export const ManuscriptEditor: React.FC = () => {
   const renderKeywords = (keywordGroups: KeywordGroups): JSX.Element[] => {
     return Object.entries(keywordGroups).map(([groupType, keywords]) => {
       return (
-        <div className={classes.field} key={groupType}>
-          <KeywordsEditor
-            keywords={keywords}
-            label={groupType}
-            onAdd={handleKeywordAdd.bind(null, groupType)}
-            onChange={handleKeywordsChange.bind(null, groupType)}
-            onDelete={handleKeywordDelete.bind(null, groupType)}
-            onFocus={handleKeywordFocus.bind(null, groupType)}
-            onBlur={handleBlur}
-          />
-        </div>
+        <KeywordsEditor
+          key={groupType}
+          keywords={keywords}
+          className={classes.editorSection}
+          label={groupType}
+          onAdd={handleKeywordAdd.bind(null, groupType)}
+          onChange={handleKeywordsChange.bind(null, groupType)}
+          onDelete={handleKeywordDelete.bind(null, groupType)}
+          onFocus={handleKeywordFocus.bind(null, groupType)}
+          onBlur={handleBlur}
+        />
       );
     });
   };
 
   return (
-    <main className={classes.content}>
-      <div className={classes.toolbar} />
-      <Container maxWidth="md">
-        <div className={classes.field}>
-          <RichTextEditor
-            editorState={title}
-            label="Title"
-            onChange={handleTitleChange}
-            onFocus={handleFocus.bind(null, 'title')}
-            onBlur={handleBlur}
-          />
-        </div>
-        <div className={classes.field}>
-          <RichTextEditor
-            editorState={abstract}
-            label="Abstract"
-            onChange={handleAbstractChange}
-            onFocus={handleFocus.bind(null, 'abstract')}
-            onBlur={handleBlur}
-          />
-        </div>
-        {renderKeywords(allKeywords)}
-      </Container>
-    </main>
+    <div className={classes.content}>
+      <div aria-hidden="true" className={classes.toolbarPlaceholder} />
+      <RichTextEditor
+        className={classes.editorSection}
+        editorState={title}
+        label="Title"
+        onChange={handleTitleChange}
+        onFocus={handleFocus.bind(null, 'title')}
+        onBlur={handleBlur}
+      />
+      <RichTextEditor
+        editorState={abstract}
+        className={classes.editorSection}
+        label="Abstract"
+        onChange={handleAbstractChange}
+        onFocus={handleFocus.bind(null, 'abstract')}
+        onBlur={handleBlur}
+      />
+      {renderKeywords(allKeywords)}
+    </div>
   );
 };

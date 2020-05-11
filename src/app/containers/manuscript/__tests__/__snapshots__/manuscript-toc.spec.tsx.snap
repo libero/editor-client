@@ -11,30 +11,29 @@ exports[`<ManuscriptTOC> renders 1`] = `
     <div
       data-cmp="drawer"
     >
-      <div>
+      <div
+        aria-hidden="true"
+        className="makeStyles-toolbarPlaceholder-3"
+      />
+      <div
+        data-cmp="divider"
+      />
+      <div
+        data-cmp="list"
+      >
         <div
-          className="makeStyles-toolbar-2"
-        />
-        <div
-          data-cmp="divider"
-        />
-        <div
-          data-cmp="list"
+          data-cmp="list-item"
         >
           <div
-            data-cmp="list-item"
-          >
-            <div
-              data-cmp="list-item-text"
-            />
-          </div>
+            data-cmp="list-item-text"
+          />
+        </div>
+        <div
+          data-cmp="list-item"
+        >
           <div
-            data-cmp="list-item"
-          >
-            <div
-              data-cmp="list-item-text"
-            />
-          </div>
+            data-cmp="list-item-text"
+          />
         </div>
       </div>
     </div>
@@ -45,30 +44,29 @@ exports[`<ManuscriptTOC> renders 1`] = `
     <div
       data-cmp="drawer"
     >
-      <div>
+      <div
+        aria-hidden="true"
+        className="makeStyles-toolbarPlaceholder-3"
+      />
+      <div
+        data-cmp="divider"
+      />
+      <div
+        data-cmp="list"
+      >
         <div
-          className="makeStyles-toolbar-2"
-        />
-        <div
-          data-cmp="divider"
-        />
-        <div
-          data-cmp="list"
+          data-cmp="list-item"
         >
           <div
-            data-cmp="list-item"
-          >
-            <div
-              data-cmp="list-item-text"
-            />
-          </div>
+            data-cmp="list-item-text"
+          />
+        </div>
+        <div
+          data-cmp="list-item"
+        >
           <div
-            data-cmp="list-item"
-          >
-            <div
-              data-cmp="list-item-text"
-            />
-          </div>
+            data-cmp="list-item-text"
+          />
         </div>
       </div>
     </div>

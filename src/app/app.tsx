@@ -10,13 +10,13 @@ export const App: React.FC = () => {
   return (
     <Provider store={store}>
       <Router>
-        <div className="app-container">
+        <main className="app-container" role="application">
           <Switch>
             <Route path="/">
               <ManuscriptContainer />
             </Route>
           </Switch>
-        </div>
+        </main>
       </Router>
     </Provider>
   );

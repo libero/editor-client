@@ -1,15 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ReachTextEditorComponent renders nothing when no EditorState is provided 1`] = `
-<div
+<fieldset
   className="editorview-wrapper"
 />
 `;
 
 exports[`ReachTextEditorComponent renders the editor when editor state is provided 1`] = `
-<div
+<fieldset
   className="editorview-wrapper"
 >
   <div />
-</div>
+</fieldset>
 `;

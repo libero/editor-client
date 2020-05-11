@@ -1,43 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`manuscript editor should render 1`] = `
-<main
-  className="makeStyles-content-3"
+<div
+  className="makeStyles-content-1"
 >
   <div
-    className="makeStyles-toolbar-1"
+    aria-hidden="true"
+    className="makeStyles-toolbarPlaceholder-3"
   />
-  <div
-    className="MuiContainer-root MuiContainer-maxWidthMd"
+  <fieldset
+    className="editorview-wrapper makeStyles-editorSection-2"
   >
-    <div
-      className="makeStyles-field-4"
+    <legend
+      className="editor-label"
     >
-      <div
-        className="editorview-wrapper"
-      >
-        <div
-          className="editor-label"
-        >
-          Title
-        </div>
-        <div />
-      </div>
-    </div>
-    <div
-      className="makeStyles-field-4"
+      Title
+    </legend>
+    <div />
+  </fieldset>
+  <fieldset
+    className="editorview-wrapper makeStyles-editorSection-2"
+  >
+    <legend
+      className="editor-label"
     >
-      <div
-        className="editorview-wrapper"
-      >
-        <div
-          className="editor-label"
-        >
-          Abstract
-        </div>
-        <div />
-      </div>
-    </div>
-  </div>
-</main>
+      Abstract
+    </legend>
+    <div />
+  </fieldset>
+</div>
 `;
