@@ -11,59 +11,44 @@ exports[`Manuscript container renders loading spinner when manuscript is loading
 `;
 
 exports[`Manuscript container renders when data is loaded 1`] = `
-<div>
-  <div
-    className="manuscript-container"
+Array [
+  <nav
+    aria-label="mailbox folders"
+    className="makeStyles-drawer-1"
   >
-    <nav
-      aria-label="mailbox folders"
-      className="makeStyles-drawer-4"
+    <div
+      data-cmp="hidden"
+    />
+    <div
+      data-cmp="hidden"
+    />
+  </nav>,
+  <div
+    className="makeStyles-content-7"
+  >
+    <div
+      aria-hidden="true"
+      className="makeStyles-toolbarPlaceholder-9"
+    />
+    <fieldset
+      className="editorview-wrapper makeStyles-editorSection-8"
     >
-      <div
-        data-cmp="hidden"
-      />
-      <div
-        data-cmp="hidden"
-      />
-    </nav>
-    <main
-      className="makeStyles-content-9"
-    >
-      <div
-        className="makeStyles-toolbar-7"
-      />
-      <div
-        data-cmp="container"
+      <legend
+        className="editor-label"
       >
-        <div
-          className="makeStyles-field-10"
-        >
-          <div
-            className="editorview-wrapper"
-          >
-            <div
-              className="editor-label"
-            >
-              Title
-            </div>
-            <div />
-          </div>
-        </div>
-        <div
-          className="makeStyles-field-10"
-        >
-          <div
-            className="editorview-wrapper"
-          >
-            <div
-              className="editor-label"
-            >
-              Abstract
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
-  </div>
-</div>
+        Title
+      </legend>
+      <div />
+    </fieldset>
+    <fieldset
+      className="editorview-wrapper makeStyles-editorSection-8"
+    >
+      <legend
+        className="editor-label"
+      >
+        Abstract
+      </legend>
+    </fieldset>
+  </div>,
+]
 `;

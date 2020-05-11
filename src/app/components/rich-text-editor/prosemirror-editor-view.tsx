@@ -66,8 +66,6 @@ export class ProseMirrorEditorView extends React.Component<ProseMirrorEditorView
         state: this.props.editorState,
         dispatchTransaction: this.dispatchTransaction
       });
-
-      this.editorView.dom.setAttribute('tabIndex', '0');
     }
   };
 }
