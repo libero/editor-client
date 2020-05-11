@@ -1,23 +1,6 @@
 import React from 'react';
 import { Drawer, Divider, Hidden, List, ListItem, ListItemText } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-
-export const tocWidth = 240;
-
-const useStyles = makeStyles((theme) => ({
-  drawer: {
-    [theme.breakpoints.up('sm')]: {
-      width: tocWidth,
-      flexShrink: 0
-    }
-  },
-  toolbar: {
-    ...theme.mixins.toolbar
-  },
-  drawerPaper: {
-    width: tocWidth
-  }
-}));
+import { useOutlinePanelStyles } from './styles';
 
 export interface ManuscriptTOCProps {
   tocOpen: boolean;
@@ -25,12 +8,12 @@ export interface ManuscriptTOCProps {
 }
 
 export const ManuscriptTOC: React.FC<ManuscriptTOCProps> = (props) => {
-  const classes = useStyles(props);
+  const classes = useOutlinePanelStyles(props);
   const { tocOpen, handleTocToggle } = props;
 
   const drawer = (
-    <div>
-      <div className={classes.toolbar} />
+    <React.Fragment>
+      <div className={classes.toolbarPlaceholder} aria-hidden="true" />
       <Divider />
       <List>
         {['Title', 'Abstract'].map((text, index) => (
@@ -39,7 +22,7 @@ export const ManuscriptTOC: React.FC<ManuscriptTOCProps> = (props) => {
           </ListItem>
         ))}
       </List>
-    </div>
+    </React.Fragment>
   );
 
   const renderContent = (): JSX.Element => (

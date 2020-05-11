@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Backdrop, CircularProgress } from '@material-ui/core';
+import { Backdrop, CircularProgress, Container } from '@material-ui/core';
 
 import { isManuscriptLoaded } from '../../selectors/manuscript.selectors';
 import { ManuscriptToolbar } from './manuscript-toolbar';
@@ -14,21 +14,20 @@ const renderBackdrop = (): JSX.Element => (
 );
 
 export const ManuscriptContainer: React.FC = () => {
-  const [tocOpen, setTocOpen] = React.useState(false);
+  const [tocOpen, setTocOpen] = React.useState<boolean>(false);
 
   const handleTocToggle = (): void => {
     setTocOpen(!tocOpen);
   };
 
   const isLoaded = useSelector(isManuscriptLoaded);
+
   const renderContent = (): JSX.Element => (
-    <div>
-      <div className="manuscript-container">
-        <ManuscriptToolbar tocOpen={tocOpen} handleTocToggle={handleTocToggle.bind(null, this)} />
-        <ManuscriptTOC tocOpen={tocOpen} handleTocToggle={handleTocToggle.bind(null, this)} />
-        <ManuscriptEditor />
-      </div>
-    </div>
+    <React.Fragment>
+      <ManuscriptTOC tocOpen={tocOpen} handleTocToggle={handleTocToggle.bind(null, this)} />
+      <ManuscriptToolbar tocOpen={tocOpen} handleTocToggle={handleTocToggle.bind(null, this)} />
+      <ManuscriptEditor />
+    </React.Fragment>
   );
 
   return isLoaded ? renderContent() : renderBackdrop();
