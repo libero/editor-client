@@ -2,22 +2,24 @@
 
 exports[`KeywordsEditorComponent renders keywords 1`] = `
 <fieldset
-  aria-label="Keywords group Keywords label. Number of keywords 1"
-  className="editorview-wrapper keywords-group-container"
+  className="makeStyles-keywordsEditor-1"
   tabIndex={0}
 >
   <legend
-    className="keyword-group-legend"
+    className="makeStyles-label-2"
   >
     Keywords label
   </legend>
   <section
-    className="keywords-section"
+    className="makeStyles-keywordsSection-3"
   >
     <div
-      className="keyword"
+      className="makeStyles-keyword-5"
+      data-test-id="keyword-container"
     >
-      <div />
+      <div
+        className="prosemirrorContainer"
+      />
       <button
         aria-label="delete keyword"
         className="MuiButtonBase-root MuiIconButton-root keyword-delete-cta MuiIconButton-colorPrimary MuiIconButton-sizeSmall"
@@ -42,7 +44,7 @@ exports[`KeywordsEditorComponent renders keywords 1`] = `
         >
           <svg
             aria-hidden="true"
-            className="MuiSvgIcon-root makeStyles-deleteIcon-13"
+            className="MuiSvgIcon-root makeStyles-deleteIcon-6"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -54,10 +56,8 @@ exports[`KeywordsEditorComponent renders keywords 1`] = `
       </button>
     </div>
     <div
-      className="new-keyword-container"
-    >
-      <div />
-    </div>
+      className="prosemirrorContainer makeStyles-newKeywordEditor-4"
+    />
   </section>
 </fieldset>
 `;

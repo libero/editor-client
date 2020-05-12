@@ -9,24 +9,28 @@ exports[`manuscript editor should render 1`] = `
     className="makeStyles-toolbarPlaceholder-3"
   />
   <fieldset
-    className="editorview-wrapper makeStyles-editorSection-2"
+    className="makeStyles-root-4 makeStyles-editorSection-2"
   >
     <legend
-      className="editor-label"
+      className="makeStyles-label-5"
     >
       Title
     </legend>
-    <div />
+    <div
+      className="prosemirrorContainer"
+    />
   </fieldset>
   <fieldset
-    className="editorview-wrapper makeStyles-editorSection-2"
+    className="makeStyles-root-4 makeStyles-editorSection-2"
   >
     <legend
-      className="editor-label"
+      className="makeStyles-label-5"
     >
       Abstract
     </legend>
-    <div />
+    <div
+      className="prosemirrorContainer"
+    />
   </fieldset>
 </div>
 `;
