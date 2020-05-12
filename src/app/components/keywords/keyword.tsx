@@ -10,8 +10,6 @@ import { useKeywordStyles } from './styles';
 
 const ENTER_KEY_CODE = 'Enter';
 
-const ENTER_KEY_CODE = 'Enter';
-
 interface KeywordProps {
   editorState: EditorState;
   onChange: (state: Transaction) => void;
@@ -19,28 +17,6 @@ interface KeywordProps {
   onFocus: (state: EditorState) => void;
   onBlur: (state: EditorState) => void;
 }
-
-const DeleteKeywordIcon: React.FC<{}> = () => {
-  const useStyles = makeStyles((theme: Theme) => {
-    return {
-      deleteIcon: {
-        WebkitTapHighlightColor: 'transparent',
-        color: fade(theme.palette.primary.contrastText, 0.7),
-        height: 20,
-        width: 20,
-        margin: '-3px 0 0 0',
-        cursor: 'pointer',
-        '&:hover, &:active, &:focus': {
-          color: theme.palette.primary.contrastText
-        }
-      }
-    };
-  });
-
-  const classes = useStyles();
-
-  return <CancelIcon className={classes.deleteIcon} />;
-};
 
 export const Keyword: React.FC<KeywordProps> = ({ editorState, onDelete, onChange, onFocus, onBlur }) => {
   const prosemirrorRef = useRef(null);
