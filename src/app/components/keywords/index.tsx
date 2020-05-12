@@ -38,6 +38,8 @@ export const KeywordsEditor: React.FC<KeywordsEditorProps> = (props) => {
 
   const newKeyword = createNewKeywordState();
 
+  const ariaLabel = `Keywords group ${label}. Number of keywords ${keywords.length}`;
+
   return (
     <fieldset className={classNames(classes.keywordsEditor, className)} tabIndex={0}>
       {label ? <legend className={classes.label}>{label}</legend> : undefined}
