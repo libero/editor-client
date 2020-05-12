@@ -2,11 +2,11 @@ import { EditorState, Transaction } from 'prosemirror-state';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { EditorView } from 'prosemirror-view';
-import { fade, IconButton, Theme } from '@material-ui/core';
+import { IconButton } from '@material-ui/core';
 import CancelIcon from '@material-ui/icons/Cancel';
-import { makeStyles } from '@material-ui/core/styles';
 
 import { ProseMirrorEditorView } from '../rich-text-editor/prosemirror-editor-view';
+import { useKeywordStyles } from './styles';
 
 const ENTER_KEY_CODE = 'Enter';
 
@@ -18,32 +18,12 @@ interface KeywordProps {
   onBlur: (state: EditorState) => void;
 }
 
-const DeleteKeywordIcon: React.FC<{}> = () => {
-  const useStyles = makeStyles((theme: Theme) => {
-    return {
-      deleteIcon: {
-        WebkitTapHighlightColor: 'transparent',
-        color: fade(theme.palette.primary.contrastText, 0.7),
-        height: 20,
-        width: 20,
-        margin: '-3px 0 0 0',
-        cursor: 'pointer',
-        '&:hover, &:active, &:focus': {
-          color: theme.palette.primary.contrastText
-        }
-      }
-    };
-  });
-
-  const classes = useStyles();
-
-  return <CancelIcon className={classes.deleteIcon} />;
-};
-
 export const Keyword: React.FC<KeywordProps> = ({ editorState, onDelete, onChange, onFocus, onBlur }) => {
-  const prosemirrorRef = useRef<ProseMirrorEditorView>(null);
+  const prosemirrorRef = useRef(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [isFocused, setFocused] = useState(false);
+
+  const classes = useKeywordStyles();
 
   const focusOnDblClick = useCallback(() => {
     prosemirrorRef.current.focus();
@@ -67,34 +47,41 @@ export const Keyword: React.FC<KeywordProps> = ({ editorState, onDelete, onChang
     };
   }, [containerRef, focusOnDblClick, preventSingleClick]);
 
-  const handleFocusEvent = (view: EditorView): void => {
+  const handleFocusEvent = (view: EditorView): boolean => {
     setFocused(true);
     if (onFocus) {
       onFocus(view.state);
     }
+    return true;
   };
 
-  const handleBlurEvent = (view: EditorView): void => {
+  const handleBlurEvent = (view: EditorView): boolean => {
     setFocused(false);
     if (onBlur) {
       onBlur(view.state);
     }
+    return true;
   };
 
   const options = {
     handleDOMEvents: {
       focus: handleFocusEvent,
       blur: handleBlurEvent,
-      keydown: (view: EditorView, event: KeyboardEvent) => {
+      keydown: (view: EditorView, event: KeyboardEvent): boolean => {
         if (event.key === ENTER_KEY_CODE) {
           prosemirrorRef.current.blur();
         }
+        return true;
       }
     }
   };
 
   return (
-    <div className={classNames('keyword', { focused: isFocused })} ref={containerRef}>
+    <div
+      className={classNames(classes.keyword, { focused: isFocused })}
+      ref={containerRef}
+      data-test-id="keyword-container"
+    >
       <ProseMirrorEditorView options={options} ref={prosemirrorRef} editorState={editorState} onChange={onChange} />
       <IconButton
         onClick={onDelete}
@@ -104,7 +91,7 @@ export const Keyword: React.FC<KeywordProps> = ({ editorState, onDelete, onChang
         size="small"
         className="keyword-delete-cta"
       >
-        <DeleteKeywordIcon />
+        <CancelIcon className={classes.deleteIcon} />
       </IconButton>
     </div>
   );

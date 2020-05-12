@@ -1,0 +1,44 @@
+.prosemirrorContainer {
+  line-height: initial;
+
+  .ProseMirror {
+    outline: none;
+
+    h1 {
+      fontSize: 36px;
+      fontWeight: 600;
+    }
+    h2 {
+      fontSize: 26px;
+      fontWeight: 600;
+      margin: 40px 0 16px 0;
+    }
+    h3 {
+      fontSize: 22px;
+      fontWeight: 600;
+      margin: 40px 0 16px 0;
+    }
+    h4 {
+      fontSize: 20px;
+      fontWeight: 600;
+      margin: 32px 0 16px 0;
+    }
+    h5 {
+      fontSize: 18px;
+      fontWeight: 600;
+      margin: 32px 0 16px 0;
+    }
+    h6 {
+      fontSize: 16px;
+      fontWeight: 600;
+      margin: 32px 0 16px 0;
+    }
+    p {
+      fontSize: 16px;
+      margin: 0 0 16px 0;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

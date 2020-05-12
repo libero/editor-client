@@ -31,20 +31,22 @@ Array [
       className="makeStyles-toolbarPlaceholder-9"
     />
     <fieldset
-      className="editorview-wrapper makeStyles-editorSection-8"
+      className="makeStyles-root-10 makeStyles-editorSection-8"
     >
       <legend
-        className="editor-label"
+        className="makeStyles-label-11"
       >
         Title
       </legend>
-      <div />
+      <div
+        className="prosemirrorContainer"
+      />
     </fieldset>
     <fieldset
-      className="editorview-wrapper makeStyles-editorSection-8"
+      className="makeStyles-root-10 makeStyles-editorSection-8"
     >
       <legend
-        className="editor-label"
+        className="makeStyles-label-11"
       >
         Abstract
       </legend>

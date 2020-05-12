@@ -2,9 +2,12 @@
 
 exports[`KeywordsEditorComponent renders keyword 1`] = `
 <div
-  className="keyword"
+  className="makeStyles-keyword-1"
+  data-test-id="keyword-container"
 >
-  <div />
+  <div
+    className="prosemirrorContainer"
+  />
   <button
     aria-label="delete keyword"
     className="MuiButtonBase-root MuiIconButton-root keyword-delete-cta MuiIconButton-colorPrimary MuiIconButton-sizeSmall"
@@ -29,7 +32,7 @@ exports[`KeywordsEditorComponent renders keyword 1`] = `
     >
       <svg
         aria-hidden="true"
-        className="MuiSvgIcon-root makeStyles-deleteIcon-13"
+        className="MuiSvgIcon-root makeStyles-deleteIcon-2"
         focusable="false"
         viewBox="0 0 24 24"
       >

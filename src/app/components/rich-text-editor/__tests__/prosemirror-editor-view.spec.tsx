@@ -31,7 +31,7 @@ describe('prosemirror view', () => {
     });
     expect(component).toMatchSnapshot();
     expect(EditorView).toBeCalledWith(
-      { props: {}, type: 'div' },
+      { props: { className: 'prosemirrorContainer' }, type: 'div' },
       { state: sampleState, dispatchTransaction: expect.any(Function) }
     );
   });

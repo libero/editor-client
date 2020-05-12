@@ -1,11 +1,13 @@
 import React from 'react';
 import { EditorState, Transaction } from 'prosemirror-state';
 import { EditorProps, EditorView } from 'prosemirror-view';
-
+import classnames from 'classnames';
 import 'prosemirror-view/style/prosemirror.css';
-import './prosemirror.scss';
+
+import './prosemirror-styles.scss';
 
 export interface ProseMirrorEditorViewProps {
+  className?: string;
   editorState: EditorState;
   options?: Partial<EditorProps>;
   onChange: (tx: Transaction) => void;
@@ -55,7 +57,7 @@ export class ProseMirrorEditorView extends React.Component<ProseMirrorEditorView
   render() {
     // Render just an empty div which is then used as a container for an
     // EditorView instance.
-    return <div ref={this.createEditorView} />;
+    return <div ref={this.createEditorView} className={classnames('prosemirrorContainer', this.props.className)} />;
   }
 
   private createEditorView = (element: HTMLElement) => {

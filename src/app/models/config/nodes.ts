@@ -8,7 +8,7 @@ export const nodes = {
     content: 'inline*',
     parseDOM: [{ tag: 'article-title' }],
     toDOM(node) {
-      return ['div', { class: 'article-title' }, 0];
+      return ['h1', 0];
     }
   },
 
@@ -17,7 +17,7 @@ export const nodes = {
     content: 'paragraph',
     parseDOM: [{ tag: 'abstract' }],
     toDOM(node) {
-      return ['div', { class: 'abstract' }, 0];
+      return ['p', { class: 'abstract' }, 0];
     }
   },
 

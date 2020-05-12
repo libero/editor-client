@@ -2,10 +2,10 @@ import React from 'react';
 import classNames from 'classnames';
 import { EditorState, Transaction } from 'prosemirror-state';
 
-import './styles.scss';
 import { createNewKeywordState } from '../../models/manuscript-state.factory';
 import { NewKeywordSection } from './new-keyword-section';
 import { Keyword } from './keyword';
+import { makeProsemirrorStyles } from './styles';
 
 interface KeywordsEditorProps {
   className?: string;
@@ -20,6 +20,7 @@ interface KeywordsEditorProps {
 
 export const KeywordsEditor: React.FC<KeywordsEditorProps> = (props) => {
   const { className, keywords, label, onChange, onDelete, onAdd, onFocus, onBlur } = props;
+  const classes = makeProsemirrorStyles();
   const renderKeywords = (keywords: EditorState[]) => {
     return keywords.map((keywordEditorState, index) => {
       return (
@@ -37,22 +38,13 @@ export const KeywordsEditor: React.FC<KeywordsEditorProps> = (props) => {
 
   const newKeyword = createNewKeywordState();
 
-  const ariaLabel = `Keywords group ${label}. Number of keywords ${keywords.length}`;
-
   return (
-    <fieldset
-      aria-label={ariaLabel}
-      className={classNames('editorview-wrapper', 'keywords-group-container', className)}
-      tabIndex={0}
-    >
-      {label ? <legend className="keyword-group-legend">{label}</legend> : undefined}
-      <section className="keywords-section">
+    <fieldset className={classNames(classes.keywordsEditor, className)} tabIndex={0}>
+      {label ? <legend className={classes.label}>{label}</legend> : undefined}
+      <section className={classes.keywordsSection}>
         {renderKeywords(keywords)}
-        <div className="new-keyword-container">
-          <NewKeywordSection editorState={newKeyword} onEnter={onAdd} />
-        </div>
+        <NewKeywordSection className={classes.newKeywordEditor} editorState={newKeyword} onEnter={onAdd} />
       </section>
     </fieldset>
   );
 };
-

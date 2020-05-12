@@ -6,11 +6,12 @@ import { ProseMirrorEditorView } from '../rich-text-editor/prosemirror-editor-vi
 const ENTER_KEY_CODE = 'Enter';
 
 interface NewKeywordSection {
+  className?: string;
   editorState: EditorState;
   onEnter: (editorState: EditorState) => void;
 }
 
-export const NewKeywordSection: React.FC<NewKeywordSection> = ({ editorState, onEnter }) => {
+export const NewKeywordSection: React.FC<NewKeywordSection> = ({ editorState, onEnter, className }) => {
   const [internalState, setInternalState] = useState(editorState);
 
   useEffect(() => {
@@ -25,12 +26,21 @@ export const NewKeywordSection: React.FC<NewKeywordSection> = ({ editorState, on
   );
 
   const options = {
-    handleKeyDown: (view: EditorView, event: KeyboardEvent) => {
+    handleKeyDown: (view: EditorView, event: KeyboardEvent): boolean => {
       if (event.key === ENTER_KEY_CODE) {
         onEnter(view.state);
+        return true;
       }
+      return false;
     }
   };
 
-  return <ProseMirrorEditorView options={options} editorState={internalState} onChange={updateNewKeywordState} />;
+  return (
+    <ProseMirrorEditorView
+      className={className}
+      options={options}
+      editorState={internalState}
+      onChange={updateNewKeywordState}
+    />
+  );
 };

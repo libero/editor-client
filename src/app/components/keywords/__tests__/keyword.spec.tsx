@@ -12,7 +12,9 @@ describe('KeywordsEditorComponent', () => {
     const props = {
       editorState: new EditorState(),
       onChange: jest.fn(),
-      onDelete: jest.fn()
+      onDelete: jest.fn(),
+      onFocus: jest.fn(),
+      onBlur: jest.fn()
     };
 
     const component = create(<Keyword {...props} />);
@@ -23,14 +25,16 @@ describe('KeywordsEditorComponent', () => {
     const props = {
       editorState: createNewKeywordState(),
       onChange: jest.fn(),
-      onDelete: jest.fn()
+      onDelete: jest.fn(),
+      onFocus: jest.fn(),
+      onBlur: jest.fn()
     };
 
     const component = mount(<Keyword {...props} />);
     const prosemirror = component.find(ProseMirrorEditorView).get(0);
     jest.spyOn(prosemirror['ref'].current, 'focus');
 
-    component.find('.keyword').getDOMNode().dispatchEvent(new Event('dblclick'));
+    component.find('[data-test-id="keyword-container"]').getDOMNode().dispatchEvent(new Event('dblclick'));
 
     expect(prosemirror['ref'].current.focus).toHaveBeenCalled();
   });
@@ -39,7 +43,9 @@ describe('KeywordsEditorComponent', () => {
     const props = {
       editorState: createNewKeywordState(),
       onChange: jest.fn(),
-      onDelete: jest.fn()
+      onDelete: jest.fn(),
+      onFocus: jest.fn(),
+      onBlur: jest.fn()
     };
 
     const component = mount(<Keyword {...props} />);
@@ -49,7 +55,7 @@ describe('KeywordsEditorComponent', () => {
     const mouseDownEvent = new Event('mousedown');
     jest.spyOn(mouseDownEvent, 'preventDefault');
     jest.spyOn(mouseDownEvent, 'stopPropagation');
-    component.find('.keyword').getDOMNode().dispatchEvent(mouseDownEvent);
+    component.find('[data-test-id="keyword-container"]').getDOMNode().dispatchEvent(mouseDownEvent);
 
     expect(mouseDownEvent.preventDefault).toHaveBeenCalled();
     expect(mouseDownEvent.stopPropagation).toHaveBeenCalled();
@@ -59,11 +65,13 @@ describe('KeywordsEditorComponent', () => {
     const props = {
       editorState: createNewKeywordState(),
       onChange: jest.fn(),
-      onDelete: jest.fn()
+      onDelete: jest.fn(),
+      onFocus: jest.fn(),
+      onBlur: jest.fn()
     };
 
     const component = mount(<Keyword {...props} />);
-    const containerDiv = component.find('.keyword').getDOMNode();
+    const containerDiv = component.find('[data-test-id="keyword-container"]').getDOMNode();
     jest.spyOn(containerDiv, 'removeEventListener');
     component.unmount();
     expect(containerDiv.removeEventListener).toHaveBeenCalledWith('dblclick', expect.any(Function), true);
