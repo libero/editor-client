@@ -5,6 +5,8 @@ import { rootSaga } from '../saga';
 import { manuscriptReducer } from '../reducers/manuscript.reducer';
 import { LoadableState, ManuscriptHistory } from '../utils/state.utils';
 import { manuscriptEditorReducer } from '../reducers/manuscript-editor.reducer';
+import { connectRouter, routerMiddleware } from 'connected-react-router';
+import { history } from './history';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -21,10 +23,11 @@ export interface ApplicationState {
 
 export const store = createStore(
   combineReducers({
+    router: connectRouter(history),
     manuscript: manuscriptReducer,
     manuscriptEditor: manuscriptEditorReducer
   }),
-  composeWithDevTools(applyMiddleware(sagaMiddleware))
+  composeWithDevTools(applyMiddleware(routerMiddleware(history), sagaMiddleware))
 );
 
 sagaMiddleware.run(rootSaga);
