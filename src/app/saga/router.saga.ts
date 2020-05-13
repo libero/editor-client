@@ -1,6 +1,6 @@
 import { all, takeLatest, put } from 'redux-saga/effects';
 import * as manuscriptActions from '../actions/manuscript.actions';
-import { LOCATION_CHANGE, LocationChangeAction } from 'connected-react-router';
+import { LOCATION_CHANGE, LocationChangeAction, push } from 'connected-react-router';
 import { getKeyFromQueryParams } from '../utils/url.utils';
 
 /**
@@ -14,7 +14,7 @@ export function* routerLocationChanged(action: LocationChangeAction) {
   if (articleId) {
     yield put(manuscriptActions.loadManuscriptAction.request(articleId));
   } else if (action.payload.isFirstRendering) {
-    yield put(manuscriptActions.loadManuscriptAction.request('00104'));
+    yield put(push('/?articleId=00104'));
   }
 }
 
