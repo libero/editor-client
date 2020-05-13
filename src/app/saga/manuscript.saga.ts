@@ -17,6 +17,6 @@ export function* loadManuscriptSaga(action: Action<string>) {
 export default function* () {
   yield all([
     takeLatest(manuscriptActions.loadManuscriptAction.request.type, loadManuscriptSaga),
-    takeLatest(initActions.initApplication.type, loadManuscriptSaga)
+    takeLatest(initActions.loadArticle.type, loadManuscriptSaga)
   ]);
 }

@@ -1,11 +1,8 @@
-import { fork, all, put, call } from 'redux-saga/effects';
+import { fork, all } from 'redux-saga/effects';
 import manuscriptSaga from './manuscript.saga';
-import { initApplication } from '../actions/init.actions';
-import { getArticleId } from '../api/manuscript.api';
 
 function* initialSaga() {
-  const id = yield call(getArticleId);
-  yield put(initApplication(id));
+  console.log('Initialising');
 }
 
 export function* rootSaga() {
