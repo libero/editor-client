@@ -8,10 +8,10 @@
  */
 export function getKeyFromQueryParams(params: string, key: string): string | undefined {
   let retVal = undefined;
-  const regex = new RegExp(`/A?${key}=[^&]+&*/`);
+  const regex = new RegExp(`A?${key}=([^&]+)&*`);
   const found = params.match(regex);
   if (found) {
-    retVal = found[0].split('=')[1];
+    retVal = found[1];
   }
   return retVal;
 }
