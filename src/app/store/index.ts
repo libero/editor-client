@@ -2,7 +2,6 @@ import { combineReducers, createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { rootSaga } from '../saga';
-import { routerSaga } from '../saga/router.saga';
 import { manuscriptReducer } from '../reducers/manuscript.reducer';
 import { LoadableState, ManuscriptHistory } from '../utils/state.utils';
 import { manuscriptEditorReducer } from '../reducers/manuscript-editor.reducer';
@@ -32,4 +31,3 @@ export const store = createStore(
 );
 
 sagaMiddleware.run(rootSaga);
-sagaMiddleware.run(routerSaga);
