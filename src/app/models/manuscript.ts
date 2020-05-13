@@ -1,13 +1,16 @@
 import { EditorState, Transaction } from 'prosemirror-state';
 
 export interface KeywordGroups {
-  [keywordType: string]: EditorState[];
+  [keywordType: string]: {
+    keywords: EditorState[];
+    newKeyword: EditorState;
+  };
 }
 
 export type Manuscript = {
   title: EditorState;
   abstract: EditorState;
-  keywords: KeywordGroups;
+  keywordGroups: KeywordGroups;
 };
 
 export type ManuscriptDiff = {

@@ -8,6 +8,12 @@ export interface KeywordUpdatePayload {
   change: Transaction;
 }
 
+export interface NewKeywordUpdatePayload {
+  keywordGroup: string;
+  change: Transaction;
+}
+
+
 export interface KeywordAddPayload {
   keywordGroup: string;
   keyword: EditorState;
@@ -21,7 +27,8 @@ export interface KeywordDeletePayload {
 export const loadManuscriptAction = createAsyncAction<string, Manuscript>('LOAD_MANUSCRIPT');
 export const updateTitleAction = createAction<Transaction>('UPDATE_TITLE');
 export const updateAbstractAction = createAction<Transaction>('UPDATE_ABSTRACT');
-export const updateKeywordsAction = createAction<KeywordUpdatePayload>('UPDATE_KEYWORD');
+export const updateKeywordAction = createAction<KeywordUpdatePayload>('UPDATE_KEYWORD');
+export const updateNewKeywordAction = createAction<NewKeywordUpdatePayload>('UPDATE_NEW_KEYWORD');
 export const deleteKeywordAction = createAction<KeywordDeletePayload>('DELETE_KEYWORD');
 export const addNewKeywordAction = createAction<KeywordAddPayload>('ADD_KEYWORD');
 
@@ -40,5 +47,6 @@ export type ActionType =
   | ofActionType<typeof linkAction>
   | ofActionType<typeof addNewKeywordAction>
   | ofActionType<typeof deleteKeywordAction>
-  | ofActionType<typeof updateKeywordsAction>
+  | ofActionType<typeof updateKeywordAction>
+  | ofActionType<typeof updateNewKeywordAction>
   | ofActionType<typeof updateTitleAction>;

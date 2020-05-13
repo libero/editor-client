@@ -13,4 +13,4 @@ export const getTitle = createSelector(getManuscriptData, (data) => get(data, 'p
 
 export const getAbstract = createSelector(getManuscriptData, (data) => get(data, 'present.abstract'));
 
-export const getKeywords = createSelector(getManuscriptData, (data) => get(data, 'present.keywords'));
+export const getKeywordGroups = createSelector(getManuscriptData, (data) => get(data, 'present.keywordGroups'));

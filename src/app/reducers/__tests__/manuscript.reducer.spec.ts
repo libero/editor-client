@@ -162,7 +162,7 @@ describe('manuscript reducer', () => {
       change: state.present.keywords['kwd-group'][0].tr
     };
 
-    manuscriptReducer(getLoadableStateSuccess(state), manuscriptActions.updateKeywordsAction(payload));
+    manuscriptReducer(getLoadableStateSuccess(state), manuscriptActions.updateKeywordAction(payload));
     expect(updateManuscriptState).toBeCalledWith(state, 'keywords.kwd-group.0', payload.change);
   });
 });

@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 export const useRichTextEditorStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
-    height: '100%',
     padding: theme.spacing(1, 1.5, 1.5, 1.5),
     border: `solid 1px`,
     borderColor: theme.palette.secondary.dark,

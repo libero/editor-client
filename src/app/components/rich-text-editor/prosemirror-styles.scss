@@ -1,40 +1,43 @@
+@import '../../styles/constants.module';
+
 .prosemirrorContainer {
   line-height: initial;
+  color: $text-primary;
 
   .ProseMirror {
     outline: none;
 
     h1 {
-      fontSize: 36px;
-      fontWeight: 600;
+      font-size: 36px;
+      font-weight: 600;
     }
     h2 {
-      fontSize: 26px;
-      fontWeight: 600;
+      font-size: 26px;
+      font-weight: 600;
       margin: 40px 0 16px 0;
     }
     h3 {
-      fontSize: 22px;
-      fontWeight: 600;
+      font-size: 22px;
+      font-weight: 600;
       margin: 40px 0 16px 0;
     }
     h4 {
-      fontSize: 20px;
-      fontWeight: 600;
+      font-size: 20px;
+      font-weight: 600;
       margin: 32px 0 16px 0;
     }
     h5 {
-      fontSize: 18px;
-      fontWeight: 600;
+      font-size: 18px;
+      font-weight: 600;
       margin: 32px 0 16px 0;
     }
     h6 {
-      fontSize: 16px;
-      fontWeight: 600;
+      font-size: 16px;
+      font-weight: 600;
       margin: 32px 0 16px 0;
     }
     p {
-      fontSize: 16px;
+      font-size: 16px;
       margin: 0 0 16px 0;
       &:last-child {
         margin-bottom: 0;

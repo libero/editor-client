@@ -1,6 +1,6 @@
 import {
   createAbstractState,
-  createKeywordsState,
+  createKeywordGroupsState,
   createNewKeywordState,
   createTitleState
 } from '../manuscript-state.factory';
@@ -34,7 +34,7 @@ describe('Manuscript state factory', () => {
         <kwd>Mouse</kwd>
       </kwd-group>`;
 
-    const editorState = createKeywordsState(Array.from(kwdContainer.querySelectorAll('kwd-group')));
+    const editorState = createKeywordGroupsState(Array.from(kwdContainer.querySelectorAll('kwd-group')));
     expect(editorState).toMatchSnapshot();
   });
 

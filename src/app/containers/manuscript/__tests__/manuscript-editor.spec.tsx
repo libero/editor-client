@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import { ManuscriptEditor } from '../manuscript-editor';
 import { getInitialHistory, getLoadableStateSuccess } from '../../../utils/state.utils';
 import { RichTextEditor } from '../../../components/rich-text-editor';
-import {updateAbstractAction, updateKeywordsAction, updateTitleAction} from '../../../actions/manuscript.actions';
+import {updateAbstractAction, updateKeywordAction, updateTitleAction} from '../../../actions/manuscript.actions';
 import { EditorState } from 'prosemirror-state';
 import {KeywordsEditor} from "../../../components/keywords";
 

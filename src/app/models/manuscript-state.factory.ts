@@ -46,11 +46,15 @@ export function createAbstractState(content: Node): EditorState {
   });
 }
 
-export function createKeywordsState(keywords: Element[]): KeywordGroups {
-  return keywords.reduce((acc, kwdGroup) => {
+export function createKeywordGroupsState(keywordGroupsXml: Element[]): KeywordGroups {
+  return keywordGroupsXml.reduce((acc, kwdGroup) => {
     const kwdGroupType = kwdGroup.getAttribute('kwd-group-type') || 'keywords-1';
     const moreKeywords = Array.from(kwdGroup.querySelectorAll('kwd')).map(createKeywordState);
-    acc[kwdGroupType] = (acc[kwdGroupType] || []).concat(moreKeywords);
+    acc[kwdGroupType] = {
+      keywords: moreKeywords,
+      newKeyword: createNewKeywordState()
+    };
+
     return acc;
   }, {});
 }
