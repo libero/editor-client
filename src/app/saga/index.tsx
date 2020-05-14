@@ -1,14 +1,12 @@
-import {fork, all, put} from 'redux-saga/effects';
-import manuscriptSaga from './manuscript.saga'
-import {initApplication} from "../actions/init.actions";
+import { fork, all } from 'redux-saga/effects';
+import manuscriptSaga from './manuscript.saga';
+import { routerSaga } from '../saga/router.saga';
 
+// eslint-disable-next-line require-yield
 function* initialSaga() {
-  yield put(initApplication());
+  console.log('Initialising');
 }
 
-export function *rootSaga() {
-  yield all([
-    fork(initialSaga),
-    fork(manuscriptSaga),
-  ]);
+export function* rootSaga() {
+  yield all([fork(initialSaga), fork(routerSaga), fork(manuscriptSaga)]);
 }

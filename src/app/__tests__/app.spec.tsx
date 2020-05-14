@@ -17,9 +17,14 @@ jest.mock('react-redux', () => {
 
 jest.mock('react-router-dom', () => {
   return {
-    BrowserRouter: ({ children }) => <div data-cmp="BrowserRouter">{children}</div>,
     Switch: ({ children }) => <div data-cmp="Switch">{children}</div>,
     Route: ({ children }) => <div data-cmp="Route">{children}</div>
+  };
+});
+
+jest.mock('connected-react-router', () => {
+  return {
+    ConnectedRouter: ({ children }) => <div data-cmp="ConnectedRouter">{children}</div>
   };
 });
 
@@ -27,6 +32,10 @@ jest.mock('../containers/manuscript', () => {
   return {
     ManuscriptContainer: () => <div data-cmp="manuscript"></div>
   };
+});
+
+jest.mock('../store', () => {
+  return {};
 });
 
 describe('App container', () => {
