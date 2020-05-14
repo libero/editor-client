@@ -177,6 +177,7 @@ Object {
         "type": "text",
       },
     },
+    "title": undefined,
   },
   "research-organism": Object {
     "keywords": Array [
@@ -207,6 +208,7 @@ Object {
         "type": "text",
       },
     },
+    "title": "Research organism",
   },
 }
 `;

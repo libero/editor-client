@@ -2,6 +2,7 @@ import { EditorState, Transaction } from 'prosemirror-state';
 
 export interface KeywordGroups {
   [keywordType: string]: {
+    title: string | undefined;
     keywords: EditorState[];
     newKeyword: EditorState;
   };
