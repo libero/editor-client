@@ -62,7 +62,7 @@ export const ManuscriptEditor: React.FC = () => {
           keywords={group.keywords}
           newKeyword={group.newKeyword}
           className={classes.editorSection}
-          label={groupType}
+          label={group.title || 'Keywords'}
           onNewKeywordChange={handleNewKeywordChange.bind(null, groupType)}
           onAdd={handleKeywordAdd.bind(null, groupType)}
           onChange={handleKeywordsChange.bind(null, groupType)}
