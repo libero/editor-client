@@ -50,6 +50,9 @@ Array [
       >
         Abstract
       </legend>
+      <div
+        className="prosemirrorContainer"
+      />
     </fieldset>
   </div>,
 ]

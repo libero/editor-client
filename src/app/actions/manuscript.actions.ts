@@ -13,7 +13,6 @@ export interface NewKeywordUpdatePayload {
   change: Transaction;
 }
 
-
 export interface KeywordAddPayload {
   keywordGroup: string;
   keyword: EditorState;

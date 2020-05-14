@@ -26,7 +26,8 @@ describe('Manuscript container', () => {
   it('renders when data is loaded', () => {
     const mockState = getInitialHistory({
       title: new EditorState(),
-      keywords: {}
+      abstract: new EditorState(),
+      keywordGroups: {}
     });
     const store = mockStore({
       manuscript: getLoadableStateSuccess(mockState)

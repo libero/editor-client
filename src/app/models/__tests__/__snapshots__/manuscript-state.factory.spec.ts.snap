@@ -79,15 +79,96 @@ Object {
 
 exports[`Manuscript state factory creates keywords state 1`] = `
 Object {
-  "author-keywords": Array [
-    Object {
+  "author-keywords": Object {
+    "keywords": Array [
+      Object {
+        "doc": Object {
+          "content": Array [
+            Object {
+              "text": "cerebellum",
+              "type": "text",
+            },
+          ],
+          "type": "keyword",
+        },
+        "selection": Object {
+          "anchor": 0,
+          "head": 0,
+          "type": "text",
+        },
+      },
+      Object {
+        "doc": Object {
+          "content": Array [
+            Object {
+              "text": "climbing fiber",
+              "type": "text",
+            },
+          ],
+          "type": "keyword",
+        },
+        "selection": Object {
+          "anchor": 0,
+          "head": 0,
+          "type": "text",
+        },
+      },
+      Object {
+        "doc": Object {
+          "content": Array [
+            Object {
+              "text": "reinforcement learning",
+              "type": "text",
+            },
+          ],
+          "type": "keyword",
+        },
+        "selection": Object {
+          "anchor": 0,
+          "head": 0,
+          "type": "text",
+        },
+      },
+      Object {
+        "doc": Object {
+          "content": Array [
+            Object {
+              "marks": Array [
+                Object {
+                  "type": "italic",
+                },
+              ],
+              "text": "vitae",
+              "type": "text",
+            },
+          ],
+          "type": "keyword",
+        },
+        "selection": Object {
+          "anchor": 0,
+          "head": 0,
+          "type": "text",
+        },
+      },
+      Object {
+        "doc": Object {
+          "content": Array [
+            Object {
+              "text": "Purkinje cells",
+              "type": "text",
+            },
+          ],
+          "type": "keyword",
+        },
+        "selection": Object {
+          "anchor": 0,
+          "head": 0,
+          "type": "text",
+        },
+      },
+    ],
+    "newKeyword": Object {
       "doc": Object {
-        "content": Array [
-          Object {
-            "text": "cerebellum",
-            "type": "text",
-          },
-        ],
         "type": "keyword",
       },
       "selection": Object {
@@ -96,14 +177,28 @@ Object {
         "type": "text",
       },
     },
-    Object {
+  },
+  "research-organism": Object {
+    "keywords": Array [
+      Object {
+        "doc": Object {
+          "content": Array [
+            Object {
+              "text": "Mouse",
+              "type": "text",
+            },
+          ],
+          "type": "keyword",
+        },
+        "selection": Object {
+          "anchor": 0,
+          "head": 0,
+          "type": "text",
+        },
+      },
+    ],
+    "newKeyword": Object {
       "doc": Object {
-        "content": Array [
-          Object {
-            "text": "climbing fiber",
-            "type": "text",
-          },
-        ],
         "type": "keyword",
       },
       "selection": Object {
@@ -112,78 +207,7 @@ Object {
         "type": "text",
       },
     },
-    Object {
-      "doc": Object {
-        "content": Array [
-          Object {
-            "text": "reinforcement learning",
-            "type": "text",
-          },
-        ],
-        "type": "keyword",
-      },
-      "selection": Object {
-        "anchor": 0,
-        "head": 0,
-        "type": "text",
-      },
-    },
-    Object {
-      "doc": Object {
-        "content": Array [
-          Object {
-            "marks": Array [
-              Object {
-                "type": "italic",
-              },
-            ],
-            "text": "vitae",
-            "type": "text",
-          },
-        ],
-        "type": "keyword",
-      },
-      "selection": Object {
-        "anchor": 0,
-        "head": 0,
-        "type": "text",
-      },
-    },
-    Object {
-      "doc": Object {
-        "content": Array [
-          Object {
-            "text": "Purkinje cells",
-            "type": "text",
-          },
-        ],
-        "type": "keyword",
-      },
-      "selection": Object {
-        "anchor": 0,
-        "head": 0,
-        "type": "text",
-      },
-    },
-  ],
-  "research-organism": Array [
-    Object {
-      "doc": Object {
-        "content": Array [
-          Object {
-            "text": "Mouse",
-            "type": "text",
-          },
-        ],
-        "type": "keyword",
-      },
-      "selection": Object {
-        "anchor": 0,
-        "head": 0,
-        "type": "text",
-      },
-    },
-  ],
+  },
 }
 `;
 

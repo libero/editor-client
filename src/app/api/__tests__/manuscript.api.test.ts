@@ -11,12 +11,9 @@ describe('manuscript API', () => {
 
   it('loads manuscript data', async () => {
     const result = await getManuscriptContent('SOME_ID');
-
-    expect(result).toEqual({
-      title: expect.any(EditorState),
-      abstract: expect.any(EditorState),
-      keywords: expect.any(Object)
-    });
+    expect(result.title).toEqual(expect.any(EditorState));
+    expect(result.abstract).toEqual(expect.any(EditorState));
+    expect(result.keywordGroups).toEqual(expect.any(Object));
 
     expect(axios.get).toHaveBeenCalledWith('/api/v1/articles/SOME_ID/', { headers: { Accept: 'application/xml' } });
   });

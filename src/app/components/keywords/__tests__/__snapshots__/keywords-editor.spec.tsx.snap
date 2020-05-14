@@ -14,7 +14,7 @@ exports[`KeywordsEditorComponent renders keywords 1`] = `
     className="makeStyles-keywordsSection-3"
   >
     <div
-      className="makeStyles-keyword-5"
+      className="makeStyles-keyword-6"
       data-test-id="keyword-container"
     >
       <div
@@ -44,7 +44,7 @@ exports[`KeywordsEditorComponent renders keywords 1`] = `
         >
           <svg
             aria-hidden="true"
-            className="MuiSvgIcon-root makeStyles-deleteIcon-6"
+            className="MuiSvgIcon-root makeStyles-deleteIcon-7"
             focusable="false"
             viewBox="0 0 24 24"
           >
