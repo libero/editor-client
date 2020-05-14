@@ -5,10 +5,8 @@ import { Provider } from 'react-redux';
 
 import { ManuscriptEditor } from '../manuscript-editor';
 import { getInitialHistory, getLoadableStateSuccess } from '../../../utils/state.utils';
-import { RichTextEditor } from '../../../components/rich-text-editor';
-import {updateAbstractAction, updateKeywordsAction, updateTitleAction} from '../../../actions/manuscript.actions';
+import { updateAbstractAction, updateKeywordAction, updateTitleAction } from '../../../actions/manuscript.actions';
 import { EditorState } from 'prosemirror-state';
-import {KeywordsEditor} from "../../../components/keywords";
 
 describe('manuscript editor', () => {
   const mockStore = configureMockStore([]);
@@ -17,7 +15,7 @@ describe('manuscript editor', () => {
     const mockEditorState = getInitialHistory({
       title: new EditorState(),
       abstract: new EditorState(),
-      keywords: {}
+      keywordGroups: {}
     });
     const store = mockStore({ manuscript: getLoadableStateSuccess(mockEditorState) });
     const wrapper = create(
@@ -33,7 +31,7 @@ describe('manuscript editor', () => {
     const mockEditorState = getInitialHistory({
       title: new EditorState(),
       abstract: new EditorState(),
-      keywords: {}
+      keywordGroups: {}
     });
     const store = mockStore({ manuscript: getLoadableStateSuccess(mockEditorState) });
     jest.spyOn(store, 'dispatch');
@@ -54,7 +52,7 @@ describe('manuscript editor', () => {
     const mockEditorState = getInitialHistory({
       title: new EditorState(),
       abstract: new EditorState(),
-      keywords: {}
+      keywordGroups: {}
     });
     const store = mockStore({ manuscript: getLoadableStateSuccess(mockEditorState) });
     jest.spyOn(store, 'dispatch');

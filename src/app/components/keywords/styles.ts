@@ -1,7 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles';
 import { fade } from '@material-ui/core';
 
-export const makeProsemirrorStyles = makeStyles((theme) => ({
+export const makeKeywordContainerStyles = makeStyles((theme) => ({
   keywordsEditor: {
     padding: theme.spacing(0.5, 1, 1, 1),
     border: `solid 1px`,
@@ -11,7 +11,7 @@ export const makeProsemirrorStyles = makeStyles((theme) => ({
     '&:focus': {
       outline: 'none',
       borderColor: theme.palette.primary.light,
-      '&>legend': {
+      '& > legend': {
         color: theme.palette.primary.main
       }
     }
@@ -38,6 +38,13 @@ export const makeProsemirrorStyles = makeStyles((theme) => ({
     '& .ProseMirror': {
       flex: 1
     }
+  },
+
+  focused: {
+    borderColor: theme.palette.primary.light,
+    '& > legend': {
+      color: theme.palette.primary.light
+    }
   }
 }));
 
@@ -46,15 +53,21 @@ export const useKeywordStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     background: theme.palette.primary.main,
-    color: theme.palette.primary.contrastText,
     whiteSpace: 'nowrap',
     margin: theme.spacing(0.25, 0.5),
     fontSize: '0.9rem',
     padding: theme.spacing(0.5, 0.5, 0.5, 1.5),
     borderRadius: 16,
+
+    '& .ProseMirror': {
+      color: theme.palette.primary.contrastText
+    },
+
     '&.focused': {
       background: 'transparent',
-      color: theme.palette.text.primary
+      '& .ProseMirror': {
+        color: theme.palette.text.primary
+      }
     }
   },
 

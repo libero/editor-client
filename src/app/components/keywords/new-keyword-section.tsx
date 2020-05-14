@@ -1,5 +1,5 @@
 import { EditorState, Transaction } from 'prosemirror-state';
-import React, { useCallback, useEffect, useState } from 'react';
+import React from 'react';
 import { EditorView } from 'prosemirror-view';
 import { ProseMirrorEditorView } from '../rich-text-editor/prosemirror-editor-view';
 
@@ -9,23 +9,30 @@ interface NewKeywordSection {
   className?: string;
   editorState: EditorState;
   onEnter: (editorState: EditorState) => void;
+  onChange: (change: Transaction) => void;
+  onFocus: () => void;
+  onBlur: () => void;
 }
 
-export const NewKeywordSection: React.FC<NewKeywordSection> = ({ editorState, onEnter, className }) => {
-  const [internalState, setInternalState] = useState(editorState);
-
-  useEffect(() => {
-    setInternalState(editorState);
-  }, [editorState, setInternalState]);
-
-  const updateNewKeywordState = useCallback(
-    (tr: Transaction) => {
-      setInternalState(internalState.apply(tr));
-    },
-    [internalState]
-  );
-
+export const NewKeywordSection: React.FC<NewKeywordSection> = ({
+  editorState,
+  onEnter,
+  onChange,
+  className,
+  onFocus,
+  onBlur
+}) => {
   const options = {
+    handleDOMEvents: {
+      focus: () => {
+        onFocus();
+        return false;
+      },
+      blur: () => {
+        onBlur();
+        return false;
+      }
+    },
     handleKeyDown: (view: EditorView, event: KeyboardEvent): boolean => {
       if (event.key === ENTER_KEY_CODE) {
         onEnter(view.state);
@@ -36,11 +43,6 @@ export const NewKeywordSection: React.FC<NewKeywordSection> = ({ editorState, on
   };
 
   return (
-    <ProseMirrorEditorView
-      className={className}
-      options={options}
-      editorState={internalState}
-      onChange={updateNewKeywordState}
-    />
+    <ProseMirrorEditorView className={className} options={options} editorState={editorState} onChange={onChange} />
   );
 };

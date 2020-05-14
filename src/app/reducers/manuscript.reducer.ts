@@ -12,8 +12,14 @@ import {
 import { ManuscriptHistoryState } from '../store';
 import { redoChange, undoChange, updateManuscriptState } from '../utils/history.utils';
 import { Transaction } from 'prosemirror-state';
-import { KeywordAddPayload, KeywordDeletePayload, KeywordUpdatePayload } from '../actions/manuscript.actions';
+import {
+  KeywordAddPayload,
+  KeywordDeletePayload,
+  KeywordUpdatePayload,
+  NewKeywordUpdatePayload
+} from '../actions/manuscript.actions';
 import { Action } from '../utils/action.utils';
+import { createNewKeywordState } from '../models/manuscript-state.factory';
 
 const initialState = getInitialLoadableState() as ManuscriptHistoryState;
 
@@ -51,12 +57,20 @@ export function manuscriptReducer(
         data: updateManuscriptState(state.data, 'abstract', action.payload as Transaction)
       };
 
-    case manuscriptActions.updateKeywordsAction.type:
+    case manuscriptActions.updateKeywordAction.type:
       const updatePayload = action.payload as KeywordUpdatePayload;
-      const keywordPath = ['keywords', updatePayload.keywordGroup, updatePayload.index].join('.');
+      const keywordPath = ['keywordGroups', updatePayload.keywordGroup, 'keywords', updatePayload.index].join('.');
       return {
         ...state,
         data: updateManuscriptState(state.data, keywordPath, updatePayload.change)
+      };
+
+    case manuscriptActions.updateNewKeywordAction.type:
+      const newKeywordUpdatePayload = action.payload as NewKeywordUpdatePayload;
+      const newKeywordPath = ['keywordGroups', newKeywordUpdatePayload.keywordGroup, 'newKeyword'].join('.');
+      return {
+        ...state,
+        data: updateManuscriptState(state.data, newKeywordPath, newKeywordUpdatePayload.change)
       };
 
     case manuscriptActions.deleteKeywordAction.type:
@@ -90,9 +104,9 @@ export function manuscriptReducer(
 function handleDeleteKeywordAction(state: ManuscriptHistory, action: Action<KeywordDeletePayload>): ManuscriptHistory {
   const { keywordGroup, index } = action.payload as KeywordDeletePayload;
   const newManuscript = cloneManuscript(state.present);
-  newManuscript.keywords[keywordGroup].splice(index, 1);
+  newManuscript.keywordGroups[keywordGroup].keywords.splice(index, 1);
   const newDiff = {
-    [`keywords.${keywordGroup}`]: state.present.keywords[keywordGroup]
+    [`keywordGroups.${keywordGroup}`]: state.present.keywordGroups[keywordGroup]
   };
 
   return {
@@ -105,9 +119,10 @@ function handleDeleteKeywordAction(state: ManuscriptHistory, action: Action<Keyw
 function handleAddNewKeywordAction(state: ManuscriptHistory, action: Action<KeywordAddPayload>): ManuscriptHistory {
   const { keywordGroup, keyword } = action.payload as KeywordAddPayload;
   const newManuscript = cloneManuscript(state.present);
-  newManuscript.keywords[keywordGroup].push(keyword);
+  newManuscript.keywordGroups[keywordGroup].keywords.push(keyword);
+  newManuscript.keywordGroups[keywordGroup].newKeyword = createNewKeywordState();
   const newDiff = {
-    [`keywords.${keywordGroup}`]: state.present.keywords[keywordGroup]
+    [`keywordGroups.${keywordGroup}`]: state.present.keywordGroups[keywordGroup]
   };
 
   return {

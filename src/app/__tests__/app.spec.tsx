@@ -2,6 +2,13 @@ import React from 'react';
 import { create } from 'react-test-renderer';
 import { App } from '../app';
 
+jest.mock('@material-ui/core/styles', () => {
+  return {
+    ThemeProvider: ({ children }) => <>{children}</>,
+    createMuiTheme: jest.fn()
+  };
+});
+
 jest.mock('react-redux', () => {
   return {
     Provider: ({ children }) => <>{children}</>

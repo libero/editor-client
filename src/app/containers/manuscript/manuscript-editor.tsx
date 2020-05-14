@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAbstract, getKeywords, getTitle } from '../../selectors/manuscript.selectors';
+import { getAbstract, getKeywordGroups, getTitle } from '../../selectors/manuscript.selectors';
 import * as manuscriptActions from '../../actions/manuscript.actions';
 import * as manuscriptEditorActions from '../../actions/manuscript-editor.actions';
 import { RichTextEditor } from '../../components/rich-text-editor';
@@ -16,14 +16,18 @@ export const ManuscriptEditor: React.FC = () => {
 
   const title: EditorState = useSelector(getTitle);
   const abstract: EditorState = useSelector(getAbstract);
-  const allKeywords: KeywordGroups = useSelector(getKeywords);
+  const allKeywords: KeywordGroups = useSelector(getKeywordGroups);
 
   const handleTitleChange = (diff: Transaction): void => {
     dispatch(manuscriptActions.updateTitleAction(diff));
   };
 
   const handleKeywordsChange = (keywordGroup: string, index: number, diff: Transaction): void => {
-    dispatch(manuscriptActions.updateKeywordsAction({ keywordGroup, index, change: diff }));
+    dispatch(manuscriptActions.updateKeywordAction({ keywordGroup, index, change: diff }));
+  };
+
+  const handleNewKeywordChange = (keywordGroup: string, diff: Transaction): void => {
+    dispatch(manuscriptActions.updateNewKeywordAction({ keywordGroup, change: diff }));
   };
 
   const handleAbstractChange = (diff: Transaction): void => {
@@ -46,18 +50,20 @@ export const ManuscriptEditor: React.FC = () => {
     dispatch(manuscriptEditorActions.removeFocusAction());
   };
 
-  const handleKeywordFocus = (group: string, index: number): void => {
-    handleFocus(['keywords', group, index].join('.'));
+  const handleKeywordFocus = (group: string, index: string): void => {
+    handleFocus(['keywordGroups', group, index].join('.'));
   };
 
   const renderKeywords = (keywordGroups: KeywordGroups): JSX.Element[] => {
-    return Object.entries(keywordGroups).map(([groupType, keywords]) => {
+    return Object.entries(keywordGroups).map(([groupType, group]) => {
       return (
         <KeywordsEditor
           key={groupType}
-          keywords={keywords}
+          keywords={group.keywords}
+          newKeyword={group.newKeyword}
           className={classes.editorSection}
           label={groupType}
+          onNewKeywordChange={handleNewKeywordChange.bind(null, groupType)}
           onAdd={handleKeywordAdd.bind(null, groupType)}
           onChange={handleKeywordsChange.bind(null, groupType)}
           onDelete={handleKeywordDelete.bind(null, groupType)}

@@ -1,5 +1,11 @@
 import { getInitialHistory, getInitialLoadableState } from '../../utils/state.utils';
-import { getAbstract, getKeywords, getManuscriptData, getTitle, isManuscriptLoaded } from '../manuscript.selectors';
+import {
+  getAbstract,
+  getKeywordGroups,
+  getManuscriptData,
+  getTitle,
+  isManuscriptLoaded
+} from '../manuscript.selectors';
 import { cloneDeep } from 'lodash';
 import { EditorState } from 'prosemirror-state';
 import { Manuscript } from '../../models/manuscript';
@@ -18,7 +24,7 @@ describe('manuscript selectors', () => {
     expect(getManuscriptData(state)).toBe(state.manuscript.data);
     expect(getTitle(state)).toBe(state.manuscript.data.present.title);
     expect(getAbstract(state)).toBe(state.manuscript.data.present.abstract);
-    expect(getKeywords(state)).toBe(state.manuscript.data.present.keywords);
+    expect(getKeywordGroups(state)).toBe(state.manuscript.data.present.keywordGroups);
   });
 
   it('gets manuscript load status', () => {
@@ -34,6 +40,6 @@ function givenManuscript(): Manuscript {
   return {
     title: new EditorState(),
     abstract: new EditorState(),
-    keywords: {}
+    keywordGroups: {}
   };
 }

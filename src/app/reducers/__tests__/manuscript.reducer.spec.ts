@@ -45,7 +45,7 @@ describe('manuscript reducer', () => {
     const state = getInitialHistory({
       title: undefined,
       abstract: undefined,
-      keywords: {}
+      keywordGroups: {}
     });
     const updatedState = cloneDeep(state);
     updatedState.present.title = new EditorState();
@@ -62,7 +62,7 @@ describe('manuscript reducer', () => {
     const state = getInitialHistory({
       title: undefined,
       abstract: undefined,
-      keywords: {}
+      keywordGroups: {}
     });
 
     const updatedState = cloneDeep(state);
@@ -78,7 +78,7 @@ describe('manuscript reducer', () => {
     const initialHistory = getInitialHistory({
       title: new EditorState(),
       abstract: undefined,
-      keywords: {}
+      keywordGroups: {}
     });
     const state = getLoadableStateSuccess(initialHistory);
 
@@ -95,7 +95,7 @@ describe('manuscript reducer', () => {
     const initialHistory = getInitialHistory({
       title: new EditorState(),
       abstract: undefined,
-      keywords: {}
+      keywordGroups: {}
     });
     const state = getLoadableStateSuccess(initialHistory);
     state.data.future.push({ title: undefined });
@@ -111,13 +111,16 @@ describe('manuscript reducer', () => {
     const state = getInitialHistory({
       title: new EditorState(),
       abstract: undefined,
-      keywords: {
-        'kwd-group': [new EditorState(), new EditorState()]
+      keywordGroups: {
+        'kwd-group': {
+          keywords: [new EditorState(), new EditorState()],
+          newKeyword: new EditorState()
+        }
       }
     });
 
     const expectedState = getInitialHistory(cloneManuscript(state.present));
-    expectedState.present.keywords['kwd-group'].splice(1, 1);
+    expectedState.present.keywordGroups['kwd-group'].keywords.splice(1, 1);
 
     const payload = { keywordGroup: 'kwd-group', index: 1 };
     const actualSate = manuscriptReducer(
@@ -131,38 +134,65 @@ describe('manuscript reducer', () => {
     const state = getInitialHistory({
       title: new EditorState(),
       abstract: undefined,
-      keywords: {
-        'kwd-group': [new EditorState()]
+      keywordGroups: {
+        'kwd-group': {
+          keywords: [new EditorState()],
+          newKeyword: new EditorState()
+        }
       }
     });
 
     const expectedState = getInitialHistory(cloneManuscript(state.present));
-    expectedState.present.keywords['kwd-group'].splice(1, 1);
+    expectedState.present.keywordGroups['kwd-group'].keywords.splice(1, 1);
 
     const payload = { keywordGroup: 'kwd-group', keyword: new EditorState() };
     const actualState = manuscriptReducer(
       getLoadableStateSuccess(state),
       manuscriptActions.addNewKeywordAction(payload)
     );
-    expect(actualState.data.present.keywords['kwd-group'][0]).toEqual(payload.keyword);
+    expect(actualState.data.present.keywordGroups['kwd-group'].keywords[0]).toEqual(payload.keyword);
   });
 
   it('should update keyword', () => {
     const state = getInitialHistory({
       title: new EditorState(),
       abstract: undefined,
-      keywords: {
-        'kwd-group': [new EditorState()]
+      keywordGroups: {
+        'kwd-group': {
+          keywords: [new EditorState()],
+          newKeyword: new EditorState()
+        }
       }
     });
 
     const payload = {
       keywordGroup: 'kwd-group',
       index: 0,
-      change: state.present.keywords['kwd-group'][0].tr
+      change: state.present.keywordGroups['kwd-group'].keywords[0].tr
     };
 
-    manuscriptReducer(getLoadableStateSuccess(state), manuscriptActions.updateKeywordsAction(payload));
-    expect(updateManuscriptState).toBeCalledWith(state, 'keywords.kwd-group.0', payload.change);
+    manuscriptReducer(getLoadableStateSuccess(state), manuscriptActions.updateKeywordAction(payload));
+    expect(updateManuscriptState).toBeCalledWith(state, 'keywordGroups.kwd-group.keywords.0', payload.change);
+  });
+
+  it('should update new keyword', () => {
+    const state = getInitialHistory({
+      title: new EditorState(),
+      abstract: undefined,
+      keywordGroups: {
+        'kwd-group': {
+          keywords: [new EditorState()],
+          newKeyword: new EditorState()
+        }
+      }
+    });
+
+    const payload = {
+      keywordGroup: 'kwd-group',
+      change: state.present.keywordGroups['kwd-group'].newKeyword.tr
+    };
+
+    manuscriptReducer(getLoadableStateSuccess(state), manuscriptActions.updateNewKeywordAction(payload));
+    expect(updateManuscriptState).toBeCalledWith(state, 'keywordGroups.kwd-group.newKeyword', payload.change);
   });
 });

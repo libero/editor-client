@@ -4,11 +4,13 @@ const tocWidth = 240;
 
 export const useManuscriptStyles = makeStyles((theme) => ({
   content: {
-    maxWidth: 700,
+    maxWidth: 700 + tocWidth,
+    boxSizing: 'border-box',
     width: '100%',
+    padding: theme.spacing(1),
     margin: '0 auto',
     [theme.breakpoints.up('sm')]: {
-      paddingLeft: tocWidth
+      paddingLeft: tocWidth + theme.spacing()
     }
   },
   editorSection: {

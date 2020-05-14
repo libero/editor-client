@@ -1,0 +1,17 @@
+$primary-main: #087acc;
+$primary-contrast-text: #fff;
+
+$secondary-main: #f7f7f7;
+
+$text-primary: #212121;
+$text-secondary: #767676;
+
+:export {
+  primary-main: $primary-main;
+  primary-contrast-text: $primary-contrast-text;
+
+  secondary-main: $secondary-main;
+
+  text-primary: $text-primary;
+  text-secondary: $text-secondary;
+}
