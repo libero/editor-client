@@ -2,7 +2,7 @@
 
 exports[`App container renders 1`] = `
 <div
-  data-cmp="BrowserRouter"
+  data-cmp="ConnectedRouter"
 >
   <main
     className="app-container"

@@ -1,18 +1,20 @@
 import React from 'react';
 
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './store';
+import { history } from './store/history';
 import './app.scss';
 import { ManuscriptContainer } from './containers/manuscript';
 import { ThemeProvider } from '@material-ui/core/styles';
 import { theme } from './styles/theme';
+import { ConnectedRouter } from 'connected-react-router';
 
 export const App: React.FC = () => {
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <Router>
+        <ConnectedRouter history={history}>
           <main className="app-container" role="application">
             <Switch>
               <Route path="/">
@@ -20,7 +22,7 @@ export const App: React.FC = () => {
               </Route>
             </Switch>
           </main>
-        </Router>
+        </ConnectedRouter>
       </ThemeProvider>
     </Provider>
   );
