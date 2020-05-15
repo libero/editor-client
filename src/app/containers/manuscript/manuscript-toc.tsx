@@ -13,7 +13,10 @@ export const ManuscriptTOC: React.FC<ManuscriptTOCProps> = (props) => {
 
   const drawer = (
     <React.Fragment>
-      <div className={classes.toolbarPlaceholder} aria-hidden="true" />
+      <section className={classes.toolbarPlaceholder} aria-hidden="true">
+        <h1 className={classes.title}>Libero Editor</h1>
+        <h3 className={classes.version}>v0.0.1</h3>
+      </section>
       <Divider />
       <List>
         {['Title', 'Abstract'].map((text, index) => (

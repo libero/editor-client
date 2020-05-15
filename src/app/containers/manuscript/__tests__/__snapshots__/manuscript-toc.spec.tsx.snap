@@ -11,10 +11,21 @@ exports[`<ManuscriptTOC> renders 1`] = `
     <div
       data-cmp="drawer"
     >
-      <div
+      <section
         aria-hidden="true"
         className="makeStyles-toolbarPlaceholder-3"
-      />
+      >
+        <h1
+          className="makeStyles-title-4"
+        >
+          Libero Editor
+        </h1>
+        <h3
+          className="makeStyles-version-5"
+        >
+          v0.0.1
+        </h3>
+      </section>
       <div
         data-cmp="divider"
       />
@@ -44,10 +55,21 @@ exports[`<ManuscriptTOC> renders 1`] = `
     <div
       data-cmp="drawer"
     >
-      <div
+      <section
         aria-hidden="true"
         className="makeStyles-toolbarPlaceholder-3"
-      />
+      >
+        <h1
+          className="makeStyles-title-4"
+        >
+          Libero Editor
+        </h1>
+        <h3
+          className="makeStyles-version-5"
+        >
+          v0.0.1
+        </h3>
+      </section>
       <div
         data-cmp="divider"
       />

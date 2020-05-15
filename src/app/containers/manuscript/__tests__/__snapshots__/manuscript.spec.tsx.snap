@@ -24,17 +24,17 @@ Array [
     />
   </nav>,
   <div
-    className="makeStyles-content-7"
+    className="makeStyles-content-9"
   >
     <div
       aria-hidden="true"
-      className="makeStyles-toolbarPlaceholder-9"
+      className="makeStyles-toolbarPlaceholder-11"
     />
     <fieldset
-      className="makeStyles-root-10 makeStyles-editorSection-8"
+      className="makeStyles-root-12 makeStyles-editorSection-10"
     >
       <legend
-        className="makeStyles-label-11"
+        className="makeStyles-label-13"
       >
         Title
       </legend>
@@ -43,10 +43,10 @@ Array [
       />
     </fieldset>
     <fieldset
-      className="makeStyles-root-10 makeStyles-editorSection-8"
+      className="makeStyles-root-12 makeStyles-editorSection-10"
     >
       <legend
-        className="makeStyles-label-11"
+        className="makeStyles-label-13"
       >
         Abstract
       </legend>

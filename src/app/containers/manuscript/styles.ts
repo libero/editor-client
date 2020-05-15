@@ -47,6 +47,25 @@ export const useOutlinePanelStyles = makeStyles((theme) => ({
     width: tocWidth
   },
   toolbarPlaceholder: {
-    ...theme.mixins.toolbar
+    ...theme.mixins.toolbar,
+    display: 'flex',
+    'flex-grow': 1,
+    'max-height': '64px',
+    'align-items': 'flex-start',
+    'padding-left': '16px',
+    'flex-direction': 'column',
+    'justify-content': 'center'
+  },
+  title: {
+    color: 'rgba(0,0,0,0.54)',
+    'margin-bottom': 4,
+    'font-size': '20px',
+    'font-weight': '500',
+    'line-height': '32px'
+  },
+  version: {
+    color: 'rgba(0,0,0,0.54)',
+    'font-size': '12px',
+    'font-weight': '400'
   }
 }));
