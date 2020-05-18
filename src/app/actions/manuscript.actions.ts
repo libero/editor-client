@@ -38,6 +38,7 @@ export const addNewKeywordAction = createAction<KeywordAddPayload>('ADD_KEYWORD'
 export const updateAuthorAction = createAction<Person>('UPDATE_AUTHOR');
 export const addAuthorAction = createAction<Person>('ADD_AUTHOR');
 export const moveAuthorAction = createAction<MoveAuthorPayload>('MOVE_AUTHOR');
+export const deleteAuthorAction = createAction<Person>('DELETE_AUTHOR');
 
 export const undoAction = createAction<void>('UNDO');
 export const redoAction = createAction<void>('REDO');
@@ -50,6 +51,7 @@ export type ActionType =
   | ofActionType<typeof updateAuthorAction>
   | ofActionType<typeof addAuthorAction>
   | ofActionType<typeof moveAuthorAction>
+  | ofActionType<typeof deleteAuthorAction>
   | ofActionType<typeof undoAction>
   | ofActionType<typeof redoAction>
   | ofActionType<typeof boldAction>

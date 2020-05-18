@@ -25,5 +25,6 @@ export type Manuscript = {
 };
 
 export type ManuscriptDiff = {
-  [K in keyof Manuscript]?: (Manuscript[K] extends EditorState ? Transaction : Manuscript[K]) | undefined;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [path: string]: Array<any> | Record<string, any> | Transaction | undefined;
 };

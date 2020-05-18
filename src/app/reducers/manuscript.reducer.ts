@@ -70,6 +70,12 @@ export function manuscriptReducer(
         data: handleAuthorMove(state.data, action as Action<MoveAuthorPayload>)
       };
 
+    case manuscriptActions.deleteAuthorAction.type:
+      return {
+        ...state,
+        data: handleAuthorDelete(state.data, action as Action<Person>)
+      };
+
     case manuscriptActions.updateAbstractAction.type:
       return {
         ...state,
@@ -162,6 +168,23 @@ function handleAuthorMove(state: ManuscriptHistory, action: Action<MoveAuthorPay
   const newManuscript = cloneManuscript(state.present);
   newManuscript.authors.splice(currentIndex, 1);
   newManuscript.authors.splice(index, 0, author);
+
+  return {
+    past: [...state.past, newDiff],
+    present: newManuscript,
+    future: []
+  };
+}
+
+function handleAuthorDelete(state: ManuscriptHistory, action: Action<Person>): ManuscriptHistory {
+  const currentIndex = state.present.authors.findIndex(({ _id }) => _id === action.payload._id);
+
+  const newDiff = {
+    authors: state.present.authors
+  };
+
+  const newManuscript = cloneManuscript(state.present);
+  newManuscript.authors.splice(currentIndex, 1);
 
   return {
     past: [...state.past, newDiff],
