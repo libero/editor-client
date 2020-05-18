@@ -15,7 +15,7 @@ export const ManuscriptTOC: React.FC<ManuscriptTOCProps> = (props) => {
     <React.Fragment>
       <section className={classes.toolbarPlaceholder} aria-hidden="true">
         <h1 className={classes.title}>Libero Editor</h1>
-        <h3 className={classes.version}>v0.0.1</h3>
+        <h3 className={classes.version}>{`v${process.env.REACT_APP_VERSION}`}</h3>
       </section>
       <Divider />
       <List>

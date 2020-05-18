@@ -11,8 +11,10 @@ jest.mock('@material-ui/core');
 
 describe('<ManuscriptTOC>', () => {
   const mockStore = configureMockStore([]);
+  const OLD_VERSION = process.env.REACT_APP_VERSION;
 
   beforeEach(() => {
+    process.env.REACT_APP_VERSION = '0.0.0-test';
     (Hidden as jest.Mock).mockImplementation(({ children }) => <div data-cmp="hidden">{children}</div>);
     (Drawer['render'] as jest.Mock).mockImplementation(({ children }) => <div data-cmp="drawer">{children}</div>);
     (Divider['render'] as jest.Mock).mockImplementation(({ children }) => <div data-cmp="divider">{children}</div>);
@@ -24,6 +26,7 @@ describe('<ManuscriptTOC>', () => {
   });
 
   afterEach(() => {
+    process.env.REACT_APP_VERSION = OLD_VERSION;
     (Hidden as jest.Mock).mockReset();
     (Drawer['render'] as jest.Mock).mockReset();
     (Divider['render'] as jest.Mock).mockReset();
