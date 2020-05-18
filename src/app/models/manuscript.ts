@@ -8,8 +8,18 @@ export interface KeywordGroups {
   };
 }
 
+export interface Person {
+  readonly _id: string;
+  firstName: string;
+  lastName: string;
+  suffix?: string;
+  email?: string;
+  orcId?: string;
+}
+
 export type Manuscript = {
   title: EditorState;
+  authors: Person[];
   abstract: EditorState;
   keywordGroups: KeywordGroups;
 };

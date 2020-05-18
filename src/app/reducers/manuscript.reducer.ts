@@ -1,4 +1,4 @@
-import { Manuscript } from '../models/manuscript';
+import { Manuscript, Person } from '../models/manuscript';
 import * as manuscriptActions from '../actions/manuscript.actions';
 import {
   cloneManuscript,
@@ -16,6 +16,7 @@ import {
   KeywordAddPayload,
   KeywordDeletePayload,
   KeywordUpdatePayload,
+  MoveAuthorPayload,
   NewKeywordUpdatePayload
 } from '../actions/manuscript.actions';
 import { Action } from '../utils/action.utils';
@@ -49,6 +50,24 @@ export function manuscriptReducer(
       return {
         ...state,
         data: updateManuscriptState(state.data, 'title', action.payload as Transaction)
+      };
+
+    case manuscriptActions.updateAuthorAction.type:
+      return {
+        ...state,
+        data: handleAuthorUpdate(state.data, action as Action<Person>)
+      };
+
+    case manuscriptActions.addAuthorAction.type:
+      return {
+        ...state,
+        data: handleAuthorAdd(state.data, action as Action<Person>)
+      };
+
+    case manuscriptActions.moveAuthorAction.type:
+      return {
+        ...state,
+        data: handleAuthorMove(state.data, action as Action<MoveAuthorPayload>)
       };
 
     case manuscriptActions.updateAbstractAction.type:
@@ -99,6 +118,56 @@ export function manuscriptReducer(
     default:
       return state;
   }
+}
+
+function handleAuthorUpdate(state: ManuscriptHistory, action: Action<Person>): ManuscriptHistory {
+  const authorIndex = state.present.authors.findIndex(({ _id }) => _id === action.payload._id);
+
+  const newDiff = {
+    [`authors.${authorIndex}`]: state.present.authors[authorIndex]
+  };
+
+  const newManuscript = cloneManuscript(state.present);
+  newManuscript.authors[authorIndex] = action.payload;
+
+  return {
+    past: [...state.past, newDiff],
+    present: newManuscript,
+    future: []
+  };
+}
+
+function handleAuthorAdd(state: ManuscriptHistory, action: Action<Person>): ManuscriptHistory {
+  const newDiff = {
+    authors: state.present.authors
+  };
+
+  const newManuscript = cloneManuscript(state.present);
+  newManuscript.authors.push(action.payload);
+  return {
+    past: [...state.past, newDiff],
+    present: newManuscript,
+    future: []
+  };
+}
+
+function handleAuthorMove(state: ManuscriptHistory, action: Action<MoveAuthorPayload>): ManuscriptHistory {
+  const { index, author } = action.payload;
+  const currentIndex = state.present.authors.findIndex(({ _id }) => _id === author._id);
+
+  const newDiff = {
+    authors: state.present.authors
+  };
+
+  const newManuscript = cloneManuscript(state.present);
+  newManuscript.authors.splice(currentIndex, 1);
+  newManuscript.authors.splice(index, 0, author);
+
+  return {
+    past: [...state.past, newDiff],
+    present: newManuscript,
+    future: []
+  };
 }
 
 function handleDeleteKeywordAction(state: ManuscriptHistory, action: Action<KeywordDeletePayload>): ManuscriptHistory {
