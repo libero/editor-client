@@ -83,7 +83,7 @@ describe('manuscript reducer', () => {
       keywordGroups: {},
       authors: []
     });
-    const newAuthor = { _id: 'newId', firstName: 'Jules', lastName: 'Verne' };
+    const newAuthor = { id: 'newId', firstName: 'Jules', lastName: 'Verne' };
     const updatedState = cloneDeep(state);
     updatedState.present.authors = [newAuthor];
     updatedState.past = [{ authors: [] }];
@@ -98,9 +98,9 @@ describe('manuscript reducer', () => {
       title: undefined,
       abstract: undefined,
       keywordGroups: {},
-      authors: [{ _id: 'newId', firstName: 'Jules', lastName: 'Verne' }]
+      authors: [{ id: 'newId', firstName: 'Jules', lastName: 'Verne' }]
     });
-    const updatedAuthor = { _id: 'newId', firstName: 'Jules Gabriel', lastName: 'Verne' };
+    const updatedAuthor = { id: 'newId', firstName: 'Jules Gabriel', lastName: 'Verne' };
     const updatedState = cloneDeep(state);
     updatedState.present.authors = [updatedAuthor];
     updatedState.past = [{ 'authors.0': state.present.authors[0] }];
@@ -116,8 +116,8 @@ describe('manuscript reducer', () => {
       abstract: undefined,
       keywordGroups: {},
       authors: [
-        { _id: 'id1', firstName: 'Jules', lastName: 'Verne' },
-        { _id: 'id2', firstName: 'H G', lastName: 'Wells' }
+        { id: 'id1', firstName: 'Jules', lastName: 'Verne' },
+        { id: 'id2', firstName: 'H G', lastName: 'Wells' }
       ]
     });
 
@@ -135,8 +135,8 @@ describe('manuscript reducer', () => {
       abstract: undefined,
       keywordGroups: {},
       authors: [
-        { _id: 'id1', firstName: 'Jules', lastName: 'Verne' },
-        { _id: 'id2', firstName: 'H G', lastName: 'Wells' }
+        { id: 'id1', firstName: 'Jules', lastName: 'Verne' },
+        { id: 'id2', firstName: 'H G', lastName: 'Wells' }
       ]
     });
 

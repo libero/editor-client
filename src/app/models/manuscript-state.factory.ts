@@ -33,7 +33,7 @@ export function createTitleState(content: Node): EditorState {
 
 export function createAuthorsState(authorsXml: Element[]): Person[] {
   return authorsXml.map((author) => ({
-    _id: uuidv4(),
+    id: author.getAttribute('id') || uuidv4(),
     firstName: getTextContentFromPath(author, 'name > given-names'),
     lastName: getTextContentFromPath(author, 'name > surname'),
     suffix: getTextContentFromPath(author, 'name > suffix'),

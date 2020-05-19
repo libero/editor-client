@@ -9,7 +9,7 @@ export interface KeywordGroups {
 }
 
 export interface Person {
-  readonly _id: string;
+  readonly id: string;
   firstName: string;
   lastName: string;
   suffix?: string;

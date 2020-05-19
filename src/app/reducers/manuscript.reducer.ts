@@ -127,7 +127,7 @@ export function manuscriptReducer(
 }
 
 function handleAuthorUpdate(state: ManuscriptHistory, action: Action<Person>): ManuscriptHistory {
-  const authorIndex = state.present.authors.findIndex(({ _id }) => _id === action.payload._id);
+  const authorIndex = state.present.authors.findIndex(({ id }) => id === action.payload.id);
 
   const newDiff = {
     [`authors.${authorIndex}`]: state.present.authors[authorIndex]
@@ -159,7 +159,7 @@ function handleAuthorAdd(state: ManuscriptHistory, action: Action<Person>): Manu
 
 function handleAuthorMove(state: ManuscriptHistory, action: Action<MoveAuthorPayload>): ManuscriptHistory {
   const { index, author } = action.payload;
-  const currentIndex = state.present.authors.findIndex(({ _id }) => _id === author._id);
+  const currentIndex = state.present.authors.findIndex(({ id }) => id === author.id);
 
   const newDiff = {
     authors: state.present.authors
@@ -177,7 +177,7 @@ function handleAuthorMove(state: ManuscriptHistory, action: Action<MoveAuthorPay
 }
 
 function handleAuthorDelete(state: ManuscriptHistory, action: Action<Person>): ManuscriptHistory {
-  const currentIndex = state.present.authors.findIndex(({ _id }) => _id === action.payload._id);
+  const currentIndex = state.present.authors.findIndex(({ id }) => id === action.payload.id);
 
   const newDiff = {
     authors: state.present.authors
