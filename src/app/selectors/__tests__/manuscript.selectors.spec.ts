@@ -1,6 +1,7 @@
 import { getInitialHistory, getInitialLoadableState } from '../../utils/state.utils';
 import {
-  getAbstract, getAuthors,
+  getAbstract,
+  getAuthors,
   getKeywordGroups,
   getManuscriptData,
   getTitle,
