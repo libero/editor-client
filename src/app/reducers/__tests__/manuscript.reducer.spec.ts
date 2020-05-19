@@ -44,6 +44,7 @@ describe('manuscript reducer', () => {
   it('should update title', () => {
     const state = getInitialHistory({
       title: undefined,
+      authors: [],
       abstract: undefined,
       keywordGroups: {}
     });
@@ -62,7 +63,8 @@ describe('manuscript reducer', () => {
     const state = getInitialHistory({
       title: undefined,
       abstract: undefined,
-      keywordGroups: {}
+      keywordGroups: {},
+      authors: []
     });
 
     const updatedState = cloneDeep(state);
@@ -74,11 +76,84 @@ describe('manuscript reducer', () => {
     expect(newState.data.present.title).toBe(updatedState.present.title);
   });
 
+  it('should add new author', () => {
+    const state = getInitialHistory({
+      title: undefined,
+      abstract: undefined,
+      keywordGroups: {},
+      authors: []
+    });
+    const newAuthor = { id: 'newId', firstName: 'Jules', lastName: 'Verne' };
+    const updatedState = cloneDeep(state);
+    updatedState.present.authors = [newAuthor];
+    updatedState.past = [{ authors: [] }];
+
+    const action = manuscriptActions.addAuthorAction(newAuthor);
+    const newState = manuscriptReducer(getLoadableStateSuccess(state), action);
+    expect(newState.data).toEqual(updatedState);
+  });
+
+  it('should update existing author', () => {
+    const state = getInitialHistory({
+      title: undefined,
+      abstract: undefined,
+      keywordGroups: {},
+      authors: [{ id: 'newId', firstName: 'Jules', lastName: 'Verne' }]
+    });
+    const updatedAuthor = { id: 'newId', firstName: 'Jules Gabriel', lastName: 'Verne' };
+    const updatedState = cloneDeep(state);
+    updatedState.present.authors = [updatedAuthor];
+    updatedState.past = [{ 'authors.0': state.present.authors[0] }];
+
+    const action = manuscriptActions.updateAuthorAction(updatedAuthor);
+    const newState = manuscriptReducer(getLoadableStateSuccess(state), action);
+    expect(newState.data).toEqual(updatedState);
+  });
+
+  it('should move author', () => {
+    const state = getInitialHistory({
+      title: undefined,
+      abstract: undefined,
+      keywordGroups: {},
+      authors: [
+        { id: 'id1', firstName: 'Jules', lastName: 'Verne' },
+        { id: 'id2', firstName: 'H G', lastName: 'Wells' }
+      ]
+    });
+
+    const updatedState = cloneDeep(state);
+    updatedState.present.authors.reverse();
+    updatedState.past = [{ authors: state.present.authors }];
+    const action = manuscriptActions.moveAuthorAction({ index: 1, author: state.present.authors[0] });
+    const newState = manuscriptReducer(getLoadableStateSuccess(state), action);
+    expect(newState.data).toEqual(updatedState);
+  });
+
+  it('should delete author', () => {
+    const state = getInitialHistory({
+      title: undefined,
+      abstract: undefined,
+      keywordGroups: {},
+      authors: [
+        { id: 'id1', firstName: 'Jules', lastName: 'Verne' },
+        { id: 'id2', firstName: 'H G', lastName: 'Wells' }
+      ]
+    });
+
+    const updatedState = cloneDeep(state);
+    updatedState.present.authors = updatedState.present.authors.slice(1);
+    updatedState.past = [{ authors: state.present.authors }];
+    const action = manuscriptActions.deleteAuthorAction(state.present.authors[0]);
+    const newState = manuscriptReducer(getLoadableStateSuccess(state), action);
+    expect(newState.data).toEqual(updatedState);
+  });
+
   it('should undo last changes', () => {
     const initialHistory = getInitialHistory({
       title: new EditorState(),
       abstract: undefined,
-      keywordGroups: {}
+      keywordGroups: {},
+      authors: []
     });
     const state = getLoadableStateSuccess(initialHistory);
 
@@ -95,7 +170,8 @@ describe('manuscript reducer', () => {
     const initialHistory = getInitialHistory({
       title: new EditorState(),
       abstract: undefined,
-      keywordGroups: {}
+      keywordGroups: {},
+      authors: []
     });
     const state = getLoadableStateSuccess(initialHistory);
     state.data.future.push({ title: undefined });
@@ -110,9 +186,11 @@ describe('manuscript reducer', () => {
   it('should delete keyword', () => {
     const state = getInitialHistory({
       title: new EditorState(),
+      authors: [],
       abstract: undefined,
       keywordGroups: {
         'kwd-group': {
+          title: undefined,
           keywords: [new EditorState(), new EditorState()],
           newKeyword: new EditorState()
         }
@@ -134,8 +212,10 @@ describe('manuscript reducer', () => {
     const state = getInitialHistory({
       title: new EditorState(),
       abstract: undefined,
+      authors: [],
       keywordGroups: {
         'kwd-group': {
+          title: undefined,
           keywords: [new EditorState()],
           newKeyword: new EditorState()
         }
@@ -157,8 +237,10 @@ describe('manuscript reducer', () => {
     const state = getInitialHistory({
       title: new EditorState(),
       abstract: undefined,
+      authors: [],
       keywordGroups: {
         'kwd-group': {
+          title: undefined,
           keywords: [new EditorState()],
           newKeyword: new EditorState()
         }
@@ -179,8 +261,10 @@ describe('manuscript reducer', () => {
     const state = getInitialHistory({
       title: new EditorState(),
       abstract: undefined,
+      authors: [],
       keywordGroups: {
         'kwd-group': {
+          title: undefined,
           keywords: [new EditorState()],
           newKeyword: new EditorState()
         }

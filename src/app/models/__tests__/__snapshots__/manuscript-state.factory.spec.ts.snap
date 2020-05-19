@@ -64,6 +64,19 @@ Object {
 }
 `;
 
+exports[`Manuscript state factory creates authors state 1`] = `
+Array [
+  Object {
+    "email": "f.atherden@elifesciences.org",
+    "firstName": "Fred",
+    "id": "unique_id",
+    "lastName": "Atherden",
+    "orcId": "https://orcid.org/0000-0002-6048-1470",
+    "suffix": "Capt.",
+  },
+]
+`;
+
 exports[`Manuscript state factory creates empty keyword state 1`] = `
 Object {
   "doc": Object {

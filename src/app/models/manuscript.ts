@@ -8,12 +8,23 @@ export interface KeywordGroups {
   };
 }
 
+export interface Person {
+  readonly id: string;
+  firstName: string;
+  lastName: string;
+  suffix?: string;
+  email?: string;
+  orcId?: string;
+}
+
 export type Manuscript = {
   title: EditorState;
+  authors: Person[];
   abstract: EditorState;
   keywordGroups: KeywordGroups;
 };
 
 export type ManuscriptDiff = {
-  [K in keyof Manuscript]?: (Manuscript[K] extends EditorState ? Transaction : Manuscript[K]) | undefined;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [path: string]: Array<any> | Record<string, any> | Transaction | undefined;
 };

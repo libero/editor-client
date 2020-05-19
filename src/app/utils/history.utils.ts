@@ -64,7 +64,7 @@ function invertDiff(manuscript: Manuscript, diff: ManuscriptDiff): ManuscriptDif
     }
 
     if (diff[key] instanceof Transaction) {
-      const invertedSteps = diff[key].steps.map((step) => step.invert(diff[key].doc));
+      const invertedSteps = (diff[key] as Transaction).steps.map((step) => step.invert((diff[key] as Transaction).doc));
       const invertedTransaction = get(manuscript, key).tr;
       invertedSteps.reverse().forEach((step) => invertedTransaction.maybeStep(step));
       acc[key] = invertedTransaction;
@@ -80,7 +80,7 @@ function applyDiffToManuscript(manuscript: Manuscript, diff: ManuscriptDiff): Ma
 
   Object.keys(diff).forEach((changePath) => {
     if (diff[changePath] instanceof Transaction) {
-      const updatedState = (get(newManuscript, changePath) as EditorState).apply(diff[changePath]);
+      const updatedState = (get(newManuscript, changePath) as EditorState).apply(diff[changePath] as Transaction);
       set(newManuscript, changePath, updatedState);
     } else {
       set(newManuscript, changePath, diff[changePath]);
