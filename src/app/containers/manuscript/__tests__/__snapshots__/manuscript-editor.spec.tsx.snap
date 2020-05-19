@@ -20,6 +20,21 @@ exports[`manuscript editor should render 1`] = `
       className="prosemirrorContainer"
     />
   </fieldset>
+  <section
+    className="makeStyles-root-10"
+  >
+    <label
+      className="makeStyles-label-11"
+    >
+      Authors
+    </label>
+    <div
+      className="makeStyles-sortableContainer-7"
+    >
+       
+       
+    </div>
+  </section>
   <fieldset
     className="makeStyles-root-4 makeStyles-editorSection-2"
   >

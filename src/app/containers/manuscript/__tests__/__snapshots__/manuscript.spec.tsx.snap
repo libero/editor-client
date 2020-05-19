@@ -42,6 +42,21 @@ Array [
         className="prosemirrorContainer"
       />
     </fieldset>
+    <section
+      className="makeStyles-root-18"
+    >
+      <label
+        className="makeStyles-label-19"
+      >
+        Authors
+      </label>
+      <div
+        className="makeStyles-sortableContainer-15"
+      >
+         
+         
+      </div>
+    </section>
     <fieldset
       className="makeStyles-root-12 makeStyles-editorSection-10"
     >

@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sortable authors list renders authors list 1`] = `
+<section
+  className="makeStyles-root-4"
+>
+  <label
+    className="makeStyles-label-5"
+  >
+    Authors
+  </label>
+  <div
+    className="makeStyles-sortableContainer-1"
+  >
+     
+    <div
+      data-cmp="chip"
+    >
+      Fred Atherden
+    </div>
+    <div
+      data-cmp="chip"
+    >
+      Jeanine Smith
+    </div>
+     
+  </div>
+</section>
+`;

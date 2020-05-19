@@ -27,7 +27,8 @@ describe('Manuscript container', () => {
     const mockState = getInitialHistory({
       title: new EditorState(),
       abstract: new EditorState(),
-      keywordGroups: {}
+      keywordGroups: {},
+      authors: []
     });
     const store = mockStore({
       manuscript: getLoadableStateSuccess(mockState)

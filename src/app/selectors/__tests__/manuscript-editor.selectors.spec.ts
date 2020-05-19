@@ -66,6 +66,7 @@ function givenManuscript(): Manuscript {
   return {
     title: new EditorState(),
     abstract: new EditorState(),
-    keywords: {}
+    keywordGroups: {},
+    authors: []
   };
 }

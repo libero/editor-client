@@ -11,6 +11,9 @@ export const useManuscriptStyles = makeStyles((theme) => ({
     margin: '0 auto',
     [theme.breakpoints.up('sm')]: {
       paddingLeft: tocWidth + theme.spacing()
+    },
+    '& > *': {
+      marginTop: 24
     }
   },
   editorSection: {
