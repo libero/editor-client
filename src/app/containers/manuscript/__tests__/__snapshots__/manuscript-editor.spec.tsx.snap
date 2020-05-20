@@ -20,6 +20,60 @@ exports[`manuscript editor should render 1`] = `
       className="prosemirrorContainer"
     />
   </fieldset>
+  <section>
+    <div
+      className="makeStyles-root-10"
+    >
+      <label
+        className="makeStyles-label-11"
+      >
+        Authors
+      </label>
+      <div
+        className="makeStyles-sortableContainer-7"
+      >
+         
+         
+      </div>
+    </div>
+    <button
+      className="MuiButtonBase-root MuiButton-root makeStyles-root-12 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
+      disabled={false}
+      onBlur={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        <span
+          className="MuiButton-startIcon makeStyles-icon-13 MuiButton-iconSizeSmall"
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+            />
+          </svg>
+        </span>
+        Add author
+      </span>
+    </button>
+  </section>
   <fieldset
     className="makeStyles-root-4 makeStyles-editorSection-2"
   >

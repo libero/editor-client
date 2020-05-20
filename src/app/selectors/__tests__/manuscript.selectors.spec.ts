@@ -1,6 +1,7 @@
 import { getInitialHistory, getInitialLoadableState } from '../../utils/state.utils';
 import {
   getAbstract,
+  getAuthors,
   getKeywordGroups,
   getManuscriptData,
   getTitle,
@@ -25,6 +26,7 @@ describe('manuscript selectors', () => {
     expect(getTitle(state)).toBe(state.manuscript.data.present.title);
     expect(getAbstract(state)).toBe(state.manuscript.data.present.abstract);
     expect(getKeywordGroups(state)).toBe(state.manuscript.data.present.keywordGroups);
+    expect(getAuthors(state)).toBe(state.manuscript.data.present.authors);
   });
 
   it('gets manuscript load status', () => {
@@ -40,6 +42,7 @@ function givenManuscript(): Manuscript {
   return {
     title: new EditorState(),
     abstract: new EditorState(),
-    keywordGroups: {}
+    keywordGroups: {},
+    authors: []
   };
 }

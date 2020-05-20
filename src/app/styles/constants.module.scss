@@ -6,6 +6,8 @@ $secondary-main: #f7f7f7;
 $text-primary: #212121;
 $text-secondary: #767676;
 
+$font-family: 'Noto Sans', sans-serif;
+
 :export {
   primary-main: $primary-main;
   primary-contrast-text: $primary-contrast-text;
@@ -14,4 +16,5 @@ $text-secondary: #767676;
 
   text-primary: $text-primary;
   text-secondary: $text-secondary;
+  font-family: $font-family;
 }

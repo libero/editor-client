@@ -9,6 +9,7 @@ import { EditorState, Transaction } from 'prosemirror-state';
 import { KeywordsEditor } from '../../components/keywords';
 import { KeywordGroups } from '../../models/manuscript';
 import { useManuscriptStyles } from './styles';
+import { SortableAuthorsList } from './sortable-authors-list';
 
 export const ManuscriptEditor: React.FC = () => {
   const classes = useManuscriptStyles();
@@ -85,6 +86,7 @@ export const ManuscriptEditor: React.FC = () => {
         onFocus={handleFocus.bind(null, 'title')}
         onBlur={handleBlur}
       />
+      <SortableAuthorsList />
       <RichTextEditor
         editorState={abstract}
         className={classes.editorSection}
