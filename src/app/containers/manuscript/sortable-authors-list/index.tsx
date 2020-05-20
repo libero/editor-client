@@ -49,7 +49,7 @@ export const SortableAuthorsList: React.FC = () => {
           ))}
         </SortableList>
       </SectionContainer>
-      <AddEntityButton />
+      <AddEntityButton label="Add author" />
     </section>
   );
 };

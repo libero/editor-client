@@ -10,7 +10,8 @@ import { mount } from 'enzyme';
 import { moveAuthorAction } from '../../../../actions/manuscript.actions';
 
 jest.mock('@material-ui/core', () => ({
-  Chip: ({ label }) => <div data-cmp="chip">{label}</div>
+  Chip: ({ label }) => <div data-cmp="chip">{label}</div>,
+  Button: () => <div data-cmp="Button"></div>
 }));
 
 jest.mock('react-sortable-hoc', () => ({
