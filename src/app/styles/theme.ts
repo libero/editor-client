@@ -19,5 +19,8 @@ export const palette = {
 } as PaletteOptions;
 
 export const theme = createMuiTheme({
-  palette
+  palette,
+  typography: {
+    fontFamily: constants['font-family']
+  }
 });

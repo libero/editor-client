@@ -9,6 +9,7 @@ import { getAuthors } from '../../../selectors/manuscript.selectors';
 import { useAuthorsListStyles } from './styles';
 import { SectionContainer } from '../../../components/section-container';
 import { Person } from '../../../models/manuscript';
+import { AddEntityButton } from '../../../components/add-entity-button';
 
 const SortableItem = SortableElement(({ value, classes, onEdit }) => (
   <Chip
@@ -40,12 +41,15 @@ export const SortableAuthorsList: React.FC = () => {
   };
 
   return (
-    <SectionContainer label="Authors">
-      <SortableList className={classes.sortableContainer} onSortEnd={onSortEnd} axis="x">
-        {authors.map((value, index) => (
-          <SortableItem key={`item-${value.id}`} index={index} value={value} classes={classes} onEdit={handleEdit} />
-        ))}
-      </SortableList>
-    </SectionContainer>
+    <section>
+      <SectionContainer label="Authors">
+        <SortableList className={classes.sortableContainer} onSortEnd={onSortEnd} axis="x">
+          {authors.map((value, index) => (
+            <SortableItem key={`item-${value.id}`} index={index} value={value} classes={classes} onEdit={handleEdit} />
+          ))}
+        </SortableList>
+      </SectionContainer>
+      <AddEntityButton />
+    </section>
   );
 };

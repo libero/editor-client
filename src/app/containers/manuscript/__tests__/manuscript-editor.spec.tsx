@@ -15,7 +15,8 @@ describe('manuscript editor', () => {
     const mockEditorState = getInitialHistory({
       title: new EditorState(),
       abstract: new EditorState(),
-      keywordGroups: {}
+      keywordGroups: {},
+      authors: []
     });
     const store = mockStore({ manuscript: getLoadableStateSuccess(mockEditorState) });
     const wrapper = create(
@@ -31,7 +32,8 @@ describe('manuscript editor', () => {
     const mockEditorState = getInitialHistory({
       title: new EditorState(),
       abstract: new EditorState(),
-      keywordGroups: {}
+      keywordGroups: {},
+      authors: []
     });
     const store = mockStore({ manuscript: getLoadableStateSuccess(mockEditorState) });
     jest.spyOn(store, 'dispatch');
@@ -52,7 +54,8 @@ describe('manuscript editor', () => {
     const mockEditorState = getInitialHistory({
       title: new EditorState(),
       abstract: new EditorState(),
-      keywordGroups: {}
+      keywordGroups: {},
+      authors: []
     });
     const store = mockStore({ manuscript: getLoadableStateSuccess(mockEditorState) });
     jest.spyOn(store, 'dispatch');

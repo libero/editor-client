@@ -10,9 +10,9 @@ export const SectionContainer: React.FC<SectionContainerProps> = (props) => {
   const classes = useSectionContainerStyles();
 
   return (
-    <section className={classes.root}>
+    <div className={classes.root}>
       <label className={classes.label}>{label}</label>
       {children}
-    </section>
+    </div>
   );
 };
