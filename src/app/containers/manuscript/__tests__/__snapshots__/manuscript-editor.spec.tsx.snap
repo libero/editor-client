@@ -40,6 +40,7 @@ exports[`manuscript editor should render 1`] = `
       className="MuiButtonBase-root MuiButton-root makeStyles-root-12 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
       disabled={false}
       onBlur={[Function]}
+      onClick={[Function]}
       onDragLeave={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
