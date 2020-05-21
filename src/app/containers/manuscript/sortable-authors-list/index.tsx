@@ -5,11 +5,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 
 import * as manuscriptActions from '../../../actions/manuscript.actions';
+import * as manuscriptEditorActions from '../../../actions/manuscript-editor.actions';
 import { getAuthors } from '../../../selectors/manuscript.selectors';
 import { useAuthorsListStyles } from './styles';
 import { SectionContainer } from '../../../components/section-container';
-import { Person } from '../../../models/manuscript';
+import { Person } from '../../../models/person';
 import { AddEntityButton } from '../../../components/add-entity-button';
+import { AuthorFormDialog } from '../../author-form-dialog';
 
 const SortableItem = SortableElement(({ value, classes, onEdit }) => (
   <Chip
@@ -29,27 +31,56 @@ export const SortableAuthorsList: React.FC = () => {
   const authors = useSelector(getAuthors);
   const dispatch = useDispatch();
 
-  const handleEdit = useCallback((author: Person) => {
-    /* toggle edit dialog */
-  }, []);
   const classes = useAuthorsListStyles();
 
-  const onSortEnd = ({ oldIndex, newIndex }) => {
-    const author = authors[oldIndex];
+  const onSortEnd = useCallback(
+    ({ oldIndex, newIndex }) => {
+      if (oldIndex !== newIndex) {
+        const author = authors[oldIndex];
+        dispatch(manuscriptActions.moveAuthorAction({ index: newIndex, author }));
+      }
+    },
+    [authors, dispatch]
+  );
 
-    dispatch(manuscriptActions.moveAuthorAction({ index: newIndex, author }));
-  };
+  const onAddNewAuthor = useCallback(() => {
+    dispatch(
+      manuscriptEditorActions.showModalDialog({
+        component: AuthorFormDialog,
+        title: 'Add Author'
+      })
+    );
+  }, [dispatch]);
+
+  const onEditAuthor = useCallback(
+    (author: Person) => () => {
+      dispatch(
+        manuscriptEditorActions.showModalDialog({
+          component: AuthorFormDialog,
+          props: { author },
+          title: 'Edit Author'
+        })
+      );
+    },
+    [dispatch]
+  );
 
   return (
     <section>
       <SectionContainer label="Authors">
-        <SortableList className={classes.sortableContainer} onSortEnd={onSortEnd} axis="x">
+        <SortableList className={classes.sortableContainer} onSortEnd={onSortEnd} axis="x" pressDelay={200}>
           {authors.map((value, index) => (
-            <SortableItem key={`item-${value.id}`} index={index} value={value} classes={classes} onEdit={handleEdit} />
+            <SortableItem
+              key={`item-${value.id}`}
+              index={index}
+              value={value}
+              classes={classes}
+              onEdit={onEditAuthor(value)}
+            />
           ))}
         </SortableList>
       </SectionContainer>
-      <AddEntityButton label="Add author" />
+      <AddEntityButton label="Add author" onClick={onAddNewAuthor} />
     </section>
   );
 };

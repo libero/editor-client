@@ -42,3 +42,6 @@ export const canLinkSelection = createSelector(getFocusedEditor, (state) => {
   }
   return retVal;
 });
+
+export const isModalVisible = createSelector(getManuscriptEditorState, ({ modal }) => modal.isVisible);
+export const getModalParams = createSelector(getManuscriptEditorState, ({ modal }) => modal.params);
