@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Prompt Dialog renders prompt dialog 1`] = `
+<div
+  data-cmp="dialog"
+>
+  <div
+    data-cmp="dialog-title"
+  >
+    <div
+      data-cmp="typography"
+    />
+  </div>
+  <div
+    data-cmp="dialog-content"
+  >
+    <div
+      data-cmp="dialog-content-text"
+    >
+      testMessage
+    </div>
+  </div>
+  <div
+    data-cmp="dialog-actions"
+  >
+    <div
+      data-cmp="Button"
+    />
+    <div
+      data-cmp="Button"
+    />
+  </div>
+</div>
+`;
+
+exports[`Prompt Dialog renders prompt with default params 1`] = `
+<div
+  data-cmp="dialog"
+>
+  <div
+    data-cmp="dialog-title"
+  >
+    <div
+      data-cmp="typography"
+    />
+  </div>
+  <div
+    data-cmp="dialog-content"
+  >
+    <div
+      data-cmp="dialog-content-text"
+    >
+      testMessage
+    </div>
+  </div>
+  <div
+    data-cmp="dialog-actions"
+  >
+    <div
+      data-cmp="Button"
+    />
+    <div
+      data-cmp="Button"
+    />
+  </div>
+</div>
+`;

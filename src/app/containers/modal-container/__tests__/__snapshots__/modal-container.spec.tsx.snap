@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal Container renders modal 1`] = `
+<div
+  data-cmp="dialog"
+>
+  <div
+    data-cmp="dialog-title"
+  >
+    <div
+      data-cmp="typography"
+    />
+  </div>
+  <div
+    data-cmp="dialog-content"
+  >
+    <div
+      data-cmp="test-component"
+    />
+  </div>
+</div>
+`;

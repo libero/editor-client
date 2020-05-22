@@ -28,6 +28,12 @@ jest.mock('connected-react-router', () => {
   };
 });
 
+jest.mock('../containers/modal-container', () => {
+  return {
+    ModalContainer: () => <div data-cmp="ModalContainer"></div>
+  };
+});
+
 jest.mock('../containers/manuscript', () => {
   return {
     ManuscriptContainer: () => <div data-cmp="manuscript"></div>

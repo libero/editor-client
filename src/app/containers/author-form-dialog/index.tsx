@@ -1,5 +1,5 @@
 import React, { SyntheticEvent, useCallback, useState } from 'react';
-import { Button, TextField } from '@material-ui/core';
+import { TextField } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 
 import { useAuthorFormStyles } from './styles';
@@ -125,12 +125,8 @@ export const AuthorFormDialog: React.FC<AuthorFormDialogProps> = (props) => {
       <div className={classes.buttonPanel}>
         {!isNewAuthor ? <ActionButton variant="outlinedWarning" onClick={handleDelete} title="Delete" /> : undefined}
         <div aria-hidden={true} className={classes.spacer}></div>
-        <Button variant="outlined" onClick={closeDialog}>
-          Cancel
-        </Button>
-        <Button color="primary" variant="contained" onClick={handleDone}>
-          Done
-        </Button>
+        <ActionButton variant="secondaryOutlined" onClick={closeDialog} title="Cancel" />
+        <ActionButton variant="primaryContained" onClick={handleDone} title="Done" />
       </div>
       {isConfirmShown
         ? renderConfirmDialog(

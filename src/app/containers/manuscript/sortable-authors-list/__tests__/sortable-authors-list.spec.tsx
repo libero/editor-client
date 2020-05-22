@@ -8,6 +8,9 @@ import { EditorState } from 'prosemirror-state';
 import { create } from 'react-test-renderer';
 import { mount } from 'enzyme';
 import { moveAuthorAction } from '../../../../actions/manuscript.actions';
+import * as manuscriptEditorActions from '../../../../actions/manuscript-editor.actions';
+import { AuthorFormDialog } from '../../../author-form-dialog';
+import { AddEntityButton } from '../../../../components/add-entity-button';
 
 jest.mock('@material-ui/core', () => ({
   Chip: ({ label }) => <div data-cmp="chip">{label}</div>,
@@ -95,5 +98,85 @@ describe('Sortable authors list', () => {
     onSortEnd({ oldIndex: 0, newIndex: 1 });
 
     expect(store.dispatch).toBeCalledWith(moveAuthorAction({ index: 1, author: authors[0] }));
+  });
+
+  it('dispatches edit action', () => {
+    const authors = [
+      {
+        id: '4d53e405-5225-4858-a87a-aec902ae50b6',
+        firstName: 'Fred',
+        lastName: 'Atherden',
+        email: 'f.atherden@elifesciences.org',
+        orcId: 'https://orcid.org/0000-0002-6048-1470'
+      },
+      {
+        id: 'c3b008e6-4ae9-4ef9-b7cb-854749a1e897',
+        firstName: 'Jeanine',
+        lastName: 'Smith',
+        suffix: 'III'
+      }
+    ];
+
+    const mockState = getInitialHistory({
+      title: new EditorState(),
+      abstract: new EditorState(),
+      keywordGroups: {},
+      authors
+    });
+
+    const store = mockStore({
+      manuscript: getLoadableStateSuccess(mockState)
+    });
+
+    jest.spyOn(store, 'dispatch');
+
+    const wrapper = mount(
+      <Provider store={store}>
+        <SortableAuthorsList />
+      </Provider>
+    );
+
+    const onEdit = wrapper.findWhere((n) => n.prop('index') === 0).prop('onEdit');
+    onEdit(authors[0]);
+
+    expect(store.dispatch).toBeCalledWith(
+      manuscriptEditorActions.showModalDialog({
+        component: AuthorFormDialog,
+        props: { author: authors[0] },
+        title: 'Edit Author'
+      })
+    );
+  });
+
+  it('dispatches add action', () => {
+    const authors = [];
+
+    const mockState = getInitialHistory({
+      title: new EditorState(),
+      abstract: new EditorState(),
+      keywordGroups: {},
+      authors
+    });
+
+    const store = mockStore({
+      manuscript: getLoadableStateSuccess(mockState)
+    });
+
+    jest.spyOn(store, 'dispatch');
+
+    const wrapper = mount(
+      <Provider store={store}>
+        <SortableAuthorsList />
+      </Provider>
+    );
+
+    wrapper.find(AddEntityButton).prop('onClick')();
+
+    expect(store.dispatch).toBeCalledWith(
+      manuscriptEditorActions.showModalDialog({
+        component: AuthorFormDialog,
+        title: 'Add Author'
+      })
+    );
   });
 });

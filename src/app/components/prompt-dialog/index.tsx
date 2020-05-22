@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  Typography
-} from '@material-ui/core';
+import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Typography } from '@material-ui/core';
 import { ActionButton, VariantType } from '../action-button';
 
 interface PromptDialogProps {
@@ -25,7 +18,7 @@ const defaultProps = {
   acceptLabel: 'OK',
   rejectLabel: 'Cancel',
   acceptVariant: 'primaryContained' as VariantType,
-  rejectVariant: 'defaultOutlined' as VariantType
+  rejectVariant: 'secondaryOutlined' as VariantType
 };
 
 export const PromptDialog: React.FC<PromptDialogProps> = (props) => {
