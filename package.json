@@ -81,6 +81,9 @@
   },
   "jest": {
     "restoreMocks": true,
-    "clearMocks": true
+    "clearMocks": true,
+    "moduleNameMapper": {
+      "^app/(.*)": "<rootDir>/src/app/$1"
+    }
   }
 }
