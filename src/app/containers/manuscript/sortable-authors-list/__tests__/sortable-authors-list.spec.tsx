@@ -18,7 +18,8 @@ jest.mock('@material-ui/core', () => ({
 
 jest.mock('react-sortable-hoc', () => ({
   SortableContainer: (_) => _,
-  SortableElement: (_) => _
+  SortableElement: (_) => _,
+  SortableHandle: (_) => _
 }));
 
 describe('Sortable authors list', () => {
