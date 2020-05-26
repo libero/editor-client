@@ -1,13 +1,12 @@
-import React, { useCallback, useState } from 'react';
-import classNames from 'classnames';
+import React, { useCallback } from 'react';
 import { EditorState, Transaction } from 'prosemirror-state';
 
 import { NewKeywordSection } from './new-keyword-section';
 import { Keyword } from './keyword';
 import { makeKeywordContainerStyles } from './styles';
+import { SectionContainer } from 'app/components/section-container';
 
 interface KeywordsEditorProps {
-  className?: string;
   keywords: EditorState[];
   newKeyword: EditorState;
   label?: string;
@@ -15,41 +14,24 @@ interface KeywordsEditorProps {
   onChange: (index: number, change: Transaction) => void;
   onNewKeywordChange: (change: Transaction) => void;
   onAdd: (state: EditorState) => void;
-  onFocus: (index: number) => void;
-  onBlur: (index: number) => void;
+  onFocus: (index: number | undefined, isNewKeywordFocused?: boolean) => void;
+  onBlur: (index: number | undefined, isNewKeywordFocused?: boolean) => void;
 }
 
 export const KeywordsEditor: React.FC<KeywordsEditorProps> = (props) => {
-  const {
-    className,
-    keywords,
-    label,
-    onChange,
-    onDelete,
-    onAdd,
-    onFocus,
-    onBlur,
-    newKeyword,
-    onNewKeywordChange
-  } = props;
+  const { keywords, label, onChange, onDelete, onAdd, onFocus, onBlur, newKeyword, onNewKeywordChange } = props;
   const classes = makeKeywordContainerStyles();
-
-  const [focused, setFocused] = useState(false);
 
   const handleFocus = useCallback(
     (index: number) => {
-      console.log('Focused');
       onFocus(index);
-      setFocused(true);
     },
     [onFocus]
   );
 
   const handleBlur = useCallback(
     (index: number) => {
-      console.log('blurred');
       onBlur(index);
-      setFocused(false);
     },
     [onBlur]
   );
@@ -70,16 +52,15 @@ export const KeywordsEditor: React.FC<KeywordsEditorProps> = (props) => {
   };
 
   const handleNewKeywordFocus = useCallback(() => {
-    setFocused(true);
-  }, [setFocused]);
+    onFocus(undefined, true);
+  }, [onFocus]);
 
   const handleNewKeywordBlur = useCallback(() => {
-    setFocused(false);
-  }, [setFocused]);
+    onBlur(undefined, false);
+  }, [onBlur]);
 
   return (
-    <fieldset className={classNames(classes.keywordsEditor, className, { [classes.focused]: focused })} tabIndex={0}>
-      {label ? <legend className={classes.label}>{label}</legend> : undefined}
+    <SectionContainer label={label}>
       <section className={classes.keywordsSection}>
         {renderKeywords(keywords)}
         <NewKeywordSection
@@ -91,6 +72,6 @@ export const KeywordsEditor: React.FC<KeywordsEditorProps> = (props) => {
           onFocus={handleNewKeywordFocus}
         />
       </section>
-    </fieldset>
+    </SectionContainer>
   );
 };

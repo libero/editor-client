@@ -14,10 +14,10 @@ export const useManuscriptStyles = makeStyles((theme) => ({
     },
     '& > *': {
       marginTop: 24
+    },
+    '& > *:first-child': {
+      marginTop: 0
     }
-  },
-  editorSection: {
-    marginTop: 24
   },
   toolbarPlaceholder: {
     ...theme.mixins.toolbar

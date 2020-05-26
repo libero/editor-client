@@ -1,7 +1,9 @@
 import React from 'react';
 import { Button, PropTypes } from '@material-ui/core';
-import { useActionButtonStyles } from './styles';
 import { mapValues } from 'lodash';
+import AddIcon from '@material-ui/icons/Add';
+
+import { useActionButtonStyles } from './styles';
 
 type MuiButtonVariant = 'text' | 'outlined' | 'contained';
 
@@ -26,6 +28,12 @@ const VARIANTS = {
   secondaryOutlined: {
     variant: 'outlined',
     classes: {}
+  },
+  addEntity: {
+    size: 'small',
+    classes: { root: 'addEntityButton_root', startIcon: 'addEntityButton_icon' },
+    variant: 'text',
+    startIcon: <AddIcon />
   }
 } as {
   [key: string]: {

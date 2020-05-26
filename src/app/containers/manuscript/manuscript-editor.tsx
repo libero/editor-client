@@ -51,8 +51,9 @@ export const ManuscriptEditor: React.FC = () => {
     dispatch(manuscriptEditorActions.removeFocusAction());
   };
 
-  const handleKeywordFocus = (group: string, index: string): void => {
-    handleFocus(['keywordGroups', group, index].join('.'));
+  const handleKeywordFocus = (group: string, index: number | undefined, isNewKeywordFocused: boolean): void => {
+    const kwdIndexPath = isNewKeywordFocused ? 'newKeyword' : `keywords.${index}`;
+    handleFocus(['keywordGroups', group, kwdIndexPath].join('.'));
   };
 
   const renderKeywords = (keywordGroups: KeywordGroups): JSX.Element[] => {
@@ -62,7 +63,6 @@ export const ManuscriptEditor: React.FC = () => {
           key={groupType}
           keywords={group.keywords}
           newKeyword={group.newKeyword}
-          className={classes.editorSection}
           label={group.title || 'Keywords'}
           onNewKeywordChange={handleNewKeywordChange.bind(null, groupType)}
           onAdd={handleKeywordAdd.bind(null, groupType)}
@@ -79,7 +79,6 @@ export const ManuscriptEditor: React.FC = () => {
     <div className={classes.content}>
       <div aria-hidden="true" className={classes.toolbarPlaceholder} />
       <RichTextEditor
-        className={classes.editorSection}
         editorState={title}
         label="Title"
         onChange={handleTitleChange}
@@ -89,7 +88,6 @@ export const ManuscriptEditor: React.FC = () => {
       <SortableAuthorsList />
       <RichTextEditor
         editorState={abstract}
-        className={classes.editorSection}
         label="Abstract"
         onChange={handleAbstractChange}
         onFocus={handleFocus.bind(null, 'abstract')}

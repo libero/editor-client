@@ -10,8 +10,8 @@ import { getAuthors } from '../../../selectors/manuscript.selectors';
 import { useAuthorsListStyles } from './styles';
 import { SectionContainer } from '../../../components/section-container';
 import { Person } from '../../../models/person';
-import { AddEntityButton } from '../../../components/add-entity-button';
 import { AuthorFormDialog } from '../../author-form-dialog';
+import { ActionButton } from '../../../components/action-button';
 
 const SortableItem = SortableElement(({ value, classes, onEdit }) => (
   <Chip
@@ -80,7 +80,7 @@ export const SortableAuthorsList: React.FC = () => {
           ))}
         </SortableList>
       </SectionContainer>
-      <AddEntityButton label="Add author" onClick={onAddNewAuthor} />
+      <ActionButton title="Add author" variant="addEntity" onClick={onAddNewAuthor} />
     </section>
   );
 };
