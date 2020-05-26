@@ -1,11 +1,11 @@
 import axios from 'axios';
-import { Manuscript } from '../models/manuscript';
+import { Manuscript } from 'app/models/manuscript';
 import {
   createTitleState,
   createKeywordGroupsState,
   createAbstractState,
   createAuthorsState
-} from '../models/manuscript-state.factory';
+} from 'app/models/manuscript-state.factory';
 
 const manuscriptUrl = (id: string): string => {
   return process.env.NODE_ENV === 'development' ? `./manuscripts/${id}/manuscript.xml` : `/api/v1/articles/${id}/`;

@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Backdrop, CircularProgress } from '@material-ui/core';
 
-import { isManuscriptLoaded } from '../../selectors/manuscript.selectors';
+import { isManuscriptLoaded } from 'app/selectors/manuscript.selectors';
 import { ManuscriptToolbar } from './manuscript-toolbar';
 import { ManuscriptEditor } from './manuscript-editor';
 import { ManuscriptTOC } from './manuscript-toc';

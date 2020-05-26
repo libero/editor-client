@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getManuscriptContent } from '../manuscript.api';
+import { getManuscriptContent } from 'app/api/manuscript.api';
 import { EditorState } from 'prosemirror-state';
 
 jest.mock('axios');

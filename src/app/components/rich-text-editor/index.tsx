@@ -5,7 +5,7 @@ import 'prosemirror-menu/style/menu.css';
 
 import { ProseMirrorEditorView } from './prosemirror-editor-view';
 import { EditorView } from 'prosemirror-view';
-import { SectionContainer } from '../section-container';
+import { SectionContainer } from 'app/components/section-container';
 
 export interface RichTextEditorProps {
   editorState: EditorState;

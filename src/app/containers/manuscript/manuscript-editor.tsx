@@ -1,13 +1,13 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAbstract, getKeywordGroups, getTitle } from '../../selectors/manuscript.selectors';
-import * as manuscriptActions from '../../actions/manuscript.actions';
-import * as manuscriptEditorActions from '../../actions/manuscript-editor.actions';
-import { RichTextEditor } from '../../components/rich-text-editor';
+import { getAbstract, getKeywordGroups, getTitle } from 'app/selectors/manuscript.selectors';
+import * as manuscriptActions from 'app/actions/manuscript.actions';
+import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
+import { RichTextEditor } from 'app/components/rich-text-editor';
 
 import { EditorState, Transaction } from 'prosemirror-state';
-import { KeywordsEditor } from '../../components/keywords';
-import { KeywordGroups } from '../../models/manuscript';
+import { KeywordsEditor } from 'app/components/keywords';
+import { KeywordGroups } from 'app/models/manuscript';
 import { useManuscriptStyles } from './styles';
 import { SortableAuthorsList } from './sortable-authors-list';
 

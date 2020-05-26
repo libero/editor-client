@@ -1,4 +1,4 @@
-import { createAction, ofActionType } from '../utils/action.utils';
+import { createAction, ofActionType } from 'app/utils/action.utils';
 
 export interface ModalPayload<P = {}> {
   component: React.FC<P>;

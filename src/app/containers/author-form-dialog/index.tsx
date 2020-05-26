@@ -3,11 +3,11 @@ import { TextField } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 
 import { useAuthorFormStyles } from './styles';
-import { createAuthor, Person } from '../../models/person';
-import * as manuscriptEditorActions from '../../actions/manuscript-editor.actions';
-import * as manuscriptActions from '../../actions/manuscript.actions';
-import { PromptDialog } from '../../components/prompt-dialog';
-import { ActionButton } from '../../components/action-button';
+import { createAuthor, Person } from 'app/models/person';
+import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
+import * as manuscriptActions from 'app/actions/manuscript.actions';
+import { PromptDialog } from 'app/components/prompt-dialog';
+import { ActionButton } from 'app/components/action-button';
 
 interface AuthorFormDialogProps {
   author?: Person;

@@ -1,7 +1,7 @@
 import { all, takeLatest, call, put } from 'redux-saga/effects';
-import * as manuscriptActions from '../actions/manuscript.actions';
-import { Action } from '../utils/action.utils';
-import { getManuscriptContent } from '../api/manuscript.api';
+import * as manuscriptActions from 'app/actions/manuscript.actions';
+import { Action } from 'app/utils/action.utils';
+import { getManuscriptContent } from 'app/api/manuscript.api';
 
 /**
  * Side effect handler to load the specified article from the backend.

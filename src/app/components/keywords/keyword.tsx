@@ -5,7 +5,7 @@ import { EditorView } from 'prosemirror-view';
 import { IconButton } from '@material-ui/core';
 import CancelIcon from '@material-ui/icons/Cancel';
 
-import { ProseMirrorEditorView } from '../rich-text-editor/prosemirror-editor-view';
+import { ProseMirrorEditorView } from 'app/components/rich-text-editor/prosemirror-editor-view';
 import { useKeywordStyles } from './styles';
 
 const ENTER_KEY_CODE = 'Enter';

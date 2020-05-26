@@ -4,8 +4,8 @@ import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { Backdrop, CircularProgress, Hidden, Container } from '@material-ui/core';
 
-import { getInitialHistory, getLoadableStateProgress, getLoadableStateSuccess } from '../../../utils/state.utils';
-import { ManuscriptContainer } from '../index';
+import { getInitialHistory, getLoadableStateProgress, getLoadableStateSuccess } from 'app/utils/state.utils';
+import { ManuscriptContainer } from 'app/containers/manuscript/index';
 import { EditorState } from 'prosemirror-state';
 
 jest.mock('@material-ui/core');

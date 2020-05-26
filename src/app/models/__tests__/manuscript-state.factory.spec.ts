@@ -4,7 +4,7 @@ import {
   createKeywordGroupsState,
   createNewKeywordState,
   createTitleState
-} from '../manuscript-state.factory';
+} from 'app/models/manuscript-state.factory';
 
 jest.mock('uuid', () => ({
   v4: () => 'unique_id'

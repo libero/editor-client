@@ -28,49 +28,49 @@ Array [
   >
     <div
       aria-hidden="true"
-      className="makeStyles-toolbarPlaceholder-11"
+      className="makeStyles-toolbarPlaceholder-10"
     />
-    <fieldset
-      className="makeStyles-root-12 makeStyles-editorSection-10"
+    <div
+      className="makeStyles-root-11"
     >
-      <legend
-        className="makeStyles-label-13"
+      <label
+        className="makeStyles-label-12"
       >
         Title
-      </legend>
+      </label>
       <div
         className="prosemirrorContainer"
       />
-    </fieldset>
+    </div>
     <section>
       <div
-        className="makeStyles-root-18"
+        className="makeStyles-root-11"
       >
         <label
-          className="makeStyles-label-19"
+          className="makeStyles-label-12"
         >
           Authors
         </label>
         <div
-          className="makeStyles-sortableContainer-15"
+          className="makeStyles-sortableContainer-14"
         >
            
            
         </div>
       </div>
     </section>
-    <fieldset
-      className="makeStyles-root-12 makeStyles-editorSection-10"
+    <div
+      className="makeStyles-root-11"
     >
-      <legend
-        className="makeStyles-label-13"
+      <label
+        className="makeStyles-label-12"
       >
         Abstract
-      </legend>
+      </label>
       <div
         className="prosemirrorContainer"
       />
-    </fieldset>
+    </div>
   </div>,
 ]
 `;

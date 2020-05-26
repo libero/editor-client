@@ -3,14 +3,13 @@ import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 
 import { SortableAuthorsList } from '../';
-import { getInitialHistory, getLoadableStateSuccess } from '../../../../utils/state.utils';
+import { getInitialHistory, getLoadableStateSuccess } from 'app/utils/state.utils';
 import { EditorState } from 'prosemirror-state';
 import { create } from 'react-test-renderer';
 import { mount } from 'enzyme';
-import { moveAuthorAction } from '../../../../actions/manuscript.actions';
-import * as manuscriptEditorActions from '../../../../actions/manuscript-editor.actions';
-import { AuthorFormDialog } from '../../../author-form-dialog';
-import { AddEntityButton } from '../../../../components/add-entity-button';
+import { moveAuthorAction } from 'app/actions/manuscript.actions';
+import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
+import { AuthorFormDialog } from 'app/containers/author-form-dialog';
 
 jest.mock('@material-ui/core', () => ({
   Chip: ({ label }) => <div data-cmp="chip">{label}</div>,
@@ -170,7 +169,7 @@ describe('Sortable authors list', () => {
       </Provider>
     );
 
-    wrapper.find(AddEntityButton).prop('onClick')();
+    wrapper.find({ variant: 'addEntity' }).prop('onClick')();
 
     expect(store.dispatch).toBeCalledWith(
       manuscriptEditorActions.showModalDialog({

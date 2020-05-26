@@ -1,11 +1,11 @@
-import { manuscriptEditorReducer } from '../manuscript-editor.reducer';
+import { manuscriptEditorReducer } from 'app/reducers/manuscript-editor.reducer';
 import {
   hideModalDialog,
   removeFocusAction,
   setFocusAction,
   showModalDialog
-} from '../../actions/manuscript-editor.actions';
-import { ActionButton } from '../../components/action-button';
+} from 'app/actions/manuscript-editor.actions';
+import { ActionButton } from 'app/components/action-button';
 
 describe('manuscript editor reducer', () => {
   it('sets focused path', () => {
