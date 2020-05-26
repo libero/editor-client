@@ -14,7 +14,7 @@ import { Person } from 'app/models/person';
 import { AuthorFormDialog } from 'app/containers/author-form-dialog';
 import { ActionButton } from 'app/components/action-button';
 
-const DragHandle = SortableHandle(() => <img src={DragIcon} className="drag-handle" />);
+const DragHandle = SortableHandle(() => <img src={DragIcon} alt="drag handle" aria-hidden={true} className="drag-handle" />);
 
 const ChipRenderComponent = (props) => (
   <div className={props.className}>
