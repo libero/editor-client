@@ -3,9 +3,9 @@ import { create } from 'react-test-renderer';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 
-import { ManuscriptEditor } from '../manuscript-editor';
-import { getInitialHistory, getLoadableStateSuccess } from '../../../utils/state.utils';
-import { updateAbstractAction, updateKeywordAction, updateTitleAction } from '../../../actions/manuscript.actions';
+import { ManuscriptEditor } from 'app/containers/manuscript/manuscript-editor';
+import { getInitialHistory, getLoadableStateSuccess } from 'app/utils/state.utils';
+import { updateAbstractAction, updateKeywordAction, updateTitleAction } from 'app/actions/manuscript.actions';
 import { EditorState } from 'prosemirror-state';
 
 describe('manuscript editor', () => {

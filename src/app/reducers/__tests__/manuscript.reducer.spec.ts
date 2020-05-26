@@ -4,13 +4,13 @@ import {
   getInitialLoadableState,
   getLoadableStateSuccess,
   ManuscriptHistory
-} from '../../utils/state.utils';
-import * as manuscriptActions from '../../actions/manuscript.actions';
-import { manuscriptReducer } from '../manuscript.reducer';
+} from 'app/utils/state.utils';
+import * as manuscriptActions from 'app/actions/manuscript.actions';
+import { manuscriptReducer } from 'app/reducers/manuscript.reducer';
 import { EditorState } from 'prosemirror-state';
 import { cloneDeep } from 'lodash';
-import { redoChange, undoChange, updateManuscriptState } from '../../utils/history.utils';
-import { Manuscript } from '../../models/manuscript';
+import { redoChange, undoChange, updateManuscriptState } from 'app/utils/history.utils';
+import { Manuscript } from 'app/models/manuscript';
 
 jest.mock('../../utils/history.utils');
 

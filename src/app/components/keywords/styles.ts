@@ -17,12 +17,6 @@ export const makeKeywordContainerStyles = makeStyles((theme) => ({
     }
   },
 
-  label: {
-    fontSize: '0.75rem',
-    color: theme.palette.text.secondary,
-    padding: theme.spacing(0, 0.5)
-  },
-
   keywordsSection: {
     display: 'flex',
     flexFlow: 'wrap',
@@ -37,13 +31,6 @@ export const makeKeywordContainerStyles = makeStyles((theme) => ({
     padding: theme.spacing(0.5, 0.5, 0.5, 1.5),
     '& .ProseMirror': {
       flex: 1
-    }
-  },
-
-  focused: {
-    borderColor: theme.palette.primary.light,
-    '& > legend': {
-      color: theme.palette.primary.light
     }
   }
 }));

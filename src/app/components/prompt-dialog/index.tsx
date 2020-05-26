@@ -1,6 +1,6 @@
 import React from 'react';
 import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Typography } from '@material-ui/core';
-import { ActionButton, VariantType } from '../action-button';
+import { ActionButton, VariantType } from 'app/components/action-button';
 
 interface PromptDialogProps {
   isOpen: boolean;

@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { ApplicationState, ManuscriptHistoryState } from '../store';
+import { ApplicationState, ManuscriptHistoryState } from 'app/store';
 import { get } from 'lodash';
 
 const getManuscriptState = (state: ApplicationState): ManuscriptHistoryState => {

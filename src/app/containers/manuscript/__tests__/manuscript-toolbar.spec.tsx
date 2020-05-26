@@ -4,9 +4,9 @@ import { Provider } from 'react-redux';
 import { IconButton, AppBar, Toolbar } from '@material-ui/core';
 import { mount } from 'enzyme';
 
-import { getLoadableStateSuccess } from '../../../utils/state.utils';
-import { ManuscriptToolbar } from '../manuscript-toolbar';
-import * as manuscriptActions from '../../../actions/manuscript.actions';
+import { getLoadableStateSuccess } from 'app/utils/state.utils';
+import { ManuscriptToolbar } from 'app/containers/manuscript/manuscript-toolbar';
+import * as manuscriptActions from 'app/actions/manuscript.actions';
 
 jest.mock('@material-ui/core');
 

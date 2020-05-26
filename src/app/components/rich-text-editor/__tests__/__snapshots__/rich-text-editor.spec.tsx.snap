@@ -1,17 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ReachTextEditorComponent renders nothing when no EditorState is provided 1`] = `
-<fieldset
+<div
   className="makeStyles-root-1"
-/>
+>
+  <label
+    className="makeStyles-label-2"
+  />
+</div>
 `;
 
 exports[`ReachTextEditorComponent renders the editor when editor state is provided 1`] = `
-<fieldset
+<div
   className="makeStyles-root-1"
 >
+  <label
+    className="makeStyles-label-2"
+  />
   <div
     className="prosemirrorContainer"
   />
-</fieldset>
+</div>
 `;

@@ -6,38 +6,38 @@ exports[`manuscript editor should render 1`] = `
 >
   <div
     aria-hidden="true"
-    className="makeStyles-toolbarPlaceholder-3"
+    className="makeStyles-toolbarPlaceholder-2"
   />
-  <fieldset
-    className="makeStyles-root-4 makeStyles-editorSection-2"
+  <div
+    className="makeStyles-root-3"
   >
-    <legend
-      className="makeStyles-label-5"
+    <label
+      className="makeStyles-label-4"
     >
       Title
-    </legend>
+    </label>
     <div
       className="prosemirrorContainer"
     />
-  </fieldset>
+  </div>
   <section>
     <div
-      className="makeStyles-root-10"
+      className="makeStyles-root-3"
     >
       <label
-        className="makeStyles-label-11"
+        className="makeStyles-label-4"
       >
         Authors
       </label>
       <div
-        className="makeStyles-sortableContainer-7"
+        className="makeStyles-sortableContainer-6"
       >
          
          
       </div>
     </div>
     <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-root-12 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
+      className="MuiButtonBase-root MuiButton-root makeStyles-addEntityButton_root-11 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -58,7 +58,7 @@ exports[`manuscript editor should render 1`] = `
         className="MuiButton-label"
       >
         <span
-          className="MuiButton-startIcon makeStyles-icon-13 MuiButton-iconSizeSmall"
+          className="MuiButton-startIcon makeStyles-addEntityButton_icon-12 MuiButton-iconSizeSmall"
         >
           <svg
             aria-hidden="true"
@@ -75,17 +75,17 @@ exports[`manuscript editor should render 1`] = `
       </span>
     </button>
   </section>
-  <fieldset
-    className="makeStyles-root-4 makeStyles-editorSection-2"
+  <div
+    className="makeStyles-root-3"
   >
-    <legend
-      className="makeStyles-label-5"
+    <label
+      className="makeStyles-label-4"
     >
       Abstract
-    </legend>
+    </label>
     <div
       className="prosemirrorContainer"
     />
-  </fieldset>
+  </div>
 </div>
 `;

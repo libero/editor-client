@@ -1,6 +1,6 @@
 import React from 'react';
 import { create } from 'react-test-renderer';
-import { ModalContainer } from '../index';
+import { ModalContainer } from 'app/containers/modal-container/index';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 

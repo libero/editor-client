@@ -1,5 +1,5 @@
-import { Manuscript } from '../models/manuscript';
-import * as manuscriptActions from '../actions/manuscript.actions';
+import { Manuscript } from 'app/models/manuscript';
+import * as manuscriptActions from 'app/actions/manuscript.actions';
 import {
   cloneManuscript,
   getInitialHistory,
@@ -8,9 +8,9 @@ import {
   getLoadableStateProgress,
   getLoadableStateSuccess,
   ManuscriptHistory
-} from '../utils/state.utils';
-import { ManuscriptHistoryState } from '../store';
-import { redoChange, undoChange, updateManuscriptState } from '../utils/history.utils';
+} from 'app/utils/state.utils';
+import { ManuscriptHistoryState } from 'app/store';
+import { redoChange, undoChange, updateManuscriptState } from 'app/utils/history.utils';
 import { Transaction } from 'prosemirror-state';
 import {
   KeywordAddPayload,
@@ -18,10 +18,10 @@ import {
   KeywordUpdatePayload,
   MoveAuthorPayload,
   NewKeywordUpdatePayload
-} from '../actions/manuscript.actions';
-import { Action } from '../utils/action.utils';
-import { createNewKeywordState } from '../models/manuscript-state.factory';
-import { Person } from '../models/person';
+} from 'app/actions/manuscript.actions';
+import { Action } from 'app/utils/action.utils';
+import { createNewKeywordState } from 'app/models/manuscript-state.factory';
+import { Person } from 'app/models/person';
 
 const initialState = getInitialLoadableState() as ManuscriptHistoryState;
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { create } from 'react-test-renderer';
 import { EditorState } from 'prosemirror-state';
-import { ProseMirrorEditorView } from '../prosemirror-editor-view';
+import { ProseMirrorEditorView } from 'app/components/rich-text-editor/prosemirror-editor-view';
 import { EditorView } from 'prosemirror-view';
 import { mount } from 'enzyme';
 

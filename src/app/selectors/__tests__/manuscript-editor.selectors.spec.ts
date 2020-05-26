@@ -1,13 +1,13 @@
 import { EditorState } from 'prosemirror-state';
 
-import { getInitialHistory, getInitialLoadableState } from '../../utils/state.utils';
+import { getInitialHistory, getInitialLoadableState } from 'app/utils/state.utils';
 import {
   canBoldSelection,
   canItalicizeSelection,
   canRedoChanges,
   canUndoChanges
-} from '../manuscript-editor.selectors';
-import { Manuscript } from '../../models/manuscript';
+} from 'app/selectors/manuscript-editor.selectors';
+import { Manuscript } from 'app/models/manuscript';
 
 describe('manuscript selectors', () => {
   let state;

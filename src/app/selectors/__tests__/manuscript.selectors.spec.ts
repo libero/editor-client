@@ -1,4 +1,4 @@
-import { getInitialHistory, getInitialLoadableState } from '../../utils/state.utils';
+import { getInitialHistory, getInitialLoadableState } from 'app/utils/state.utils';
 import {
   getAbstract,
   getAuthors,
@@ -6,10 +6,10 @@ import {
   getManuscriptData,
   getTitle,
   isManuscriptLoaded
-} from '../manuscript.selectors';
+} from 'app/selectors/manuscript.selectors';
 import { cloneDeep } from 'lodash';
 import { EditorState } from 'prosemirror-state';
-import { Manuscript } from '../../models/manuscript';
+import { Manuscript } from 'app/models/manuscript';
 
 describe('manuscript selectors', () => {
   let state;

@@ -1,10 +1,10 @@
 import React from 'react';
 import { EditorState } from 'prosemirror-state';
-import { KeywordsEditor } from '../index';
+import { KeywordsEditor } from 'app/components/keywords/index';
 import { create } from 'react-test-renderer';
 import { shallow } from 'enzyme';
-import { Keyword } from '../keyword';
-import { NewKeywordSection } from '../new-keyword-section';
+import { Keyword } from 'app/components/keywords/keyword';
+import { NewKeywordSection } from 'app/components/keywords/new-keyword-section';
 
 describe('KeywordsEditorComponent', () => {
   it('renders keywords', () => {

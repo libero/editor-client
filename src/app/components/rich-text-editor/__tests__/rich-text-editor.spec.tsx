@@ -1,6 +1,6 @@
 import React from 'react';
 import { EditorState } from 'prosemirror-state';
-import { RichTextEditor } from '../index';
+import { RichTextEditor } from 'app/components/rich-text-editor/index';
 import { create } from 'react-test-renderer';
 import { shallow } from 'enzyme';
 

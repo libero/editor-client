@@ -8,9 +8,9 @@ import FormatBoldIcon from '@material-ui/icons/FormatBold';
 import FormatItalicIcon from '@material-ui/icons/FormatItalic';
 import LinkIcon from '@material-ui/icons/Link';
 import MenuIcon from '@material-ui/icons/Menu';
-import { DropDownMenu } from '../../components/drop-down-menu';
+import { DropDownMenu } from 'app/components/drop-down-menu';
 
-import * as manuscriptActions from '../../actions/manuscript.actions';
+import * as manuscriptActions from 'app/actions/manuscript.actions';
 
 import {
   canItalicizeSelection,
@@ -18,7 +18,7 @@ import {
   canUndoChanges,
   canBoldSelection,
   canLinkSelection
-} from '../../selectors/manuscript-editor.selectors';
+} from 'app/selectors/manuscript-editor.selectors';
 
 import { useToolbarStyles } from './styles';
 

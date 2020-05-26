@@ -14,12 +14,5 @@ export const useRichTextEditorStyles = makeStyles((theme) => ({
     fontSize: '0.75rem',
     color: theme.palette.text.secondary,
     padding: theme.spacing(0, 0.5)
-  },
-
-  focused: {
-    borderColor: theme.palette.primary.light,
-    '& > legend': {
-      color: theme.palette.primary.light
-    }
   }
 }));

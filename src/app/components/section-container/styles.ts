@@ -23,5 +23,12 @@ export const useSectionContainerStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
     background: theme.palette.background.paper,
     padding: theme.spacing(0, 0.5)
+  },
+
+  focused: {
+    borderColor: theme.palette.primary.light,
+    '& > label': {
+      color: theme.palette.primary.light
+    }
   }
 }));

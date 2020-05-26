@@ -1,20 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`KeywordsEditorComponent renders keywords 1`] = `
-<fieldset
-  className="makeStyles-keywordsEditor-1"
-  tabIndex={0}
+<div
+  className="makeStyles-root-4"
 >
-  <legend
-    className="makeStyles-label-2"
+  <label
+    className="makeStyles-label-5"
   >
     Keywords label
-  </legend>
+  </label>
   <section
-    className="makeStyles-keywordsSection-3"
+    className="makeStyles-keywordsSection-2"
   >
     <div
-      className="makeStyles-keyword-6"
+      className="makeStyles-keyword-7"
       data-test-id="keyword-container"
     >
       <div
@@ -44,7 +43,7 @@ exports[`KeywordsEditorComponent renders keywords 1`] = `
         >
           <svg
             aria-hidden="true"
-            className="MuiSvgIcon-root makeStyles-deleteIcon-7"
+            className="MuiSvgIcon-root makeStyles-deleteIcon-8"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -56,8 +55,8 @@ exports[`KeywordsEditorComponent renders keywords 1`] = `
       </button>
     </div>
     <div
-      className="prosemirrorContainer makeStyles-newKeywordEditor-4"
+      className="prosemirrorContainer makeStyles-newKeywordEditor-3"
     />
   </section>
-</fieldset>
+</div>
 `;

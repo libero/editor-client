@@ -1,7 +1,7 @@
 import { EditorState, Transaction } from 'prosemirror-state';
 import React from 'react';
 import { EditorView } from 'prosemirror-view';
-import { ProseMirrorEditorView } from '../rich-text-editor/prosemirror-editor-view';
+import { ProseMirrorEditorView } from 'app/components/rich-text-editor/prosemirror-editor-view';
 
 const ENTER_KEY_CODE = 'Enter';
 

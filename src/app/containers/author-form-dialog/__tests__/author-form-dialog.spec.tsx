@@ -1,13 +1,13 @@
 import React from 'react';
 import { create } from 'react-test-renderer';
-import { AuthorFormDialog } from '../index';
+import { AuthorFormDialog } from 'app/containers/author-form-dialog/index';
 import configureMockStore from 'redux-mock-store';
-import { getInitialHistory, getLoadableStateSuccess } from '../../../utils/state.utils';
+import { getInitialHistory, getLoadableStateSuccess } from 'app/utils/state.utils';
 import { EditorState } from 'prosemirror-state';
 import { Provider } from 'react-redux';
 import { mount } from 'enzyme';
-import { addAuthorAction, deleteAuthorAction, updateAuthorAction } from '../../../actions/manuscript.actions';
-import { PromptDialog } from '../../../components/prompt-dialog';
+import { addAuthorAction, deleteAuthorAction, updateAuthorAction } from 'app/actions/manuscript.actions';
+import { PromptDialog } from 'app/components/prompt-dialog';
 
 jest.mock('../../../components/prompt-dialog', () => ({
   PromptDialog: () => <div data-cmp="confirm-dialog"></div>

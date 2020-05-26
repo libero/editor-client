@@ -50,6 +50,7 @@
     ]
   },
   "devDependencies": {
+    "@types/classnames": "^2.2.10",
     "@types/enzyme": "^3.10.5",
     "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/jest": "^24.9.1",
@@ -80,6 +81,9 @@
   },
   "jest": {
     "restoreMocks": true,
-    "clearMocks": true
+    "clearMocks": true,
+    "moduleNameMapper": {
+      "^app/(.*)": "<rootDir>/src/app/$1"
+    }
   }
 }

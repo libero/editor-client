@@ -1,4 +1,4 @@
-import { getKeyFromQueryParams } from '../url.utils';
+import { getKeyFromQueryParams } from 'app/utils/url.utils';
 
 describe('getKeyFromQueryParams()', () => {
   it('can find keys', () => {

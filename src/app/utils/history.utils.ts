@@ -2,7 +2,7 @@ import { set, get } from 'lodash';
 import { EditorState, Transaction } from 'prosemirror-state';
 
 import { cloneManuscript, ManuscriptHistory } from './state.utils';
-import { Manuscript, ManuscriptDiff } from '../models/manuscript';
+import { Manuscript, ManuscriptDiff } from 'app/models/manuscript';
 
 export function updateManuscriptState(
   state: ManuscriptHistory,

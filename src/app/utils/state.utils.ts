@@ -1,7 +1,7 @@
 import { EditorState } from 'prosemirror-state';
 import { cloneDeepWith } from 'lodash';
 
-import { Manuscript, ManuscriptDiff } from '../models/manuscript';
+import { Manuscript, ManuscriptDiff } from 'app/models/manuscript';
 
 export interface LoadableState<T> {
   data: T | undefined;

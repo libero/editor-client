@@ -3,9 +3,9 @@ import { EditorState } from 'prosemirror-state';
 import { create } from 'react-test-renderer';
 import { mount } from 'enzyme';
 
-import { Keyword } from '../keyword';
-import { ProseMirrorEditorView } from '../../rich-text-editor/prosemirror-editor-view';
-import { createNewKeywordState } from '../../../models/manuscript-state.factory';
+import { Keyword } from 'app/components/keywords/keyword';
+import { ProseMirrorEditorView } from 'app/components/rich-text-editor/prosemirror-editor-view';
+import { createNewKeywordState } from 'app/models/manuscript-state.factory';
 
 describe('KeywordsEditorComponent', () => {
   it('renders keyword', () => {

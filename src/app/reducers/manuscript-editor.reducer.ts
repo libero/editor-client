@@ -1,6 +1,6 @@
-import * as manuscriptEditorAction from '../actions/manuscript-editor.actions';
-import { ManuscriptEditorState } from '../store';
-import { ModalPayload } from '../actions/manuscript-editor.actions';
+import * as manuscriptEditorAction from 'app/actions/manuscript-editor.actions';
+import { ManuscriptEditorState } from 'app/store';
+import { ModalPayload } from 'app/actions/manuscript-editor.actions';
 
 const initialState: ManuscriptEditorState = {
   focusedManuscriptPath: undefined,

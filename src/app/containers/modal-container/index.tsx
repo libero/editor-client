@@ -2,9 +2,9 @@ import React from 'react';
 import { Dialog, DialogTitle, DialogContent, Typography } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 
-import { isModalVisible, getModalParams } from '../../selectors/manuscript-editor.selectors';
+import { isModalVisible, getModalParams } from 'app/selectors/manuscript-editor.selectors';
 import { useModalContainerStyles } from './styles';
-import { ReactFCProps } from '../../utils/types';
+import { ReactFCProps } from 'app/utils/types';
 
 export const ModalContainer: React.FC<{}> = (props) => {
   const isVisible = useSelector(isModalVisible);
