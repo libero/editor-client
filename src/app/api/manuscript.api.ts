@@ -19,7 +19,7 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
   const title = doc.querySelector('title-group article-title');
   const keywordGroups = doc.querySelectorAll('kwd-group');
   const abstract = doc.querySelector('abstract:not([abstract-type])');
-  const authors = doc.querySelectorAll('contrib-group[content-type="authors"] > contrib[contrib-type="author"]');
+  const authors = doc.querySelectorAll('contrib[contrib-type="author"]');
 
   return {
     title: createTitleState(title),

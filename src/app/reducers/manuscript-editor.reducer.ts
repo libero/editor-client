@@ -1,8 +1,12 @@
 import * as manuscriptEditorAction from '../actions/manuscript-editor.actions';
 import { ManuscriptEditorState } from '../store';
+import { ModalPayload } from '../actions/manuscript-editor.actions';
 
 const initialState: ManuscriptEditorState = {
-  focusedManuscriptPath: undefined
+  focusedManuscriptPath: undefined,
+  modal: {
+    isVisible: false
+  }
 };
 
 export function manuscriptEditorReducer(
@@ -20,6 +24,21 @@ export function manuscriptEditorReducer(
       return {
         ...state,
         focusedManuscriptPath: undefined
+      };
+
+    case manuscriptEditorAction.showModalDialog.type:
+      return {
+        ...state,
+        modal: {
+          params: action.payload as ModalPayload,
+          isVisible: true
+        }
+      };
+
+    case manuscriptEditorAction.hideModalDialog.type:
+      return {
+        ...state,
+        modal: { isVisible: false }
       };
   }
 

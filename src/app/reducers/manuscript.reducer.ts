@@ -1,4 +1,4 @@
-import { Manuscript, Person } from '../models/manuscript';
+import { Manuscript } from '../models/manuscript';
 import * as manuscriptActions from '../actions/manuscript.actions';
 import {
   cloneManuscript,
@@ -21,6 +21,7 @@ import {
 } from '../actions/manuscript.actions';
 import { Action } from '../utils/action.utils';
 import { createNewKeywordState } from '../models/manuscript-state.factory';
+import { Person } from '../models/person';
 
 const initialState = getInitialLoadableState() as ManuscriptHistoryState;
 

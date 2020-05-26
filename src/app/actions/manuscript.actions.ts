@@ -1,6 +1,7 @@
-import { Manuscript, Person } from '../models/manuscript';
+import { Manuscript } from '../models/manuscript';
 import { createAction, createAsyncAction, ofActionType } from '../utils/action.utils';
 import { EditorState, Transaction } from 'prosemirror-state';
+import { Person } from '../models/person';
 
 export interface KeywordUpdatePayload {
   keywordGroup: string;

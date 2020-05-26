@@ -4,7 +4,6 @@ import { pick, get } from 'lodash';
 import { gapCursor } from 'prosemirror-gapcursor';
 import { dropCursor } from 'prosemirror-dropcursor';
 import { keymap } from 'prosemirror-keymap';
-import { v4 as uuidv4 } from 'uuid';
 
 import { baseKeymap } from 'prosemirror-commands';
 import * as titleConfig from './config/title.config';
@@ -13,7 +12,8 @@ import * as abstractConfig from './config/abstract.config';
 import { nodes } from './config/nodes';
 import { marks } from './config/marks';
 import { buildInputRules } from './plugins/input-rules';
-import { KeywordGroups, Person } from './manuscript';
+import { KeywordGroups } from './manuscript';
+import { createAuthor, Person } from './person';
 
 export function createTitleState(content: Node): EditorState {
   const schema = makeSchemaFromConfig(titleConfig.topNode, titleConfig.nodes, titleConfig.marks);
@@ -32,14 +32,15 @@ export function createTitleState(content: Node): EditorState {
 }
 
 export function createAuthorsState(authorsXml: Element[]): Person[] {
-  return authorsXml.map((author) => ({
-    id: author.getAttribute('id') || uuidv4(),
-    firstName: getTextContentFromPath(author, 'name > given-names'),
-    lastName: getTextContentFromPath(author, 'name > surname'),
-    suffix: getTextContentFromPath(author, 'name > suffix'),
-    email: getTextContentFromPath(author, 'email'),
-    orcId: getTextContentFromPath(author, 'contrib-id[contrib-id-type="orcid"]')
-  }));
+  return authorsXml.map((author) =>
+    createAuthor(author.getAttribute('id'), {
+      firstName: getTextContentFromPath(author, 'name > given-names'),
+      lastName: getTextContentFromPath(author, 'name > surname'),
+      suffix: getTextContentFromPath(author, 'name > suffix'),
+      email: getTextContentFromPath(author, 'email'),
+      orcId: getTextContentFromPath(author, 'contrib-id[contrib-id-type="orcid"]')
+    })
+  );
 }
 
 export function createAbstractState(content: Node): EditorState {

@@ -1,4 +1,5 @@
 import { EditorState, Transaction } from 'prosemirror-state';
+import { Person } from './person';
 
 export interface KeywordGroups {
   [keywordType: string]: {
@@ -6,15 +7,6 @@ export interface KeywordGroups {
     keywords: EditorState[];
     newKeyword: EditorState;
   };
-}
-
-export interface Person {
-  readonly id: string;
-  firstName: string;
-  lastName: string;
-  suffix?: string;
-  email?: string;
-  orcId?: string;
 }
 
 export type Manuscript = {
