@@ -172,7 +172,7 @@ exports[`Prompt Dialog renders edit author dialog form 1`] = `
     className="makeStyles-buttonPanel-3"
   >
     <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-outlinedRedButton-69 MuiButton-outlined"
+      className="MuiButtonBase-root MuiButton-root makeStyles-outlinedRedButton-70 MuiButton-outlined MuiButton-disableElevation"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -203,7 +203,7 @@ exports[`Prompt Dialog renders edit author dialog form 1`] = `
       className="makeStyles-spacer-4"
     />
     <button
-      className="MuiButtonBase-root MuiButton-root MuiButton-outlined"
+      className="MuiButtonBase-root MuiButton-root makeStyles-regularButton-68 MuiButton-outlined MuiButton-disableElevation"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -230,7 +230,7 @@ exports[`Prompt Dialog renders edit author dialog form 1`] = `
       />
     </button>
     <button
-      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+      className="MuiButtonBase-root MuiButton-root makeStyles-regularButton-68 MuiButton-contained MuiButton-containedPrimary MuiButton-disableElevation"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -436,7 +436,7 @@ exports[`Prompt Dialog renders new author dialog form 1`] = `
       className="makeStyles-spacer-4"
     />
     <button
-      className="MuiButtonBase-root MuiButton-root MuiButton-outlined"
+      className="MuiButtonBase-root MuiButton-root makeStyles-regularButton-68 MuiButton-outlined MuiButton-disableElevation"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -460,7 +460,7 @@ exports[`Prompt Dialog renders new author dialog form 1`] = `
       </span>
     </button>
     <button
-      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+      className="MuiButtonBase-root MuiButton-root makeStyles-regularButton-68 MuiButton-contained MuiButton-containedPrimary MuiButton-disableElevation"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
