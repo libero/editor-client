@@ -71,6 +71,18 @@ Array [
         className="prosemirrorContainer"
       />
     </div>
+    <div
+      className="makeStyles-root-11"
+    >
+      <label
+        className="makeStyles-label-12"
+      >
+        Author Information
+      </label>
+      <section
+        className="makeStyles-root-21"
+      />
+    </div>
   </div>,
 ]
 `;
