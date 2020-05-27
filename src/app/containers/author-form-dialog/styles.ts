@@ -4,7 +4,7 @@ export const useAuthorFormStyles = makeStyles((theme) => ({
   root: {},
 
   inputField: {
-    marginBottom: theme.spacing(2)
+    marginBottom: theme.spacing(3)
   },
 
   buttonPanel: {

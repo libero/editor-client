@@ -23,8 +23,13 @@ const defaultProps = {
 
 export const PromptDialog: React.FC<PromptDialogProps> = (props) => {
   return (
-    <Dialog open={props.isOpen} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
-      <DialogTitle id="alert-dialog-title">
+    <Dialog
+      open={props.isOpen}
+      aria-labelledby="alert-dialog-title"
+      maxWidth="xs"
+      aria-describedby="alert-dialog-description"
+    >
+      <DialogTitle id="alert-dialog-title" disableTypography={true}>
         <Typography variant="h2">{props.title}</Typography>
       </DialogTitle>
       <DialogContent>

@@ -6,6 +6,8 @@ $secondary-main: #f7f7f7;
 $text-primary: #212121;
 $text-secondary: #767676;
 
+$error: #CF0C4E;
+
 $font-family: 'Noto Sans', sans-serif;
 
 :export {
@@ -17,4 +19,6 @@ $font-family: 'Noto Sans', sans-serif;
   text-primary: $text-primary;
   text-secondary: $text-secondary;
   font-family: $font-family;
+
+  error: $error;
 }
