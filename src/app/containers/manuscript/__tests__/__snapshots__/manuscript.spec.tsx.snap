@@ -31,10 +31,10 @@ Array [
       className="makeStyles-toolbarPlaceholder-10"
     />
     <div
-      className="makeStyles-root-11"
+      className="makeStyles-root-11 makeStyles-plainVariant-13"
     >
       <label
-        className="makeStyles-label-12"
+        className="makeStyles-label-14"
       >
         Title
       </label>
@@ -44,15 +44,15 @@ Array [
     </div>
     <section>
       <div
-        className="makeStyles-root-11"
+        className="makeStyles-root-11 makeStyles-plainVariant-13"
       >
         <label
-          className="makeStyles-label-12"
+          className="makeStyles-label-14"
         >
           Authors
         </label>
         <div
-          className="makeStyles-sortableContainer-14"
+          className="makeStyles-sortableContainer-16"
         >
            
            
@@ -60,10 +60,10 @@ Array [
       </div>
     </section>
     <div
-      className="makeStyles-root-11"
+      className="makeStyles-root-11 makeStyles-plainVariant-13"
     >
       <label
-        className="makeStyles-label-12"
+        className="makeStyles-label-14"
       >
         Abstract
       </label>
@@ -71,6 +71,17 @@ Array [
         className="prosemirrorContainer"
       />
     </div>
+    <section>
+      <div
+        className="makeStyles-root-11 makeStyles-plainVariant-13"
+      >
+        <label
+          className="makeStyles-label-14"
+        >
+          Author Information
+        </label>
+      </div>
+    </section>
   </div>,
 ]
 `;

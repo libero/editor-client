@@ -10,6 +10,7 @@ import { KeywordsEditor } from 'app/components/keywords';
 import { KeywordGroups } from 'app/models/manuscript';
 import { useManuscriptStyles } from './styles';
 import { SortableAuthorsList } from './sortable-authors-list';
+import { AuthorsInfoDetails } from 'app/containers/manuscript/authors-info-details';
 
 export const ManuscriptEditor: React.FC = () => {
   const classes = useManuscriptStyles();
@@ -94,6 +95,7 @@ export const ManuscriptEditor: React.FC = () => {
         onBlur={handleBlur}
       />
       {renderKeywords(allKeywords)}
+      <AuthorsInfoDetails />
     </div>
   );
 };

@@ -3,9 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 export const useSectionContainerStyles = makeStyles((theme) => ({
   root: {
     position: 'relative',
-    padding: theme.spacing(1.5, 1, 1, 1),
+    padding: theme.spacing(2, 1, 1, 1.5),
     border: `solid 1px`,
-    borderColor: theme.palette.secondary.dark,
     borderRadius: theme.spacing(0.5),
     boxSizing: 'border-box',
     '&:focus': {
@@ -16,9 +15,19 @@ export const useSectionContainerStyles = makeStyles((theme) => ({
       }
     }
   },
+
+  outlinedVariant: {
+    borderColor: theme.palette.secondary.dark
+  },
+
+  plainVariant: {
+    borderColor: 'transparent'
+  },
+
   label: {
     position: 'absolute',
     top: -5,
+    left: theme.spacing(1),
     fontSize: '0.75rem',
     color: theme.palette.text.secondary,
     background: theme.palette.background.paper,

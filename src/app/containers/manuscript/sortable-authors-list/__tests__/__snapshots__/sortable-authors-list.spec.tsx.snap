@@ -3,10 +3,10 @@
 exports[`Sortable authors list renders authors list 1`] = `
 <section>
   <div
-    className="makeStyles-root-4"
+    className="makeStyles-root-5 makeStyles-plainVariant-7"
   >
     <label
-      className="makeStyles-label-5"
+      className="makeStyles-label-8"
     >
       Authors
     </label>

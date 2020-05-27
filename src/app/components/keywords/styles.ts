@@ -41,7 +41,7 @@ export const useKeywordStyles = makeStyles((theme) => ({
     alignItems: 'center',
     background: theme.palette.primary.main,
     whiteSpace: 'nowrap',
-    margin: theme.spacing(0.25, 0.5),
+    margin: theme.spacing(0.25, 1, 0.25, 0),
     fontSize: '0.9rem',
     padding: theme.spacing(0.5, 0.5, 0.5, 1.5),
     borderRadius: 16,

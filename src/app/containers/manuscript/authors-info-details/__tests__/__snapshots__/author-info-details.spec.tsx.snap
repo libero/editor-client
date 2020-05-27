@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Authors details info renders authors list 1`] = `
+<section>
+  <div
+    className="makeStyles-root-2 makeStyles-plainVariant-4"
+  >
+    <label
+      className="makeStyles-label-5"
+    >
+      Author Information
+    </label>
+    <section
+      className="makeStyles-root-7"
+    >
+      <div>
+        <div
+          className="makeStyles-authorInfoLine-9"
+        >
+          <strong>
+            Fred
+             
+            Atherden
+          </strong>
+        </div>
+        <div
+          className="makeStyles-authorInfoLine-9"
+        >
+          Neuroscience Interdepartmental Program, University of California, Los Angeles, United States
+        </div>
+        <div
+          className="makeStyles-authorInfoLine-9"
+        >
+          <img
+            alt="orcid icon"
+            className="makeStyles-orcidIcon-10"
+            src="orcid-icon.svg"
+          />
+           0000-0001-5000-0007
+        </div>
+        <div
+          className="makeStyles-authorInfoLine-9"
+        >
+           No Competing interest declared 
+        </div>
+      </div>
+      <div
+        data-cmp="IconButton"
+      />
+    </section>
+    <section
+      className="makeStyles-root-7"
+    >
+      <div>
+        <div
+          className="makeStyles-authorInfoLine-9"
+        >
+          <strong>
+            Jeanine
+             
+            Smith
+          </strong>
+        </div>
+        <div
+          className="makeStyles-authorInfoLine-9"
+        >
+          Neuroscience Interdepartmental Program, University of California, Los Angeles, United States
+        </div>
+        <div
+          className="makeStyles-authorInfoLine-9"
+        >
+          <img
+            alt="orcid icon"
+            className="makeStyles-orcidIcon-10"
+            src="orcid-icon.svg"
+          />
+           0000-0001-5000-0007
+        </div>
+        <div
+          className="makeStyles-authorInfoLine-9"
+        >
+           No Competing interest declared 
+        </div>
+      </div>
+      <div
+        data-cmp="IconButton"
+      />
+    </section>
+  </div>
+  <div
+    data-cmp="Button"
+  />
+</section>
+`;
