@@ -14,7 +14,9 @@ import { Person } from 'app/models/person';
 import { AuthorFormDialog } from 'app/containers/author-form-dialog';
 import { ActionButton } from 'app/components/action-button';
 
-const DragHandle = SortableHandle(() => <img src={DragIcon} alt="drag handle" aria-hidden={true} className="drag-handle" />);
+const DragHandle = SortableHandle(() => (
+  <img src={DragIcon} alt="drag handle" aria-hidden={true} className="drag-handle" />
+));
 
 const ChipRenderComponent = (props) => (
   <div className={props.className}>
@@ -91,7 +93,12 @@ export const SortableAuthorsList: React.FC = () => {
           ))}
         </SortableList>
       </SectionContainer>
-      <ActionButton title="Add author" variant="addEntity" onClick={onAddNewAuthor} />
+      <ActionButton
+        title="Add author"
+        variant="addEntity"
+        onClick={onAddNewAuthor}
+        className={classes.addAuthorButton}
+      />
     </section>
   );
 };

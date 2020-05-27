@@ -49,6 +49,7 @@ interface ActionButtonProps {
   onClick: () => void;
   title: string;
   variant: VariantType;
+  className?: string;
 }
 
 export const ActionButton: React.FC<ActionButtonProps> = (props) => {
@@ -57,7 +58,7 @@ export const ActionButton: React.FC<ActionButtonProps> = (props) => {
   const variantClasses = mapValues(variantProps.classes, (className: string) => classes[className]);
   const buttonProps = { ...variantProps, classes: variantClasses };
   return (
-    <Button onClick={props.onClick} {...buttonProps}>
+    <Button onClick={props.onClick} {...buttonProps} className={props.className}>
       {props.title}
     </Button>
   );

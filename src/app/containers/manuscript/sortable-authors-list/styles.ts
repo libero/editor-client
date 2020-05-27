@@ -17,5 +17,8 @@ export const useAuthorsListStyles = makeStyles((theme) => ({
   chipLabel: {
     fontSize: '0.9rem',
     paddingLeft: 0
+  },
+  addAuthorButton: {
+    marginLeft: theme.spacing(1)
   }
 }));

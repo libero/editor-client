@@ -30,14 +30,14 @@ export const AuthorsInfoDetails: React.FC = () => {
   }, [dispatch]);
 
   return (
-    <SectionContainer label="Author Information">
-      <section className={classes.root}>
+    <section>
+      <SectionContainer label="Author Information">
         {authors.map((author) => (
           <AuthorInfo key={author._id} author={author} />
         ))}
-      </section>
-      <ActionButton variant="addEntity" title="Add Author" onClick={addAuthor} />
-    </SectionContainer>
+      </SectionContainer>
+      <ActionButton variant="addEntity" title="Add Author" onClick={addAuthor} className={classes.addAuthorButton}/>
+    </section>
   );
 };
 

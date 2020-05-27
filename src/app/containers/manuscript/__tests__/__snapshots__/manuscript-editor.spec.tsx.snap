@@ -9,10 +9,10 @@ exports[`manuscript editor should render 1`] = `
     className="makeStyles-toolbarPlaceholder-2"
   />
   <div
-    className="makeStyles-root-3"
+    className="makeStyles-root-3 makeStyles-plainVariant-5"
   >
     <label
-      className="makeStyles-label-4"
+      className="makeStyles-label-6"
     >
       Title
     </label>
@@ -22,22 +22,22 @@ exports[`manuscript editor should render 1`] = `
   </div>
   <section>
     <div
-      className="makeStyles-root-3"
+      className="makeStyles-root-3 makeStyles-plainVariant-5"
     >
       <label
-        className="makeStyles-label-4"
+        className="makeStyles-label-6"
       >
         Authors
       </label>
       <div
-        className="makeStyles-sortableContainer-6"
+        className="makeStyles-sortableContainer-8"
       >
          
          
       </div>
     </div>
     <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-addEntityButton_root-11 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
+      className="MuiButtonBase-root MuiButton-root makeStyles-addEntityButton_root-14 MuiButton-text makeStyles-addAuthorButton-11 MuiButton-textSizeSmall MuiButton-sizeSmall"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -58,7 +58,7 @@ exports[`manuscript editor should render 1`] = `
         className="MuiButton-label"
       >
         <span
-          className="MuiButton-startIcon makeStyles-addEntityButton_icon-12 MuiButton-iconSizeSmall"
+          className="MuiButton-startIcon makeStyles-addEntityButton_icon-15 MuiButton-iconSizeSmall"
         >
           <svg
             aria-hidden="true"
@@ -76,10 +76,10 @@ exports[`manuscript editor should render 1`] = `
     </button>
   </section>
   <div
-    className="makeStyles-root-3"
+    className="makeStyles-root-3 makeStyles-plainVariant-5"
   >
     <label
-      className="makeStyles-label-4"
+      className="makeStyles-label-6"
     >
       Abstract
     </label>
@@ -87,19 +87,18 @@ exports[`manuscript editor should render 1`] = `
       className="prosemirrorContainer"
     />
   </div>
-  <div
-    className="makeStyles-root-3"
-  >
-    <label
-      className="makeStyles-label-4"
+  <section>
+    <div
+      className="makeStyles-root-3 makeStyles-plainVariant-5"
     >
-      Author Information
-    </label>
-    <section
-      className="makeStyles-root-54"
-    />
+      <label
+        className="makeStyles-label-6"
+      >
+        Author Information
+      </label>
+    </div>
     <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-addEntityButton_root-11 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
+      className="MuiButtonBase-root MuiButton-root makeStyles-addEntityButton_root-14 MuiButton-text makeStyles-addAuthorButton-57 MuiButton-textSizeSmall MuiButton-sizeSmall"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -120,7 +119,7 @@ exports[`manuscript editor should render 1`] = `
         className="MuiButton-label"
       >
         <span
-          className="MuiButton-startIcon makeStyles-addEntityButton_icon-12 MuiButton-iconSizeSmall"
+          className="MuiButton-startIcon makeStyles-addEntityButton_icon-15 MuiButton-iconSizeSmall"
         >
           <svg
             aria-hidden="true"
@@ -136,6 +135,6 @@ exports[`manuscript editor should render 1`] = `
         Add Author
       </span>
     </button>
-  </div>
+  </section>
 </div>
 `;
