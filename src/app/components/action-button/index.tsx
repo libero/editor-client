@@ -10,12 +10,14 @@ type MuiButtonVariant = 'text' | 'outlined' | 'contained';
 const VARIANTS = {
   containedWarning: {
     variant: 'contained' as MuiButtonVariant,
+    disableElevation: true,
     classes: {
       root: 'containedRedButton'
     }
   },
   outlinedWarning: {
     variant: 'outlined' as MuiButtonVariant,
+    disableElevation: true,
     classes: {
       root: 'outlinedRedButton'
     }
@@ -23,13 +25,20 @@ const VARIANTS = {
   primaryContained: {
     variant: 'contained' as MuiButtonVariant,
     color: 'primary',
-    classes: {}
+    disableElevation: true,
+    classes: {
+      root: 'regularButton'
+    }
   },
   secondaryOutlined: {
+    disableElevation: true,
     variant: 'outlined',
-    classes: {}
+    classes: {
+      root: 'regularButton'
+    }
   },
   addEntity: {
+    disableElevation: true,
     size: 'small',
     classes: { root: 'addEntityButton_root', startIcon: 'addEntityButton_icon' },
     variant: 'text',

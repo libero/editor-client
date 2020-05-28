@@ -2,7 +2,7 @@
 
 exports[`Action Button renders action button containedWarning 1`] = `
 <button
-  className="MuiButtonBase-root MuiButton-root makeStyles-containedRedButton-1 MuiButton-contained"
+  className="MuiButtonBase-root MuiButton-root makeStyles-containedRedButton-2 MuiButton-contained MuiButton-disableElevation"
   disabled={false}
   onBlur={[Function]}
   onClick={[MockFunction]}
@@ -32,7 +32,7 @@ exports[`Action Button renders action button containedWarning 1`] = `
 
 exports[`Action Button renders action button outlinedWarning 1`] = `
 <button
-  className="MuiButtonBase-root MuiButton-root makeStyles-outlinedRedButton-2 MuiButton-outlined"
+  className="MuiButtonBase-root MuiButton-root makeStyles-outlinedRedButton-3 MuiButton-outlined MuiButton-disableElevation"
   disabled={false}
   onBlur={[Function]}
   onClick={[MockFunction]}
@@ -59,7 +59,7 @@ exports[`Action Button renders action button outlinedWarning 1`] = `
 
 exports[`Action Button renders action button primaryContained 1`] = `
 <button
-  className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+  className="MuiButtonBase-root MuiButton-root makeStyles-regularButton-1 MuiButton-contained MuiButton-containedPrimary MuiButton-disableElevation"
   disabled={false}
   onBlur={[Function]}
   onClick={[MockFunction]}
@@ -89,7 +89,7 @@ exports[`Action Button renders action button primaryContained 1`] = `
 
 exports[`Action Button renders action button secondaryOutlined 1`] = `
 <button
-  className="MuiButtonBase-root MuiButton-root MuiButton-outlined"
+  className="MuiButtonBase-root MuiButton-root makeStyles-regularButton-1 MuiButton-outlined MuiButton-disableElevation"
   disabled={false}
   onBlur={[Function]}
   onClick={[MockFunction]}

@@ -50,6 +50,27 @@
                 <xref ref-type="fn" rid="con2"/>
                 <bio><p><bold>Jeanine Smith III</bold> is in the Department, University, City, Country</p></bio>
               </contrib>
+                <contrib contrib-type="author" equal-contrib="yes" deceased="yes">
+                    <name><surname>London</surname><given-names>Jack</given-names><suffix>III</suffix></name>
+                    <xref ref-type="aff" rid="aff2">2</xref>
+                    <xref ref-type="fn" rid="equal-contrib1">†</xref>
+                    <xref ref-type="fn" rid="con2"/>
+                    <bio><p><bold>Jeanine Smith III</bold> is in the Department, University, City, Country</p></bio>
+                </contrib>
+                <contrib contrib-type="author" equal-contrib="yes" deceased="yes">
+                    <name><surname>Twain</surname><given-names>Mark</given-names><suffix>III</suffix></name>
+                    <xref ref-type="aff" rid="aff2">2</xref>
+                    <xref ref-type="fn" rid="equal-contrib1">†</xref>
+                    <xref ref-type="fn" rid="con2"/>
+                    <bio><p><bold>Jeanine Smith III</bold> is in the Department, University, City, Country</p></bio>
+                </contrib>
+                <contrib contrib-type="author" equal-contrib="yes" deceased="yes">
+                    <name><surname>Solzhenitsin</surname><given-names>Alexandr</given-names><suffix>III</suffix></name>
+                    <xref ref-type="aff" rid="aff2">2</xref>
+                    <xref ref-type="fn" rid="equal-contrib1">†</xref>
+                    <xref ref-type="fn" rid="con2"/>
+                    <bio><p><bold>Jeanine Smith III</bold> is in the Department, University, City, Country</p></bio>
+                </contrib>
               <aff id="aff1">
                 <label>1</label>
                 <institution content-type="dept">Production Department</institution>

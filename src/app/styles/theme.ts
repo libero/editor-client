@@ -13,6 +13,9 @@ export const palette = {
     main: constants['secondary-main'],
     contrastText: constants['text-secondary']
   },
+  error: {
+    main: constants['error']
+  },
   text: {
     primary: constants['text-primary'],
     secondary: constants['text-secondary']

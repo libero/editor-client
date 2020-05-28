@@ -81,7 +81,7 @@ export const SortableAuthorsList: React.FC = () => {
   return (
     <section>
       <SectionContainer label="Authors">
-        <SortableList className={classes.sortableContainer} onSortEnd={onSortEnd} axis="x" useDragHandle={true}>
+        <SortableList className={classes.sortableContainer} onSortEnd={onSortEnd} axis="xy" useDragHandle={true}>
           {authors.map((value, index) => (
             <SortableItem
               key={`item-${value.id}`}

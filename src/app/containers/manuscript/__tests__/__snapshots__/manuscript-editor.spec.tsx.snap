@@ -37,7 +37,7 @@ exports[`manuscript editor should render 1`] = `
       </div>
     </div>
     <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-addEntityButton_root-14 MuiButton-text makeStyles-addAuthorButton-11 MuiButton-textSizeSmall MuiButton-sizeSmall"
+      className="MuiButtonBase-root MuiButton-root makeStyles-addEntityButton_root-15 MuiButton-text makeStyles-addAuthorButton-11 MuiButton-textSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -58,7 +58,7 @@ exports[`manuscript editor should render 1`] = `
         className="MuiButton-label"
       >
         <span
-          className="MuiButton-startIcon makeStyles-addEntityButton_icon-15 MuiButton-iconSizeSmall"
+          className="MuiButton-startIcon makeStyles-addEntityButton_icon-16 MuiButton-iconSizeSmall"
         >
           <svg
             aria-hidden="true"
@@ -98,7 +98,7 @@ exports[`manuscript editor should render 1`] = `
       </label>
     </div>
     <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-addEntityButton_root-14 MuiButton-text makeStyles-addAuthorButton-57 MuiButton-textSizeSmall MuiButton-sizeSmall"
+      className="MuiButtonBase-root MuiButton-root makeStyles-addEntityButton_root-15 MuiButton-text makeStyles-addAuthorButton-58 MuiButton-textSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -119,7 +119,7 @@ exports[`manuscript editor should render 1`] = `
         className="MuiButton-label"
       >
         <span
-          className="MuiButton-startIcon makeStyles-addEntityButton_icon-15 MuiButton-iconSizeSmall"
+          className="MuiButton-startIcon makeStyles-addEntityButton_icon-16 MuiButton-iconSizeSmall"
         >
           <svg
             aria-hidden="true"

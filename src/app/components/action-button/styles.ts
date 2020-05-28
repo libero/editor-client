@@ -1,13 +1,18 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export const useActionButtonStyles = makeStyles((theme) => ({
+  regularButton: {
+    fontWeight: 600
+  },
   containedRedButton: {
     backgroundColor: theme.palette.error.main,
+    fontWeight: 600,
     color: theme.palette.primary.contrastText
   },
 
   outlinedRedButton: {
     color: theme.palette.error.main,
+    fontWeight: 600,
     borderColor: theme.palette.error.main
   },
 
