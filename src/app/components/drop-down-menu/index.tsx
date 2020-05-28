@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import { useDropDownStyles } from './styles';
 
 export interface DropDownMenuItemProps {
   title: string;
@@ -40,6 +41,8 @@ export const DropDownMenu: React.FC<DropDownMenuProps> = ({ title, entries }) =>
     [setAnchorEl]
   );
 
+  const classes = useDropDownStyles();
+
   const menuItems = entries.map((entry, index) => {
     return (
       <MenuItem disabled={!entry.enabled} key={index} onClick={handleMenuItemClick.bind(null, entry.action)}>
@@ -50,7 +53,7 @@ export const DropDownMenu: React.FC<DropDownMenuProps> = ({ title, entries }) =>
 
   return (
     <div>
-      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleMenuClick}>
+      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleMenuClick} className={classes.button}>
         {title}
         <ArrowDropDownIcon />
       </Button>

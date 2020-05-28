@@ -20,6 +20,7 @@ export const useAuthorsListStyles = makeStyles((theme) => ({
   },
   chipLabel: {
     textOverflow: 'unset',
+    overflow: 'unset',
     fontSize: '0.9rem',
     paddingLeft: 0
   },

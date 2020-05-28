@@ -7,13 +7,19 @@ export const useActionButtonStyles = makeStyles((theme) => ({
   containedRedButton: {
     backgroundColor: theme.palette.error.main,
     fontWeight: 600,
-    color: theme.palette.primary.contrastText
+    color: theme.palette.primary.contrastText,
+    '&:hover': {
+      backgroundColor: theme.palette.error.dark
+    }
   },
 
   outlinedRedButton: {
     color: theme.palette.error.main,
     fontWeight: 600,
-    borderColor: theme.palette.error.main
+    borderColor: theme.palette.error.main,
+    '&:hover': {
+      borderColor: theme.palette.error.dark
+    }
   },
 
   addEntityButton_root: {
