@@ -18,9 +18,9 @@ exports[`Authors details info renders authors list 1`] = `
           className="makeStyles-authorInfoLine-9"
         >
           <strong>
-            Fred
              
-            Atherden
+            Fred Atherden
+             
           </strong>
         </div>
         <div
@@ -56,9 +56,9 @@ exports[`Authors details info renders authors list 1`] = `
           className="makeStyles-authorInfoLine-9"
         >
           <strong>
-            Jeanine
              
-            Smith
+            Jeanine Smith
+             
           </strong>
         </div>
         <div
