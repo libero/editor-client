@@ -1,6 +1,7 @@
 import React from 'react';
 import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Typography } from '@material-ui/core';
 import { ActionButton, VariantType } from 'app/components/action-button';
+import { usePromptDialogStyles } from 'app/components/prompt-dialog/styles';
 
 interface PromptDialogProps {
   isOpen: boolean;
@@ -22,6 +23,7 @@ const defaultProps = {
 };
 
 export const PromptDialog: React.FC<PromptDialogProps> = (props) => {
+  const classes = usePromptDialogStyles();
   return (
     <Dialog
       open={props.isOpen}
@@ -30,12 +32,12 @@ export const PromptDialog: React.FC<PromptDialogProps> = (props) => {
       aria-describedby="alert-dialog-description"
     >
       <DialogTitle id="alert-dialog-title" disableTypography={true}>
-        <Typography variant="h2">{props.title}</Typography>
+        <Typography variant="h3">{props.title}</Typography>
       </DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-description">{props.message}</DialogContentText>
       </DialogContent>
-      <DialogActions>
+      <DialogActions classes={{ root: classes.actionPanel }}>
         <ActionButton
           onClick={props.onReject}
           variant={props.rejectVariant || defaultProps.rejectVariant}
