@@ -31,7 +31,7 @@ export const PromptDialog: React.FC<PromptDialogProps> = (props) => {
       maxWidth="xs"
       aria-describedby="alert-dialog-description"
     >
-      <DialogTitle id="alert-dialog-title" disableTypography={true}>
+      <DialogTitle id="alert-dialog-title" disableTypography={true} classes={{ root: classes.dialogTitle }}>
         <Typography variant="h3">{props.title}</Typography>
       </DialogTitle>
       <DialogContent>
