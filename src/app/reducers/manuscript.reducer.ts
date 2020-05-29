@@ -22,6 +22,7 @@ import {
 import { Action } from 'app/utils/action.utils';
 import { createNewKeywordState } from 'app/models/manuscript-state.factory';
 import { Person } from 'app/models/person';
+import { Affiliation } from 'app/models/affiliation';
 
 const initialState = getInitialLoadableState() as ManuscriptHistoryState;
 
@@ -75,6 +76,24 @@ export function manuscriptReducer(
       return {
         ...state,
         data: handleAuthorDelete(state.data, action as Action<Person>)
+      };
+
+    case manuscriptActions.deleteAffiliationAction.type:
+      return {
+        ...state,
+        data: handleAffiliationDelete(state.data, action as Action<Affiliation>)
+      };
+
+    case manuscriptActions.addAffiliationAction.type:
+      return {
+        ...state,
+        data: handleAffiliationAdd(state.data, action as Action<Affiliation>)
+      };
+
+    case manuscriptActions.updateAffiliationAction.type:
+      return {
+        ...state,
+        data: handleAffiliationUpdate(state.data, action as Action<Affiliation>)
       };
 
     case manuscriptActions.updateAbstractAction.type:
@@ -177,11 +196,59 @@ function handleAuthorMove(state: ManuscriptHistory, action: Action<MoveAuthorPay
   };
 }
 
+function handleAffiliationUpdate(state: ManuscriptHistory, action: Action<Affiliation>): ManuscriptHistory {
+  const affiliationIndex = state.present.affiliations.findIndex(({ id }) => id === action.payload.id);
+
+  const newDiff = {
+    [`authors.${affiliationIndex}`]: state.present.affiliations[affiliationIndex]
+  };
+
+  const newManuscript = cloneManuscript(state.present);
+  newManuscript.affiliations[affiliationIndex] = action.payload;
+
+  return {
+    past: [...state.past, newDiff],
+    present: newManuscript,
+    future: []
+  };
+}
+
 function handleAuthorDelete(state: ManuscriptHistory, action: Action<Person>): ManuscriptHistory {
   const currentIndex = state.present.authors.findIndex(({ id }) => id === action.payload.id);
 
   const newDiff = {
     authors: state.present.authors
+  };
+
+  const newManuscript = cloneManuscript(state.present);
+  newManuscript.authors.splice(currentIndex, 1);
+
+  return {
+    past: [...state.past, newDiff],
+    present: newManuscript,
+    future: []
+  };
+}
+
+function handleAffiliationAdd(state: ManuscriptHistory, action: Action<Affiliation>): ManuscriptHistory {
+  const newDiff = {
+    affiliations: state.present.affiliations
+  };
+
+  const newManuscript = cloneManuscript(state.present);
+  newManuscript.affiliations.push(action.payload);
+  return {
+    past: [...state.past, newDiff],
+    present: newManuscript,
+    future: []
+  };
+}
+
+function handleAffiliationDelete(state: ManuscriptHistory, action: Action<Affiliation>): ManuscriptHistory {
+  const currentIndex = state.present.affiliations.findIndex(({ id }) => id === action.payload.id);
+
+  const newDiff = {
+    affiliations: state.present.affiliations
   };
 
   const newManuscript = cloneManuscript(state.present);
