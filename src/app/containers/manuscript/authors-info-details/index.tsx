@@ -5,7 +5,7 @@ import EditIcon from '@material-ui/icons/Edit';
 
 import { SectionContainer } from 'app/components/section-container';
 import { getAuthors } from 'app/selectors/manuscript.selectors';
-import { Person } from 'app/models/person';
+import {getAuthorDisplayName, Person} from 'app/models/person';
 import OrcidIcon from 'app/assets/orcid-icon.svg';
 import {
   useAuthorDetailStyles,
@@ -63,9 +63,7 @@ const AuthorInfo: React.FC<AuthorInfoProps> = ({ author }) => {
     <section className={classes.root}>
       <div>
         <div className={classes.authorInfoLine}>
-          <strong>
-            {author.firstName} {author.lastName}
-          </strong>
+          <strong> {getAuthorDisplayName(author)} </strong>
         </div>
         <div className={classes.authorInfoLine}>
           Neuroscience Interdepartmental Program, University of California, Los Angeles, United States

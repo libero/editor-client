@@ -22,7 +22,7 @@ exports[`Sortable authors list renders authors list 1`] = `
       <div
         data-cmp="chip"
       >
-        Jeanine Smith
+        Jeanine Smith III
       </div>
        
     </div>

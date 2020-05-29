@@ -15,3 +15,7 @@ export function createAuthor(xmlId: string | undefined, author: Omit<Person, 'id
     id: xmlId || uuidv4()
   };
 }
+
+export function getAuthorDisplayName(author: Person): string {
+  return [author.firstName, author.lastName, author.suffix].filter((_) => _).join(' ');
+}

@@ -10,7 +10,7 @@ import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions'
 import { getAuthors } from 'app/selectors/manuscript.selectors';
 import { useAuthorsListStyles } from './styles';
 import { SectionContainer } from 'app/components/section-container';
-import { Person } from 'app/models/person';
+import {getAuthorDisplayName, Person} from 'app/models/person';
 import { AuthorFormDialog } from 'app/containers/author-form-dialog';
 import { ActionButton } from 'app/components/action-button';
 
@@ -28,7 +28,7 @@ const ChipRenderComponent = (props) => (
 const SortableItem = SortableElement(({ value, classes, onEdit }) => (
   <Chip
     classes={{ root: classes.chip, label: classes.chipLabel }}
-    label={`${value.firstName} ${value.lastName}`}
+    label={getAuthorDisplayName(value)}
     onDelete={onEdit}
     component={ChipRenderComponent}
     color="primary"
