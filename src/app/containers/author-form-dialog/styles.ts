@@ -11,7 +11,7 @@ export const useAuthorFormStyles = makeStyles((theme) => ({
     display: 'flex',
     marginTop: theme.spacing(1),
     '& > *:last-child': {
-      marginLeft: theme.spacing(1)
+      marginLeft: theme.spacing(2)
     }
   },
 

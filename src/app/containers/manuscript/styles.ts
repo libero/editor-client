@@ -7,10 +7,10 @@ export const useManuscriptStyles = makeStyles((theme) => ({
     maxWidth: 700 + tocWidth,
     boxSizing: 'border-box',
     width: '100%',
-    padding: theme.spacing(1),
+    padding: theme.spacing(2),
     margin: '0 auto',
     [theme.breakpoints.up('sm')]: {
-      paddingLeft: tocWidth + theme.spacing()
+      paddingLeft: tocWidth + theme.spacing(2)
     },
     '& > *': {
       marginTop: 24

@@ -2,9 +2,11 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export const useActionButtonStyles = makeStyles((theme) => ({
   regularButton: {
+    minWidth: 90,
     fontWeight: 600
   },
   containedRedButton: {
+    minWidth: 90,
     backgroundColor: theme.palette.error.main,
     fontWeight: 600,
     color: theme.palette.primary.contrastText,
@@ -14,6 +16,7 @@ export const useActionButtonStyles = makeStyles((theme) => ({
   },
 
   outlinedRedButton: {
+    minWidth: 90,
     color: theme.palette.error.main,
     fontWeight: 600,
     borderColor: theme.palette.error.main,
