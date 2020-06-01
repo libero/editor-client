@@ -2,6 +2,7 @@ import { Manuscript } from 'app/models/manuscript';
 import { createAction, createAsyncAction, ofActionType } from 'app/utils/action.utils';
 import { EditorState, Transaction } from 'prosemirror-state';
 import { Person } from 'app/models/person';
+import { Affiliation } from 'app/models/affiliation';
 
 export interface KeywordUpdatePayload {
   keywordGroup: string;
@@ -40,6 +41,9 @@ export const updateAuthorAction = createAction<Person>('UPDATE_AUTHOR');
 export const addAuthorAction = createAction<Person>('ADD_AUTHOR');
 export const moveAuthorAction = createAction<MoveAuthorPayload>('MOVE_AUTHOR');
 export const deleteAuthorAction = createAction<Person>('DELETE_AUTHOR');
+export const updateAffiliationAction = createAction<Affiliation>('UPDATE_AFFILIATION');
+export const addAffiliationAction = createAction<Affiliation>('ADD_AFFILIATION');
+export const deleteAffiliationAction = createAction<Affiliation>('DELETE_AFFILIATION');
 
 export const undoAction = createAction<void>('UNDO');
 export const redoAction = createAction<void>('REDO');
@@ -49,6 +53,9 @@ export const linkAction = createAction<void>('LINK');
 
 export type ActionType =
   | ofActionType<typeof loadManuscriptAction>
+  | ofActionType<typeof updateAffiliationAction>
+  | ofActionType<typeof addAffiliationAction>
+  | ofActionType<typeof deleteAffiliationAction>
   | ofActionType<typeof updateAuthorAction>
   | ofActionType<typeof addAuthorAction>
   | ofActionType<typeof moveAuthorAction>

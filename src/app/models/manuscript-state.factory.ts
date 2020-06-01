@@ -14,6 +14,7 @@ import { marks } from './config/marks';
 import { buildInputRules } from './plugins/input-rules';
 import { KeywordGroups } from './manuscript';
 import { createAuthor, Person } from './person';
+import { Affiliation, createAffiliation } from 'app/models/affiliation';
 
 export function createTitleState(content: Node): EditorState {
   const schema = makeSchemaFromConfig(titleConfig.topNode, titleConfig.nodes, titleConfig.marks);
@@ -41,6 +42,22 @@ export function createAuthorsState(authorsXml: Element[]): Person[] {
       orcId: getTextContentFromPath(author, 'contrib-id[contrib-id-type="orcid"]')
     })
   );
+}
+
+export function createAffiliationsState(affiliations: Element[]): Affiliation[] {
+  return affiliations.map((aff) => {
+    return createAffiliation(aff.getAttribute('id'), {
+      label: getTextContentFromPath(aff, 'label'),
+      institution: {
+        name: getTextContentFromPath(aff, 'institution:not([content-type])'),
+        department: getTextContentFromPath(aff, 'institution[content-type="dept"]')
+      },
+      address: {
+        city: getTextContentFromPath(aff, 'addr-line named-content[content-type="city"]')
+      },
+      country: getTextContentFromPath(aff, 'country')
+    });
+  });
 }
 
 export function createAbstractState(content: Node): EditorState {
