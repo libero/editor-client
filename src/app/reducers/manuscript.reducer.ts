@@ -200,7 +200,7 @@ function handleAffiliationUpdate(state: ManuscriptHistory, action: Action<Affili
   const affiliationIndex = state.present.affiliations.findIndex(({ id }) => id === action.payload.id);
 
   const newDiff = {
-    [`authors.${affiliationIndex}`]: state.present.affiliations[affiliationIndex]
+    [`affiliations.${affiliationIndex}`]: state.present.affiliations[affiliationIndex]
   };
 
   const newManuscript = cloneManuscript(state.present);
