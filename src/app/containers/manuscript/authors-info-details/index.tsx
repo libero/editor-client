@@ -5,7 +5,7 @@ import EditIcon from '@material-ui/icons/Edit';
 
 import { SectionContainer } from 'app/components/section-container';
 import { getAuthors } from 'app/selectors/manuscript.selectors';
-import {getAuthorDisplayName, Person} from 'app/models/person';
+import { getAuthorDisplayName, Person } from 'app/models/person';
 import OrcidIcon from 'app/assets/orcid-icon.svg';
 import {
   useAuthorDetailStyles,

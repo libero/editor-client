@@ -37,6 +37,7 @@ describe('Authors details info', () => {
     const mockState = getInitialHistory({
       title: new EditorState(),
       abstract: new EditorState(),
+      affiliations: [],
       keywordGroups: {},
       authors: AUTHORS
     });
@@ -55,6 +56,7 @@ describe('Authors details info', () => {
   it('dispatches edit action', () => {
     const mockState = getInitialHistory({
       title: new EditorState(),
+      affiliations: [],
       abstract: new EditorState(),
       keywordGroups: {},
       authors: AUTHORS
@@ -87,6 +89,7 @@ describe('Authors details info', () => {
     const mockState = getInitialHistory({
       title: new EditorState(),
       abstract: new EditorState(),
+      affiliations: [],
       keywordGroups: {},
       authors: []
     });

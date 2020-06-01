@@ -11,6 +11,7 @@ import { KeywordGroups } from 'app/models/manuscript';
 import { useManuscriptStyles } from './styles';
 import { SortableAuthorsList } from './sortable-authors-list';
 import { AuthorsInfoDetails } from 'app/containers/manuscript/authors-info-details';
+import { AffiliationsList } from 'app/containers/manuscript/affiliations-list';
 
 export const ManuscriptEditor: React.FC = () => {
   const classes = useManuscriptStyles();
@@ -87,6 +88,7 @@ export const ManuscriptEditor: React.FC = () => {
         onBlur={handleBlur}
       />
       <SortableAuthorsList />
+      <AffiliationsList />
       <RichTextEditor
         editorState={abstract}
         label="Abstract"
