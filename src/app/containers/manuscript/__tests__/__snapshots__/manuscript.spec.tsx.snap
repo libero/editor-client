@@ -59,6 +59,17 @@ Array [
         </div>
       </div>
     </section>
+    <section>
+      <div
+        className="makeStyles-root-11 makeStyles-plainVariant-13"
+      >
+        <label
+          className="makeStyles-label-14"
+        >
+          Affiliations
+        </label>
+      </div>
+    </section>
     <div
       className="makeStyles-root-11 makeStyles-plainVariant-13"
     >
