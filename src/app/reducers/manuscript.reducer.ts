@@ -236,7 +236,9 @@ function handleAffiliationAdd(state: ManuscriptHistory, action: Action<Affiliati
   };
 
   const newManuscript = cloneManuscript(state.present);
-  newManuscript.affiliations.push(action.payload);
+  const newAffiliation = action.payload;
+  newAffiliation.label = newAffiliation.label || String(newManuscript.affiliations.length + 1);
+  newManuscript.affiliations.push(newAffiliation);
   return {
     past: [...state.past, newDiff],
     present: newManuscript,
@@ -252,7 +254,7 @@ function handleAffiliationDelete(state: ManuscriptHistory, action: Action<Affili
   };
 
   const newManuscript = cloneManuscript(state.present);
-  newManuscript.authors.splice(currentIndex, 1);
+  newManuscript.affiliations.splice(currentIndex, 1);
 
   return {
     past: [...state.past, newDiff],

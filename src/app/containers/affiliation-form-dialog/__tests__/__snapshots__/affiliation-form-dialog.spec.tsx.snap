@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Author Form Dialog renders edit author dialog form 1`] = `
+exports[`Affiliation Form Dialog renders edit affiliation dialog form 1`] = `
 <section
   className="makeStyles-root-1"
 >
@@ -11,7 +11,7 @@ exports[`Author Form Dialog renders edit author dialog form 1`] = `
       className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
       data-shrink={true}
     >
-      Given name
+      Department
     </label>
     <div
       className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
@@ -22,14 +22,14 @@ exports[`Author Form Dialog renders edit author dialog form 1`] = `
         autoFocus={false}
         className="MuiInputBase-input MuiOutlinedInput-input"
         disabled={false}
-        name="firstName"
+        name="institution.department"
         onAnimationStart={[Function]}
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
         required={false}
         type="text"
-        value="Fred"
+        value="Boring science"
       />
       <fieldset
         aria-hidden={true}
@@ -39,7 +39,7 @@ exports[`Author Form Dialog renders edit author dialog form 1`] = `
           className="PrivateNotchedOutline-legendLabelled-65 PrivateNotchedOutline-legendNotched-66"
         >
           <span>
-            Given name
+            Department
           </span>
         </legend>
       </fieldset>
@@ -52,7 +52,7 @@ exports[`Author Form Dialog renders edit author dialog form 1`] = `
       className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
       data-shrink={true}
     >
-      Surname
+      Institute
     </label>
     <div
       className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
@@ -63,14 +63,14 @@ exports[`Author Form Dialog renders edit author dialog form 1`] = `
         autoFocus={false}
         className="MuiInputBase-input MuiOutlinedInput-input"
         disabled={false}
-        name="lastName"
+        name="institution.name"
         onAnimationStart={[Function]}
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
         required={false}
         type="text"
-        value="Atherden"
+        value="Cambridge University"
       />
       <fieldset
         aria-hidden={true}
@@ -80,7 +80,7 @@ exports[`Author Form Dialog renders edit author dialog form 1`] = `
           className="PrivateNotchedOutline-legendLabelled-65 PrivateNotchedOutline-legendNotched-66"
         >
           <span>
-            Surname
+            Institute
           </span>
         </legend>
       </fieldset>
@@ -93,7 +93,7 @@ exports[`Author Form Dialog renders edit author dialog form 1`] = `
       className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
       data-shrink={true}
     >
-      Suffix
+      City
     </label>
     <div
       className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
@@ -104,14 +104,14 @@ exports[`Author Form Dialog renders edit author dialog form 1`] = `
         autoFocus={false}
         className="MuiInputBase-input MuiOutlinedInput-input"
         disabled={false}
-        name="suffix"
+        name="address.city"
         onAnimationStart={[Function]}
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
         required={false}
         type="text"
-        value=""
+        value="Cambridge"
       />
       <fieldset
         aria-hidden={true}
@@ -121,7 +121,7 @@ exports[`Author Form Dialog renders edit author dialog form 1`] = `
           className="PrivateNotchedOutline-legendLabelled-65 PrivateNotchedOutline-legendNotched-66"
         >
           <span>
-            Suffix
+            City
           </span>
         </legend>
       </fieldset>
@@ -134,7 +134,7 @@ exports[`Author Form Dialog renders edit author dialog form 1`] = `
       className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
       data-shrink={true}
     >
-      Email
+      Country
     </label>
     <div
       className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
@@ -145,14 +145,14 @@ exports[`Author Form Dialog renders edit author dialog form 1`] = `
         autoFocus={false}
         className="MuiInputBase-input MuiOutlinedInput-input"
         disabled={false}
-        name="email"
+        name="country"
         onAnimationStart={[Function]}
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
         required={false}
         type="text"
-        value="f.atherden@elifesciences.org"
+        value="UK"
       />
       <fieldset
         aria-hidden={true}
@@ -162,7 +162,7 @@ exports[`Author Form Dialog renders edit author dialog form 1`] = `
           className="PrivateNotchedOutline-legendLabelled-65 PrivateNotchedOutline-legendNotched-66"
         >
           <span>
-            Email
+            Country
           </span>
         </legend>
       </fieldset>
@@ -260,7 +260,7 @@ exports[`Author Form Dialog renders edit author dialog form 1`] = `
 </section>
 `;
 
-exports[`Author Form Dialog renders new author dialog form 1`] = `
+exports[`Affiliation Form Dialog renders new affiliation dialog form 1`] = `
 <section
   className="makeStyles-root-1"
 >
@@ -271,7 +271,7 @@ exports[`Author Form Dialog renders new author dialog form 1`] = `
       className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
       data-shrink={true}
     >
-      Given name
+      Department
     </label>
     <div
       className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
@@ -282,7 +282,7 @@ exports[`Author Form Dialog renders new author dialog form 1`] = `
         autoFocus={false}
         className="MuiInputBase-input MuiOutlinedInput-input"
         disabled={false}
-        name="firstName"
+        name="institution.department"
         onAnimationStart={[Function]}
         onBlur={[Function]}
         onChange={[Function]}
@@ -299,7 +299,7 @@ exports[`Author Form Dialog renders new author dialog form 1`] = `
           className="PrivateNotchedOutline-legendLabelled-65 PrivateNotchedOutline-legendNotched-66"
         >
           <span>
-            Given name
+            Department
           </span>
         </legend>
       </fieldset>
@@ -312,7 +312,7 @@ exports[`Author Form Dialog renders new author dialog form 1`] = `
       className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
       data-shrink={true}
     >
-      Surname
+      Institute
     </label>
     <div
       className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
@@ -323,7 +323,7 @@ exports[`Author Form Dialog renders new author dialog form 1`] = `
         autoFocus={false}
         className="MuiInputBase-input MuiOutlinedInput-input"
         disabled={false}
-        name="lastName"
+        name="institution.name"
         onAnimationStart={[Function]}
         onBlur={[Function]}
         onChange={[Function]}
@@ -340,7 +340,7 @@ exports[`Author Form Dialog renders new author dialog form 1`] = `
           className="PrivateNotchedOutline-legendLabelled-65 PrivateNotchedOutline-legendNotched-66"
         >
           <span>
-            Surname
+            Institute
           </span>
         </legend>
       </fieldset>
@@ -353,7 +353,7 @@ exports[`Author Form Dialog renders new author dialog form 1`] = `
       className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
       data-shrink={true}
     >
-      Suffix
+      City
     </label>
     <div
       className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
@@ -364,7 +364,7 @@ exports[`Author Form Dialog renders new author dialog form 1`] = `
         autoFocus={false}
         className="MuiInputBase-input MuiOutlinedInput-input"
         disabled={false}
-        name="suffix"
+        name="address.city"
         onAnimationStart={[Function]}
         onBlur={[Function]}
         onChange={[Function]}
@@ -381,7 +381,7 @@ exports[`Author Form Dialog renders new author dialog form 1`] = `
           className="PrivateNotchedOutline-legendLabelled-65 PrivateNotchedOutline-legendNotched-66"
         >
           <span>
-            Suffix
+            City
           </span>
         </legend>
       </fieldset>
@@ -394,7 +394,7 @@ exports[`Author Form Dialog renders new author dialog form 1`] = `
       className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
       data-shrink={true}
     >
-      Email
+      Country
     </label>
     <div
       className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
@@ -405,7 +405,7 @@ exports[`Author Form Dialog renders new author dialog form 1`] = `
         autoFocus={false}
         className="MuiInputBase-input MuiOutlinedInput-input"
         disabled={false}
-        name="email"
+        name="country"
         onAnimationStart={[Function]}
         onBlur={[Function]}
         onChange={[Function]}
@@ -422,7 +422,7 @@ exports[`Author Form Dialog renders new author dialog form 1`] = `
           className="PrivateNotchedOutline-legendLabelled-65 PrivateNotchedOutline-legendNotched-66"
         >
           <span>
-            Email
+            Country
           </span>
         </legend>
       </fieldset>

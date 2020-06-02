@@ -13,7 +13,8 @@ export interface Affiliation {
   country: string;
 }
 
-export function createAffiliation(xmlId: string, affiliationData: Omit<Affiliation, 'id'>): Affiliation {
+export function createAffiliation(xmlId: string, affiliationData?: Omit<Affiliation, 'id'>): Affiliation {
+
   return {
     ...affiliationData,
     id: xmlId || uuidv4()

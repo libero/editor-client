@@ -1,5 +1,5 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { IconButton } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 
@@ -8,10 +8,36 @@ import { ActionButton } from 'app/components/action-button';
 import { getAffiliations } from 'app/selectors/manuscript.selectors';
 import { Affiliation } from 'app/models/affiliation';
 import { useAffiliationStyles } from './styles';
+import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
+import { AffiliationFormDialog } from 'app/containers/affiliation-form-dialog';
 
 export const AffiliationsList: React.FC<{}> = () => {
   const classes = useAffiliationStyles();
   const affiliations = useSelector(getAffiliations);
+  const dispatch = useDispatch();
+
+  const editAffiliation = useCallback(
+    (aff: Affiliation) => {
+      dispatch(
+        manuscriptEditorActions.showModalDialog({
+          component: AffiliationFormDialog,
+          props: { affiliation: aff },
+          title: 'Edit Affiliation'
+        })
+      );
+    },
+    [dispatch]
+  );
+
+  const addAffiliation = useCallback(() => {
+    dispatch(
+      manuscriptEditorActions.showModalDialog({
+        component: AffiliationFormDialog,
+        props: {},
+        title: 'Add Affiliation'
+      })
+    );
+  }, [dispatch]);
 
   const renderAffiliation = (aff: Affiliation) => (
     <div key={aff.id} className={classes.listItem}>
@@ -21,7 +47,7 @@ export const AffiliationsList: React.FC<{}> = () => {
           .filter((field) => Boolean(field))
           .join(', ')}
       </div>
-      <IconButton classes={{ root: classes.editButton }} onClick={() => {}}>
+      <IconButton classes={{ root: classes.editButton }} onClick={editAffiliation.bind(null, aff)}>
         <EditIcon fontSize="small" />
       </IconButton>
     </div>
@@ -30,7 +56,7 @@ export const AffiliationsList: React.FC<{}> = () => {
   return (
     <section>
       <SectionContainer label="Affiliations">{affiliations.map(renderAffiliation)}</SectionContainer>
-      <ActionButton title="Affiliation" variant="addEntity" onClick={() => {}} className={classes.addButton} />
+      <ActionButton title="Affiliation" variant="addEntity" onClick={addAffiliation} className={classes.addButton} />
     </section>
   );
 };
