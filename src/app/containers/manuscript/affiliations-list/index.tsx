@@ -17,7 +17,9 @@ export const AffiliationsList: React.FC<{}> = () => {
     <div key={aff.id} className={classes.listItem}>
       <div className={classes.affiliationInfo}>
         <sup className={classes.orderLabel}>({aff.label})</sup>
-        {[aff.institution.department, aff.institution.name, aff.address.city, aff.country].join(', ')}
+        {[aff.institution.department, aff.institution.name, aff.address.city, aff.country]
+          .filter((field) => Boolean(field))
+          .join(', ')}
       </div>
       <IconButton classes={{ root: classes.editButton }} onClick={() => {}}>
         <EditIcon fontSize="small" />
