@@ -33,10 +33,10 @@ exports[`Affiliation Form Dialog renders edit affiliation dialog form 1`] = `
       />
       <fieldset
         aria-hidden={true}
-        className="PrivateNotchedOutline-root-63 MuiOutlinedInput-notchedOutline"
+        className="PrivateNotchedOutline-root-66 MuiOutlinedInput-notchedOutline"
       >
         <legend
-          className="PrivateNotchedOutline-legendLabelled-65 PrivateNotchedOutline-legendNotched-66"
+          className="PrivateNotchedOutline-legendLabelled-68 PrivateNotchedOutline-legendNotched-69"
         >
           <span>
             Department
@@ -74,10 +74,10 @@ exports[`Affiliation Form Dialog renders edit affiliation dialog form 1`] = `
       />
       <fieldset
         aria-hidden={true}
-        className="PrivateNotchedOutline-root-63 MuiOutlinedInput-notchedOutline"
+        className="PrivateNotchedOutline-root-66 MuiOutlinedInput-notchedOutline"
       >
         <legend
-          className="PrivateNotchedOutline-legendLabelled-65 PrivateNotchedOutline-legendNotched-66"
+          className="PrivateNotchedOutline-legendLabelled-68 PrivateNotchedOutline-legendNotched-69"
         >
           <span>
             Institute
@@ -115,10 +115,10 @@ exports[`Affiliation Form Dialog renders edit affiliation dialog form 1`] = `
       />
       <fieldset
         aria-hidden={true}
-        className="PrivateNotchedOutline-root-63 MuiOutlinedInput-notchedOutline"
+        className="PrivateNotchedOutline-root-66 MuiOutlinedInput-notchedOutline"
       >
         <legend
-          className="PrivateNotchedOutline-legendLabelled-65 PrivateNotchedOutline-legendNotched-66"
+          className="PrivateNotchedOutline-legendLabelled-68 PrivateNotchedOutline-legendNotched-69"
         >
           <span>
             City
@@ -156,10 +156,10 @@ exports[`Affiliation Form Dialog renders edit affiliation dialog form 1`] = `
       />
       <fieldset
         aria-hidden={true}
-        className="PrivateNotchedOutline-root-63 MuiOutlinedInput-notchedOutline"
+        className="PrivateNotchedOutline-root-66 MuiOutlinedInput-notchedOutline"
       >
         <legend
-          className="PrivateNotchedOutline-legendLabelled-65 PrivateNotchedOutline-legendNotched-66"
+          className="PrivateNotchedOutline-legendLabelled-68 PrivateNotchedOutline-legendNotched-69"
         >
           <span>
             Country
@@ -169,10 +169,55 @@ exports[`Affiliation Form Dialog renders edit affiliation dialog form 1`] = `
     </div>
   </div>
   <div
+    className="makeStyles-inputField-2"
+  >
+    <button
+      className="MuiButtonBase-root MuiButton-root makeStyles-addEntityButton_root-73 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        <span
+          className="MuiButton-startIcon makeStyles-addEntityButton_icon-74 MuiButton-iconSizeSmall"
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+            />
+          </svg>
+        </span>
+        Author
+      </span>
+      <span
+        className="MuiTouchRipple-root"
+      />
+    </button>
+  </div>
+  <div
     className="makeStyles-buttonPanel-3"
   >
     <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-outlinedRedButton-69 MuiButton-outlined MuiButton-disableElevation"
+      className="MuiButtonBase-root MuiButton-root makeStyles-outlinedRedButton-72 MuiButton-outlined MuiButton-disableElevation"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -203,7 +248,7 @@ exports[`Affiliation Form Dialog renders edit affiliation dialog form 1`] = `
       className="makeStyles-spacer-4"
     />
     <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-regularButton-67 MuiButton-outlined MuiButton-disableElevation"
+      className="MuiButtonBase-root MuiButton-root makeStyles-regularButton-70 MuiButton-outlined MuiButton-disableElevation"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -230,7 +275,7 @@ exports[`Affiliation Form Dialog renders edit affiliation dialog form 1`] = `
       />
     </button>
     <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-regularButton-67 MuiButton-contained MuiButton-containedPrimary MuiButton-disableElevation"
+      className="MuiButtonBase-root MuiButton-root makeStyles-regularButton-70 MuiButton-contained MuiButton-containedPrimary MuiButton-disableElevation"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -293,10 +338,10 @@ exports[`Affiliation Form Dialog renders new affiliation dialog form 1`] = `
       />
       <fieldset
         aria-hidden={true}
-        className="PrivateNotchedOutline-root-63 MuiOutlinedInput-notchedOutline"
+        className="PrivateNotchedOutline-root-66 MuiOutlinedInput-notchedOutline"
       >
         <legend
-          className="PrivateNotchedOutline-legendLabelled-65 PrivateNotchedOutline-legendNotched-66"
+          className="PrivateNotchedOutline-legendLabelled-68 PrivateNotchedOutline-legendNotched-69"
         >
           <span>
             Department
@@ -334,10 +379,10 @@ exports[`Affiliation Form Dialog renders new affiliation dialog form 1`] = `
       />
       <fieldset
         aria-hidden={true}
-        className="PrivateNotchedOutline-root-63 MuiOutlinedInput-notchedOutline"
+        className="PrivateNotchedOutline-root-66 MuiOutlinedInput-notchedOutline"
       >
         <legend
-          className="PrivateNotchedOutline-legendLabelled-65 PrivateNotchedOutline-legendNotched-66"
+          className="PrivateNotchedOutline-legendLabelled-68 PrivateNotchedOutline-legendNotched-69"
         >
           <span>
             Institute
@@ -375,10 +420,10 @@ exports[`Affiliation Form Dialog renders new affiliation dialog form 1`] = `
       />
       <fieldset
         aria-hidden={true}
-        className="PrivateNotchedOutline-root-63 MuiOutlinedInput-notchedOutline"
+        className="PrivateNotchedOutline-root-66 MuiOutlinedInput-notchedOutline"
       >
         <legend
-          className="PrivateNotchedOutline-legendLabelled-65 PrivateNotchedOutline-legendNotched-66"
+          className="PrivateNotchedOutline-legendLabelled-68 PrivateNotchedOutline-legendNotched-69"
         >
           <span>
             City
@@ -416,10 +461,10 @@ exports[`Affiliation Form Dialog renders new affiliation dialog form 1`] = `
       />
       <fieldset
         aria-hidden={true}
-        className="PrivateNotchedOutline-root-63 MuiOutlinedInput-notchedOutline"
+        className="PrivateNotchedOutline-root-66 MuiOutlinedInput-notchedOutline"
       >
         <legend
-          className="PrivateNotchedOutline-legendLabelled-65 PrivateNotchedOutline-legendNotched-66"
+          className="PrivateNotchedOutline-legendLabelled-68 PrivateNotchedOutline-legendNotched-69"
         >
           <span>
             Country
@@ -429,6 +474,48 @@ exports[`Affiliation Form Dialog renders new affiliation dialog form 1`] = `
     </div>
   </div>
   <div
+    className="makeStyles-inputField-2"
+  >
+    <button
+      className="MuiButtonBase-root MuiButton-root makeStyles-addEntityButton_root-73 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        <span
+          className="MuiButton-startIcon makeStyles-addEntityButton_icon-74 MuiButton-iconSizeSmall"
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+            />
+          </svg>
+        </span>
+        Author
+      </span>
+    </button>
+  </div>
+  <div
     className="makeStyles-buttonPanel-3"
   >
     <div
@@ -436,7 +523,7 @@ exports[`Affiliation Form Dialog renders new affiliation dialog form 1`] = `
       className="makeStyles-spacer-4"
     />
     <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-regularButton-67 MuiButton-outlined MuiButton-disableElevation"
+      className="MuiButtonBase-root MuiButton-root makeStyles-regularButton-70 MuiButton-outlined MuiButton-disableElevation"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -460,7 +547,7 @@ exports[`Affiliation Form Dialog renders new affiliation dialog form 1`] = `
       </span>
     </button>
     <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-regularButton-67 MuiButton-contained MuiButton-containedPrimary MuiButton-disableElevation"
+      className="MuiButtonBase-root MuiButton-root makeStyles-regularButton-70 MuiButton-contained MuiButton-containedPrimary MuiButton-disableElevation"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
