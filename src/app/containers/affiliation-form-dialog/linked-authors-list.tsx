@@ -10,7 +10,7 @@ import { ActionButton } from 'app/components/action-button';
 interface LinkedAuthorsListProps {
   linkedAuthors: Person[];
   allAuthors: Person[];
-  onChange: (selkectedAuthors: Person[]) => void;
+  onChange: (selectedAuthors: Person[]) => void;
 }
 
 const renderAuthorSelectListItem = (author: Person) => (
