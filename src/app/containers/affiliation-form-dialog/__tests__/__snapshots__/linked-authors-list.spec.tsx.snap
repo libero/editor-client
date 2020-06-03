@@ -21,7 +21,7 @@ exports[`Linked Authors List adds empty fields to the end of the list 1`] = `
         <div
           data-cmp="MenuItem"
         >
-          None
+          Select affiliated author
         </div>
         <div
           data-cmp="MenuItem"
@@ -71,7 +71,7 @@ exports[`Linked Authors List adds empty fields to the end of the list 1`] = `
         <div
           data-cmp="MenuItem"
         >
-          None
+          Select affiliated author
         </div>
         <div
           data-cmp="MenuItem"
@@ -126,7 +126,7 @@ exports[`Linked Authors List removes elements from the list 1`] = `
         <div
           data-cmp="MenuItem"
         >
-          None
+          Select affiliated author
         </div>
         <div
           data-cmp="MenuItem"
@@ -176,7 +176,7 @@ exports[`Linked Authors List removes elements from the list 1`] = `
         <div
           data-cmp="MenuItem"
         >
-          None
+          Select affiliated author
         </div>
         <div
           data-cmp="MenuItem"
@@ -231,7 +231,7 @@ exports[`Linked Authors List renders component 1`] = `
         <div
           data-cmp="MenuItem"
         >
-          None
+          Select affiliated author
         </div>
         <div
           data-cmp="MenuItem"

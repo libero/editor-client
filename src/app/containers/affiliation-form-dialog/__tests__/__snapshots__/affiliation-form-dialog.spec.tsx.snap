@@ -171,8 +171,101 @@ exports[`Affiliation Form Dialog renders edit affiliation dialog form 1`] = `
   <div
     className="makeStyles-inputField-2"
   >
+    <div
+      className="makeStyles-affiliatedAuthorRow-5"
+    >
+      <div
+        className="MuiFormControl-root makeStyles-affiliatedAuthorInput-6"
+      >
+        <label
+          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
+          data-shrink={true}
+          id="author-affiliations-label"
+        >
+          Affiliated Author
+        </label>
+        <div
+          className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+          onClick={[Function]}
+        >
+          <div
+            aria-haspopup="listbox"
+            aria-labelledby="author-affiliations-label "
+            className="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onMouseDown={[Function]}
+            role="button"
+            tabIndex={0}
+          >
+            Select affiliated author
+          </div>
+          <input
+            onAnimationStart={[Function]}
+            type="hidden"
+            value=""
+          />
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root MuiSelect-icon MuiSelect-iconOutlined"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7 10l5 5 5-5z"
+            />
+          </svg>
+          <fieldset
+            aria-hidden={true}
+            className="PrivateNotchedOutline-root-66 MuiOutlinedInput-notchedOutline"
+          >
+            <legend
+              className="PrivateNotchedOutline-legendLabelled-68"
+            >
+              <span>
+                Affiliated Author
+              </span>
+            </legend>
+          </fieldset>
+        </div>
+      </div>
+      <button
+        className="MuiButtonBase-root MuiIconButton-root makeStyles-deleteButton-7 Mui-disabled Mui-disabled"
+        disabled={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={-1}
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label"
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
     <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-addEntityButton_root-73 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
+      className="MuiButtonBase-root MuiButton-root makeStyles-addEntityButton_root-108 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -193,7 +286,7 @@ exports[`Affiliation Form Dialog renders edit affiliation dialog form 1`] = `
         className="MuiButton-label"
       >
         <span
-          className="MuiButton-startIcon makeStyles-addEntityButton_icon-74 MuiButton-iconSizeSmall"
+          className="MuiButton-startIcon makeStyles-addEntityButton_icon-109 MuiButton-iconSizeSmall"
         >
           <svg
             aria-hidden="true"
@@ -217,7 +310,7 @@ exports[`Affiliation Form Dialog renders edit affiliation dialog form 1`] = `
     className="makeStyles-buttonPanel-3"
   >
     <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-outlinedRedButton-72 MuiButton-outlined MuiButton-disableElevation"
+      className="MuiButtonBase-root MuiButton-root makeStyles-outlinedRedButton-107 MuiButton-outlined MuiButton-disableElevation"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -248,7 +341,7 @@ exports[`Affiliation Form Dialog renders edit affiliation dialog form 1`] = `
       className="makeStyles-spacer-4"
     />
     <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-regularButton-70 MuiButton-outlined MuiButton-disableElevation"
+      className="MuiButtonBase-root MuiButton-root makeStyles-regularButton-105 MuiButton-outlined MuiButton-disableElevation"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -275,7 +368,7 @@ exports[`Affiliation Form Dialog renders edit affiliation dialog form 1`] = `
       />
     </button>
     <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-regularButton-70 MuiButton-contained MuiButton-containedPrimary MuiButton-disableElevation"
+      className="MuiButtonBase-root MuiButton-root makeStyles-regularButton-105 MuiButton-contained MuiButton-containedPrimary MuiButton-disableElevation"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -476,8 +569,101 @@ exports[`Affiliation Form Dialog renders new affiliation dialog form 1`] = `
   <div
     className="makeStyles-inputField-2"
   >
+    <div
+      className="makeStyles-affiliatedAuthorRow-5"
+    >
+      <div
+        className="MuiFormControl-root makeStyles-affiliatedAuthorInput-6"
+      >
+        <label
+          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
+          data-shrink={true}
+          id="author-affiliations-label"
+        >
+          Affiliated Author
+        </label>
+        <div
+          className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+          onClick={[Function]}
+        >
+          <div
+            aria-haspopup="listbox"
+            aria-labelledby="author-affiliations-label "
+            className="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onMouseDown={[Function]}
+            role="button"
+            tabIndex={0}
+          >
+            Select affiliated author
+          </div>
+          <input
+            onAnimationStart={[Function]}
+            type="hidden"
+            value=""
+          />
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root MuiSelect-icon MuiSelect-iconOutlined"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7 10l5 5 5-5z"
+            />
+          </svg>
+          <fieldset
+            aria-hidden={true}
+            className="PrivateNotchedOutline-root-66 MuiOutlinedInput-notchedOutline"
+          >
+            <legend
+              className="PrivateNotchedOutline-legendLabelled-68"
+            >
+              <span>
+                Affiliated Author
+              </span>
+            </legend>
+          </fieldset>
+        </div>
+      </div>
+      <button
+        className="MuiButtonBase-root MuiIconButton-root makeStyles-deleteButton-7 Mui-disabled Mui-disabled"
+        disabled={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={-1}
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label"
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
     <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-addEntityButton_root-73 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
+      className="MuiButtonBase-root MuiButton-root makeStyles-addEntityButton_root-108 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -498,7 +684,7 @@ exports[`Affiliation Form Dialog renders new affiliation dialog form 1`] = `
         className="MuiButton-label"
       >
         <span
-          className="MuiButton-startIcon makeStyles-addEntityButton_icon-74 MuiButton-iconSizeSmall"
+          className="MuiButton-startIcon makeStyles-addEntityButton_icon-109 MuiButton-iconSizeSmall"
         >
           <svg
             aria-hidden="true"
@@ -523,7 +709,7 @@ exports[`Affiliation Form Dialog renders new affiliation dialog form 1`] = `
       className="makeStyles-spacer-4"
     />
     <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-regularButton-70 MuiButton-outlined MuiButton-disableElevation"
+      className="MuiButtonBase-root MuiButton-root makeStyles-regularButton-105 MuiButton-outlined MuiButton-disableElevation"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -547,7 +733,7 @@ exports[`Affiliation Form Dialog renders new affiliation dialog form 1`] = `
       </span>
     </button>
     <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-regularButton-70 MuiButton-contained MuiButton-containedPrimary MuiButton-disableElevation"
+      className="MuiButtonBase-root MuiButton-root makeStyles-regularButton-105 MuiButton-contained MuiButton-containedPrimary MuiButton-disableElevation"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
