@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-export const useAuthorFormStyles = makeStyles((theme) => ({
+export const useAffiliationFormStyles = makeStyles((theme) => ({
   root: {},
 
   inputField: {

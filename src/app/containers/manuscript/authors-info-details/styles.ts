@@ -16,7 +16,8 @@ export const useAuthorDetailStyles = makeStyles((theme) => ({
     }
   },
   editButton: {
-    flexGrow: 0
+    flexGrow: 0,
+    padding: 6
   },
   authorInfoLine: {
     lineHeight: '24px'

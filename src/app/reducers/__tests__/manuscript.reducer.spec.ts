@@ -144,7 +144,7 @@ describe('manuscript reducer', () => {
     });
 
     const updatedState = cloneDeep(state);
-    updatedState.present.affiliations = updatedState.present.affiliations.slice(0);
+    updatedState.present.affiliations = [];
     updatedState.past = [{ affiliations: state.present.affiliations }];
     const action = manuscriptActions.deleteAffiliationAction(state.present.affiliations[0]);
     const newState = manuscriptReducer(getLoadableStateSuccess(state), action);
@@ -173,11 +173,11 @@ describe('manuscript reducer', () => {
       id: 'some_id',
       label: '1',
       institution: {
-        name: 'Cambrige University',
+        name: 'Cambridge University',
         department: 'Boring science'
       },
       address: {
-        city: 'Cambrige'
+        city: 'Cambridge'
       },
       country: 'UK'
     };

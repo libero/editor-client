@@ -7,7 +7,11 @@ export const useAffiliationStyles = makeStyles((theme) => ({
   listItem: {
     display: 'flex',
     alignItems: 'flex-start',
-    lineHeight: '24px'
+    lineHeight: '24px',
+    marginTop: theme.spacing(1),
+    '&:first-child': {
+      marginTop: 0
+    }
   },
   affiliationInfo: {
     flex: 1
