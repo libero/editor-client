@@ -32,9 +32,11 @@ describe('Linked Authors List', () => {
     const allAuthors = givenAuthors();
     const clickHandler = jest.fn();
     const linkedAuthors = [allAuthors[0]];
+
     const wrapper = create(
       <LinkedAuthorsList linkedAuthors={linkedAuthors} allAuthors={allAuthors} onChange={clickHandler} />
     );
+
     act(() => {
       wrapper.root.findByType(ActionButton).props.onClick();
     });

@@ -20,7 +20,9 @@ const renderAuthorSelectListItem = (author: Person) => (
 );
 
 export const LinkedAuthorsList: React.FC<LinkedAuthorsListProps> = ({ linkedAuthors, allAuthors, onChange }) => {
-  const [userLinkedAuthors, setUserLinkedAuthors] = useState<Person[]>(linkedAuthors);
+  const [userLinkedAuthors, setUserLinkedAuthors] = useState<Person[]>(
+    linkedAuthors.length > 0 ? linkedAuthors : [null]
+  );
 
   const triggerOnChange = useCallback(
     (authorsList) => {
@@ -78,11 +80,15 @@ export const LinkedAuthorsList: React.FC<LinkedAuthorsListProps> = ({ linkedAuth
               onChange={updateRow(index)}
               label="Affiliated Author"
             >
-              <MenuItem value={''}>None</MenuItem>
+              <MenuItem value={''}>Select affiliated author</MenuItem>
               {getAuthorSelectList(author).map(renderAuthorSelectListItem)}
             </Select>
           </FormControl>
-          <IconButton classes={{ root: classes.deleteButton }} onClick={deleteRow(index)}>
+          <IconButton
+            classes={{ root: classes.deleteButton }}
+            onClick={deleteRow(index)}
+            disabled={userLinkedAuthors.length <= 1}
+          >
             <DeleteIcon fontSize="small" />
           </IconButton>
         </div>
