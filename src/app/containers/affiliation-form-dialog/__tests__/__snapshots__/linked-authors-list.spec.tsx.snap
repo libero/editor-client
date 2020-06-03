@@ -1,0 +1,271 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Linked Authors List adds empty fields to the end of the list 1`] = `
+<div
+  className="makeStyles-inputField-2"
+>
+  <div
+    className="makeStyles-affiliatedAuthorRow-5"
+  >
+    <div
+      data-cmp="FormControl"
+    >
+      <div
+        data-cmp="InputLabel"
+      >
+        Affiliated Author
+      </div>
+      <div
+        data-cmp="Select"
+      >
+        <div
+          data-cmp="MenuItem"
+        >
+          None
+        </div>
+        <div
+          data-cmp="MenuItem"
+        >
+          Fred Atherden
+        </div>
+        <div
+          data-cmp="MenuItem"
+        >
+          Jeanine Smith III
+        </div>
+        <div
+          data-cmp="MenuItem"
+        >
+          Jack London III
+        </div>
+        <div
+          data-cmp="MenuItem"
+        >
+          Mark Twain III
+        </div>
+        <div
+          data-cmp="MenuItem"
+        >
+          Alexandr Solzhenitsin III
+        </div>
+      </div>
+    </div>
+    <div
+      data-cmo="iconButton"
+    />
+  </div>
+  <div
+    className="makeStyles-affiliatedAuthorRow-5"
+  >
+    <div
+      data-cmp="FormControl"
+    >
+      <div
+        data-cmp="InputLabel"
+      >
+        Affiliated Author
+      </div>
+      <div
+        data-cmp="Select"
+      >
+        <div
+          data-cmp="MenuItem"
+        >
+          None
+        </div>
+        <div
+          data-cmp="MenuItem"
+        >
+          Jeanine Smith III
+        </div>
+        <div
+          data-cmp="MenuItem"
+        >
+          Jack London III
+        </div>
+        <div
+          data-cmp="MenuItem"
+        >
+          Mark Twain III
+        </div>
+        <div
+          data-cmp="MenuItem"
+        >
+          Alexandr Solzhenitsin III
+        </div>
+      </div>
+    </div>
+    <div
+      data-cmo="iconButton"
+    />
+  </div>
+  <div
+    data-cmo="Button"
+  />
+</div>
+`;
+
+exports[`Linked Authors List removes elements from the list 1`] = `
+<div
+  className="makeStyles-inputField-2"
+>
+  <div
+    className="makeStyles-affiliatedAuthorRow-5"
+  >
+    <div
+      data-cmp="FormControl"
+    >
+      <div
+        data-cmp="InputLabel"
+      >
+        Affiliated Author
+      </div>
+      <div
+        data-cmp="Select"
+      >
+        <div
+          data-cmp="MenuItem"
+        >
+          None
+        </div>
+        <div
+          data-cmp="MenuItem"
+        >
+          Fred Atherden
+        </div>
+        <div
+          data-cmp="MenuItem"
+        >
+          Jeanine Smith III
+        </div>
+        <div
+          data-cmp="MenuItem"
+        >
+          Jack London III
+        </div>
+        <div
+          data-cmp="MenuItem"
+        >
+          Mark Twain III
+        </div>
+        <div
+          data-cmp="MenuItem"
+        >
+          Alexandr Solzhenitsin III
+        </div>
+      </div>
+    </div>
+    <div
+      data-cmo="iconButton"
+    />
+  </div>
+  <div
+    className="makeStyles-affiliatedAuthorRow-5"
+  >
+    <div
+      data-cmp="FormControl"
+    >
+      <div
+        data-cmp="InputLabel"
+      >
+        Affiliated Author
+      </div>
+      <div
+        data-cmp="Select"
+      >
+        <div
+          data-cmp="MenuItem"
+        >
+          None
+        </div>
+        <div
+          data-cmp="MenuItem"
+        >
+          Jeanine Smith III
+        </div>
+        <div
+          data-cmp="MenuItem"
+        >
+          Jack London III
+        </div>
+        <div
+          data-cmp="MenuItem"
+        >
+          Mark Twain III
+        </div>
+        <div
+          data-cmp="MenuItem"
+        >
+          Alexandr Solzhenitsin III
+        </div>
+      </div>
+    </div>
+    <div
+      data-cmo="iconButton"
+    />
+  </div>
+  <div
+    data-cmo="Button"
+  />
+</div>
+`;
+
+exports[`Linked Authors List renders component 1`] = `
+<div
+  className="makeStyles-inputField-2"
+>
+  <div
+    className="makeStyles-affiliatedAuthorRow-5"
+  >
+    <div
+      data-cmp="FormControl"
+    >
+      <div
+        data-cmp="InputLabel"
+      >
+        Affiliated Author
+      </div>
+      <div
+        data-cmp="Select"
+      >
+        <div
+          data-cmp="MenuItem"
+        >
+          None
+        </div>
+        <div
+          data-cmp="MenuItem"
+        >
+          Fred Atherden
+        </div>
+        <div
+          data-cmp="MenuItem"
+        >
+          Jeanine Smith III
+        </div>
+        <div
+          data-cmp="MenuItem"
+        >
+          Jack London III
+        </div>
+        <div
+          data-cmp="MenuItem"
+        >
+          Mark Twain III
+        </div>
+        <div
+          data-cmp="MenuItem"
+        >
+          Alexandr Solzhenitsin III
+        </div>
+      </div>
+    </div>
+    <div
+      data-cmo="iconButton"
+    />
+  </div>
+  <div
+    data-cmo="Button"
+  />
+</div>
+`;
