@@ -39,7 +39,8 @@ export function createAuthorsState(authorsXml: Element[]): Person[] {
       lastName: getTextContentFromPath(author, 'name > surname'),
       suffix: getTextContentFromPath(author, 'name > suffix'),
       email: getTextContentFromPath(author, 'email'),
-      orcId: getTextContentFromPath(author, 'contrib-id[contrib-id-type="orcid"]')
+      orcId: getTextContentFromPath(author, 'contrib-id[contrib-id-type="orcid"]'),
+      affiliations: Array.from(author.querySelectorAll('xref[ref-type="aff"]')).map((xRef) => xRef.getAttribute('rid'))
     })
   );
 }

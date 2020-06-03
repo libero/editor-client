@@ -33,7 +33,7 @@ export const AuthorsInfoDetails: React.FC = () => {
     <section>
       <SectionContainer label="Author Information">
         {authors.map((author) => (
-          <AuthorInfo key={author._id} author={author} />
+          <AuthorInfo key={author.id} author={author} />
         ))}
       </SectionContainer>
       <ActionButton variant="addEntity" title="Add Author" onClick={addAuthor} className={classes.addAuthorButton} />

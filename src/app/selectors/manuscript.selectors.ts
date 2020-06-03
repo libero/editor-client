@@ -18,3 +18,7 @@ export const getKeywordGroups = createSelector(getManuscriptData, (data) => get(
 export const getAuthors = createSelector(getManuscriptData, (data) => get(data, 'present.authors', []));
 
 export const getAffiliations = createSelector(getManuscriptData, (data) => get(data, 'present.affiliations', []));
+
+export const getAffiliatedAuthors = createSelector(getManuscriptData, ({ present }) => (affId: string) => {
+  return present.authors.filter((author) => author.affiliations.includes(affId));
+});
