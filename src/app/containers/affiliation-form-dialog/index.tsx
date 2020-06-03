@@ -50,7 +50,7 @@ export const AffiliationFormDialog: React.FC<AffiliationFormDialogProps> = (prop
         country: ''
       })
   );
-  const [isConfirmShown, setConfirmSnow] = useState<boolean>(false);
+  const [isConfirmShown, setConfirmShow] = useState<boolean>(false);
 
   const classes = useAffiliationFormStyles();
 
@@ -59,18 +59,18 @@ export const AffiliationFormDialog: React.FC<AffiliationFormDialogProps> = (prop
   }, [dispatch]);
 
   const handleDelete = useCallback(() => {
-    setConfirmSnow(true);
-  }, [setConfirmSnow]);
+    setConfirmShow(true);
+  }, [setConfirmShow]);
 
   const handleAccept = useCallback(() => {
-    setConfirmSnow(false);
+    setConfirmShow(false);
     dispatch(manuscriptActions.deleteAffiliationAction(affiliation));
     closeDialog();
-  }, [setConfirmSnow, affiliation, closeDialog, dispatch]);
+  }, [setConfirmShow, affiliation, closeDialog, dispatch]);
 
   const handleReject = useCallback(() => {
-    setConfirmSnow(false);
-  }, [setConfirmSnow]);
+    setConfirmShow(false);
+  }, [setConfirmShow]);
 
   const handleFormChange = useCallback(
     (event: SyntheticEvent) => {
