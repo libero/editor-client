@@ -10,7 +10,8 @@ describe('Person model helpers', () => {
     expect(createAuthor(undefined, xmlData)).toEqual({
       id: expect.any(String),
       firstName: 'Test',
-      lastName: 'Testerson'
+      lastName: 'Testerson',
+      affiliations: []
     });
   });
 
@@ -23,7 +24,8 @@ describe('Person model helpers', () => {
     expect(createAuthor('ID_FROM_XML', xmlData)).toEqual({
       id: 'ID_FROM_XML',
       firstName: 'Test',
-      lastName: 'Testerson'
+      lastName: 'Testerson',
+      affiliations: []
     });
   });
 

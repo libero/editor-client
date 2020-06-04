@@ -1,6 +1,7 @@
 import { getInitialHistory, getInitialLoadableState } from 'app/utils/state.utils';
 import {
   getAbstract,
+  getAffiliatedAuthors,
   getAuthors,
   getKeywordGroups,
   getManuscriptData,
@@ -10,6 +11,7 @@ import {
 import { cloneDeep } from 'lodash';
 import { EditorState } from 'prosemirror-state';
 import { Manuscript } from 'app/models/manuscript';
+import { Person } from 'app/models/person';
 
 describe('manuscript selectors', () => {
   let state;
@@ -36,13 +38,44 @@ describe('manuscript selectors', () => {
     newState.manuscript.data = getInitialHistory(givenManuscript());
     expect(isManuscriptLoaded(newState)).toBeTruthy();
   });
+
+  it('gets affiliated authors', () => {
+    const affiliation = {
+      id: 'some_id',
+      label: '1',
+      institution: {
+        name: 'Hogwarts',
+        department: 'Griffindor'
+      },
+      address: {
+        city: ''
+      },
+      country: 'UK'
+    };
+
+    const authors: Person[] = [
+      { id: 'id1', firstName: 'Jules', lastName: 'Verne', affiliations: ['some_id'] },
+      { id: 'id2', firstName: 'H G', lastName: 'Wells', affiliations: [] }
+    ];
+
+    state.manuscript.data = getInitialHistory(
+      givenManuscript({
+        authors,
+        affiliations: [affiliation]
+      })
+    );
+
+    expect(getAffiliatedAuthors(state)(affiliation.id)).toEqual([authors[0]]);
+  });
 });
 
-function givenManuscript(): Manuscript {
+function givenManuscript(overrides: Partial<Manuscript> = {}): Manuscript {
   return {
     title: new EditorState(),
     abstract: new EditorState(),
     keywordGroups: {},
-    authors: []
+    affiliations: [],
+    authors: [],
+    ...overrides
   };
 }

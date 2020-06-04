@@ -67,6 +67,7 @@ Object {
 exports[`Manuscript state factory creates authors state 1`] = `
 Array [
   Object {
+    "affiliations": Array [],
     "email": "f.atherden@elifesciences.org",
     "firstName": "Fred",
     "id": "unique_id",

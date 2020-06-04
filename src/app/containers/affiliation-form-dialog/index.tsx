@@ -1,6 +1,6 @@
 import React, { SyntheticEvent, useCallback, useState } from 'react';
 import { TextField } from '@material-ui/core';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { set, cloneDeep } from 'lodash';
 
 import { useAffiliationFormStyles } from './styles';
@@ -9,6 +9,10 @@ import * as manuscriptActions from 'app/actions/manuscript.actions';
 import { PromptDialog } from 'app/components/prompt-dialog';
 import { ActionButton } from 'app/components/action-button';
 import { Affiliation, createAffiliation } from 'app/models/affiliation';
+import { getAffiliatedAuthors, getAuthors } from 'app/selectors/manuscript.selectors';
+import { LinkedAuthorsList } from 'app/containers/affiliation-form-dialog/linked-authors-list';
+import { Person } from 'app/models/person';
+import { linkAffiliationsAction } from 'app/actions/manuscript.actions';
 
 interface AffiliationFormDialogProps {
   affiliation?: Affiliation;
@@ -35,6 +39,10 @@ const labelProps = { shrink: true };
 export const AffiliationFormDialog: React.FC<AffiliationFormDialogProps> = (props) => {
   const dispatch = useDispatch();
   const isNewAffiliation = !props.affiliation;
+
+  const affiliatedAuthors = useSelector(getAffiliatedAuthors)(props.affiliation?.id);
+  const [userLinkedAuthors, setUserLinkedAuthors] = useState<Person[]>(affiliatedAuthors);
+  const allAuthors = useSelector(getAuthors);
 
   const [affiliation, setAffiliation] = useState<Affiliation>(
     props.affiliation ||
@@ -72,6 +80,10 @@ export const AffiliationFormDialog: React.FC<AffiliationFormDialogProps> = (prop
     setConfirmShow(false);
   }, [setConfirmShow]);
 
+  const handleLinkedAuthorsChange = useCallback((authors: Person[]) => {
+    setUserLinkedAuthors(authors);
+  }, []);
+
   const handleFormChange = useCallback(
     (event: SyntheticEvent) => {
       const fieldName = event.target['name'];
@@ -88,8 +100,9 @@ export const AffiliationFormDialog: React.FC<AffiliationFormDialogProps> = (prop
     } else {
       dispatch(manuscriptActions.updateAffiliationAction(affiliation));
     }
+    dispatch(linkAffiliationsAction({ affiliation, authors: userLinkedAuthors }));
     closeDialog();
-  }, [affiliation, closeDialog, dispatch, isNewAffiliation]);
+  }, [affiliation, closeDialog, dispatch, isNewAffiliation, userLinkedAuthors]);
 
   return (
     <section className={classes.root}>
@@ -132,6 +145,11 @@ export const AffiliationFormDialog: React.FC<AffiliationFormDialogProps> = (prop
         value={affiliation.country}
         onChange={handleFormChange}
       />
+      <LinkedAuthorsList
+        linkedAuthors={userLinkedAuthors}
+        allAuthors={allAuthors}
+        onChange={handleLinkedAuthorsChange}
+      />
       <div className={classes.buttonPanel}>
         {!isNewAffiliation ? (
           <ActionButton variant="outlinedWarning" onClick={handleDelete} title="Delete" />
@@ -143,7 +161,7 @@ export const AffiliationFormDialog: React.FC<AffiliationFormDialogProps> = (prop
       {isConfirmShown
         ? renderConfirmDialog(
             'You are deleting an affiliation',
-            'Deleting an affiliation can leave unlinked authors information. Are you sure you want to proceed?',
+            'Deleting an affiliation will remove all associated links with authors. Are you sure want to proceed?',
             handleAccept,
             handleReject
           )

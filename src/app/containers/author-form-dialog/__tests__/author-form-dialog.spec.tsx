@@ -73,7 +73,9 @@ describe('Author Form Dialog', () => {
       </Provider>
     );
     wrapper.find({ title: 'Done' }).simulate('click');
-    expect(store.dispatch).toBeCalledWith(addAuthorAction({ firstName: '', id: expect.any(String), lastName: '' }));
+    expect(store.dispatch).toBeCalledWith(
+      addAuthorAction({ firstName: '', id: expect.any(String), lastName: '', affiliations: [] })
+    );
   });
 
   it('dispatches an event to save edited author', () => {

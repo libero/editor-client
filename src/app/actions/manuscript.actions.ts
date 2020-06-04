@@ -30,6 +30,11 @@ export interface MoveAuthorPayload {
   author: Person;
 }
 
+export interface LinkAffiliationsPayload {
+  affiliation: Affiliation;
+  authors: Person[];
+}
+
 export const loadManuscriptAction = createAsyncAction<string, Manuscript>('LOAD_MANUSCRIPT');
 export const updateTitleAction = createAction<Transaction>('UPDATE_TITLE');
 export const updateAbstractAction = createAction<Transaction>('UPDATE_ABSTRACT');
@@ -44,6 +49,7 @@ export const deleteAuthorAction = createAction<Person>('DELETE_AUTHOR');
 export const updateAffiliationAction = createAction<Affiliation>('UPDATE_AFFILIATION');
 export const addAffiliationAction = createAction<Affiliation>('ADD_AFFILIATION');
 export const deleteAffiliationAction = createAction<Affiliation>('DELETE_AFFILIATION');
+export const linkAffiliationsAction = createAction<LinkAffiliationsPayload>('LINK_AFFILIATIONS');
 
 export const undoAction = createAction<void>('UNDO');
 export const redoAction = createAction<void>('REDO');
@@ -56,6 +62,7 @@ export type ActionType =
   | ofActionType<typeof updateAffiliationAction>
   | ofActionType<typeof addAffiliationAction>
   | ofActionType<typeof deleteAffiliationAction>
+  | ofActionType<typeof linkAffiliationsAction>
   | ofActionType<typeof updateAuthorAction>
   | ofActionType<typeof addAuthorAction>
   | ofActionType<typeof moveAuthorAction>

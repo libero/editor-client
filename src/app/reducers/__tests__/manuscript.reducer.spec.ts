@@ -11,6 +11,7 @@ import { EditorState } from 'prosemirror-state';
 import { cloneDeep } from 'lodash';
 import { redoChange, undoChange, updateManuscriptState } from 'app/utils/history.utils';
 import { Manuscript } from 'app/models/manuscript';
+import { Person } from 'app/models/person';
 
 jest.mock('../../utils/history.utils');
 
@@ -209,6 +210,38 @@ describe('manuscript reducer', () => {
     updatedState.present.affiliations.push(aff);
     updatedState.past = [{ affiliations: state.present.affiliations }];
     const action = manuscriptActions.addAffiliationAction(aff);
+    const newState = manuscriptReducer(getLoadableStateSuccess(state), action);
+    expect(newState.data).toEqual(updatedState);
+  });
+
+  it('should link authors to affiliation', () => {
+    const aff = {
+      id: 'some_id',
+      label: '1',
+      institution: {
+        name: 'Hogwarts',
+        department: 'Griffindor'
+      },
+      address: {
+        city: ''
+      },
+      country: 'UK'
+    };
+
+    const authors: Person[] = [
+      { id: 'id1', firstName: 'Jules', lastName: 'Verne', affiliations: [] },
+      { id: 'id2', firstName: 'H G', lastName: 'Wells', affiliations: [] }
+    ];
+
+    const state = givenState({
+      affiliations: [aff],
+      authors
+    });
+
+    const updatedState = cloneDeep(state);
+    updatedState.present.authors.forEach((author) => (author.affiliations = [aff.id]));
+    updatedState.past = [{ authors: state.present.authors }];
+    const action = manuscriptActions.linkAffiliationsAction({ affiliation: aff, authors });
     const newState = manuscriptReducer(getLoadableStateSuccess(state), action);
     expect(newState.data).toEqual(updatedState);
   });

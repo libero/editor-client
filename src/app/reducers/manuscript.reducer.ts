@@ -16,6 +16,7 @@ import {
   KeywordAddPayload,
   KeywordDeletePayload,
   KeywordUpdatePayload,
+  LinkAffiliationsPayload,
   MoveAuthorPayload,
   NewKeywordUpdatePayload
 } from 'app/actions/manuscript.actions';
@@ -94,6 +95,12 @@ export function manuscriptReducer(
       return {
         ...state,
         data: handleAffiliationUpdate(state.data, action as Action<Affiliation>)
+      };
+
+    case manuscriptActions.linkAffiliationsAction.type:
+      return {
+        ...state,
+        data: handleLinkAffiliations(state.data, action as Action<LinkAffiliationsPayload>)
       };
 
     case manuscriptActions.updateAbstractAction.type:
@@ -255,6 +262,30 @@ function handleAffiliationDelete(state: ManuscriptHistory, action: Action<Affili
 
   const newManuscript = cloneManuscript(state.present);
   newManuscript.affiliations.splice(currentIndex, 1);
+
+  return {
+    past: [...state.past, newDiff],
+    present: newManuscript,
+    future: []
+  };
+}
+
+function handleLinkAffiliations(state: ManuscriptHistory, action: Action<LinkAffiliationsPayload>): ManuscriptHistory {
+  const newDiff = {
+    authors: state.present.authors
+  };
+
+  const authorsIds = new Set(action.payload.authors.map(({ id }) => id));
+  const newManuscript = cloneManuscript(state.present);
+
+  newManuscript.authors.forEach((author) => {
+    const affId = action.payload.affiliation.id;
+    if (!authorsIds.has(author.id) && author.affiliations.includes(affId)) {
+      author.affiliations = author.affiliations.filter((id) => id !== affId);
+    } else if (authorsIds.has(author.id) && !author.affiliations.includes(affId)) {
+      author.affiliations.push(affId);
+    }
+  });
 
   return {
     past: [...state.past, newDiff],
