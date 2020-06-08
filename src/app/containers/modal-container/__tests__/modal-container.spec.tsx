@@ -1,8 +1,6 @@
 import React from 'react';
 import { create } from 'react-test-renderer';
-import { ModalContainer } from 'app/containers/modal-container/index';
-import { Provider } from 'react-redux';
-import configureMockStore from 'redux-mock-store';
+import { ModalContainer } from 'app/containers/modal-container/modal-container';
 
 jest.mock('@material-ui/core', () => ({
   Dialog: ({ children }) => <div data-cmp="dialog">{children}</div>,
@@ -16,24 +14,9 @@ jest.mock('@material-ui/core', () => ({
 }));
 
 describe('Modal Container', () => {
-  const mockStore = configureMockStore([]);
-
   it('renders modal', () => {
-    const store = mockStore({
-      manuscriptEditor: {
-        modal: {
-          params: {
-            component: () => <div data-cmp="test-component" />
-          },
-          isVisible: true
-        }
-      }
-    });
-
     const wrapper = create(
-      <Provider store={store}>
-        <ModalContainer />
-      </Provider>
+      <ModalContainer title="test" params={{}} component={() => <div data-cmp="test-component" />} />
     );
 
     expect(wrapper).toMatchSnapshot();

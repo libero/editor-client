@@ -94,7 +94,7 @@ export const SortableAuthorsList: React.FC = () => {
         </SortableList>
       </SectionContainer>
       <ActionButton
-        title="Add author"
+        title="Author"
         variant="addEntity"
         onClick={onAddNewAuthor}
         className={classes.addAuthorButton}

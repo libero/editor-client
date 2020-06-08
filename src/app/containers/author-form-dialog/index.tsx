@@ -1,6 +1,6 @@
 import React, { SyntheticEvent, useCallback, useState } from 'react';
 import { TextField } from '@material-ui/core';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { useAuthorFormStyles } from './styles';
 import { createAuthor, Person } from 'app/models/person';
@@ -8,6 +8,9 @@ import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions'
 import * as manuscriptActions from 'app/actions/manuscript.actions';
 import { PromptDialog } from 'app/components/prompt-dialog';
 import { ActionButton } from 'app/components/action-button';
+import { LinkedAffiliationsList } from './linked-affiliations-list';
+import { getAffiliations, getAuthorAffiliations } from 'app/selectors/manuscript.selectors';
+import { Affiliation } from 'app/models/affiliation';
 
 interface AuthorFormDialogProps {
   author?: Person;
@@ -40,6 +43,8 @@ export const AuthorFormDialog: React.FC<AuthorFormDialogProps> = (props) => {
   );
   const [isConfirmShown, setConfirmSnow] = useState<boolean>(false);
 
+  const allAffiliations = useSelector(getAffiliations);
+  const linkedAffiliations = useSelector(getAuthorAffiliations)(author);
   const classes = useAuthorFormStyles();
 
   const closeDialog = useCallback(() => {
@@ -52,9 +57,17 @@ export const AuthorFormDialog: React.FC<AuthorFormDialogProps> = (props) => {
 
   const handleAccept = useCallback(() => {
     setConfirmSnow(false);
+    console.log('handle accept')
     dispatch(manuscriptActions.deleteAuthorAction(author));
     closeDialog();
   }, [setConfirmSnow, author, closeDialog, dispatch]);
+
+  const handleAffiliationsUpdate = useCallback(
+    (affiliations: Affiliation[]) => {
+      author.affiliations = affiliations.map(({ id }) => id);
+    },
+    [author]
+  );
 
   const handleReject = useCallback(() => {
     setConfirmSnow(false);
@@ -121,6 +134,11 @@ export const AuthorFormDialog: React.FC<AuthorFormDialogProps> = (props) => {
         variant="outlined"
         value={author.email || ''}
         onChange={handleFormChange}
+      />
+      <LinkedAffiliationsList
+        allAffiliations={allAffiliations}
+        linkedAffiliations={linkedAffiliations}
+        onChange={handleAffiliationsUpdate}
       />
       <div className={classes.buttonPanel}>
         {!isNewAuthor ? <ActionButton variant="outlinedWarning" onClick={handleDelete} title="Delete" /> : undefined}

@@ -5,14 +5,9 @@ import { getInitialHistory, getLoadableStateSuccess } from 'app/utils/state.util
 import { EditorState } from 'prosemirror-state';
 import { Provider } from 'react-redux';
 import { mount } from 'enzyme';
-import {
-  addAffiliationAction,
-  addAuthorAction, deleteAffiliationAction,
-  deleteAuthorAction, updateAffiliationAction,
-  updateAuthorAction
-} from 'app/actions/manuscript.actions';
+import { addAffiliationAction, deleteAffiliationAction, updateAffiliationAction } from 'app/actions/manuscript.actions';
 import { PromptDialog } from 'app/components/prompt-dialog';
-import { AffiliationFormDialog } from 'app/containers/affiliation-form-dialog/index';
+import { AffiliationFormDialog } from 'app/containers/affiliation-form-dialog/affiliation-form-dialog';
 
 jest.mock('../../../components/prompt-dialog', () => ({
   PromptDialog: () => <div data-cmp="confirm-dialog"></div>
@@ -52,7 +47,7 @@ describe('Affiliation Form Dialog', () => {
 
     const wrapper = create(
       <Provider store={store}>
-        <AffiliationFormDialog />
+        <AffiliationFormDialog onDelete={jest.fn()} onAccept={jest.fn()} onCancel={jest.fn()} />
       </Provider>
     );
     expect(wrapper).toMatchSnapshot();
@@ -65,7 +60,12 @@ describe('Affiliation Form Dialog', () => {
 
     const wrapper = create(
       <Provider store={store}>
-        <AffiliationFormDialog affiliation={mockState.present.affiliations[0]} />
+        <AffiliationFormDialog
+          affiliation={mockState.present.affiliations[0]}
+          onDelete={jest.fn()}
+          onAccept={jest.fn()}
+          onCancel={jest.fn()}
+        />
       </Provider>
     );
     expect(wrapper).toMatchSnapshot();
@@ -75,16 +75,15 @@ describe('Affiliation Form Dialog', () => {
     const store = mockStore({
       manuscript: getLoadableStateSuccess(mockState)
     });
-    jest.spyOn(store, 'dispatch');
-
+    const onAccept = jest.fn();
     const wrapper = mount(
       <Provider store={store}>
-        <AffiliationFormDialog />
+        <AffiliationFormDialog onDelete={jest.fn()} onAccept={onAccept} onCancel={jest.fn()} />
       </Provider>
     );
     wrapper.find({ title: 'Done' }).simulate('click');
-    expect(store.dispatch).toBeCalledWith(
-      addAffiliationAction({
+    expect(onAccept).toBeCalledWith(
+      {
         id: expect.any(String),
         label: '',
         institution: {
@@ -95,41 +94,48 @@ describe('Affiliation Form Dialog', () => {
           city: ''
         },
         country: ''
-      })
+      },
+      []
     );
   });
 
-  it('dispatches an event to save edited author', () => {
+  it('dispatches an event to save edited affiliation', () => {
     const store = mockStore({
       manuscript: getLoadableStateSuccess(mockState)
     });
-    jest.spyOn(store, 'dispatch');
-
+    const onAccept = jest.fn();
     const wrapper = mount(
       <Provider store={store}>
-        <AffiliationFormDialog affiliation={mockState.present.affiliations[0]} />
+        <AffiliationFormDialog
+          affiliation={mockState.present.affiliations[0]}
+          onDelete={jest.fn()}
+          onAccept={onAccept}
+          onCancel={jest.fn()}
+        />
       </Provider>
     );
     wrapper.find({ title: 'Done' }).simulate('click');
-    expect(store.dispatch).toBeCalledWith(updateAffiliationAction(mockState.present.affiliations[0]));
+    expect(onAccept).toBeCalledWith(mockState.present.affiliations[0], []);
   });
 
-  it('dispatches an event to delete author', () => {
+  it('dispatches an event to delete affiliation', () => {
     const store = mockStore({
       manuscript: getLoadableStateSuccess(mockState)
     });
-    jest.spyOn(store, 'dispatch');
-
+    const onDelete = jest.fn();
     const wrapper = mount(
       <Provider store={store}>
-        <AffiliationFormDialog affiliation={mockState.present.affiliations[0]} />
+        <AffiliationFormDialog
+          affiliation={mockState.present.affiliations[0]}
+          onDelete={onDelete}
+          onAccept={jest.fn()}
+          onCancel={jest.fn()}
+        />
       </Provider>
     );
 
     wrapper.find({ title: 'Delete' }).simulate('click');
-    wrapper.update();
-
     wrapper.find(PromptDialog).prop('onAccept')();
-    expect(store.dispatch).toBeCalledWith(deleteAffiliationAction(mockState.present.affiliations[0]));
+    expect(onDelete).toBeCalledWith(mockState.present.affiliations[0]);
   });
 });

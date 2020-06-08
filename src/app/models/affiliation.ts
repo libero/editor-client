@@ -19,3 +19,14 @@ export function createAffiliation(xmlId: string, affiliationData?: Omit<Affiliat
     id: xmlId || uuidv4()
   };
 }
+
+export function getAffiliationDisplayName(affiliation: Affiliation): string {
+  return [
+    affiliation.institution.department,
+    affiliation.institution.name,
+    affiliation.address.city,
+    affiliation.country
+  ]
+    .filter(Boolean)
+    .join(', ');
+}

@@ -71,7 +71,7 @@ exports[`manuscript editor should render 1`] = `
             />
           </svg>
         </span>
-        Add author
+        Author
       </span>
     </button>
   </section>
@@ -181,7 +181,7 @@ exports[`manuscript editor should render 1`] = `
             />
           </svg>
         </span>
-        Add Author
+        Author
       </span>
     </button>
   </section>
