@@ -59,6 +59,7 @@ interface ActionButtonProps {
   title: string;
   variant: VariantType;
   className?: string;
+  disabled?: boolean;
 }
 
 export const ActionButton: React.FC<ActionButtonProps> = (props) => {
@@ -67,7 +68,7 @@ export const ActionButton: React.FC<ActionButtonProps> = (props) => {
   const variantClasses = mapValues(variantProps.classes, (className: string) => classes[className]);
   const buttonProps = { ...variantProps, classes: variantClasses };
   return (
-    <Button onClick={props.onClick} {...buttonProps} className={props.className}>
+    <Button onClick={props.onClick} {...buttonProps} className={props.className} disabled={props.disabled}>
       {props.title}
     </Button>
   );

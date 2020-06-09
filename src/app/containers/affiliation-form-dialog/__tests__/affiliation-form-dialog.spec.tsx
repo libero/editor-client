@@ -5,12 +5,21 @@ import { getInitialHistory, getLoadableStateSuccess } from 'app/utils/state.util
 import { EditorState } from 'prosemirror-state';
 import { Provider } from 'react-redux';
 import { mount } from 'enzyme';
-import { addAffiliationAction, deleteAffiliationAction, updateAffiliationAction } from 'app/actions/manuscript.actions';
 import { PromptDialog } from 'app/components/prompt-dialog';
 import { AffiliationFormDialog } from 'app/containers/affiliation-form-dialog/affiliation-form-dialog';
 
 jest.mock('../../../components/prompt-dialog', () => ({
   PromptDialog: () => <div data-cmp="confirm-dialog"></div>
+}));
+
+jest.mock('@material-ui/core', () => ({
+  Select: ({ children }) => <div data-cmp="Select">{children}</div>,
+  MenuItem: ({ children }) => <div data-cmp="MenuItem">{children}</div>,
+  FormControl: ({ children }) => <div data-cmp="FormControl">{children}</div>,
+  InputLabel: ({ children }) => <div data-cmp="InputLabel">{children}</div>,
+  TextField: () => <div data-cmp="TextField"></div>,
+  IconButton: () => <div data-cmp="iconButton"></div>,
+  Button: () => <div data-cmp="Button"></div>
 }));
 
 describe('Affiliation Form Dialog', () => {
@@ -27,10 +36,7 @@ describe('Affiliation Form Dialog', () => {
         {
           id: 'some_id',
           label: '1',
-          institution: {
-            name: 'Cambridge University',
-            department: 'Boring science'
-          },
+          institution: 'Cambridge University, Boring science',
           address: {
             city: 'Cambridge'
           },
@@ -81,15 +87,14 @@ describe('Affiliation Form Dialog', () => {
         <AffiliationFormDialog onDelete={jest.fn()} onAccept={onAccept} onCancel={jest.fn()} />
       </Provider>
     );
-    wrapper.find({ title: 'Done' }).simulate('click');
+    wrapper.find({ title: 'Done' }).prop('onClick')();
+    wrapper.update();
+
     expect(onAccept).toBeCalledWith(
       {
         id: expect.any(String),
         label: '',
-        institution: {
-          name: '',
-          department: ''
-        },
+        institution: '',
         address: {
           city: ''
         },
@@ -114,7 +119,7 @@ describe('Affiliation Form Dialog', () => {
         />
       </Provider>
     );
-    wrapper.find({ title: 'Done' }).simulate('click');
+    wrapper.find({ title: 'Done' }).prop('onClick')();
     expect(onAccept).toBeCalledWith(mockState.present.affiliations[0], []);
   });
 
@@ -134,7 +139,8 @@ describe('Affiliation Form Dialog', () => {
       </Provider>
     );
 
-    wrapper.find({ title: 'Delete' }).simulate('click');
+    wrapper.find({ title: 'Delete' }).prop('onClick')();
+    wrapper.update();
     wrapper.find(PromptDialog).prop('onAccept')();
     expect(onDelete).toBeCalledWith(mockState.present.affiliations[0]);
   });

@@ -34,24 +34,24 @@ exports[`Author Form Dialog renders edit author dialog form 1`] = `
       </div>
     </div>
     <div
-      data-cmo="Button"
+      data-cmp="Button"
     />
   </div>
   <div
     className="makeStyles-buttonPanel-3"
   >
     <div
-      data-cmo="Button"
+      data-cmp="Button"
     />
     <div
       aria-hidden={true}
       className="makeStyles-spacer-4"
     />
     <div
-      data-cmo="Button"
+      data-cmp="Button"
     />
     <div
-      data-cmo="Button"
+      data-cmp="Button"
     />
   </div>
 </section>
@@ -91,7 +91,7 @@ exports[`Author Form Dialog renders new author dialog form 1`] = `
       </div>
     </div>
     <div
-      data-cmo="Button"
+      data-cmp="Button"
     />
   </div>
   <div
@@ -102,10 +102,10 @@ exports[`Author Form Dialog renders new author dialog form 1`] = `
       className="makeStyles-spacer-4"
     />
     <div
-      data-cmo="Button"
+      data-cmp="Button"
     />
     <div
-      data-cmo="Button"
+      data-cmp="Button"
     />
   </div>
 </section>

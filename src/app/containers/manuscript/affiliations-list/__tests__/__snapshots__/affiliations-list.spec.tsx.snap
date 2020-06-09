@@ -23,7 +23,7 @@ exports[`Authors details info renders affiliations list 1`] = `
       <div
         className="makeStyles-affiliationInfo-3"
       >
-        Production Department, eLife Sciences, Cambridge, United Kingdom
+        [object Object], Cambridge, United Kingdom
       </div>
       <div
         data-cmp="IconButton"
@@ -42,7 +42,7 @@ exports[`Authors details info renders affiliations list 1`] = `
       <div
         className="makeStyles-affiliationInfo-3"
       >
-        Department, University, City, Country
+        [object Object], City, Country
       </div>
       <div
         data-cmp="IconButton"

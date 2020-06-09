@@ -8,9 +8,9 @@ export const useAffiliationStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'flex-start',
     lineHeight: '24px',
-    marginTop: theme.spacing(1),
-    '&:first-child': {
-      marginTop: 0
+    marginBottom: theme.spacing(1),
+    '&:last-of-type': {
+      marginBottom: 0
     }
   },
   affiliationInfo: {

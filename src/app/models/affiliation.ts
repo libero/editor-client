@@ -3,10 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 export interface Affiliation {
   readonly id: string;
   label: string;
-  institution: {
-    name: string;
-    department: string;
-  };
+  institution: string;
   address: {
     city: string;
   };
@@ -21,12 +18,5 @@ export function createAffiliation(xmlId: string, affiliationData?: Omit<Affiliat
 }
 
 export function getAffiliationDisplayName(affiliation: Affiliation): string {
-  return [
-    affiliation.institution.department,
-    affiliation.institution.name,
-    affiliation.address.city,
-    affiliation.country
-  ]
-    .filter(Boolean)
-    .join(', ');
+  return [affiliation.institution, affiliation.address.city, affiliation.country].filter(Boolean).join(', ');
 }

@@ -20,8 +20,8 @@ jest.mock('@material-ui/core', () => ({
   FormControl: ({ children }) => <div data-cmp="FormControl">{children}</div>,
   InputLabel: ({ children }) => <div data-cmp="InputLabel">{children}</div>,
   TextField: () => <div data-cmp="TextField"></div>,
-  IconButton: () => <div data-cmo="iconButton"></div>,
-  Button: () => <div data-cmo="Button"></div>
+  IconButton: () => <div data-cmp="iconButton"></div>,
+  Button: () => <div data-cmp="Button"></div>
 }));
 
 describe('Author Form Dialog', () => {

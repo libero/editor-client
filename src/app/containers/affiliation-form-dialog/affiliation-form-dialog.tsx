@@ -47,10 +47,7 @@ export const AffiliationFormDialog: React.FC<AffiliationFormDialogProps> = (prop
     props.affiliation ||
       createAffiliation(undefined, {
         label: '',
-        institution: {
-          department: '',
-          name: ''
-        },
+        institution: '',
         address: {
           city: ''
         },
@@ -96,22 +93,13 @@ export const AffiliationFormDialog: React.FC<AffiliationFormDialogProps> = (prop
     <section className={classes.root}>
       <TextField
         fullWidth
-        name="institution.department"
-        label="Department"
+        name="institution"
+        label="Department/Institute"
         classes={{ root: classes.inputField }}
         InputLabelProps={labelProps}
         variant="outlined"
-        value={affiliation.institution.department}
-        onChange={handleFormChange}
-      />
-      <TextField
-        fullWidth
-        name="institution.name"
-        label="Institute"
-        classes={{ root: classes.inputField }}
-        InputLabelProps={labelProps}
-        variant="outlined"
-        value={affiliation.institution.name}
+        multiline
+        value={affiliation.institution}
         onChange={handleFormChange}
       />
       <TextField
