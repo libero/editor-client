@@ -28,13 +28,15 @@ const AUTHORS = [
     firstName: 'Fred',
     lastName: 'Atherden',
     email: 'f.atherden@elifesciences.org',
-    orcId: 'https://orcid.org/0000-0002-6048-1470'
+    orcId: 'https://orcid.org/0000-0002-6048-1470',
+    affiliations: []
   },
   {
     id: 'c3b008e6-4ae9-4ef9-b7cb-854749a1e897',
     firstName: 'Jeanine',
     lastName: 'Smith',
-    suffix: 'III'
+    suffix: 'III',
+    affiliations: []
   }
 ];
 
@@ -46,7 +48,8 @@ describe('Sortable authors list', () => {
       title: new EditorState(),
       abstract: new EditorState(),
       keywordGroups: {},
-      authors: AUTHORS
+      authors: AUTHORS,
+      affiliations: []
     });
     const store = mockStore({
       manuscript: getLoadableStateSuccess(mockState)
@@ -65,7 +68,8 @@ describe('Sortable authors list', () => {
       title: new EditorState(),
       abstract: new EditorState(),
       keywordGroups: {},
-      authors: AUTHORS
+      authors: AUTHORS,
+      affiliations: []
     });
 
     const store = mockStore({
@@ -91,7 +95,8 @@ describe('Sortable authors list', () => {
       title: new EditorState(),
       abstract: new EditorState(),
       keywordGroups: {},
-      authors: AUTHORS
+      authors: AUTHORS,
+      affiliations: []
     });
 
     const store = mockStore({
@@ -123,7 +128,8 @@ describe('Sortable authors list', () => {
       title: new EditorState(),
       abstract: new EditorState(),
       keywordGroups: {},
-      authors: []
+      authors: [],
+      affiliations: []
     });
 
     const store = mockStore({

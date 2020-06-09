@@ -17,7 +17,9 @@ export const useAffiliationStyles = makeStyles((theme) => ({
     flex: 1
   },
   orderLabel: {
-    fontSize: 10
+    fontSize: 10,
+    lineHeight: '16px',
+    paddingRight: 2
   },
   editButton: {
     flexGrow: 0,

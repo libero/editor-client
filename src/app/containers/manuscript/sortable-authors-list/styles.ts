@@ -13,6 +13,9 @@ export const useAuthorsListStyles = makeStyles((theme) => ({
     '&:last-child': {
       marginRight: 0
     },
+    '& sup': {
+      fontSize: 9
+    },
     '& > .drag-handle': {
       cursor: 'grab',
       opacity: 0.5

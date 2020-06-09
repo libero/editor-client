@@ -41,8 +41,10 @@ export const AffiliationsList: React.FC<{}> = () => {
 
   const renderAffiliation = (aff: Affiliation) => (
     <div key={aff.id} className={classes.listItem}>
+      <div className={classes.orderLabel}>
+        ({aff.label})
+      </div>
       <div className={classes.affiliationInfo}>
-        <sup className={classes.orderLabel}>({aff.label})</sup>
         {[aff.institution.department, aff.institution.name, aff.address.city, aff.country]
           .filter((field) => Boolean(field))
           .join(', ')}

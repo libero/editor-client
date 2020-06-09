@@ -157,11 +157,13 @@ function handleAuthorUpdate(state: ManuscriptHistory, action: Action<Person>): M
   const authorIndex = state.present.authors.findIndex(({ id }) => id === action.payload.id);
 
   const newDiff = {
-    [`authors.${authorIndex}`]: state.present.authors[authorIndex]
+    [`authors.${authorIndex}`]: state.present.authors[authorIndex],
+    affiliations: state.present.affiliations
   };
 
   const newManuscript = cloneManuscript(state.present);
   newManuscript.authors[authorIndex] = action.payload;
+  newManuscript.affiliations = getReorderedAffiliations(newManuscript.authors, newManuscript.affiliations);
 
   return {
     past: [...state.past, newDiff],
@@ -172,11 +174,14 @@ function handleAuthorUpdate(state: ManuscriptHistory, action: Action<Person>): M
 
 function handleAuthorAdd(state: ManuscriptHistory, action: Action<Person>): ManuscriptHistory {
   const newDiff = {
-    authors: state.present.authors
+    authors: state.present.authors,
+    affiliations: state.present.affiliations
   };
 
   const newManuscript = cloneManuscript(state.present);
   newManuscript.authors.push(action.payload);
+  newManuscript.affiliations = getReorderedAffiliations(newManuscript.authors, newManuscript.affiliations);
+
   return {
     past: [...state.past, newDiff],
     present: newManuscript,
@@ -189,12 +194,14 @@ function handleAuthorMove(state: ManuscriptHistory, action: Action<MoveAuthorPay
   const currentIndex = state.present.authors.findIndex(({ id }) => id === author.id);
 
   const newDiff = {
-    authors: state.present.authors
+    authors: state.present.authors,
+    affiliations: state.present.affiliations
   };
 
   const newManuscript = cloneManuscript(state.present);
   newManuscript.authors.splice(currentIndex, 1);
   newManuscript.authors.splice(index, 0, author);
+  newManuscript.affiliations = getReorderedAffiliations(newManuscript.authors, newManuscript.affiliations);
 
   return {
     past: [...state.past, newDiff],
@@ -207,11 +214,12 @@ function handleAffiliationUpdate(state: ManuscriptHistory, action: Action<Affili
   const affiliationIndex = state.present.affiliations.findIndex(({ id }) => id === action.payload.id);
 
   const newDiff = {
-    [`affiliations.${affiliationIndex}`]: state.present.affiliations[affiliationIndex]
+    affiliations: state.present.affiliations
   };
 
   const newManuscript = cloneManuscript(state.present);
   newManuscript.affiliations[affiliationIndex] = action.payload;
+  newManuscript.affiliations = getReorderedAffiliations(newManuscript.authors, newManuscript.affiliations);
 
   return {
     past: [...state.past, newDiff],
@@ -224,11 +232,13 @@ function handleAuthorDelete(state: ManuscriptHistory, action: Action<Person>): M
   const currentIndex = state.present.authors.findIndex(({ id }) => id === action.payload.id);
 
   const newDiff = {
-    authors: state.present.authors
+    authors: state.present.authors,
+    affiliations: state.present.affiliations
   };
 
   const newManuscript = cloneManuscript(state.present);
   newManuscript.authors.splice(currentIndex, 1);
+  newManuscript.affiliations = getReorderedAffiliations(newManuscript.authors, newManuscript.affiliations);
 
   return {
     past: [...state.past, newDiff],
@@ -246,6 +256,8 @@ function handleAffiliationAdd(state: ManuscriptHistory, action: Action<Affiliati
   const newAffiliation = action.payload;
   newAffiliation.label = newAffiliation.label || String(newManuscript.affiliations.length + 1);
   newManuscript.affiliations.push(newAffiliation);
+  newManuscript.affiliations = getReorderedAffiliations(newManuscript.authors, newManuscript.affiliations);
+
   return {
     past: [...state.past, newDiff],
     present: newManuscript,
@@ -262,6 +274,7 @@ function handleAffiliationDelete(state: ManuscriptHistory, action: Action<Affili
 
   const newManuscript = cloneManuscript(state.present);
   newManuscript.affiliations.splice(currentIndex, 1);
+  newManuscript.affiliations = getReorderedAffiliations(newManuscript.authors, newManuscript.affiliations);
 
   return {
     past: [...state.past, newDiff],
@@ -272,7 +285,8 @@ function handleAffiliationDelete(state: ManuscriptHistory, action: Action<Affili
 
 function handleLinkAffiliations(state: ManuscriptHistory, action: Action<LinkAffiliationsPayload>): ManuscriptHistory {
   const newDiff = {
-    authors: state.present.authors
+    authors: state.present.authors,
+    affiliations: state.present.affiliations
   };
 
   const authorsIds = new Set(action.payload.authors.map(({ id }) => id));
@@ -287,11 +301,33 @@ function handleLinkAffiliations(state: ManuscriptHistory, action: Action<LinkAff
     }
   });
 
+  newManuscript.affiliations = getReorderedAffiliations(newManuscript.authors, newManuscript.affiliations);
+
   return {
     past: [...state.past, newDiff],
     present: newManuscript,
     future: []
   };
+}
+
+function getReorderedAffiliations(authors: Person[], affiliations: Affiliation[]) {
+  const newAffiliations = affiliations.map((affiliation) => ({ ...affiliation, label: '' }));
+  let labelIndex = 1;
+  authors.forEach((author) => {
+    author.affiliations.forEach((affId) => {
+      const authorAffiliation = newAffiliations.find(({ id }) => id === affId);
+      if (!authorAffiliation.label) {
+        authorAffiliation.label = String(labelIndex++);
+      }
+    });
+  });
+  newAffiliations.forEach((affiliation) => {
+    if (!affiliation.label) {
+      affiliation.label = String(labelIndex++);
+    }
+  });
+  newAffiliations.sort((a, b) => Number(a.label) - Number(b.label));
+  return newAffiliations;
 }
 
 function handleDeleteKeywordAction(state: ManuscriptHistory, action: Action<KeywordDeletePayload>): ManuscriptHistory {
