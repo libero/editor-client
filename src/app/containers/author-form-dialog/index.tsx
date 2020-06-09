@@ -57,7 +57,6 @@ export const AuthorFormDialog: React.FC<AuthorFormDialogProps> = (props) => {
 
   const handleAccept = useCallback(() => {
     setConfirmSnow(false);
-    console.log('handle accept')
     dispatch(manuscriptActions.deleteAuthorAction(author));
     closeDialog();
   }, [setConfirmSnow, author, closeDialog, dispatch]);
