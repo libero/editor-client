@@ -27,6 +27,10 @@ export const useAuthorFormStyles = makeStyles((theme) => ({
     }
   },
 
+  dropDownMenuItem: {
+    minHeight: theme.spacing(4)
+  },
+
   affiliatedAuthorInput: {
     flex: 1,
     '& fieldset > legend': {

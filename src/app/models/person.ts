@@ -24,7 +24,10 @@ export function getAuthorDisplayName(author: Person): string {
 }
 
 export function getAuthorAffiliationsLabels(author: Person, affiliations: Affiliation[]): string[] {
-  return author.affiliations.map((affiliationId) => {
-    return affiliations.find(({ id }) => id === affiliationId).label;
-  });
+  return author.affiliations
+    .map((affiliationId) => {
+      const affiliation = affiliations.find(({ id }) => id === affiliationId);
+      return affiliation ? affiliation.label : undefined;
+    })
+    .filter(Boolean);
 }

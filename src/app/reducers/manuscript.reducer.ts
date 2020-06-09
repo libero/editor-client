@@ -310,13 +310,13 @@ function handleLinkAffiliations(state: ManuscriptHistory, action: Action<LinkAff
   };
 }
 
-function getReorderedAffiliations(authors: Person[], affiliations: Affiliation[]) {
+function getReorderedAffiliations(authors: Person[], affiliations: Affiliation[]): Affiliation[] {
   const newAffiliations = affiliations.map((affiliation) => ({ ...affiliation, label: '' }));
   let labelIndex = 1;
   authors.forEach((author) => {
     author.affiliations.forEach((affId) => {
       const authorAffiliation = newAffiliations.find(({ id }) => id === affId);
-      if (!authorAffiliation.label) {
+      if (authorAffiliation && !authorAffiliation.label) {
         authorAffiliation.label = String(labelIndex++);
       }
     });

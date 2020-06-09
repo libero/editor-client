@@ -63,8 +63,7 @@ export const AffiliationFormDialog: React.FC<AffiliationFormDialogProps> = (prop
 
   const handleDelete = useCallback(() => {
     setConfirmShow(true);
-    props.onDelete(affiliation);
-  }, [setConfirmShow, props, affiliation]);
+  }, [setConfirmShow]);
 
   const handleAcceptDeletion = useCallback(() => {
     setConfirmShow(false);

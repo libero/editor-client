@@ -18,12 +18,6 @@ interface LinkedAffiliationsListProps {
   onChange: (selectedAffiliations: Affiliation[]) => void;
 }
 
-const renderAffiliationSelectListItem = (affiliation: Affiliation) => (
-  <MenuItem key={affiliation.id} value={affiliation.id}>
-    {getAffiliationDisplayName(affiliation)}
-  </MenuItem>
-);
-
 const renderAffiliationModal = (props: ReactFCProps<typeof AffiliationFormDialog>) => {
   return (
     <ModalContainer
@@ -36,7 +30,7 @@ const renderAffiliationModal = (props: ReactFCProps<typeof AffiliationFormDialog
 
 export const LinkedAffiliationsList: React.FC<LinkedAffiliationsListProps> = (props) => {
   const { linkedAffiliations, allAffiliations, onChange } = props;
-
+  const classes = useAuthorFormStyles();
   const [userLinkedAffiliations, setUserLinkedAffiliations] = useState<Affiliation[]>([]);
 
   const [isAffiliationDialogShown, setAffiliationDialogShown] = useState<boolean>(false);
@@ -97,6 +91,17 @@ export const LinkedAffiliationsList: React.FC<LinkedAffiliationsListProps> = (pr
     [setActiveAffiliationIndex, setAffiliationDialogShown]
   );
 
+  const renderAffiliationSelectListItem = useCallback(
+    (affiliation: Affiliation) => {
+      return (
+        <MenuItem key={affiliation.id} value={affiliation.id} classes={{ root: classes.dropDownMenuItem }}>
+          {getAffiliationDisplayName(affiliation)}
+        </MenuItem>
+      );
+    },
+    [classes]
+  );
+
   const openMenu = useCallback(
     (index: number) => (event: React.MouseEvent<HTMLButtonElement>) => {
       setActiveAffiliationIndex(index);
@@ -124,9 +129,9 @@ export const LinkedAffiliationsList: React.FC<LinkedAffiliationsListProps> = (pr
       setUserLinkedAffiliations(updatedList);
       setActiveAffiliationIndex(-1);
       setAffiliationDialogShown(false);
-      manuscriptActions.deleteAffiliationAction(affiliation);
+      dispatch(manuscriptActions.deleteAffiliationAction(affiliation));
     },
-    [userLinkedAffiliations, setUserLinkedAffiliations, activeAffiliationIndex, setAffiliationDialogShown]
+    [userLinkedAffiliations, activeAffiliationIndex, dispatch]
   );
 
   const updateAffiliation = useCallback(() => {
@@ -149,7 +154,6 @@ export const LinkedAffiliationsList: React.FC<LinkedAffiliationsListProps> = (pr
     setUserLinkedAffiliations([...userLinkedAffiliations, null]);
   }, [userLinkedAffiliations, setUserLinkedAffiliations]);
 
-  const classes = useAuthorFormStyles();
   return (
     <div className={classes.inputField}>
       <Menu id="simple-menu" anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleCloseMenu}>
@@ -176,11 +180,7 @@ export const LinkedAffiliationsList: React.FC<LinkedAffiliationsListProps> = (pr
               {getAuthorSelectList(affiliation).map(renderAffiliationSelectListItem)}
             </Select>
           </FormControl>
-          <IconButton
-            classes={{ root: classes.deleteButton }}
-            onClick={openMenu(index)}
-            disabled={userLinkedAffiliations.length <= 1}
-          >
+          <IconButton classes={{ root: classes.deleteButton }} onClick={openMenu(index)}>
             <MoreVertIcon fontSize="small" />
           </IconButton>
         </div>
