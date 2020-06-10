@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Author Form Dialog renders edit affiliation dialog 1`] = `
+<div
+  data-cmp="AffiliationsFormDialog"
+/>
+`;

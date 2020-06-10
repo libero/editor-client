@@ -8,10 +8,10 @@ import { linkAffiliationsAction } from 'app/actions/manuscript.actions';
 import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
 
 interface ConnectedAffiliationsFormDialogProps {
-  affiliation: Affiliation;
+  affiliation?: Affiliation;
 }
 
-export const ConnectedAffiliationsFormDialog: React.FC<ConnectedAffiliationsFormDialogProps> = ({ affiliation }) => {
+export const ConnectedAffiliationFormDialog: React.FC<ConnectedAffiliationsFormDialogProps> = ({ affiliation }) => {
   const dispatch = useDispatch();
   const isNewAffiliation = !affiliation;
 

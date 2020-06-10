@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 
 import { ManuscriptEditor } from 'app/containers/manuscript/manuscript-editor';
 import { getInitialHistory, getLoadableStateSuccess } from 'app/utils/state.utils';
-import { updateAbstractAction, updateKeywordAction, updateTitleAction } from 'app/actions/manuscript.actions';
+import { updateAbstractAction, updateTitleAction } from 'app/actions/manuscript.actions';
 import { EditorState } from 'prosemirror-state';
 
 describe('manuscript editor', () => {
@@ -16,7 +16,8 @@ describe('manuscript editor', () => {
       title: new EditorState(),
       abstract: new EditorState(),
       keywordGroups: {},
-      authors: []
+      authors: [],
+      affiliations: []
     });
     const store = mockStore({ manuscript: getLoadableStateSuccess(mockEditorState) });
     const wrapper = create(
@@ -33,7 +34,8 @@ describe('manuscript editor', () => {
       title: new EditorState(),
       abstract: new EditorState(),
       keywordGroups: {},
-      authors: []
+      authors: [],
+      affiliations: []
     });
     const store = mockStore({ manuscript: getLoadableStateSuccess(mockEditorState) });
     jest.spyOn(store, 'dispatch');
@@ -47,7 +49,7 @@ describe('manuscript editor', () => {
 
     wrapper.root.findByProps({ label: 'Title' }).props.onChange(changeArg);
 
-    expect(store.dispatch).toBeCalledWith({ payload: changeArg, type: updateTitleAction.type });
+    expect(store.dispatch).toBeCalledWith(updateTitleAction(changeArg));
   });
 
   it('should dispatch changes for abstract', () => {
@@ -55,7 +57,8 @@ describe('manuscript editor', () => {
       title: new EditorState(),
       abstract: new EditorState(),
       keywordGroups: {},
-      authors: []
+      authors: [],
+      affiliations: []
     });
     const store = mockStore({ manuscript: getLoadableStateSuccess(mockEditorState) });
     jest.spyOn(store, 'dispatch');
@@ -68,6 +71,6 @@ describe('manuscript editor', () => {
     const changeArg = Symbol();
 
     wrapper.root.findByProps({ label: 'Abstract' }).props.onChange(changeArg);
-    expect(store.dispatch).toBeCalledWith({ payload: changeArg, type: updateAbstractAction.type });
+    expect(store.dispatch).toBeCalledWith(updateAbstractAction(changeArg));
   });
 });

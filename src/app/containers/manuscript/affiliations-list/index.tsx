@@ -9,7 +9,7 @@ import { getAffiliations } from 'app/selectors/manuscript.selectors';
 import { Affiliation } from 'app/models/affiliation';
 import { useAffiliationStyles } from './styles';
 import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
-import { ConnectedAffiliationsFormDialog } from 'app/containers/affiliation-form-dialog';
+import { ConnectedAffiliationFormDialog } from 'app/containers/affiliation-form-dialog';
 
 export const AffiliationsList: React.FC<{}> = () => {
   const classes = useAffiliationStyles();
@@ -20,7 +20,7 @@ export const AffiliationsList: React.FC<{}> = () => {
     (aff: Affiliation) => {
       dispatch(
         manuscriptEditorActions.showModalDialog({
-          component: ConnectedAffiliationsFormDialog,
+          component: ConnectedAffiliationFormDialog,
           props: { affiliation: aff },
           title: 'Edit Affiliation'
         })
@@ -32,7 +32,7 @@ export const AffiliationsList: React.FC<{}> = () => {
   const addAffiliation = useCallback(() => {
     dispatch(
       manuscriptEditorActions.showModalDialog({
-        component: ConnectedAffiliationsFormDialog,
+        component: ConnectedAffiliationFormDialog,
         props: {},
         title: 'Add Affiliation'
       })

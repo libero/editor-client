@@ -45,7 +45,7 @@ manuscriptReducer.on(manuscriptActions.undoAction, (state) => ({
   data: undoChange(state.data)
 }));
 
-manuscriptReducer.on(manuscriptActions.undoAction, (state) => ({
+manuscriptReducer.on(manuscriptActions.redoAction, (state) => ({
   ...state,
   data: redoChange(state.data)
 }));
