@@ -160,7 +160,9 @@ export const LinkedAffiliationsList: React.FC<LinkedAffiliationsListProps> = (pr
         <MenuItem onClick={updateAffiliation} disabled={!userLinkedAffiliations[activeAffiliationIndex]}>
           Edit Affiliation
         </MenuItem>
-        <MenuItem onClick={deleteRow}>Remove Affiliation</MenuItem>
+        <MenuItem onClick={deleteRow} disabled={userLinkedAffiliations.length < 2}>
+          Remove Affiliation
+        </MenuItem>
       </Menu>
       {userLinkedAffiliations.map((affiliation: Affiliation, index: number) => (
         <div className={classes.affiliatedAuthorRow} key={affiliation?.id || index}>

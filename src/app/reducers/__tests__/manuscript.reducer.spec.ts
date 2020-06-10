@@ -133,8 +133,7 @@ describe('manuscript reducer', () => {
           id: 'some_id',
           label: '1',
           institution: {
-            name: 'Hogwarts',
-            department: 'Griffindor'
+            name: 'Hogwarts'
           },
           address: {
             city: ''
@@ -159,8 +158,7 @@ describe('manuscript reducer', () => {
           id: 'some_id',
           label: '1',
           institution: {
-            name: 'Hogwarts',
-            department: 'Griffindor'
+            name: 'Hogwarts'
           },
           address: {
             city: ''
@@ -174,8 +172,7 @@ describe('manuscript reducer', () => {
       id: 'some_id',
       label: '1',
       institution: {
-        name: 'Cambridge University',
-        department: 'Boring science'
+        name: 'Cambridge University'
       },
       address: {
         city: 'Cambridge'
@@ -196,8 +193,7 @@ describe('manuscript reducer', () => {
       id: 'some_id',
       label: '1',
       institution: {
-        name: 'Hogwarts',
-        department: 'Griffindor'
+        name: 'Hogwarts'
       },
       address: {
         city: ''
@@ -219,8 +215,7 @@ describe('manuscript reducer', () => {
       id: 'some_id',
       label: '1',
       institution: {
-        name: 'Hogwarts',
-        department: 'Griffindor'
+        name: 'Hogwarts'
       },
       address: {
         city: ''

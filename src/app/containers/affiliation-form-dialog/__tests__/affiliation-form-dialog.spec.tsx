@@ -36,7 +36,9 @@ describe('Affiliation Form Dialog', () => {
         {
           id: 'some_id',
           label: '1',
-          institution: 'Cambridge University, Boring science',
+          institution: {
+            name: 'Cambridge University, Boring science'
+          },
           address: {
             city: 'Cambridge'
           },
@@ -94,7 +96,9 @@ describe('Affiliation Form Dialog', () => {
       {
         id: expect.any(String),
         label: '',
-        institution: '',
+        institution: {
+          name: ''
+        },
         address: {
           city: ''
         },
