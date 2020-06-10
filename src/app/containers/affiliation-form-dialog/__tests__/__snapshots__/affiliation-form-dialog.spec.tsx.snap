@@ -5,169 +5,14 @@ exports[`Affiliation Form Dialog renders edit affiliation dialog form 1`] = `
   className="makeStyles-root-1"
 >
   <div
-    className="MuiFormControl-root MuiTextField-root makeStyles-inputField-2 MuiFormControl-fullWidth"
-  >
-    <label
-      className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
-      data-shrink={true}
-    >
-      Department
-    </label>
-    <div
-      className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
-      onClick={[Function]}
-    >
-      <input
-        aria-invalid={false}
-        autoFocus={false}
-        className="MuiInputBase-input MuiOutlinedInput-input"
-        disabled={false}
-        name="institution.department"
-        onAnimationStart={[Function]}
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        required={false}
-        type="text"
-        value="Boring science"
-      />
-      <fieldset
-        aria-hidden={true}
-        className="PrivateNotchedOutline-root-66 MuiOutlinedInput-notchedOutline"
-      >
-        <legend
-          className="PrivateNotchedOutline-legendLabelled-68 PrivateNotchedOutline-legendNotched-69"
-        >
-          <span>
-            Department
-          </span>
-        </legend>
-      </fieldset>
-    </div>
-  </div>
+    data-cmp="TextField"
+  />
   <div
-    className="MuiFormControl-root MuiTextField-root makeStyles-inputField-2 MuiFormControl-fullWidth"
-  >
-    <label
-      className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
-      data-shrink={true}
-    >
-      Institute
-    </label>
-    <div
-      className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
-      onClick={[Function]}
-    >
-      <input
-        aria-invalid={false}
-        autoFocus={false}
-        className="MuiInputBase-input MuiOutlinedInput-input"
-        disabled={false}
-        name="institution.name"
-        onAnimationStart={[Function]}
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        required={false}
-        type="text"
-        value="Cambridge University"
-      />
-      <fieldset
-        aria-hidden={true}
-        className="PrivateNotchedOutline-root-66 MuiOutlinedInput-notchedOutline"
-      >
-        <legend
-          className="PrivateNotchedOutline-legendLabelled-68 PrivateNotchedOutline-legendNotched-69"
-        >
-          <span>
-            Institute
-          </span>
-        </legend>
-      </fieldset>
-    </div>
-  </div>
+    data-cmp="TextField"
+  />
   <div
-    className="MuiFormControl-root MuiTextField-root makeStyles-inputField-2"
-  >
-    <label
-      className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
-      data-shrink={true}
-    >
-      City
-    </label>
-    <div
-      className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
-      onClick={[Function]}
-    >
-      <input
-        aria-invalid={false}
-        autoFocus={false}
-        className="MuiInputBase-input MuiOutlinedInput-input"
-        disabled={false}
-        name="address.city"
-        onAnimationStart={[Function]}
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        required={false}
-        type="text"
-        value="Cambridge"
-      />
-      <fieldset
-        aria-hidden={true}
-        className="PrivateNotchedOutline-root-66 MuiOutlinedInput-notchedOutline"
-      >
-        <legend
-          className="PrivateNotchedOutline-legendLabelled-68 PrivateNotchedOutline-legendNotched-69"
-        >
-          <span>
-            City
-          </span>
-        </legend>
-      </fieldset>
-    </div>
-  </div>
-  <div
-    className="MuiFormControl-root MuiTextField-root makeStyles-inputField-2 MuiFormControl-fullWidth"
-  >
-    <label
-      className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
-      data-shrink={true}
-    >
-      Country
-    </label>
-    <div
-      className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
-      onClick={[Function]}
-    >
-      <input
-        aria-invalid={false}
-        autoFocus={false}
-        className="MuiInputBase-input MuiOutlinedInput-input"
-        disabled={false}
-        name="country"
-        onAnimationStart={[Function]}
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        required={false}
-        type="text"
-        value="UK"
-      />
-      <fieldset
-        aria-hidden={true}
-        className="PrivateNotchedOutline-root-66 MuiOutlinedInput-notchedOutline"
-      >
-        <legend
-          className="PrivateNotchedOutline-legendLabelled-68 PrivateNotchedOutline-legendNotched-69"
-        >
-          <span>
-            Country
-          </span>
-        </legend>
-      </fieldset>
-    </div>
-  </div>
+    data-cmp="TextField"
+  />
   <div
     className="makeStyles-inputField-2"
   >
@@ -175,225 +20,47 @@ exports[`Affiliation Form Dialog renders edit affiliation dialog form 1`] = `
       className="makeStyles-affiliatedAuthorRow-5"
     >
       <div
-        className="MuiFormControl-root makeStyles-affiliatedAuthorInput-6"
+        data-cmp="FormControl"
       >
-        <label
-          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
-          data-shrink={true}
-          id="author-affiliations-label"
+        <div
+          data-cmp="InputLabel"
         >
           Affiliated Author
-        </label>
+        </div>
         <div
-          className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
-          onClick={[Function]}
+          data-cmp="Select"
         >
           <div
-            aria-haspopup="listbox"
-            aria-labelledby="author-affiliations-label "
-            className="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input"
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onMouseDown={[Function]}
-            role="button"
-            tabIndex={0}
+            data-cmp="MenuItem"
           >
             Select affiliated author
           </div>
-          <input
-            onAnimationStart={[Function]}
-            type="hidden"
-            value=""
-          />
-          <svg
-            aria-hidden="true"
-            className="MuiSvgIcon-root MuiSelect-icon MuiSelect-iconOutlined"
-            focusable="false"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M7 10l5 5 5-5z"
-            />
-          </svg>
-          <fieldset
-            aria-hidden={true}
-            className="PrivateNotchedOutline-root-66 MuiOutlinedInput-notchedOutline"
-          >
-            <legend
-              className="PrivateNotchedOutline-legendLabelled-68"
-            >
-              <span>
-                Affiliated Author
-              </span>
-            </legend>
-          </fieldset>
         </div>
       </div>
-      <button
-        className="MuiButtonBase-root MuiIconButton-root makeStyles-deleteButton-7 Mui-disabled Mui-disabled"
-        disabled={true}
-        onBlur={[Function]}
-        onClick={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={-1}
-        type="button"
-      >
-        <span
-          className="MuiIconButton-label"
-        >
-          <svg
-            aria-hidden="true"
-            className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
-            focusable="false"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
-            />
-          </svg>
-        </span>
-      </button>
-    </div>
-    <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-addEntityButton_root-108 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <span
-        className="MuiButton-label"
-      >
-        <span
-          className="MuiButton-startIcon makeStyles-addEntityButton_icon-109 MuiButton-iconSizeSmall"
-        >
-          <svg
-            aria-hidden="true"
-            className="MuiSvgIcon-root"
-            focusable="false"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-            />
-          </svg>
-        </span>
-        Author
-      </span>
-      <span
-        className="MuiTouchRipple-root"
+      <div
+        data-cmp="iconButton"
       />
-    </button>
+    </div>
+    <div
+      data-cmp="Button"
+    />
   </div>
   <div
     className="makeStyles-buttonPanel-3"
   >
-    <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-outlinedRedButton-107 MuiButton-outlined MuiButton-disableElevation"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <span
-        className="MuiButton-label"
-      >
-        Delete
-      </span>
-      <span
-        className="MuiTouchRipple-root"
-      />
-    </button>
+    <div
+      data-cmp="Button"
+    />
     <div
       aria-hidden={true}
       className="makeStyles-spacer-4"
     />
-    <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-regularButton-105 MuiButton-outlined MuiButton-disableElevation"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <span
-        className="MuiButton-label"
-      >
-        Cancel
-      </span>
-      <span
-        className="MuiTouchRipple-root"
-      />
-    </button>
-    <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-regularButton-105 MuiButton-contained MuiButton-containedPrimary MuiButton-disableElevation"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <span
-        className="MuiButton-label"
-      >
-        Done
-      </span>
-      <span
-        className="MuiTouchRipple-root"
-      />
-    </button>
+    <div
+      data-cmp="Button"
+    />
+    <div
+      data-cmp="Button"
+    />
   </div>
 </section>
 `;
@@ -403,169 +70,14 @@ exports[`Affiliation Form Dialog renders new affiliation dialog form 1`] = `
   className="makeStyles-root-1"
 >
   <div
-    className="MuiFormControl-root MuiTextField-root makeStyles-inputField-2 MuiFormControl-fullWidth"
-  >
-    <label
-      className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
-      data-shrink={true}
-    >
-      Department
-    </label>
-    <div
-      className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
-      onClick={[Function]}
-    >
-      <input
-        aria-invalid={false}
-        autoFocus={false}
-        className="MuiInputBase-input MuiOutlinedInput-input"
-        disabled={false}
-        name="institution.department"
-        onAnimationStart={[Function]}
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        required={false}
-        type="text"
-        value=""
-      />
-      <fieldset
-        aria-hidden={true}
-        className="PrivateNotchedOutline-root-66 MuiOutlinedInput-notchedOutline"
-      >
-        <legend
-          className="PrivateNotchedOutline-legendLabelled-68 PrivateNotchedOutline-legendNotched-69"
-        >
-          <span>
-            Department
-          </span>
-        </legend>
-      </fieldset>
-    </div>
-  </div>
+    data-cmp="TextField"
+  />
   <div
-    className="MuiFormControl-root MuiTextField-root makeStyles-inputField-2 MuiFormControl-fullWidth"
-  >
-    <label
-      className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
-      data-shrink={true}
-    >
-      Institute
-    </label>
-    <div
-      className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
-      onClick={[Function]}
-    >
-      <input
-        aria-invalid={false}
-        autoFocus={false}
-        className="MuiInputBase-input MuiOutlinedInput-input"
-        disabled={false}
-        name="institution.name"
-        onAnimationStart={[Function]}
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        required={false}
-        type="text"
-        value=""
-      />
-      <fieldset
-        aria-hidden={true}
-        className="PrivateNotchedOutline-root-66 MuiOutlinedInput-notchedOutline"
-      >
-        <legend
-          className="PrivateNotchedOutline-legendLabelled-68 PrivateNotchedOutline-legendNotched-69"
-        >
-          <span>
-            Institute
-          </span>
-        </legend>
-      </fieldset>
-    </div>
-  </div>
+    data-cmp="TextField"
+  />
   <div
-    className="MuiFormControl-root MuiTextField-root makeStyles-inputField-2"
-  >
-    <label
-      className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
-      data-shrink={true}
-    >
-      City
-    </label>
-    <div
-      className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
-      onClick={[Function]}
-    >
-      <input
-        aria-invalid={false}
-        autoFocus={false}
-        className="MuiInputBase-input MuiOutlinedInput-input"
-        disabled={false}
-        name="address.city"
-        onAnimationStart={[Function]}
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        required={false}
-        type="text"
-        value=""
-      />
-      <fieldset
-        aria-hidden={true}
-        className="PrivateNotchedOutline-root-66 MuiOutlinedInput-notchedOutline"
-      >
-        <legend
-          className="PrivateNotchedOutline-legendLabelled-68 PrivateNotchedOutline-legendNotched-69"
-        >
-          <span>
-            City
-          </span>
-        </legend>
-      </fieldset>
-    </div>
-  </div>
-  <div
-    className="MuiFormControl-root MuiTextField-root makeStyles-inputField-2 MuiFormControl-fullWidth"
-  >
-    <label
-      className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
-      data-shrink={true}
-    >
-      Country
-    </label>
-    <div
-      className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
-      onClick={[Function]}
-    >
-      <input
-        aria-invalid={false}
-        autoFocus={false}
-        className="MuiInputBase-input MuiOutlinedInput-input"
-        disabled={false}
-        name="country"
-        onAnimationStart={[Function]}
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        required={false}
-        type="text"
-        value=""
-      />
-      <fieldset
-        aria-hidden={true}
-        className="PrivateNotchedOutline-root-66 MuiOutlinedInput-notchedOutline"
-      >
-        <legend
-          className="PrivateNotchedOutline-legendLabelled-68 PrivateNotchedOutline-legendNotched-69"
-        >
-          <span>
-            Country
-          </span>
-        </legend>
-      </fieldset>
-    </div>
-  </div>
+    data-cmp="TextField"
+  />
   <div
     className="makeStyles-inputField-2"
   >
@@ -573,133 +85,30 @@ exports[`Affiliation Form Dialog renders new affiliation dialog form 1`] = `
       className="makeStyles-affiliatedAuthorRow-5"
     >
       <div
-        className="MuiFormControl-root makeStyles-affiliatedAuthorInput-6"
+        data-cmp="FormControl"
       >
-        <label
-          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
-          data-shrink={true}
-          id="author-affiliations-label"
+        <div
+          data-cmp="InputLabel"
         >
           Affiliated Author
-        </label>
+        </div>
         <div
-          className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
-          onClick={[Function]}
+          data-cmp="Select"
         >
           <div
-            aria-haspopup="listbox"
-            aria-labelledby="author-affiliations-label "
-            className="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input"
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onMouseDown={[Function]}
-            role="button"
-            tabIndex={0}
+            data-cmp="MenuItem"
           >
             Select affiliated author
           </div>
-          <input
-            onAnimationStart={[Function]}
-            type="hidden"
-            value=""
-          />
-          <svg
-            aria-hidden="true"
-            className="MuiSvgIcon-root MuiSelect-icon MuiSelect-iconOutlined"
-            focusable="false"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M7 10l5 5 5-5z"
-            />
-          </svg>
-          <fieldset
-            aria-hidden={true}
-            className="PrivateNotchedOutline-root-66 MuiOutlinedInput-notchedOutline"
-          >
-            <legend
-              className="PrivateNotchedOutline-legendLabelled-68"
-            >
-              <span>
-                Affiliated Author
-              </span>
-            </legend>
-          </fieldset>
         </div>
       </div>
-      <button
-        className="MuiButtonBase-root MuiIconButton-root makeStyles-deleteButton-7 Mui-disabled Mui-disabled"
-        disabled={true}
-        onBlur={[Function]}
-        onClick={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={-1}
-        type="button"
-      >
-        <span
-          className="MuiIconButton-label"
-        >
-          <svg
-            aria-hidden="true"
-            className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
-            focusable="false"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
-            />
-          </svg>
-        </span>
-      </button>
+      <div
+        data-cmp="iconButton"
+      />
     </div>
-    <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-addEntityButton_root-108 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <span
-        className="MuiButton-label"
-      >
-        <span
-          className="MuiButton-startIcon makeStyles-addEntityButton_icon-109 MuiButton-iconSizeSmall"
-        >
-          <svg
-            aria-hidden="true"
-            className="MuiSvgIcon-root"
-            focusable="false"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-            />
-          </svg>
-        </span>
-        Author
-      </span>
-    </button>
+    <div
+      data-cmp="Button"
+    />
   </div>
   <div
     className="makeStyles-buttonPanel-3"
@@ -708,54 +117,12 @@ exports[`Affiliation Form Dialog renders new affiliation dialog form 1`] = `
       aria-hidden={true}
       className="makeStyles-spacer-4"
     />
-    <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-regularButton-105 MuiButton-outlined MuiButton-disableElevation"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <span
-        className="MuiButton-label"
-      >
-        Cancel
-      </span>
-    </button>
-    <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-regularButton-105 MuiButton-contained MuiButton-containedPrimary MuiButton-disableElevation"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <span
-        className="MuiButton-label"
-      >
-        Done
-      </span>
-    </button>
+    <div
+      data-cmp="Button"
+    />
+    <div
+      data-cmp="Button"
+    />
   </div>
 </section>
 `;

@@ -50,8 +50,12 @@ export function createAffiliationsState(affiliations: Element[]): Affiliation[] 
     return createAffiliation(aff.getAttribute('id'), {
       label: getTextContentFromPath(aff, 'label'),
       institution: {
-        name: getTextContentFromPath(aff, 'institution:not([content-type])'),
-        department: getTextContentFromPath(aff, 'institution[content-type="dept"]')
+        name: [
+          getTextContentFromPath(aff, 'institution[content-type="dept"]'),
+          getTextContentFromPath(aff, 'institution:not([content-type])')
+        ]
+          .filter(Boolean)
+          .join(', ')
       },
       address: {
         city: getTextContentFromPath(aff, 'addr-line named-content[content-type="city"]')

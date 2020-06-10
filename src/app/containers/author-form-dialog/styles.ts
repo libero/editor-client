@@ -17,5 +17,31 @@ export const useAuthorFormStyles = makeStyles((theme) => ({
 
   spacer: {
     flexGrow: 1
+  },
+
+  affiliatedAuthorRow: {
+    display: 'flex',
+    marginTop: theme.spacing(3),
+    '&:first-child': {
+      marginTop: 0
+    }
+  },
+
+  dropDownMenuItem: {
+    minHeight: theme.spacing(4)
+  },
+
+  affiliatedAuthorInput: {
+    flex: 1,
+    '& fieldset > legend': {
+      maxWidth: 1000
+    }
+  },
+
+  deleteButton: {
+    height: 32,
+    width: 32,
+    alignSelf: 'center',
+    marginLeft: theme.spacing(1)
   }
 }));

@@ -9,8 +9,19 @@ import { mount } from 'enzyme';
 import { addAuthorAction, deleteAuthorAction, updateAuthorAction } from 'app/actions/manuscript.actions';
 import { PromptDialog } from 'app/components/prompt-dialog';
 
-jest.mock('../../../components/prompt-dialog', () => ({
+jest.mock('app/components/prompt-dialog', () => ({
   PromptDialog: () => <div data-cmp="confirm-dialog"></div>
+}));
+
+jest.mock('@material-ui/core', () => ({
+  Select: ({ children }) => <div data-cmp="Select">{children}</div>,
+  Menu: ({ children }) => <div data-cmp="Menu">{children}</div>,
+  MenuItem: ({ children }) => <div data-cmp="MenuItem">{children}</div>,
+  FormControl: ({ children }) => <div data-cmp="FormControl">{children}</div>,
+  InputLabel: ({ children }) => <div data-cmp="InputLabel">{children}</div>,
+  TextField: () => <div data-cmp="TextField"></div>,
+  IconButton: () => <div data-cmp="iconButton"></div>,
+  Button: () => <div data-cmp="Button"></div>
 }));
 
 describe('Author Form Dialog', () => {
@@ -72,7 +83,7 @@ describe('Author Form Dialog', () => {
         <AuthorFormDialog />
       </Provider>
     );
-    wrapper.find({ title: 'Done' }).simulate('click');
+    wrapper.find({ title: 'Done' }).prop('onClick')();
     expect(store.dispatch).toBeCalledWith(
       addAuthorAction({ firstName: '', id: expect.any(String), lastName: '', affiliations: [] })
     );
@@ -89,7 +100,7 @@ describe('Author Form Dialog', () => {
         <AuthorFormDialog author={mockState.present.authors[0]} />
       </Provider>
     );
-    wrapper.find({ title: 'Done' }).simulate('click');
+    wrapper.find({ title: 'Done' }).prop('onClick')();
     expect(store.dispatch).toBeCalledWith(updateAuthorAction(mockState.present.authors[0]));
   });
 
@@ -105,7 +116,7 @@ describe('Author Form Dialog', () => {
       </Provider>
     );
 
-    wrapper.find({ title: 'Delete' }).simulate('click');
+    wrapper.find({ title: 'Delete' }).prop('onClick')();
     wrapper.update();
 
     wrapper.find(PromptDialog).prop('onAccept')();

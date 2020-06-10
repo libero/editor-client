@@ -9,13 +9,13 @@ import './app.scss';
 import { ManuscriptContainer } from './containers/manuscript';
 import { theme } from './styles/theme';
 import { ConnectedRouter } from 'connected-react-router';
-import { ModalContainer } from './containers/modal-container';
+import { ConnectedModalContainer } from 'app/containers/modal-container';
 
 export const App: React.FC = () => {
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <ModalContainer />
+        <ConnectedModalContainer />
         <ConnectedRouter history={history}>
           <main className="app-container" role="application">
             <Switch>

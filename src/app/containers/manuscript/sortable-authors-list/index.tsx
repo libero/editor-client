@@ -7,12 +7,13 @@ import { SortableContainer, SortableElement, SortableHandle } from 'react-sortab
 import DragIcon from 'app/assets/drag-indicator.svg';
 import * as manuscriptActions from 'app/actions/manuscript.actions';
 import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
-import { getAuthors } from 'app/selectors/manuscript.selectors';
+import { getAffiliations, getAuthors } from 'app/selectors/manuscript.selectors';
 import { useAuthorsListStyles } from './styles';
 import { SectionContainer } from 'app/components/section-container';
-import {getAuthorDisplayName, Person} from 'app/models/person';
+import { getAuthorAffiliationsLabels, getAuthorDisplayName, Person } from 'app/models/person';
 import { AuthorFormDialog } from 'app/containers/author-form-dialog';
 import { ActionButton } from 'app/components/action-button';
+import { Affiliation } from 'app/models/affiliation';
 
 const DragHandle = SortableHandle(() => (
   <img src={DragIcon} alt="drag handle" aria-hidden={true} className="drag-handle" />
@@ -28,7 +29,7 @@ const ChipRenderComponent = (props) => (
 const SortableItem = SortableElement(({ value, classes, onEdit }) => (
   <Chip
     classes={{ root: classes.chip, label: classes.chipLabel }}
-    label={getAuthorDisplayName(value)}
+    label={value}
     onDelete={onEdit}
     component={ChipRenderComponent}
     color="primary"
@@ -40,8 +41,19 @@ const SortableList = SortableContainer(({ children, className }) => {
   return <div className={className}> {children} </div>;
 });
 
+const getSortableItemLabel = (author: Person, affiliations: Affiliation[]) => {
+  const affiliationLabels = getAuthorAffiliationsLabels(author, affiliations);
+  return (
+    <span>
+      {getAuthorDisplayName(author)}
+      {affiliationLabels.length > 0 ? <sup>({affiliationLabels.join(',')})</sup> : ''}
+    </span>
+  );
+};
+
 export const SortableAuthorsList: React.FC = () => {
   const authors = useSelector(getAuthors);
+  const affiliations = useSelector(getAffiliations);
   const dispatch = useDispatch();
 
   const classes = useAuthorsListStyles();
@@ -86,19 +98,14 @@ export const SortableAuthorsList: React.FC = () => {
             <SortableItem
               key={`item-${value.id}`}
               index={index}
-              value={value}
+              value={getSortableItemLabel(value, affiliations)}
               classes={classes}
               onEdit={onEditAuthor(value)}
             />
           ))}
         </SortableList>
       </SectionContainer>
-      <ActionButton
-        title="Add author"
-        variant="addEntity"
-        onClick={onAddNewAuthor}
-        className={classes.addAuthorButton}
-      />
+      <ActionButton title="Author" variant="addEntity" onClick={onAddNewAuthor} className={classes.addAuthorButton} />
     </section>
   );
 };

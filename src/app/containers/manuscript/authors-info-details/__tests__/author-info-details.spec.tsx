@@ -74,7 +74,7 @@ describe('Authors details info', () => {
       </Provider>
     );
 
-    wrapper.find(IconButton).at(0).prop('onClick')();
+    wrapper.find(IconButton).at(0).prop('onClick')(null);
 
     expect(store.dispatch).toBeCalledWith(
       manuscriptEditorActions.showModalDialog({

@@ -70,10 +70,10 @@ describe('manuscript reducer', () => {
 
   it('should add new author', () => {
     const state = givenState({});
-    const newAuthor = { id: 'newId', firstName: 'Jules', lastName: 'Verne' };
+    const newAuthor = { id: 'newId', firstName: 'Jules', lastName: 'Verne', affiliations: [] };
     const updatedState = cloneDeep(state);
     updatedState.present.authors = [newAuthor];
-    updatedState.past = [{ authors: [] }];
+    updatedState.past = [{ authors: [], affiliations: [] }];
 
     const action = manuscriptActions.addAuthorAction(newAuthor);
     const newState = manuscriptReducer(getLoadableStateSuccess(state), action);
@@ -82,12 +82,12 @@ describe('manuscript reducer', () => {
 
   it('should update existing author', () => {
     const state = givenState({
-      authors: [{ id: 'newId', firstName: 'Jules', lastName: 'Verne' }]
+      authors: [{ id: 'newId', firstName: 'Jules', lastName: 'Verne', affiliations: [] }]
     });
-    const updatedAuthor = { id: 'newId', firstName: 'Jules Gabriel', lastName: 'Verne' };
+    const updatedAuthor = { id: 'newId', firstName: 'Jules Gabriel', lastName: 'Verne', affiliations: [] };
     const updatedState = cloneDeep(state);
     updatedState.present.authors = [updatedAuthor];
-    updatedState.past = [{ 'authors.0': state.present.authors[0] }];
+    updatedState.past = [{ 'authors.0': state.present.authors[0], affiliations: [] }];
 
     const action = manuscriptActions.updateAuthorAction(updatedAuthor);
     const newState = manuscriptReducer(getLoadableStateSuccess(state), action);
@@ -97,14 +97,14 @@ describe('manuscript reducer', () => {
   it('should move author', () => {
     const state = givenState({
       authors: [
-        { id: 'id1', firstName: 'Jules', lastName: 'Verne' },
-        { id: 'id2', firstName: 'H G', lastName: 'Wells' }
+        { id: 'id1', firstName: 'Jules', lastName: 'Verne', affiliations: [] },
+        { id: 'id2', firstName: 'H G', lastName: 'Wells', affiliations: [] }
       ]
     });
 
     const updatedState = cloneDeep(state);
     updatedState.present.authors.reverse();
-    updatedState.past = [{ authors: state.present.authors }];
+    updatedState.past = [{ authors: state.present.authors, affiliations: [] }];
     const action = manuscriptActions.moveAuthorAction({ index: 1, author: state.present.authors[0] });
     const newState = manuscriptReducer(getLoadableStateSuccess(state), action);
     expect(newState.data).toEqual(updatedState);
@@ -113,14 +113,14 @@ describe('manuscript reducer', () => {
   it('should delete author', () => {
     const state = givenState({
       authors: [
-        { id: 'id1', firstName: 'Jules', lastName: 'Verne' },
-        { id: 'id2', firstName: 'H G', lastName: 'Wells' }
+        { id: 'id1', firstName: 'Jules', lastName: 'Verne', affiliations: [] },
+        { id: 'id2', firstName: 'H G', lastName: 'Wells', affiliations: [] }
       ]
     });
 
     const updatedState = cloneDeep(state);
     updatedState.present.authors = updatedState.present.authors.slice(1);
-    updatedState.past = [{ authors: state.present.authors }];
+    updatedState.past = [{ authors: state.present.authors, affiliations: [] }];
     const action = manuscriptActions.deleteAuthorAction(state.present.authors[0]);
     const newState = manuscriptReducer(getLoadableStateSuccess(state), action);
     expect(newState.data).toEqual(updatedState);
@@ -133,8 +133,7 @@ describe('manuscript reducer', () => {
           id: 'some_id',
           label: '1',
           institution: {
-            name: 'Hogwarts',
-            department: 'Griffindor'
+            name: 'Hogwarts'
           },
           address: {
             city: ''
@@ -159,8 +158,7 @@ describe('manuscript reducer', () => {
           id: 'some_id',
           label: '1',
           institution: {
-            name: 'Hogwarts',
-            department: 'Griffindor'
+            name: 'Hogwarts'
           },
           address: {
             city: ''
@@ -174,8 +172,7 @@ describe('manuscript reducer', () => {
       id: 'some_id',
       label: '1',
       institution: {
-        name: 'Cambridge University',
-        department: 'Boring science'
+        name: 'Cambridge University'
       },
       address: {
         city: 'Cambridge'
@@ -185,7 +182,7 @@ describe('manuscript reducer', () => {
 
     const updatedState = cloneDeep(state);
     updatedState.present.affiliations[0] = updateAff;
-    updatedState.past = [{ 'affiliations.0': state.present.affiliations[0] }];
+    updatedState.past = [{ affiliations: state.present.affiliations }];
     const action = manuscriptActions.updateAffiliationAction(updateAff);
     const newState = manuscriptReducer(getLoadableStateSuccess(state), action);
     expect(newState.data).toEqual(updatedState);
@@ -196,8 +193,7 @@ describe('manuscript reducer', () => {
       id: 'some_id',
       label: '1',
       institution: {
-        name: 'Hogwarts',
-        department: 'Griffindor'
+        name: 'Hogwarts'
       },
       address: {
         city: ''
@@ -219,8 +215,7 @@ describe('manuscript reducer', () => {
       id: 'some_id',
       label: '1',
       institution: {
-        name: 'Hogwarts',
-        department: 'Griffindor'
+        name: 'Hogwarts'
       },
       address: {
         city: ''
@@ -240,7 +235,7 @@ describe('manuscript reducer', () => {
 
     const updatedState = cloneDeep(state);
     updatedState.present.authors.forEach((author) => (author.affiliations = [aff.id]));
-    updatedState.past = [{ authors: state.present.authors }];
+    updatedState.past = [{ authors: state.present.authors, affiliations: state.present.affiliations }];
     const action = manuscriptActions.linkAffiliationsAction({ affiliation: aff, authors });
     const newState = manuscriptReducer(getLoadableStateSuccess(state), action);
     expect(newState.data).toEqual(updatedState);

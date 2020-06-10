@@ -17,12 +17,18 @@ exports[`Sortable authors list renders authors list 1`] = `
       <div
         data-cmp="chip"
       >
-        Fred Atherden
+        <span>
+          Fred Atherden
+          
+        </span>
       </div>
       <div
         data-cmp="chip"
       >
-        Jeanine Smith III
+        <span>
+          Jeanine Smith III
+          
+        </span>
       </div>
        
     </div>

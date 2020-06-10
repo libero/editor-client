@@ -14,16 +14,16 @@ exports[`Authors details info renders affiliations list 1`] = `
       className="makeStyles-listItem-2"
     >
       <div
+        className="makeStyles-orderLabel-4"
+      >
+        (
+        1
+        )
+      </div>
+      <div
         className="makeStyles-affiliationInfo-3"
       >
-        <sup
-          className="makeStyles-orderLabel-4"
-        >
-          (
-          1
-          )
-        </sup>
-        Production Department, eLife Sciences, Cambridge, United Kingdom
+        eLife Sciences, Cambridge, United Kingdom
       </div>
       <div
         data-cmp="IconButton"
@@ -33,16 +33,16 @@ exports[`Authors details info renders affiliations list 1`] = `
       className="makeStyles-listItem-2"
     >
       <div
+        className="makeStyles-orderLabel-4"
+      >
+        (
+        2
+        )
+      </div>
+      <div
         className="makeStyles-affiliationInfo-3"
       >
-        <sup
-          className="makeStyles-orderLabel-4"
-        >
-          (
-          2
-          )
-        </sup>
-        Department, University, City, Country
+        University, City, Country
       </div>
       <div
         data-cmp="IconButton"

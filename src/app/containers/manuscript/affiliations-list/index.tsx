@@ -9,7 +9,7 @@ import { getAffiliations } from 'app/selectors/manuscript.selectors';
 import { Affiliation } from 'app/models/affiliation';
 import { useAffiliationStyles } from './styles';
 import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
-import { AffiliationFormDialog } from 'app/containers/affiliation-form-dialog';
+import { ConnectedAffiliationsFormDialog } from 'app/containers/affiliation-form-dialog';
 
 export const AffiliationsList: React.FC<{}> = () => {
   const classes = useAffiliationStyles();
@@ -20,7 +20,7 @@ export const AffiliationsList: React.FC<{}> = () => {
     (aff: Affiliation) => {
       dispatch(
         manuscriptEditorActions.showModalDialog({
-          component: AffiliationFormDialog,
+          component: ConnectedAffiliationsFormDialog,
           props: { affiliation: aff },
           title: 'Edit Affiliation'
         })
@@ -32,7 +32,7 @@ export const AffiliationsList: React.FC<{}> = () => {
   const addAffiliation = useCallback(() => {
     dispatch(
       manuscriptEditorActions.showModalDialog({
-        component: AffiliationFormDialog,
+        component: ConnectedAffiliationsFormDialog,
         props: {},
         title: 'Add Affiliation'
       })
@@ -41,11 +41,9 @@ export const AffiliationsList: React.FC<{}> = () => {
 
   const renderAffiliation = (aff: Affiliation) => (
     <div key={aff.id} className={classes.listItem}>
+      <div className={classes.orderLabel}>({aff.label})</div>
       <div className={classes.affiliationInfo}>
-        <sup className={classes.orderLabel}>({aff.label})</sup>
-        {[aff.institution.department, aff.institution.name, aff.address.city, aff.country]
-          .filter((field) => Boolean(field))
-          .join(', ')}
+        {[aff.institution.name, aff.address.city, aff.country].filter((field) => Boolean(field)).join(', ')}
       </div>
       <IconButton classes={{ root: classes.editButton }} onClick={editAffiliation.bind(null, aff)}>
         <EditIcon fontSize="small" />

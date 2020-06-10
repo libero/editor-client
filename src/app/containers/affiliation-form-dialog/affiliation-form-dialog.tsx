@@ -1,21 +1,21 @@
 import React, { SyntheticEvent, useCallback, useState } from 'react';
 import { TextField } from '@material-ui/core';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { set, cloneDeep } from 'lodash';
 
 import { useAffiliationFormStyles } from './styles';
-import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
-import * as manuscriptActions from 'app/actions/manuscript.actions';
 import { PromptDialog } from 'app/components/prompt-dialog';
 import { ActionButton } from 'app/components/action-button';
 import { Affiliation, createAffiliation } from 'app/models/affiliation';
 import { getAffiliatedAuthors, getAuthors } from 'app/selectors/manuscript.selectors';
 import { LinkedAuthorsList } from 'app/containers/affiliation-form-dialog/linked-authors-list';
 import { Person } from 'app/models/person';
-import { linkAffiliationsAction } from 'app/actions/manuscript.actions';
 
 interface AffiliationFormDialogProps {
   affiliation?: Affiliation;
+  onAccept: (affiliation: Affiliation, linkedAuthors: Person[]) => void;
+  onCancel: () => void;
+  onDelete: (affiliation: Affiliation) => void;
 }
 
 const renderConfirmDialog = (title: string, msg: string, onAccept: () => void, onReject: () => void) => {
@@ -37,7 +37,6 @@ const renderConfirmDialog = (title: string, msg: string, onAccept: () => void, o
 const labelProps = { shrink: true };
 
 export const AffiliationFormDialog: React.FC<AffiliationFormDialogProps> = (props) => {
-  const dispatch = useDispatch();
   const isNewAffiliation = !props.affiliation;
 
   const affiliatedAuthors = useSelector(getAffiliatedAuthors)(props.affiliation?.id);
@@ -49,7 +48,6 @@ export const AffiliationFormDialog: React.FC<AffiliationFormDialogProps> = (prop
       createAffiliation(undefined, {
         label: '',
         institution: {
-          department: '',
           name: ''
         },
         address: {
@@ -62,21 +60,16 @@ export const AffiliationFormDialog: React.FC<AffiliationFormDialogProps> = (prop
 
   const classes = useAffiliationFormStyles();
 
-  const closeDialog = useCallback(() => {
-    dispatch(manuscriptEditorActions.hideModalDialog());
-  }, [dispatch]);
-
   const handleDelete = useCallback(() => {
     setConfirmShow(true);
   }, [setConfirmShow]);
 
-  const handleAccept = useCallback(() => {
+  const handleAcceptDeletion = useCallback(() => {
     setConfirmShow(false);
-    dispatch(manuscriptActions.deleteAffiliationAction(affiliation));
-    closeDialog();
-  }, [setConfirmShow, affiliation, closeDialog, dispatch]);
+    props.onDelete(affiliation);
+  }, [setConfirmShow, affiliation, props]);
 
-  const handleReject = useCallback(() => {
+  const handleRejectDeletion = useCallback(() => {
     setConfirmShow(false);
   }, [setConfirmShow]);
 
@@ -95,34 +88,19 @@ export const AffiliationFormDialog: React.FC<AffiliationFormDialogProps> = (prop
   );
 
   const handleDone = useCallback(() => {
-    if (isNewAffiliation) {
-      dispatch(manuscriptActions.addAffiliationAction(affiliation));
-    } else {
-      dispatch(manuscriptActions.updateAffiliationAction(affiliation));
-    }
-    dispatch(linkAffiliationsAction({ affiliation, authors: userLinkedAuthors }));
-    closeDialog();
-  }, [affiliation, closeDialog, dispatch, isNewAffiliation, userLinkedAuthors]);
+    props.onAccept(affiliation, userLinkedAuthors);
+  }, [props, affiliation, userLinkedAuthors]);
 
   return (
     <section className={classes.root}>
       <TextField
         fullWidth
-        name="institution.department"
-        label="Department"
-        classes={{ root: classes.inputField }}
-        InputLabelProps={labelProps}
-        variant="outlined"
-        value={affiliation.institution.department}
-        onChange={handleFormChange}
-      />
-      <TextField
-        fullWidth
         name="institution.name"
-        label="Institute"
+        label="Department/Institute"
         classes={{ root: classes.inputField }}
         InputLabelProps={labelProps}
         variant="outlined"
+        multiline
         value={affiliation.institution.name}
         onChange={handleFormChange}
       />
@@ -155,15 +133,15 @@ export const AffiliationFormDialog: React.FC<AffiliationFormDialogProps> = (prop
           <ActionButton variant="outlinedWarning" onClick={handleDelete} title="Delete" />
         ) : undefined}
         <div aria-hidden={true} className={classes.spacer}></div>
-        <ActionButton variant="secondaryOutlined" onClick={closeDialog} title="Cancel" />
+        <ActionButton variant="secondaryOutlined" onClick={props.onCancel} title="Cancel" />
         <ActionButton variant="primaryContained" onClick={handleDone} title="Done" />
       </div>
       {isConfirmShown
         ? renderConfirmDialog(
             'You are deleting an affiliation',
             'Deleting an affiliation will remove all associated links with authors. Are you sure want to proceed?',
-            handleAccept,
-            handleReject
+            handleAcceptDeletion,
+            handleRejectDeletion
           )
         : undefined}
     </section>

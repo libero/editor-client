@@ -5,257 +5,54 @@ exports[`Author Form Dialog renders edit author dialog form 1`] = `
   className="makeStyles-root-1"
 >
   <div
-    className="MuiFormControl-root MuiTextField-root makeStyles-inputField-2 MuiFormControl-fullWidth"
-  >
-    <label
-      className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
-      data-shrink={true}
-    >
-      Given name
-    </label>
-    <div
-      className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
-      onClick={[Function]}
-    >
-      <input
-        aria-invalid={false}
-        autoFocus={false}
-        className="MuiInputBase-input MuiOutlinedInput-input"
-        disabled={false}
-        name="firstName"
-        onAnimationStart={[Function]}
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        required={false}
-        type="text"
-        value="Fred"
-      />
-      <fieldset
-        aria-hidden={true}
-        className="PrivateNotchedOutline-root-63 MuiOutlinedInput-notchedOutline"
-      >
-        <legend
-          className="PrivateNotchedOutline-legendLabelled-65 PrivateNotchedOutline-legendNotched-66"
-        >
-          <span>
-            Given name
-          </span>
-        </legend>
-      </fieldset>
-    </div>
-  </div>
+    data-cmp="TextField"
+  />
   <div
-    className="MuiFormControl-root MuiTextField-root makeStyles-inputField-2 MuiFormControl-fullWidth"
-  >
-    <label
-      className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
-      data-shrink={true}
-    >
-      Surname
-    </label>
-    <div
-      className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
-      onClick={[Function]}
-    >
-      <input
-        aria-invalid={false}
-        autoFocus={false}
-        className="MuiInputBase-input MuiOutlinedInput-input"
-        disabled={false}
-        name="lastName"
-        onAnimationStart={[Function]}
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        required={false}
-        type="text"
-        value="Atherden"
-      />
-      <fieldset
-        aria-hidden={true}
-        className="PrivateNotchedOutline-root-63 MuiOutlinedInput-notchedOutline"
-      >
-        <legend
-          className="PrivateNotchedOutline-legendLabelled-65 PrivateNotchedOutline-legendNotched-66"
-        >
-          <span>
-            Surname
-          </span>
-        </legend>
-      </fieldset>
-    </div>
-  </div>
+    data-cmp="TextField"
+  />
   <div
-    className="MuiFormControl-root MuiTextField-root makeStyles-inputField-2"
-  >
-    <label
-      className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
-      data-shrink={true}
-    >
-      Suffix
-    </label>
-    <div
-      className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
-      onClick={[Function]}
-    >
-      <input
-        aria-invalid={false}
-        autoFocus={false}
-        className="MuiInputBase-input MuiOutlinedInput-input"
-        disabled={false}
-        name="suffix"
-        onAnimationStart={[Function]}
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        required={false}
-        type="text"
-        value=""
-      />
-      <fieldset
-        aria-hidden={true}
-        className="PrivateNotchedOutline-root-63 MuiOutlinedInput-notchedOutline"
-      >
-        <legend
-          className="PrivateNotchedOutline-legendLabelled-65 PrivateNotchedOutline-legendNotched-66"
-        >
-          <span>
-            Suffix
-          </span>
-        </legend>
-      </fieldset>
-    </div>
-  </div>
+    data-cmp="TextField"
+  />
   <div
-    className="MuiFormControl-root MuiTextField-root makeStyles-inputField-2 MuiFormControl-fullWidth"
+    data-cmp="TextField"
+  />
+  <div
+    className="makeStyles-inputField-2"
   >
-    <label
-      className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
-      data-shrink={true}
-    >
-      Email
-    </label>
     <div
-      className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
-      onClick={[Function]}
+      data-cmp="Menu"
     >
-      <input
-        aria-invalid={false}
-        autoFocus={false}
-        className="MuiInputBase-input MuiOutlinedInput-input"
-        disabled={false}
-        name="email"
-        onAnimationStart={[Function]}
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        required={false}
-        type="text"
-        value="f.atherden@elifesciences.org"
-      />
-      <fieldset
-        aria-hidden={true}
-        className="PrivateNotchedOutline-root-63 MuiOutlinedInput-notchedOutline"
+      <div
+        data-cmp="MenuItem"
       >
-        <legend
-          className="PrivateNotchedOutline-legendLabelled-65 PrivateNotchedOutline-legendNotched-66"
-        >
-          <span>
-            Email
-          </span>
-        </legend>
-      </fieldset>
+        Edit Affiliation
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Remove Affiliation
+      </div>
     </div>
+    <div
+      data-cmp="Button"
+    />
   </div>
   <div
     className="makeStyles-buttonPanel-3"
   >
-    <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-outlinedRedButton-69 MuiButton-outlined MuiButton-disableElevation"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <span
-        className="MuiButton-label"
-      >
-        Delete
-      </span>
-      <span
-        className="MuiTouchRipple-root"
-      />
-    </button>
+    <div
+      data-cmp="Button"
+    />
     <div
       aria-hidden={true}
       className="makeStyles-spacer-4"
     />
-    <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-regularButton-67 MuiButton-outlined MuiButton-disableElevation"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <span
-        className="MuiButton-label"
-      >
-        Cancel
-      </span>
-      <span
-        className="MuiTouchRipple-root"
-      />
-    </button>
-    <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-regularButton-67 MuiButton-contained MuiButton-containedPrimary MuiButton-disableElevation"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <span
-        className="MuiButton-label"
-      >
-        Done
-      </span>
-      <span
-        className="MuiTouchRipple-root"
-      />
-    </button>
+    <div
+      data-cmp="Button"
+    />
+    <div
+      data-cmp="Button"
+    />
   </div>
 </section>
 `;
@@ -265,168 +62,37 @@ exports[`Author Form Dialog renders new author dialog form 1`] = `
   className="makeStyles-root-1"
 >
   <div
-    className="MuiFormControl-root MuiTextField-root makeStyles-inputField-2 MuiFormControl-fullWidth"
-  >
-    <label
-      className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
-      data-shrink={true}
-    >
-      Given name
-    </label>
-    <div
-      className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
-      onClick={[Function]}
-    >
-      <input
-        aria-invalid={false}
-        autoFocus={false}
-        className="MuiInputBase-input MuiOutlinedInput-input"
-        disabled={false}
-        name="firstName"
-        onAnimationStart={[Function]}
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        required={false}
-        type="text"
-        value=""
-      />
-      <fieldset
-        aria-hidden={true}
-        className="PrivateNotchedOutline-root-63 MuiOutlinedInput-notchedOutline"
-      >
-        <legend
-          className="PrivateNotchedOutline-legendLabelled-65 PrivateNotchedOutline-legendNotched-66"
-        >
-          <span>
-            Given name
-          </span>
-        </legend>
-      </fieldset>
-    </div>
-  </div>
+    data-cmp="TextField"
+  />
   <div
-    className="MuiFormControl-root MuiTextField-root makeStyles-inputField-2 MuiFormControl-fullWidth"
-  >
-    <label
-      className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
-      data-shrink={true}
-    >
-      Surname
-    </label>
-    <div
-      className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
-      onClick={[Function]}
-    >
-      <input
-        aria-invalid={false}
-        autoFocus={false}
-        className="MuiInputBase-input MuiOutlinedInput-input"
-        disabled={false}
-        name="lastName"
-        onAnimationStart={[Function]}
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        required={false}
-        type="text"
-        value=""
-      />
-      <fieldset
-        aria-hidden={true}
-        className="PrivateNotchedOutline-root-63 MuiOutlinedInput-notchedOutline"
-      >
-        <legend
-          className="PrivateNotchedOutline-legendLabelled-65 PrivateNotchedOutline-legendNotched-66"
-        >
-          <span>
-            Surname
-          </span>
-        </legend>
-      </fieldset>
-    </div>
-  </div>
+    data-cmp="TextField"
+  />
   <div
-    className="MuiFormControl-root MuiTextField-root makeStyles-inputField-2"
-  >
-    <label
-      className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
-      data-shrink={true}
-    >
-      Suffix
-    </label>
-    <div
-      className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
-      onClick={[Function]}
-    >
-      <input
-        aria-invalid={false}
-        autoFocus={false}
-        className="MuiInputBase-input MuiOutlinedInput-input"
-        disabled={false}
-        name="suffix"
-        onAnimationStart={[Function]}
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        required={false}
-        type="text"
-        value=""
-      />
-      <fieldset
-        aria-hidden={true}
-        className="PrivateNotchedOutline-root-63 MuiOutlinedInput-notchedOutline"
-      >
-        <legend
-          className="PrivateNotchedOutline-legendLabelled-65 PrivateNotchedOutline-legendNotched-66"
-        >
-          <span>
-            Suffix
-          </span>
-        </legend>
-      </fieldset>
-    </div>
-  </div>
+    data-cmp="TextField"
+  />
   <div
-    className="MuiFormControl-root MuiTextField-root makeStyles-inputField-2 MuiFormControl-fullWidth"
+    data-cmp="TextField"
+  />
+  <div
+    className="makeStyles-inputField-2"
   >
-    <label
-      className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined"
-      data-shrink={true}
-    >
-      Email
-    </label>
     <div
-      className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
-      onClick={[Function]}
+      data-cmp="Menu"
     >
-      <input
-        aria-invalid={false}
-        autoFocus={false}
-        className="MuiInputBase-input MuiOutlinedInput-input"
-        disabled={false}
-        name="email"
-        onAnimationStart={[Function]}
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        required={false}
-        type="text"
-        value=""
-      />
-      <fieldset
-        aria-hidden={true}
-        className="PrivateNotchedOutline-root-63 MuiOutlinedInput-notchedOutline"
+      <div
+        data-cmp="MenuItem"
       >
-        <legend
-          className="PrivateNotchedOutline-legendLabelled-65 PrivateNotchedOutline-legendNotched-66"
-        >
-          <span>
-            Email
-          </span>
-        </legend>
-      </fieldset>
+        Edit Affiliation
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Remove Affiliation
+      </div>
     </div>
+    <div
+      data-cmp="Button"
+    />
   </div>
   <div
     className="makeStyles-buttonPanel-3"
@@ -435,54 +101,12 @@ exports[`Author Form Dialog renders new author dialog form 1`] = `
       aria-hidden={true}
       className="makeStyles-spacer-4"
     />
-    <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-regularButton-67 MuiButton-outlined MuiButton-disableElevation"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <span
-        className="MuiButton-label"
-      >
-        Cancel
-      </span>
-    </button>
-    <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-regularButton-67 MuiButton-contained MuiButton-containedPrimary MuiButton-disableElevation"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <span
-        className="MuiButton-label"
-      >
-        Done
-      </span>
-    </button>
+    <div
+      data-cmp="Button"
+    />
+    <div
+      data-cmp="Button"
+    />
   </div>
 </section>
 `;
