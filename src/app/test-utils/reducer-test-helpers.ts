@@ -18,7 +18,7 @@ export function givenState(overrides: Partial<Manuscript>): ManuscriptHistorySta
   );
 }
 
-export function createDummyEditorState() {
+export function createDummyEditorState(): EditorState {
   return EditorState.create({
     schema: new Schema({
       nodes: {
