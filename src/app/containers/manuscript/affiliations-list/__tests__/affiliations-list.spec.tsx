@@ -16,8 +16,7 @@ const AFFILIATIONS = [
   {
     label: '1',
     institution: {
-      name: 'eLife Sciences',
-      department: 'Production Department'
+      name: 'eLife Sciences'
     },
     address: {
       city: 'Cambridge'
@@ -28,8 +27,7 @@ const AFFILIATIONS = [
   {
     label: '2',
     institution: {
-      name: 'University',
-      department: 'Department'
+      name: 'University'
     },
     address: {
       city: 'City'

@@ -44,8 +44,7 @@ describe('manuscript selectors', () => {
       id: 'some_id',
       label: '1',
       institution: {
-        name: 'Hogwarts',
-        department: 'Griffindor'
+        name: 'Hogwarts'
       },
       address: {
         city: ''

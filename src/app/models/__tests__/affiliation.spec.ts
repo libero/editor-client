@@ -5,8 +5,7 @@ describe('Affiliation model helpers', () => {
     const xmlData: Omit<Affiliation, 'id'> = {
       label: 'label',
       institution: {
-        name: 'eLife',
-        department: 'Production'
+        name: 'eLife'
       },
       address: {
         city: 'Cambridge'
@@ -24,8 +23,7 @@ describe('Affiliation model helpers', () => {
     const xmlData: Omit<Affiliation, 'id'> = {
       label: 'label',
       institution: {
-        name: 'eLife',
-        department: 'Production'
+        name: 'eLife'
       },
       address: {
         city: 'Cambridge'
