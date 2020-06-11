@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, PropTypes } from '@material-ui/core';
-import { mapValues } from 'lodash';
+import { mapValues, isEqual } from 'lodash';
 import AddIcon from '@material-ui/icons/Add';
 
 import { useActionButtonStyles } from './styles';
@@ -62,7 +62,7 @@ interface ActionButtonProps {
   disabled?: boolean;
 }
 
-export const ActionButton: React.FC<ActionButtonProps> = (props) => {
+export const ActionButton: React.FC<ActionButtonProps> = React.memo((props) => {
   const classes = useActionButtonStyles();
   const variantProps = VARIANTS[props.variant];
   const variantClasses = mapValues(variantProps.classes, (className: string) => classes[className]);
@@ -72,4 +72,4 @@ export const ActionButton: React.FC<ActionButtonProps> = (props) => {
       {props.title}
     </Button>
   );
-};
+}, isEqual);

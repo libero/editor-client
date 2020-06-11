@@ -14,6 +14,7 @@ import {
 import { ActionButton } from 'app/components/action-button';
 import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
 import { AuthorFormDialog } from 'app/containers/author-form-dialog';
+import { isEqual } from 'lodash';
 
 export const AuthorsInfoDetails: React.FC = () => {
   const authors = useSelector(getAuthors);
@@ -45,7 +46,7 @@ interface AuthorInfoProps {
   author: Person;
 }
 
-const AuthorInfo: React.FC<AuthorInfoProps> = ({ author }) => {
+const AuthorInfo: React.FC<AuthorInfoProps> = React.memo(({ author }) => {
   const classes = useAuthorDetailStyles();
   const dispatch = useDispatch();
 
@@ -78,4 +79,4 @@ const AuthorInfo: React.FC<AuthorInfoProps> = ({ author }) => {
       </IconButton>
     </section>
   );
-};
+}, isEqual);
