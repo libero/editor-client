@@ -1,5 +1,7 @@
+import { createAction } from 'redux-act';
+
 import { Manuscript } from 'app/models/manuscript';
-import { createAction, createAsyncAction, ofActionType } from 'app/utils/action.utils';
+import { createAsyncAction } from 'app/utils/action.utils';
 import { EditorState, Transaction } from 'prosemirror-state';
 import { Person } from 'app/models/person';
 import { Affiliation } from 'app/models/affiliation';
@@ -56,24 +58,3 @@ export const redoAction = createAction<void>('REDO');
 export const boldAction = createAction<void>('BOLD');
 export const italicizeAction = createAction<void>('ITALICIZE');
 export const linkAction = createAction<void>('LINK');
-
-export type ActionType =
-  | ofActionType<typeof loadManuscriptAction>
-  | ofActionType<typeof updateAffiliationAction>
-  | ofActionType<typeof addAffiliationAction>
-  | ofActionType<typeof deleteAffiliationAction>
-  | ofActionType<typeof linkAffiliationsAction>
-  | ofActionType<typeof updateAuthorAction>
-  | ofActionType<typeof addAuthorAction>
-  | ofActionType<typeof moveAuthorAction>
-  | ofActionType<typeof deleteAuthorAction>
-  | ofActionType<typeof undoAction>
-  | ofActionType<typeof redoAction>
-  | ofActionType<typeof boldAction>
-  | ofActionType<typeof italicizeAction>
-  | ofActionType<typeof linkAction>
-  | ofActionType<typeof addNewKeywordAction>
-  | ofActionType<typeof deleteKeywordAction>
-  | ofActionType<typeof updateKeywordAction>
-  | ofActionType<typeof updateNewKeywordAction>
-  | ofActionType<typeof updateTitleAction>;

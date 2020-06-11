@@ -1,6 +1,6 @@
+import { createReducer } from 'redux-act';
 import * as manuscriptEditorAction from 'app/actions/manuscript-editor.actions';
 import { ManuscriptEditorState } from 'app/store';
-import { ModalPayload } from 'app/actions/manuscript-editor.actions';
 
 const initialState: ManuscriptEditorState = {
   focusedManuscriptPath: undefined,
@@ -9,38 +9,29 @@ const initialState: ManuscriptEditorState = {
   }
 };
 
-export function manuscriptEditorReducer(
-  state: ManuscriptEditorState = initialState,
-  action: manuscriptEditorAction.ActionType
-): ManuscriptEditorState {
-  switch (action.type) {
-    case manuscriptEditorAction.setFocusAction.type:
-      return {
-        ...state,
-        focusedManuscriptPath: action.payload as string
-      };
+export const manuscriptEditorReducer = createReducer<ManuscriptEditorState>({}, initialState);
 
-    case manuscriptEditorAction.removeFocusAction.type:
-      return {
-        ...state,
-        focusedManuscriptPath: undefined
-      };
+manuscriptEditorReducer.on(manuscriptEditorAction.setFocusAction, (state, payload) => ({
+  ...state,
+  focusedManuscriptPath: payload
+}));
 
-    case manuscriptEditorAction.showModalDialog.type:
-      return {
-        ...state,
-        modal: {
-          params: action.payload as ModalPayload,
-          isVisible: true
-        }
-      };
+manuscriptEditorReducer.on(manuscriptEditorAction.removeFocusAction, (state) => ({
+  ...state,
+  focusedManuscriptPath: undefined
+}));
 
-    case manuscriptEditorAction.hideModalDialog.type:
-      return {
-        ...state,
-        modal: { isVisible: false }
-      };
+manuscriptEditorReducer.on(manuscriptEditorAction.showModalDialog, (state, payload) => ({
+  ...state,
+  modal: {
+    params: payload,
+    isVisible: true
   }
+}));
 
-  return state;
-}
+manuscriptEditorReducer.on(manuscriptEditorAction.hideModalDialog, (state) => ({
+  ...state,
+  modal: {
+    isVisible: false
+  }
+}));
