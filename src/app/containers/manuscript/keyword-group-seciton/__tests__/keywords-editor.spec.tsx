@@ -1,13 +1,13 @@
 import React from 'react';
 import { EditorState } from 'prosemirror-state';
-import { KeywordsEditor } from 'app/components/keywords/index';
+import { KeywordsEditor } from 'app/containers/manuscript/keyword-group-seciton/keywords-editor';
 import { create } from 'react-test-renderer';
 import { shallow } from 'enzyme';
-import { Keyword } from 'app/components/keywords/keyword';
-import { NewKeywordSection } from 'app/components/keywords/new-keyword-section';
+import { Keyword } from 'app/containers/manuscript/keyword-group-seciton/keyword';
+import { NewKeywordSection } from 'app/containers/manuscript/keyword-group-seciton/new-keyword-section';
 
 describe('KeywordsEditorComponent', () => {
-  it('renders keywords', () => {
+  it('renders keyword-group-seciton', () => {
     const props = {
       keywords: [new EditorState()],
       label: 'Keywords label',

@@ -25,7 +25,7 @@ describe('Manuscript state factory', () => {
     expect(editorState).toMatchSnapshot();
   });
 
-  it('creates keywords state', () => {
+  it('creates keyword-group-seciton state', () => {
     const kwdContainer = document.createElement('div');
     kwdContainer.innerHTML = `<kwd-group kwd-group-type="author-keywords">
         <kwd>cerebellum</kwd>

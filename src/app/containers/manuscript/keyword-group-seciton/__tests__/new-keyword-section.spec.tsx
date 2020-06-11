@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { create } from 'react-test-renderer';
 
-import { NewKeywordSection } from 'app/components/keywords/new-keyword-section';
+import { NewKeywordSection } from 'app/containers/manuscript/keyword-group-seciton/new-keyword-section';
 import { ProseMirrorEditorView } from 'app/components/rich-text-editor/prosemirror-editor-view';
 import { createNewKeywordState } from 'app/models/manuscript-state.factory';
 

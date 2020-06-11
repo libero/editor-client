@@ -55,6 +55,9 @@ export const useKeywordStyles = makeStyles((theme) => ({
       '& .ProseMirror': {
         color: theme.palette.text.primary
       }
+    },
+    '&.focused button': {
+      visibility: 'hidden'
     }
   },
 

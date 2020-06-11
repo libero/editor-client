@@ -6,7 +6,8 @@ import { IconButton } from '@material-ui/core';
 import CancelIcon from '@material-ui/icons/Cancel';
 
 import { ProseMirrorEditorView } from 'app/components/rich-text-editor/prosemirror-editor-view';
-import { useKeywordStyles } from './styles';
+import { useKeywordStyles } from 'app/containers/manuscript/keyword-group-seciton/styles';
+import { isEqual } from 'lodash';
 
 const ENTER_KEY_CODE = 'Enter';
 
@@ -18,7 +19,7 @@ interface KeywordProps {
   onBlur: (state: EditorState) => void;
 }
 
-export const Keyword: React.FC<KeywordProps> = ({ editorState, onDelete, onChange, onFocus, onBlur }) => {
+export const Keyword: React.FC<KeywordProps> = React.memo(({ editorState, onDelete, onChange, onFocus, onBlur }) => {
   const prosemirrorRef = useRef(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [isFocused, setFocused] = useState(false);
@@ -29,10 +30,21 @@ export const Keyword: React.FC<KeywordProps> = ({ editorState, onDelete, onChang
     prosemirrorRef.current.focus();
   }, []);
 
-  const preventSingleClick = useCallback((event: Event) => {
-    event.stopPropagation();
-    event.preventDefault();
-  }, []);
+  const handleDeleteBtnClick = useCallback(() => {
+    if (!isFocused) {
+      onDelete();
+    }
+  }, [isFocused, onDelete]);
+
+  const preventSingleClick = useCallback(
+    (event: Event) => {
+      if (!isFocused) {
+        event.stopPropagation();
+        event.preventDefault();
+      }
+    },
+    [isFocused]
+  );
 
   useEffect(() => {
     const containerEl = containerRef.current;
@@ -84,7 +96,7 @@ export const Keyword: React.FC<KeywordProps> = ({ editorState, onDelete, onChang
     >
       <ProseMirrorEditorView options={options} ref={prosemirrorRef} editorState={editorState} onChange={onChange} />
       <IconButton
-        onClick={onDelete}
+        onClick={handleDeleteBtnClick}
         aria-label="delete keyword"
         tabIndex={0}
         color="primary"
@@ -95,4 +107,4 @@ export const Keyword: React.FC<KeywordProps> = ({ editorState, onDelete, onChang
       </IconButton>
     </div>
   );
-};
+}, isEqual);

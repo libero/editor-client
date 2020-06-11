@@ -1,10 +1,12 @@
 import React, { useCallback } from 'react';
 import { EditorState, Transaction } from 'prosemirror-state';
 
-import { NewKeywordSection } from './new-keyword-section';
-import { Keyword } from './keyword';
-import { makeKeywordContainerStyles } from './styles';
+import { NewKeywordSection } from 'app/containers/manuscript/keyword-group-seciton/new-keyword-section';
+import { Keyword } from 'app/containers/manuscript/keyword-group-seciton/keyword';
+import { makeKeywordContainerStyles } from 'app/containers/manuscript/keyword-group-seciton/styles';
 import { SectionContainer } from 'app/components/section-container';
+import { memoizeBind } from 'app/utils/memoize-bind';
+import { isEqual } from 'lodash';
 
 interface KeywordsEditorProps {
   keywords: EditorState[];
@@ -18,7 +20,7 @@ interface KeywordsEditorProps {
   onBlur: (index: number | undefined, isNewKeywordFocused?: boolean) => void;
 }
 
-export const KeywordsEditor: React.FC<KeywordsEditorProps> = (props) => {
+export const KeywordsEditor: React.FC<KeywordsEditorProps> = React.memo((props) => {
   const { keywords, label, onChange, onDelete, onAdd, onFocus, onBlur, newKeyword, onNewKeywordChange } = props;
   const classes = makeKeywordContainerStyles();
 
@@ -41,11 +43,11 @@ export const KeywordsEditor: React.FC<KeywordsEditorProps> = (props) => {
       return (
         <Keyword
           key={index}
-          onChange={onChange.bind(null, index)}
+          onChange={memoizeBind(onChange, index)}
           editorState={keywordEditorState}
-          onDelete={onDelete.bind(null, index)}
-          onFocus={handleFocus.bind(null, index)}
-          onBlur={handleBlur.bind(null, index)}
+          onDelete={memoizeBind(onDelete, index)}
+          onFocus={memoizeBind(handleFocus, index)}
+          onBlur={memoizeBind(handleBlur, index)}
         />
       );
     });
@@ -74,4 +76,4 @@ export const KeywordsEditor: React.FC<KeywordsEditorProps> = (props) => {
       </section>
     </SectionContainer>
   );
-};
+}, isEqual);
