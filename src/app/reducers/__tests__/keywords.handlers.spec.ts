@@ -65,7 +65,7 @@ describe('Keywords reducers', () => {
     };
 
     updateKeyword(state, payload);
-    expect(updateManuscriptState).toBeCalledWith(state.data, 'keywordGroups.kwd-group.keyword-group-seciton.0', payload.change);
+    expect(updateManuscriptState).toBeCalledWith(state.data, 'keywordGroups.kwd-group.keywords.0', payload.change);
   });
 
   it('should update new keyword', () => {

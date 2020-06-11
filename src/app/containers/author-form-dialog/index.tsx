@@ -98,7 +98,7 @@ export const AuthorFormDialog: React.FC<AuthorFormDialogProps> = (props) => {
       <TextField
         fullWidth
         name="firstName"
-        label="Given name(s)"
+        label="Given name"
         classes={{ root: classes.inputField }}
         InputLabelProps={labelProps}
         variant="outlined"
@@ -108,7 +108,7 @@ export const AuthorFormDialog: React.FC<AuthorFormDialogProps> = (props) => {
       <TextField
         fullWidth
         name="lastName"
-        label="Surname(s)"
+        label="Surname"
         classes={{ root: classes.inputField }}
         InputLabelProps={labelProps}
         variant="outlined"

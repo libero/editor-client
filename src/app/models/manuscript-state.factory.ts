@@ -83,7 +83,7 @@ export function createAbstractState(content: Node): EditorState {
 
 export function createKeywordGroupsState(keywordGroupsXml: Element[]): KeywordGroups {
   return keywordGroupsXml.reduce((acc, kwdGroup) => {
-    const kwdGroupType = kwdGroup.getAttribute('kwd-group-type') || 'keyword-group-seciton-1';
+    const kwdGroupType = kwdGroup.getAttribute('kwd-group-type') || 'keywords-1';
     const groupTitle = kwdGroup.querySelector('title');
     const moreKeywords = Array.from(kwdGroup.querySelectorAll('kwd')).map(createKeywordState);
     acc[kwdGroupType] = {

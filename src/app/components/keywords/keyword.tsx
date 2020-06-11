@@ -6,8 +6,7 @@ import { IconButton } from '@material-ui/core';
 import CancelIcon from '@material-ui/icons/Cancel';
 
 import { ProseMirrorEditorView } from 'app/components/rich-text-editor/prosemirror-editor-view';
-import { useKeywordStyles } from 'app/containers/manuscript/keyword-group-seciton/styles';
-import { isEqual } from 'lodash';
+import { useKeywordStyles } from './styles';
 
 const ENTER_KEY_CODE = 'Enter';
 
@@ -19,7 +18,7 @@ interface KeywordProps {
   onBlur: (state: EditorState) => void;
 }
 
-export const Keyword: React.FC<KeywordProps> = React.memo(({ editorState, onDelete, onChange, onFocus, onBlur }) => {
+export const Keyword: React.FC<KeywordProps> = ({ editorState, onDelete, onChange, onFocus, onBlur }) => {
   const prosemirrorRef = useRef(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [isFocused, setFocused] = useState(false);
@@ -30,21 +29,10 @@ export const Keyword: React.FC<KeywordProps> = React.memo(({ editorState, onDele
     prosemirrorRef.current.focus();
   }, []);
 
-  const handleDeleteBtnClick = useCallback(() => {
-    if (!isFocused) {
-      onDelete();
-    }
-  }, [isFocused, onDelete]);
-
-  const preventSingleClick = useCallback(
-    (event: Event) => {
-      if (!isFocused) {
-        event.stopPropagation();
-        event.preventDefault();
-      }
-    },
-    [isFocused]
-  );
+  const preventSingleClick = useCallback((event: Event) => {
+    event.stopPropagation();
+    event.preventDefault();
+  }, []);
 
   useEffect(() => {
     const containerEl = containerRef.current;
@@ -96,7 +84,7 @@ export const Keyword: React.FC<KeywordProps> = React.memo(({ editorState, onDele
     >
       <ProseMirrorEditorView options={options} ref={prosemirrorRef} editorState={editorState} onChange={onChange} />
       <IconButton
-        onClick={handleDeleteBtnClick}
+        onClick={onDelete}
         aria-label="delete keyword"
         tabIndex={0}
         color="primary"
@@ -107,4 +95,4 @@ export const Keyword: React.FC<KeywordProps> = React.memo(({ editorState, onDele
       </IconButton>
     </div>
   );
-}, isEqual);
+};
