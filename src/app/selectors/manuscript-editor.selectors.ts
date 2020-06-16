@@ -5,7 +5,7 @@ import { get } from 'lodash';
 import { ApplicationState, ManuscriptEditorState } from 'app/store';
 import { getManuscriptData } from './manuscript.selectors';
 
-function isMarkActive(state: EditorState, mark: string) {
+function isMarkActive(state: EditorState, mark: string): boolean {
   const { from, $from, to, empty } = state.selection;
   const type = state.schema.marks[mark];
   if (!type) {

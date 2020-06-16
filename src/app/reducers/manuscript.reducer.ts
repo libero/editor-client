@@ -19,7 +19,7 @@ import {
   updateAffiliation
 } from 'app/reducers/affiliations.handlers';
 import { addKeyword, deleteKeyword, updateKeyword, updateNewKeyword } from 'app/reducers/keywords.handlers';
-import {redoChange, undoChange, updateManuscriptState} from 'app/utils/history.utils';
+import { redoChange, undoChange, updateManuscriptState } from 'app/utils/history.utils';
 
 const initialState = getInitialLoadableState() as ManuscriptHistoryState;
 
