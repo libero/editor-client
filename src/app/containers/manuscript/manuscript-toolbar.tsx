@@ -9,6 +9,7 @@ import FormatItalicIcon from '@material-ui/icons/FormatItalic';
 import LinkIcon from '@material-ui/icons/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import { DropDownMenu } from 'app/components/drop-down-menu';
+import classNames from 'classnames';
 
 import * as manuscriptActions from 'app/actions/manuscript.actions';
 
@@ -17,7 +18,8 @@ import {
   canRedoChanges,
   canUndoChanges,
   canBoldSelection,
-  canLinkSelection
+  canLinkSelection,
+  isSelectionItalicised
 } from 'app/selectors/manuscript-editor.selectors';
 
 import { useToolbarStyles } from './styles';
@@ -39,10 +41,19 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
   const canItalicize = useSelector(canItalicizeSelection);
   const canLink = useSelector(canLinkSelection);
 
+  const isItalicized = useSelector(isSelectionItalicised);
+
   const invokeUndo = useCallback(() => dispatch(manuscriptActions.undoAction()), [dispatch]);
   const invokeRedo = useCallback(() => dispatch(manuscriptActions.redoAction()), [dispatch]);
   const invokeBold = useCallback(() => dispatch(manuscriptActions.boldAction()), [dispatch]);
-  const invokeItalicize = useCallback(() => dispatch(manuscriptActions.italicizeAction()), [dispatch]);
+  const invokeItalicize = useCallback(
+    (event) => {
+      event.stopPropagation();
+      event.preventDefault();
+      dispatch(manuscriptActions.toggleMarkAction('italic'));
+    },
+    [dispatch]
+  );
   const invokeLink = useCallback(() => dispatch(manuscriptActions.linkAction()), [dispatch]);
 
   const renderContent = (): JSX.Element => (
@@ -54,19 +65,23 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
         <IconButton disabled={true}>
           <SaveAltIcon />
         </IconButton>
-        <IconButton disabled={!canUndo} onClick={invokeUndo}>
+        <IconButton disabled={!canUndo} onMouseDown={invokeUndo}>
           <UndoIcon />
         </IconButton>
         <IconButton disabled={!canRedo} onClick={invokeRedo}>
           <RedoIcon />
         </IconButton>
-        <IconButton disabled={!canBold} onClick={invokeBold}>
+        <IconButton disabled={!canBold} onMouseDown={invokeBold}>
           <FormatBoldIcon />
         </IconButton>
-        <IconButton disabled={!canItalicize} onClick={invokeItalicize}>
+        <IconButton
+          disabled={!canItalicize}
+          className={classNames({ [classes.menuButtonToggled]: isItalicized })}
+          onMouseDown={invokeItalicize}
+        >
           <FormatItalicIcon />
         </IconButton>
-        <IconButton disabled={!canLink} onClick={invokeLink}>
+        <IconButton disabled={!canLink} onMouseDown={invokeLink}>
           <LinkIcon />
         </IconButton>
         <DropDownMenu
@@ -85,7 +100,7 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
           title="FORMAT"
           entries={[
             { title: 'Bold', enabled: canBold, action: invokeBold },
-            { title: 'Italics', enabled: canItalicize, action: invokeItalicize },
+            // { title: 'Italics', enabled: canItalicize, action: invokeItalicize },
             { title: 'Subscript', enabled: false, action: undefined },
             { title: 'Superscript', enabled: false, action: undefined },
             { title: 'Monospace', enabled: false, action: undefined },

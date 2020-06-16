@@ -102,6 +102,7 @@ export const ManuscriptEditor: React.FC = () => {
       <RichTextEditor
         editorState={abstract}
         label="Abstract"
+        name="abstract"
         onChange={handleAbstractChange}
         onFocus={handleFocus}
         onBlur={handleBlur}

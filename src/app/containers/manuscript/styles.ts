@@ -35,6 +35,9 @@ export const useToolbarStyles = makeStyles((theme) => ({
       display: 'none'
     }
   },
+  menuButtonToggled: {
+    backgroundColor: 'rgba(0, 0, 0, 0.1)'
+  },
   toolbar: {
     ...theme.mixins.toolbar
   }

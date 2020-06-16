@@ -1,14 +1,29 @@
 import { createSelector } from 'reselect';
-import { ApplicationState, ManuscriptEditorState } from 'app/store';
-import { get } from 'lodash';
 import { EditorState } from 'prosemirror-state';
+import { get } from 'lodash';
+
+import { ApplicationState, ManuscriptEditorState } from 'app/store';
 import { getManuscriptData } from './manuscript.selectors';
+
+function isMarkActive(state: EditorState, mark: string) {
+  const { from, $from, to, empty } = state.selection;
+  const type = state.schema.marks[mark];
+  if (empty) {
+    return type.isInSet(state.storedMarks || $from.marks());
+  } else {
+    return state.doc.rangeHasMark(from, to, type);
+  }
+}
 
 const getManuscriptEditorState = (state: ApplicationState): ManuscriptEditorState => {
   return state.manuscriptEditor;
 };
 
-export const getFocusedEditor = createSelector(
+export const getFocusedEditorStatePath = createSelector(getManuscriptEditorState, (manuscriptEditorState) =>
+  get(manuscriptEditorState, 'focusedManuscriptPath')
+);
+
+export const getFocusedEditorState = createSelector(
   getManuscriptEditorState,
   getManuscriptData,
   (manuscriptEditorState, manuscriptState) => {
@@ -17,9 +32,21 @@ export const getFocusedEditor = createSelector(
   }
 );
 
-export const canItalicizeSelection = createSelector(getFocusedEditor, (editorState: EditorState) => {
+export const isSelectionItalicised = createSelector(getFocusedEditorState, (editorState: EditorState) => {
   if (editorState) {
-    return editorState.schema.marks.italic && !editorState.selection.empty;
+    return isMarkActive(editorState, 'italic');
+  }
+});
+
+export const isSelectionBold = createSelector(getFocusedEditorState, (editorState: EditorState) => {
+  if (editorState) {
+    return isMarkActive(editorState, 'bold');
+  }
+});
+
+export const canItalicizeSelection = createSelector(getFocusedEditorState, (editorState: EditorState) => {
+  if (editorState) {
+    return editorState.schema.marks.italic;
   }
   return false;
 });
@@ -28,14 +55,14 @@ export const canUndoChanges = createSelector(getManuscriptData, (data) => get(da
 
 export const canRedoChanges = createSelector(getManuscriptData, (data) => get(data, 'future.length') > 0);
 
-export const canBoldSelection = createSelector(getFocusedEditor, (editorState: EditorState) => {
+export const canBoldSelection = createSelector(getFocusedEditorState, (editorState: EditorState) => {
   if (editorState) {
     return editorState.schema.marks.bold && !editorState.selection.empty;
   }
   return false;
 });
 
-export const canLinkSelection = createSelector(getFocusedEditor, (state) => {
+export const canLinkSelection = createSelector(getFocusedEditorState, (state) => {
   const retVal = false;
   if (state) {
     // TODO: Add logic here to determine if creating a Link should be enabled for the current selection.
