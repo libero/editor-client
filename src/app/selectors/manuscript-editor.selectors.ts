@@ -8,6 +8,9 @@ import { getManuscriptData } from './manuscript.selectors';
 function isMarkActive(state: EditorState, mark: string) {
   const { from, $from, to, empty } = state.selection;
   const type = state.schema.marks[mark];
+  if (!type) {
+    return false;
+  }
   if (empty) {
     return type.isInSet(state.storedMarks || $from.marks());
   } else {

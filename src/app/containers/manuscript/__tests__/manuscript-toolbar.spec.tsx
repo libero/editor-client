@@ -47,7 +47,7 @@ describe('<ManuscriptToolbar />', () => {
 
     expect(undoBtnProps.disabled).toBeFalsy();
     //call undo
-    undoBtnProps.onClick(null);
+    undoBtnProps.onMouseDown(null);
 
     expect(store.dispatch).toBeCalledWith(manuscriptActions.undoAction());
   });
@@ -74,7 +74,7 @@ describe('<ManuscriptToolbar />', () => {
 
     expect(redoBtnProps.disabled).toBeFalsy();
     //call redo
-    redoBtnProps.onClick(null);
+    redoBtnProps.onMouseDown(null);
 
     expect(store.dispatch).toBeCalledWith(manuscriptActions.redoAction());
   });

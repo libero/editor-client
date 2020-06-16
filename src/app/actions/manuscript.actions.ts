@@ -61,6 +61,5 @@ export const applyChangeAction = createAction<ApplyChangePayload>('APPLY_CHANGE'
 
 export const undoAction = createAction<void>('UNDO');
 export const redoAction = createAction<void>('REDO');
-export const boldAction = createAction<void>('BOLD');
 export const toggleMarkAction = createAction<string>('TOGGLE_MARK');
 export const linkAction = createAction<void>('LINK');

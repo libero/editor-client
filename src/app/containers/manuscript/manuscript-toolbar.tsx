@@ -45,11 +45,22 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
 
   const invokeUndo = useCallback(() => dispatch(manuscriptActions.undoAction()), [dispatch]);
   const invokeRedo = useCallback(() => dispatch(manuscriptActions.redoAction()), [dispatch]);
-  const invokeBold = useCallback(() => dispatch(manuscriptActions.boldAction()), [dispatch]);
+  const invokeBold = useCallback(
+    (event?) => {
+      if (event) {
+        event.stopPropagation();
+        event.preventDefault();
+      }
+      dispatch(manuscriptActions.toggleMarkAction('bold'));
+    },
+    [dispatch]
+  );
   const invokeItalicize = useCallback(
-    (event) => {
-      event.stopPropagation();
-      event.preventDefault();
+    (event?) => {
+      if (event) {
+        event.stopPropagation();
+        event.preventDefault();
+      }
       dispatch(manuscriptActions.toggleMarkAction('italic'));
     },
     [dispatch]
@@ -68,7 +79,7 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
         <IconButton disabled={!canUndo} onMouseDown={invokeUndo}>
           <UndoIcon />
         </IconButton>
-        <IconButton disabled={!canRedo} onClick={invokeRedo}>
+        <IconButton disabled={!canRedo} onMouseDown={invokeRedo}>
           <RedoIcon />
         </IconButton>
         <IconButton disabled={!canBold} onMouseDown={invokeBold}>
@@ -100,7 +111,7 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
           title="FORMAT"
           entries={[
             { title: 'Bold', enabled: canBold, action: invokeBold },
-            // { title: 'Italics', enabled: canItalicize, action: invokeItalicize },
+            { title: 'Italics', enabled: canItalicize, action: invokeItalicize },
             { title: 'Subscript', enabled: false, action: undefined },
             { title: 'Superscript', enabled: false, action: undefined },
             { title: 'Monospace', enabled: false, action: undefined },
