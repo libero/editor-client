@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState, useMemo } from 'react';
 import { useSectionContainerStyles } from './styles';
 import classNames from 'classnames';
+import { isEqual } from 'lodash';
 
 type SectionContainerVariant = 'outlined' | 'plain';
 const DEFAULT_VARIANT = 'plain';
@@ -10,14 +11,17 @@ interface SectionContainerProps {
   variant?: SectionContainerVariant;
 }
 
-export const SectionContainer: React.FC<SectionContainerProps> = (props) => {
-  const { children, label } = props;
+export const SectionContainer: React.FC<SectionContainerProps> = React.memo((props) => {
+  const { children, label, variant } = props;
   const classes = useSectionContainerStyles();
   const containerRef = useRef<HTMLDivElement>();
   const [focused, setFocused] = useState<boolean>();
-
-  const handleFocus = useCallback(setFocused.bind(null, true), []);
-  const handleBlur = useCallback(setFocused.bind(null, false), []);
+  const handleFocus = useCallback(() => {
+    setFocused(true);
+  }, [setFocused]);
+  const handleBlur = useCallback(() => {
+    setFocused(false);
+  }, []);
 
   useEffect(() => {
     const containerNode = containerRef.current;
@@ -32,18 +36,19 @@ export const SectionContainer: React.FC<SectionContainerProps> = (props) => {
     }
   }, [containerRef, handleFocus, handleBlur]);
 
-  const variantClass = useMemo(
-    () => ({
+  const className = useMemo(() => {
+    const variantClass = {
       outlined: classes.outlinedVariant,
       plain: classes.plainVariant
-    }),
-    [classes]
-  )[props.variant || DEFAULT_VARIANT];
+    }[variant || DEFAULT_VARIANT];
+
+    return classNames(classes.root, variantClass, { [classes.focused]: focused });
+  }, [classes, focused, variant]);
 
   return (
-    <div className={classNames(classes.root, variantClass, { [classes.focused]: focused })} ref={containerRef}>
+    <div className={className} ref={containerRef}>
       <label className={classes.label}>{label}</label>
       {children}
     </div>
   );
-};
+}, isEqual);
