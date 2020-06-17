@@ -1,13 +1,16 @@
-import { EditorState } from 'prosemirror-state';
+import { EditorState, TextSelection } from 'prosemirror-state';
+import { DOMParser as ProseMirrorDOMParser } from 'prosemirror-model';
 
 import { getInitialHistory, getInitialLoadableState } from 'app/utils/state.utils';
 import {
   canBoldSelection,
   canItalicizeSelection,
   canRedoChanges,
-  canUndoChanges
+  canUndoChanges,
+  isSelectionItalicised
 } from 'app/selectors/manuscript-editor.selectors';
 import { Manuscript } from 'app/models/manuscript';
+import { createNewKeywordState } from 'app/models/manuscript-state.factory';
 
 describe('manuscript selectors', () => {
   let state;
@@ -59,6 +62,28 @@ describe('manuscript selectors', () => {
       }
     };
     expect(canBoldSelection(state)).toBeTruthy();
+  });
+
+  it('checks if selection is already bold', () => {
+    let newKeyword = createNewKeywordState();
+    const docXML = document.createElement('keyword');
+    docXML.innerHTML = '<italic>Test</italic>';
+    newKeyword.doc = ProseMirrorDOMParser.fromSchema(newKeyword.schema).parse(docXML);
+    const tr = newKeyword.tr;
+    tr.setSelection(TextSelection.create(newKeyword.apply(tr).doc, newKeyword.selection.from + 4));
+    newKeyword = newKeyword.apply(tr);
+
+    state.manuscript.data = getInitialHistory(givenManuscript());
+    state.manuscriptEditor.focusedManuscriptPath = 'keywordGroups.group.newKeyword';
+    state.manuscript.data.present.keywordGroups = {
+      group: {
+        title: '',
+        keywords: [],
+        newKeyword: newKeyword
+      }
+    };
+
+    expect(isSelectionItalicised(state)).toBeTruthy();
   });
 });
 
