@@ -45,6 +45,7 @@ export const isMarkAppliedToSelection = createSelector(
     if (editorState) {
       return isMarkActive(editorState, mark);
     }
+    return false;
   }
 );
 

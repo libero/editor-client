@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppBar, Toolbar, IconButton } from '@material-ui/core';
+import { AppBar, Toolbar, IconButton, SvgIcon } from '@material-ui/core';
 import UndoIcon from '@material-ui/icons/Undo';
 import RedoIcon from '@material-ui/icons/Redo';
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
@@ -12,8 +12,8 @@ import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
 import LinkIcon from '@material-ui/icons/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 
+import { SubscriptIcon, SuperscriptIcon } from './icons';
 import { DropDownMenu } from 'app/components/drop-down-menu';
-
 import * as manuscriptActions from 'app/actions/manuscript.actions';
 
 import {
@@ -97,6 +97,20 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
             onMouseDown={invokeToggleMark('italic')}
           >
             <FormatItalicIcon />
+          </ToggleButton>
+          <ToggleButton
+            disabled={!canApply('subscript')}
+            selected={isApplied('subscript')}
+            onMouseDown={invokeToggleMark('subscript')}
+          >
+            <SubscriptIcon />
+          </ToggleButton>
+          <ToggleButton
+            disabled={!canApply('superscript')}
+            selected={isApplied('superscript')}
+            onMouseDown={invokeToggleMark('superscript')}
+          >
+            <SuperscriptIcon />
           </ToggleButton>
           <ToggleButton
             disabled={!canApply('link')}
