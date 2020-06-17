@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppBar, Toolbar, IconButton, SvgIcon } from '@material-ui/core';
+import { AppBar, Toolbar, IconButton } from '@material-ui/core';
 import UndoIcon from '@material-ui/icons/Undo';
 import RedoIcon from '@material-ui/icons/Redo';
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
