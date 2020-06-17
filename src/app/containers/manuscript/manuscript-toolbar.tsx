@@ -6,20 +6,21 @@ import RedoIcon from '@material-ui/icons/Redo';
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import FormatBoldIcon from '@material-ui/icons/FormatBold';
 import FormatItalicIcon from '@material-ui/icons/FormatItalic';
+import FormatUnderlineIcon from '@material-ui/icons/FormatUnderlined';
+import FormatStrikethroughIcon from '@material-ui/icons/FormatStrikethrough';
+import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
 import LinkIcon from '@material-ui/icons/Link';
 import MenuIcon from '@material-ui/icons/Menu';
+
 import { DropDownMenu } from 'app/components/drop-down-menu';
-import classNames from 'classnames';
 
 import * as manuscriptActions from 'app/actions/manuscript.actions';
 
 import {
-  canItalicizeSelection,
+  canApplyMarkToSelection,
   canRedoChanges,
   canUndoChanges,
-  canBoldSelection,
-  canLinkSelection,
-  isSelectionItalicised
+  isMarkAppliedToSelection
 } from 'app/selectors/manuscript-editor.selectors';
 
 import { useToolbarStyles } from './styles';
@@ -37,35 +38,21 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
 
   const canUndo = useSelector(canUndoChanges);
   const canRedo = useSelector(canRedoChanges);
-  const canBold = useSelector(canBoldSelection);
-  const canItalicize = useSelector(canItalicizeSelection);
-  const canLink = useSelector(canLinkSelection);
-
-  const isItalicized = useSelector(isSelectionItalicised);
+  const canApply = useSelector(canApplyMarkToSelection);
+  const isApplied = useSelector(isMarkAppliedToSelection);
 
   const invokeUndo = useCallback(() => dispatch(manuscriptActions.undoAction()), [dispatch]);
   const invokeRedo = useCallback(() => dispatch(manuscriptActions.redoAction()), [dispatch]);
-  const invokeBold = useCallback(
-    (event?) => {
+  const invokeToggleMark = useCallback(
+    (mark: string) => (event?) => {
       if (event) {
         event.stopPropagation();
         event.preventDefault();
       }
-      dispatch(manuscriptActions.toggleMarkAction('bold'));
+      dispatch(manuscriptActions.toggleMarkAction(mark));
     },
     [dispatch]
   );
-  const invokeItalicize = useCallback(
-    (event?) => {
-      if (event) {
-        event.stopPropagation();
-        event.preventDefault();
-      }
-      dispatch(manuscriptActions.toggleMarkAction('italic'));
-    },
-    [dispatch]
-  );
-  const invokeLink = useCallback(() => dispatch(manuscriptActions.linkAction()), [dispatch]);
 
   const renderContent = (): JSX.Element => (
     <AppBar color="inherit" position="fixed" className={classes.appBar}>
@@ -73,28 +60,52 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
         <IconButton aria-label="open drawer" edge="start" onClick={handleTocToggle} className={classes.menuButton}>
           <MenuIcon />
         </IconButton>
-        <IconButton disabled={true}>
-          <SaveAltIcon />
-        </IconButton>
-        <IconButton disabled={!canUndo} onMouseDown={invokeUndo}>
-          <UndoIcon />
-        </IconButton>
-        <IconButton disabled={!canRedo} onMouseDown={invokeRedo}>
-          <RedoIcon />
-        </IconButton>
-        <IconButton disabled={!canBold} onMouseDown={invokeBold}>
-          <FormatBoldIcon />
-        </IconButton>
-        <IconButton
-          disabled={!canItalicize}
-          className={classNames({ [classes.menuButtonToggled]: isItalicized })}
-          onMouseDown={invokeItalicize}
-        >
-          <FormatItalicIcon />
-        </IconButton>
-        <IconButton disabled={!canLink} onMouseDown={invokeLink}>
-          <LinkIcon />
-        </IconButton>
+        <ToggleButtonGroup classes={{ grouped: classes.toolButtonsGroup }}>
+          <ToggleButton disabled={true}>
+            <SaveAltIcon />
+          </ToggleButton>
+          <ToggleButton disabled={!canUndo} onMouseDown={invokeUndo} selected={false}>
+            <UndoIcon />
+          </ToggleButton>
+          <ToggleButton disabled={!canRedo} onMouseDown={invokeRedo} selected={false}>
+            <RedoIcon />
+          </ToggleButton>
+          <ToggleButton
+            disabled={!canApply('bold')}
+            selected={isApplied('bold')}
+            onMouseDown={invokeToggleMark('bold')}
+          >
+            <FormatBoldIcon />
+          </ToggleButton>
+          <ToggleButton
+            disabled={!canApply('underline')}
+            selected={isApplied('underline')}
+            onMouseDown={invokeToggleMark('underline')}
+          >
+            <FormatUnderlineIcon />
+          </ToggleButton>
+          <ToggleButton
+            disabled={!canApply('strikethrough')}
+            selected={isApplied('strikethrough')}
+            onMouseDown={invokeToggleMark('strikethrough')}
+          >
+            <FormatStrikethroughIcon />
+          </ToggleButton>
+          <ToggleButton
+            disabled={!canApply('italic')}
+            selected={isApplied('italic')}
+            onMouseDown={invokeToggleMark('italic')}
+          >
+            <FormatItalicIcon />
+          </ToggleButton>
+          <ToggleButton
+            disabled={!canApply('link')}
+            selected={isApplied('link')}
+            onMouseDown={invokeToggleMark('link')}
+          >
+            <LinkIcon />
+          </ToggleButton>
+        </ToggleButtonGroup>
         <DropDownMenu
           title="PARAGRAPH"
           entries={[
@@ -110,8 +121,8 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
         <DropDownMenu
           title="FORMAT"
           entries={[
-            { title: 'Bold', enabled: canBold, action: invokeBold },
-            { title: 'Italics', enabled: canItalicize, action: invokeItalicize },
+            { title: 'Bold', enabled: canApply('bold'), action: invokeToggleMark('bold') },
+            { title: 'Italics', enabled: canApply('italic'), action: invokeToggleMark('italic') },
             { title: 'Subscript', enabled: false, action: undefined },
             { title: 'Superscript', enabled: false, action: undefined },
             { title: 'Monospace', enabled: false, action: undefined },

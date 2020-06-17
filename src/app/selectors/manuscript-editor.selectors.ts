@@ -35,43 +35,25 @@ export const getFocusedEditorState = createSelector(
   }
 );
 
-export const isSelectionItalicised = createSelector(getFocusedEditorState, (editorState: EditorState) => {
-  if (editorState) {
-    return isMarkActive(editorState, 'italic');
-  }
-});
-
-export const isSelectionBold = createSelector(getFocusedEditorState, (editorState: EditorState) => {
-  if (editorState) {
-    return isMarkActive(editorState, 'bold');
-  }
-});
-
-export const canItalicizeSelection = createSelector(getFocusedEditorState, (editorState: EditorState) => {
-  if (editorState) {
-    return editorState.schema.marks.italic;
-  }
-  return false;
-});
-
 export const canUndoChanges = createSelector(getManuscriptData, (data) => get(data, 'past.length') > 0);
 
 export const canRedoChanges = createSelector(getManuscriptData, (data) => get(data, 'future.length') > 0);
 
-export const canBoldSelection = createSelector(getFocusedEditorState, (editorState: EditorState) => {
-  if (editorState) {
-    return editorState.schema.marks.bold && !editorState.selection.empty;
+export const isMarkAppliedToSelection = createSelector(
+  getFocusedEditorState,
+  (editorState: EditorState) => (mark: string) => {
+    if (editorState) {
+      return isMarkActive(editorState, mark);
+    }
   }
-  return false;
-});
+);
 
-export const canLinkSelection = createSelector(getFocusedEditorState, (state) => {
-  const retVal = false;
-  if (state) {
-    // TODO: Add logic here to determine if creating a Link should be enabled for the current selection.
+export const canApplyMarkToSelection = createSelector(
+  getFocusedEditorState,
+  (editorState: EditorState) => (mark: string) => {
+    return editorState && editorState.schema.marks[mark];
   }
-  return retVal;
-});
+);
 
 export const isModalVisible = createSelector(getManuscriptEditorState, ({ modal }) => modal.isVisible);
 export const getModalParams = createSelector(getManuscriptEditorState, ({ modal }) => modal.params);

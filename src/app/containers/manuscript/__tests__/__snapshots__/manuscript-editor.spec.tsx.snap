@@ -61,7 +61,7 @@ exports[`manuscript editor should render 1`] = `
           className="MuiButton-startIcon makeStyles-addEntityButton_icon-16 MuiButton-iconSizeSmall"
         >
           <svg
-            aria-hidden="true"
+            aria-hidden={true}
             className="MuiSvgIcon-root"
             focusable="false"
             viewBox="0 0 24 24"
@@ -86,7 +86,7 @@ exports[`manuscript editor should render 1`] = `
       </label>
     </div>
     <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-addEntityButton_root-15 MuiButton-text makeStyles-addButton-58 MuiButton-textSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
+      className="MuiButtonBase-root MuiButton-root makeStyles-addEntityButton_root-15 MuiButton-text makeStyles-addButton-17 MuiButton-textSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -110,7 +110,7 @@ exports[`manuscript editor should render 1`] = `
           className="MuiButton-startIcon makeStyles-addEntityButton_icon-16 MuiButton-iconSizeSmall"
         >
           <svg
-            aria-hidden="true"
+            aria-hidden={true}
             className="MuiSvgIcon-root"
             focusable="false"
             viewBox="0 0 24 24"
@@ -147,7 +147,7 @@ exports[`manuscript editor should render 1`] = `
       </label>
     </div>
     <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-addEntityButton_root-15 MuiButton-text makeStyles-addAuthorButton-64 MuiButton-textSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
+      className="MuiButtonBase-root MuiButton-root makeStyles-addEntityButton_root-15 MuiButton-text makeStyles-addAuthorButton-23 MuiButton-textSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -171,7 +171,7 @@ exports[`manuscript editor should render 1`] = `
           className="MuiButton-startIcon makeStyles-addEntityButton_icon-16 MuiButton-iconSizeSmall"
         >
           <svg
-            aria-hidden="true"
+            aria-hidden={true}
             className="MuiSvgIcon-root"
             focusable="false"
             viewBox="0 0 24 24"
