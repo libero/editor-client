@@ -2,10 +2,12 @@ import React, { useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { Backdrop, CircularProgress } from '@material-ui/core';
 
+
 import { isManuscriptLoaded } from 'app/selectors/manuscript.selectors';
 import { ManuscriptToolbar } from './manuscript-toolbar';
 import { ManuscriptEditor } from './manuscript-editor';
 import { ManuscriptTOC } from './manuscript-toc';
+import { HotKeyBindings } from './hot-keys';
 
 const renderBackdrop = (): JSX.Element => (
   <Backdrop open={true}>
@@ -24,6 +26,7 @@ export const ManuscriptContainer: React.FC = () => {
 
   const renderContent = (): JSX.Element => (
     <React.Fragment>
+      <HotKeyBindings />
       <ManuscriptTOC tocOpen={tocOpen} handleTocToggle={handleTocToggle.bind(null, this)} />
       <ManuscriptToolbar tocOpen={tocOpen} handleTocToggle={handleTocToggle.bind(null, this)} />
       <ManuscriptEditor />
