@@ -43,7 +43,7 @@ export const LinkedAffiliationsList: React.FC<LinkedAffiliationsListProps> = (pr
 
   useEffect(() => {
     if (!userLinkedAffiliations.length) {
-      setUserLinkedAffiliations(linkedAffiliations);
+      setUserLinkedAffiliations((linkedAffiliations.length > 0) ? linkedAffiliations : [null]);
     }
   }, [linkedAffiliations, props, userLinkedAffiliations.length]);
 
