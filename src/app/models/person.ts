@@ -29,5 +29,6 @@ export function getAuthorAffiliationsLabels(author: Person, affiliations: Affili
       const affiliation = affiliations.find(({ id }) => id === affiliationId);
       return affiliation ? affiliation.label : undefined;
     })
-    .filter(Boolean);
+    .filter(Boolean)
+    .sort((a, b) => Number(a) - Number(b));
 }

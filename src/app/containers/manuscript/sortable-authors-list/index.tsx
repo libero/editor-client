@@ -13,7 +13,6 @@ import { SectionContainer } from 'app/components/section-container';
 import { getAuthorAffiliationsLabels, getAuthorDisplayName, Person } from 'app/models/person';
 import { AuthorFormDialog } from 'app/containers/author-form-dialog';
 import { ActionButton } from 'app/components/action-button';
-import { Affiliation } from 'app/models/affiliation';
 import { isEqual } from 'lodash';
 
 const DragHandle = React.memo(
@@ -35,21 +34,26 @@ const ChipRenderComponent: React.FC<ChipRenderComponent> = React.memo((props) =>
 }, isEqual);
 
 const SortableItem = React.memo(
-  SortableElement(({ value, classes, onEdit }) => (
-    <Chip
-      classes={{ root: classes.chip, label: classes.chipLabel }}
-      label={
-        <span>
-          {value.authorName}
-          {value.affiliationLabels.length > 0 ? <sup>({value.affiliationLabels.join(',')})</sup> : ''}
-        </span>
-      }
-      onDelete={() => onEdit()}
-      component={ChipRenderComponent}
-      color="primary"
-      deleteIcon={<EditIcon />}
-    />
-  )),
+  SortableElement(({ value, classes, onEdit }) => {
+    const authorName = getAuthorDisplayName(value.author);
+    const affLabels = getAuthorAffiliationsLabels(value.author, value.affiliations);
+
+    return (
+      <Chip
+        classes={{ root: classes.chip, label: classes.chipLabel }}
+        label={
+          <span>
+            {authorName}
+            {affLabels.length > 0 ? <sup>({affLabels.join(',')})</sup> : ''}
+          </span>
+        }
+        onDelete={() => onEdit(value.author)}
+        component={ChipRenderComponent}
+        color="primary"
+        deleteIcon={<EditIcon />}
+      />
+    );
+  }),
   isEqual
 );
 
@@ -59,14 +63,6 @@ const SortableList = React.memo(
   }),
   isEqual
 );
-
-const getSortableItemLabel = (author: Person, affiliations: Affiliation[]) => {
-  const affiliationLabels = getAuthorAffiliationsLabels(author, affiliations);
-  return {
-    authorName: getAuthorDisplayName(author),
-    affiliationLabels
-  };
-};
 
 export const SortableAuthorsList: React.FC = React.memo(() => {
   const authors = useSelector(getAuthors);
@@ -115,7 +111,7 @@ export const SortableAuthorsList: React.FC = React.memo(() => {
             <SortableItem
               key={`item-${value.id}`}
               index={index}
-              value={getSortableItemLabel(value, affiliations)}
+              value={{ author: value, affiliations }}
               classes={classes}
               onEdit={onEditAuthor}
             />

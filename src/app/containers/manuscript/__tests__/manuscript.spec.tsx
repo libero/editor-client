@@ -28,6 +28,7 @@ describe('Manuscript container', () => {
       title: new EditorState(),
       abstract: new EditorState(),
       keywordGroups: {},
+      affiliations: [],
       authors: []
     });
     const store = mockStore({
