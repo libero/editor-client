@@ -11,6 +11,8 @@ import { AffiliationFormDialog } from 'app/containers/affiliation-form-dialog/af
 import { ModalContainer } from 'app/containers/modal-container';
 import { ReactFCProps } from 'app/utils/types';
 import * as manuscriptActions from 'app/actions/manuscript.actions';
+import {Person} from "app/models/person";
+import {linkAffiliationsAction} from "app/actions/manuscript.actions";
 
 interface LinkedAffiliationsListProps {
   linkedAffiliations: Affiliation[];
@@ -57,12 +59,14 @@ export const LinkedAffiliationsList: React.FC<LinkedAffiliationsListProps> = (pr
   }, [setAffiliationDialogShown]);
 
   const handleAffiliationModalAccept = useCallback(
-    (affiliation: Affiliation) => {
+    (affiliation: Affiliation, linkedAuthors: Person[]) => {
       if (!editedAffiliation) {
         dispatch(manuscriptActions.addAffiliationAction(affiliation));
       } else {
         dispatch(manuscriptActions.updateAffiliationAction(affiliation));
       }
+
+      dispatch(linkAffiliationsAction({ affiliation, authors: linkedAuthors }));
 
       const updatedList = [...userLinkedAffiliations];
       updatedList[activeAffiliationIndex] = affiliation;
