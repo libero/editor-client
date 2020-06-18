@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { Backdrop, CircularProgress } from '@material-ui/core';
 
@@ -16,9 +16,9 @@ const renderBackdrop = (): JSX.Element => (
 export const ManuscriptContainer: React.FC = () => {
   const [tocOpen, setTocOpen] = React.useState<boolean>(false);
 
-  const handleTocToggle = (): void => {
+  const handleTocToggle = useCallback(() => {
     setTocOpen(!tocOpen);
-  };
+  }, [tocOpen, setTocOpen]);
 
   const isLoaded = useSelector(isManuscriptLoaded);
 

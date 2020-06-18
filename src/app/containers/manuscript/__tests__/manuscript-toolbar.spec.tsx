@@ -1,12 +1,13 @@
 import React from 'react';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
-import { IconButton, AppBar, Toolbar } from '@material-ui/core';
+import { AppBar, Toolbar} from '@material-ui/core';
 import { mount } from 'enzyme';
 
 import { getLoadableStateSuccess } from 'app/utils/state.utils';
 import { ManuscriptToolbar } from 'app/containers/manuscript/manuscript-toolbar';
 import * as manuscriptActions from 'app/actions/manuscript.actions';
+import { ToggleButton } from '@material-ui/lab';
 
 jest.mock('@material-ui/core');
 
@@ -16,15 +17,11 @@ describe('<ManuscriptToolbar />', () => {
   beforeEach(() => {
     (AppBar['render'] as jest.Mock).mockImplementationOnce((props) => <>{props.children}</>);
     (Toolbar['render'] as jest.Mock).mockImplementationOnce((props) => <>{props.children}</>);
-    (IconButton['render'] as jest.Mock).mockImplementationOnce((props) => (
-      <div data-cmp="icon-button">{props.children}</div>
-    ));
   });
 
   afterEach(() => {
     (AppBar['render'] as jest.Mock).mockReset();
     (Toolbar['render'] as jest.Mock).mockReset();
-    (IconButton['render'] as jest.Mock).mockReset();
   });
 
   it('dispatches an event on undoClick', () => {
@@ -43,11 +40,11 @@ describe('<ManuscriptToolbar />', () => {
       </Provider>
     );
 
-    const undoBtnProps = wrapper.find(IconButton).at(2).props();
+    const undoBtnProps = wrapper.find(ToggleButton).at(1).props();
 
     expect(undoBtnProps.disabled).toBeFalsy();
     //call undo
-    undoBtnProps.onClick(null);
+    undoBtnProps.onMouseDown(null);
 
     expect(store.dispatch).toBeCalledWith(manuscriptActions.undoAction());
   });
@@ -70,11 +67,11 @@ describe('<ManuscriptToolbar />', () => {
       </Provider>
     );
 
-    const redoBtnProps = wrapper.find(IconButton).at(3).props();
+    const redoBtnProps = wrapper.find(ToggleButton).at(2).props();
 
     expect(redoBtnProps.disabled).toBeFalsy();
     //call redo
-    redoBtnProps.onClick(null);
+    redoBtnProps.onMouseDown(null);
 
     expect(store.dispatch).toBeCalledWith(manuscriptActions.redoAction());
   });

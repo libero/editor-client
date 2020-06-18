@@ -22,6 +22,20 @@ export const marks = {
     }
   },
 
+  strikethrough: {
+    parseDOM: [{ tag: 'sc' }],
+    toDOM(): DOMOutputSpecArray {
+      return ['strike', 0];
+    }
+  },
+
+  underline: {
+    parseDOM: [{ tag: 'underline' }],
+    toDOM(): DOMOutputSpecArray {
+      return ['u', 0];
+    }
+  },
+
   bold: {
     parseDOM: [{ tag: 'bold' }],
     toDOM(): DOMOutputSpecArray {

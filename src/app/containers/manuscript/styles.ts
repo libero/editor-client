@@ -25,6 +25,15 @@ export const useManuscriptStyles = makeStyles((theme) => ({
 }));
 
 export const useToolbarStyles = makeStyles((theme) => ({
+  toolButtonsGroup: {
+    border: 'none',
+    '&:not(:first-child)': {
+      borderRadius: theme.shape.borderRadius
+    },
+    '&:first-child': {
+      borderRadius: theme.shape.borderRadius
+    }
+  },
   appBar: {
     [theme.breakpoints.up('sm')]: {
       width: `calc(100% - ${tocWidth}px)`
@@ -34,6 +43,9 @@ export const useToolbarStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       display: 'none'
     }
+  },
+  menuButtonToggled: {
+    backgroundColor: 'rgba(0, 0, 0, 0.1)'
   },
   toolbar: {
     ...theme.mixins.toolbar

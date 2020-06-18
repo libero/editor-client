@@ -19,7 +19,7 @@ import {
   updateAffiliation
 } from 'app/reducers/affiliations.handlers';
 import { addKeyword, deleteKeyword, updateKeyword, updateNewKeyword } from 'app/reducers/keywords.handlers';
-import { redoChange, undoChange } from 'app/utils/history.utils';
+import { redoChange, undoChange, updateManuscriptState } from 'app/utils/history.utils';
 
 const initialState = getInitialLoadableState() as ManuscriptHistoryState;
 
@@ -48,6 +48,11 @@ manuscriptReducer.on(manuscriptActions.undoAction, (state) => ({
 manuscriptReducer.on(manuscriptActions.redoAction, (state) => ({
   ...state,
   data: redoChange(state.data)
+}));
+
+manuscriptReducer.on(manuscriptActions.applyChangeAction, (state, payload) => ({
+  ...state,
+  data: updateManuscriptState(state.data, payload.path, payload.change)
 }));
 
 manuscriptReducer.on(manuscriptActions.updateTitleAction, updateTitle);

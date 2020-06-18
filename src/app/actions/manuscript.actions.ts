@@ -37,6 +37,11 @@ export interface LinkAffiliationsPayload {
   authors: Person[];
 }
 
+export interface ApplyChangePayload {
+  path: string;
+  change: Transaction;
+}
+
 export const loadManuscriptAction = createAsyncAction<string, Manuscript>('LOAD_MANUSCRIPT');
 export const updateTitleAction = createAction<Transaction>('UPDATE_TITLE');
 export const updateAbstractAction = createAction<Transaction>('UPDATE_ABSTRACT');
@@ -52,9 +57,9 @@ export const updateAffiliationAction = createAction<Affiliation>('UPDATE_AFFILIA
 export const addAffiliationAction = createAction<Affiliation>('ADD_AFFILIATION');
 export const deleteAffiliationAction = createAction<Affiliation>('DELETE_AFFILIATION');
 export const linkAffiliationsAction = createAction<LinkAffiliationsPayload>('LINK_AFFILIATIONS');
+export const applyChangeAction = createAction<ApplyChangePayload>('APPLY_CHANGE');
 
 export const undoAction = createAction<void>('UNDO');
 export const redoAction = createAction<void>('REDO');
-export const boldAction = createAction<void>('BOLD');
-export const italicizeAction = createAction<void>('ITALICIZE');
+export const toggleMarkAction = createAction<string>('TOGGLE_MARK');
 export const linkAction = createAction<void>('LINK');

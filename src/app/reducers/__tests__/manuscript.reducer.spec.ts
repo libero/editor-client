@@ -1,10 +1,10 @@
 import { cloneDeep } from 'lodash';
+import { EditorState } from 'prosemirror-state';
 
 import { getInitialHistory, getInitialLoadableState, ManuscriptHistory } from 'app/utils/state.utils';
 import * as manuscriptActions from 'app/actions/manuscript.actions';
 import { manuscriptReducer } from 'app/reducers/manuscript.reducer';
-import { EditorState } from 'prosemirror-state';
-import { redoChange, undoChange } from 'app/utils/history.utils';
+import { redoChange, undoChange, updateManuscriptState } from 'app/utils/history.utils';
 import { Manuscript } from 'app/models/manuscript';
 import { givenState } from 'app/test-utils/reducer-test-helpers';
 
@@ -45,6 +45,13 @@ describe('manuscript reducer', () => {
     undoneState.data.past = [];
     (undoChange as jest.Mock).mockReturnValue(undoneState.data);
     expect(manuscriptReducer(state, manuscriptActions.undoAction())).toEqual(undoneState);
+  });
+
+  it('should apply prosemirror changes to state', () => {
+    const state = givenState({});
+    const change = state.data.present.title.tr;
+    manuscriptReducer(state, manuscriptActions.applyChangeAction({ path: 'title', change }));
+    expect(updateManuscriptState).toHaveBeenCalledWith(state.data, 'title', change);
   });
 
   it('should redo undone last changes', () => {
