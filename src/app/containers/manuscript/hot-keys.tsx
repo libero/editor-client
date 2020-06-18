@@ -1,8 +1,7 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { GlobalHotKeys } from 'react-hotkeys';
 import { isMacOs } from 'react-device-detect';
-import { configure } from 'react-hotkeys';
+import { GlobalHotKeys, configure } from 'react-hotkeys';
 
 import { canApplyMarkToSelection, canRedoChanges, canUndoChanges } from 'app/selectors/manuscript-editor.selectors';
 import * as manuscriptActions from 'app/actions/manuscript.actions';
