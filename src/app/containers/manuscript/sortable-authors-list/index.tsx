@@ -33,29 +33,26 @@ const ChipRenderComponent: React.FC<ChipRenderComponent> = React.memo((props) =>
   );
 }, isEqual);
 
-const SortableItem = React.memo(
-  SortableElement(({ value, classes, onEdit }) => {
-    const authorName = getAuthorDisplayName(value.author);
-    const affLabels = getAuthorAffiliationsLabels(value.author, value.affiliations);
+const SortableItem = SortableElement(({ value, classes, onEdit }) => {
+  const authorName = getAuthorDisplayName(value.author);
+  const affLabels = getAuthorAffiliationsLabels(value.author, value.affiliations);
 
-    return (
-      <Chip
-        classes={{ root: classes.chip, label: classes.chipLabel }}
-        label={
-          <span>
-            {authorName}
-            {affLabels.length > 0 ? <sup>({affLabels.join(',')})</sup> : ''}
-          </span>
-        }
-        onDelete={() => onEdit(value.author)}
-        component={ChipRenderComponent}
-        color="primary"
-        deleteIcon={<EditIcon />}
-      />
-    );
-  }),
-  isEqual
-);
+  return (
+    <Chip
+      classes={{ root: classes.chip, label: classes.chipLabel }}
+      label={
+        <span>
+          {authorName}
+          {affLabels.length > 0 ? <sup>({affLabels.join(',')})</sup> : ''}
+        </span>
+      }
+      onDelete={() => onEdit(value.author)}
+      component={ChipRenderComponent}
+      color="primary"
+      deleteIcon={<EditIcon />}
+    />
+  );
+});
 
 const SortableList = React.memo(
   SortableContainer(({ children, className }) => {
