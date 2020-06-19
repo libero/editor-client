@@ -75,8 +75,9 @@ export const Keyword: React.FC<KeywordProps> = ({ editorState, onDelete, onChang
       keydown: (view: EditorView, event: KeyboardEvent): boolean => {
         if (event.key === ENTER_KEY_CODE) {
           prosemirrorRef.current.blur();
+          return true;
         }
-        return true;
+        return false;
       }
     }
   };
