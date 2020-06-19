@@ -7,7 +7,7 @@ import { EditorState } from 'prosemirror-state';
 import { mount } from 'enzyme';
 import { HotKeyBindings } from 'app/containers/manuscript/hot-keys';
 import { GlobalHotKeys } from 'react-hotkeys';
-import {undoAction} from "app/actions/manuscript.actions";
+import { undoAction } from 'app/actions/manuscript.actions';
 
 jest.mock('react-hotkeys', () => ({
   configure: jest.fn(),
@@ -40,5 +40,30 @@ describe('Manuscript HotKeys', () => {
     const handlers = wrapper.find(GlobalHotKeys).prop('handlers');
     handlers['UNDO']();
     expect(store.dispatch).toHaveBeenCalledWith(undoAction());
+  });
+
+  it('should not dispatch dispatch an action', () => {
+    const mockState = getInitialHistory({
+      title: new EditorState(),
+      abstract: new EditorState(),
+      keywordGroups: {},
+      affiliations: [],
+      authors: []
+    });
+
+    mockState.past = [];
+    const store = mockStore({
+      manuscript: getLoadableStateSuccess(mockState)
+    });
+    jest.spyOn(store, 'dispatch');
+    const wrapper = mount(
+      <Provider store={store}>
+        <HotKeyBindings />
+      </Provider>
+    );
+
+    const handlers = wrapper.find(GlobalHotKeys).prop('handlers');
+    handlers['UNDO']();
+    expect(store.dispatch).not.toHaveBeenCalled();
   });
 });

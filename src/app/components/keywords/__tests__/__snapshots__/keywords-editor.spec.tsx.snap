@@ -43,7 +43,7 @@ exports[`KeywordsEditorComponent renders keywords 1`] = `
         >
           <svg
             aria-hidden={true}
-            className="MuiSvgIcon-root makeStyles-deleteIcon-10"
+            className="MuiSvgIcon-root makeStyles-deleteIcon-11"
             focusable="false"
             viewBox="0 0 24 24"
           >
