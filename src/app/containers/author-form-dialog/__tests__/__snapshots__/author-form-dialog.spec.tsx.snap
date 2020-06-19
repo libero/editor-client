@@ -34,6 +34,36 @@ exports[`Author Form Dialog renders edit author dialog form 1`] = `
       </div>
     </div>
     <div
+      className="makeStyles-affiliatedAuthorRow-5"
+    >
+      <div
+        data-cmp="FormControl"
+      >
+        <div
+          data-cmp="InputLabel"
+        >
+          Affiliation
+        </div>
+        <div
+          data-cmp="Select"
+        >
+          <div
+            data-cmp="MenuItem"
+          >
+            Set affiliation
+          </div>
+          <div
+            data-cmp="MenuItem"
+          >
+            Add new affiliation
+          </div>
+        </div>
+      </div>
+      <div
+        data-cmp="iconButton"
+      />
+    </div>
+    <div
       data-cmp="Button"
     />
   </div>

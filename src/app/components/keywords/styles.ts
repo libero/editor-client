@@ -58,6 +58,10 @@ export const useKeywordStyles = makeStyles((theme) => ({
     }
   },
 
+  hidden: {
+    visibility: 'hidden'
+  },
+
   deleteIcon: {
     WebkitTapHighlightColor: 'transparent',
     color: fade(theme.palette.primary.contrastText, 0.7),

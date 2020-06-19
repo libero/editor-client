@@ -29,23 +29,28 @@ export const Keyword: React.FC<KeywordProps> = ({ editorState, onDelete, onChang
     prosemirrorRef.current.focus();
   }, []);
 
-  const preventSingleClick = useCallback((event: Event) => {
-    event.stopPropagation();
-    event.preventDefault();
-  }, []);
+  const preventSingleClickWhenInactive = useCallback(
+    (event: Event) => {
+      if (!isFocused) {
+        event.stopPropagation();
+        event.preventDefault();
+      }
+    },
+    [isFocused]
+  );
 
   useEffect(() => {
     const containerEl = containerRef.current;
     if (containerEl) {
       containerEl.addEventListener('dblclick', focusOnDblClick, true);
-      containerEl.addEventListener('mousedown', preventSingleClick, true);
+      containerEl.addEventListener('mousedown', preventSingleClickWhenInactive, true);
     }
 
     return () => {
       containerEl.removeEventListener('dblclick', focusOnDblClick, true);
-      containerEl.removeEventListener('mousedown', preventSingleClick, true);
+      containerEl.removeEventListener('mousedown', preventSingleClickWhenInactive, true);
     };
-  }, [containerRef, focusOnDblClick, preventSingleClick]);
+  }, [containerRef, focusOnDblClick, preventSingleClickWhenInactive]);
 
   const handleFocusEvent = (view: EditorView): boolean => {
     setFocused(true);
@@ -89,7 +94,7 @@ export const Keyword: React.FC<KeywordProps> = ({ editorState, onDelete, onChang
         tabIndex={0}
         color="primary"
         size="small"
-        className="keyword-delete-cta"
+        className={isFocused ? classes.hidden : ''}
       >
         <CancelIcon className={classes.deleteIcon} />
       </IconButton>
