@@ -357,7 +357,9 @@ function createDataReference(referenceXml: Element): DataReference {
     accessionId: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="accession"]') || '',
     extLink: getTextContentFromPath(referenceXml, 'ext-link') || '',
     version: getTextContentFromPath(referenceXml, 'version') || '',
-    generatedOrPrePublished: false
+    generatedOrPrePublished:
+      referenceXml.getAttribute('specific-use') === 'references' ||
+      referenceXml.getAttribute('specific-use') === 'isSupplementedBy'
   };
 }
 
