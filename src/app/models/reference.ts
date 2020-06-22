@@ -379,7 +379,7 @@ function createBookReference(referenceXml: Element): BookReference {
   };
 }
 
-export function createReferenceAnnotatedValue(content: Node): EditorState {
+function createReferenceAnnotatedValue(content: Node): EditorState {
   const schema = makeSchemaFromConfig(
     referenceInfoConfig.topNode,
     referenceInfoConfig.nodes,

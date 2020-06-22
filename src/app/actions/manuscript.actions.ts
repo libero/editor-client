@@ -1,8 +1,8 @@
 import { createAction } from 'redux-act';
+import { EditorState, Transaction } from 'prosemirror-state';
 
 import { Manuscript } from 'app/models/manuscript';
 import { createAsyncAction } from 'app/utils/action.utils';
-import { EditorState, Transaction } from 'prosemirror-state';
 import { Person } from 'app/models/person';
 import { Affiliation } from 'app/models/affiliation';
 import { Reference } from 'app/models/reference';
