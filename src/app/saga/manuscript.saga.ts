@@ -15,6 +15,7 @@ export function* loadManuscriptSaga(action: Action<string>) {
     const manuscript = yield call(getManuscriptContent, id);
     yield put(manuscriptActions.loadManuscriptAction.success(manuscript));
   } catch (e) {
+    console.error(e);
     yield put(manuscriptActions.loadManuscriptAction.error(e));
   }
 }

@@ -5,7 +5,8 @@ import {
   createKeywordGroupsState,
   createAbstractState,
   createAuthorsState,
-  createAffiliationsState
+  createAffiliationsState,
+  createReferencesState
 } from 'app/models/manuscript-state.factory';
 
 const manuscriptUrl = (id: string): string => {
@@ -22,12 +23,14 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
   const abstract = doc.querySelector('abstract:not([abstract-type])');
   const authors = doc.querySelectorAll('contrib[contrib-type="author"]');
   const affiliations = doc.querySelectorAll('contrib-group:first-of-type aff');
+  const references = doc.querySelectorAll('ref-list ref element-citation');
 
   return {
     title: createTitleState(title),
     abstract: createAbstractState(abstract),
     keywordGroups: createKeywordGroupsState(Array.from(keywordGroups)),
     authors: createAuthorsState(Array.from(authors)),
-    affiliations: createAffiliationsState(Array.from(affiliations))
+    affiliations: createAffiliationsState(Array.from(affiliations)),
+    references: createReferencesState(Array.from(references))
   } as Manuscript;
 }

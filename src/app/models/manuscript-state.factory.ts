@@ -1,6 +1,5 @@
-import { DOMParser as ProseMirrorDOMParser, Schema, SchemaSpec } from 'prosemirror-model';
+import { DOMParser as ProseMirrorDOMParser } from 'prosemirror-model';
 import { EditorState } from 'prosemirror-state';
-import { pick, get } from 'lodash';
 import { gapCursor } from 'prosemirror-gapcursor';
 import { dropCursor } from 'prosemirror-dropcursor';
 import { keymap } from 'prosemirror-keymap';
@@ -9,12 +8,13 @@ import { baseKeymap } from 'prosemirror-commands';
 import * as titleConfig from './config/title.config';
 import * as keywordConfig from './config/keywords.config';
 import * as abstractConfig from './config/abstract.config';
-import { nodes } from './config/nodes';
-import { marks } from './config/marks';
+
 import { buildInputRules } from './plugins/input-rules';
 import { KeywordGroups } from './manuscript';
 import { createAuthor, Person } from './person';
 import { Affiliation, createAffiliation } from 'app/models/affiliation';
+import { createReference, Reference } from 'app/models/reference';
+import { getTextContentFromPath, makeSchemaFromConfig } from 'app/models/utils';
 
 export function createTitleState(content: Node): EditorState {
   const schema = makeSchemaFromConfig(titleConfig.topNode, titleConfig.nodes, titleConfig.marks);
@@ -100,6 +100,13 @@ export function createNewKeywordState(): EditorState {
   return createKeywordState();
 }
 
+export function createReferencesState(referencesXml: Element[]): Reference[] {
+  return referencesXml.map((referenceXml: Element) => {
+    const id = (referenceXml.parentNode as Element).getAttribute('id');
+    return createReference(id, referenceXml);
+  });
+}
+
 function createKeywordState(keyword?: Element): EditorState {
   const schema = makeSchemaFromConfig(keywordConfig.topNode, keywordConfig.nodes, keywordConfig.marks);
   return EditorState.create({
@@ -107,19 +114,4 @@ function createKeywordState(keyword?: Element): EditorState {
     schema,
     plugins: [buildInputRules(), gapCursor(), dropCursor(), keymap(baseKeymap)]
   });
-}
-
-function makeSchemaFromConfig(topNode: string, nodeNames: string[], markNames: string[]): Schema {
-  const filteredNodes = pick(nodes, nodeNames);
-  const filteredMarks = pick(marks, markNames);
-
-  return new Schema({
-    nodes: filteredNodes,
-    marks: filteredMarks,
-    topNode
-  } as SchemaSpec<keyof typeof filteredNodes, keyof typeof filteredMarks>);
-}
-
-function getTextContentFromPath(el: Element, path): string {
-  return get(el.querySelector(path), 'textContent');
 }

@@ -5,6 +5,7 @@ import { createAsyncAction } from 'app/utils/action.utils';
 import { EditorState, Transaction } from 'prosemirror-state';
 import { Person } from 'app/models/person';
 import { Affiliation } from 'app/models/affiliation';
+import { Reference } from 'app/models/reference';
 
 export interface KeywordUpdatePayload {
   keywordGroup: string;
@@ -57,6 +58,9 @@ export const updateAffiliationAction = createAction<Affiliation>('UPDATE_AFFILIA
 export const addAffiliationAction = createAction<Affiliation>('ADD_AFFILIATION');
 export const deleteAffiliationAction = createAction<Affiliation>('DELETE_AFFILIATION');
 export const linkAffiliationsAction = createAction<LinkAffiliationsPayload>('LINK_AFFILIATIONS');
+export const updateReferenceAction = createAction<Reference>('UPDATE_REFERENCE');
+export const addReferenceAction = createAction<Reference>('ADD_REFERENCE');
+export const deleteReferenceAction = createAction<Reference>('DELETE_REFERENCE');
 export const applyChangeAction = createAction<ApplyChangePayload>('APPLY_CHANGE');
 
 export const undoAction = createAction<void>('UNDO');

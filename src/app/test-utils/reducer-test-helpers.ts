@@ -13,6 +13,7 @@ export function givenState(overrides: Partial<Manuscript>): ManuscriptHistorySta
       authors: [],
       affiliations: [],
       keywordGroups: {},
+      references: [],
       ...overrides
     })
   );
