@@ -1,6 +1,7 @@
 import { EditorState, Transaction } from 'prosemirror-state';
 import { Person } from './person';
 import { Affiliation } from 'app/models/affiliation';
+import { Reference } from 'app/models/reference';
 
 export interface KeywordGroups {
   [keywordType: string]: {
@@ -16,6 +17,7 @@ export type Manuscript = {
   affiliations: Affiliation[];
   abstract: EditorState;
   keywordGroups: KeywordGroups;
+  references: Reference[];
 };
 
 export type ManuscriptDiff = {

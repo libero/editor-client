@@ -20,6 +20,7 @@ import {
 } from 'app/reducers/affiliations.handlers';
 import { addKeyword, deleteKeyword, updateKeyword, updateNewKeyword } from 'app/reducers/keywords.handlers';
 import { redoChange, undoChange, updateManuscriptState } from 'app/utils/history.utils';
+import { addReference, deleteReference, updateReference } from 'app/reducers/references.handlers';
 
 const initialState = getInitialLoadableState() as ManuscriptHistoryState;
 
@@ -65,6 +66,9 @@ manuscriptReducer.on(manuscriptActions.updateAffiliationAction, updateAffiliatio
 manuscriptReducer.on(manuscriptActions.addAffiliationAction, addAffiliation);
 manuscriptReducer.on(manuscriptActions.deleteAffiliationAction, deleteAffiliation);
 manuscriptReducer.on(manuscriptActions.linkAffiliationsAction, linkAffiliations);
+manuscriptReducer.on(manuscriptActions.updateReferenceAction, updateReference);
+manuscriptReducer.on(manuscriptActions.addReferenceAction, addReference);
+manuscriptReducer.on(manuscriptActions.deleteReferenceAction, deleteReference);
 manuscriptReducer.on(manuscriptActions.addNewKeywordAction, addKeyword);
 manuscriptReducer.on(manuscriptActions.deleteKeywordAction, deleteKeyword);
 manuscriptReducer.on(manuscriptActions.updateKeywordAction, updateKeyword);

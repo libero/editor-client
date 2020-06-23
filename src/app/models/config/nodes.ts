@@ -3,6 +3,15 @@ export const nodes = {
     content: 'block+'
   },
 
+  annotatedReferenceInfoDoc: {
+    group: 'block',
+    content: 'inline*',
+    parseDOM: [{ tag: 'article-title' }, { tag: 'source' }],
+    toDOM(node) {
+      return ['p', 0];
+    }
+  },
+
   'article-title': {
     group: 'block',
     content: 'inline*',
