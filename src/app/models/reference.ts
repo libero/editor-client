@@ -94,7 +94,8 @@ interface DataReference {
   version: string;
   extLink: string;
   accessionId: string;
-  generatedOrPrePublished: boolean;
+  accessionUrl: string;
+  specificUse: string;
 }
 
 interface WebReference {
@@ -349,17 +350,17 @@ function createPrePrintReference(referenceXml: Element): WebReference {
 }
 
 function createDataReference(referenceXml: Element): DataReference {
+  const accessionEl = referenceXml.querySelector('pub-id[pub-id-type="accession"]');
   return {
     year: parseInt(referenceXml.querySelector('year').textContent),
     source: createReferenceAnnotatedValue(referenceXml.querySelector('source')),
     dataTitle: createReferenceAnnotatedValue(referenceXml.querySelector('data-title')),
     doi: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="doi"]') || '',
-    accessionId: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="accession"]') || '',
+    accessionId: accessionEl ? accessionEl.textContent : '',
+    accessionUrl: accessionEl ? accessionEl.getAttribute('href') : '',
     extLink: getTextContentFromPath(referenceXml, 'ext-link') || '',
     version: getTextContentFromPath(referenceXml, 'version') || '',
-    generatedOrPrePublished:
-      referenceXml.getAttribute('specific-use') === 'references' ||
-      referenceXml.getAttribute('specific-use') === 'isSupplementedBy'
+    specificUse: referenceXml.getAttribute('specific-use')
   };
 }
 

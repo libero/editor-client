@@ -12,6 +12,7 @@ import { useManuscriptStyles } from './styles';
 import { SortableAuthorsList } from './sortable-authors-list';
 import { AuthorsInfoDetails } from 'app/containers/manuscript/authors-info-details';
 import { AffiliationsList } from 'app/containers/manuscript/affiliations-list';
+import { ReferenceList } from 'app/containers/manuscript/references-list';
 
 export const ManuscriptEditor: React.FC = () => {
   const classes = useManuscriptStyles();
@@ -109,6 +110,7 @@ export const ManuscriptEditor: React.FC = () => {
       />
       {renderKeywords(allKeywords)}
       <AuthorsInfoDetails />
+      <ReferenceList />
     </div>
   );
 };
