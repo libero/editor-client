@@ -366,8 +366,9 @@ Object {
         "type": "text",
       },
     },
-    "dateInCitation": "",
+    "doi": "10.1101/400515",
     "extLink": "",
+    "pmid": "",
     "source": Object {
       "doc": Object {
         "type": "annotatedReferenceInfoDoc",
