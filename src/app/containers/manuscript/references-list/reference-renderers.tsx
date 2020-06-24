@@ -64,7 +64,20 @@ export const renderBookReference = (reference: Reference) => {
 
 export const renderConferenceReference = (reference: Reference) => {
   const referenceInfo = reference.referenceInfo as ConferenceReference;
-
+  /*
+  *   year: number;
+  articleTitle: EditorState;
+  conferenceName: EditorState;
+  conferenceLocation: string;
+  conferenceDate: string;
+  volume: number;
+  extLink: string;
+  elocationId: string;
+  doi: string;
+  pmid: string;
+  firstPage: number;
+  lastPage: number;
+  * */
   const authors = getReferenceAuthors(reference);
   return (
     <>
@@ -73,8 +86,10 @@ export const renderConferenceReference = (reference: Reference) => {
       {referenceInfo.firstPage && referenceInfo.lastPage
         ? ` p.${referenceInfo.firstPage}-${referenceInfo.lastPage}.`
         : undefined}
-      {referenceInfo.elocationId ? ` ${referenceInfo.elocationId}.` : undefined}
       {referenceInfo.conferenceLocation ? ` ${referenceInfo.conferenceLocation}:` : undefined}
+      {referenceInfo.conferenceName ? [getAnnotatedText(referenceInfo.conferenceName), '.'] : undefined}
+      {referenceInfo.conferenceDate ? ` ${referenceInfo.conferenceDate}.` : undefined}
+      {referenceInfo.elocationId ? ` ${referenceInfo.elocationId}.` : undefined}
       {referenceInfo.doi ? ` doi: ${referenceInfo.doi}.` : undefined}
       {referenceInfo.pmid ? ` pmid: ${referenceInfo.pmid}.` : undefined}
     </>
