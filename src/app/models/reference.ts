@@ -110,7 +110,6 @@ interface PrePrintReference {
   year: number;
   articleTitle: EditorState;
   source: EditorState;
-  elocationId: string;
   extLink: string;
   doi: string;
   pmid: string;
@@ -339,13 +338,14 @@ function createConferenceReference(referenceXml: Element): ConferenceReference {
   };
 }
 
-function createPrePrintReference(referenceXml: Element): WebReference {
+function createPrePrintReference(referenceXml: Element): PrePrintReference {
   return {
     year: parseInt(referenceXml.querySelector('year').textContent),
     source: createReferenceAnnotatedValue(referenceXml.querySelector('source')),
     articleTitle: createReferenceAnnotatedValue(referenceXml.querySelector('article-title')),
-    extLink: getTextContentFromPath(referenceXml, 'ext-link') || '',
-    dateInCitation: getTextContentFromPath(referenceXml, 'date-in-citation') || ''
+    doi: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="doi"]') || '',
+    pmid: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="pmid"]') || '',
+    extLink: getTextContentFromPath(referenceXml, 'ext-link') || ''
   };
 }
 
@@ -382,7 +382,7 @@ function createBookReference(referenceXml: Element): BookReference {
   };
 }
 
-function createReferenceAnnotatedValue(content: Node): EditorState {
+export function createReferenceAnnotatedValue(content: Node): EditorState {
   const schema = makeSchemaFromConfig(
     referenceInfoConfig.topNode,
     referenceInfoConfig.nodes,

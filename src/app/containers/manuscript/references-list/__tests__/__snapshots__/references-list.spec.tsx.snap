@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`References List renders the component 1`] = `
+<section>
+  <div
+    className="makeStyles-root-2 makeStyles-plainVariant-4"
+  >
+    <label
+      className="makeStyles-label-5"
+    >
+      References
+    </label>
+    <ul
+      className="makeStyles-list-1"
+    >
+      <li>
+        <section
+          className="makeStyles-listItem-7"
+        >
+          <div
+            className="makeStyles-content-8"
+          >
+            Berk V
+             
+            2012
+             
+            <span
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "Molecular architecture and assembly principles of <em>Vibrio cholerae</em> biofilms",
+                }
+              }
+            />
+             
+            <span
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "Science",
+                }
+              }
+            />
+             
+            337
+             
+            236
+             
+            239
+             
+          </div>
+          <div
+            data-cmp="IconButton"
+          />
+        </section>
+      </li>
+      <li>
+        <section
+          className="makeStyles-listItem-7"
+        >
+          <div
+            className="makeStyles-content-8"
+          >
+            Feyerabend PK
+             
+            2010
+             
+            <span
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "The skull and brain",
+                }
+              }
+            />
+             
+            <span
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "The skull and brain",
+                }
+              }
+            />
+             
+            4th Edition
+             
+            Verso
+             
+            London
+             
+          </div>
+          <div
+            data-cmp="IconButton"
+          />
+        </section>
+      </li>
+    </ul>
+  </div>
+  <div
+    data-cmp="Button"
+  />
+</section>
+`;
