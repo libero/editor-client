@@ -21,9 +21,9 @@ exports[`References List renders the component 1`] = `
             className="makeStyles-content-8"
           >
             Berk V
-             
+            . 
             2012
-             
+            . 
             <span
               dangerouslySetInnerHTML={
                 Object {
@@ -31,21 +31,22 @@ exports[`References List renders the component 1`] = `
                 }
               }
             />
+            .
              
-            <span
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "Science",
+            <em>
+              <span
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "Science",
+                  }
                 }
-              }
-            />
+              />
+            </em>
              
-            337
-             
-            236
-             
-            239
-             
+            <strong>
+               337:
+            </strong>
+             p.236-239.
           </div>
           <div
             data-cmp="IconButton"
@@ -60,9 +61,9 @@ exports[`References List renders the component 1`] = `
             className="makeStyles-content-8"
           >
             Feyerabend PK
-             
+            . 
             2010
-             
+            . 
             <span
               dangerouslySetInnerHTML={
                 Object {
@@ -70,21 +71,21 @@ exports[`References List renders the component 1`] = `
                 }
               }
             />
-             
-            <span
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "The skull and brain",
+            .
+            <em>
+              <span
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "The skull and brain",
+                  }
                 }
-              }
-            />
+              />
+            </em>
              
-            4th Edition
-             
-            Verso
-             
-            London
-             
+             4th Edition.
+            <strong />
+             Verso:
+             London.
           </div>
           <div
             data-cmp="IconButton"
