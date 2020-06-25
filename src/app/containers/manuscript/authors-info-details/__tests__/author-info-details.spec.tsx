@@ -39,7 +39,8 @@ describe('Authors details info', () => {
       abstract: new EditorState(),
       affiliations: [],
       keywordGroups: {},
-      authors: AUTHORS
+      authors: AUTHORS,
+      references: []
     });
     const store = mockStore({
       manuscript: getLoadableStateSuccess(mockState)
@@ -59,7 +60,8 @@ describe('Authors details info', () => {
       affiliations: [],
       abstract: new EditorState(),
       keywordGroups: {},
-      authors: AUTHORS
+      authors: AUTHORS,
+      references: []
     });
 
     const store = mockStore({
@@ -91,7 +93,8 @@ describe('Authors details info', () => {
       abstract: new EditorState(),
       affiliations: [],
       keywordGroups: {},
-      authors: []
+      authors: [],
+      references: []
     });
 
     const store = mockStore({

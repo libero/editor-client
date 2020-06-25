@@ -177,7 +177,7 @@ describe('Reference model', () => {
   });
 });
 
-function givenReferenceXml(referenceData: string, type: string) {
+function givenReferenceXml(referenceData: string, type: string): string {
   return `
     <element-citation publication-type="${type}">
       <person-group>

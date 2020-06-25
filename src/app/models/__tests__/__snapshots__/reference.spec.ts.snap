@@ -129,6 +129,7 @@ Object {
   "id": "id",
   "referenceInfo": Object {
     "accessionId": "NM_009324",
+    "accessionUrl": null,
     "dataTitle": Object {
       "doc": Object {
         "content": Array [
@@ -147,7 +148,6 @@ Object {
     },
     "doi": "",
     "extLink": "",
-    "generatedOrPrePublished": false,
     "source": Object {
       "doc": Object {
         "type": "annotatedReferenceInfoDoc",
@@ -158,6 +158,7 @@ Object {
         "type": "text",
       },
     },
+    "specificUse": null,
     "version": "NM_009324.2",
     "year": 2014,
   },
@@ -365,8 +366,9 @@ Object {
         "type": "text",
       },
     },
-    "dateInCitation": "",
+    "doi": "10.1101/400515",
     "extLink": "",
+    "pmid": "",
     "source": Object {
       "doc": Object {
         "type": "annotatedReferenceInfoDoc",

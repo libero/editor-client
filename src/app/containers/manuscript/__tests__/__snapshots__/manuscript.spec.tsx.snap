@@ -93,6 +93,20 @@ Array [
         </label>
       </div>
     </section>
+    <section>
+      <div
+        className="makeStyles-root-13 makeStyles-plainVariant-15"
+      >
+        <label
+          className="makeStyles-label-16"
+        >
+          References
+        </label>
+        <ul
+          className="makeStyles-list-34"
+        />
+      </div>
+    </section>
   </div>,
 ]
 `;

@@ -29,7 +29,7 @@ type ReferenceType =
   | 'thesis'
   | 'patent';
 
-interface JournalReference {
+export interface JournalReference {
   year: number;
   source: EditorState;
   articleTitle: EditorState;
@@ -42,7 +42,7 @@ interface JournalReference {
   pmid: string;
 }
 
-interface PeriodicalReference {
+export interface PeriodicalReference {
   date: string;
   source: EditorState;
   articleTitle: EditorState;
@@ -52,7 +52,7 @@ interface PeriodicalReference {
   extLink: string;
 }
 
-interface BookReference {
+export interface BookReference {
   year: number;
   chapterTitle: EditorState;
   edition: string;
@@ -68,7 +68,7 @@ interface BookReference {
   elocationId: string;
 }
 
-interface ReportReference {
+export interface ReportReference {
   year: number;
   source: EditorState;
   publisherName: string;
@@ -76,7 +76,7 @@ interface ReportReference {
   extLink: string;
 }
 
-interface PatentReference {
+export interface PatentReference {
   year: number;
   source: EditorState;
   articleTitle: EditorState;
@@ -86,7 +86,7 @@ interface PatentReference {
   extLink: string;
 }
 
-interface DataReference {
+export interface DataReference {
   year: number;
   dataTitle: EditorState;
   source: EditorState;
@@ -94,10 +94,11 @@ interface DataReference {
   version: string;
   extLink: string;
   accessionId: string;
-  generatedOrPrePublished: boolean;
+  accessionUrl: string;
+  specificUse: string;
 }
 
-interface WebReference {
+export interface WebReference {
   year: number;
   source: EditorState;
   articleTitle: EditorState;
@@ -105,17 +106,16 @@ interface WebReference {
   dateInCitation: string;
 }
 
-interface PrePrintReference {
+export interface PrePrintReference {
   year: number;
   articleTitle: EditorState;
   source: EditorState;
-  elocationId: string;
   extLink: string;
   doi: string;
   pmid: string;
 }
 
-interface ThesisReference {
+export interface ThesisReference {
   year: number;
   articleTitle: EditorState;
   publisherName: string;
@@ -125,7 +125,7 @@ interface ThesisReference {
   pmid: string;
 }
 
-interface SoftwareReference {
+export interface SoftwareReference {
   year: number;
   source: EditorState;
   dataTitle: EditorState;
@@ -137,7 +137,7 @@ interface SoftwareReference {
   pmid: string;
 }
 
-interface ConferenceReference {
+export interface ConferenceReference {
   year: number;
   articleTitle: EditorState;
   conferenceName: EditorState;
@@ -338,28 +338,29 @@ function createConferenceReference(referenceXml: Element): ConferenceReference {
   };
 }
 
-function createPrePrintReference(referenceXml: Element): WebReference {
+function createPrePrintReference(referenceXml: Element): PrePrintReference {
   return {
     year: parseInt(referenceXml.querySelector('year').textContent),
     source: createReferenceAnnotatedValue(referenceXml.querySelector('source')),
     articleTitle: createReferenceAnnotatedValue(referenceXml.querySelector('article-title')),
-    extLink: getTextContentFromPath(referenceXml, 'ext-link') || '',
-    dateInCitation: getTextContentFromPath(referenceXml, 'date-in-citation') || ''
+    doi: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="doi"]') || '',
+    pmid: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="pmid"]') || '',
+    extLink: getTextContentFromPath(referenceXml, 'ext-link') || ''
   };
 }
 
 function createDataReference(referenceXml: Element): DataReference {
+  const accessionEl = referenceXml.querySelector('pub-id[pub-id-type="accession"]');
   return {
     year: parseInt(referenceXml.querySelector('year').textContent),
     source: createReferenceAnnotatedValue(referenceXml.querySelector('source')),
     dataTitle: createReferenceAnnotatedValue(referenceXml.querySelector('data-title')),
     doi: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="doi"]') || '',
-    accessionId: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="accession"]') || '',
+    accessionId: accessionEl ? accessionEl.textContent : '',
+    accessionUrl: accessionEl ? accessionEl.getAttribute('href') : '',
     extLink: getTextContentFromPath(referenceXml, 'ext-link') || '',
     version: getTextContentFromPath(referenceXml, 'version') || '',
-    generatedOrPrePublished:
-      referenceXml.getAttribute('specific-use') === 'references' ||
-      referenceXml.getAttribute('specific-use') === 'isSupplementedBy'
+    specificUse: referenceXml.getAttribute('specific-use')
   };
 }
 
@@ -381,7 +382,7 @@ function createBookReference(referenceXml: Element): BookReference {
   };
 }
 
-function createReferenceAnnotatedValue(content: Node): EditorState {
+export function createReferenceAnnotatedValue(content: Node): EditorState {
   const schema = makeSchemaFromConfig(
     referenceInfoConfig.topNode,
     referenceInfoConfig.nodes,
