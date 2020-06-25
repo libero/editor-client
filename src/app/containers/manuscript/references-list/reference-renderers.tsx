@@ -18,9 +18,16 @@ import {
 } from 'app/models/reference';
 import { stringifyEditorState } from 'app/utils/view.utils';
 
-const getAnnotatedText = (editorState: EditorState) => {
-  const html = stringifyEditorState(editorState);
-  return <span dangerouslySetInnerHTML={{ __html: html }} />;
+const getAnnotatedText = (editorState: EditorState, suffix: string = '') => {
+  if (editorState.doc.childCount) {
+    const html = stringifyEditorState(editorState);
+    return (
+      <>
+        <span dangerouslySetInnerHTML={{ __html: html }} />
+        {suffix}
+      </>
+    );
+  }
 };
 
 export const renderJournalReference = (reference: Reference) => {
@@ -28,7 +35,7 @@ export const renderJournalReference = (reference: Reference) => {
   const authors = getReferenceAuthors(reference);
   return (
     <>
-      {authors}. {referenceInfo.year}. {getAnnotatedText(referenceInfo.articleTitle)}.{' '}
+      {authors}. {referenceInfo.year}. {getAnnotatedText(referenceInfo.articleTitle, '. ')}
       <em>{getAnnotatedText(referenceInfo.source)}</em> {referenceInfo.inPress ? ' In Press.' : undefined}
       <strong>{referenceInfo.volume ? ` ${referenceInfo.volume}:` : undefined}</strong>
       {referenceInfo.firstPage && referenceInfo.lastPage
@@ -46,8 +53,8 @@ export const renderBookReference = (reference: Reference) => {
   const authors = getReferenceAuthors(reference);
   return (
     <>
-      {authors}. {referenceInfo.year}. {getAnnotatedText(referenceInfo.chapterTitle)}.
-      <em>{getAnnotatedText(referenceInfo.source)}</em> {referenceInfo.inPress ? ' In Press.' : undefined}
+      {authors}. {referenceInfo.year}. {getAnnotatedText(referenceInfo.chapterTitle, '. ')}
+      <em>{getAnnotatedText(referenceInfo.source, ' ')}</em> {referenceInfo.inPress ? 'In Press.' : undefined}
       {referenceInfo.edition ? ` ${referenceInfo.edition}.` : undefined}
       <strong>{referenceInfo.volume ? ` ${referenceInfo.volume}:` : undefined}</strong>
       {referenceInfo.firstPage && referenceInfo.lastPage
@@ -64,30 +71,16 @@ export const renderBookReference = (reference: Reference) => {
 
 export const renderConferenceReference = (reference: Reference) => {
   const referenceInfo = reference.referenceInfo as ConferenceReference;
-  /*
-  *   year: number;
-  articleTitle: EditorState;
-  conferenceName: EditorState;
-  conferenceLocation: string;
-  conferenceDate: string;
-  volume: number;
-  extLink: string;
-  elocationId: string;
-  doi: string;
-  pmid: string;
-  firstPage: number;
-  lastPage: number;
-  * */
   const authors = getReferenceAuthors(reference);
   return (
     <>
-      {authors}. {referenceInfo.year}. {getAnnotatedText(referenceInfo.articleTitle)}.
+      {authors}. {referenceInfo.year}. {getAnnotatedText(referenceInfo.articleTitle, '. ')}
       <strong>{referenceInfo.volume ? ` ${referenceInfo.volume}:` : undefined}</strong>
       {referenceInfo.firstPage && referenceInfo.lastPage
         ? ` p.${referenceInfo.firstPage}-${referenceInfo.lastPage}.`
         : undefined}
       {referenceInfo.conferenceLocation ? ` ${referenceInfo.conferenceLocation}:` : undefined}
-      {referenceInfo.conferenceName ? [getAnnotatedText(referenceInfo.conferenceName), '.'] : undefined}
+      {referenceInfo.conferenceName ? [getAnnotatedText(referenceInfo.conferenceName, '.')] : undefined}
       {referenceInfo.conferenceDate ? ` ${referenceInfo.conferenceDate}.` : undefined}
       {referenceInfo.elocationId ? ` ${referenceInfo.elocationId}.` : undefined}
       {referenceInfo.doi ? ` doi: ${referenceInfo.doi}.` : undefined}
@@ -116,8 +109,8 @@ export const renderSoftwareReference = (reference: Reference) => {
   const authors = getReferenceAuthors(reference);
   return (
     <>
-      {authors}. {referenceInfo.year}. {getAnnotatedText(referenceInfo.dataTitle)}.
-      <em>{getAnnotatedText(referenceInfo.source)}</em>
+      {authors}. {referenceInfo.year}. {getAnnotatedText(referenceInfo.dataTitle, '.')}
+      <em>{getAnnotatedText(referenceInfo.source, '.')}</em>
       {referenceInfo.publisherName ? ` ${referenceInfo.publisherName}:` : undefined}
       {referenceInfo.publisherLocation ? ` ${referenceInfo.publisherLocation}.` : undefined}
       {referenceInfo.doi ? ` doi: ${referenceInfo.doi}.` : undefined}
@@ -146,7 +139,7 @@ export const renderPeriodicalReference = (reference: Reference) => {
   const authors = getReferenceAuthors(reference);
   return (
     <>
-      {authors}. {referenceInfo.date}. {getAnnotatedText(referenceInfo.articleTitle)}.{' '}
+      {authors}. {referenceInfo.date}. {getAnnotatedText(referenceInfo.articleTitle, '. ')}
       <em>{getAnnotatedText(referenceInfo.source)}</em>
       <strong>{referenceInfo.volume ? ` ${referenceInfo.volume}:` : undefined}</strong>
       {referenceInfo.firstPage && referenceInfo.lastPage
@@ -162,7 +155,7 @@ export const renderPatentReference = (reference: Reference) => {
   const authors = getReferenceAuthors(reference);
   return (
     <>
-      {authors}. {referenceInfo.year}. {getAnnotatedText(referenceInfo.articleTitle)}.{' '}
+      {authors}. {referenceInfo.year}. {getAnnotatedText(referenceInfo.articleTitle, '. ')}
       <em>{getAnnotatedText(referenceInfo.source)}</em>
       {referenceInfo.publisherName ? ` ${referenceInfo.publisherName}.` : undefined}
       {referenceInfo.doi ? ` doi: ${referenceInfo.doi}.` : undefined}
@@ -177,8 +170,8 @@ export const renderWebReference = (reference: Reference) => {
   const authors = getReferenceAuthors(reference);
   return (
     <>
-      {authors}. {referenceInfo.year}. {getAnnotatedText(referenceInfo.articleTitle)}.{' '}
-      <em>{getAnnotatedText(referenceInfo.source)}</em>{' '}
+      {authors}. {referenceInfo.year}. {getAnnotatedText(referenceInfo.articleTitle, '. ')}
+      <em>{getAnnotatedText(referenceInfo.source, ' ')}</em>
       {referenceInfo.extLink ? getExtLinkTag(referenceInfo.extLink) : undefined} {referenceInfo.dateInCitation}
     </>
   );
@@ -189,7 +182,7 @@ export const renderPreprintReference = (reference: Reference) => {
   const authors = getReferenceAuthors(reference);
   return (
     <>
-      {authors}. {referenceInfo.year}. {getAnnotatedText(referenceInfo.articleTitle)}.{' '}
+      {authors}. {referenceInfo.year}. {getAnnotatedText(referenceInfo.articleTitle, '. ')}
       <em>{getAnnotatedText(referenceInfo.source)}</em>
       {referenceInfo.doi ? ` doi: ${referenceInfo.doi}.` : undefined}
       {referenceInfo.pmid ? ` pmid: ${referenceInfo.pmid}.` : undefined}{' '}
@@ -208,7 +201,7 @@ export const renderDataReference = (reference: Reference) => {
   const authors = getReferenceAuthors(reference);
   return (
     <>
-      {authors}. {referenceInfo.year}. {getAnnotatedText(referenceInfo.dataTitle)}.{' '}
+      {authors}. {referenceInfo.year}. {getAnnotatedText(referenceInfo.dataTitle, '. ')}
       <em>{getAnnotatedText(referenceInfo.source)}</em> {referenceInfo.doi ? ` doi: ${referenceInfo.doi}.` : undefined}
       {referenceInfo.accessionId ? ` pmid: ${referenceInfo.accessionId}.` : undefined}
       {referenceInfo.version ? ` version: ${referenceInfo.version}.` : undefined}{' '}
