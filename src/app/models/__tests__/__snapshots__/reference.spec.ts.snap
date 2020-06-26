@@ -335,7 +335,7 @@ Object {
 }
 `;
 
-exports[`Reference model creates pre-print reference 1`] = `
+exports[`Reference model creates preprint reference 1`] = `
 Object {
   "authors": Array [
     Object {
@@ -381,7 +381,7 @@ Object {
     },
     "year": 2019,
   },
-  "type": "pre-print",
+  "type": "preprint",
 }
 `;
 

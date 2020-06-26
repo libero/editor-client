@@ -41,7 +41,7 @@ const renderReferenceContent = (reference: Reference) => {
       return renderPatentReference(reference);
     case 'web':
       return renderWebReference(reference);
-    case 'pre-print':
+    case 'preprint':
       return renderPreprintReference(reference);
     case 'data':
       return renderDataReference(reference);
