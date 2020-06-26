@@ -23,7 +23,7 @@ type ReferenceType =
   | 'report'
   | 'data'
   | 'web'
-  | 'pre-print'
+  | 'preprint'
   | 'software'
   | 'confproc'
   | 'thesis'
@@ -197,7 +197,7 @@ export function createReference(xmlId: string, referenceXml: Element): Reference
     case 'web':
       reference.referenceInfo = createWebReference(referenceXml);
       break;
-    case 'pre-print':
+    case 'preprint':
       reference.referenceInfo = createPrePrintReference(referenceXml);
       break;
     case 'software':

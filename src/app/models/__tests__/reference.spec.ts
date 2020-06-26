@@ -103,7 +103,7 @@ describe('Reference model', () => {
     expect(createReference('id', el.querySelector('element-citation'))).toMatchSnapshot();
   });
 
-  it('creates pre-print reference', () => {
+  it('creates preprint reference', () => {
     const el = document.createElement('p');
     el.innerHTML = givenReferenceXml(
       `
@@ -111,7 +111,7 @@ describe('Reference model', () => {
         <article-title>Gender and international diversity improves equity in peer review</article-title>
         <source>bioRxiv</source>
         <pub-id pub-id-type="doi">10.1101/400515</pub-id>`,
-      'pre-print'
+      'preprint'
     );
     expect(createReference('id', el.querySelector('element-citation'))).toMatchSnapshot();
   });
