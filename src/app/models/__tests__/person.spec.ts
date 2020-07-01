@@ -1,4 +1,8 @@
-import { createAuthor, getAuthorDisplayName } from 'app/models/person';
+import { createAuthor, createAuthorsState, getAuthorDisplayName } from 'app/models/person';
+
+jest.mock('uuid', () => ({
+  v4: () => 'unique_id'
+}));
 
 describe('Person model helpers', () => {
   it('creates an author with specified data', () => {
@@ -49,5 +53,15 @@ describe('Person model helpers', () => {
     };
 
     expect(getAuthorDisplayName(author)).toEqual('Total Commander');
+  });
+
+  it('creates authors state', () => {
+    const authorsContainer = document.createElement('div');
+    authorsContainer.innerHTML = `
+        <name><surname>Atherden</surname><given-names>Fred</given-names><suffix>Capt.</suffix></name>
+        <contrib-id authenticated="true" contrib-id-type="orcid">https://orcid.org/0000-0002-6048-1470</contrib-id>
+        <email>f.atherden@elifesciences.org</email>`;
+
+    expect(createAuthorsState([authorsContainer])).toMatchSnapshot();
   });
 });

@@ -19,8 +19,7 @@ export interface ProseMirrorEditorViewProps {
 
 export class ProseMirrorEditorView extends React.Component<ProseMirrorEditorViewProps, ProseMirrorEditorViewState> {
   public props;
-
-  private editorView: EditorView;
+  public editorView: EditorView;
 
   focus() {
     this.editorView.focus();
@@ -55,7 +54,7 @@ export class ProseMirrorEditorView extends React.Component<ProseMirrorEditorView
       this.editorView = new EditorView(element, {
         ...additionalOptions,
         state: this.props.editorState,
-        dispatchTransaction: this.props.onChange
+        dispatchTransaction: (tx: Transaction) => this.props.onChange(tx)
       });
     }
   };

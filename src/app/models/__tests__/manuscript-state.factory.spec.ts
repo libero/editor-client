@@ -1,6 +1,5 @@
 import {
   createAbstractState,
-  createAuthorsState,
   createKeywordGroupsState,
   createNewKeywordState,
   createTitleState
@@ -45,15 +44,5 @@ describe('Manuscript state factory', () => {
 
   it('creates empty keyword state', () => {
     expect(createNewKeywordState()).toMatchSnapshot();
-  });
-
-  it('creates authors state', () => {
-    const authorsContainer = document.createElement('div');
-    authorsContainer.innerHTML = `
-        <name><surname>Atherden</surname><given-names>Fred</given-names><suffix>Capt.</suffix></name>
-        <contrib-id authenticated="true" contrib-id-type="orcid">https://orcid.org/0000-0002-6048-1470</contrib-id>
-        <email>f.atherden@elifesciences.org</email>`;
-
-    expect(createAuthorsState([authorsContainer])).toMatchSnapshot();
   });
 });

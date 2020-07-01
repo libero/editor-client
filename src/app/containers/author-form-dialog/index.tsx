@@ -11,6 +11,7 @@ import { ActionButton } from 'app/components/action-button';
 import { LinkedAffiliationsList } from './linked-affiliations-list';
 import { getAffiliations, getAuthorAffiliations } from 'app/selectors/manuscript.selectors';
 import { Affiliation } from 'app/models/affiliation';
+import { RichTextInput } from 'app/components/rich-text-input';
 
 interface AuthorFormDialogProps {
   author?: Person;
@@ -84,6 +85,16 @@ export const AuthorFormDialog: React.FC<AuthorFormDialogProps> = (props) => {
     [author, setAuthor]
   );
 
+  const handleBioChange = useCallback(
+    (change) => {
+      setAuthor({
+        ...author,
+        bio: author.bio.apply(change)
+      });
+    },
+    [setAuthor, author]
+  );
+
   const handleDone = useCallback(() => {
     if (isNewAuthor) {
       dispatch(manuscriptActions.addAuthorAction(author));
@@ -133,6 +144,13 @@ export const AuthorFormDialog: React.FC<AuthorFormDialogProps> = (props) => {
         variant="outlined"
         value={author.email || ''}
         onChange={handleFormChange}
+      />
+      <RichTextInput
+        editorState={author.bio}
+        name="bio"
+        onChange={handleBioChange}
+        label="Bio"
+        className={classes.inputField}
       />
       <LinkedAffiliationsList
         allAffiliations={allAffiliations}
