@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import {getTextContentFromPath} from "app/models/utils";
+import { getTextContentFromPath } from 'app/models/utils';
 
 export interface Affiliation {
   readonly id: string;
