@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { TextField, IconButton, InputAdornment, Popover, ThemeProvider } from '@material-ui/core';
 import { EditorView, NodeView } from 'prosemirror-view';
 import { Node as ProsemirrorNode } from 'prosemirror-model';
-
 import LaunchIcon from '@material-ui/icons/Launch';
 import CloseIcon from '@material-ui/icons/Close';
 
@@ -141,6 +140,7 @@ export class LinkNodeView implements NodeView {
   close(href?: string) {
     this.dom.classList.remove('ProseMirror-selectednode');
     ReactDOM.unmountComponentAtNode(this.linkEditorContainer);
+    this.linkEditorContainer.parentNode.removeChild(this.linkEditorContainer);
     if (href) {
       this.updateMark(href);
     }
