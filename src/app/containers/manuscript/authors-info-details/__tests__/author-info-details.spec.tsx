@@ -17,6 +17,10 @@ jest.mock('@material-ui/core', () => ({
   IconButton: () => <div data-cmp="IconButton"></div>
 }));
 
+jest.mock('app/components/rich-text-input', () => ({
+  RichTextInput: () => <div data-cmp="rich-text-input"></div>
+}));
+
 const AUTHORS = [
   {
     id: '4d53e405-5225-4858-a87a-aec902ae50b6',
@@ -30,7 +34,7 @@ const AUTHORS = [
   }
 ];
 
-describe('Authors details info', () => {
+describe('Authors info details', () => {
   const mockStore = configureMockStore([]);
 
   it('renders authors list', () => {

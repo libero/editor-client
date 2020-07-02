@@ -2,15 +2,19 @@ import React from 'react';
 import { create } from 'react-test-renderer';
 import { AuthorFormDialog } from 'app/containers/author-form-dialog/index';
 import configureMockStore from 'redux-mock-store';
-import { getInitialHistory, getLoadableStateSuccess } from 'app/utils/state.utils';
-import { EditorState } from 'prosemirror-state';
 import { Provider } from 'react-redux';
 import { mount } from 'enzyme';
 import { addAuthorAction, deleteAuthorAction, updateAuthorAction } from 'app/actions/manuscript.actions';
 import { PromptDialog } from 'app/components/prompt-dialog';
+import { givenState } from 'app/test-utils/reducer-test-helpers';
+import { ManuscriptHistoryState } from 'app/store';
 
 jest.mock('app/components/prompt-dialog', () => ({
   PromptDialog: () => <div data-cmp="confirm-dialog"></div>
+}));
+
+jest.mock('app/components/rich-text-input', () => ({
+  RichTextInput: () => <div data-cmp="rich-text-input"></div>
 }));
 
 jest.mock('@material-ui/core', () => ({
@@ -26,14 +30,10 @@ jest.mock('@material-ui/core', () => ({
 
 describe('Author Form Dialog', () => {
   const mockStore = configureMockStore([]);
-  let mockState;
+  let mockState: ManuscriptHistoryState;
 
   beforeEach(() => {
-    mockState = getInitialHistory({
-      title: new EditorState(),
-      abstract: new EditorState(),
-      affiliations: [],
-      keywordGroups: {},
+    mockState = givenState({
       authors: [
         {
           id: '4d53e405-5225-4858-a87a-aec902ae50b6',
@@ -48,7 +48,7 @@ describe('Author Form Dialog', () => {
 
   it('renders new author dialog form', () => {
     const store = mockStore({
-      manuscript: getLoadableStateSuccess(mockState)
+      manuscript: mockState
     });
 
     const wrapper = create(
@@ -61,12 +61,12 @@ describe('Author Form Dialog', () => {
 
   it('renders edit author dialog form', () => {
     const store = mockStore({
-      manuscript: getLoadableStateSuccess(mockState)
+      manuscript: mockState
     });
 
     const wrapper = create(
       <Provider store={store}>
-        <AuthorFormDialog author={mockState.present.authors[0]} />
+        <AuthorFormDialog author={mockState.data.present.authors[0]} />
       </Provider>
     );
     expect(wrapper).toMatchSnapshot();
@@ -74,7 +74,7 @@ describe('Author Form Dialog', () => {
 
   it('dispatches an event to create new author', () => {
     const store = mockStore({
-      manuscript: getLoadableStateSuccess(mockState)
+      manuscript: mockState
     });
     jest.spyOn(store, 'dispatch');
 
@@ -91,28 +91,28 @@ describe('Author Form Dialog', () => {
 
   it('dispatches an event to save edited author', () => {
     const store = mockStore({
-      manuscript: getLoadableStateSuccess(mockState)
+      manuscript: mockState
     });
     jest.spyOn(store, 'dispatch');
 
     const wrapper = mount(
       <Provider store={store}>
-        <AuthorFormDialog author={mockState.present.authors[0]} />
+        <AuthorFormDialog author={mockState.data.present.authors[0]} />
       </Provider>
     );
     wrapper.find({ title: 'Done' }).prop('onClick')();
-    expect(store.dispatch).toBeCalledWith(updateAuthorAction(mockState.present.authors[0]));
+    expect(store.dispatch).toBeCalledWith(updateAuthorAction(mockState.data.present.authors[0]));
   });
 
   it('dispatches an event to delete author', () => {
     const store = mockStore({
-      manuscript: getLoadableStateSuccess(mockState)
+      manuscript: mockState
     });
     jest.spyOn(store, 'dispatch');
 
     const wrapper = mount(
       <Provider store={store}>
-        <AuthorFormDialog author={mockState.present.authors[0]} />
+        <AuthorFormDialog author={mockState.data.present.authors[0]} />
       </Provider>
     );
 
@@ -120,6 +120,6 @@ describe('Author Form Dialog', () => {
     wrapper.update();
 
     wrapper.find(PromptDialog).prop('onAccept')();
-    expect(store.dispatch).toBeCalledWith(deleteAuthorAction(mockState.present.authors[0]));
+    expect(store.dispatch).toBeCalledWith(deleteAuthorAction(mockState.data.present.authors[0]));
   });
 });
