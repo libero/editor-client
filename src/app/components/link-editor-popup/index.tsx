@@ -39,7 +39,7 @@ export const LinkEditorPopup: React.FC<LinkEditorPopupProps> = ({ editorView, no
   const handleApplyClick = useCallback(() => {
     editorView.focus();
     onClose(link);
-  }, [editorView, link, node]);
+  }, [editorView, link, onClose]);
 
   const handleOnClose = useCallback(() => {
     onClose();
@@ -77,9 +77,9 @@ export const LinkEditorPopup: React.FC<LinkEditorPopupProps> = ({ editorView, no
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
-                <a className={classes.clearTextButton} onClick={handleClearField}>
+                <span className={classes.clearTextButton} onClick={handleClearField}>
                   <CloseIcon />
-                </a>
+                </span>
               </InputAdornment>
             )
           }}
