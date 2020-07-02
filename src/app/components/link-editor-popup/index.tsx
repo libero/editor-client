@@ -6,7 +6,6 @@ import { Node as ProsemirrorNode } from 'prosemirror-model';
 
 import LaunchIcon from '@material-ui/icons/Launch';
 import CloseIcon from '@material-ui/icons/Close';
-import { EditorState } from 'prosemirror-state';
 
 import { LINK_EDITOR_MAX_WIDTH, useLinkEditorStyles } from 'app/components/link-editor-popup/styles';
 import { ActionButton } from 'app/components/action-button';
