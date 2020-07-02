@@ -1,5 +1,6 @@
 import React, { useState, useCallback, SyntheticEvent } from 'react';
 import ReactDOM from 'react-dom';
+import { debounce } from 'lodash';
 import { TextField, IconButton, InputAdornment, Popover, ThemeProvider } from '@material-ui/core';
 import { EditorView, NodeView } from 'prosemirror-view';
 import { Node as ProsemirrorNode } from 'prosemirror-model';
@@ -101,21 +102,20 @@ export class LinkNodeView implements NodeView {
     this.dom = document.createElement('a');
     this.dom.style.cursor = 'pointer';
     this.dom.setAttribute('href', this.node.attrs.href);
-    this.dom.addEventListener('click', this.open.bind(this));
+    this.dom.addEventListener('click', debounce(this.open.bind(this), 100));
   }
 
-  open(event?: MouseEvent) {
-    event && event.preventDefault();
-
-    const { from } = this.view.state.selection;
-    const start = this.view.coordsAtPos(from) as DOMRect;
+  open() {
+    const { $from } = this.view.state.selection;
+    console.log(this.view.state.selection);
+    const start = this.view.coordsAtPos($from.pos);
 
     this.linkEditorContainer = this.view.dom.parentNode.appendChild(document.createElement('div'));
     this.linkEditorContainer.style.position = 'absolute';
     this.linkEditorContainer.style.zIndex = '10';
 
-    const x = start.left + LINK_EDITOR_MAX_WIDTH / 2;
-    const y = start.top + start.height;
+    const x = start.left;
+    const y = start.bottom;
 
     ReactDOM.render(
       <ThemeProvider theme={theme}>

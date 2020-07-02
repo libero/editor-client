@@ -11,6 +11,7 @@ import * as bioConfig from 'app/models/config/author-bio.config';
 import { Affiliation } from 'app/models/affiliation';
 import { getTextContentFromPath, makeSchemaFromConfig } from 'app/models/utils';
 import { buildInputRules } from 'app/models/plugins/input-rules';
+import { SelectPlugin } from 'app/utils/view.utils';
 
 export interface Person {
   readonly id: string;
@@ -64,6 +65,6 @@ function createBioEditorState(bio?: Element): EditorState {
   return EditorState.create({
     doc: bio ? ProseMirrorDOMParser.fromSchema(schema).parse(bio) : undefined,
     schema,
-    plugins: [buildInputRules(), gapCursor(), dropCursor(), keymap(baseKeymap), history()]
+    plugins: [buildInputRules(), gapCursor(), dropCursor(), keymap(baseKeymap), history(), SelectPlugin]
   });
 }
