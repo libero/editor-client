@@ -34,8 +34,8 @@ export interface JournalReference {
   source: EditorState;
   articleTitle: EditorState;
   volume: number;
-  firstPage: number;
-  lastPage: number;
+  firstPage: string;
+  lastPage: string;
   elocationId: string;
   inPress: boolean;
   doi: string;
@@ -47,8 +47,8 @@ export interface PeriodicalReference {
   source: EditorState;
   articleTitle: EditorState;
   volume: number;
-  firstPage: number;
-  lastPage: number;
+  firstPage: string;
+  lastPage: string;
   extLink: string;
 }
 
@@ -60,8 +60,8 @@ export interface BookReference {
   publisherName: string;
   source: EditorState;
   volume: number;
-  firstPage: number;
-  lastPage: number;
+  firstPage: string;
+  lastPage: string;
   doi: string;
   pmid: string;
   inPress: boolean;
@@ -72,7 +72,6 @@ export interface ReportReference {
   year: number;
   source: EditorState;
   publisherName: string;
-  patent: string;
   extLink: string;
 }
 
@@ -83,6 +82,7 @@ export interface PatentReference {
   publisherName: string;
   doi: string;
   pmid: string;
+  patent: string;
   extLink: string;
 }
 
@@ -148,8 +148,8 @@ export interface ConferenceReference {
   elocationId: string;
   doi: string;
   pmid: string;
-  firstPage: number;
-  lastPage: number;
+  firstPage: string;
+  lastPage: string;
 }
 
 export interface Reference {
@@ -241,8 +241,8 @@ function createJournalReference(referenceXml: Element): JournalReference {
     doi: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="doi"]') || '',
     pmid: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="pmid"]') || '',
     elocationId: getTextContentFromPath(referenceXml, 'elocation-id') || '',
-    firstPage: parseInt(getTextContentFromPath(referenceXml, 'fpage') || '0'),
-    lastPage: parseInt(getTextContentFromPath(referenceXml, 'lpage') || '0'),
+    firstPage: getTextContentFromPath(referenceXml, 'fpage'),
+    lastPage: getTextContentFromPath(referenceXml, 'lpage'),
     inPress: getTextContentFromPath(referenceXml, 'comment') === 'In press',
     volume: parseInt(getTextContentFromPath(referenceXml, 'volume') || '0')
   };
@@ -255,6 +255,7 @@ function createPatentReference(referenceXml: Element): PatentReference {
     articleTitle: createReferenceAnnotatedValue(referenceXml.querySelector('article-title')),
     publisherName: getTextContentFromPath(referenceXml, 'publisher-name') || '',
     extLink: getTextContentFromPath(referenceXml, 'ext-link') || '',
+    patent: getTextContentFromPath(referenceXml, 'patent') || '',
     doi: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="doi"]') || '',
     pmid: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="pmid"]') || ''
   };
@@ -269,8 +270,8 @@ function createPeriodicalReference(referenceXml: Element): PeriodicalReference {
     date: `${year}-${month}-${day}`,
     source: createReferenceAnnotatedValue(referenceXml.querySelector('source')),
     articleTitle: createReferenceAnnotatedValue(referenceXml.querySelector('article-title')),
-    firstPage: parseInt(getTextContentFromPath(referenceXml, 'fpage') || '0'),
-    lastPage: parseInt(getTextContentFromPath(referenceXml, 'lpage') || '0'),
+    firstPage: getTextContentFromPath(referenceXml, 'fpage'),
+    lastPage: getTextContentFromPath(referenceXml, 'lpage'),
     extLink: getTextContentFromPath(referenceXml, 'ext-link') || '',
     volume: parseInt(getTextContentFromPath(referenceXml, 'volume') || '0')
   };
@@ -281,7 +282,6 @@ function createReportReference(referenceXml: Element): ReportReference {
     year: parseInt(referenceXml.querySelector('year').textContent),
     source: createReferenceAnnotatedValue(referenceXml.querySelector('source')),
     publisherName: getTextContentFromPath(referenceXml, 'publisher-name') || '',
-    patent: getTextContentFromPath(referenceXml, 'patent') || '',
     extLink: getTextContentFromPath(referenceXml, 'ext-link') || ''
   };
 }
@@ -331,8 +331,8 @@ function createConferenceReference(referenceXml: Element): ConferenceReference {
     extLink: getTextContentFromPath(referenceXml, 'ext-link') || '',
     doi: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="doi"]') || '',
     pmid: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="pmid"]') || '',
-    firstPage: parseInt(getTextContentFromPath(referenceXml, 'fpage') || '0'),
-    lastPage: parseInt(getTextContentFromPath(referenceXml, 'lpage') || '0'),
+    firstPage: getTextContentFromPath(referenceXml, 'fpage'),
+    lastPage: getTextContentFromPath(referenceXml, 'lpage'),
     elocationId: getTextContentFromPath(referenceXml, 'elocation-id') || '',
     volume: parseInt(getTextContentFromPath(referenceXml, 'volume') || '0')
   };
@@ -375,8 +375,8 @@ function createBookReference(referenceXml: Element): BookReference {
     doi: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="doi"]') || '',
     pmid: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="pmid"]') || '',
     elocationId: getTextContentFromPath(referenceXml, 'elocation-id') || '',
-    firstPage: parseInt(getTextContentFromPath(referenceXml, 'fpage') || '0'),
-    lastPage: parseInt(getTextContentFromPath(referenceXml, 'lpage') || '0'),
+    firstPage: getTextContentFromPath(referenceXml, 'fpage'),
+    lastPage: getTextContentFromPath(referenceXml, 'lpage'),
     inPress: getTextContentFromPath(referenceXml, 'comment') === 'In press',
     volume: parseInt(getTextContentFromPath(referenceXml, 'volume') || '0')
   };

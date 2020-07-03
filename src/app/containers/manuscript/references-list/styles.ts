@@ -2,17 +2,18 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export const useReferencesListStyles = makeStyles((theme) => ({
   list: {
-    marginLeft: theme.spacing(2),
+    marginLeft: theme.spacing(3),
+    marginTop: 0,
     listStyleType: 'disc',
     '& li + li': {
-      marginTop: theme.spacing(2)
+      marginTop: theme.spacing(3)
     }
   }
 }));
 
 export const useReferencesListItemStyles = makeStyles((theme) => ({
   listItem: {
-    marginTop: theme.spacing(2),
+    paddingLeft: theme.spacing(2),
     display: 'flex',
     alignItems: 'flex-start'
   },
