@@ -17,6 +17,29 @@ exports[`Author Form Dialog renders edit author dialog form 1`] = `
     data-cmp="TextField"
   />
   <div
+    data-cmp="FormControl"
+  >
+    <div
+      data-cmp="InputLabel"
+    >
+      Affiliated Author
+    </div>
+    <div
+      data-cmp="Select"
+    >
+      <div
+        data-cmp="MenuItem"
+      >
+        No competing interest
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Has competing interest
+      </div>
+    </div>
+  </div>
+  <div
     data-cmp="rich-text-input"
   />
   <div
@@ -109,6 +132,29 @@ exports[`Author Form Dialog renders new author dialog form 1`] = `
   <div
     data-cmp="TextField"
   />
+  <div
+    data-cmp="FormControl"
+  >
+    <div
+      data-cmp="InputLabel"
+    >
+      Affiliated Author
+    </div>
+    <div
+      data-cmp="Select"
+    >
+      <div
+        data-cmp="MenuItem"
+      >
+        No competing interest
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Has competing interest
+      </div>
+    </div>
+  </div>
   <div
     data-cmp="rich-text-input"
   />

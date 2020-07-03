@@ -23,6 +23,8 @@ export interface Person {
   bio?: EditorState;
   isCorrespondingAuthor?: boolean;
   affiliations?: string[];
+  hasCompetingInterest?: boolean;
+  competingInterestStatement?: string;
 }
 
 export function createAuthor(xmlId: string | undefined, author: Omit<Person, 'id'>): Person {
@@ -47,9 +49,17 @@ export function getAuthorAffiliationsLabels(author: Person, affiliations: Affili
     .sort((a, b) => Number(a) - Number(b));
 }
 
-export function createAuthorsState(authorsXml: Element[]): Person[] {
-  return authorsXml.map((author) =>
-    createAuthor(author.getAttribute('id'), {
+export function createAuthorsState(authorsXml: Element[], notesXml: Element): Person[] {
+  const getCompetingInterestsXml = (authorEl: Element) => {
+    return Array.from(notesXml.querySelectorAll('[fn-type="COI-statement"]')).find((fnEl: Element) => {
+      const id = fnEl.getAttribute('id');
+      return authorEl.querySelector(`xref[ref-type="fn"][rid="${id}"]`);
+    });
+  };
+
+  return authorsXml.map((author) => {
+    const competingInterests = getCompetingInterestsXml(author);
+    return createAuthor(author.getAttribute('id'), {
       firstName: getTextContentFromPath(author, 'name > given-names'),
       lastName: getTextContentFromPath(author, 'name > surname'),
       suffix: getTextContentFromPath(author, 'name > suffix'),
@@ -57,9 +67,11 @@ export function createAuthorsState(authorsXml: Element[]): Person[] {
       email: getTextContentFromPath(author, 'email'),
       orcId: getTextContentFromPath(author, 'contrib-id[contrib-id-type="orcid"]'),
       isCorrespondingAuthor: author.getAttribute('corresp') === 'yes',
-      affiliations: Array.from(author.querySelectorAll('xref[ref-type="aff"]')).map((xRef) => xRef.getAttribute('rid'))
-    })
-  );
+      affiliations: Array.from(author.querySelectorAll('xref[ref-type="aff"]')).map((xRef) => xRef.getAttribute('rid')),
+      hasCompetingInterest: Boolean(competingInterests),
+      competingInterestStatement: competingInterests ? competingInterests.textContent.trim() : ''
+    });
+  });
 }
 
 export function createBioEditorState(bio?: Element): EditorState {

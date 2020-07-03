@@ -77,7 +77,11 @@ const AuthorInfo: React.FC<AuthorInfoProps> = React.memo(({ author }) => {
         <div className={classes.authorInfoLine}>
           <img src={OrcidIcon} alt="orcid icon" className={classes.orcidIcon} /> 0000-0001-5000-0007
         </div>
-        <div className={classes.authorInfoLine}> No Competing interest declared </div>
+        <div className={classes.authorInfoLine}>
+          {author.hasCompetingInterest
+            ? `Competing interest: ${author.competingInterestStatement}`
+            : 'No Competing interest declared'}
+        </div>
         {author.bio ? (
           <div
             className={classes.authorInfoLine}

@@ -44,7 +44,7 @@ exports[`Authors info details renders authors list 1`] = `
         <div
           className="makeStyles-authorInfoLine-9"
         >
-           No Competing interest declared 
+          No Competing interest declared
         </div>
       </div>
       <div
@@ -85,7 +85,7 @@ exports[`Authors info details renders authors list 1`] = `
         <div
           className="makeStyles-authorInfoLine-9"
         >
-           No Competing interest declared 
+          No Competing interest declared
         </div>
       </div>
       <div
