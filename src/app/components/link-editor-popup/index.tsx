@@ -1,7 +1,8 @@
 import React, { useState, useCallback, SyntheticEvent } from 'react';
 import ReactDOM from 'react-dom';
 import { debounce } from 'lodash';
-import { TextField, IconButton, InputAdornment, Popover, ThemeProvider } from '@material-ui/core';
+import { TextField, IconButton, InputAdornment, Popover } from '@material-ui/core';
+import { ThemeProvider } from '@material-ui/core/styles';
 import { EditorView, NodeView } from 'prosemirror-view';
 import { Node as ProsemirrorNode } from 'prosemirror-model';
 import LaunchIcon from '@material-ui/icons/Launch';
@@ -107,7 +108,6 @@ export class LinkNodeView implements NodeView {
 
   open() {
     const { $from } = this.view.state.selection;
-    console.log(this.view.state.selection);
     const start = this.view.coordsAtPos($from.pos);
 
     this.linkEditorContainer = this.view.dom.parentNode.appendChild(document.createElement('div'));

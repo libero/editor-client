@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RichTextInput should render component 1`] = `
+<div
+  className="makeStyles-root-3 makeStyles-outlinedVariant-4"
+>
+  <label
+    className="makeStyles-label-6"
+  >
+    Test Editor Input
+  </label>
+  <div
+    data-cmp="ToggleButtonGroup"
+  />
+  <div
+    className="prosemirrorContainer"
+  />
+</div>
+`;

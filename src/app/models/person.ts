@@ -60,7 +60,7 @@ export function createAuthorsState(authorsXml: Element[]): Person[] {
   );
 }
 
-function createBioEditorState(bio?: Element): EditorState {
+export function createBioEditorState(bio?: Element): EditorState {
   const schema = makeSchemaFromConfig(bioConfig.topNode, bioConfig.nodes, bioConfig.marks);
   return EditorState.create({
     doc: bio ? ProseMirrorDOMParser.fromSchema(schema).parse(bio) : undefined,
