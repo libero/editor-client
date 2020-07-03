@@ -1,18 +1,20 @@
 import React, { useCallback, useEffect, useRef, useState, useMemo } from 'react';
-import { useSectionContainerStyles } from './styles';
-import classNames from 'classnames';
 import { isEqual } from 'lodash';
+import classNames from 'classnames';
+
+import { useSectionContainerStyles } from './styles';
 
 type SectionContainerVariant = 'outlined' | 'plain';
 const DEFAULT_VARIANT = 'plain';
 
 interface SectionContainerProps {
   label: string;
+  className?: string;
   variant?: SectionContainerVariant;
 }
 
 export const SectionContainer: React.FC<SectionContainerProps> = React.memo((props) => {
-  const { children, label, variant } = props;
+  const { children, label, variant, className } = props;
   const classes = useSectionContainerStyles();
   const containerRef = useRef<HTMLDivElement>();
   const [focused, setFocused] = useState<boolean>();
@@ -36,7 +38,7 @@ export const SectionContainer: React.FC<SectionContainerProps> = React.memo((pro
     }
   }, [containerRef, handleFocus, handleBlur]);
 
-  const className = useMemo(() => {
+  const variantClass = useMemo(() => {
     const variantClass = {
       outlined: classes.outlinedVariant,
       plain: classes.plainVariant
@@ -46,7 +48,7 @@ export const SectionContainer: React.FC<SectionContainerProps> = React.memo((pro
   }, [classes, focused, variant]);
 
   return (
-    <div className={className} ref={containerRef}>
+    <div className={classNames(className, variantClass)} ref={containerRef}>
       <label className={classes.label}>{label}</label>
       {children}
     </div>

@@ -62,6 +62,7 @@
     "@types/jest": "^24.9.1",
     "@types/node": "^12.12.32",
     "@types/prosemirror-commands": "^1.0.1",
+    "@types/prosemirror-history": "^1.0.1",
     "@types/prosemirror-inputrules": "^1.0.2",
     "@types/prosemirror-model": "^1.7.2",
     "@types/prosemirror-schema-list": "^1.0.1",

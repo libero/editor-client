@@ -17,6 +17,9 @@ exports[`Author Form Dialog renders edit author dialog form 1`] = `
     data-cmp="TextField"
   />
   <div
+    data-cmp="rich-text-input"
+  />
+  <div
     className="makeStyles-inputField-2"
   >
     <div
@@ -102,6 +105,9 @@ exports[`Author Form Dialog renders new author dialog form 1`] = `
   />
   <div
     data-cmp="TextField"
+  />
+  <div
+    data-cmp="rich-text-input"
   />
   <div
     className="makeStyles-inputField-2"

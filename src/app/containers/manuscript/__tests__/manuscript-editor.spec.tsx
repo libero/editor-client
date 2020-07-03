@@ -4,22 +4,19 @@ import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 
 import { ManuscriptEditor } from 'app/containers/manuscript/manuscript-editor';
-import { getInitialHistory, getLoadableStateSuccess } from 'app/utils/state.utils';
 import { updateAbstractAction, updateTitleAction } from 'app/actions/manuscript.actions';
-import { EditorState } from 'prosemirror-state';
+import { givenState } from 'app/test-utils/reducer-test-helpers';
+
+jest.mock('app/components/rich-text-input', () => ({
+  RichTextInput: () => <div data-cmp="rich-text-input"></div>
+}));
 
 describe('manuscript editor', () => {
   const mockStore = configureMockStore([]);
 
   it('should render', () => {
-    const mockEditorState = getInitialHistory({
-      title: new EditorState(),
-      abstract: new EditorState(),
-      keywordGroups: {},
-      authors: [],
-      affiliations: []
-    });
-    const store = mockStore({ manuscript: getLoadableStateSuccess(mockEditorState) });
+    const mockEditorState = givenState({});
+    const store = mockStore({ manuscript: mockEditorState });
     const wrapper = create(
       <Provider store={store}>
         <ManuscriptEditor />
@@ -30,14 +27,8 @@ describe('manuscript editor', () => {
   });
 
   it('should dispatch changes for title', () => {
-    const mockEditorState = getInitialHistory({
-      title: new EditorState(),
-      abstract: new EditorState(),
-      keywordGroups: {},
-      authors: [],
-      affiliations: []
-    });
-    const store = mockStore({ manuscript: getLoadableStateSuccess(mockEditorState) });
+    const mockEditorState = givenState({});
+    const store = mockStore({ manuscript: mockEditorState });
     jest.spyOn(store, 'dispatch');
 
     const wrapper = create(
@@ -45,7 +36,8 @@ describe('manuscript editor', () => {
         <ManuscriptEditor />
       </Provider>
     );
-    const changeArg = Symbol();
+
+    const changeArg = mockEditorState.data.present.title.tr;
 
     wrapper.root.findByProps({ label: 'Title' }).props.onChange(changeArg);
 
@@ -53,14 +45,8 @@ describe('manuscript editor', () => {
   });
 
   it('should dispatch changes for abstract', () => {
-    const mockEditorState = getInitialHistory({
-      title: new EditorState(),
-      abstract: new EditorState(),
-      keywordGroups: {},
-      authors: [],
-      affiliations: []
-    });
-    const store = mockStore({ manuscript: getLoadableStateSuccess(mockEditorState) });
+    const mockEditorState = givenState({});
+    const store = mockStore({ manuscript: mockEditorState });
     jest.spyOn(store, 'dispatch');
 
     const wrapper = create(
@@ -68,7 +54,7 @@ describe('manuscript editor', () => {
         <ManuscriptEditor />
       </Provider>
     );
-    const changeArg = Symbol();
+    const changeArg = mockEditorState.data.present.abstract.tr;
 
     wrapper.root.findByProps({ label: 'Abstract' }).props.onChange(changeArg);
     expect(store.dispatch).toBeCalledWith(updateAbstractAction(changeArg));

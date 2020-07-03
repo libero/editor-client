@@ -41,6 +41,24 @@ export const marks = {
     toDOM(): DOMOutputSpecArray {
       return ['strong', 0];
     }
+  },
+  link: {
+    attrs: {
+      href: { default: undefined }
+    },
+    inclusive: false,
+    parseDOM: [
+      {
+        tag: 'ext-link[ext-link-type="uri"]',
+        getAttrs(dom) {
+          return { href: dom.getAttribute('xlink:href') };
+        }
+      }
+    ],
+    toDOM(node) {
+      const { href } = node.attrs;
+      return ['a', { href }, 0];
+    }
   }
 };
 

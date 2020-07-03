@@ -3,13 +3,16 @@ import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 
 import { SortableAuthorsList } from 'app/containers/manuscript/sortable-authors-list/index';
-import { getInitialHistory, getLoadableStateSuccess } from 'app/utils/state.utils';
-import { EditorState } from 'prosemirror-state';
 import { create } from 'react-test-renderer';
 import { mount } from 'enzyme';
 import { moveAuthorAction } from 'app/actions/manuscript.actions';
 import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
 import { AuthorFormDialog } from 'app/containers/author-form-dialog';
+import { givenState } from 'app/test-utils/reducer-test-helpers';
+
+jest.mock('app/components/rich-text-input', () => ({
+  RichTextInput: () => <div data-cmp="rich-text-input"></div>
+}));
 
 jest.mock('@material-ui/core', () => ({
   Chip: ({ label }) => <div data-cmp="chip">{label}</div>,
@@ -44,15 +47,9 @@ describe('Sortable authors list', () => {
   const mockStore = configureMockStore([]);
 
   it('renders authors list', () => {
-    const mockState = getInitialHistory({
-      title: new EditorState(),
-      abstract: new EditorState(),
-      keywordGroups: {},
-      authors: AUTHORS,
-      affiliations: []
-    });
+    const mockState = givenState({ authors: AUTHORS });
     const store = mockStore({
-      manuscript: getLoadableStateSuccess(mockState)
+      manuscript: mockState
     });
     const wrapper = create(
       <Provider store={store}>
@@ -64,16 +61,9 @@ describe('Sortable authors list', () => {
   });
 
   it('dispatches move actions when authors rearranged', () => {
-    const mockState = getInitialHistory({
-      title: new EditorState(),
-      abstract: new EditorState(),
-      keywordGroups: {},
-      authors: AUTHORS,
-      affiliations: []
-    });
-
+    const mockState = givenState({ authors: AUTHORS });
     const store = mockStore({
-      manuscript: getLoadableStateSuccess(mockState)
+      manuscript: mockState
     });
 
     jest.spyOn(store, 'dispatch');
@@ -91,16 +81,10 @@ describe('Sortable authors list', () => {
   });
 
   it('dispatches edit action', () => {
-    const mockState = getInitialHistory({
-      title: new EditorState(),
-      abstract: new EditorState(),
-      keywordGroups: {},
-      authors: AUTHORS,
-      affiliations: []
-    });
+    const mockState = givenState({ authors: AUTHORS });
 
     const store = mockStore({
-      manuscript: getLoadableStateSuccess(mockState)
+      manuscript: mockState
     });
 
     jest.spyOn(store, 'dispatch');
@@ -124,16 +108,10 @@ describe('Sortable authors list', () => {
   });
 
   it('dispatches add action', () => {
-    const mockState = getInitialHistory({
-      title: new EditorState(),
-      abstract: new EditorState(),
-      keywordGroups: {},
-      authors: [],
-      affiliations: []
-    });
+    const mockState = givenState({ authors: AUTHORS });
 
     const store = mockStore({
-      manuscript: getLoadableStateSuccess(mockState)
+      manuscript: mockState
     });
 
     jest.spyOn(store, 'dispatch');

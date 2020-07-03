@@ -9,7 +9,7 @@ import { ActionButton } from 'app/components/action-button';
 
 jest.mock('@material-ui/core', () => {
   return {
-    Select: ({ children }) => <div data-cmp="Select">{children}</div>,
+    Select: ({ onChange, value }) => <input onChange={onChange} value={value} data-cmp="Select" />,
     MenuItem: ({ children }) => <div data-cmp="MenuItem">{children}</div>,
     FormControl: ({ children }) => <div data-cmp="FormControl">{children}</div>,
     InputLabel: ({ children }) => <div data-cmp="InputLabel">{children}</div>,
@@ -82,7 +82,9 @@ describe('Linked Authors List', () => {
 
     wrapper.find(ActionButton).prop('onClick')();
     wrapper.update();
-    wrapper.find(Select).at(1).prop('onChange')({ target: { value: allAuthors[1].id } }, null);
+    const event = document.createEvent('Event');
+    (wrapper.find(Select).at(1).getDOMNode() as HTMLSelectElement).value = allAuthors[1].id;
+    wrapper.find(Select).at(1).simulate('change', event);
 
     expect(clickHandler).toHaveBeenCalledWith([allAuthors[0], allAuthors[1]]);
   });

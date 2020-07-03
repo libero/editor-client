@@ -15,6 +15,7 @@ import { ActionButton } from 'app/components/action-button';
 import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
 import { AuthorFormDialog } from 'app/containers/author-form-dialog';
 import { isEqual } from 'lodash';
+import { stringifyEditorState } from 'app/utils/view.utils';
 
 export const AuthorsInfoDetails: React.FC = () => {
   const authors = useSelector(getAuthors);
@@ -73,6 +74,12 @@ const AuthorInfo: React.FC<AuthorInfoProps> = React.memo(({ author }) => {
           <img src={OrcidIcon} alt="orcid icon" className={classes.orcidIcon} /> 0000-0001-5000-0007
         </div>
         <div className={classes.authorInfoLine}> No Competing interest declared </div>
+        {author.bio ? (
+          <div
+            className={classes.authorInfoLine}
+            dangerouslySetInnerHTML={{ __html: stringifyEditorState(author.bio) }}
+          />
+        ) : undefined}
       </div>
       <IconButton classes={{ root: classes.editButton }} onClick={editAuthor}>
         <EditIcon fontSize="small" />

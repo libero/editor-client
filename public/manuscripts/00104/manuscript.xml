@@ -41,7 +41,9 @@
                 <xref ref-type="aff" rid="aff2">2</xref>
                 <xref ref-type="fn" rid="equal-contrib1">†</xref>
                 <xref ref-type="fn" rid="con1"/>
-                <bio><p><bold>Fred Atherden</bold> is in the Production Department, eLife Sciences, Cambridge, United Kingdom</p></bio>
+                <bio><p><bold>Fred Atherden</bold> is in the Production Department, eLife Sciences, Cambridge, United Kingdoms
+                    <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License</ext-link>
+                </p></bio>
               </contrib>
               <contrib contrib-type="author" equal-contrib="yes" deceased="yes">
                 <name><surname>Smith</surname><given-names>Jeanine</given-names><suffix>III</suffix></name>

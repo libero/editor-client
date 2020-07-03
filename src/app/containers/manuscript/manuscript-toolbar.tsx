@@ -12,7 +12,7 @@ import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
 import LinkIcon from '@material-ui/icons/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 
-import { SubscriptIcon, SuperscriptIcon } from './icons';
+import { SubscriptIcon, SuperscriptIcon } from 'app/assets/icons';
 import { DropDownMenu } from 'app/components/drop-down-menu';
 import * as manuscriptActions from 'app/actions/manuscript.actions';
 

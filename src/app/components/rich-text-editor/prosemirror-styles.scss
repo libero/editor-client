@@ -4,6 +4,11 @@
   line-height: initial;
   color: $text-primary;
 
+  .selection-marker {
+    background: Hightlight;
+    color: HightlightText;
+  }
+
   .ProseMirror {
     outline: none;
 
