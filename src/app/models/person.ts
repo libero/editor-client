@@ -50,7 +50,7 @@ export function getAuthorAffiliationsLabels(author: Person, affiliations: Affili
 }
 
 export function createAuthorsState(authorsXml: Element[], notesXml: Element): Person[] {
-  const getCompetingInterestsXml = (authorEl: Element) => {
+  const getCompetingInterestsXml = (authorEl: Element): Element => {
     return Array.from(notesXml.querySelectorAll('[fn-type="COI-statement"]')).find((fnEl: Element) => {
       const id = fnEl.getAttribute('id');
       return authorEl.querySelector(`xref[ref-type="fn"][rid="${id}"]`);
