@@ -15,40 +15,11 @@ exports[`Linked Authors List adds empty fields to the end of the list 1`] = `
       >
         Affiliated Author
       </div>
-      <div
+      <input
         data-cmp="Select"
-      >
-        <div
-          data-cmp="MenuItem"
-        >
-          Select affiliated author
-        </div>
-        <div
-          data-cmp="MenuItem"
-        >
-          Fred Atherden
-        </div>
-        <div
-          data-cmp="MenuItem"
-        >
-          Jeanine Smith III
-        </div>
-        <div
-          data-cmp="MenuItem"
-        >
-          Jack London III
-        </div>
-        <div
-          data-cmp="MenuItem"
-        >
-          Mark Twain III
-        </div>
-        <div
-          data-cmp="MenuItem"
-        >
-          Alexandr Solzhenitsin III
-        </div>
-      </div>
+        onChange={[Function]}
+        value="149aa8ef-ed62-4ef9-aeaa-9758ce99c136"
+      />
     </div>
     <div
       data-cmo="iconButton"
@@ -65,35 +36,11 @@ exports[`Linked Authors List adds empty fields to the end of the list 1`] = `
       >
         Affiliated Author
       </div>
-      <div
+      <input
         data-cmp="Select"
-      >
-        <div
-          data-cmp="MenuItem"
-        >
-          Select affiliated author
-        </div>
-        <div
-          data-cmp="MenuItem"
-        >
-          Jeanine Smith III
-        </div>
-        <div
-          data-cmp="MenuItem"
-        >
-          Jack London III
-        </div>
-        <div
-          data-cmp="MenuItem"
-        >
-          Mark Twain III
-        </div>
-        <div
-          data-cmp="MenuItem"
-        >
-          Alexandr Solzhenitsin III
-        </div>
-      </div>
+        onChange={[Function]}
+        value=""
+      />
     </div>
     <div
       data-cmo="iconButton"
@@ -120,40 +67,11 @@ exports[`Linked Authors List removes elements from the list 1`] = `
       >
         Affiliated Author
       </div>
-      <div
+      <input
         data-cmp="Select"
-      >
-        <div
-          data-cmp="MenuItem"
-        >
-          Select affiliated author
-        </div>
-        <div
-          data-cmp="MenuItem"
-        >
-          Fred Atherden
-        </div>
-        <div
-          data-cmp="MenuItem"
-        >
-          Jeanine Smith III
-        </div>
-        <div
-          data-cmp="MenuItem"
-        >
-          Jack London III
-        </div>
-        <div
-          data-cmp="MenuItem"
-        >
-          Mark Twain III
-        </div>
-        <div
-          data-cmp="MenuItem"
-        >
-          Alexandr Solzhenitsin III
-        </div>
-      </div>
+        onChange={[Function]}
+        value="149aa8ef-ed62-4ef9-aeaa-9758ce99c136"
+      />
     </div>
     <div
       data-cmo="iconButton"
@@ -170,35 +88,11 @@ exports[`Linked Authors List removes elements from the list 1`] = `
       >
         Affiliated Author
       </div>
-      <div
+      <input
         data-cmp="Select"
-      >
-        <div
-          data-cmp="MenuItem"
-        >
-          Select affiliated author
-        </div>
-        <div
-          data-cmp="MenuItem"
-        >
-          Jeanine Smith III
-        </div>
-        <div
-          data-cmp="MenuItem"
-        >
-          Jack London III
-        </div>
-        <div
-          data-cmp="MenuItem"
-        >
-          Mark Twain III
-        </div>
-        <div
-          data-cmp="MenuItem"
-        >
-          Alexandr Solzhenitsin III
-        </div>
-      </div>
+        onChange={[Function]}
+        value=""
+      />
     </div>
     <div
       data-cmo="iconButton"
@@ -225,40 +119,11 @@ exports[`Linked Authors List renders component 1`] = `
       >
         Affiliated Author
       </div>
-      <div
+      <input
         data-cmp="Select"
-      >
-        <div
-          data-cmp="MenuItem"
-        >
-          Select affiliated author
-        </div>
-        <div
-          data-cmp="MenuItem"
-        >
-          Fred Atherden
-        </div>
-        <div
-          data-cmp="MenuItem"
-        >
-          Jeanine Smith III
-        </div>
-        <div
-          data-cmp="MenuItem"
-        >
-          Jack London III
-        </div>
-        <div
-          data-cmp="MenuItem"
-        >
-          Mark Twain III
-        </div>
-        <div
-          data-cmp="MenuItem"
-        >
-          Alexandr Solzhenitsin III
-        </div>
-      </div>
+        onChange={[Function]}
+        value="149aa8ef-ed62-4ef9-aeaa-9758ce99c136"
+      />
     </div>
     <div
       data-cmo="iconButton"
