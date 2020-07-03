@@ -71,6 +71,9 @@ exports[`Author Form Dialog renders edit author dialog form 1`] = `
     />
   </div>
   <div
+    data-cmp="FormControlLabel"
+  />
+  <div
     className="makeStyles-buttonPanel-3"
   >
     <div
@@ -130,6 +133,9 @@ exports[`Author Form Dialog renders new author dialog form 1`] = `
       data-cmp="Button"
     />
   </div>
+  <div
+    data-cmp="FormControlLabel"
+  />
   <div
     className="makeStyles-buttonPanel-3"
   >

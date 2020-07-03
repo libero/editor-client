@@ -21,6 +21,7 @@ export interface Person {
   email?: string;
   orcId?: string;
   bio?: EditorState;
+  isCorrespondingAuthor?: boolean;
   affiliations?: string[];
 }
 
@@ -55,6 +56,7 @@ export function createAuthorsState(authorsXml: Element[]): Person[] {
       bio: createBioEditorState(author.querySelector('bio')),
       email: getTextContentFromPath(author, 'email'),
       orcId: getTextContentFromPath(author, 'contrib-id[contrib-id-type="orcid"]'),
+      isCorrespondingAuthor: author.getAttribute('corresp') === 'yes',
       affiliations: Array.from(author.querySelectorAll('xref[ref-type="aff"]')).map((xRef) => xRef.getAttribute('rid'))
     })
   );

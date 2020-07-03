@@ -37,6 +37,10 @@ export const useAuthorFormStyles = makeStyles((theme) => ({
       maxWidth: 1000
     }
   },
+  correspondingAuthorCheckbox: {
+    marginLeft: theme.spacing(2),
+    marginBottom: theme.spacing(4)
+  },
 
   deleteButton: {
     height: 32,
