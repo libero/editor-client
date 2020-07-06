@@ -165,9 +165,9 @@ export const AuthorFormDialog: React.FC<AuthorFormDialogProps> = (props) => {
         value={author.email || ''}
         onChange={handleFormChange}
       />
-      <FormControl variant="outlined" classes={{ root: classes.inputField }}>
+      <FormControl variant="outlined" classes={{ root: classes.inputField }} fullWidth>
         <InputLabel shrink id="author-affiliations-label">
-          Affiliated Author
+          Competing interest
         </InputLabel>
         <Select
           labelId="author-affiliations-label"

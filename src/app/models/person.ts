@@ -58,7 +58,8 @@ export function createAuthorsState(authorsXml: Element[], notesXml: Element): Pe
   };
 
   return authorsXml.map((author) => {
-    const competingInterests = getCompetingInterestsXml(author);
+    const competingInterestsXml = getCompetingInterestsXml(author);
+    const competingInterests = competingInterestsXml ? competingInterestsXml.textContent.trim() : '';
     return createAuthor(author.getAttribute('id'), {
       firstName: getTextContentFromPath(author, 'name > given-names'),
       lastName: getTextContentFromPath(author, 'name > surname'),
@@ -68,8 +69,8 @@ export function createAuthorsState(authorsXml: Element[], notesXml: Element): Pe
       orcId: getTextContentFromPath(author, 'contrib-id[contrib-id-type="orcid"]'),
       isCorrespondingAuthor: author.getAttribute('corresp') === 'yes',
       affiliations: Array.from(author.querySelectorAll('xref[ref-type="aff"]')).map((xRef) => xRef.getAttribute('rid')),
-      hasCompetingInterest: Boolean(competingInterests),
-      competingInterestStatement: competingInterests ? competingInterests.textContent.trim() : ''
+      hasCompetingInterest: Boolean(competingInterests) && competingInterests !== 'No competing interests declared',
+      competingInterestStatement: competingInterests
     });
   });
 }
