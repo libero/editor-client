@@ -81,9 +81,16 @@ export const renderJournalReference = (reference: Reference) => {
 export const renderBookReference = (reference: Reference) => {
   const referenceInfo = reference.referenceInfo as BookReference;
   const authors = getReferenceAuthors(reference);
+  const editors = referenceInfo.editors
+    .map((editor) => {
+      return get(editor, 'groupName', `${editor['lastName']} ${editor['firstName']}`);;
+    })
+    .join(', ');
+
   return (
     <>
       {authors}. {referenceInfo.year}. {getAnnotatedText(referenceInfo.chapterTitle, '. ')}
+      {editors ? `In: ${editors} (Ed${referenceInfo.editors.length > 1 ? 's' : ''}) ` : undefined}
       <em>{getAnnotatedText(referenceInfo.source, ' ')}</em> {referenceInfo.inPress ? 'In Press.' : undefined}
       <strong>{referenceInfo.volume ? ` ${referenceInfo.volume}:` : undefined}</strong>
       {referenceInfo.edition ? ` ${referenceInfo.edition}.` : undefined}
