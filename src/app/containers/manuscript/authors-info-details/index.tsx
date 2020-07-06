@@ -68,7 +68,7 @@ const AuthorInfo: React.FC<AuthorInfoProps> = React.memo(({ author }) => {
           <strong> {getAuthorDisplayName(author)} </strong>
         </div>
         <div className={classes.authorInfoLine}>
-          {author.isCorrespondingAuthor ? 'Corresponding author: ' : undefined}
+          {author.isCorrespondingAuthor ? 'Corresponding Author: ' : undefined}
           {author.email}
         </div>
         <div className={classes.authorInfoLine}>
