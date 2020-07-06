@@ -176,7 +176,7 @@ export const AuthorFormDialog: React.FC<AuthorFormDialogProps> = (props) => {
             checked={author.isCorrespondingAuthor}
           />
         }
-        label="Corresponding Author"
+        label="Corresponding author"
         classes={{ root: classes.correspondingAuthorCheckbox }}
       />
       <div className={classes.buttonPanel}>
