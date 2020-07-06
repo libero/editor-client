@@ -25,7 +25,10 @@ exports[`Authors info details renders authors list 1`] = `
         </div>
         <div
           className="makeStyles-authorInfoLine-9"
-        />
+        >
+          Corresponding Author: 
+          test@example.com
+        </div>
         <div
           className="makeStyles-authorInfoLine-9"
         >
@@ -44,7 +47,7 @@ exports[`Authors info details renders authors list 1`] = `
         <div
           className="makeStyles-authorInfoLine-9"
         >
-          No Competing interest declared
+          Competing interest: Works at eLife
         </div>
       </div>
       <div
