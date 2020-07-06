@@ -24,12 +24,13 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
   const authors = doc.querySelectorAll('contrib[contrib-type="author"]');
   const affiliations = doc.querySelectorAll('contrib-group:first-of-type aff');
   const references = doc.querySelectorAll('ref-list ref element-citation');
+  const authorNotes = doc.querySelector('author-notes');
 
   return {
     title: createTitleState(title),
     abstract: createAbstractState(abstract),
     keywordGroups: createKeywordGroupsState(Array.from(keywordGroups)),
-    authors: createAuthorsState(Array.from(authors)),
+    authors: createAuthorsState(Array.from(authors), authorNotes),
     affiliations: createAffiliationsState(Array.from(affiliations)),
     references: createReferencesState(Array.from(references))
   } as Manuscript;
