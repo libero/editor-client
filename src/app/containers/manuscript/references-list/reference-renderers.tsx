@@ -86,14 +86,14 @@ export const renderBookReference = (reference: Reference) => {
     <>
       {authors}. {referenceInfo.year}. {getAnnotatedText(referenceInfo.chapterTitle, '. ')}
       <em>{getAnnotatedText(referenceInfo.source, ' ')}</em> {referenceInfo.inPress ? 'In Press.' : undefined}
-      {referenceInfo.edition ? ` ${referenceInfo.edition}.` : undefined}
       <strong>{referenceInfo.volume ? ` ${referenceInfo.volume}:` : undefined}</strong>
-      {referenceInfo.firstPage && referenceInfo.lastPage
-        ? `${referenceInfo.firstPage}-${referenceInfo.lastPage}. `
-        : undefined}
+      {referenceInfo.edition ? ` ${referenceInfo.edition}.` : undefined}
       {referenceInfo.elocationId ? `${referenceInfo.elocationId}.` : undefined}
-      {referenceInfo.publisherName ? ` ${referenceInfo.publisherName}:` : undefined}
-      {referenceInfo.publisherLocation ? ` ${referenceInfo.publisherLocation}.` : undefined}
+      {referenceInfo.publisherLocation ? ` ${referenceInfo.publisherLocation}:` : undefined}
+      {referenceInfo.publisherName ? ` ${referenceInfo.publisherName}.` : undefined}
+      {referenceInfo.firstPage && referenceInfo.lastPage
+        ? `p. ${referenceInfo.firstPage}-${referenceInfo.lastPage}. `
+        : undefined}
       {renderDoi(referenceInfo.doi)}
       {renderPmid(referenceInfo.pmid)}
     </>
@@ -107,11 +107,11 @@ export const renderConferenceReference = (reference: Reference) => {
     <>
       {authors}. {referenceInfo.year}. {getAnnotatedText(referenceInfo.articleTitle, '. ')}
       <strong>{referenceInfo.volume ? ` ${referenceInfo.volume}:` : undefined}</strong>
-      {referenceInfo.firstPage && referenceInfo.lastPage
-        ? `${referenceInfo.firstPage}-${referenceInfo.lastPage}.`
-        : undefined}
-      {referenceInfo.conferenceLocation ? ` ${referenceInfo.conferenceLocation}:` : undefined}
       {referenceInfo.conferenceName ? [getAnnotatedText(referenceInfo.conferenceName, '.')] : undefined}
+      {referenceInfo.conferenceLocation ? ` ${referenceInfo.conferenceLocation}:` : undefined}
+      {referenceInfo.firstPage && referenceInfo.lastPage
+        ? `p. ${referenceInfo.firstPage}-${referenceInfo.lastPage}.`
+        : undefined}
       {referenceInfo.conferenceDate ? ` ${referenceInfo.conferenceDate}.` : undefined}
       {referenceInfo.elocationId ? ` ${referenceInfo.elocationId}.` : undefined}
       {renderDoi(referenceInfo.doi)} {renderPmid(referenceInfo.pmid)}
@@ -201,7 +201,8 @@ export const renderWebReference = (reference: Reference) => {
     <>
       {authors}. {referenceInfo.year}. {getAnnotatedText(referenceInfo.articleTitle, '. ')}
       <em>{getAnnotatedText(referenceInfo.source, ' ')}</em>
-      {referenceInfo.extLink ? getExtLinkTag(referenceInfo.extLink) : undefined} {referenceInfo.dateInCitation}
+      {referenceInfo.extLink ? getExtLinkTag(referenceInfo.extLink) : undefined}
+      {referenceInfo.dateInCitation ? ` Accessed: ${referenceInfo.dateInCitation}` : undefined}
     </>
   );
 };
@@ -250,7 +251,7 @@ const getReferenceAuthors = (reference: Reference) => {
 const getExtLinkTag = (url: string) => {
   return (
     <>
-      url:{' '}
+      {' '}url:{' '}
       <a target="_blank" rel="noopener noreferrer" href={url}>
         {url}
       </a>
