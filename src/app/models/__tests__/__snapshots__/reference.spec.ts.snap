@@ -28,9 +28,9 @@ Object {
     "doi": "",
     "edition": "4th Edition",
     "elocationId": "",
-    "firstPage": 0,
+    "firstPage": undefined,
     "inPress": false,
-    "lastPage": 0,
+    "lastPage": undefined,
     "pmid": "",
     "publisherLocation": "London",
     "publisherName": "Verso",
@@ -103,8 +103,8 @@ Object {
     "doi": "10.1145/2623330.2623667",
     "elocationId": "",
     "extLink": "",
-    "firstPage": 1877,
-    "lastPage": 1886,
+    "firstPage": "1877",
+    "lastPage": "1886",
     "pmid": "",
     "volume": 0,
     "year": 2014,
@@ -212,9 +212,9 @@ Object {
     },
     "doi": "",
     "elocationId": "",
-    "firstPage": 236,
+    "firstPage": "236",
     "inPress": false,
-    "lastPage": 239,
+    "lastPage": "239",
     "pmid": "",
     "source": Object {
       "doc": Object {
@@ -266,6 +266,7 @@ Object {
     },
     "doi": "",
     "extLink": "https://patents.google.com/patent/WO2015087996A1/en",
+    "patent": "2015087996",
     "pmid": "",
     "publisherName": "",
     "source": Object {
@@ -317,8 +318,8 @@ Object {
     },
     "date": "1993-September-9",
     "extLink": "",
-    "firstPage": 1,
-    "lastPage": 4,
+    "firstPage": "1",
+    "lastPage": "4",
     "source": Object {
       "doc": Object {
         "type": "annotatedReferenceInfoDoc",
@@ -401,7 +402,6 @@ Object {
   "id": "id",
   "referenceInfo": Object {
     "extLink": "http://www.who.int/malaria/publications/world-malaria-report-2015/en/",
-    "patent": "",
     "publisherName": "World Health Organization",
     "source": Object {
       "doc": Object {
@@ -435,7 +435,6 @@ Object {
   "id": "id",
   "referenceInfo": Object {
     "extLink": "http://www.who.int/malaria/publications/world-malaria-report-2015/en/",
-    "patent": "",
     "publisherName": "World Health Organization",
     "source": Object {
       "doc": Object {

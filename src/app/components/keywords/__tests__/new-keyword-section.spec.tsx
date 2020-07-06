@@ -10,7 +10,10 @@ describe('KeywordsEditorComponent', () => {
   it('renders keyword', () => {
     const props = {
       editorState: createNewKeywordState(),
-      onEnter: jest.fn()
+      onEnter: jest.fn(),
+      onFocus: jest.fn(),
+      onBlur: jest.fn(),
+      onChange: jest.fn()
     };
 
     const component = create(<NewKeywordSection {...props} />);
@@ -20,7 +23,10 @@ describe('KeywordsEditorComponent', () => {
   it('triggers onEnter when enter key is pressed', () => {
     const props = {
       editorState: createNewKeywordState(),
-      onEnter: jest.fn()
+      onEnter: jest.fn(),
+      onFocus: jest.fn(),
+      onBlur: jest.fn(),
+      onChange: jest.fn()
     };
 
     const component = mount(<NewKeywordSection {...props} />);

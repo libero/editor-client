@@ -160,7 +160,7 @@ export const getMenuForEditor = (editorState: EditorState, editorView: EditorVie
     const ActionIconComponent = option.icon;
     return (
       <ToggleButton
-        key={option.markName}
+        key={option.actionName}
         onMouseDown={(event: SyntheticEvent) => {
           event.stopPropagation();
           event.preventDefault();
