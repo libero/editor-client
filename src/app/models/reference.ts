@@ -73,6 +73,7 @@ export interface ReportReference {
   year: number;
   source: EditorState;
   publisherName: string;
+  doi: string;
   extLink: string;
 }
 
@@ -290,7 +291,8 @@ function createReportReference(referenceXml: Element): ReportReference {
     year: parseInt(referenceXml.querySelector('year').textContent),
     source: createReferenceAnnotatedValue(referenceXml.querySelector('source')),
     publisherName: getTextContentFromPath(referenceXml, 'publisher-name') || '',
-    extLink: getTextContentFromPath(referenceXml, 'ext-link') || ''
+    extLink: getTextContentFromPath(referenceXml, 'ext-link') || '',
+    doi: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="doi"]') || ''
   };
 }
 

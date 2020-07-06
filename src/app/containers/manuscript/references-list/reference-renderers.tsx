@@ -90,13 +90,13 @@ export const renderBookReference = (reference: Reference) => {
   return (
     <>
       {authors}. {referenceInfo.year}. {getAnnotatedText(referenceInfo.chapterTitle, '. ')}
-      {editors ? `In: ${editors} (Ed${referenceInfo.editors.length > 1 ? 's' : ''}) ` : undefined}
+      {editors ? `In: ${editors} (Ed${referenceInfo.editors.length > 1 ? 's' : ''}). ` : undefined}
       <em>{getAnnotatedText(referenceInfo.source, ' ')}</em> {referenceInfo.inPress ? 'In Press.' : undefined}
-      <strong>{referenceInfo.volume ? ` ${referenceInfo.volume}:` : undefined}</strong>
+      <strong>{referenceInfo.volume ? ` ${referenceInfo.volume}. ` : undefined}</strong>
       {referenceInfo.edition ? ` ${referenceInfo.edition}.` : undefined}
       {referenceInfo.elocationId ? `${referenceInfo.elocationId}.` : undefined}
       {referenceInfo.publisherLocation ? ` ${referenceInfo.publisherLocation}:` : undefined}
-      {referenceInfo.publisherName ? ` ${referenceInfo.publisherName}.` : undefined}
+      {referenceInfo.publisherName ? ` ${referenceInfo.publisherName}. ` : undefined}
       {referenceInfo.firstPage && referenceInfo.lastPage
         ? `p. ${referenceInfo.firstPage}-${referenceInfo.lastPage}. `
         : undefined}
@@ -114,9 +114,9 @@ export const renderConferenceReference = (reference: Reference) => {
       {authors}. {referenceInfo.year}. {getAnnotatedText(referenceInfo.articleTitle, '. ')}
       <strong>{referenceInfo.volume ? ` ${referenceInfo.volume}:` : undefined}</strong>
       {referenceInfo.conferenceName ? [getAnnotatedText(referenceInfo.conferenceName, '.')] : undefined}
-      {referenceInfo.conferenceLocation ? ` ${referenceInfo.conferenceLocation}:` : undefined}
+      {referenceInfo.conferenceLocation ? ` ${referenceInfo.conferenceLocation}` : undefined}
       {referenceInfo.firstPage && referenceInfo.lastPage
-        ? `p. ${referenceInfo.firstPage}-${referenceInfo.lastPage}.`
+        ? ` p. ${referenceInfo.firstPage}-${referenceInfo.lastPage}.`
         : undefined}
       {referenceInfo.conferenceDate ? ` ${referenceInfo.conferenceDate}.` : undefined}
       {referenceInfo.elocationId ? ` ${referenceInfo.elocationId}.` : undefined}
@@ -163,6 +163,7 @@ export const renderReportReference = (reference: Reference) => {
     <>
       {authors}. {referenceInfo.year}. <em>{getAnnotatedText(referenceInfo.source)}</em>
       {referenceInfo.publisherName ? ` ${referenceInfo.publisherName}. ` : undefined}
+      {renderDoi(referenceInfo.doi)}
       {referenceInfo.extLink ? getExtLinkTag(referenceInfo.extLink) : undefined}
     </>
   );
