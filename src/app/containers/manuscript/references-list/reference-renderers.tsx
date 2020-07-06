@@ -53,7 +53,7 @@ const renderPmid = (pmid: string | undefined) => {
         {' '}
         pmid:{' '}
         <a target="_blank" rel="noopener noreferrer" href={`https://pubmed.ncbi.nlm.nih.gov/${pmid}`}>
-          ${pmid}
+          {pmid}
         </a>
         .
       </>
