@@ -7,7 +7,7 @@ import * as referenceInfoConfig from 'app/models/config/reference-info.config';
 import { buildInputRules } from 'app/models/plugins/input-rules';
 import { getTextContentFromPath, makeSchemaFromConfig } from 'app/models/utils';
 
-type ReferenceAuthor =
+type ReferencePerson =
   | {
       firstName: string;
       lastName: string;
@@ -60,6 +60,7 @@ export interface BookReference {
   publisherName: string;
   source: EditorState;
   volume: number;
+  editors: ReferencePerson[];
   firstPage: string;
   lastPage: string;
   doi: string;
@@ -154,7 +155,7 @@ export interface ConferenceReference {
 
 export interface Reference {
   id: string;
-  authors: Array<ReferenceAuthor>;
+  authors: Array<ReferencePerson>;
   type: ReferenceType;
   referenceInfo:
     | JournalReference
@@ -173,7 +174,10 @@ export interface Reference {
 export function createReference(xmlId: string, referenceXml: Element): Reference {
   const reference: Reference = {
     id: xmlId,
-    authors: createReferenceAuthors(referenceXml),
+    authors: [
+      ...createReferencePersonList(referenceXml, 'author'),
+      ...createReferencePersonList(referenceXml, 'inventor')
+    ],
     type: referenceXml.getAttribute('publication-type') as ReferenceType,
     referenceInfo: null
   };
@@ -217,9 +221,13 @@ export function createReference(xmlId: string, referenceXml: Element): Reference
   return reference;
 }
 
-function createReferenceAuthors(referenceXml: Element): ReferenceAuthor[] {
-  const contributors = Array.from(referenceXml.querySelector('person-group').children);
-  return contributors.map((contributorXml) => {
+function createReferencePersonList(referenceXml: Element, groupType: string): ReferencePerson[] {
+  const contributors = referenceXml.querySelector(`person-group[person-group-type=${groupType}]`);
+  if (!contributors) {
+    return [];
+  }
+
+  return Array.from(contributors.children).map((contributorXml) => {
     if (contributorXml.nodeName === 'name') {
       return {
         firstName: getTextContentFromPath(referenceXml, 'given-names') || '',
@@ -365,11 +373,13 @@ function createDataReference(referenceXml: Element): DataReference {
 }
 
 function createBookReference(referenceXml: Element): BookReference {
+  const editors: ReferencePerson[] = createReferencePersonList(referenceXml, 'editor');
   return {
     year: parseInt(referenceXml.querySelector('year').textContent),
     source: createReferenceAnnotatedValue(referenceXml.querySelector('source')),
-    chapterTitle: createReferenceAnnotatedValue(referenceXml.querySelector('article-title')),
+    chapterTitle: createReferenceAnnotatedValue(referenceXml.querySelector('chapter-title')),
     publisherLocation: getTextContentFromPath(referenceXml, 'publisher-loc') || '',
+    editors: editors,
     publisherName: getTextContentFromPath(referenceXml, 'publisher-name') || '',
     edition: getTextContentFromPath(referenceXml, 'edition') || '',
     doi: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="doi"]') || '',

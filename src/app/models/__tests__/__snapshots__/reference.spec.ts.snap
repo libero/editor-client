@@ -27,6 +27,7 @@ Object {
     },
     "doi": "",
     "edition": "4th Edition",
+    "editors": Array [],
     "elocationId": "",
     "firstPage": undefined,
     "inPress": false,
