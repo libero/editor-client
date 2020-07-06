@@ -25,6 +25,9 @@ exports[`Authors info details renders authors list 1`] = `
         </div>
         <div
           className="makeStyles-authorInfoLine-9"
+        />
+        <div
+          className="makeStyles-authorInfoLine-9"
         >
           Neuroscience Interdepartmental Program, University of California, Los Angeles, United States
         </div>
@@ -61,6 +64,9 @@ exports[`Authors info details renders authors list 1`] = `
              
           </strong>
         </div>
+        <div
+          className="makeStyles-authorInfoLine-9"
+        />
         <div
           className="makeStyles-authorInfoLine-9"
         >
