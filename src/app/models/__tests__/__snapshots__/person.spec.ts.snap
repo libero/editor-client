@@ -22,6 +22,7 @@ Array [
     "email": "f.atherden@elifesciences.org",
     "firstName": "Fred",
     "id": "unique_id",
+    "isCorrespondingAuthor": false,
     "lastName": "Atherden",
     "orcId": "https://orcid.org/0000-0002-6048-1470",
     "suffix": "Capt.",

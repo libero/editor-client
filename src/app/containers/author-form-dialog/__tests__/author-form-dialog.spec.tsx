@@ -21,6 +21,8 @@ jest.mock('@material-ui/core', () => ({
   Select: ({ children }) => <div data-cmp="Select">{children}</div>,
   Menu: ({ children }) => <div data-cmp="Menu">{children}</div>,
   MenuItem: ({ children }) => <div data-cmp="MenuItem">{children}</div>,
+  Checkbox: ({ children }) => <div data-cmp="Checkbox" />,
+  FormControlLabel: ({ children }) => <div data-cmp="FormControlLabel" />,
   FormControl: ({ children }) => <div data-cmp="FormControl">{children}</div>,
   InputLabel: ({ children }) => <div data-cmp="InputLabel">{children}</div>,
   TextField: () => <div data-cmp="TextField"></div>,

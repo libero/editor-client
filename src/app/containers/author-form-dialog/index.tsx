@@ -1,5 +1,5 @@
 import React, { SyntheticEvent, useCallback, useState } from 'react';
-import { TextField } from '@material-ui/core';
+import { TextField, FormControlLabel, Checkbox } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { useAuthorFormStyles } from './styles';
@@ -85,6 +85,16 @@ export const AuthorFormDialog: React.FC<AuthorFormDialogProps> = (props) => {
     [author, setAuthor]
   );
 
+  const handleCorrespondingStatusChange = useCallback(
+    (event: SyntheticEvent) => {
+      setAuthor({
+        ...author,
+        isCorrespondingAuthor: event.target['checked']
+      });
+    },
+    [author, setAuthor]
+  );
+
   const handleBioChange = useCallback(
     (change) => {
       setAuthor({
@@ -156,6 +166,18 @@ export const AuthorFormDialog: React.FC<AuthorFormDialogProps> = (props) => {
         allAffiliations={allAffiliations}
         linkedAffiliations={linkedAffiliations}
         onChange={handleAffiliationsUpdate}
+      />
+      <FormControlLabel
+        control={
+          <Checkbox
+            name="isCorrespondingAuthor"
+            color="primary"
+            onChange={handleCorrespondingStatusChange}
+            checked={author.isCorrespondingAuthor}
+          />
+        }
+        label="Corresponding author"
+        classes={{ root: classes.correspondingAuthorCheckbox }}
       />
       <div className={classes.buttonPanel}>
         {!isNewAuthor ? <ActionButton variant="outlinedWarning" onClick={handleDelete} title="Delete" /> : undefined}
