@@ -368,7 +368,7 @@ function createBookReference(referenceXml: Element): BookReference {
   return {
     year: parseInt(referenceXml.querySelector('year').textContent),
     source: createReferenceAnnotatedValue(referenceXml.querySelector('source')),
-    chapterTitle: createReferenceAnnotatedValue(referenceXml.querySelector('article-title')),
+    chapterTitle: createReferenceAnnotatedValue(referenceXml.querySelector('chapter-title')),
     publisherLocation: getTextContentFromPath(referenceXml, 'publisher-loc') || '',
     publisherName: getTextContentFromPath(referenceXml, 'publisher-name') || '',
     edition: getTextContentFromPath(referenceXml, 'edition') || '',

@@ -1,8 +1,7 @@
 import React from 'react';
 import { EditorState } from 'prosemirror-state';
 import moment from 'moment';
-import { get } from 'lodash'
-  ;
+import { get } from 'lodash';
 import {
   BookReference,
   ConferenceReference,
@@ -251,7 +250,8 @@ const getReferenceAuthors = (reference: Reference) => {
 const getExtLinkTag = (url: string) => {
   return (
     <>
-      {' '}url:{' '}
+      {' '}
+      url:{' '}
       <a target="_blank" rel="noopener noreferrer" href={url}>
         {url}
       </a>
