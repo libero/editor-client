@@ -61,6 +61,22 @@ describe('Author Form Dialog', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
+  it('renders a form with competing interest statement', () => {
+    mockState.data.present.authors[0].hasCompetingInterest = true;
+    mockState.data.present.authors[0].competingInterestStatement = 'statement';
+
+    const store = mockStore({
+      manuscript: mockState
+    });
+
+    const wrapper = create(
+      <Provider store={store}>
+        <AuthorFormDialog />
+      </Provider>
+    );
+    expect(wrapper).toMatchSnapshot();
+  });
+
   it('renders edit author dialog form', () => {
     const store = mockStore({
       manuscript: mockState

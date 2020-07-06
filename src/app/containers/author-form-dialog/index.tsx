@@ -1,5 +1,5 @@
-import React, { SyntheticEvent, useCallback, useState } from 'react';
-import { TextField, FormControlLabel, Checkbox } from '@material-ui/core';
+import React, { SyntheticEvent, useCallback, useState, ChangeEvent } from 'react';
+import { TextField, FormControlLabel, Checkbox, Select, MenuItem, FormControl, InputLabel } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { useAuthorFormStyles } from './styles';
@@ -95,6 +95,16 @@ export const AuthorFormDialog: React.FC<AuthorFormDialogProps> = (props) => {
     [author, setAuthor]
   );
 
+  const handleCompetingInterestChange = useCallback(
+    (event: ChangeEvent<{ name: string; value: number }>) => {
+      setAuthor({
+        ...author,
+        hasCompetingInterest: Boolean(event.target['value'])
+      });
+    },
+    [author]
+  );
+
   const handleBioChange = useCallback(
     (change) => {
       setAuthor({
@@ -155,6 +165,34 @@ export const AuthorFormDialog: React.FC<AuthorFormDialogProps> = (props) => {
         value={author.email || ''}
         onChange={handleFormChange}
       />
+      <FormControl variant="outlined" classes={{ root: classes.inputField }} fullWidth>
+        <InputLabel shrink id="author-affiliations-label">
+          Competing interest
+        </InputLabel>
+        <Select
+          labelId="author-affiliations-label"
+          displayEmpty
+          value={Number(author.hasCompetingInterest)}
+          onChange={handleCompetingInterestChange}
+          name="hasCompetingInterest"
+          label="Competing interest"
+        >
+          <MenuItem value={0}>No competing interest</MenuItem>
+          <MenuItem value={1}>Has competing interest</MenuItem>
+        </Select>
+      </FormControl>
+      {author.hasCompetingInterest ? (
+        <TextField
+          name="competingInterestStatement"
+          fullWidth
+          label="Competing interest statement"
+          classes={{ root: classes.inputField }}
+          InputLabelProps={labelProps}
+          variant="outlined"
+          value={author.competingInterestStatement || ''}
+          onChange={handleFormChange}
+        />
+      ) : undefined}
       <RichTextInput
         editorState={author.bio}
         name="bio"

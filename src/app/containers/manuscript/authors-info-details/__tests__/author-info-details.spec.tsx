@@ -11,6 +11,7 @@ import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions'
 import { AuthorFormDialog } from 'app/containers/author-form-dialog';
 import { IconButton } from '@material-ui/core';
 import { ActionButton } from 'app/components/action-button';
+import { Person } from 'app/models/person';
 
 jest.mock('@material-ui/core', () => ({
   Button: ({ label }) => <div data-cmp="Button">{label}</div>,
@@ -21,11 +22,15 @@ jest.mock('app/components/rich-text-input', () => ({
   RichTextInput: () => <div data-cmp="rich-text-input"></div>
 }));
 
-const AUTHORS = [
+const AUTHORS: Person[] = [
   {
     id: '4d53e405-5225-4858-a87a-aec902ae50b6',
     firstName: 'Fred',
-    lastName: 'Atherden'
+    lastName: 'Atherden',
+    email: 'test@example.com',
+    isCorrespondingAuthor: true,
+    hasCompetingInterest: true,
+    competingInterestStatement: 'Works at eLife'
   },
   {
     id: 'c3b008e6-4ae9-4ef9-b7cb-854749a1e897',
