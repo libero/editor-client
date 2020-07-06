@@ -1,5 +1,5 @@
 import React, { SyntheticEvent, useCallback, useState } from 'react';
-import { TextField, FormControlLabel, Checkbox } from '@material-ui/core';
+import { TextField, FormControlLabel, Checkbox, InputAdornment } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { useAuthorFormStyles } from './styles';
@@ -12,6 +12,7 @@ import { LinkedAffiliationsList } from './linked-affiliations-list';
 import { getAffiliations, getAuthorAffiliations } from 'app/selectors/manuscript.selectors';
 import { Affiliation } from 'app/models/affiliation';
 import { RichTextInput } from 'app/components/rich-text-input';
+import { OrcidIcon } from 'app/assets/icons';
 
 interface AuthorFormDialogProps {
   author?: Person;
@@ -161,6 +162,23 @@ export const AuthorFormDialog: React.FC<AuthorFormDialogProps> = (props) => {
         onChange={handleBioChange}
         label="Bio"
         className={classes.inputField}
+      />
+      <TextField
+        name="orcid"
+        fullWidth
+        label="Orcid"
+        classes={{ root: classes.inputField }}
+        InputLabelProps={labelProps}
+        variant="outlined"
+        InputProps={{
+          startAdornment: author.isAuthenticated ? (
+            <InputAdornment position="start">
+              <OrcidIcon />
+            </InputAdornment>
+          ) : undefined
+        }}
+        value={author.orcid || ''}
+        onChange={handleFormChange}
       />
       <LinkedAffiliationsList
         allAffiliations={allAffiliations}

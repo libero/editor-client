@@ -18,6 +18,8 @@ export interface Person {
   firstName: string;
   lastName: string;
   suffix?: string;
+  isAuthenticated?: boolean;
+  orcid?: string;
   email?: string;
   orcId?: string;
   bio?: EditorState;
@@ -48,18 +50,21 @@ export function getAuthorAffiliationsLabels(author: Person, affiliations: Affili
 }
 
 export function createAuthorsState(authorsXml: Element[]): Person[] {
-  return authorsXml.map((author) =>
-    createAuthor(author.getAttribute('id'), {
+  return authorsXml.map((author) => {
+    const orcidIdEl = author.querySelector('contrib-id[contrib-id-type="orcid"]');
+    return createAuthor(author.getAttribute('id'), {
       firstName: getTextContentFromPath(author, 'name > given-names'),
       lastName: getTextContentFromPath(author, 'name > surname'),
       suffix: getTextContentFromPath(author, 'name > suffix'),
+      isAuthenticated: orcidIdEl ? orcidIdEl.getAttribute('authenticated') === 'true' : false,
+      orcid: orcidIdEl ? orcidIdEl.textContent : '',
       bio: createBioEditorState(author.querySelector('bio')),
       email: getTextContentFromPath(author, 'email'),
       orcId: getTextContentFromPath(author, 'contrib-id[contrib-id-type="orcid"]'),
       isCorrespondingAuthor: author.getAttribute('corresp') === 'yes',
       affiliations: Array.from(author.querySelectorAll('xref[ref-type="aff"]')).map((xRef) => xRef.getAttribute('rid'))
-    })
-  );
+    });
+  });
 }
 
 export function createBioEditorState(bio?: Element): EditorState {
