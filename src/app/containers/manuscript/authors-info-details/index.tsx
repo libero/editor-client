@@ -75,9 +75,10 @@ const AuthorInfo: React.FC<AuthorInfoProps> = React.memo(({ author }) => {
           Neuroscience Interdepartmental Program, University of California, Los Angeles, United States
         </div>
         <div className={classes.authorInfoLine}>
-          {author.isAuthenticated ? <OrcidIcon className={classes.orcidIcon} /> : undefined}
-          {' '}
-          <a href={author.orcId} target="_blank" rel="noopener noreferrer">{author.orcId}</a>
+          {author.isAuthenticated ? <OrcidIcon className={classes.orcidIcon} /> : undefined}{' '}
+          <a href={`https://orcid.org/${author.orcid}`} target="_blank" rel="noopener noreferrer">
+            {author.orcid}
+          </a>
         </div>
         <div className={classes.authorInfoLine}>
           {author.hasCompetingInterest

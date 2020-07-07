@@ -37,12 +37,12 @@ exports[`Authors info details renders authors list 1`] = `
         <div
           className="makeStyles-authorInfoLine-9"
         >
-          <img
-            alt="orcid icon"
-            className="makeStyles-orcidIcon-10"
-            src="orcid-icon.svg"
+           
+          <a
+            href="https://orcid.org/undefined"
+            rel="noopener noreferrer"
+            target="_blank"
           />
-           0000-0001-5000-0007
         </div>
         <div
           className="makeStyles-authorInfoLine-9"
@@ -78,12 +78,12 @@ exports[`Authors info details renders authors list 1`] = `
         <div
           className="makeStyles-authorInfoLine-9"
         >
-          <img
-            alt="orcid icon"
-            className="makeStyles-orcidIcon-10"
-            src="orcid-icon.svg"
+           
+          <a
+            href="https://orcid.org/undefined"
+            rel="noopener noreferrer"
+            target="_blank"
           />
-           0000-0001-5000-0007
         </div>
         <div
           className="makeStyles-authorInfoLine-9"

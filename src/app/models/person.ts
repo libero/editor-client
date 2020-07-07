@@ -60,18 +60,17 @@ export function createAuthorsState(authorsXml: Element[], notesXml: Element): Pe
       });
     };
 
-    const orcidIdEl = author.querySelector('contrib-id[contrib-id-type="orcid"]');
+    const orcidEl = author.querySelector('contrib-id[contrib-id-type="orcid"]');
     const competingInterestsXml = getCompetingInterestsXml(author);
     const competingInterests = competingInterestsXml ? competingInterestsXml.textContent.trim() : '';
     return createAuthor(author.getAttribute('id'), {
       firstName: getTextContentFromPath(author, 'name > given-names'),
       lastName: getTextContentFromPath(author, 'name > surname'),
       suffix: getTextContentFromPath(author, 'name > suffix'),
-      isAuthenticated: orcidIdEl ? orcidIdEl.getAttribute('authenticated') === 'true' : false,
-      orcid: orcidIdEl ? orcidIdEl.textContent : '',
+      isAuthenticated: orcidEl ? orcidEl.getAttribute('authenticated') === 'true' : false,
+      orcid: orcidEl ? getOrcid(orcidEl.textContent) : '',
       bio: createBioEditorState(author.querySelector('bio')),
       email: getTextContentFromPath(author, 'email'),
-      orcId: getTextContentFromPath(author, 'contrib-id[contrib-id-type="orcid"]'),
       isCorrespondingAuthor: author.getAttribute('corresp') === 'yes',
       affiliations: Array.from(author.querySelectorAll('xref[ref-type="aff"]')).map((xRef) => xRef.getAttribute('rid')),
       hasCompetingInterest: Boolean(competingInterests) && competingInterests !== 'No competing interests declared',
@@ -87,4 +86,13 @@ export function createBioEditorState(bio?: Element): EditorState {
     schema,
     plugins: [buildInputRules(), gapCursor(), dropCursor(), keymap(baseKeymap), history(), SelectPlugin]
   });
+}
+
+function getOrcid(orcidUrl: string): string {
+  const matches = orcidUrl.match(/(([0-9]{4}-?){4})/g);
+  if (matches) {
+    return matches[0];
+  }
+
+  return '';
 }

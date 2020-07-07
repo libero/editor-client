@@ -24,9 +24,10 @@ Array [
     "firstName": "Fred",
     "hasCompetingInterest": false,
     "id": "unique_id",
+    "isAuthenticated": true,
     "isCorrespondingAuthor": false,
     "lastName": "Atherden",
-    "orcId": "https://orcid.org/0000-0002-6048-1470",
+    "orcid": "0000-0002-6048-1470",
     "suffix": "Capt.",
   },
 ]

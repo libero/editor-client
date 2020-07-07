@@ -1,5 +1,14 @@
-import React, { SyntheticEvent, useCallback, useState } from 'react';
-import { TextField, FormControlLabel, Checkbox, InputAdornment, Select, MenuItem, FormControl, InputLabel } from '@material-ui/core';
+import React, { SyntheticEvent, useCallback, useState, ChangeEvent } from 'react';
+import {
+  TextField,
+  FormControlLabel,
+  Checkbox,
+  InputAdornment,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel
+} from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { useAuthorFormStyles } from './styles';
