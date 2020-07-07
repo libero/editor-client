@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import EditIcon from '@material-ui/icons/Edit';
 
 import { SectionContainer } from 'app/components/section-container';
-import { getAuthors } from 'app/selectors/manuscript.selectors';
+import {getAuthorAffiliations, getAuthors} from 'app/selectors/manuscript.selectors';
 import { getAuthorDisplayName, Person } from 'app/models/person';
 import {
   useAuthorDetailStyles,
@@ -16,6 +16,7 @@ import { AuthorFormDialog } from 'app/containers/author-form-dialog';
 import { isEqual } from 'lodash';
 import { stringifyEditorState } from 'app/utils/view.utils';
 import { OrcidIcon } from 'app/assets/icons';
+import { getAffiliationDisplayName } from 'app/models/affiliation';
 
 export const AuthorsInfoDetails: React.FC = () => {
   const authors = useSelector(getAuthors);
@@ -50,6 +51,7 @@ interface AuthorInfoProps {
 const AuthorInfo: React.FC<AuthorInfoProps> = React.memo(({ author }) => {
   const classes = useAuthorDetailStyles();
   const dispatch = useDispatch();
+  const affiliations = useSelector(getAuthorAffiliations)(author);
 
   const editAuthor = useCallback(() => {
     dispatch(
@@ -72,7 +74,9 @@ const AuthorInfo: React.FC<AuthorInfoProps> = React.memo(({ author }) => {
           {author.email}
         </div>
         <div className={classes.authorInfoLine}>
-          Neuroscience Interdepartmental Program, University of California, Los Angeles, United States
+          {affiliations.map((aff) => (
+            <div key={aff.id}>{getAffiliationDisplayName(aff)}</div>
+          ))}
         </div>
         <div className={classes.authorInfoLine}>
           {author.isAuthenticated ? <OrcidIcon className={classes.orcidIcon} /> : undefined}{' '}
