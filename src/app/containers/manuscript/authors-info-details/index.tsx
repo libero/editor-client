@@ -79,7 +79,11 @@ const AuthorInfo: React.FC<AuthorInfoProps> = React.memo(({ author }) => {
           {' '}
           <a href={author.orcId} target="_blank" rel="noopener noreferrer">{author.orcId}</a>
         </div>
-        <div className={classes.authorInfoLine}> No Competing interest declared </div>
+        <div className={classes.authorInfoLine}>
+          {author.hasCompetingInterest
+            ? `Competing interest: ${author.competingInterestStatement}`
+            : 'No Competing interest declared'}
+        </div>
         {author.bio ? (
           <div
             className={classes.authorInfoLine}

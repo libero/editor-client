@@ -25,6 +25,8 @@ export interface Person {
   bio?: EditorState;
   isCorrespondingAuthor?: boolean;
   affiliations?: string[];
+  hasCompetingInterest?: boolean;
+  competingInterestStatement?: string;
 }
 
 export function createAuthor(xmlId: string | undefined, author: Omit<Person, 'id'>): Person {
@@ -49,9 +51,18 @@ export function getAuthorAffiliationsLabels(author: Person, affiliations: Affili
     .sort((a, b) => Number(a) - Number(b));
 }
 
-export function createAuthorsState(authorsXml: Element[]): Person[] {
+export function createAuthorsState(authorsXml: Element[], notesXml: Element): Person[] {
   return authorsXml.map((author) => {
+    const getCompetingInterestsXml = (authorEl: Element): Element => {
+      return Array.from(notesXml.querySelectorAll('[fn-type="COI-statement"]')).find((fnEl: Element) => {
+        const id = fnEl.getAttribute('id');
+        return authorEl.querySelector(`xref[ref-type="fn"][rid="${id}"]`);
+      });
+    };
+
     const orcidIdEl = author.querySelector('contrib-id[contrib-id-type="orcid"]');
+    const competingInterestsXml = getCompetingInterestsXml(author);
+    const competingInterests = competingInterestsXml ? competingInterestsXml.textContent.trim() : '';
     return createAuthor(author.getAttribute('id'), {
       firstName: getTextContentFromPath(author, 'name > given-names'),
       lastName: getTextContentFromPath(author, 'name > surname'),
@@ -62,7 +73,9 @@ export function createAuthorsState(authorsXml: Element[]): Person[] {
       email: getTextContentFromPath(author, 'email'),
       orcId: getTextContentFromPath(author, 'contrib-id[contrib-id-type="orcid"]'),
       isCorrespondingAuthor: author.getAttribute('corresp') === 'yes',
-      affiliations: Array.from(author.querySelectorAll('xref[ref-type="aff"]')).map((xRef) => xRef.getAttribute('rid'))
+      affiliations: Array.from(author.querySelectorAll('xref[ref-type="aff"]')).map((xRef) => xRef.getAttribute('rid')),
+      hasCompetingInterest: Boolean(competingInterests) && competingInterests !== 'No competing interests declared',
+      competingInterestStatement: competingInterests
     });
   });
 }

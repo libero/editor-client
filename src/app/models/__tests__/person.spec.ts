@@ -62,6 +62,6 @@ describe('Person model helpers', () => {
         <contrib-id authenticated="true" contrib-id-type="orcid">https://orcid.org/0000-0002-6048-1470</contrib-id>
         <email>f.atherden@elifesciences.org</email>`;
 
-    expect(createAuthorsState([authorsContainer])).toMatchSnapshot();
+    expect(createAuthorsState([authorsContainer], document.createElement('author-notes'))).toMatchSnapshot();
   });
 });

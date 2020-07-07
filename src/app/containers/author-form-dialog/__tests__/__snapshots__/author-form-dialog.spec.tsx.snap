@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Author Form Dialog renders edit author dialog form 1`] = `
+exports[`Author Form Dialog renders a form with competing interest statement 1`] = `
 <section
   className="makeStyles-root-1"
 >
@@ -16,6 +16,29 @@ exports[`Author Form Dialog renders edit author dialog form 1`] = `
   <div
     data-cmp="TextField"
   />
+  <div
+    data-cmp="FormControl"
+  >
+    <div
+      data-cmp="InputLabel"
+    >
+      Competing interest
+    </div>
+    <div
+      data-cmp="Select"
+    >
+      <div
+        data-cmp="MenuItem"
+      >
+        No competing interest
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Has competing interest
+      </div>
+    </div>
+  </div>
   <div
     data-cmp="rich-text-input"
   />
@@ -77,6 +100,89 @@ exports[`Author Form Dialog renders edit author dialog form 1`] = `
     className="makeStyles-buttonPanel-3"
   >
     <div
+      aria-hidden={true}
+      className="makeStyles-spacer-4"
+    />
+    <div
+      data-cmp="Button"
+    />
+    <div
+      data-cmp="Button"
+    />
+  </div>
+</section>
+`;
+
+exports[`Author Form Dialog renders edit author dialog form 1`] = `
+<section
+  className="makeStyles-root-1"
+>
+  <div
+    data-cmp="TextField"
+  />
+  <div
+    data-cmp="TextField"
+  />
+  <div
+    data-cmp="TextField"
+  />
+  <div
+    data-cmp="TextField"
+  />
+  <div
+    data-cmp="FormControl"
+  >
+    <div
+      data-cmp="InputLabel"
+    >
+      Competing interest
+    </div>
+    <div
+      data-cmp="Select"
+    >
+      <div
+        data-cmp="MenuItem"
+      >
+        No competing interest
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Has competing interest
+      </div>
+    </div>
+  </div>
+  <div
+    data-cmp="rich-text-input"
+  />
+  <div
+    className="makeStyles-inputField-2"
+  >
+    <div
+      data-cmp="Menu"
+    >
+      <div
+        data-cmp="MenuItem"
+      >
+        Edit Affiliation
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Remove Affiliation
+      </div>
+    </div>
+    <div
+      data-cmp="Button"
+    />
+  </div>
+  <div
+    data-cmp="FormControlLabel"
+  />
+  <div
+    className="makeStyles-buttonPanel-3"
+  >
+    <div
       data-cmp="Button"
     />
     <div
@@ -109,6 +215,29 @@ exports[`Author Form Dialog renders new author dialog form 1`] = `
   <div
     data-cmp="TextField"
   />
+  <div
+    data-cmp="FormControl"
+  >
+    <div
+      data-cmp="InputLabel"
+    >
+      Competing interest
+    </div>
+    <div
+      data-cmp="Select"
+    >
+      <div
+        data-cmp="MenuItem"
+      >
+        No competing interest
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Has competing interest
+      </div>
+    </div>
+  </div>
   <div
     data-cmp="rich-text-input"
   />

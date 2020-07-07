@@ -180,7 +180,7 @@ describe('Reference model', () => {
 function givenReferenceXml(referenceData: string, type: string): string {
   return `
     <element-citation publication-type="${type}">
-      <person-group>
+      <person-group person-group-type="author">
           <name>
             <surname>Berk</surname>
             <given-names>V</given-names>

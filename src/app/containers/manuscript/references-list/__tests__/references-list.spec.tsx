@@ -27,8 +27,8 @@ const ReferenceData = [
       doi: '',
       pmid: '',
       elocationId: '',
-      firstPage: 236,
-      lastPage: 239,
+      firstPage: '236',
+      lastPage: '239',
       inPress: false,
       volume: 337
     }
@@ -49,6 +49,7 @@ const ReferenceData = [
       publisherLocation: 'London',
       publisherName: 'Verso',
       edition: '4th Edition',
+      editors: [],
       doi: '',
       pmid: '',
       elocationId: '',

@@ -27,6 +27,7 @@ Object {
     },
     "doi": "",
     "edition": "4th Edition",
+    "editors": Array [],
     "elocationId": "",
     "firstPage": undefined,
     "inPress": false,
@@ -401,6 +402,7 @@ Object {
   ],
   "id": "id",
   "referenceInfo": Object {
+    "doi": "",
     "extLink": "http://www.who.int/malaria/publications/world-malaria-report-2015/en/",
     "publisherName": "World Health Organization",
     "source": Object {
@@ -434,6 +436,7 @@ Object {
   ],
   "id": "id",
   "referenceInfo": Object {
+    "doi": "",
     "extLink": "http://www.who.int/malaria/publications/world-malaria-report-2015/en/",
     "publisherName": "World Health Organization",
     "source": Object {
