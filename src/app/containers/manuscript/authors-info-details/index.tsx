@@ -6,7 +6,6 @@ import EditIcon from '@material-ui/icons/Edit';
 import { SectionContainer } from 'app/components/section-container';
 import { getAuthors } from 'app/selectors/manuscript.selectors';
 import { getAuthorDisplayName, Person } from 'app/models/person';
-import OrcidIcon from 'app/assets/orcid-icon.svg';
 import {
   useAuthorDetailStyles,
   useAuthorsDetailsListStyles
@@ -16,6 +15,7 @@ import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions'
 import { AuthorFormDialog } from 'app/containers/author-form-dialog';
 import { isEqual } from 'lodash';
 import { stringifyEditorState } from 'app/utils/view.utils';
+import { OrcidIcon } from 'app/assets/icons';
 
 export const AuthorsInfoDetails: React.FC = () => {
   const authors = useSelector(getAuthors);
@@ -75,7 +75,10 @@ const AuthorInfo: React.FC<AuthorInfoProps> = React.memo(({ author }) => {
           Neuroscience Interdepartmental Program, University of California, Los Angeles, United States
         </div>
         <div className={classes.authorInfoLine}>
-          <img src={OrcidIcon} alt="orcid icon" className={classes.orcidIcon} /> 0000-0001-5000-0007
+          {author.isAuthenticated ? <OrcidIcon className={classes.orcidIcon} /> : undefined}{' '}
+          <a href={`https://orcid.org/${author.orcid}`} target="_blank" rel="noopener noreferrer">
+            {author.orcid}
+          </a>
         </div>
         <div className={classes.authorInfoLine}>
           {author.hasCompetingInterest

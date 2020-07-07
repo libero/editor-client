@@ -18,6 +18,8 @@ export interface Person {
   firstName: string;
   lastName: string;
   suffix?: string;
+  isAuthenticated?: boolean;
+  orcid?: string;
   email?: string;
   orcId?: string;
   bio?: EditorState;
@@ -50,23 +52,25 @@ export function getAuthorAffiliationsLabels(author: Person, affiliations: Affili
 }
 
 export function createAuthorsState(authorsXml: Element[], notesXml: Element): Person[] {
-  const getCompetingInterestsXml = (authorEl: Element): Element => {
-    return Array.from(notesXml.querySelectorAll('[fn-type="COI-statement"]')).find((fnEl: Element) => {
-      const id = fnEl.getAttribute('id');
-      return authorEl.querySelector(`xref[ref-type="fn"][rid="${id}"]`);
-    });
-  };
-
   return authorsXml.map((author) => {
+    const getCompetingInterestsXml = (authorEl: Element): Element => {
+      return Array.from(notesXml.querySelectorAll('[fn-type="COI-statement"]')).find((fnEl: Element) => {
+        const id = fnEl.getAttribute('id');
+        return authorEl.querySelector(`xref[ref-type="fn"][rid="${id}"]`);
+      });
+    };
+
+    const orcidEl = author.querySelector('contrib-id[contrib-id-type="orcid"]');
     const competingInterestsXml = getCompetingInterestsXml(author);
     const competingInterests = competingInterestsXml ? competingInterestsXml.textContent.trim() : '';
     return createAuthor(author.getAttribute('id'), {
       firstName: getTextContentFromPath(author, 'name > given-names'),
       lastName: getTextContentFromPath(author, 'name > surname'),
       suffix: getTextContentFromPath(author, 'name > suffix'),
+      isAuthenticated: orcidEl ? orcidEl.getAttribute('authenticated') === 'true' : false,
+      orcid: orcidEl ? getOrcid(orcidEl.textContent) : '',
       bio: createBioEditorState(author.querySelector('bio')),
       email: getTextContentFromPath(author, 'email'),
-      orcId: getTextContentFromPath(author, 'contrib-id[contrib-id-type="orcid"]'),
       isCorrespondingAuthor: author.getAttribute('corresp') === 'yes',
       affiliations: Array.from(author.querySelectorAll('xref[ref-type="aff"]')).map((xRef) => xRef.getAttribute('rid')),
       hasCompetingInterest: Boolean(competingInterests) && competingInterests !== 'No competing interests declared',
@@ -82,4 +86,13 @@ export function createBioEditorState(bio?: Element): EditorState {
     schema,
     plugins: [buildInputRules(), gapCursor(), dropCursor(), keymap(baseKeymap), history(), SelectPlugin]
   });
+}
+
+function getOrcid(orcidUrl: string): string {
+  const matches = orcidUrl.match(/(([0-9]{4}-?){4})/g);
+  if (matches) {
+    return matches[0];
+  }
+
+  return '';
 }
