@@ -51,18 +51,12 @@ export function getAuthorAffiliationsLabels(author: Person, affiliations: Affili
     .sort((a, b) => Number(a) - Number(b));
 }
 
-export function createAuthorsState(authorsXml: Element[], notesXml: Element): Person[] {
+export function createAuthorsState(authorsXml: Element[], notesXml: Element | undefined): Person[] {
   return authorsXml.map((author) => {
-    const getCompetingInterestsXml = (authorEl: Element): Element => {
-      return Array.from(notesXml.querySelectorAll('[fn-type="COI-statement"]')).find((fnEl: Element) => {
-        const id = fnEl.getAttribute('id');
-        return authorEl.querySelector(`xref[ref-type="fn"][rid="${id}"]`);
-      });
-    };
+    const competingInterest = getCompetingInterest(author, notesXml);
 
     const orcidEl = author.querySelector('contrib-id[contrib-id-type="orcid"]');
-    const competingInterestsXml = getCompetingInterestsXml(author);
-    const competingInterests = competingInterestsXml ? competingInterestsXml.textContent.trim() : '';
+
     return createAuthor(author.getAttribute('id'), {
       firstName: getTextContentFromPath(author, 'name > given-names'),
       lastName: getTextContentFromPath(author, 'name > surname'),
@@ -73,8 +67,8 @@ export function createAuthorsState(authorsXml: Element[], notesXml: Element): Pe
       email: getTextContentFromPath(author, 'email'),
       isCorrespondingAuthor: author.getAttribute('corresp') === 'yes',
       affiliations: Array.from(author.querySelectorAll('xref[ref-type="aff"]')).map((xRef) => xRef.getAttribute('rid')),
-      hasCompetingInterest: Boolean(competingInterests) && competingInterests !== 'No competing interests declared',
-      competingInterestStatement: competingInterests
+      hasCompetingInterest: Boolean(competingInterest) && competingInterest !== 'No competing interests declared',
+      competingInterestStatement: competingInterest
     });
   });
 }
@@ -86,6 +80,20 @@ export function createBioEditorState(bio?: Element): EditorState {
     schema,
     plugins: [buildInputRules(), gapCursor(), dropCursor(), keymap(baseKeymap), history(), SelectPlugin]
   });
+}
+
+function getCompetingInterest(author: Element, notesXml: Element | undefined): string {
+  if (notesXml) {
+    const getCompetingInterestsXml = (authorEl: Element): Element => {
+      return Array.from(notesXml.querySelectorAll('[fn-type="COI-statement"]')).find((fnEl: Element) => {
+        const id = fnEl.getAttribute('id');
+        return authorEl.querySelector(`xref[ref-type="fn"][rid="${id}"]`);
+      });
+    };
+    const competingInterestsXml = getCompetingInterestsXml(author);
+    return competingInterestsXml ? competingInterestsXml.textContent.trim() : '';
+  }
+  return '';
 }
 
 function getOrcid(orcidUrl: string): string {

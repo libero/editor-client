@@ -126,6 +126,16 @@ export class LinkNodeView implements NodeView {
     this.dom.classList.add('ProseMirror-selectednode');
   }
 
+  removeMark() {
+    const markType = this.view.state.schema.marks.link;
+    const { from, $from, $to, to } = this.view.state.selection;
+    const linkStart = from - $from.nodeBefore.nodeSize;
+    const linkEnd = to + $to.nodeAfter.nodeSize;
+    const transaction = this.view.state.tr;
+    transaction.removeMark(linkStart, linkEnd, markType);
+    this.view.dispatch(transaction);
+  }
+
   updateMark(href: string) {
     const markType = this.view.state.schema.marks.link;
     const { from, $from, $to, to } = this.view.state.selection;
@@ -143,6 +153,8 @@ export class LinkNodeView implements NodeView {
     this.linkEditorContainer.parentNode.removeChild(this.linkEditorContainer);
     if (href) {
       this.updateMark(href);
+    } else {
+      this.removeMark();
     }
   }
 
