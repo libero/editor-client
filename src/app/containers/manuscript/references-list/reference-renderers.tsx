@@ -121,6 +121,7 @@ export const renderConferenceReference = (reference: Reference) => {
       {referenceInfo.conferenceDate ? ` ${referenceInfo.conferenceDate}.` : undefined}
       {referenceInfo.elocationId ? ` ${referenceInfo.elocationId}.` : undefined}
       {renderDoi(referenceInfo.doi)} {renderPmid(referenceInfo.pmid)}
+      {referenceInfo.extLink ? getExtLinkTag(referenceInfo.extLink) : undefined}
     </>
   );
 };

@@ -148,7 +148,7 @@ Object {
       },
     },
     "doi": "",
-    "extLink": "",
+    "extLink": "http://www.ncbi.nlm.nih.gov/nuccore/120407038",
     "source": Object {
       "doc": Object {
         "type": "annotatedReferenceInfoDoc",
