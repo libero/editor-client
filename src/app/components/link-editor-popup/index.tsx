@@ -103,18 +103,25 @@ export class LinkNodeView implements NodeView {
     this.dom = document.createElement('a');
     this.dom.style.cursor = 'pointer';
     this.dom.setAttribute('href', this.node.attrs.href);
+    this.dom.addEventListener('contextmenu', this.openLinkInNewWindow.bind(this));
     this.dom.addEventListener(
       'click',
       debounce((event: MouseEvent) => {
         if (event.ctrlKey) {
-          const newWindow = window.open();
-          newWindow.opener = null;
-          newWindow.location = this.node.attrs.href;
+          this.openLinkInNewWindow(event);
         } else {
           this.open();
         }
       }, 100)
     );
+  }
+
+  openLinkInNewWindow(event: MouseEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+    const newWindow = window.open();
+    newWindow.opener = null;
+    newWindow.location = this.node.attrs.href;
   }
 
   open() {
