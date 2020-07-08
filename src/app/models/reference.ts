@@ -368,7 +368,11 @@ function createDataReference(referenceXml: Element): DataReference {
     doi: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="doi"]') || '',
     accessionId: accessionEl ? accessionEl.textContent : '',
     accessionUrl: accessionEl ? accessionEl.getAttribute('href') : '',
-    extLink: getTextContentFromPath(referenceXml, 'ext-link') || '',
+    extLink:
+      getTextContentFromPath(referenceXml, 'ext-link') ||
+      (referenceXml.querySelector('pub-id[pub-id-type="accession"]')
+        ? referenceXml.querySelector('pub-id[pub-id-type="accession"]').getAttribute('xlink:href')
+        : ''),
     version: getTextContentFromPath(referenceXml, 'version') || '',
     specificUse: referenceXml.getAttribute('specific-use')
   };
