@@ -69,17 +69,21 @@ const renderLinkPopup = (editorState: EditorState, editorView: EditorView) => {
     y: selectionPosition.bottom
   };
 
-  const onClose = (href: string) => {
-    if (href) {
-      editorView.dispatch(makeSelectionLink(editorState, href));
-    }
+  const onClose = () => {
     ReactDOM.unmountComponentAtNode(linkContainer);
     linkContainer.parentNode.removeChild(linkContainer);
   };
 
+  const onApply = (href: string) => {
+    if (href) {
+      editorView.dispatch(makeSelectionLink(editorState, href));
+    }
+    onClose();
+  };
+
   ReactDOM.render(
     <ThemeProvider theme={theme}>
-      <LinkEditorPopup editorView={editorView} onClose={onClose} {...coords} />
+      <LinkEditorPopup editorView={editorView} onApply={onApply} onClose={onClose} {...coords} />
     </ThemeProvider>,
     linkContainer
   );

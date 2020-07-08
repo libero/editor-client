@@ -42,13 +42,16 @@ describe('LinkEditorPopup', () => {
       dispatchTransaction: jest.fn()
     });
 
-    const wrapper = create(<LinkEditorPopup editorView={editorView} onClose={jest.fn()} x={100} y={200} />);
+    const wrapper = create(
+      <LinkEditorPopup editorView={editorView} onApply={jest.fn()} onClose={jest.fn()} x={100} y={200} />
+    );
 
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should pass href value on apply', () => {
+  it('should trigger apply event', () => {
     const handleClose = jest.fn();
+    const handleApply = jest.fn();
     const el = document.createElement('bio');
     el.innerHTML = `<p><bold>Fred Atherden</bold> is in the Production Department, eLife Sciences, Cambridge, United Kingdoms
                     <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License</ext-link>
@@ -61,18 +64,22 @@ describe('LinkEditorPopup', () => {
       dispatchTransaction: jest.fn()
     });
 
-    const wrapper = mount(<LinkEditorPopup editorView={editorView} onClose={handleClose} x={100} y={200} />);
+    const wrapper = mount(
+      <LinkEditorPopup editorView={editorView} onApply={handleApply} onClose={handleClose} x={100} y={200} />
+    );
     const event = document.createEvent('Event');
 
     (wrapper.find(TextField).getDOMNode() as HTMLInputElement).value = 'sampleLink';
     wrapper.find(TextField).simulate('change', event);
     wrapper.find(ActionButton).prop('onClick')();
 
-    expect(handleClose).toHaveBeenCalledWith('sampleLink');
+    expect(handleApply).toHaveBeenCalledWith('sampleLink');
   });
 
-  it('should not pass href value on close', () => {
+  it('should trigger close event', () => {
     const handleClose = jest.fn();
+    const handleApply = jest.fn();
+
     const el = document.createElement('bio');
     el.innerHTML = `<p><bold>Fred Atherden</bold> is in the Production Department, eLife Sciences, Cambridge, United Kingdoms
                     <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License</ext-link>
@@ -85,9 +92,11 @@ describe('LinkEditorPopup', () => {
       dispatchTransaction: jest.fn()
     });
 
-    const wrapper = mount(<LinkEditorPopup editorView={editorView} onClose={handleClose} x={100} y={200} />);
+    const wrapper = mount(
+      <LinkEditorPopup editorView={editorView} onApply={handleApply} onClose={handleClose} x={100} y={200} />
+    );
     wrapper.find(Popover).prop('onClose')(new Event('input'), 'backdropClick');
 
-    expect(handleClose).toHaveBeenCalledWith();
+    expect(handleClose).toHaveBeenCalled();
   });
 });

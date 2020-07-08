@@ -14,13 +14,14 @@ import { theme } from 'app/styles/theme';
 
 interface LinkEditorPopupProps {
   editorView: EditorView | undefined;
-  onClose: (href?: string) => void;
+  onClose: () => void;
+  onApply: (href: string) => void;
   node?: ProsemirrorNode;
   y: number;
   x: number;
 }
 
-export const LinkEditorPopup: React.FC<LinkEditorPopupProps> = ({ editorView, node, onClose, x, y }) => {
+export const LinkEditorPopup: React.FC<LinkEditorPopupProps> = ({ editorView, node, onApply, onClose, x, y }) => {
   const classes = useLinkEditorStyles();
   const [link, setLink] = useState<string>(node ? node.attrs.href : '');
 
@@ -39,12 +40,8 @@ export const LinkEditorPopup: React.FC<LinkEditorPopupProps> = ({ editorView, no
 
   const handleApplyClick = useCallback(() => {
     editorView.focus();
-    onClose(link);
-  }, [editorView, link, onClose]);
-
-  const handleOnClose = useCallback(() => {
-    onClose();
-  }, [onClose]);
+    onApply(link);
+  }, [editorView, link, onApply]);
 
   if (!editorView) {
     return <></>;
@@ -53,7 +50,7 @@ export const LinkEditorPopup: React.FC<LinkEditorPopupProps> = ({ editorView, no
   return (
     <Popover
       open={true}
-      onClose={handleOnClose}
+      onClose={onClose}
       anchorReference="anchorPosition"
       anchorPosition={{ top: y, left: x }}
       anchorOrigin={{
@@ -119,7 +116,14 @@ export class LinkNodeView implements NodeView {
 
     ReactDOM.render(
       <ThemeProvider theme={theme}>
-        <LinkEditorPopup editorView={this.view} node={this.node} onClose={this.close.bind(this)} x={x} y={y} />
+        <LinkEditorPopup
+          editorView={this.view}
+          node={this.node}
+          onClose={this.close.bind(this)}
+          onApply={this.handleApply.bind(this)}
+          x={x}
+          y={y}
+        />
       </ThemeProvider>,
       this.linkEditorContainer
     );
@@ -147,10 +151,14 @@ export class LinkNodeView implements NodeView {
     this.view.dispatch(transaction);
   }
 
-  close(href?: string) {
+  close() {
     this.dom.classList.remove('ProseMirror-selectednode');
     ReactDOM.unmountComponentAtNode(this.linkEditorContainer);
     this.linkEditorContainer.parentNode.removeChild(this.linkEditorContainer);
+  }
+
+  handleApply(href: string) {
+    this.close();
     if (href) {
       this.updateMark(href);
     } else {
