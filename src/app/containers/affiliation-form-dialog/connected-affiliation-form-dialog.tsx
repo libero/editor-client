@@ -43,6 +43,7 @@ export const ConnectedAffiliationFormDialog: React.FC<ConnectedAffiliationsFormD
   return (
     <AffiliationFormDialog
       affiliation={affiliation}
+      allowLinkAuthors={true}
       onAccept={handleAccept}
       onDelete={handleDelete}
       onCancel={closeDialog}

@@ -13,6 +13,7 @@ import { Person } from 'app/models/person';
 
 interface AffiliationFormDialogProps {
   affiliation?: Affiliation;
+  allowLinkAuthors?: boolean;
   onAccept: (affiliation: Affiliation, linkedAuthors: Person[]) => void;
   onCancel: () => void;
   onDelete: (affiliation: Affiliation) => void;
@@ -38,6 +39,7 @@ const labelProps = { shrink: true };
 
 export const AffiliationFormDialog: React.FC<AffiliationFormDialogProps> = (props) => {
   const isNewAffiliation = !props.affiliation;
+  const { allowLinkAuthors } = props;
 
   const affiliatedAuthors = useSelector(getAffiliatedAuthors)(props.affiliation?.id);
   const [userLinkedAuthors, setUserLinkedAuthors] = useState<Person[]>(affiliatedAuthors);
@@ -123,11 +125,13 @@ export const AffiliationFormDialog: React.FC<AffiliationFormDialogProps> = (prop
         value={affiliation.country}
         onChange={handleFormChange}
       />
-      <LinkedAuthorsList
-        linkedAuthors={userLinkedAuthors}
-        allAuthors={allAuthors}
-        onChange={handleLinkedAuthorsChange}
-      />
+      {allowLinkAuthors ? (
+        <LinkedAuthorsList
+          linkedAuthors={userLinkedAuthors}
+          allAuthors={allAuthors}
+          onChange={handleLinkedAuthorsChange}
+        />
+      ) : undefined}
       <div className={classes.buttonPanel}>
         {!isNewAffiliation ? (
           <ActionButton variant="outlinedWarning" onClick={handleDelete} title="Delete" />

@@ -1,5 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Affiliation Form Dialog renders affiliation dialog without linking authors 1`] = `
+<section
+  className="makeStyles-root-1"
+>
+  <div
+    data-cmp="TextField"
+  />
+  <div
+    data-cmp="TextField"
+  />
+  <div
+    data-cmp="TextField"
+  />
+  <div
+    className="makeStyles-buttonPanel-3"
+  >
+    <div
+      aria-hidden={true}
+      className="makeStyles-spacer-4"
+    />
+    <div
+      data-cmp="Button"
+    />
+    <div
+      data-cmp="Button"
+    />
+  </div>
+</section>
+`;
+
 exports[`Affiliation Form Dialog renders edit affiliation dialog form 1`] = `
 <section
   className="makeStyles-root-1"
