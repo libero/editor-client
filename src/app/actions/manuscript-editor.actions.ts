@@ -8,5 +8,6 @@ export interface ModalPayload<P = {}> {
 
 export const setFocusAction = createAction<string>('SET_FOCUS');
 export const removeFocusAction = createAction<void>('REMOVE_FOCUS');
+export const updateFocusPathAction = createAction<string>('UPDATE_FOCUS_PATH');
 export const showModalDialog = createAction<ModalPayload>('SHOW_MODAL');
 export const hideModalDialog = createAction<void>('HIDE_MODAL');

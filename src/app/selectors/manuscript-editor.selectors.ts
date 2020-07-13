@@ -12,7 +12,7 @@ function isMarkActive(state: EditorState, mark: string): boolean {
     return false;
   }
   if (empty) {
-    return type.isInSet(state.storedMarks || $from.marks());
+    return Boolean(type.isInSet(state.storedMarks || $from.marks()));
   } else {
     return state.doc.rangeHasMark(from, to, type);
   }

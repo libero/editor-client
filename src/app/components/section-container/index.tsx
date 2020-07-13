@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState, useMemo } from 'react';
+import React, { useRef, useMemo } from 'react';
 import { isEqual } from 'lodash';
 import classNames from 'classnames';
 
@@ -9,34 +9,15 @@ const DEFAULT_VARIANT = 'plain';
 
 interface SectionContainerProps {
   label: string;
+  focused?: boolean;
   className?: string;
   variant?: SectionContainerVariant;
 }
 
 export const SectionContainer: React.FC<SectionContainerProps> = React.memo((props) => {
-  const { children, label, variant, className } = props;
+  const { children, label, variant, className, focused } = props;
   const classes = useSectionContainerStyles();
   const containerRef = useRef<HTMLDivElement>();
-  const [focused, setFocused] = useState<boolean>();
-  const handleFocus = useCallback(() => {
-    setFocused(true);
-  }, [setFocused]);
-  const handleBlur = useCallback(() => {
-    setFocused(false);
-  }, []);
-
-  useEffect(() => {
-    const containerNode = containerRef.current;
-    if (containerNode) {
-      containerNode.addEventListener('focus', handleFocus, true);
-      containerNode.addEventListener('blur', handleBlur, true);
-
-      return () => {
-        containerNode.removeEventListener('focus', handleFocus, true);
-        containerNode.removeEventListener('blur', handleBlur, true);
-      };
-    }
-  }, [containerRef, handleFocus, handleBlur]);
 
   const variantClass = useMemo(() => {
     const variantClass = {

@@ -19,6 +19,9 @@ export const useAuthorDetailStyles = makeStyles((theme) => ({
     flexGrow: 0,
     padding: 6
   },
+  authorInfoContainer: {
+    flex: 1
+  },
   authorInfoLine: {
     lineHeight: '24px'
   },

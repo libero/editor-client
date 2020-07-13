@@ -5,11 +5,16 @@
   color: $text-primary;
 
   .selection-marker {
-    background: Hightlight;
-    color: HightlightText;
+    background: #338FFF;
+    color: white;
   }
 
   .ProseMirror {
+    ::selection {
+      color: inherit;
+      background: transparent;
+    }
+
     outline: none;
 
     h1 {
