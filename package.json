@@ -86,7 +86,7 @@
     "react-test-renderer": "^16.13.1",
     "redux-devtools-extension": "^2.13.8",
     "redux-mock-store": "^1.5.4",
-    "standard-version": "^7.1.0",
+    "standard-version": "^8.0.1",
     "typescript": "^3.8.3"
   },
   "jest": {
