@@ -2,10 +2,10 @@
 
 exports[`RichTextInput should render component 1`] = `
 <div
-  className="makeStyles-root-3 makeStyles-outlinedVariant-4"
+  className="makeStyles-container-1 makeStyles-root-4 makeStyles-outlinedVariant-5"
 >
   <label
-    className="makeStyles-label-6"
+    className="makeStyles-label-7"
   >
     Test Editor Input
   </label>
