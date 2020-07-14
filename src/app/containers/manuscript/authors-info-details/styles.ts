@@ -22,6 +22,10 @@ export const useAuthorDetailStyles = makeStyles((theme) => ({
   authorInfoLine: {
     lineHeight: '24px'
   },
+  authorBio: {
+    lineHeight: '24px',
+    marginTop: theme.spacing(1.5)
+  },
   orcidIcon: {
     width: 16,
     height: 16,
