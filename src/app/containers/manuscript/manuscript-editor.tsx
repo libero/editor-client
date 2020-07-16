@@ -13,6 +13,7 @@ import { SortableAuthorsList } from './sortable-authors-list';
 import { AuthorsInfoDetails } from 'app/containers/manuscript/authors-info-details';
 import { AffiliationsList } from 'app/containers/manuscript/affiliations-list';
 import { ReferenceList } from 'app/containers/manuscript/references-list';
+import { ArticleInformation } from 'app/containers/manuscript/article-information';
 
 export const ManuscriptEditor: React.FC = () => {
   const classes = useManuscriptStyles();
@@ -109,6 +110,7 @@ export const ManuscriptEditor: React.FC = () => {
         onBlur={handleBlur}
       />
       {renderKeywords(allKeywords)}
+      <ArticleInformation />
       <AuthorsInfoDetails />
       <ReferenceList />
     </div>

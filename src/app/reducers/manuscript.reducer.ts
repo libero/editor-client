@@ -21,6 +21,7 @@ import {
 import { addKeyword, deleteKeyword, updateKeyword, updateNewKeyword } from 'app/reducers/keywords.handlers';
 import { redoChange, undoChange, updateManuscriptState } from 'app/utils/history.utils';
 import { addReference, deleteReference, updateReference } from 'app/reducers/references.handlers';
+import { updateArticleInformation } from 'app/reducers/article-information.handlers';
 
 const initialState = getInitialLoadableState() as ManuscriptHistoryState;
 
@@ -60,6 +61,7 @@ manuscriptReducer.on(manuscriptActions.updateTitleAction, updateTitle);
 manuscriptReducer.on(manuscriptActions.updateAbstractAction, updateAbstract);
 manuscriptReducer.on(manuscriptActions.updateAuthorAction, updateAuthor);
 manuscriptReducer.on(manuscriptActions.addAuthorAction, addAuthor);
+manuscriptReducer.on(manuscriptActions.updateArticleInformationAction, updateArticleInformation);
 manuscriptReducer.on(manuscriptActions.moveAuthorAction, moveAuthor);
 manuscriptReducer.on(manuscriptActions.deleteAuthorAction, deleteAuthor);
 manuscriptReducer.on(manuscriptActions.updateAffiliationAction, updateAffiliation);

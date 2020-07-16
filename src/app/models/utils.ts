@@ -15,6 +15,6 @@ export function makeSchemaFromConfig(topNode: string, nodeNames: string[], markN
   } as SchemaSpec<keyof typeof filteredNodes, keyof typeof filteredMarks>);
 }
 
-export function getTextContentFromPath(el: Element, path): string {
+export function getTextContentFromPath(el: ParentNode, path): string {
   return get(el.querySelector(path), 'textContent');
 }

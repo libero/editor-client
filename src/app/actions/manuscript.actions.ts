@@ -1,7 +1,7 @@
 import { createAction } from 'redux-act';
 import { EditorState, Transaction } from 'prosemirror-state';
 
-import { Manuscript } from 'app/models/manuscript';
+import { ArticleInformation, Manuscript } from 'app/models/manuscript';
 import { createAsyncAction } from 'app/utils/action.utils';
 import { Person } from 'app/models/person';
 import { Affiliation } from 'app/models/affiliation';
@@ -51,6 +51,7 @@ export const updateNewKeywordAction = createAction<NewKeywordUpdatePayload>('UPD
 export const deleteKeywordAction = createAction<KeywordDeletePayload>('DELETE_KEYWORD');
 export const addNewKeywordAction = createAction<KeywordAddPayload>('ADD_KEYWORD');
 export const updateAuthorAction = createAction<Person>('UPDATE_AUTHOR');
+export const updateArticleInformationAction = createAction<ArticleInformation>('UPDATE_ARTICLE_INFORMATION');
 export const addAuthorAction = createAction<Person>('ADD_AUTHOR');
 export const moveAuthorAction = createAction<MoveAuthorPayload>('MOVE_AUTHOR');
 export const deleteAuthorAction = createAction<Person>('DELETE_AUTHOR');

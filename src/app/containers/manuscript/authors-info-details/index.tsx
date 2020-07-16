@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import EditIcon from '@material-ui/icons/Edit';
 
 import { SectionContainer } from 'app/components/section-container';
-import {getAuthorAffiliations, getAuthors} from 'app/selectors/manuscript.selectors';
+import { getAuthorAffiliations, getAuthors } from 'app/selectors/manuscript.selectors';
 import { getAuthorDisplayName, Person } from 'app/models/person';
 import {
   useAuthorDetailStyles,
