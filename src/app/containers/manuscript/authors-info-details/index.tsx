@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import EditIcon from '@material-ui/icons/Edit';
 
 import { SectionContainer } from 'app/components/section-container';
-import {getAuthorAffiliations, getAuthors} from 'app/selectors/manuscript.selectors';
+import { getAuthorAffiliations, getAuthors } from 'app/selectors/manuscript.selectors';
 import { getAuthorDisplayName, Person } from 'app/models/person';
 import {
   useAuthorDetailStyles,
@@ -65,7 +65,7 @@ const AuthorInfo: React.FC<AuthorInfoProps> = React.memo(({ author }) => {
 
   return (
     <section className={classes.root}>
-      <div>
+      <div className={classes.authorInfoContainer}>
         <div className={classes.authorInfoLine}>
           <strong> {getAuthorDisplayName(author)} </strong>
         </div>

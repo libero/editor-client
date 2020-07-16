@@ -22,6 +22,7 @@ export class ProseMirrorEditorView extends React.Component<ProseMirrorEditorView
   public editorView: EditorView;
 
   focus() {
+    // debugger;
     this.editorView.focus();
   }
 

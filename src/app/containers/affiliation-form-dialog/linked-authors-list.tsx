@@ -53,7 +53,6 @@ export const LinkedAuthorsList: React.FC<LinkedAuthorsListProps> = ({ linkedAuth
   const updateRow = useCallback(
     (index) => (event) => {
       const updatedList = [...userLinkedAuthors];
-      console.log(event.target.value);
       updatedList[index] = allAuthors.find(({ id }) => id === event.target.value);
       setUserLinkedAuthors(updatedList);
       triggerOnChange(updatedList);

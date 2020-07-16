@@ -10,7 +10,7 @@ describe('ReachTextEditorComponent', () => {
 
     const onChangeHandler = jest.fn();
 
-    const component = create(<RichTextEditor editorState={sampleState} onChange={onChangeHandler} />);
+    const component = create(<RichTextEditor isActive={false} editorState={sampleState} onChange={onChangeHandler} />);
     expect(component).toMatchSnapshot();
   });
 
@@ -18,7 +18,7 @@ describe('ReachTextEditorComponent', () => {
     const sampleState = null;
     const onChangeHandler = jest.fn();
 
-    const component = create(<RichTextEditor editorState={sampleState} onChange={onChangeHandler} />);
+    const component = create(<RichTextEditor isActive={false} editorState={sampleState} onChange={onChangeHandler} />);
     expect(component).toMatchSnapshot();
   });
 
@@ -26,10 +26,12 @@ describe('ReachTextEditorComponent', () => {
     const sampleState = new EditorState();
     const onChangeHandler = jest.fn();
 
-    const component = shallow(<RichTextEditor editorState={sampleState} onChange={onChangeHandler} />);
+    const component = shallow(
+      <RichTextEditor name="RTEInput" isActive={false} editorState={sampleState} onChange={onChangeHandler} />
+    );
     const changeArg = Symbol();
     component.find('ProseMirrorEditorView').props().onChange.call(null, changeArg);
 
-    expect(onChangeHandler).toHaveBeenCalledWith(changeArg);
+    expect(onChangeHandler).toHaveBeenCalledWith(changeArg, 'RTEInput');
   });
 });

@@ -13,9 +13,11 @@ exports[`Authors info details renders authors list 1`] = `
     <section
       className="makeStyles-root-7"
     >
-      <div>
+      <div
+        className="makeStyles-authorInfoContainer-9"
+      >
         <div
-          className="makeStyles-authorInfoLine-9"
+          className="makeStyles-authorInfoLine-10"
         >
           <strong>
              
@@ -24,16 +26,16 @@ exports[`Authors info details renders authors list 1`] = `
           </strong>
         </div>
         <div
-          className="makeStyles-authorInfoLine-9"
+          className="makeStyles-authorInfoLine-10"
         >
           Corresponding Author: 
           test@example.com
         </div>
         <div
-          className="makeStyles-authorInfoLine-9"
+          className="makeStyles-authorInfoLine-10"
         />
         <div
-          className="makeStyles-authorInfoLine-9"
+          className="makeStyles-authorInfoLine-10"
         >
            
           <a
@@ -43,7 +45,7 @@ exports[`Authors info details renders authors list 1`] = `
           />
         </div>
         <div
-          className="makeStyles-authorInfoLine-9"
+          className="makeStyles-authorInfoLine-10"
         >
           Competing interest: Works at eLife
         </div>
@@ -55,9 +57,11 @@ exports[`Authors info details renders authors list 1`] = `
     <section
       className="makeStyles-root-7"
     >
-      <div>
+      <div
+        className="makeStyles-authorInfoContainer-9"
+      >
         <div
-          className="makeStyles-authorInfoLine-9"
+          className="makeStyles-authorInfoLine-10"
         >
           <strong>
              
@@ -66,13 +70,13 @@ exports[`Authors info details renders authors list 1`] = `
           </strong>
         </div>
         <div
-          className="makeStyles-authorInfoLine-9"
+          className="makeStyles-authorInfoLine-10"
         />
         <div
-          className="makeStyles-authorInfoLine-9"
+          className="makeStyles-authorInfoLine-10"
         />
         <div
-          className="makeStyles-authorInfoLine-9"
+          className="makeStyles-authorInfoLine-10"
         >
            
           <a
@@ -82,7 +86,7 @@ exports[`Authors info details renders authors list 1`] = `
           />
         </div>
         <div
-          className="makeStyles-authorInfoLine-9"
+          className="makeStyles-authorInfoLine-10"
         >
           No Competing interest declared
         </div>

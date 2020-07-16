@@ -11,7 +11,7 @@ const initialState: ManuscriptEditorState = {
 
 export const manuscriptEditorReducer = createReducer<ManuscriptEditorState>({}, initialState);
 
-manuscriptEditorReducer.on(manuscriptEditorAction.setFocusAction, (state, payload) => ({
+manuscriptEditorReducer.on(manuscriptEditorAction.updateFocusPathAction, (state, payload) => ({
   ...state,
   focusedManuscriptPath: payload
 }));
@@ -25,7 +25,8 @@ manuscriptEditorReducer.on(manuscriptEditorAction.showModalDialog, (state, paylo
   ...state,
   modal: {
     params: payload,
-    isVisible: true
+    isVisible: true,
+    focusedManuscriptPath: undefined
   }
 }));
 
