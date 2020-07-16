@@ -14,6 +14,7 @@ import { KeywordGroups } from './manuscript';
 import { createReference, Reference } from 'app/models/reference';
 import { makeSchemaFromConfig } from 'app/models/utils';
 import { SelectPlugin } from './plugins/selection.plugin';
+import { PlaceholderPlugin } from 'app/models/plugins/placeholder.plugin';
 
 export function createTitleState(content: Node): EditorState {
   const schema = makeSchemaFromConfig(titleConfig.topNode, titleConfig.nodes, titleConfig.marks);
@@ -27,7 +28,7 @@ export function createTitleState(content: Node): EditorState {
   return EditorState.create({
     doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),
     schema,
-    plugins: [buildInputRules(), gapCursor(), dropCursor(), SelectPlugin]
+    plugins: [buildInputRules(), gapCursor(), dropCursor(), SelectPlugin, PlaceholderPlugin('Enter title')]
   });
 }
 

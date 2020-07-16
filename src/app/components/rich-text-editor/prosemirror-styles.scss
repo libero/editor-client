@@ -4,6 +4,17 @@
   line-height: initial;
   color: $text-primary;
 
+  .ProseMirror .placeholder {
+    color: rgba(0,0,0,0.38);
+    font-weight: normal;
+    pointer-events: none;
+    height: 0;
+  }
+
+  .ProseMirror:focus .placeholder {
+    display: none;
+  }
+
   .selection-marker {
     background: #338FFF;
     color: white;
