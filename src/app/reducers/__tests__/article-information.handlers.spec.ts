@@ -1,18 +1,18 @@
 import { givenState } from 'app/test-utils/reducer-test-helpers';
-import { updateAbstract } from 'app/reducers/abstract.handlers';
-import { updateManuscriptState } from 'app/utils/history.utils';
-import {updateAuthor} from "app/reducers/authors.handlers";
+import { cloneDeep } from 'lodash';
+import { updateArticleInformation } from 'app/reducers/article-information.handlers';
 
 jest.mock('../../utils/history.utils');
 
 describe('article information reducer', () => {
-  const state = givenState({});
-  const updatedInfo = { id: 'newId', firstName: 'Jules Gabriel', lastName: 'Verne', affiliations: [] };
-  const updatedState = cloneDeep(state);
-  updatedState.data.present.authors = [updatedAuthor];
-  updatedState.data.past = [{ 'authors.0': state.data.present.authors[0], affiliations: [] }];
+  it('updates article info', () => {
+    const state = givenState({});
+    const updatedInfo = { articleDOI: 'newID' };
+    const updatedState = cloneDeep(state);
+    updatedState.data.present.articleInfo = updatedInfo;
+    updatedState.data.past = [{ articleInfo: { articleDOI: '' } }];
 
-  const newState = updateAuthor(state, updatedAuthor);
-  expect(newState).toEqual(updatedState);
+    const newState = updateArticleInformation(state, updatedInfo);
+    expect(newState).toEqual(updatedState);
   });
 });
