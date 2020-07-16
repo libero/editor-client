@@ -1,7 +1,9 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export const useAuthorFormStyles = makeStyles((theme) => ({
-  root: {},
+  root: {
+    padding: theme.spacing(0.5, 1.5)
+  },
 
   inputField: {
     marginBottom: theme.spacing(3)

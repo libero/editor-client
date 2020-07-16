@@ -91,7 +91,7 @@ const AuthorInfo: React.FC<AuthorInfoProps> = React.memo(({ author }) => {
         </div>
         {author.bio ? (
           <div
-            className={classes.authorInfoLine}
+            className={classes.authorBio}
             dangerouslySetInnerHTML={{ __html: stringifyEditorState(author.bio) }}
           />
         ) : undefined}

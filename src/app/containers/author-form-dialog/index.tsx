@@ -27,6 +27,10 @@ interface AuthorFormDialogProps {
   author?: Person;
 }
 
+function getCompetingInterestSelectValue(hasCompetingInterest?: boolean): number {
+  return hasCompetingInterest === undefined ? 0 : Number(hasCompetingInterest) + 1;
+}
+
 const renderConfirmDialog = (title: string, msg: string, onAccept: () => void, onReject: () => void) => {
   return (
     <PromptDialog
@@ -87,6 +91,7 @@ export const AuthorFormDialog: React.FC<AuthorFormDialogProps> = (props) => {
     (event: SyntheticEvent) => {
       const fieldName = event.target['name'];
       const newValue = event.target['value'];
+
       setAuthor({
         ...author,
         [fieldName]: newValue
@@ -109,7 +114,7 @@ export const AuthorFormDialog: React.FC<AuthorFormDialogProps> = (props) => {
     (event: ChangeEvent<{ name: string; value: number }>) => {
       setAuthor({
         ...author,
-        hasCompetingInterest: Boolean(event.target['value'])
+        hasCompetingInterest: event.target['value'] === 0 ? undefined : Boolean(event.target['value'] - 1)
       });
     },
     [author]
@@ -123,6 +128,18 @@ export const AuthorFormDialog: React.FC<AuthorFormDialogProps> = (props) => {
       });
     },
     [setAuthor, author]
+  );
+
+  const handleOrcidChange = useCallback(
+    (event: SyntheticEvent) => {
+      const newValue = event.target['value'];
+      setAuthor({
+        ...author,
+        orcid: newValue,
+        isAuthenticated: author.isAuthenticated && props.author.orcid === newValue
+      });
+    },
+    [setAuthor, author, props]
   );
 
   const handleDone = useCallback(() => {
@@ -176,19 +193,20 @@ export const AuthorFormDialog: React.FC<AuthorFormDialogProps> = (props) => {
         onChange={handleFormChange}
       />
       <FormControl variant="outlined" classes={{ root: classes.inputField }} fullWidth>
-        <InputLabel shrink id="author-affiliations-label">
+        <InputLabel shrink id="author-competing-interest-label">
           Competing interest
         </InputLabel>
         <Select
-          labelId="author-affiliations-label"
+          labelId="author-competing-interest-label"
           displayEmpty
-          value={Number(author.hasCompetingInterest)}
+          value={getCompetingInterestSelectValue(author.hasCompetingInterest)}
           onChange={handleCompetingInterestChange}
           name="hasCompetingInterest"
           label="Competing interest"
         >
-          <MenuItem value={0}>No competing interest</MenuItem>
-          <MenuItem value={1}>Has competing interest</MenuItem>
+          <MenuItem value={0}>Select competing interest</MenuItem>
+          <MenuItem value={1}>No competing interest</MenuItem>
+          <MenuItem value={2}>Has competing interest</MenuItem>
         </Select>
       </FormControl>
       {author.hasCompetingInterest ? (
@@ -225,7 +243,7 @@ export const AuthorFormDialog: React.FC<AuthorFormDialogProps> = (props) => {
           ) : undefined
         }}
         value={author.orcid || ''}
-        onChange={handleFormChange}
+        onChange={handleOrcidChange}
       />
       <LinkedAffiliationsList
         allAffiliations={allAffiliations}

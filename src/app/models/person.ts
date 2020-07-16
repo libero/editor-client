@@ -21,7 +21,6 @@ export interface Person {
   isAuthenticated?: boolean;
   orcid?: string;
   email?: string;
-  orcId?: string;
   bio?: EditorState;
   isCorrespondingAuthor?: boolean;
   affiliations?: string[];
@@ -67,7 +66,9 @@ export function createAuthorsState(authorsXml: Element[], notesXml: Element | un
       email: getTextContentFromPath(author, 'email'),
       isCorrespondingAuthor: author.getAttribute('corresp') === 'yes',
       affiliations: Array.from(author.querySelectorAll('xref[ref-type="aff"]')).map((xRef) => xRef.getAttribute('rid')),
-      hasCompetingInterest: Boolean(competingInterest) && competingInterest !== 'No competing interests declared',
+      hasCompetingInterest: Boolean(competingInterest)
+        ? competingInterest !== 'No competing interests declared'
+        : undefined,
       competingInterestStatement: competingInterest
     });
   });
