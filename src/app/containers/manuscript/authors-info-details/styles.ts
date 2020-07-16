@@ -19,8 +19,15 @@ export const useAuthorDetailStyles = makeStyles((theme) => ({
     flexGrow: 0,
     padding: 6
   },
+  authorInfoContainer: {
+    flex: 1
+  },
   authorInfoLine: {
     lineHeight: '24px'
+  },
+  authorBio: {
+    lineHeight: '24px',
+    marginTop: theme.spacing(1.5)
   },
   orcidIcon: {
     width: 16,

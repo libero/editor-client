@@ -11,7 +11,7 @@ import * as bioConfig from 'app/models/config/author-bio.config';
 import { Affiliation } from 'app/models/affiliation';
 import { getTextContentFromPath, makeSchemaFromConfig } from 'app/models/utils';
 import { buildInputRules } from 'app/models/plugins/input-rules';
-import { SelectPlugin } from 'app/utils/view.utils';
+import { SelectPlugin } from './plugins/selection.plugin';
 
 export interface Person {
   readonly id: string;
@@ -21,7 +21,6 @@ export interface Person {
   isAuthenticated?: boolean;
   orcid?: string;
   email?: string;
-  orcId?: string;
   bio?: EditorState;
   isCorrespondingAuthor?: boolean;
   affiliations?: string[];
@@ -67,7 +66,9 @@ export function createAuthorsState(authorsXml: Element[], notesXml: Element | un
       email: getTextContentFromPath(author, 'email'),
       isCorrespondingAuthor: author.getAttribute('corresp') === 'yes',
       affiliations: Array.from(author.querySelectorAll('xref[ref-type="aff"]')).map((xRef) => xRef.getAttribute('rid')),
-      hasCompetingInterest: Boolean(competingInterest) && competingInterest !== 'No competing interests declared',
+      hasCompetingInterest: Boolean(competingInterest)
+        ? competingInterest !== 'No competing interests declared'
+        : undefined,
       competingInterestStatement: competingInterest
     });
   });

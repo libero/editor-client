@@ -13,6 +13,7 @@ import { buildInputRules } from './plugins/input-rules';
 import { KeywordGroups } from './manuscript';
 import { createReference, Reference } from 'app/models/reference';
 import { makeSchemaFromConfig } from 'app/models/utils';
+import { SelectPlugin } from './plugins/selection.plugin';
 
 export function createTitleState(content: Node): EditorState {
   const schema = makeSchemaFromConfig(titleConfig.topNode, titleConfig.nodes, titleConfig.marks);
@@ -26,7 +27,7 @@ export function createTitleState(content: Node): EditorState {
   return EditorState.create({
     doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),
     schema,
-    plugins: [buildInputRules(), gapCursor(), dropCursor()]
+    plugins: [buildInputRules(), gapCursor(), dropCursor(), SelectPlugin]
   });
 }
 
@@ -42,7 +43,7 @@ export function createAbstractState(content: Node): EditorState {
   return EditorState.create({
     doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),
     schema,
-    plugins: [buildInputRules(), gapCursor(), dropCursor()]
+    plugins: [buildInputRules(), gapCursor(), dropCursor(), SelectPlugin]
   });
 }
 

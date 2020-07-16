@@ -2,14 +2,14 @@ import { manuscriptEditorReducer } from 'app/reducers/manuscript-editor.reducer'
 import {
   hideModalDialog,
   removeFocusAction,
-  setFocusAction,
-  showModalDialog
+  showModalDialog,
+  updateFocusPathAction
 } from 'app/actions/manuscript-editor.actions';
 import { ActionButton } from 'app/components/action-button';
 
 describe('manuscript editor reducer', () => {
   it('sets focused path', () => {
-    const state = manuscriptEditorReducer(undefined, setFocusAction('focus.path'));
+    const state = manuscriptEditorReducer(undefined, updateFocusPathAction('focus.path'));
     expect(state.focusedManuscriptPath).toBe('focus.path');
   });
 

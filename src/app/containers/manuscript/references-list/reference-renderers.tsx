@@ -210,7 +210,7 @@ export const renderWebReference = (reference: Reference) => {
       {authors}. {referenceInfo.year}. {getAnnotatedText(referenceInfo.articleTitle, '. ')}
       <em>{getAnnotatedText(referenceInfo.source, ' ')}</em>
       {referenceInfo.extLink ? getExtLinkTag(referenceInfo.extLink) : undefined}
-      {referenceInfo.dateInCitation ? ` Accessed: ${referenceInfo.dateInCitation}` : undefined}
+      {referenceInfo.dateInCitation ? ` [Accessed: ${referenceInfo.dateInCitation}]` : undefined}
     </>
   );
 };

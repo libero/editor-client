@@ -10,30 +10,41 @@ interface KeywordsEditorProps {
   keywords: EditorState[];
   newKeyword: EditorState;
   label?: string;
-  onDelete: (index: number) => void;
-  onChange: (index: number, change: Transaction) => void;
-  onNewKeywordChange: (change: Transaction) => void;
-  onAdd: (state: EditorState) => void;
-  onFocus: (index: number | undefined, isNewKeywordFocused?: boolean) => void;
-  onBlur: (index: number | undefined, isNewKeywordFocused?: boolean) => void;
+  name: string;
+  activeKeywordPath?: string;
+  onDelete: (groupType: string, index: number) => void;
+  onChange: (groupType: string, index: number, change: Transaction) => void;
+  onNewKeywordChange: (groupType: string, change: Transaction) => void;
+  onAdd: (groupType: string, state: EditorState) => void;
+  onFocusSwitch: (groupType: string, index: number | undefined, isNewKeywordFocused?: boolean) => void;
+  onBlur: () => void;
 }
 
+const isActiveKeyword = (group: string, index: number, activeKeywordPath?: string) => {
+  return activeKeywordPath === `keywordGroups.${group}.keywords.${index}`;
+};
+
 export const KeywordsEditor: React.FC<KeywordsEditorProps> = (props) => {
-  const { keywords, label, onChange, onDelete, onAdd, onFocus, onBlur, newKeyword, onNewKeywordChange } = props;
+  const {
+    keywords,
+    label,
+    onChange,
+    onDelete,
+    name,
+    onAdd,
+    onFocusSwitch,
+    newKeyword,
+    onNewKeywordChange,
+    activeKeywordPath,
+    onBlur
+  } = props;
   const classes = makeKeywordContainerStyles();
 
   const handleFocus = useCallback(
     (index: number) => {
-      onFocus(index);
+      onFocusSwitch(name, index);
     },
-    [onFocus]
-  );
-
-  const handleBlur = useCallback(
-    (index: number) => {
-      onBlur(index);
-    },
-    [onBlur]
+    [name, onFocusSwitch]
   );
 
   const renderKeywords = (keywords: EditorState[]) => {
@@ -41,34 +52,32 @@ export const KeywordsEditor: React.FC<KeywordsEditorProps> = (props) => {
       return (
         <Keyword
           key={index}
-          onChange={onChange.bind(null, index)}
+          isActive={isActiveKeyword(name, index, activeKeywordPath)}
+          onChange={onChange.bind(null, name, index)}
           editorState={keywordEditorState}
-          onDelete={onDelete.bind(null, index)}
-          onFocus={handleFocus.bind(null, index)}
-          onBlur={handleBlur.bind(null, index)}
+          onDelete={onDelete.bind(null, name, index)}
+          onFocusSwitch={handleFocus.bind(null, index)}
+          onBlur={onBlur}
         />
       );
     });
   };
 
   const handleNewKeywordFocus = useCallback(() => {
-    onFocus(undefined, true);
-  }, [onFocus]);
+    onFocusSwitch(name, undefined, true);
+  }, [name, onFocusSwitch]);
 
-  const handleNewKeywordBlur = useCallback(() => {
-    onBlur(undefined, false);
-  }, [onBlur]);
+  const isGroupFocused = activeKeywordPath && activeKeywordPath.startsWith(`keywordGroups.${name}`);
 
   return (
-    <SectionContainer label={label}>
+    <SectionContainer label={label} focused={isGroupFocused}>
       <section className={classes.keywordsSection}>
         {renderKeywords(keywords)}
         <NewKeywordSection
           className={classes.newKeywordEditor}
-          onChange={onNewKeywordChange}
+          onChange={onNewKeywordChange.bind(null, name)}
           editorState={newKeyword}
-          onEnter={onAdd}
-          onBlur={handleNewKeywordBlur}
+          onEnter={onAdd.bind(null, name)}
           onFocus={handleNewKeywordFocus}
         />
       </section>

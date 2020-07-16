@@ -11,7 +11,6 @@ interface NewKeywordSection {
   onEnter: (editorState: EditorState) => void;
   onChange: (change: Transaction) => void;
   onFocus: () => void;
-  onBlur: () => void;
 }
 
 export const NewKeywordSection: React.FC<NewKeywordSection> = ({
@@ -20,16 +19,11 @@ export const NewKeywordSection: React.FC<NewKeywordSection> = ({
   onChange,
   className,
   onFocus,
-  onBlur
 }) => {
   const options = {
     handleDOMEvents: {
       focus: () => {
         onFocus();
-        return false;
-      },
-      blur: () => {
-        onBlur();
         return false;
       }
     },

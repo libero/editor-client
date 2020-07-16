@@ -6,13 +6,10 @@ import RedoIcon from '@material-ui/icons/Redo';
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import FormatBoldIcon from '@material-ui/icons/FormatBold';
 import FormatItalicIcon from '@material-ui/icons/FormatItalic';
-import FormatUnderlineIcon from '@material-ui/icons/FormatUnderlined';
-import FormatStrikethroughIcon from '@material-ui/icons/FormatStrikethrough';
 import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
 import LinkIcon from '@material-ui/icons/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 
-import { SubscriptIcon, SuperscriptIcon } from 'app/assets/icons';
 import { DropDownMenu } from 'app/components/drop-down-menu';
 import * as manuscriptActions from 'app/actions/manuscript.actions';
 
@@ -78,39 +75,11 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
             <FormatBoldIcon />
           </ToggleButton>
           <ToggleButton
-            disabled={!canApply('underline')}
-            selected={isApplied('underline')}
-            onMouseDown={invokeToggleMark('underline')}
-          >
-            <FormatUnderlineIcon />
-          </ToggleButton>
-          <ToggleButton
-            disabled={!canApply('strikethrough')}
-            selected={isApplied('strikethrough')}
-            onMouseDown={invokeToggleMark('strikethrough')}
-          >
-            <FormatStrikethroughIcon />
-          </ToggleButton>
-          <ToggleButton
             disabled={!canApply('italic')}
             selected={isApplied('italic')}
             onMouseDown={invokeToggleMark('italic')}
           >
             <FormatItalicIcon />
-          </ToggleButton>
-          <ToggleButton
-            disabled={!canApply('subscript')}
-            selected={isApplied('subscript')}
-            onMouseDown={invokeToggleMark('subscript')}
-          >
-            <SubscriptIcon />
-          </ToggleButton>
-          <ToggleButton
-            disabled={!canApply('superscript')}
-            selected={isApplied('superscript')}
-            onMouseDown={invokeToggleMark('superscript')}
-          >
-            <SuperscriptIcon />
           </ToggleButton>
           <ToggleButton
             disabled={!canApply('link')}
@@ -135,15 +104,40 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
         <DropDownMenu
           title="FORMAT"
           entries={[
-            { title: 'Bold', enabled: canApply('bold'), action: invokeToggleMark('bold') },
-            { title: 'Italics', enabled: canApply('italic'), action: invokeToggleMark('italic') },
-            { title: 'Subscript', enabled: false, action: undefined },
-            { title: 'Superscript', enabled: false, action: undefined },
+            { title: 'Bold', enabled: canApply('bold'), action: invokeToggleMark('bold'), selected: isApplied('bold') },
+            {
+              title: 'Italics',
+              enabled: canApply('italic'),
+              action: invokeToggleMark('italic'),
+              selected: isApplied('italic')
+            },
+            {
+              title: 'Subscript',
+              enabled: canApply('subscript'),
+              action: invokeToggleMark('subscript'),
+              selected: isApplied('subscript')
+            },
+            {
+              title: 'Superscript',
+              enabled: canApply('superscript'),
+              action: invokeToggleMark('superscript'),
+              selected: isApplied('superscript')
+            },
             { title: 'Monospace', enabled: false, action: undefined },
             { title: 'Small Caps', enabled: false, action: undefined },
-            { title: 'Underline', enabled: false, action: undefined },
+            {
+              title: 'Underline',
+              enabled: canApply('underline'),
+              action: invokeToggleMark('underline'),
+              selected: isApplied('underline')
+            },
             { title: 'Overline', enabled: false, action: undefined },
-            { title: 'Strike Through', enabled: false, action: undefined }
+            {
+              title: 'Strike Through',
+              enabled: canApply('strikethrough'),
+              action: invokeToggleMark('strikethrough'),
+              selected: isApplied('strikethrough')
+            }
           ]}
         />
         <DropDownMenu

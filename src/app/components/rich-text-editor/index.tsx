@@ -1,7 +1,7 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useRef, useEffect, useCallback } from 'react';
 import { EditorView } from 'prosemirror-view';
-import { EditorState, Transaction } from 'prosemirror-state';
-import { isEqual } from 'lodash';
+import { EditorState, Transaction, TextSelection } from 'prosemirror-state';
+import { isEqual, debounce } from 'lodash';
 
 import 'prosemirror-example-setup/style/style.css';
 import 'prosemirror-menu/style/menu.css';
@@ -12,33 +12,54 @@ export interface RichTextEditorProps {
   editorState: EditorState;
   label?: string;
   name?: string;
+  isActive: boolean;
   onChange?: (change: Transaction, name: string) => void;
-  onFocus?: (state: EditorState, name: string) => void;
-  onBlur?: (state: EditorState, name: string) => void;
+  onFocusSwitch?: (state: EditorState, name: string) => void;
 }
 
 export const RichTextEditor: React.FC<RichTextEditorProps> = React.memo((props) => {
-  const { editorState, label, onChange, onFocus, onBlur, name } = props;
+  const { editorState, label, onChange, onFocusSwitch, name, isActive } = props;
+  const prosemirrorRef = useRef<ProseMirrorEditorView>();
+
+  useEffect(() => {
+    if (isActive && prosemirrorRef.current && !prosemirrorRef.current.editorView.hasFocus()) {
+      const { $from, $to } = editorState.selection;
+      prosemirrorRef.current.focus();
+      // position needs to be reset after focus when selection is not empty
+      debounce(() => {
+        const view = prosemirrorRef.current.editorView;
+        const change = view.state.tr.setSelection(new TextSelection($from, $to));
+        view.dispatch(change);
+      }, 50)();
+    }
+  }, [editorState, isActive, prosemirrorRef]);
 
   const options = useMemo(
     () => ({
       handleDOMEvents: {
         focus: ({ state }: EditorView) => {
-          onFocus && onFocus(state, name);
-          return true;
-        },
-        blur: ({ state }: EditorView) => {
-          onBlur && onBlur(state, name);
+          if (onFocusSwitch && !isActive) {
+            onFocusSwitch(state, name);
+          }
           return true;
         }
       }
     }),
-    [onFocus, onBlur, name]
+    [onFocusSwitch, name, isActive]
   );
 
+  const handleChange = useCallback((tr) => onChange(tr, name), [name, onChange]);
+
   return (
-    <SectionContainer label={label}>
-      {editorState ? <ProseMirrorEditorView options={options} editorState={editorState} onChange={onChange} /> : null}
+    <SectionContainer label={label} focused={isActive}>
+      {editorState ? (
+        <ProseMirrorEditorView
+          ref={prosemirrorRef}
+          options={options}
+          editorState={editorState}
+          onChange={handleChange}
+        />
+      ) : null}
     </SectionContainer>
   );
 }, isEqual);

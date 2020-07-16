@@ -65,7 +65,7 @@ const AuthorInfo: React.FC<AuthorInfoProps> = React.memo(({ author }) => {
 
   return (
     <section className={classes.root}>
-      <div>
+      <div className={classes.authorInfoContainer}>
         <div className={classes.authorInfoLine}>
           <strong> {getAuthorDisplayName(author)} </strong>
         </div>
@@ -91,7 +91,7 @@ const AuthorInfo: React.FC<AuthorInfoProps> = React.memo(({ author }) => {
         </div>
         {author.bio ? (
           <div
-            className={classes.authorInfoLine}
+            className={classes.authorBio}
             dangerouslySetInnerHTML={{ __html: stringifyEditorState(author.bio) }}
           />
         ) : undefined}

@@ -22,7 +22,7 @@ Array [
     "competingInterestStatement": "",
     "email": "f.atherden@elifesciences.org",
     "firstName": "Fred",
-    "hasCompetingInterest": false,
+    "hasCompetingInterest": undefined,
     "id": "unique_id",
     "isAuthenticated": true,
     "isCorrespondingAuthor": false,

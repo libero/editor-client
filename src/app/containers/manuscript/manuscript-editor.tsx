@@ -1,11 +1,11 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { EditorState, Transaction } from 'prosemirror-state';
+
 import { getAbstract, getKeywordGroups, getTitle } from 'app/selectors/manuscript.selectors';
 import * as manuscriptActions from 'app/actions/manuscript.actions';
-import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
 import { RichTextEditor } from 'app/components/rich-text-editor';
-
-import { EditorState, Transaction } from 'prosemirror-state';
+import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
 import { KeywordsEditor } from 'app/components/keywords';
 import { KeywordGroups } from 'app/models/manuscript';
 import { useManuscriptStyles } from './styles';
@@ -14,6 +14,11 @@ import { AuthorsInfoDetails } from 'app/containers/manuscript/authors-info-detai
 import { AffiliationsList } from 'app/containers/manuscript/affiliations-list';
 import { ReferenceList } from 'app/containers/manuscript/references-list';
 import { ArticleInformation } from 'app/containers/manuscript/article-information';
+import { getFocusedEditorStatePath } from 'app/selectors/manuscript-editor.selectors';
+
+const isInputFocused = (inputName: string, focusedPath?: string) => {
+  return Boolean(focusedPath) && focusedPath.startsWith(inputName);
+};
 
 export const ManuscriptEditor: React.FC = () => {
   const classes = useManuscriptStyles();
@@ -21,6 +26,7 @@ export const ManuscriptEditor: React.FC = () => {
 
   const title: EditorState = useSelector(getTitle);
   const abstract: EditorState = useSelector(getAbstract);
+  const focusedPath = useSelector(getFocusedEditorStatePath);
   const allKeywords: KeywordGroups = useSelector(getKeywordGroups);
 
   const handleTitleChange = useCallback(
@@ -53,9 +59,9 @@ export const ManuscriptEditor: React.FC = () => {
     dispatch(manuscriptActions.addNewKeywordAction({ keywordGroup, keyword }));
   };
 
-  const handleFocus = useCallback(
-    (state: EditorState, name: string) => {
-      dispatch(manuscriptEditorActions.setFocusAction(name));
+  const handleFocusSwitch = useCallback(
+    (state: EditorState, path: string) => {
+      dispatch(manuscriptEditorActions.setFocusAction(path));
     },
     [dispatch]
   );
@@ -66,7 +72,7 @@ export const ManuscriptEditor: React.FC = () => {
 
   const handleKeywordFocus = (group: string, index: number | undefined, isNewKeywordFocused: boolean): void => {
     const kwdIndexPath = isNewKeywordFocused ? 'newKeyword' : `keywords.${index}`;
-    handleFocus(null, ['keywordGroups', group, kwdIndexPath].join('.'));
+    handleFocusSwitch(null, ['keywordGroups', group, kwdIndexPath].join('.'));
   };
 
   const renderKeywords = (keywordGroups: KeywordGroups): JSX.Element[] => {
@@ -76,12 +82,14 @@ export const ManuscriptEditor: React.FC = () => {
           key={groupType}
           keywords={group.keywords}
           newKeyword={group.newKeyword}
+          activeKeywordPath={focusedPath}
+          name={groupType}
           label={group.title || 'Keywords'}
-          onNewKeywordChange={handleNewKeywordChange.bind(null, groupType)}
-          onAdd={handleKeywordAdd.bind(null, groupType)}
-          onChange={handleKeywordsChange.bind(null, groupType)}
-          onDelete={handleKeywordDelete.bind(null, groupType)}
-          onFocus={handleKeywordFocus.bind(null, groupType)}
+          onNewKeywordChange={handleNewKeywordChange}
+          onAdd={handleKeywordAdd}
+          onChange={handleKeywordsChange}
+          onDelete={handleKeywordDelete}
+          onFocusSwitch={handleKeywordFocus}
           onBlur={handleBlur}
         />
       );
@@ -94,10 +102,10 @@ export const ManuscriptEditor: React.FC = () => {
       <RichTextEditor
         editorState={title}
         label="Title"
+        isActive={isInputFocused('title', focusedPath)}
         name="title"
         onChange={handleTitleChange}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
+        onFocusSwitch={handleFocusSwitch}
       />
       <SortableAuthorsList />
       <AffiliationsList />
@@ -105,9 +113,9 @@ export const ManuscriptEditor: React.FC = () => {
         editorState={abstract}
         label="Abstract"
         name="abstract"
+        isActive={isInputFocused('abstract', focusedPath)}
         onChange={handleAbstractChange}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
+        onFocusSwitch={handleFocusSwitch}
       />
       {renderKeywords(allKeywords)}
       <ArticleInformation />

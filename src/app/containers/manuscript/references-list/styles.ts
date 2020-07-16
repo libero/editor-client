@@ -13,7 +13,7 @@ export const useReferencesListStyles = makeStyles((theme) => ({
 
 export const useReferencesListItemStyles = makeStyles((theme) => ({
   listItem: {
-    paddingLeft: theme.spacing(2),
+    paddingLeft: theme.spacing(1),
     display: 'flex',
     alignItems: 'flex-start'
   },

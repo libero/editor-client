@@ -1,5 +1,6 @@
 @import "./app/styles/reset";
 @import "./fonts/fonts";
+@import "./app/styles/constants.module";
 
 html, #root {
   margin: 0;
@@ -16,5 +17,10 @@ body {
   font-family: 'Noto Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+  color: $primary-main;
 }
 
