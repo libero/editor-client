@@ -10,6 +10,7 @@ import {
   InputLabel
 } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
+import classNames from 'classnames';
 
 import { useAuthorFormStyles } from './styles';
 import { createAuthor, Person } from 'app/models/person';
@@ -198,13 +199,18 @@ export const AuthorFormDialog: React.FC<AuthorFormDialogProps> = (props) => {
         </InputLabel>
         <Select
           labelId="author-competing-interest-label"
+          className={classNames({
+            [classes.coiGreyedState]: !getCompetingInterestSelectValue(author.hasCompetingInterest)
+          })}
           displayEmpty
           value={getCompetingInterestSelectValue(author.hasCompetingInterest)}
           onChange={handleCompetingInterestChange}
           name="hasCompetingInterest"
           label="Competing interest"
         >
-          <MenuItem value={0}>Select competing interest</MenuItem>
+          <MenuItem value={0} disabled={true}>
+            Please select
+          </MenuItem>
           <MenuItem value={1}>No competing interest</MenuItem>
           <MenuItem value={2}>Has competing interest</MenuItem>
         </Select>
