@@ -11,8 +11,13 @@ export interface KeywordGroups {
   };
 }
 
+export interface ArticleInformation {
+  articleDOI: string;
+}
+
 export type Manuscript = {
   title: EditorState;
+  articleInfo: ArticleInformation;
   authors: Person[];
   affiliations: Affiliation[];
   abstract: EditorState;

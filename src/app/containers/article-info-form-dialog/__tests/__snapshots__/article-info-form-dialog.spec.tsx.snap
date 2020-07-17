@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Author Form Dialog renders edit article information dialog 1`] = `
+<section
+  className="makeStyles-root-1"
+>
+  <div
+    data-cmp="TextField"
+  />
+  <div
+    className="makeStyles-buttonPanel-3"
+  >
+    <div
+      data-cmp="Button"
+    />
+    <div
+      data-cmp="Button"
+    />
+  </div>
+</section>
+`;

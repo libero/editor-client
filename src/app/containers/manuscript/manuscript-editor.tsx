@@ -13,6 +13,7 @@ import { SortableAuthorsList } from './sortable-authors-list';
 import { AuthorsInfoDetails } from 'app/containers/manuscript/authors-info-details';
 import { AffiliationsList } from 'app/containers/manuscript/affiliations-list';
 import { ReferenceList } from 'app/containers/manuscript/references-list';
+import { ArticleInformation } from 'app/containers/manuscript/article-information';
 import { getFocusedEditorStatePath } from 'app/selectors/manuscript-editor.selectors';
 
 const isInputFocused = (inputName: string, focusedPath?: string) => {
@@ -117,6 +118,7 @@ export const ManuscriptEditor: React.FC = () => {
         onFocusSwitch={handleFocusSwitch}
       />
       {renderKeywords(allKeywords)}
+      <ArticleInformation />
       <AuthorsInfoDetails />
       <ReferenceList />
     </div>
