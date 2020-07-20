@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import { IconButton } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
 import EditIcon from '@material-ui/icons/Edit';
+import { isBoolean, isEqual } from 'lodash';
 
 import { SectionContainer } from 'app/components/section-container';
 import { getAuthorAffiliations, getAuthors } from 'app/selectors/manuscript.selectors';
@@ -13,7 +14,6 @@ import {
 import { ActionButton } from 'app/components/action-button';
 import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
 import { AuthorFormDialog } from 'app/containers/author-form-dialog';
-import { isEqual } from 'lodash';
 import { stringifyEditorState } from 'app/utils/view.utils';
 import { OrcidIcon } from 'app/assets/icons';
 import { getAffiliationDisplayName } from 'app/models/affiliation';
@@ -84,16 +84,15 @@ const AuthorInfo: React.FC<AuthorInfoProps> = React.memo(({ author }) => {
             {author.orcid}
           </a>
         </div>
-        <div className={classes.authorInfoLine}>
-          {author.hasCompetingInterest
-            ? `Competing interest: ${author.competingInterestStatement}`
-            : 'No Competing interest declared'}
-        </div>
+        {isBoolean(author.hasCompetingInterest) ? (
+          <div className={classes.authorInfoLine}>
+            {author.hasCompetingInterest
+              ? `Competing interest: ${author.competingInterestStatement}`
+              : 'No Competing interest declared'}
+          </div>
+        ) : undefined}
         {author.bio ? (
-          <div
-            className={classes.authorBio}
-            dangerouslySetInnerHTML={{ __html: stringifyEditorState(author.bio) }}
-          />
+          <div className={classes.authorBio} dangerouslySetInnerHTML={{ __html: stringifyEditorState(author.bio) }} />
         ) : undefined}
       </div>
       <IconButton classes={{ root: classes.editButton }} onClick={editAuthor}>

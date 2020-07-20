@@ -44,7 +44,12 @@ export const RichTextInput: React.FC<RichTextInputProps> = ({ label, onChange, e
     : null;
 
   return (
-    <SectionContainer variant="outlined" label={label} className={classNames(classes.container, className)}>
+    <SectionContainer
+      focused={isFocused}
+      variant="outlined"
+      label={label}
+      className={classNames(classes.container, className)}
+    >
       <ToggleButtonGroup classes={{ root: classNames(classes.toolbar, { [classes.hideToolbar]: !isFocused }) }}>
         {editorView ? getMenuForEditor(editorState, editorView) : undefined}
       </ToggleButtonGroup>
