@@ -24,17 +24,17 @@ Array [
     />
   </nav>,
   <div
-    className="makeStyles-content-11"
+    className="makeStyles-content-12"
   >
     <div
       aria-hidden="true"
-      className="makeStyles-toolbarPlaceholder-12"
+      className="makeStyles-toolbarPlaceholder-13"
     />
     <div
-      className="makeStyles-root-13 makeStyles-plainVariant-15"
+      className="makeStyles-root-14 makeStyles-plainVariant-16"
     >
       <label
-        className="makeStyles-label-16"
+        className="makeStyles-label-17"
       >
         Title
       </label>
@@ -44,15 +44,15 @@ Array [
     </div>
     <section>
       <div
-        className="makeStyles-root-13 makeStyles-plainVariant-15"
+        className="makeStyles-root-14 makeStyles-plainVariant-16"
       >
         <label
-          className="makeStyles-label-16"
+          className="makeStyles-label-17"
         >
           Authors
         </label>
         <div
-          className="makeStyles-sortableContainer-18"
+          className="makeStyles-sortableContainer-19"
         >
            
            
@@ -61,20 +61,20 @@ Array [
     </section>
     <section>
       <div
-        className="makeStyles-root-13 makeStyles-plainVariant-15"
+        className="makeStyles-root-14 makeStyles-plainVariant-16"
       >
         <label
-          className="makeStyles-label-16"
+          className="makeStyles-label-17"
         >
           Affiliations
         </label>
       </div>
     </section>
     <div
-      className="makeStyles-root-13 makeStyles-plainVariant-15"
+      className="makeStyles-root-14 makeStyles-plainVariant-16"
     >
       <label
-        className="makeStyles-label-16"
+        className="makeStyles-label-17"
       >
         Abstract
       </label>
@@ -83,15 +83,15 @@ Array [
       />
     </div>
     <div
-      className="makeStyles-sectionContainer-33 makeStyles-root-13 makeStyles-plainVariant-15"
+      className="makeStyles-sectionContainer-34 makeStyles-root-14 makeStyles-plainVariant-16"
     >
       <label
-        className="makeStyles-label-16"
+        className="makeStyles-label-17"
       >
         Article information
       </label>
       <section
-        className="makeStyles-infoSection-34"
+        className="makeStyles-infoSection-35"
       >
         <div>
           <strong>
@@ -104,10 +104,10 @@ Array [
     </div>
     <section>
       <div
-        className="makeStyles-root-13 makeStyles-plainVariant-15"
+        className="makeStyles-root-14 makeStyles-plainVariant-16"
       >
         <label
-          className="makeStyles-label-16"
+          className="makeStyles-label-17"
         >
           Author Information
         </label>
@@ -115,15 +115,15 @@ Array [
     </section>
     <section>
       <div
-        className="makeStyles-root-13 makeStyles-plainVariant-15"
+        className="makeStyles-root-14 makeStyles-plainVariant-16"
       >
         <label
-          className="makeStyles-label-16"
+          className="makeStyles-label-17"
         >
           References
         </label>
         <ul
-          className="makeStyles-list-37"
+          className="makeStyles-list-38"
         />
       </div>
     </section>

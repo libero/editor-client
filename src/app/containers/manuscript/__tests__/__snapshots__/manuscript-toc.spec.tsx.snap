@@ -21,9 +21,21 @@ exports[`<ManuscriptTOC> renders 1`] = `
           Libero Editor
         </h1>
         <h3
-          className="makeStyles-version-5"
+          className="makeStyles-infoText-5"
         >
-          v0.0.0-test
+          Software: v
+          0.0.0-test
+        </h3>
+        <h3
+          className="makeStyles-infoText-5 makeStyles-dtd-6"
+        >
+          JATS: 
+           DTD
+        </h3>
+        <h3
+          className="makeStyles-infoText-5"
+        >
+          Type: 
         </h3>
       </section>
       <div
@@ -65,9 +77,21 @@ exports[`<ManuscriptTOC> renders 1`] = `
           Libero Editor
         </h1>
         <h3
-          className="makeStyles-version-5"
+          className="makeStyles-infoText-5"
         >
-          v0.0.0-test
+          Software: v
+          0.0.0-test
+        </h3>
+        <h3
+          className="makeStyles-infoText-5 makeStyles-dtd-6"
+        >
+          JATS: 
+           DTD
+        </h3>
+        <h3
+          className="makeStyles-infoText-5"
+        >
+          Type: 
         </h3>
       </section>
       <div
