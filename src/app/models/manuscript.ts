@@ -23,6 +23,7 @@ export type Manuscript = {
   authors: Person[];
   affiliations: Affiliation[];
   abstract: EditorState;
+  impactStatement: EditorState;
   keywordGroups: KeywordGroups;
   references: Reference[];
 };

@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { EditorState, Transaction } from 'prosemirror-state';
 
-import { getAbstract, getKeywordGroups, getTitle } from 'app/selectors/manuscript.selectors';
+import { getAbstract, getImpactStatement, getKeywordGroups, getTitle } from 'app/selectors/manuscript.selectors';
 import * as manuscriptActions from 'app/actions/manuscript.actions';
 import { RichTextEditor } from 'app/components/rich-text-editor';
 import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
@@ -26,6 +26,7 @@ export const ManuscriptEditor: React.FC = () => {
 
   const title: EditorState = useSelector(getTitle);
   const abstract: EditorState = useSelector(getAbstract);
+  const impactStatement: EditorState = useSelector(getImpactStatement);
   const focusedPath = useSelector(getFocusedEditorStatePath);
   const allKeywords: KeywordGroups = useSelector(getKeywordGroups);
 
@@ -47,6 +48,13 @@ export const ManuscriptEditor: React.FC = () => {
   const handleAbstractChange = useCallback(
     (diff: Transaction): void => {
       dispatch(manuscriptActions.updateAbstractAction(diff));
+    },
+    [dispatch]
+  );
+
+  const handleImpactStatementChange = useCallback(
+    (diff: Transaction): void => {
+      dispatch(manuscriptActions.updateImpactStatementAction(diff));
     },
     [dispatch]
   );
@@ -115,6 +123,14 @@ export const ManuscriptEditor: React.FC = () => {
         name="abstract"
         isActive={isInputFocused('abstract', focusedPath)}
         onChange={handleAbstractChange}
+        onFocusSwitch={handleFocusSwitch}
+      />
+      <RichTextEditor
+        editorState={impactStatement}
+        label="Impact statement"
+        name="impactStatement"
+        isActive={isInputFocused('impactStatement', focusedPath)}
+        onChange={handleImpactStatementChange}
         onFocusSwitch={handleFocusSwitch}
       />
       {renderKeywords(allKeywords)}

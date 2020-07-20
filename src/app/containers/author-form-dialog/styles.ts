@@ -39,6 +39,11 @@ export const useAuthorFormStyles = makeStyles((theme) => ({
       maxWidth: 1000
     }
   },
+
+  coiGreyedState: {
+    color: theme.palette.text.disabled
+  },
+
   correspondingAuthorCheckbox: {
     marginLeft: theme.spacing(2),
     marginBottom: theme.spacing(4)

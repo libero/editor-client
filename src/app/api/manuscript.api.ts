@@ -22,6 +22,7 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
   const title = doc.querySelector('title-group article-title');
   const keywordGroups = doc.querySelectorAll('kwd-group');
   const abstract = doc.querySelector('abstract:not([abstract-type])');
+  const impactStatement = doc.querySelector('abstract[abstract-type="toc"]');
   const authors = doc.querySelectorAll('contrib[contrib-type="author"]');
   const affiliations = doc.querySelectorAll('contrib-group:first-of-type aff');
   const references = doc.querySelectorAll('ref-list ref element-citation');
@@ -30,6 +31,7 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
   return {
     title: createTitleState(title),
     abstract: createAbstractState(abstract),
+    impactStatement: createAbstractState(impactStatement),
     keywordGroups: createKeywordGroupsState(Array.from(keywordGroups)),
     authors: createAuthorsState(Array.from(authors), authorNotes),
     affiliations: createAffiliationsState(Array.from(affiliations)),

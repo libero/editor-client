@@ -83,6 +83,18 @@ Array [
       />
     </div>
     <div
+      className="makeStyles-root-14 makeStyles-plainVariant-16"
+    >
+      <label
+        className="makeStyles-label-17"
+      >
+        Impact statement
+      </label>
+      <div
+        className="prosemirrorContainer"
+      />
+    </div>
+    <div
       className="makeStyles-sectionContainer-34 makeStyles-root-14 makeStyles-plainVariant-16"
     >
       <label

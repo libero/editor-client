@@ -137,6 +137,18 @@ exports[`manuscript editor should render 1`] = `
     />
   </div>
   <div
+    className="makeStyles-root-3 makeStyles-plainVariant-5"
+  >
+    <label
+      className="makeStyles-label-6"
+    >
+      Impact statement
+    </label>
+    <div
+      className="prosemirrorContainer"
+    />
+  </div>
+  <div
     className="makeStyles-sectionContainer-23 makeStyles-root-3 makeStyles-plainVariant-5"
   >
     <label

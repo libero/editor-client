@@ -41,11 +41,7 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
   const invokeUndo = useCallback(() => dispatch(manuscriptActions.undoAction()), [dispatch]);
   const invokeRedo = useCallback(() => dispatch(manuscriptActions.redoAction()), [dispatch]);
   const invokeToggleMark = useCallback(
-    (mark: string) => (event?) => {
-      if (event) {
-        event.stopPropagation();
-        event.preventDefault();
-      }
+    (mark: string) => () => {
       dispatch(manuscriptActions.toggleMarkAction(mark));
     },
     [dispatch]
@@ -61,31 +57,23 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
           <ToggleButton disabled={true}>
             <SaveAltIcon />
           </ToggleButton>
-          <ToggleButton disabled={!canUndo} onMouseDown={invokeUndo} selected={false}>
+          <ToggleButton disabled={!canUndo} onClick={invokeUndo} selected={false}>
             <UndoIcon />
           </ToggleButton>
-          <ToggleButton disabled={!canRedo} onMouseDown={invokeRedo} selected={false}>
+          <ToggleButton disabled={!canRedo} onClick={invokeRedo} selected={false}>
             <RedoIcon />
           </ToggleButton>
-          <ToggleButton
-            disabled={!canApply('bold')}
-            selected={isApplied('bold')}
-            onMouseDown={invokeToggleMark('bold')}
-          >
+          <ToggleButton disabled={!canApply('bold')} selected={isApplied('bold')} onClick={invokeToggleMark('bold')}>
             <FormatBoldIcon />
           </ToggleButton>
           <ToggleButton
             disabled={!canApply('italic')}
             selected={isApplied('italic')}
-            onMouseDown={invokeToggleMark('italic')}
+            onClick={invokeToggleMark('italic')}
           >
             <FormatItalicIcon />
           </ToggleButton>
-          <ToggleButton
-            disabled={!canApply('link')}
-            selected={isApplied('link')}
-            onMouseDown={invokeToggleMark('link')}
-          >
+          <ToggleButton disabled={!canApply('link')} selected={isApplied('link')} onClick={invokeToggleMark('link')}>
             <LinkIcon />
           </ToggleButton>
         </ToggleButtonGroup>

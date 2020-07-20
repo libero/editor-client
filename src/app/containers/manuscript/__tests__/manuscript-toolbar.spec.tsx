@@ -1,7 +1,7 @@
 import React from 'react';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
-import { AppBar, Toolbar} from '@material-ui/core';
+import { AppBar, Toolbar } from '@material-ui/core';
 import { mount } from 'enzyme';
 
 import { getLoadableStateSuccess } from 'app/utils/state.utils';
@@ -44,7 +44,7 @@ describe('<ManuscriptToolbar />', () => {
 
     expect(undoBtnProps.disabled).toBeFalsy();
     //call undo
-    undoBtnProps.onMouseDown(null);
+    undoBtnProps.onClick(null);
 
     expect(store.dispatch).toBeCalledWith(manuscriptActions.undoAction());
   });
@@ -71,7 +71,7 @@ describe('<ManuscriptToolbar />', () => {
 
     expect(redoBtnProps.disabled).toBeFalsy();
     //call redo
-    redoBtnProps.onMouseDown(null);
+    redoBtnProps.onClick(null);
 
     expect(store.dispatch).toBeCalledWith(manuscriptActions.redoAction());
   });
