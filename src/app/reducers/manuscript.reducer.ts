@@ -10,7 +10,7 @@ import {
 } from 'app/utils/state.utils';
 import { ManuscriptHistoryState } from 'app/store';
 import { updateTitle } from 'app/reducers/title.handlers';
-import { updateAbstract } from 'app/reducers/abstract.handlers';
+import { updateAbstract, updateImpactStatement } from 'app/reducers/abstract.handlers';
 import { addAuthor, moveAuthor, updateAuthor, deleteAuthor } from 'app/reducers/authors.handlers';
 import {
   addAffiliation,
@@ -59,6 +59,7 @@ manuscriptReducer.on(manuscriptActions.applyChangeAction, (state, payload) => ({
 
 manuscriptReducer.on(manuscriptActions.updateTitleAction, updateTitle);
 manuscriptReducer.on(manuscriptActions.updateAbstractAction, updateAbstract);
+manuscriptReducer.on(manuscriptActions.updateImpactStatementAction, updateImpactStatement);
 manuscriptReducer.on(manuscriptActions.updateAuthorAction, updateAuthor);
 manuscriptReducer.on(manuscriptActions.addAuthorAction, addAuthor);
 manuscriptReducer.on(manuscriptActions.updateArticleInformationAction, updateArticleInformation);

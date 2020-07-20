@@ -10,6 +10,7 @@ export function givenState(overrides: Partial<Manuscript>): ManuscriptHistorySta
     getInitialHistory({
       title: createDummyEditorState(),
       abstract: createDummyEditorState(),
+      impactStatement: createDummyEditorState(),
       authors: [],
       affiliations: [],
       keywordGroups: {},
