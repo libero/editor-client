@@ -64,23 +64,27 @@ export const useOutlinePanelStyles = makeStyles((theme) => ({
   toolbarPlaceholder: {
     ...theme.mixins.toolbar,
     display: 'flex',
-    'flex-grow': 1,
-    'max-height': '64px',
-    'align-items': 'flex-start',
-    'padding-left': '16px',
-    'flex-direction': 'column',
-    'justify-content': 'center'
+    flexGrow: 0,
+    alignItems: 'flex-start',
+    paddingLeft: theme.spacing(2),
+    paddingBottom: theme.spacing(1.5),
+    flexDirection: 'column',
+    justifyContent: 'center'
   },
   title: {
     color: 'rgba(0,0,0,0.54)',
-    'margin-bottom': 4,
     'font-size': '20px',
     'font-weight': '500',
     'line-height': '32px'
   },
-  version: {
+  infoText: {
     color: 'rgba(0,0,0,0.54)',
     'font-size': '12px',
+    lineHeight: '19px',
     'font-weight': '400'
+  },
+
+  dtd: {
+    marginTop: theme.spacing(1)
   }
 }));

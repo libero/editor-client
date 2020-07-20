@@ -14,6 +14,8 @@ export function givenState(overrides: Partial<Manuscript>): ManuscriptHistorySta
       affiliations: [],
       keywordGroups: {},
       articleInfo: {
+        dtd: '',
+        articleType: '',
         articleDOI: ''
       },
       references: [],

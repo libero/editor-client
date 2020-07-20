@@ -12,6 +12,8 @@ export interface KeywordGroups {
 }
 
 export interface ArticleInformation {
+  articleType: string;
+  dtd: string;
   articleDOI: string;
 }
 
