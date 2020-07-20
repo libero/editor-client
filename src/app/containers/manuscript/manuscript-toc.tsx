@@ -1,6 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Drawer, Divider, Hidden, List, ListItem, ListItemText } from '@material-ui/core';
+import classNames from 'classnames';
+
 import { useOutlinePanelStyles } from './styles';
+import { getArticleInformation } from 'app/selectors/manuscript.selectors';
 
 export interface ManuscriptTOCProps {
   tocOpen: boolean;
@@ -11,11 +15,15 @@ export const ManuscriptTOC: React.FC<ManuscriptTOCProps> = (props) => {
   const classes = useOutlinePanelStyles(props);
   const { tocOpen, handleTocToggle } = props;
 
+  const articleInfo = useSelector(getArticleInformation);
+
   const drawer = (
     <React.Fragment>
       <section className={classes.toolbarPlaceholder} aria-hidden="true">
         <h1 className={classes.title}>Libero Editor</h1>
-        <h3 className={classes.version}>{`v${process.env.REACT_APP_VERSION}`}</h3>
+        <h3 className={classes.infoText}>Software: v{process.env.REACT_APP_VERSION}</h3>
+        <h3 className={classNames(classes.infoText, classes.dtd)}>JATS: {articleInfo.dtd} DTD</h3>
+        <h3 className={classes.infoText}>Type: {articleInfo.articleType}</h3>
       </section>
       <Divider />
       <List>

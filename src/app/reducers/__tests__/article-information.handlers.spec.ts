@@ -4,13 +4,17 @@ import { updateArticleInformation } from 'app/reducers/article-information.handl
 
 jest.mock('../../utils/history.utils');
 
-describe('article information reducer', () => {
+describe('article information handler', () => {
   it('updates article info', () => {
     const state = givenState({});
-    const updatedInfo = { articleDOI: 'newID' };
+    const updatedInfo = {
+      articleDOI: 'newID',
+      dtd: '1',
+      articleType: 'insight-article'
+    };
     const updatedState = cloneDeep(state);
     updatedState.data.present.articleInfo = updatedInfo;
-    updatedState.data.past = [{ articleInfo: { articleDOI: '' } }];
+    updatedState.data.past = [{ articleInfo: { articleDOI: '', dtd: '', articleType: '' } }];
 
     const newState = updateArticleInformation(state, updatedInfo);
     expect(newState).toEqual(updatedState);

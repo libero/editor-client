@@ -6,7 +6,7 @@ jest.mock('axios');
 
 describe('manuscript API', () => {
   beforeEach(() => {
-    (axios.get as jest.Mock).mockResolvedValue(Promise.resolve({ data: '' }));
+    (axios.get as jest.Mock).mockResolvedValue(Promise.resolve({ data: '<article />' }));
   });
 
   it('loads manuscript data', async () => {
