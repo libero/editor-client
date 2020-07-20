@@ -8,14 +8,14 @@ import { getFocusedEditorState, getFocusedEditorStatePath } from 'app/selectors/
 
 export function* setFocusSaga(action: Action<string>) {
   const focusedEditorState = yield select(getFocusedEditorState);
+  const path = yield select(getFocusedEditorStatePath);
+  yield put(manuscriptEditorActions.updateFocusPathAction(action.payload));
 
   if (focusedEditorState && !focusedEditorState.selection.empty) {
     const change: Transaction = focusedEditorState.tr;
     change.setSelection(new TextSelection(focusedEditorState.doc.resolve(0)));
-    const path = yield select(getFocusedEditorStatePath);
     yield put(manuscriptActions.applyChangeAction({ path, change }));
   }
-  yield put(manuscriptEditorActions.updateFocusPathAction(action.payload));
 }
 
 export default function* () {

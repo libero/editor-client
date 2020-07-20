@@ -30,7 +30,7 @@ exports[`Author Form Dialog renders a form with competing interest statement 1`]
       <div
         data-cmp="MenuItem"
       >
-        Select competing interest
+        Please select
       </div>
       <div
         data-cmp="MenuItem"
@@ -151,7 +151,7 @@ exports[`Author Form Dialog renders edit author dialog form 1`] = `
       <div
         data-cmp="MenuItem"
       >
-        Select competing interest
+        Please select
       </div>
       <div
         data-cmp="MenuItem"
@@ -245,7 +245,7 @@ exports[`Author Form Dialog renders new author dialog form 1`] = `
       <div
         data-cmp="MenuItem"
       >
-        Select competing interest
+        Please select
       </div>
       <div
         data-cmp="MenuItem"
