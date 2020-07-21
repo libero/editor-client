@@ -4,7 +4,8 @@ import {
   createTitleState,
   createKeywordGroupsState,
   createAbstractState,
-  createReferencesState
+  createReferencesState,
+  createImpactStatementState
 } from 'app/models/manuscript-state.factory';
 import { createAuthorsState } from 'app/models/person';
 import { createAffiliationsState } from 'app/models/affiliation';
@@ -31,7 +32,7 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
   return {
     title: createTitleState(title),
     abstract: createAbstractState(abstract),
-    impactStatement: createAbstractState(impactStatement),
+    impactStatement: createImpactStatementState(impactStatement),
     keywordGroups: createKeywordGroupsState(Array.from(keywordGroups)),
     authors: createAuthorsState(Array.from(authors), authorNotes),
     affiliations: createAffiliationsState(Array.from(affiliations)),

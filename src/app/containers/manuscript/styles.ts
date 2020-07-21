@@ -74,7 +74,7 @@ export const useOutlinePanelStyles = makeStyles((theme) => ({
   title: {
     color: 'rgba(0,0,0,0.54)',
     'font-size': '20px',
-    'font-weight': '500',
+    'font-weight': '700',
     'line-height': '32px'
   },
   infoText: {
