@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Authors details info renders affiliations list 1`] = `
+exports[`Affiliations info renders affiliations list 1`] = `
 <section>
   <div
     className="makeStyles-root-7 makeStyles-plainVariant-9"
@@ -10,44 +10,6 @@ exports[`Authors details info renders affiliations list 1`] = `
     >
       Affiliations
     </label>
-    <div
-      className="makeStyles-listItem-2"
-    >
-      <div
-        className="makeStyles-orderLabel-4"
-      >
-        (
-        1
-        )
-      </div>
-      <div
-        className="makeStyles-affiliationInfo-3"
-      >
-        eLife Sciences, Cambridge, United Kingdom
-      </div>
-      <div
-        data-cmp="IconButton"
-      />
-    </div>
-    <div
-      className="makeStyles-listItem-2"
-    >
-      <div
-        className="makeStyles-orderLabel-4"
-      >
-        (
-        2
-        )
-      </div>
-      <div
-        className="makeStyles-affiliationInfo-3"
-      >
-        University, City, Country
-      </div>
-      <div
-        data-cmp="IconButton"
-      />
-    </div>
   </div>
   <div
     data-cmp="Button"

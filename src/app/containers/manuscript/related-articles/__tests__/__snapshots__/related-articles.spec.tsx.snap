@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Related articles info renders related articles list 1`] = `
+<section>
+  <div
+    className="makeStyles-root-6 makeStyles-plainVariant-8"
+  >
+    <label
+      className="makeStyles-label-9"
+    >
+      Related articles
+    </label>
+    <ul
+      className="makeStyles-list-2"
+    />
+  </div>
+  <div
+    data-cmp="Button"
+  />
+</section>
+`;

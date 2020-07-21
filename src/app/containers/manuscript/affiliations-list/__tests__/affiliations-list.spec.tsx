@@ -6,6 +6,7 @@ import { getInitialHistory, getLoadableStateSuccess } from 'app/utils/state.util
 import { EditorState } from 'prosemirror-state';
 import { create } from 'react-test-renderer';
 import { AffiliationsList } from 'app/containers/manuscript/affiliations-list/index';
+import {givenState} from "app/test-utils/reducer-test-helpers";
 
 jest.mock('@material-ui/core', () => ({
   Button: ({ label }) => <div data-cmp="Button">{label}</div>,
@@ -37,19 +38,13 @@ const AFFILIATIONS = [
   }
 ];
 
-describe('Authors details info', () => {
+describe('Affiliations info', () => {
   const mockStore = configureMockStore([]);
 
   it('renders affiliations list', () => {
-    const mockState = getInitialHistory({
-      title: new EditorState(),
-      abstract: new EditorState(),
-      authors: [],
-      keywordGroups: {},
-      affiliations: AFFILIATIONS
-    });
+    const mockState = givenState({});
     const store = mockStore({
-      manuscript: getLoadableStateSuccess(mockState)
+      manuscript: mockState
     });
     const wrapper = create(
       <Provider store={store}>
