@@ -22,6 +22,8 @@ export const getAuthors = createSelector(getManuscriptData, (data) => get(data, 
 
 export const getAffiliations = createSelector(getManuscriptData, (data) => get(data, 'present.affiliations', []));
 
+export const getRelatedArticles = createSelector(getManuscriptData, (data) => get(data, 'present.relatedArticles', []));
+
 export const getArticleInformation = createSelector(getManuscriptData, (data) => get(data, 'present.articleInfo', []));
 
 export const getReferences = createSelector(getManuscriptData, (data) => get(data, 'present.references', []));

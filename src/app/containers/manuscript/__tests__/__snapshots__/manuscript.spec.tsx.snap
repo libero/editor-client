@@ -121,6 +121,20 @@ Array [
         <label
           className="makeStyles-label-17"
         >
+          Related articles
+        </label>
+        <ul
+          className="makeStyles-list-38"
+        />
+      </div>
+    </section>
+    <section>
+      <div
+        className="makeStyles-root-14 makeStyles-plainVariant-16"
+      >
+        <label
+          className="makeStyles-label-17"
+        >
           Author Information
         </label>
       </div>
@@ -135,7 +149,7 @@ Array [
           References
         </label>
         <ul
-          className="makeStyles-list-38"
+          className="makeStyles-list-43"
         />
       </div>
     </section>

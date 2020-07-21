@@ -15,6 +15,7 @@ import { AffiliationsList } from 'app/containers/manuscript/affiliations-list';
 import { ReferenceList } from 'app/containers/manuscript/references-list';
 import { ArticleInformation } from 'app/containers/manuscript/article-information';
 import { getFocusedEditorStatePath } from 'app/selectors/manuscript-editor.selectors';
+import { RelatedArticles } from 'app/containers/manuscript/related-articles';
 
 const isInputFocused = (inputName: string, focusedPath?: string) => {
   return Boolean(focusedPath) && focusedPath.startsWith(inputName);
@@ -135,6 +136,7 @@ export const ManuscriptEditor: React.FC = () => {
       />
       {renderKeywords(allKeywords)}
       <ArticleInformation />
+      <RelatedArticles />
       <AuthorsInfoDetails />
       <ReferenceList />
     </div>
