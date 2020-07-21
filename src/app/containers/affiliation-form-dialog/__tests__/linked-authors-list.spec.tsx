@@ -96,7 +96,7 @@ function givenAuthors(): Person[] {
       firstName: 'Fred',
       lastName: 'Atherden',
       email: 'f.atherden@elifesciences.org',
-      orcId: 'https://orcid.org/0000-0002-6048-1470',
+      orcid: 'https://orcid.org/0000-0002-6048-1470',
       affiliations: ['aff1', 'aff2'],
       id: '149aa8ef-ed62-4ef9-aeaa-9758ce99c136'
     },

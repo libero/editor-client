@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames';
 
 import { useAuthorFormStyles } from './styles';
-import { createAuthor, Person } from 'app/models/person';
+import { createAuthor, createBioEditorState, Person } from 'app/models/person';
 import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
 import * as manuscriptActions from 'app/actions/manuscript.actions';
 import { PromptDialog } from 'app/components/prompt-dialog';
@@ -55,7 +55,7 @@ export const AuthorFormDialog: React.FC<AuthorFormDialogProps> = (props) => {
   const isNewAuthor = !props.author;
 
   const [author, setAuthor] = useState<Person>(
-    props.author || createAuthor(undefined, { firstName: '', lastName: '' })
+    props.author || createAuthor(undefined, { firstName: '', lastName: '', bio: createBioEditorState() })
   );
   const [isConfirmShown, setConfirmSnow] = useState<boolean>(false);
 

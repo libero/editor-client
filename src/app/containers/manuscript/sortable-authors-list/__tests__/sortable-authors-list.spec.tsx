@@ -31,7 +31,7 @@ const AUTHORS = [
     firstName: 'Fred',
     lastName: 'Atherden',
     email: 'f.atherden@elifesciences.org',
-    orcId: 'https://orcid.org/0000-0002-6048-1470',
+    orcid: 'https://orcid.org/0000-0002-6048-1470',
     affiliations: []
   },
   {
