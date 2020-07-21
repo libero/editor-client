@@ -1,9 +1,11 @@
 import React from 'react';
 import { create } from 'react-test-renderer';
-import { AuthorFormDialog } from 'app/containers/author-form-dialog/index';
+import { EditorState } from 'prosemirror-state';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { mount } from 'enzyme';
+
+import { AuthorFormDialog } from 'app/containers/author-form-dialog/index';
 import { addAuthorAction, deleteAuthorAction, updateAuthorAction } from 'app/actions/manuscript.actions';
 import { PromptDialog } from 'app/components/prompt-dialog';
 import { givenState } from 'app/test-utils/reducer-test-helpers';
@@ -42,7 +44,7 @@ describe('Author Form Dialog', () => {
           firstName: 'Fred',
           lastName: 'Atherden',
           email: 'f.atherden@elifesciences.org',
-          orcId: 'https://orcid.org/0000-0002-6048-1470'
+          orcid: 'https://orcid.org/0000-0002-6048-1470'
         }
       ]
     });
@@ -103,7 +105,13 @@ describe('Author Form Dialog', () => {
     );
     wrapper.find({ title: 'Done' }).prop('onClick')();
     expect(store.dispatch).toBeCalledWith(
-      addAuthorAction({ firstName: '', id: expect.any(String), lastName: '', affiliations: [] })
+      addAuthorAction({
+        firstName: '',
+        id: expect.any(String),
+        lastName: '',
+        affiliations: [],
+        bio: expect.any(EditorState)
+      })
     );
   });
 

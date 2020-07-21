@@ -85,11 +85,6 @@ exports[`Authors info details renders authors list 1`] = `
             target="_blank"
           />
         </div>
-        <div
-          className="makeStyles-authorInfoLine-10"
-        >
-          No Competing interest declared
-        </div>
       </div>
       <div
         data-cmp="IconButton"
