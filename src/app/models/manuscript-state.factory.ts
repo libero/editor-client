@@ -34,7 +34,6 @@ export function createTitleState(content: Node): EditorState {
 
 export function createAbstractState(content: Node): EditorState {
   const schema = makeSchemaFromConfig(abstractConfig.topNode, abstractConfig.nodes, abstractConfig.marks);
-
   const xmlContentDocument = document.implementation.createDocument('', '', null);
 
   if (content) {
@@ -45,6 +44,21 @@ export function createAbstractState(content: Node): EditorState {
     doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),
     schema,
     plugins: [buildInputRules(), gapCursor(), dropCursor(), SelectPlugin]
+  });
+}
+
+export function createImpactStatementState(content: Node): EditorState {
+  const schema = makeSchemaFromConfig(abstractConfig.topNode, abstractConfig.nodes, abstractConfig.marks);
+  const xmlContentDocument = document.implementation.createDocument('', '', null);
+
+  if (content) {
+    xmlContentDocument.appendChild(content);
+  }
+
+  return EditorState.create({
+    doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),
+    schema,
+    plugins: [buildInputRules(), gapCursor(), dropCursor(), SelectPlugin, PlaceholderPlugin('Enter impact statement')]
   });
 }
 
