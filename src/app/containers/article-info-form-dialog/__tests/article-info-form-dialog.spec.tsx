@@ -13,14 +13,16 @@ jest.mock('@material-ui/core', () => ({
   Button: () => <div data-cmp="Button"></div>
 }));
 
-describe('Author Form Dialog', () => {
+describe('Article Info Form Dialog', () => {
   const mockStore = configureMockStore([]);
   let mockState;
 
   beforeEach(() => {
     mockState = givenState({
       articleInfo: {
-        articleDOI: ''
+        articleDOI: '',
+        dtd: '1',
+        articleType: ''
       }
     });
   });
@@ -41,7 +43,7 @@ describe('Author Form Dialog', () => {
   it('dispatches update article info action', () => {
     const store = mockStore({ manuscript: mockState });
     jest.spyOn(store, 'dispatch');
-    
+
     const wrapper = mount(
       <Provider store={store}>
         <ArticleInfoFormDialog />

@@ -6,6 +6,7 @@ import { createAsyncAction } from 'app/utils/action.utils';
 import { Person } from 'app/models/person';
 import { Affiliation } from 'app/models/affiliation';
 import { Reference } from 'app/models/reference';
+import {RelatedArticle} from "app/models/related-article";
 
 export interface KeywordUpdatePayload {
   keywordGroup: string;
@@ -60,6 +61,9 @@ export const updateAffiliationAction = createAction<Affiliation>('UPDATE_AFFILIA
 export const addAffiliationAction = createAction<Affiliation>('ADD_AFFILIATION');
 export const deleteAffiliationAction = createAction<Affiliation>('DELETE_AFFILIATION');
 export const linkAffiliationsAction = createAction<LinkAffiliationsPayload>('LINK_AFFILIATIONS');
+export const updateRelatedArticleAction = createAction<RelatedArticle>('UPDATE_RELATED_ARTICLE');
+export const addRelatedArticleAction = createAction<RelatedArticle>('ADD_RELATED_ARTICLE');
+export const deleteRelatedArticleAction = createAction<RelatedArticle>('DELETE_RELATED_ARTICLE');
 export const updateReferenceAction = createAction<Reference>('UPDATE_REFERENCE');
 export const addReferenceAction = createAction<Reference>('ADD_REFERENCE');
 export const deleteReferenceAction = createAction<Reference>('DELETE_REFERENCE');

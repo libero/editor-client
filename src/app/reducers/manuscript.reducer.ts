@@ -22,6 +22,7 @@ import { addKeyword, deleteKeyword, updateKeyword, updateNewKeyword } from 'app/
 import { redoChange, undoChange, updateManuscriptState } from 'app/utils/history.utils';
 import { addReference, deleteReference, updateReference } from 'app/reducers/references.handlers';
 import { updateArticleInformation } from 'app/reducers/article-information.handlers';
+import { addRelatedArticle, deleteRelatedArticle, updateRelatedArticle } from 'app/reducers/related-articles.handlers';
 
 const initialState = getInitialLoadableState() as ManuscriptHistoryState;
 
@@ -68,6 +69,9 @@ manuscriptReducer.on(manuscriptActions.deleteAuthorAction, deleteAuthor);
 manuscriptReducer.on(manuscriptActions.updateAffiliationAction, updateAffiliation);
 manuscriptReducer.on(manuscriptActions.addAffiliationAction, addAffiliation);
 manuscriptReducer.on(manuscriptActions.deleteAffiliationAction, deleteAffiliation);
+manuscriptReducer.on(manuscriptActions.updateRelatedArticleAction, updateRelatedArticle);
+manuscriptReducer.on(manuscriptActions.addRelatedArticleAction, addRelatedArticle);
+manuscriptReducer.on(manuscriptActions.deleteRelatedArticleAction, deleteRelatedArticle);
 manuscriptReducer.on(manuscriptActions.linkAffiliationsAction, linkAffiliations);
 manuscriptReducer.on(manuscriptActions.updateReferenceAction, updateReference);
 manuscriptReducer.on(manuscriptActions.addReferenceAction, addReference);

@@ -13,12 +13,10 @@ jest.mock('@material-ui/core', () => ({
 
 const RELATED_ARTICLES = [
   {
-    linkType: 'doi',
     articleType: 'commentary-article',
     href: '10.7554/eLife.42697'
   },
   {
-    linkType: 'doi',
     articleType: 'commentary-article',
     href: '10.7554/eLife.00067'
   }
