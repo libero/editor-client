@@ -77,7 +77,7 @@ export const RelatedArticleFormDialog: React.FC<RelatedArticleFormDialogProps> =
 
   const handleDelete = useCallback(() => {
     setConfirmSnow(true);
-  }, [closeDialog, dispatch, userArticle]);
+  }, [setConfirmSnow]);
 
   return (
     <section className={classes.root}>
