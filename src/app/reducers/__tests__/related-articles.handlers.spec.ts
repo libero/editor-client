@@ -1,14 +1,7 @@
 import { cloneDeep } from 'lodash';
 
 import { givenState } from 'app/test-utils/reducer-test-helpers';
-import {
-  addAffiliation,
-  deleteAffiliation,
-  linkAffiliations,
-  updateAffiliation
-} from 'app/reducers/affiliations.handlers';
-import { Person } from 'app/models/person';
-import {addRelatedArticle, deleteRelatedArticle, updateRelatedArticle} from "app/reducers/related-articles.handlers";
+import { addRelatedArticle, deleteRelatedArticle, updateRelatedArticle } from 'app/reducers/related-articles.handlers';
 
 jest.mock('../../utils/history.utils');
 const RELATED_ARTICLES = [
