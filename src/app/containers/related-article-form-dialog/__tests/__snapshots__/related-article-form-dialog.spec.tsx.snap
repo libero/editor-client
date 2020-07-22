@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Related Article Form Dialog renders related article form 1`] = `
+<section
+  className="makeStyles-root-1"
+>
+  <div
+    data-cmp="TextField"
+  />
+  <div
+    data-cmp="FormControl"
+  >
+    <div
+      data-cmp="InputLabel"
+    >
+      Article type
+    </div>
+    <div
+      data-cmp="Select"
+    >
+      <div
+        data-cmp="MenuItem"
+      >
+        Please select
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Article reference
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Commentary
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Commentary article
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Corrected article
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Retracted article
+      </div>
+    </div>
+  </div>
+  <div
+    className="makeStyles-buttonPanel-3"
+  >
+    <div
+      aria-hidden={true}
+      className="makeStyles-spacer-6"
+    />
+    <div
+      data-cmp="Button"
+    />
+    <div
+      data-cmp="Button"
+    />
+  </div>
+</section>
+`;

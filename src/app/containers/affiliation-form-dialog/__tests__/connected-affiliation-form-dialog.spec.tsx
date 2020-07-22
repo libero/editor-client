@@ -9,6 +9,7 @@ import * as manuscriptActions from 'app/actions/manuscript.actions';
 import { getInitialHistory, getLoadableStateSuccess } from 'app/utils/state.utils';
 import { ConnectedAffiliationFormDialog } from 'app/containers/affiliation-form-dialog/connected-affiliation-form-dialog';
 import { AffiliationFormDialog } from 'app/containers/affiliation-form-dialog/affiliation-form-dialog';
+import {givenState} from "app/test-utils/reducer-test-helpers";
 
 jest.mock('app/containers/affiliation-form-dialog/affiliation-form-dialog', () => ({
   AffiliationFormDialog: () => <div data-cmp="AffiliationsFormDialog"></div>
@@ -19,11 +20,7 @@ describe('Author Form Dialog', () => {
   let mockState;
 
   beforeEach(() => {
-    mockState = getInitialHistory({
-      title: new EditorState(),
-      abstract: new EditorState(),
-      authors: [],
-      keywordGroups: {},
+    mockState = givenState({
       affiliations: [
         {
           id: 'some_id',
@@ -41,44 +38,38 @@ describe('Author Form Dialog', () => {
   });
 
   it('renders edit affiliation dialog', () => {
-    const store = mockStore({
-      manuscript: getLoadableStateSuccess(mockState)
-    });
+    const store = mockStore({ manuscript: mockState });
 
     const wrapper = create(
       <Provider store={store}>
-        <ConnectedAffiliationFormDialog affiliation={mockState.present.affiliations[0]} />
+        <ConnectedAffiliationFormDialog affiliation={mockState.data.present.affiliations[0]} />
       </Provider>
     );
     expect(wrapper).toMatchSnapshot();
   });
 
   it('dispatches update affiliation action', () => {
-    const store = mockStore({
-      manuscript: getLoadableStateSuccess(mockState)
-    });
+    const store = mockStore({ manuscript: mockState });
     jest.spyOn(store, 'dispatch');
 
     const wrapper = mount(
       <Provider store={store}>
-        <ConnectedAffiliationFormDialog affiliation={mockState.present.affiliations[0]} />
+        <ConnectedAffiliationFormDialog affiliation={mockState.data.present.affiliations[0]} />
       </Provider>
     );
 
-    wrapper.find(AffiliationFormDialog).prop('onAccept')(mockState.present.affiliations[0], []);
+    wrapper.find(AffiliationFormDialog).prop('onAccept')(mockState.data.present.affiliations[0], []);
     expect(store.dispatch).toHaveBeenCalledWith(
-      manuscriptActions.updateAffiliationAction(mockState.present.affiliations[0])
+      manuscriptActions.updateAffiliationAction(mockState.data.present.affiliations[0])
     );
 
     expect(store.dispatch).toHaveBeenCalledWith(
-      manuscriptActions.linkAffiliationsAction({ affiliation: mockState.present.affiliations[0], authors: [] })
+      manuscriptActions.linkAffiliationsAction({ affiliation: mockState.data.present.affiliations[0], authors: [] })
     );
   });
 
   it('dispatches add affiliation action', () => {
-    const store = mockStore({
-      manuscript: getLoadableStateSuccess(mockState)
-    });
+    const store = mockStore({ manuscript: mockState });
     jest.spyOn(store, 'dispatch');
 
     const wrapper = mount(
@@ -87,31 +78,29 @@ describe('Author Form Dialog', () => {
       </Provider>
     );
 
-    wrapper.find(AffiliationFormDialog).prop('onAccept')(mockState.present.affiliations[0], []);
+    wrapper.find(AffiliationFormDialog).prop('onAccept')(mockState.data.present.affiliations[0], []);
     expect(store.dispatch).toHaveBeenCalledWith(
-      manuscriptActions.addAffiliationAction(mockState.present.affiliations[0])
+      manuscriptActions.addAffiliationAction(mockState.data.present.affiliations[0])
     );
 
     expect(store.dispatch).toHaveBeenCalledWith(
-      manuscriptActions.linkAffiliationsAction({ affiliation: mockState.present.affiliations[0], authors: [] })
+      manuscriptActions.linkAffiliationsAction({ affiliation: mockState.data.present.affiliations[0], authors: [] })
     );
   });
 
   it('dispatches delete affiliation action', () => {
-    const store = mockStore({
-      manuscript: getLoadableStateSuccess(mockState)
-    });
+    const store = mockStore({ manuscript: mockState });
     jest.spyOn(store, 'dispatch');
 
     const wrapper = mount(
       <Provider store={store}>
-        <ConnectedAffiliationFormDialog affiliation={mockState.present.affiliations[0]} />
+        <ConnectedAffiliationFormDialog affiliation={mockState.data.present.affiliations[0]} />
       </Provider>
     );
 
-    wrapper.find(AffiliationFormDialog).prop('onDelete')(mockState.present.affiliations[0]);
+    wrapper.find(AffiliationFormDialog).prop('onDelete')(mockState.data.present.affiliations[0]);
     expect(store.dispatch).toHaveBeenCalledWith(
-      manuscriptActions.deleteAffiliationAction(mockState.present.affiliations[0])
+      manuscriptActions.deleteAffiliationAction(mockState.data.present.affiliations[0])
     );
   });
 });

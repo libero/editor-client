@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { IconButton } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 
@@ -8,21 +8,36 @@ import { getRelatedArticles } from 'app/selectors/manuscript.selectors';
 import { useRelatedArticleStyles } from 'app/containers/manuscript/related-articles/styles';
 import { RelatedArticle } from 'app/models/related-article';
 import { ActionButton } from 'app/components/action-button';
-
-const getUrl = (href: string, type: string) => {
-  return (
-    {
-      doi: `https://doi.org/${href}`
-    }[type] || href
-  );
-};
+import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
+import { RelatedArticleFormDialog } from 'app/containers/related-article-form-dialog';
 
 export const RelatedArticles: React.FC = () => {
   const relatedArticles = useSelector(getRelatedArticles);
   const classes = useRelatedArticleStyles();
+  const dispatch = useDispatch();
 
-  const handleEditRelatedArticle = useCallback((relatedArticle: RelatedArticle) => {}, []);
-  const handleAddRelatedArticle = useCallback(() => {}, []);
+  const handleEditRelatedArticle = useCallback(
+    (relatedArticle: RelatedArticle) => {
+      dispatch(
+        manuscriptEditorActions.showModalDialog({
+          component: RelatedArticleFormDialog,
+          props: { article: relatedArticle },
+          title: 'Related article'
+        })
+      );
+    },
+    [dispatch]
+  );
+
+  const handleAddRelatedArticle = useCallback(() => {
+    dispatch(
+      manuscriptEditorActions.showModalDialog({
+        component: RelatedArticleFormDialog,
+        props: {},
+        title: 'Related article'
+      })
+    );
+  }, [dispatch]);
 
   return (
     <section>
@@ -32,13 +47,9 @@ export const RelatedArticles: React.FC = () => {
             <li>
               <div className={classes.listItem}>
                 <div className={classes.info}>
-                  {relatedArticle.linkType}:{' '}
-                  <a
-                    rel="noopener noreferrer"
-                    target="_blank"
-                    href={getUrl(relatedArticle.href, relatedArticle.linkType)}
-                  >
-                    {getUrl(relatedArticle.href, relatedArticle.linkType)}
+                  doi:{' '}
+                  <a rel="noopener noreferrer" target="_blank" href={`https://doi.org/${relatedArticle.href}`}>
+                    https://doi.org/{relatedArticle.href}
                   </a>{' '}
                   type: {relatedArticle.articleType}
                 </div>
