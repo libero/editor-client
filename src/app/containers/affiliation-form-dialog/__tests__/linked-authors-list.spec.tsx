@@ -1,18 +1,19 @@
 import React from 'react';
-import { Select, IconButton } from '@material-ui/core';
+import { IconButton } from '@material-ui/core';
 import { create, act } from 'react-test-renderer';
 import { mount } from 'enzyme';
 
 import { LinkedAuthorsList } from 'app/containers/affiliation-form-dialog/linked-authors-list';
 import { Person } from 'app/models/person';
 import { ActionButton } from 'app/components/action-button';
+import { Select } from 'app/components/select';
+
+jest.mock('app/components/select', () => ({
+  Select: ({ onChange, value }) => <input onChange={onChange} value={value} data-cmp="Index" />
+}));
 
 jest.mock('@material-ui/core', () => {
   return {
-    Select: ({ onChange, value }) => <input onChange={onChange} value={value} data-cmp="Select" />,
-    MenuItem: ({ children }) => <div data-cmp="MenuItem">{children}</div>,
-    FormControl: ({ children }) => <div data-cmp="FormControl">{children}</div>,
-    InputLabel: ({ children }) => <div data-cmp="InputLabel">{children}</div>,
     IconButton: () => <div data-cmo="iconButton"></div>,
     Button: () => <div data-cmo="Button"></div>
   };

@@ -1,7 +1,6 @@
 import React, { useCallback, ChangeEvent, useState } from 'react';
-import { TextField, FormControl, InputLabel, MenuItem, Select } from '@material-ui/core';
+import { TextField } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
-import classNames from 'classnames';
 
 import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
 import * as manuscriptActions from 'app/actions/manuscript.actions';
@@ -9,6 +8,7 @@ import { ActionButton } from 'app/components/action-button';
 import { createNewRelatedArticle, RelatedArticle } from 'app/models/related-article';
 import { useRelatedArticleStyles } from 'app/containers/related-article-form-dialog/styles';
 import { PromptDialog } from 'app/components/prompt-dialog';
+import { Select } from 'app/components/select';
 
 const labelProps = { shrink: true };
 
@@ -54,7 +54,7 @@ export const RelatedArticleFormDialog: React.FC<RelatedArticleFormDialogProps> =
   }, [setConfirmSnow]);
 
   const handleFormChange = useCallback(
-    (event: ChangeEvent<{ name?: string; value: string }>) => {
+    (event: ChangeEvent<{ name: string; value: any }>) => {
       const fieldName = event.target['name'];
       const newValue = event.target['value'];
       setUserArticle({
@@ -92,29 +92,23 @@ export const RelatedArticleFormDialog: React.FC<RelatedArticleFormDialogProps> =
         value={userArticle.href}
         onChange={handleFormChange}
       />
-      <FormControl variant="outlined" className={classes.inputField} fullWidth>
-        <InputLabel className={classes.selectLabel} shrink id="related-article-type-label">
-          Article type
-        </InputLabel>
-        <Select
-          name="articleType"
-          displayEmpty
-          className={classNames({
-            [classes.articleTypeGreyed]: !userArticle.articleType
-          })}
-          labelId="related-article-type-label"
-          value={userArticle.articleType}
-          onChange={handleFormChange}
-          label="Article type"
-        >
-          <MenuItem value={''}>Please select</MenuItem>
-          <MenuItem value={'article-reference'}>Article reference</MenuItem>
-          <MenuItem value={'commentary'}>Commentary</MenuItem>
-          <MenuItem value={'commentary-article'}>Commentary article</MenuItem>
-          <MenuItem value={'corrected-article'}>Corrected article</MenuItem>
-          <MenuItem value={'retracted-article'}>Retracted article</MenuItem>
-        </Select>
-      </FormControl>
+      <Select
+        className={classes.inputField}
+        name="articleType"
+        placeholder="Please select"
+        fullWidth
+        blankValue={''}
+        label="Article type"
+        value={userArticle.articleType}
+        onChange={handleFormChange}
+        options={[
+          { label: 'article-reference', value: 'article-reference' },
+          { label: 'commentary', value: 'commentary' },
+          { label: 'commentary-article', value: 'commentary-article' },
+          { label: 'corrected-article', value: 'corrected-article' },
+          { label: 'retracted-article', value: 'retracted-article' }
+        ]}
+      />
       <div className={classes.buttonPanel}>
         {!isNewArticle ? <ActionButton variant="outlinedWarning" onClick={handleDelete} title="Delete" /> : undefined}
         <div aria-hidden={true} className={classes.spacer}></div>

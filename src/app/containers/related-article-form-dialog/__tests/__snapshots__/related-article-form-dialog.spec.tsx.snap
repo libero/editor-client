@@ -16,7 +16,7 @@ exports[`Related Article Form Dialog renders related article form 1`] = `
       Article type
     </div>
     <div
-      data-cmp="Select"
+      data-cmp="Index"
     >
       <div
         data-cmp="MenuItem"
@@ -26,27 +26,27 @@ exports[`Related Article Form Dialog renders related article form 1`] = `
       <div
         data-cmp="MenuItem"
       >
-        Article reference
+        article-reference
       </div>
       <div
         data-cmp="MenuItem"
       >
-        Commentary
+        commentary
       </div>
       <div
         data-cmp="MenuItem"
       >
-        Commentary article
+        commentary-article
       </div>
       <div
         data-cmp="MenuItem"
       >
-        Corrected article
+        corrected-article
       </div>
       <div
         data-cmp="MenuItem"
       >
-        Retracted article
+        retracted-article
       </div>
     </div>
   </div>
@@ -55,7 +55,7 @@ exports[`Related Article Form Dialog renders related article form 1`] = `
   >
     <div
       aria-hidden={true}
-      className="makeStyles-spacer-6"
+      className="makeStyles-spacer-4"
     />
     <div
       data-cmp="Button"

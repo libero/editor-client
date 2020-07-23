@@ -9,7 +9,7 @@ import * as manuscriptActions from 'app/actions/manuscript.actions';
 import { RelatedArticleFormDialog } from 'app/containers/related-article-form-dialog/index';
 
 jest.mock('@material-ui/core', () => ({
-  Select: ({ children }) => <div data-cmp="Select">{children}</div>,
+  Select: ({ children }) => <div data-cmp="Index">{children}</div>,
   MenuItem: ({ children }) => <div data-cmp="MenuItem">{children}</div>,
   FormControl: ({ children }) => <div data-cmp="FormControl">{children}</div>,
   InputLabel: ({ children }) => <div data-cmp="InputLabel">{children}</div>,

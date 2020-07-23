@@ -7,20 +7,11 @@ exports[`Linked Authors List adds empty fields to the end of the list 1`] = `
   <div
     className="makeStyles-affiliatedAuthorRow-5"
   >
-    <div
-      data-cmp="FormControl"
-    >
-      <div
-        data-cmp="InputLabel"
-      >
-        Affiliated Author
-      </div>
-      <input
-        data-cmp="Select"
-        onChange={[Function]}
-        value="149aa8ef-ed62-4ef9-aeaa-9758ce99c136"
-      />
-    </div>
+    <input
+      data-cmp="Index"
+      onChange={[Function]}
+      value="149aa8ef-ed62-4ef9-aeaa-9758ce99c136"
+    />
     <div
       data-cmo="iconButton"
     />
@@ -28,20 +19,11 @@ exports[`Linked Authors List adds empty fields to the end of the list 1`] = `
   <div
     className="makeStyles-affiliatedAuthorRow-5"
   >
-    <div
-      data-cmp="FormControl"
-    >
-      <div
-        data-cmp="InputLabel"
-      >
-        Affiliated Author
-      </div>
-      <input
-        data-cmp="Select"
-        onChange={[Function]}
-        value=""
-      />
-    </div>
+    <input
+      data-cmp="Index"
+      onChange={[Function]}
+      value=""
+    />
     <div
       data-cmo="iconButton"
     />
@@ -59,20 +41,11 @@ exports[`Linked Authors List removes elements from the list 1`] = `
   <div
     className="makeStyles-affiliatedAuthorRow-5"
   >
-    <div
-      data-cmp="FormControl"
-    >
-      <div
-        data-cmp="InputLabel"
-      >
-        Affiliated Author
-      </div>
-      <input
-        data-cmp="Select"
-        onChange={[Function]}
-        value="149aa8ef-ed62-4ef9-aeaa-9758ce99c136"
-      />
-    </div>
+    <input
+      data-cmp="Index"
+      onChange={[Function]}
+      value="149aa8ef-ed62-4ef9-aeaa-9758ce99c136"
+    />
     <div
       data-cmo="iconButton"
     />
@@ -80,20 +53,11 @@ exports[`Linked Authors List removes elements from the list 1`] = `
   <div
     className="makeStyles-affiliatedAuthorRow-5"
   >
-    <div
-      data-cmp="FormControl"
-    >
-      <div
-        data-cmp="InputLabel"
-      >
-        Affiliated Author
-      </div>
-      <input
-        data-cmp="Select"
-        onChange={[Function]}
-        value=""
-      />
-    </div>
+    <input
+      data-cmp="Index"
+      onChange={[Function]}
+      value=""
+    />
     <div
       data-cmo="iconButton"
     />
@@ -111,20 +75,11 @@ exports[`Linked Authors List renders component 1`] = `
   <div
     className="makeStyles-affiliatedAuthorRow-5"
   >
-    <div
-      data-cmp="FormControl"
-    >
-      <div
-        data-cmp="InputLabel"
-      >
-        Affiliated Author
-      </div>
-      <input
-        data-cmp="Select"
-        onChange={[Function]}
-        value="149aa8ef-ed62-4ef9-aeaa-9758ce99c136"
-      />
-    </div>
+    <input
+      data-cmp="Index"
+      onChange={[Function]}
+      value="149aa8ef-ed62-4ef9-aeaa-9758ce99c136"
+    />
     <div
       data-cmo="iconButton"
     />

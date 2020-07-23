@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export const useAuthorFormStyles = makeStyles((theme) => ({
   root: {
-    padding: theme.spacing(0.5, 1.5)
+    padding: theme.spacing(0.5, 1.5, 0.5, 0)
   },
 
   inputField: {
@@ -21,7 +21,7 @@ export const useAuthorFormStyles = makeStyles((theme) => ({
     flexGrow: 1
   },
 
-  affiliatedAuthorRow: {
+  authorAffiliationRow: {
     display: 'flex',
     marginTop: theme.spacing(3),
     '&:first-child': {

@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { get } from 'lodash';
-import { FormControl, InputLabel, MenuItem, Select, IconButton, Menu } from '@material-ui/core';
+import { MenuItem, IconButton, Menu } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 
 import { ActionButton } from 'app/components/action-button';
@@ -13,6 +13,7 @@ import { ReactFCProps } from 'app/utils/types';
 import * as manuscriptActions from 'app/actions/manuscript.actions';
 import { Person } from 'app/models/person';
 import { linkAffiliationsAction } from 'app/actions/manuscript.actions';
+import { Select } from 'app/components/select';
 
 interface LinkedAffiliationsListProps {
   linkedAffiliations: Affiliation[];
@@ -77,7 +78,7 @@ export const LinkedAffiliationsList: React.FC<LinkedAffiliationsListProps> = (pr
     [dispatch, userLinkedAffiliations, activeAffiliationIndex, triggerOnChange, editedAffiliation]
   );
 
-  const getAuthorSelectList = useCallback(
+  const getAffiliationsSelectList = useCallback(
     (selectedAuthor) => {
       const selectedAffiliationId = get(selectedAuthor, 'id');
       const linkedIds = new Set(userLinkedAffiliations.map((affiliation: Affiliation) => get(affiliation, 'id')));
@@ -86,24 +87,13 @@ export const LinkedAffiliationsList: React.FC<LinkedAffiliationsListProps> = (pr
     [userLinkedAffiliations, allAffiliations]
   );
 
-  const handleAddNewAffiliation = useCallback(
-    (index) => () => {
+  const addNewAffiliation = useCallback(
+    (index) => {
       setActiveAffiliationIndex(index);
       setEditedAffiliation(undefined);
       setAffiliationDialogShown(true);
     },
-    [setActiveAffiliationIndex, setAffiliationDialogShown]
-  );
-
-  const renderAffiliationSelectListItem = useCallback(
-    (affiliation: Affiliation) => {
-      return (
-        <MenuItem key={affiliation.id} value={affiliation.id} classes={{ root: classes.dropDownMenuItem }}>
-          {getAffiliationDisplayName(affiliation)}
-        </MenuItem>
-      );
-    },
-    [classes]
+    [setAffiliationDialogShown, setActiveAffiliationIndex, setEditedAffiliation]
   );
 
   const openMenu = useCallback(
@@ -146,12 +136,15 @@ export const LinkedAffiliationsList: React.FC<LinkedAffiliationsListProps> = (pr
 
   const updateRow = useCallback(
     (index) => (event) => {
+      if (event.target.value === null) {
+        return addNewAffiliation(index);
+      }
       const updatedList = [...userLinkedAffiliations];
       updatedList[index] = allAffiliations.find(({ id }) => id === event.target.value);
       setUserLinkedAffiliations(updatedList);
       triggerOnChange(updatedList);
     },
-    [userLinkedAffiliations, allAffiliations, triggerOnChange]
+    [userLinkedAffiliations, allAffiliations, triggerOnChange, addNewAffiliation]
   );
 
   const addEmptyRow = useCallback(() => {
@@ -169,23 +162,23 @@ export const LinkedAffiliationsList: React.FC<LinkedAffiliationsListProps> = (pr
         </MenuItem>
       </Menu>
       {userLinkedAffiliations.map((affiliation: Affiliation, index: number) => (
-        <div className={classes.affiliatedAuthorRow} key={affiliation?.id || index}>
-          <FormControl key={get(affiliation, 'id', index)} variant="outlined" className={classes.affiliatedAuthorInput}>
-            <InputLabel shrink id="author-affiliations-label">
-              Affiliation
-            </InputLabel>
-            <Select
-              labelId="author-affiliations-label"
-              displayEmpty
-              value={get(affiliation, 'id', '')}
-              onChange={updateRow(index)}
-              label="Affiliation"
-            >
-              <MenuItem value={''}>Set affiliation</MenuItem>
-              <MenuItem onMouseDown={handleAddNewAffiliation(index)}>Add new affiliation</MenuItem>
-              {getAuthorSelectList(affiliation).map(renderAffiliationSelectListItem)}
-            </Select>
-          </FormControl>
+        <div className={classes.authorAffiliationRow} key={affiliation?.id || index}>
+          <Select
+            className={classes.affiliatedAuthorInput}
+            placeholder="Set affiliation"
+            fullWidth
+            blankValue={undefined}
+            label="Affiliation"
+            value={get(affiliation, 'id', '')}
+            onChange={updateRow(index)}
+            options={[
+              { label: 'Add new affiliation', value: null },
+              ...getAffiliationsSelectList(affiliation).map((aff) => ({
+                label: getAffiliationDisplayName(aff),
+                value: aff.id
+              }))
+            ]}
+          />
           <IconButton classes={{ root: classes.deleteButton }} onClick={openMenu(index)}>
             <MoreVertIcon fontSize="small" />
           </IconButton>

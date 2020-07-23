@@ -1,16 +1,7 @@
 import React, { SyntheticEvent, useCallback, useState, ChangeEvent } from 'react';
-import {
-  TextField,
-  FormControlLabel,
-  Checkbox,
-  InputAdornment,
-  Select,
-  MenuItem,
-  FormControl,
-  InputLabel
-} from '@material-ui/core';
+import { TextField, FormControlLabel, Checkbox, InputAdornment } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
-import classNames from 'classnames';
+import { Transaction } from 'prosemirror-state';
 
 import { useAuthorFormStyles } from './styles';
 import { createAuthor, createBioEditorState, Person } from 'app/models/person';
@@ -23,13 +14,11 @@ import { getAffiliations, getAuthorAffiliations } from 'app/selectors/manuscript
 import { Affiliation } from 'app/models/affiliation';
 import { RichTextInput } from 'app/components/rich-text-input';
 import { OrcidIcon } from 'app/assets/icons';
+import { Select } from 'app/components/select';
+import { ValueOf } from 'app/utils/types';
 
 interface AuthorFormDialogProps {
   author?: Person;
-}
-
-function getCompetingInterestSelectValue(hasCompetingInterest?: boolean): number {
-  return hasCompetingInterest === undefined ? 0 : Number(hasCompetingInterest) + 1;
 }
 
 const renderConfirmDialog = (title: string, msg: string, onAccept: () => void, onReject: () => void) => {
@@ -77,11 +66,21 @@ export const AuthorFormDialog: React.FC<AuthorFormDialogProps> = (props) => {
     closeDialog();
   }, [setConfirmSnow, author, closeDialog, dispatch]);
 
+  const updateAuthorInfo = useCallback(
+    (fieldName: string, value: ValueOf<Person>) => {
+      setAuthor({ ...author, [fieldName]: value });
+    },
+    [author, setAuthor]
+  );
+
   const handleAffiliationsUpdate = useCallback(
     (affiliations: Affiliation[]) => {
-      author.affiliations = affiliations.map(({ id }) => id);
+      updateAuthorInfo(
+        'affiliations',
+        affiliations.map(({ id }) => id)
+      );
     },
-    [author]
+    [updateAuthorInfo]
   );
 
   const handleReject = useCallback(() => {
@@ -89,46 +88,26 @@ export const AuthorFormDialog: React.FC<AuthorFormDialogProps> = (props) => {
   }, [setConfirmSnow]);
 
   const handleFormChange = useCallback(
-    (event: SyntheticEvent) => {
-      const fieldName = event.target['name'];
-      const newValue = event.target['value'];
-
-      setAuthor({
-        ...author,
-        [fieldName]: newValue
-      });
-    },
-    [author, setAuthor]
+    (event: SyntheticEvent) => updateAuthorInfo(event.target['name'], event.target['value']),
+    [updateAuthorInfo]
   );
 
   const handleCorrespondingStatusChange = useCallback(
-    (event: SyntheticEvent) => {
-      setAuthor({
-        ...author,
-        isCorrespondingAuthor: event.target['checked']
-      });
-    },
-    [author, setAuthor]
+    (event: SyntheticEvent) => updateAuthorInfo('isCorrespondingAuthor', event.target['checked']),
+    [updateAuthorInfo]
   );
 
   const handleCompetingInterestChange = useCallback(
-    (event: ChangeEvent<{ name: string; value: number }>) => {
-      setAuthor({
-        ...author,
-        hasCompetingInterest: event.target['value'] === 0 ? undefined : Boolean(event.target['value'] - 1)
-      });
-    },
-    [author]
+    (event: ChangeEvent<{ name: string; value: boolean }>) =>
+      updateAuthorInfo('hasCompetingInterest', event.target['value']),
+    [updateAuthorInfo]
   );
 
   const handleBioChange = useCallback(
-    (change) => {
-      setAuthor({
-        ...author,
-        bio: author.bio.apply(change)
-      });
+    (change: Transaction) => {
+      updateAuthorInfo('bio', author.bio.apply(change));
     },
-    [setAuthor, author]
+    [updateAuthorInfo, author]
   );
 
   const handleOrcidChange = useCallback(
@@ -193,28 +172,20 @@ export const AuthorFormDialog: React.FC<AuthorFormDialogProps> = (props) => {
         value={author.email || ''}
         onChange={handleFormChange}
       />
-      <FormControl variant="outlined" classes={{ root: classes.inputField }} fullWidth>
-        <InputLabel shrink id="author-competing-interest-label">
-          Competing interest
-        </InputLabel>
-        <Select
-          labelId="author-competing-interest-label"
-          className={classNames({
-            [classes.coiGreyedState]: !getCompetingInterestSelectValue(author.hasCompetingInterest)
-          })}
-          displayEmpty
-          value={getCompetingInterestSelectValue(author.hasCompetingInterest)}
-          onChange={handleCompetingInterestChange}
-          name="hasCompetingInterest"
-          label="Competing interest"
-        >
-          <MenuItem value={0} disabled={true}>
-            Please select
-          </MenuItem>
-          <MenuItem value={1}>No competing interest</MenuItem>
-          <MenuItem value={2}>Has competing interest</MenuItem>
-        </Select>
-      </FormControl>
+      <Select
+        className={classes.inputField}
+        name="articleType"
+        placeholder="Please select"
+        fullWidth
+        blankValue={undefined}
+        label="Competing interest"
+        value={author.hasCompetingInterest}
+        onChange={handleCompetingInterestChange}
+        options={[
+          { label: 'No competing interest', value: false },
+          { label: 'Has competing interest', value: true }
+        ]}
+      />
       {author.hasCompetingInterest ? (
         <TextField
           name="competingInterestStatement"

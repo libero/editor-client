@@ -17,15 +17,6 @@ export const useRelatedArticleStyles = makeStyles((theme) => ({
     }
   },
 
-  selectLabel: {
-    background: theme.palette.background.paper,
-    padding: theme.spacing(0, 0.5)
-  },
-
-  articleTypeGreyed: {
-    color: theme.palette.text.disabled
-  },
-
   spacer: {
     flexGrow: 1
   }
