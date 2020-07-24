@@ -17,6 +17,7 @@ export interface ArticleInformation {
   articleType: string;
   dtd: string;
   articleDOI: string;
+  publisherId: string;
 }
 
 export type Manuscript = {

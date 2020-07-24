@@ -19,6 +19,12 @@ exports[`Article information renders article information 1`] = `
        
       SOME_ID
     </div>
+    <div>
+      <strong>
+         Publisher ID: 
+      </strong>
+       
+    </div>
   </section>
   <div
     data-cmp="IconButton"
