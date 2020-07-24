@@ -81,6 +81,6 @@ export const Select: React.FC<SelectProps> = React.memo(
 );
 
 let selectId = 0;
-function getNextId() {
-  return `select-id-${selectId++}`
+function getNextId(): string {
+  return `select-id-${selectId++}`;
 }
