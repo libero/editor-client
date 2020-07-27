@@ -25,6 +25,7 @@ Array [
   </nav>,
   <div
     className="makeStyles-contentWrapper-13"
+    data-test-id="container-wrapper"
     onClick={[Function]}
   >
     <div
