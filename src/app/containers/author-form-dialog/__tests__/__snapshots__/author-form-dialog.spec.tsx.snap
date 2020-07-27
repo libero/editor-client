@@ -25,7 +25,7 @@ exports[`Author Form Dialog renders a form with competing interest statement 1`]
       Competing interest
     </div>
     <div
-      data-cmp="Select"
+      data-cmp="Index"
     >
       <div
         data-cmp="MenuItem"
@@ -68,7 +68,7 @@ exports[`Author Form Dialog renders a form with competing interest statement 1`]
       </div>
     </div>
     <div
-      className="makeStyles-affiliatedAuthorRow-5"
+      className="makeStyles-authorAffiliationRow-5"
     >
       <div
         data-cmp="FormControl"
@@ -79,7 +79,7 @@ exports[`Author Form Dialog renders a form with competing interest statement 1`]
           Affiliation
         </div>
         <div
-          data-cmp="Select"
+          data-cmp="Index"
         >
           <div
             data-cmp="MenuItem"
@@ -146,7 +146,7 @@ exports[`Author Form Dialog renders edit author dialog form 1`] = `
       Competing interest
     </div>
     <div
-      data-cmp="Select"
+      data-cmp="Index"
     >
       <div
         data-cmp="MenuItem"
@@ -240,7 +240,7 @@ exports[`Author Form Dialog renders new author dialog form 1`] = `
       Competing interest
     </div>
     <div
-      data-cmp="Select"
+      data-cmp="Index"
     >
       <div
         data-cmp="MenuItem"

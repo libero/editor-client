@@ -1,23 +1,18 @@
 import React, { useState, useCallback } from 'react';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { get } from 'lodash';
-import { FormControl, InputLabel, MenuItem, Select, IconButton } from '@material-ui/core';
+import { IconButton } from '@material-ui/core';
 
 import { getAuthorDisplayName, Person } from 'app/models/person';
 import { useAffiliationFormStyles } from './styles';
 import { ActionButton } from 'app/components/action-button';
+import { Select } from 'app/components/select';
 
 interface LinkedAuthorsListProps {
   linkedAuthors: Person[];
   allAuthors: Person[];
   onChange: (selectedAuthors: Person[]) => void;
 }
-
-const renderAuthorSelectListItem = (author: Person) => (
-  <MenuItem key={author.id} value={author.id}>
-    {getAuthorDisplayName(author)}
-  </MenuItem>
-);
 
 export const LinkedAuthorsList: React.FC<LinkedAuthorsListProps> = ({ linkedAuthors, allAuthors, onChange }) => {
   const [userLinkedAuthors, setUserLinkedAuthors] = useState<Person[]>(
@@ -69,21 +64,19 @@ export const LinkedAuthorsList: React.FC<LinkedAuthorsListProps> = ({ linkedAuth
     <div className={classes.inputField}>
       {userLinkedAuthors.map((author: Person, index: number) => (
         <div className={classes.affiliatedAuthorRow} key={author?.id || index}>
-          <FormControl key={get(author, 'id', index)} variant="outlined" className={classes.affiliatedAuthorInput}>
-            <InputLabel shrink id="author-affiliations-label">
-              Affiliated Author
-            </InputLabel>
-            <Select
-              labelId="author-affiliations-label"
-              displayEmpty
-              value={get(author, 'id', '')}
-              onChange={updateRow(index)}
-              label="Affiliated Author"
-            >
-              <MenuItem value={''}>Select affiliated author</MenuItem>
-              {getAuthorSelectList(author).map(renderAuthorSelectListItem)}
-            </Select>
-          </FormControl>
+          <Select
+            className={classes.affiliatedAuthorInput}
+            placeholder="Select affiliated author"
+            fullWidth
+            blankValue={''}
+            label="Affiliated Author"
+            value={get(author, 'id', '')}
+            onChange={updateRow(index)}
+            options={getAuthorSelectList(author).map((aff) => ({
+              label: getAuthorDisplayName(aff),
+              value: aff.id
+            }))}
+          />
           <IconButton
             classes={{ root: classes.deleteButton }}
             onClick={deleteRow(index)}

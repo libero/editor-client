@@ -20,7 +20,7 @@ jest.mock('app/components/rich-text-input', () => ({
 }));
 
 jest.mock('@material-ui/core', () => ({
-  Select: ({ children }) => <div data-cmp="Select">{children}</div>,
+  Select: ({ children }) => <div data-cmp="Index">{children}</div>,
   Menu: ({ children }) => <div data-cmp="Menu">{children}</div>,
   MenuItem: ({ children }) => <div data-cmp="MenuItem">{children}</div>,
   Checkbox: ({ children }) => <div data-cmp="Checkbox" />,
