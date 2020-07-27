@@ -209,6 +209,13 @@ exports[`manuscript editor should render 1`] = `
              
             
           </div>
+          <div>
+            <strong>
+               Publisher ID: 
+            </strong>
+             
+            
+          </div>
         </section>
         <button
           className="MuiButtonBase-root MuiIconButton-root makeStyles-editButton-27"

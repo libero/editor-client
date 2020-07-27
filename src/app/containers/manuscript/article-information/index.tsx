@@ -28,6 +28,9 @@ export const ArticleInformation: React.FC<{}> = () => {
         <div>
           <strong> Article DOI: </strong> {articleInfo.articleDOI}
         </div>
+        <div>
+          <strong> Publisher ID: </strong> {articleInfo.publisherId}
+        </div>
       </section>
       <IconButton classes={{ root: classes.editButton }} onClick={editArticleInfo}>
         <EditIcon fontSize="small" />
