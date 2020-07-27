@@ -3,6 +3,7 @@
 exports[`manuscript editor should render 1`] = `
 <div
   className="makeStyles-contentWrapper-1"
+  data-test-id="container-wrapper"
   onClick={[Function]}
 >
   <div

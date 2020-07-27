@@ -40,12 +40,10 @@ export const ManuscriptEditor: React.FC = () => {
   );
 
   const clearFocus = useCallback(() => {
-    console.log('clear focus');
     dispatch(manuscriptEditorActions.removeFocusAction());
   }, [dispatch]);
 
   const preventClick = useCallback((event: SyntheticEvent) => {
-    console.log('prevent click');
     event.stopPropagation();
     event.preventDefault();
   }, []);
@@ -91,10 +89,13 @@ export const ManuscriptEditor: React.FC = () => {
     dispatch(manuscriptEditorActions.removeFocusAction());
   }, [dispatch]);
 
-  const handleKeywordFocus = (group: string, index: number | undefined, isNewKeywordFocused: boolean): void => {
-    const kwdIndexPath = isNewKeywordFocused ? 'newKeyword' : `keywords.${index}`;
-    handleFocusSwitch(null, ['keywordGroups', group, kwdIndexPath].join('.'));
-  };
+  const handleKeywordFocus = useCallback(
+    (group: string, index: number | undefined, isNewKeywordFocused: boolean): void => {
+      const kwdIndexPath = isNewKeywordFocused ? 'newKeyword' : `keywords.${index}`;
+      handleFocusSwitch(null, ['keywordGroups', group, kwdIndexPath].join('.'));
+    },
+    [handleFocusSwitch]
+  );
 
   const renderKeywords = (keywordGroups: KeywordGroups): JSX.Element[] => {
     return Object.entries(keywordGroups).map(([groupType, group]) => {
@@ -118,7 +119,7 @@ export const ManuscriptEditor: React.FC = () => {
   };
 
   return (
-    <div onClick={clearFocus} className={classes.contentWrapper}>
+    <div onClick={clearFocus} className={classes.contentWrapper} data-test-id="container-wrapper">
       <div aria-hidden="true" className={classes.toolbarPlaceholder} />
       <div className={classes.content} onClick={preventClick}>
         <RichTextEditor
