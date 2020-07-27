@@ -133,11 +133,6 @@ Array [
         onClick={[Function]}
       >
         <div
-          aria-hidden="true"
-          className="makeStyles-spacer-15"
-          onClick={[Function]}
-        />
-        <div
           className="makeStyles-sectionContainer-37 makeStyles-root-17 makeStyles-plainVariant-19"
         >
           <label

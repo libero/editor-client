@@ -100,20 +100,23 @@ export const ManuscriptEditor: React.FC = () => {
   const renderKeywords = (keywordGroups: KeywordGroups): JSX.Element[] => {
     return Object.entries(keywordGroups).map(([groupType, group]) => {
       return (
-        <KeywordsEditor
-          key={groupType}
-          keywords={group.keywords}
-          newKeyword={group.newKeyword}
-          activeKeywordPath={focusedPath}
-          name={groupType}
-          label={group.title || 'Keywords'}
-          onNewKeywordChange={handleNewKeywordChange}
-          onAdd={handleKeywordAdd}
-          onChange={handleKeywordsChange}
-          onDelete={handleKeywordDelete}
-          onFocusSwitch={handleKeywordFocus}
-          onBlur={handleBlur}
-        />
+        <>
+          <KeywordsEditor
+            key={groupType}
+            keywords={group.keywords}
+            newKeyword={group.newKeyword}
+            activeKeywordPath={focusedPath}
+            name={groupType}
+            label={group.title || 'Keywords'}
+            onNewKeywordChange={handleNewKeywordChange}
+            onAdd={handleKeywordAdd}
+            onChange={handleKeywordsChange}
+            onDelete={handleKeywordDelete}
+            onFocusSwitch={handleKeywordFocus}
+            onBlur={handleBlur}
+          />
+          <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
+        </>
       );
     });
   };
@@ -157,7 +160,6 @@ export const ManuscriptEditor: React.FC = () => {
         <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
         {renderKeywords(allKeywords)}
         <ClearFocus>
-          <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
           <ArticleInformation />
           <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
           <RelatedArticles />

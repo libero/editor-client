@@ -187,11 +187,6 @@ exports[`manuscript editor should render 1`] = `
       onClick={[Function]}
     >
       <div
-        aria-hidden="true"
-        className="makeStyles-spacer-3"
-        onClick={[Function]}
-      />
-      <div
         className="makeStyles-sectionContainer-25 makeStyles-root-5 makeStyles-plainVariant-7"
       >
         <label
