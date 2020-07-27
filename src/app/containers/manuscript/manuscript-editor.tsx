@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, SyntheticEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { EditorState, Transaction } from 'prosemirror-state';
 
@@ -16,6 +16,7 @@ import { ReferenceList } from 'app/containers/manuscript/references-list';
 import { ArticleInformation } from 'app/containers/manuscript/article-information';
 import { getFocusedEditorStatePath } from 'app/selectors/manuscript-editor.selectors';
 import { RelatedArticles } from 'app/containers/manuscript/related-articles';
+import { ClearFocus } from 'app/containers/manuscript/clear-focus';
 
 const isInputFocused = (inputName: string, focusedPath?: string) => {
   return Boolean(focusedPath) && focusedPath.startsWith(inputName);
@@ -37,6 +38,17 @@ export const ManuscriptEditor: React.FC = () => {
     },
     [dispatch]
   );
+
+  const clearFocus = useCallback(() => {
+    console.log('clear focus');
+    dispatch(manuscriptEditorActions.removeFocusAction());
+  }, [dispatch]);
+
+  const preventClick = useCallback((event: SyntheticEvent) => {
+    console.log('prevent click');
+    event.stopPropagation();
+    event.preventDefault();
+  }, []);
 
   const handleKeywordsChange = (keywordGroup: string, index: number, diff: Transaction): void => {
     dispatch(manuscriptActions.updateKeywordAction({ keywordGroup, index, change: diff }));
@@ -106,39 +118,54 @@ export const ManuscriptEditor: React.FC = () => {
   };
 
   return (
-    <div className={classes.content}>
+    <div onClick={clearFocus} className={classes.contentWrapper}>
       <div aria-hidden="true" className={classes.toolbarPlaceholder} />
-      <RichTextEditor
-        editorState={title}
-        label="Title"
-        isActive={isInputFocused('title', focusedPath)}
-        name="title"
-        onChange={handleTitleChange}
-        onFocusSwitch={handleFocusSwitch}
-      />
-      <SortableAuthorsList />
-      <AffiliationsList />
-      <RichTextEditor
-        editorState={abstract}
-        label="Abstract"
-        name="abstract"
-        isActive={isInputFocused('abstract', focusedPath)}
-        onChange={handleAbstractChange}
-        onFocusSwitch={handleFocusSwitch}
-      />
-      <RichTextEditor
-        editorState={impactStatement}
-        label="Impact statement"
-        name="impactStatement"
-        isActive={isInputFocused('impactStatement', focusedPath)}
-        onChange={handleImpactStatementChange}
-        onFocusSwitch={handleFocusSwitch}
-      />
-      {renderKeywords(allKeywords)}
-      <ArticleInformation />
-      <RelatedArticles />
-      <AuthorsInfoDetails />
-      <ReferenceList />
+      <div className={classes.content} onClick={preventClick}>
+        <RichTextEditor
+          editorState={title}
+          label="Title"
+          isActive={isInputFocused('title', focusedPath)}
+          name="title"
+          onChange={handleTitleChange}
+          onFocusSwitch={handleFocusSwitch}
+        />
+        <ClearFocus>
+          <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
+          <SortableAuthorsList />
+          <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
+          <AffiliationsList />
+          <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
+        </ClearFocus>
+        <RichTextEditor
+          editorState={abstract}
+          label="Abstract"
+          name="abstract"
+          isActive={isInputFocused('abstract', focusedPath)}
+          onChange={handleAbstractChange}
+          onFocusSwitch={handleFocusSwitch}
+        />
+        <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
+        <RichTextEditor
+          editorState={impactStatement}
+          label="Impact statement"
+          name="impactStatement"
+          isActive={isInputFocused('impactStatement', focusedPath)}
+          onChange={handleImpactStatementChange}
+          onFocusSwitch={handleFocusSwitch}
+        />
+        <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
+        {renderKeywords(allKeywords)}
+        <ClearFocus>
+          <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
+          <ArticleInformation />
+          <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
+          <RelatedArticles />
+          <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
+          <AuthorsInfoDetails />
+          <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
+          <ReferenceList />
+        </ClearFocus>
+      </div>
     </div>
   );
 };
