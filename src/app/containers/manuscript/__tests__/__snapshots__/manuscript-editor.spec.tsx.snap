@@ -2,357 +2,416 @@
 
 exports[`manuscript editor should render 1`] = `
 <div
-  className="makeStyles-content-1"
+  className="makeStyles-contentWrapper-1"
+  onClick={[Function]}
 >
   <div
     aria-hidden="true"
-    className="makeStyles-toolbarPlaceholder-2"
+    className="makeStyles-toolbarPlaceholder-4"
   />
   <div
-    className="makeStyles-root-3 makeStyles-plainVariant-5"
+    className="makeStyles-content-2"
+    onClick={[Function]}
   >
-    <label
-      className="makeStyles-label-6"
-    >
-      Title
-    </label>
     <div
-      className="prosemirrorContainer"
-    />
-  </div>
-  <section>
-    <div
-      className="makeStyles-root-3 makeStyles-plainVariant-5"
+      className="makeStyles-root-5 makeStyles-plainVariant-7"
     >
       <label
-        className="makeStyles-label-6"
+        className="makeStyles-label-8"
       >
-        Authors
+        Title
       </label>
       <div
-        className="makeStyles-sortableContainer-8"
-      >
-         
-         
-      </div>
+        className="prosemirrorContainer"
+      />
     </div>
-    <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-addEntityButton_root-15 MuiButton-text makeStyles-addAuthorButton-11 MuiButton-textSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <span
-        className="MuiButton-label"
-      >
-        <span
-          className="MuiButton-startIcon makeStyles-addEntityButton_icon-16 MuiButton-iconSizeSmall"
-        >
-          <svg
-            aria-hidden={true}
-            className="MuiSvgIcon-root"
-            focusable="false"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-            />
-          </svg>
-        </span>
-        Author
-      </span>
-    </button>
-  </section>
-  <section>
     <div
-      className="makeStyles-root-3 makeStyles-plainVariant-5"
+      onClick={[Function]}
+    >
+      <div
+        aria-hidden="true"
+        className="makeStyles-spacer-3"
+        onClick={[Function]}
+      />
+      <section>
+        <div
+          className="makeStyles-root-5 makeStyles-plainVariant-7"
+        >
+          <label
+            className="makeStyles-label-8"
+          >
+            Authors
+          </label>
+          <div
+            className="makeStyles-sortableContainer-10"
+          >
+             
+             
+          </div>
+        </div>
+        <button
+          className="MuiButtonBase-root MuiButton-root makeStyles-addEntityButton_root-17 MuiButton-text makeStyles-addAuthorButton-13 MuiButton-textSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiButton-label"
+          >
+            <span
+              className="MuiButton-startIcon makeStyles-addEntityButton_icon-18 MuiButton-iconSizeSmall"
+            >
+              <svg
+                aria-hidden={true}
+                className="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                />
+              </svg>
+            </span>
+            Author
+          </span>
+        </button>
+      </section>
+      <div
+        aria-hidden="true"
+        className="makeStyles-spacer-3"
+        onClick={[Function]}
+      />
+      <section>
+        <div
+          className="makeStyles-root-5 makeStyles-plainVariant-7"
+        >
+          <label
+            className="makeStyles-label-8"
+          >
+            Affiliations
+          </label>
+        </div>
+        <button
+          className="MuiButtonBase-root MuiButton-root makeStyles-addEntityButton_root-17 MuiButton-text makeStyles-addButton-19 MuiButton-textSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiButton-label"
+          >
+            <span
+              className="MuiButton-startIcon makeStyles-addEntityButton_icon-18 MuiButton-iconSizeSmall"
+            >
+              <svg
+                aria-hidden={true}
+                className="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                />
+              </svg>
+            </span>
+            Affiliation
+          </span>
+        </button>
+      </section>
+      <div
+        aria-hidden="true"
+        className="makeStyles-spacer-3"
+        onClick={[Function]}
+      />
+    </div>
+    <div
+      className="makeStyles-root-5 makeStyles-plainVariant-7"
     >
       <label
-        className="makeStyles-label-6"
+        className="makeStyles-label-8"
       >
-        Affiliations
+        Abstract
       </label>
+      <div
+        className="prosemirrorContainer"
+      />
     </div>
-    <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-addEntityButton_root-15 MuiButton-text makeStyles-addButton-17 MuiButton-textSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
-      disabled={false}
-      onBlur={[Function]}
+    <div
+      aria-hidden="true"
+      className="makeStyles-spacer-3"
       onClick={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
+    />
+    <div
+      className="makeStyles-root-5 makeStyles-plainVariant-7"
     >
-      <span
-        className="MuiButton-label"
+      <label
+        className="makeStyles-label-8"
       >
-        <span
-          className="MuiButton-startIcon makeStyles-addEntityButton_icon-16 MuiButton-iconSizeSmall"
+        Impact statement
+      </label>
+      <div
+        className="prosemirrorContainer"
+      />
+    </div>
+    <div
+      aria-hidden="true"
+      className="makeStyles-spacer-3"
+      onClick={[Function]}
+    />
+    <div
+      onClick={[Function]}
+    >
+      <div
+        aria-hidden="true"
+        className="makeStyles-spacer-3"
+        onClick={[Function]}
+      />
+      <div
+        className="makeStyles-sectionContainer-25 makeStyles-root-5 makeStyles-plainVariant-7"
+      >
+        <label
+          className="makeStyles-label-8"
         >
-          <svg
-            aria-hidden={true}
-            className="MuiSvgIcon-root"
-            focusable="false"
-            viewBox="0 0 24 24"
+          Article information
+        </label>
+        <section
+          className="makeStyles-infoSection-26"
+        >
+          <div>
+            <strong>
+               Article DOI: 
+            </strong>
+             
+            
+          </div>
+        </section>
+        <button
+          className="MuiButtonBase-root MuiIconButton-root makeStyles-editButton-27"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label"
           >
-            <path
-              d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-            />
-          </svg>
-        </span>
-        Affiliation
-      </span>
-    </button>
-  </section>
-  <div
-    className="makeStyles-root-3 makeStyles-plainVariant-5"
-  >
-    <label
-      className="makeStyles-label-6"
-    >
-      Abstract
-    </label>
-    <div
-      className="prosemirrorContainer"
-    />
-  </div>
-  <div
-    className="makeStyles-root-3 makeStyles-plainVariant-5"
-  >
-    <label
-      className="makeStyles-label-6"
-    >
-      Impact statement
-    </label>
-    <div
-      className="prosemirrorContainer"
-    />
-  </div>
-  <div
-    className="makeStyles-sectionContainer-23 makeStyles-root-3 makeStyles-plainVariant-5"
-  >
-    <label
-      className="makeStyles-label-6"
-    >
-      Article information
-    </label>
-    <section
-      className="makeStyles-infoSection-24"
-    >
-      <div>
-        <strong>
-           Article DOI: 
-        </strong>
-         
-        
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+              />
+            </svg>
+          </span>
+        </button>
       </div>
-    </section>
-    <button
-      className="MuiButtonBase-root MuiIconButton-root makeStyles-editButton-25"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <span
-        className="MuiIconButton-label"
-      >
-        <svg
-          aria-hidden={true}
-          className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
-          focusable="false"
-          viewBox="0 0 24 24"
+      <div
+        aria-hidden="true"
+        className="makeStyles-spacer-3"
+        onClick={[Function]}
+      />
+      <section>
+        <div
+          className="makeStyles-root-5 makeStyles-plainVariant-7"
         >
-          <path
-            d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+          <label
+            className="makeStyles-label-8"
+          >
+            Related articles
+          </label>
+          <ul
+            className="makeStyles-list-29"
           />
-        </svg>
-      </span>
-    </button>
+        </div>
+        <button
+          className="MuiButtonBase-root MuiButton-root makeStyles-addEntityButton_root-17 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiButton-label"
+          >
+            <span
+              className="MuiButton-startIcon makeStyles-addEntityButton_icon-18 MuiButton-iconSizeSmall"
+            >
+              <svg
+                aria-hidden={true}
+                className="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                />
+              </svg>
+            </span>
+            Article
+          </span>
+        </button>
+      </section>
+      <div
+        aria-hidden="true"
+        className="makeStyles-spacer-3"
+        onClick={[Function]}
+      />
+      <section>
+        <div
+          className="makeStyles-root-5 makeStyles-plainVariant-7"
+        >
+          <label
+            className="makeStyles-label-8"
+          >
+            Author Information
+          </label>
+        </div>
+        <button
+          className="MuiButtonBase-root MuiButton-root makeStyles-addEntityButton_root-17 MuiButton-text makeStyles-addAuthorButton-33 MuiButton-textSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiButton-label"
+          >
+            <span
+              className="MuiButton-startIcon makeStyles-addEntityButton_icon-18 MuiButton-iconSizeSmall"
+            >
+              <svg
+                aria-hidden={true}
+                className="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                />
+              </svg>
+            </span>
+            Author
+          </span>
+        </button>
+      </section>
+      <div
+        aria-hidden="true"
+        className="makeStyles-spacer-3"
+        onClick={[Function]}
+      />
+      <section>
+        <div
+          className="makeStyles-root-5 makeStyles-plainVariant-7"
+        >
+          <label
+            className="makeStyles-label-8"
+          >
+            References
+          </label>
+          <ul
+            className="makeStyles-list-34"
+          />
+        </div>
+        <button
+          className="MuiButtonBase-root MuiButton-root makeStyles-addEntityButton_root-17 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiButton-label"
+          >
+            <span
+              className="MuiButton-startIcon makeStyles-addEntityButton_icon-18 MuiButton-iconSizeSmall"
+            >
+              <svg
+                aria-hidden={true}
+                className="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                />
+              </svg>
+            </span>
+            Reference
+          </span>
+        </button>
+      </section>
+    </div>
   </div>
-  <section>
-    <div
-      className="makeStyles-root-3 makeStyles-plainVariant-5"
-    >
-      <label
-        className="makeStyles-label-6"
-      >
-        Related articles
-      </label>
-      <ul
-        className="makeStyles-list-27"
-      />
-    </div>
-    <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-addEntityButton_root-15 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <span
-        className="MuiButton-label"
-      >
-        <span
-          className="MuiButton-startIcon makeStyles-addEntityButton_icon-16 MuiButton-iconSizeSmall"
-        >
-          <svg
-            aria-hidden={true}
-            className="MuiSvgIcon-root"
-            focusable="false"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-            />
-          </svg>
-        </span>
-        Article
-      </span>
-    </button>
-  </section>
-  <section>
-    <div
-      className="makeStyles-root-3 makeStyles-plainVariant-5"
-    >
-      <label
-        className="makeStyles-label-6"
-      >
-        Author Information
-      </label>
-    </div>
-    <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-addEntityButton_root-15 MuiButton-text makeStyles-addAuthorButton-31 MuiButton-textSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <span
-        className="MuiButton-label"
-      >
-        <span
-          className="MuiButton-startIcon makeStyles-addEntityButton_icon-16 MuiButton-iconSizeSmall"
-        >
-          <svg
-            aria-hidden={true}
-            className="MuiSvgIcon-root"
-            focusable="false"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-            />
-          </svg>
-        </span>
-        Author
-      </span>
-    </button>
-  </section>
-  <section>
-    <div
-      className="makeStyles-root-3 makeStyles-plainVariant-5"
-    >
-      <label
-        className="makeStyles-label-6"
-      >
-        References
-      </label>
-      <ul
-        className="makeStyles-list-32"
-      />
-    </div>
-    <button
-      className="MuiButtonBase-root MuiButton-root makeStyles-addEntityButton_root-15 MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="button"
-    >
-      <span
-        className="MuiButton-label"
-      >
-        <span
-          className="MuiButton-startIcon makeStyles-addEntityButton_icon-16 MuiButton-iconSizeSmall"
-        >
-          <svg
-            aria-hidden={true}
-            className="MuiSvgIcon-root"
-            focusable="false"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-            />
-          </svg>
-        </span>
-        Reference
-      </span>
-    </button>
-  </section>
 </div>
 `;

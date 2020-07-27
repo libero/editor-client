@@ -24,135 +24,194 @@ Array [
     />
   </nav>,
   <div
-    className="makeStyles-content-12"
+    className="makeStyles-contentWrapper-13"
+    onClick={[Function]}
   >
     <div
       aria-hidden="true"
-      className="makeStyles-toolbarPlaceholder-13"
+      className="makeStyles-toolbarPlaceholder-16"
     />
     <div
-      className="makeStyles-root-14 makeStyles-plainVariant-16"
+      className="makeStyles-content-14"
+      onClick={[Function]}
     >
-      <label
-        className="makeStyles-label-17"
-      >
-        Title
-      </label>
       <div
-        className="prosemirrorContainer"
-      />
-    </div>
-    <section>
-      <div
-        className="makeStyles-root-14 makeStyles-plainVariant-16"
+        className="makeStyles-root-17 makeStyles-plainVariant-19"
       >
         <label
-          className="makeStyles-label-17"
+          className="makeStyles-label-20"
         >
-          Authors
+          Title
         </label>
         <div
-          className="makeStyles-sortableContainer-19"
-        >
-           
-           
-        </div>
-      </div>
-    </section>
-    <section>
-      <div
-        className="makeStyles-root-14 makeStyles-plainVariant-16"
-      >
-        <label
-          className="makeStyles-label-17"
-        >
-          Affiliations
-        </label>
-      </div>
-    </section>
-    <div
-      className="makeStyles-root-14 makeStyles-plainVariant-16"
-    >
-      <label
-        className="makeStyles-label-17"
-      >
-        Abstract
-      </label>
-      <div
-        className="prosemirrorContainer"
-      />
-    </div>
-    <div
-      className="makeStyles-root-14 makeStyles-plainVariant-16"
-    >
-      <label
-        className="makeStyles-label-17"
-      >
-        Impact statement
-      </label>
-      <div
-        className="prosemirrorContainer"
-      />
-    </div>
-    <div
-      className="makeStyles-sectionContainer-34 makeStyles-root-14 makeStyles-plainVariant-16"
-    >
-      <label
-        className="makeStyles-label-17"
-      >
-        Article information
-      </label>
-      <section
-        className="makeStyles-infoSection-35"
-      >
-        <div>
-          <strong>
-             Article DOI: 
-          </strong>
-           
-          
-        </div>
-      </section>
-    </div>
-    <section>
-      <div
-        className="makeStyles-root-14 makeStyles-plainVariant-16"
-      >
-        <label
-          className="makeStyles-label-17"
-        >
-          Related articles
-        </label>
-        <ul
-          className="makeStyles-list-38"
+          className="prosemirrorContainer"
         />
       </div>
-    </section>
-    <section>
       <div
-        className="makeStyles-root-14 makeStyles-plainVariant-16"
+        onClick={[Function]}
       >
-        <label
-          className="makeStyles-label-17"
-        >
-          Author Information
-        </label>
-      </div>
-    </section>
-    <section>
-      <div
-        className="makeStyles-root-14 makeStyles-plainVariant-16"
-      >
-        <label
-          className="makeStyles-label-17"
-        >
-          References
-        </label>
-        <ul
-          className="makeStyles-list-43"
+        <div
+          aria-hidden="true"
+          className="makeStyles-spacer-15"
+          onClick={[Function]}
+        />
+        <section>
+          <div
+            className="makeStyles-root-17 makeStyles-plainVariant-19"
+          >
+            <label
+              className="makeStyles-label-20"
+            >
+              Authors
+            </label>
+            <div
+              className="makeStyles-sortableContainer-22"
+            >
+               
+               
+            </div>
+          </div>
+        </section>
+        <div
+          aria-hidden="true"
+          className="makeStyles-spacer-15"
+          onClick={[Function]}
+        />
+        <section>
+          <div
+            className="makeStyles-root-17 makeStyles-plainVariant-19"
+          >
+            <label
+              className="makeStyles-label-20"
+            >
+              Affiliations
+            </label>
+          </div>
+        </section>
+        <div
+          aria-hidden="true"
+          className="makeStyles-spacer-15"
+          onClick={[Function]}
         />
       </div>
-    </section>
+      <div
+        className="makeStyles-root-17 makeStyles-plainVariant-19"
+      >
+        <label
+          className="makeStyles-label-20"
+        >
+          Abstract
+        </label>
+        <div
+          className="prosemirrorContainer"
+        />
+      </div>
+      <div
+        aria-hidden="true"
+        className="makeStyles-spacer-15"
+        onClick={[Function]}
+      />
+      <div
+        className="makeStyles-root-17 makeStyles-plainVariant-19"
+      >
+        <label
+          className="makeStyles-label-20"
+        >
+          Impact statement
+        </label>
+        <div
+          className="prosemirrorContainer"
+        />
+      </div>
+      <div
+        aria-hidden="true"
+        className="makeStyles-spacer-15"
+        onClick={[Function]}
+      />
+      <div
+        onClick={[Function]}
+      >
+        <div
+          aria-hidden="true"
+          className="makeStyles-spacer-15"
+          onClick={[Function]}
+        />
+        <div
+          className="makeStyles-sectionContainer-37 makeStyles-root-17 makeStyles-plainVariant-19"
+        >
+          <label
+            className="makeStyles-label-20"
+          >
+            Article information
+          </label>
+          <section
+            className="makeStyles-infoSection-38"
+          >
+            <div>
+              <strong>
+                 Article DOI: 
+              </strong>
+               
+              
+            </div>
+          </section>
+        </div>
+        <div
+          aria-hidden="true"
+          className="makeStyles-spacer-15"
+          onClick={[Function]}
+        />
+        <section>
+          <div
+            className="makeStyles-root-17 makeStyles-plainVariant-19"
+          >
+            <label
+              className="makeStyles-label-20"
+            >
+              Related articles
+            </label>
+            <ul
+              className="makeStyles-list-41"
+            />
+          </div>
+        </section>
+        <div
+          aria-hidden="true"
+          className="makeStyles-spacer-15"
+          onClick={[Function]}
+        />
+        <section>
+          <div
+            className="makeStyles-root-17 makeStyles-plainVariant-19"
+          >
+            <label
+              className="makeStyles-label-20"
+            >
+              Author Information
+            </label>
+          </div>
+        </section>
+        <div
+          aria-hidden="true"
+          className="makeStyles-spacer-15"
+          onClick={[Function]}
+        />
+        <section>
+          <div
+            className="makeStyles-root-17 makeStyles-plainVariant-19"
+          >
+            <label
+              className="makeStyles-label-20"
+            >
+              References
+            </label>
+            <ul
+              className="makeStyles-list-46"
+            />
+          </div>
+        </section>
+      </div>
+    </div>
   </div>,
 ]
 `;
