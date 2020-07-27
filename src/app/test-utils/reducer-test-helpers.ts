@@ -18,7 +18,8 @@ export function givenState(overrides: Partial<Manuscript>): ManuscriptHistorySta
       articleInfo: {
         dtd: '',
         articleType: '',
-        articleDOI: ''
+        articleDOI: '',
+        publisherId: ''
       },
       references: [],
       ...overrides

@@ -51,6 +51,17 @@ export const ArticleInfoFormDialog: React.FC<{}> = () => {
         value={userArticleInfo.articleDOI}
         onChange={handleFormChange}
       />
+      <TextField
+        fullWidth
+        name="publisherId"
+        label="Publisher ID"
+        classes={{ root: classes.inputField }}
+        InputLabelProps={labelProps}
+        variant="outlined"
+        multiline
+        value={userArticleInfo.publisherId}
+        onChange={handleFormChange}
+      />
       <div className={classes.buttonPanel}>
         <ActionButton variant="secondaryOutlined" onClick={closeDialog} title="Cancel" />
         <ActionButton variant="primaryContained" onClick={handleAccept} title="Done" />
