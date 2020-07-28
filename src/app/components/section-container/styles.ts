@@ -7,13 +7,14 @@ export const useSectionContainerStyles = makeStyles((theme) => ({
     border: `solid 1px`,
     borderRadius: theme.spacing(0.5),
     boxSizing: 'border-box',
-    '&:focus': {
-      outline: 'none',
-      borderColor: theme.palette.primary.light,
-      '& > legend': {
-        color: theme.palette.primary.main
-      }
+    '&:hover': {
+      borderColor: theme.palette.text.primary
     }
+    // '&:focus': {
+    //   outline: 'none',
+    //   borderColor: theme.palette.primary.light,
+    //   '& > legend': { color: theme.palette.primary.main }
+    // }
   },
 
   outlinedVariant: {
@@ -36,8 +37,7 @@ export const useSectionContainerStyles = makeStyles((theme) => ({
 
   focused: {
     borderColor: theme.palette.primary.light,
-    '& > label': {
-      color: theme.palette.primary.light
-    }
+    '& > label': { color: theme.palette.primary.light },
+    '&:hover': { borderColor: theme.palette.primary.light }
   }
 }));
