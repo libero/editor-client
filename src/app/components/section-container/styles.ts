@@ -10,11 +10,6 @@ export const useSectionContainerStyles = makeStyles((theme) => ({
     '&:hover': {
       borderColor: theme.palette.text.primary
     }
-    // '&:focus': {
-    //   outline: 'none',
-    //   borderColor: theme.palette.primary.light,
-    //   '& > legend': { color: theme.palette.primary.main }
-    // }
   },
 
   outlinedVariant: {
