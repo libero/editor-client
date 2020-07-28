@@ -7,7 +7,7 @@ import { useAuthorFormStyles } from './styles';
 import { createAuthor, createBioEditorState, Person } from 'app/models/person';
 import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
 import * as manuscriptActions from 'app/actions/manuscript.actions';
-import { PromptDialog } from 'app/components/prompt-dialog';
+import { renderConfirmDialog } from 'app/components/prompt-dialog';
 import { ActionButton } from 'app/components/action-button';
 import { LinkedAffiliationsList } from './linked-affiliations-list';
 import { getAffiliations, getAuthorAffiliations } from 'app/selectors/manuscript.selectors';
@@ -20,22 +20,6 @@ import { ValueOf } from 'app/utils/types';
 interface AuthorFormDialogProps {
   author?: Person;
 }
-
-const renderConfirmDialog = (title: string, msg: string, onAccept: () => void, onReject: () => void) => {
-  return (
-    <PromptDialog
-      title={title}
-      message={msg}
-      isOpen={true}
-      onAccept={onAccept}
-      onReject={onReject}
-      acceptLabel="Delete"
-      rejectLabel="Cancel"
-      acceptVariant="containedWarning"
-      rejectVariant="secondaryOutlined"
-    />
-  );
-};
 
 const labelProps = { shrink: true };
 

@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { IconButton } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 
@@ -21,9 +21,11 @@ import {
   renderThesisReference,
   renderWebReference
 } from 'app/containers/manuscript/references-list/reference-renderers';
+import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
+import { ReferenceFormDialog } from 'app/containers/reference-form-dialog';
 
 interface ReferenceItemProps {
-  onEditCallback: () => void;
+  onEditCallback: (reference: Reference) => void;
   reference: Reference;
 }
 
@@ -72,13 +74,29 @@ const ReferenceItem: React.FC<ReferenceItemProps> = ({ onEditCallback, reference
 export const ReferenceList: React.FC<{}> = () => {
   const references = useSelector(getReferences);
   const classes = useReferencesListStyles();
-  const handleAddReference = useCallback(() => {
-    //TODO: show modal here
-  }, []);
+  const dispatch = useDispatch();
 
-  const handleEditReference = useCallback(() => {
-    //TODO: show modal here
-  }, []);
+  const handleAddReference = useCallback(() => {
+    dispatch(
+      manuscriptEditorActions.showModalDialog({
+        component: ReferenceFormDialog,
+        title: 'Reference'
+      })
+    );
+  }, [dispatch]);
+
+  const handleEditReference = useCallback(
+    (reference: Reference) => {
+      dispatch(
+        manuscriptEditorActions.showModalDialog({
+          component: ReferenceFormDialog,
+          title: 'Reference',
+          props: { reference }
+        })
+      );
+    },
+    [dispatch]
+  );
 
   return (
     <section>

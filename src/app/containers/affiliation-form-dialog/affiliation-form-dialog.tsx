@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { set, cloneDeep } from 'lodash';
 
 import { useAffiliationFormStyles } from './styles';
-import { PromptDialog } from 'app/components/prompt-dialog';
+import { renderConfirmDialog } from 'app/components/prompt-dialog';
 import { ActionButton } from 'app/components/action-button';
 import { Affiliation, createAffiliation } from 'app/models/affiliation';
 import { getAffiliatedAuthors, getAuthors } from 'app/selectors/manuscript.selectors';
@@ -18,22 +18,6 @@ interface AffiliationFormDialogProps {
   onCancel: () => void;
   onDelete: (affiliation: Affiliation) => void;
 }
-
-const renderConfirmDialog = (title: string, msg: string, onAccept: () => void, onReject: () => void) => {
-  return (
-    <PromptDialog
-      title={title}
-      message={msg}
-      isOpen={true}
-      onAccept={onAccept}
-      onReject={onReject}
-      acceptLabel="Delete"
-      rejectLabel="Cancel"
-      acceptVariant="containedWarning"
-      rejectVariant="secondaryOutlined"
-    />
-  );
-};
 
 const labelProps = { shrink: true };
 

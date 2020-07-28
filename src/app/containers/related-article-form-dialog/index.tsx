@@ -7,30 +7,14 @@ import * as manuscriptActions from 'app/actions/manuscript.actions';
 import { ActionButton } from 'app/components/action-button';
 import { createNewRelatedArticle, RelatedArticle } from 'app/models/related-article';
 import { useRelatedArticleStyles } from 'app/containers/related-article-form-dialog/styles';
-import { PromptDialog } from 'app/components/prompt-dialog';
 import { Select } from 'app/components/select';
+import { renderConfirmDialog } from 'app/components/prompt-dialog';
 
 const labelProps = { shrink: true };
 
 interface RelatedArticleFormDialogProps {
   article?: RelatedArticle;
 }
-
-const renderConfirmDialog = (title: string, msg: string, onAccept: () => void, onReject: () => void) => {
-  return (
-    <PromptDialog
-      title={title}
-      message={msg}
-      isOpen={true}
-      onAccept={onAccept}
-      onReject={onReject}
-      acceptLabel="Delete"
-      rejectLabel="Cancel"
-      acceptVariant="containedWarning"
-      rejectVariant="secondaryOutlined"
-    />
-  );
-};
 
 export const RelatedArticleFormDialog: React.FC<RelatedArticleFormDialogProps> = ({ article }) => {
   const [userArticle, setUserArticle] = useState(article || createNewRelatedArticle());
