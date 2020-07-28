@@ -2,10 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export const useRichTextInputStyles = makeStyles((theme) => ({
   container: {
-    minHeight: 56,
-    '&:hover': {
-      borderColor: theme.palette.text.primary
-    }
+    minHeight: 56
   },
   hideToolbar: {
     display: 'none'
