@@ -15,28 +15,32 @@ exports[`<ManuscriptTOC> renders 1`] = `
         aria-hidden="true"
         className="makeStyles-toolbarPlaceholder-3"
       >
-        <h1
-          className="makeStyles-title-4"
+        <div
+          onClick={[Function]}
         >
-          Libero Editor
-        </h1>
-        <h3
-          className="makeStyles-infoText-5"
-        >
-          Software: v
-          0.0.0-test
-        </h3>
-        <h3
-          className="makeStyles-infoText-5 makeStyles-dtd-6"
-        >
-          JATS: 
-           DTD
-        </h3>
-        <h3
-          className="makeStyles-infoText-5"
-        >
-          Type: 
-        </h3>
+          <h1
+            className="makeStyles-title-5"
+          >
+            Libero Editor
+          </h1>
+          <h3
+            className="makeStyles-infoText-6"
+          >
+            Software: v
+            0.0.0-test
+          </h3>
+          <h3
+            className="makeStyles-infoText-6 makeStyles-dtd-7"
+          >
+            JATS: 
+             DTD
+          </h3>
+          <h3
+            className="makeStyles-infoText-6"
+          >
+            Type: 
+          </h3>
+        </div>
       </section>
       <div
         data-cmp="divider"
@@ -59,6 +63,10 @@ exports[`<ManuscriptTOC> renders 1`] = `
           />
         </div>
       </div>
+      <div
+        className="makeStyles-whiteSpace-4"
+        onClick={[Function]}
+      />
     </div>
   </div>
   <div
@@ -71,28 +79,32 @@ exports[`<ManuscriptTOC> renders 1`] = `
         aria-hidden="true"
         className="makeStyles-toolbarPlaceholder-3"
       >
-        <h1
-          className="makeStyles-title-4"
+        <div
+          onClick={[Function]}
         >
-          Libero Editor
-        </h1>
-        <h3
-          className="makeStyles-infoText-5"
-        >
-          Software: v
-          0.0.0-test
-        </h3>
-        <h3
-          className="makeStyles-infoText-5 makeStyles-dtd-6"
-        >
-          JATS: 
-           DTD
-        </h3>
-        <h3
-          className="makeStyles-infoText-5"
-        >
-          Type: 
-        </h3>
+          <h1
+            className="makeStyles-title-5"
+          >
+            Libero Editor
+          </h1>
+          <h3
+            className="makeStyles-infoText-6"
+          >
+            Software: v
+            0.0.0-test
+          </h3>
+          <h3
+            className="makeStyles-infoText-6 makeStyles-dtd-7"
+          >
+            JATS: 
+             DTD
+          </h3>
+          <h3
+            className="makeStyles-infoText-6"
+          >
+            Type: 
+          </h3>
+        </div>
       </section>
       <div
         data-cmp="divider"
@@ -115,6 +127,10 @@ exports[`<ManuscriptTOC> renders 1`] = `
           />
         </div>
       </div>
+      <div
+        className="makeStyles-whiteSpace-4"
+        onClick={[Function]}
+      />
     </div>
   </div>
 </nav>

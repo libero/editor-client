@@ -3,21 +3,20 @@ import { makeStyles } from '@material-ui/core/styles';
 const tocWidth = 240;
 
 export const useManuscriptStyles = makeStyles((theme) => ({
+  contentWrapper: {
+    [theme.breakpoints.up('sm')]: {
+      paddingLeft: tocWidth + theme.spacing(2)
+    }
+  },
   content: {
-    maxWidth: 700 + tocWidth,
+    maxWidth: 700,
     boxSizing: 'border-box',
     width: '100%',
     padding: theme.spacing(2),
-    margin: '0 auto',
-    [theme.breakpoints.up('sm')]: {
-      paddingLeft: tocWidth + theme.spacing(2)
-    },
-    '& > *': {
-      marginTop: 24
-    },
-    '& > *:first-child': {
-      marginTop: 0
-    }
+    margin: '0 auto'
+  },
+  spacer: {
+    minHeight: 24
   },
   toolbarPlaceholder: {
     ...theme.mixins.toolbar
@@ -70,6 +69,9 @@ export const useOutlinePanelStyles = makeStyles((theme) => ({
     paddingBottom: theme.spacing(1.5),
     flexDirection: 'column',
     justifyContent: 'center'
+  },
+  whiteSpace: {
+    flex: 1
   },
   title: {
     color: 'rgba(0,0,0,0.54)',

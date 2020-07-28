@@ -5,6 +5,7 @@ import classNames from 'classnames';
 
 import { useOutlinePanelStyles } from './styles';
 import { getArticleInformation } from 'app/selectors/manuscript.selectors';
+import { ClearFocus } from 'app/containers/manuscript/clear-focus';
 
 export interface ManuscriptTOCProps {
   tocOpen: boolean;
@@ -20,10 +21,12 @@ export const ManuscriptTOC: React.FC<ManuscriptTOCProps> = (props) => {
   const drawer = (
     <React.Fragment>
       <section className={classes.toolbarPlaceholder} aria-hidden="true">
-        <h1 className={classes.title}>Libero Editor</h1>
-        <h3 className={classes.infoText}>Software: v{process.env.REACT_APP_VERSION}</h3>
-        <h3 className={classNames(classes.infoText, classes.dtd)}>JATS: {articleInfo.dtd} DTD</h3>
-        <h3 className={classes.infoText}>Type: {articleInfo.articleType}</h3>
+        <ClearFocus>
+          <h1 className={classes.title}>Libero Editor</h1>
+          <h3 className={classes.infoText}>Software: v{process.env.REACT_APP_VERSION}</h3>
+          <h3 className={classNames(classes.infoText, classes.dtd)}>JATS: {articleInfo.dtd} DTD</h3>
+          <h3 className={classes.infoText}>Type: {articleInfo.articleType}</h3>
+        </ClearFocus>
       </section>
       <Divider />
       <List>
@@ -33,6 +36,7 @@ export const ManuscriptTOC: React.FC<ManuscriptTOCProps> = (props) => {
           </ListItem>
         ))}
       </List>
+      <ClearFocus className={classes.whiteSpace} />
     </React.Fragment>
   );
 

@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, SyntheticEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { EditorState, Transaction } from 'prosemirror-state';
 
@@ -16,6 +16,7 @@ import { ReferenceList } from 'app/containers/manuscript/references-list';
 import { ArticleInformation } from 'app/containers/manuscript/article-information';
 import { getFocusedEditorStatePath } from 'app/selectors/manuscript-editor.selectors';
 import { RelatedArticles } from 'app/containers/manuscript/related-articles';
+import { ClearFocus } from 'app/containers/manuscript/clear-focus';
 
 const isInputFocused = (inputName: string, focusedPath?: string) => {
   return Boolean(focusedPath) && focusedPath.startsWith(inputName);
@@ -37,6 +38,15 @@ export const ManuscriptEditor: React.FC = () => {
     },
     [dispatch]
   );
+
+  const clearFocus = useCallback(() => {
+    dispatch(manuscriptEditorActions.removeFocusAction());
+  }, [dispatch]);
+
+  const preventClick = useCallback((event: SyntheticEvent) => {
+    event.stopPropagation();
+    event.preventDefault();
+  }, []);
 
   const handleKeywordsChange = (keywordGroup: string, index: number, diff: Transaction): void => {
     dispatch(manuscriptActions.updateKeywordAction({ keywordGroup, index, change: diff }));
@@ -79,66 +89,86 @@ export const ManuscriptEditor: React.FC = () => {
     dispatch(manuscriptEditorActions.removeFocusAction());
   }, [dispatch]);
 
-  const handleKeywordFocus = (group: string, index: number | undefined, isNewKeywordFocused: boolean): void => {
-    const kwdIndexPath = isNewKeywordFocused ? 'newKeyword' : `keywords.${index}`;
-    handleFocusSwitch(null, ['keywordGroups', group, kwdIndexPath].join('.'));
-  };
+  const handleKeywordFocus = useCallback(
+    (group: string, index: number | undefined, isNewKeywordFocused: boolean): void => {
+      const kwdIndexPath = isNewKeywordFocused ? 'newKeyword' : `keywords.${index}`;
+      handleFocusSwitch(null, ['keywordGroups', group, kwdIndexPath].join('.'));
+    },
+    [handleFocusSwitch]
+  );
 
   const renderKeywords = (keywordGroups: KeywordGroups): JSX.Element[] => {
     return Object.entries(keywordGroups).map(([groupType, group]) => {
       return (
-        <KeywordsEditor
-          key={groupType}
-          keywords={group.keywords}
-          newKeyword={group.newKeyword}
-          activeKeywordPath={focusedPath}
-          name={groupType}
-          label={group.title || 'Keywords'}
-          onNewKeywordChange={handleNewKeywordChange}
-          onAdd={handleKeywordAdd}
-          onChange={handleKeywordsChange}
-          onDelete={handleKeywordDelete}
-          onFocusSwitch={handleKeywordFocus}
-          onBlur={handleBlur}
-        />
+        <>
+          <KeywordsEditor
+            key={groupType}
+            keywords={group.keywords}
+            newKeyword={group.newKeyword}
+            activeKeywordPath={focusedPath}
+            name={groupType}
+            label={group.title || 'Keywords'}
+            onNewKeywordChange={handleNewKeywordChange}
+            onAdd={handleKeywordAdd}
+            onChange={handleKeywordsChange}
+            onDelete={handleKeywordDelete}
+            onFocusSwitch={handleKeywordFocus}
+            onBlur={handleBlur}
+          />
+          <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
+        </>
       );
     });
   };
 
   return (
-    <div className={classes.content}>
+    <div onClick={clearFocus} className={classes.contentWrapper} data-test-id="container-wrapper">
       <div aria-hidden="true" className={classes.toolbarPlaceholder} />
-      <RichTextEditor
-        editorState={title}
-        label="Title"
-        isActive={isInputFocused('title', focusedPath)}
-        name="title"
-        onChange={handleTitleChange}
-        onFocusSwitch={handleFocusSwitch}
-      />
-      <SortableAuthorsList />
-      <AffiliationsList />
-      <RichTextEditor
-        editorState={abstract}
-        label="Abstract"
-        name="abstract"
-        isActive={isInputFocused('abstract', focusedPath)}
-        onChange={handleAbstractChange}
-        onFocusSwitch={handleFocusSwitch}
-      />
-      <RichTextEditor
-        editorState={impactStatement}
-        label="Impact statement"
-        name="impactStatement"
-        isActive={isInputFocused('impactStatement', focusedPath)}
-        onChange={handleImpactStatementChange}
-        onFocusSwitch={handleFocusSwitch}
-      />
-      {renderKeywords(allKeywords)}
-      <ArticleInformation />
-      <RelatedArticles />
-      <AuthorsInfoDetails />
-      <ReferenceList />
+      <div className={classes.content} onClick={preventClick}>
+        <RichTextEditor
+          editorState={title}
+          label="Title"
+          isActive={isInputFocused('title', focusedPath)}
+          name="title"
+          onChange={handleTitleChange}
+          onFocusSwitch={handleFocusSwitch}
+        />
+        <ClearFocus>
+          <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
+          <SortableAuthorsList />
+          <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
+          <AffiliationsList />
+          <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
+        </ClearFocus>
+        <RichTextEditor
+          editorState={abstract}
+          label="Abstract"
+          name="abstract"
+          isActive={isInputFocused('abstract', focusedPath)}
+          onChange={handleAbstractChange}
+          onFocusSwitch={handleFocusSwitch}
+        />
+        <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
+        <RichTextEditor
+          editorState={impactStatement}
+          label="Impact statement"
+          name="impactStatement"
+          isActive={isInputFocused('impactStatement', focusedPath)}
+          onChange={handleImpactStatementChange}
+          onFocusSwitch={handleFocusSwitch}
+        />
+        <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
+        {renderKeywords(allKeywords)}
+        <ClearFocus>
+          <ArticleInformation />
+          <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
+          <RelatedArticles />
+          <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
+          <AuthorsInfoDetails />
+          <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
+          <ReferenceList />
+        </ClearFocus>
+      </div>
     </div>
   );
 };
