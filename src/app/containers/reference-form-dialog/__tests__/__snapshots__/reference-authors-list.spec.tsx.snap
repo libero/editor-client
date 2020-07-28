@@ -1,0 +1,431 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Reference Authors List should add a new author entry 1`] = `
+<section>
+  <section
+    className="makeStyles-authorInputFields-1"
+  >
+    <div
+      data-cmp="TextField"
+    />
+    <div
+      data-cmp="TextField"
+    />
+    <div
+      data-cmp="iconButton"
+    />
+    <div
+      data-cmp="Menu"
+    >
+      <div
+        data-cmp="MenuItem"
+      >
+        Set to group author
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Delete author
+      </div>
+    </div>
+  </section>
+  <section
+    className="makeStyles-authorInputFields-1"
+  >
+    <div
+      data-cmp="TextField"
+    />
+    <div
+      data-cmp="TextField"
+    />
+    <div
+      data-cmp="iconButton"
+    />
+    <div
+      data-cmp="Menu"
+    >
+      <div
+        data-cmp="MenuItem"
+      >
+        Set to group author
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Delete author
+      </div>
+    </div>
+  </section>
+  <section
+    className="makeStyles-authorInputFields-1"
+  >
+    <div
+      data-cmp="TextField"
+    />
+    <div
+      data-cmp="iconButton"
+    />
+    <div
+      data-cmp="Menu"
+    >
+      <div
+        data-cmp="MenuItem"
+      >
+        Set to individual author
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Delete author
+      </div>
+    </div>
+  </section>
+  <div
+    data-cmp="Button"
+  />
+</section>
+`;
+
+exports[`Reference Authors List should delete author 1`] = `
+<section>
+  <section
+    className="makeStyles-authorInputFields-1"
+  >
+    <div
+      data-cmp="TextField"
+    />
+    <div
+      data-cmp="TextField"
+    />
+    <div
+      data-cmp="iconButton"
+    />
+    <div
+      data-cmp="Menu"
+    >
+      <div
+        data-cmp="MenuItem"
+      >
+        Set to group author
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Delete author
+      </div>
+    </div>
+  </section>
+  <section
+    className="makeStyles-authorInputFields-1"
+  >
+    <div
+      data-cmp="TextField"
+    />
+    <div
+      data-cmp="TextField"
+    />
+    <div
+      data-cmp="iconButton"
+    />
+    <div
+      data-cmp="Menu"
+    >
+      <div
+        data-cmp="MenuItem"
+      >
+        Set to group author
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Delete author
+      </div>
+    </div>
+  </section>
+  <section
+    className="makeStyles-authorInputFields-1"
+  >
+    <div
+      data-cmp="TextField"
+    />
+    <div
+      data-cmp="iconButton"
+    />
+    <div
+      data-cmp="Menu"
+    >
+      <div
+        data-cmp="MenuItem"
+      >
+        Set to individual author
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Delete author
+      </div>
+    </div>
+  </section>
+  <div
+    data-cmp="Button"
+  />
+</section>
+`;
+
+exports[`Reference Authors List should render a list 1`] = `
+<section>
+  <section
+    className="makeStyles-authorInputFields-1"
+  >
+    <div
+      data-cmp="TextField"
+    />
+    <div
+      data-cmp="TextField"
+    />
+    <div
+      data-cmp="iconButton"
+    />
+    <div
+      data-cmp="Menu"
+    >
+      <div
+        data-cmp="MenuItem"
+      >
+        Set to group author
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Delete author
+      </div>
+    </div>
+  </section>
+  <section
+    className="makeStyles-authorInputFields-1"
+  >
+    <div
+      data-cmp="TextField"
+    />
+    <div
+      data-cmp="TextField"
+    />
+    <div
+      data-cmp="iconButton"
+    />
+    <div
+      data-cmp="Menu"
+    >
+      <div
+        data-cmp="MenuItem"
+      >
+        Set to group author
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Delete author
+      </div>
+    </div>
+  </section>
+  <section
+    className="makeStyles-authorInputFields-1"
+  >
+    <div
+      data-cmp="TextField"
+    />
+    <div
+      data-cmp="iconButton"
+    />
+    <div
+      data-cmp="Menu"
+    >
+      <div
+        data-cmp="MenuItem"
+      >
+        Set to individual author
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Delete author
+      </div>
+    </div>
+  </section>
+  <div
+    data-cmp="Button"
+  />
+</section>
+`;
+
+exports[`Reference Authors List should toggle author type to group author 1`] = `
+<section>
+  <section
+    className="makeStyles-authorInputFields-1"
+  >
+    <div
+      data-cmp="TextField"
+    />
+    <div
+      data-cmp="TextField"
+    />
+    <div
+      data-cmp="iconButton"
+    />
+    <div
+      data-cmp="Menu"
+    >
+      <div
+        data-cmp="MenuItem"
+      >
+        Set to group author
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Delete author
+      </div>
+    </div>
+  </section>
+  <section
+    className="makeStyles-authorInputFields-1"
+  >
+    <div
+      data-cmp="TextField"
+    />
+    <div
+      data-cmp="TextField"
+    />
+    <div
+      data-cmp="iconButton"
+    />
+    <div
+      data-cmp="Menu"
+    >
+      <div
+        data-cmp="MenuItem"
+      >
+        Set to group author
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Delete author
+      </div>
+    </div>
+  </section>
+  <section
+    className="makeStyles-authorInputFields-1"
+  >
+    <div
+      data-cmp="TextField"
+    />
+    <div
+      data-cmp="iconButton"
+    />
+    <div
+      data-cmp="Menu"
+    >
+      <div
+        data-cmp="MenuItem"
+      >
+        Set to individual author
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Delete author
+      </div>
+    </div>
+  </section>
+  <div
+    data-cmp="Button"
+  />
+</section>
+`;
+
+exports[`Reference Authors List should toggle author type to individual author 1`] = `
+<section>
+  <section
+    className="makeStyles-authorInputFields-1"
+  >
+    <div
+      data-cmp="TextField"
+    />
+    <div
+      data-cmp="TextField"
+    />
+    <div
+      data-cmp="iconButton"
+    />
+    <div
+      data-cmp="Menu"
+    >
+      <div
+        data-cmp="MenuItem"
+      >
+        Set to group author
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Delete author
+      </div>
+    </div>
+  </section>
+  <section
+    className="makeStyles-authorInputFields-1"
+  >
+    <div
+      data-cmp="TextField"
+    />
+    <div
+      data-cmp="TextField"
+    />
+    <div
+      data-cmp="iconButton"
+    />
+    <div
+      data-cmp="Menu"
+    >
+      <div
+        data-cmp="MenuItem"
+      >
+        Set to group author
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Delete author
+      </div>
+    </div>
+  </section>
+  <section
+    className="makeStyles-authorInputFields-1"
+  >
+    <div
+      data-cmp="TextField"
+    />
+    <div
+      data-cmp="iconButton"
+    />
+    <div
+      data-cmp="Menu"
+    >
+      <div
+        data-cmp="MenuItem"
+      >
+        Set to individual author
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Delete author
+      </div>
+    </div>
+  </section>
+  <div
+    data-cmp="Button"
+  />
+</section>
+`;

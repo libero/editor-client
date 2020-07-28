@@ -7,11 +7,8 @@ import { PromptDialog } from 'app/components/prompt-dialog';
 import { AffiliationFormDialog } from 'app/containers/affiliation-form-dialog/affiliation-form-dialog';
 import { givenState } from 'app/test-utils/reducer-test-helpers';
 
-jest.mock('../../../components/prompt-dialog', () => ({
-  PromptDialog: () => <div data-cmp="confirm-dialog"></div>
-}));
-
 jest.mock('@material-ui/core', () => ({
+  Dialog: () => <div data-cmp="Dialog"></div>,
   Select: ({ children }) => <div data-cmp="Index">{children}</div>,
   MenuItem: ({ children }) => <div data-cmp="MenuItem">{children}</div>,
   FormControl: ({ children }) => <div data-cmp="FormControl">{children}</div>,
@@ -82,7 +79,12 @@ describe('Affiliation Form Dialog', () => {
 
     const wrapper = create(
       <Provider store={store}>
-        <AffiliationFormDialog onDelete={jest.fn()} allowLinkAuthors={false} onAccept={jest.fn()} onCancel={jest.fn()} />
+        <AffiliationFormDialog
+          onDelete={jest.fn()}
+          allowLinkAuthors={false}
+          onAccept={jest.fn()}
+          onCancel={jest.fn()}
+        />
       </Provider>
     );
     expect(wrapper).toMatchSnapshot();

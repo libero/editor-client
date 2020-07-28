@@ -105,11 +105,13 @@ const RefAuthorInput: React.FC<RefAuthorInputProps> = ({ refAuthor, onChange, on
       <IconButton onClick={openMenu} classes={{ root: classes.menuButton }}>
         <MoreVertIcon fontSize="small" />
       </IconButton>
-      <Menu id="simple-menu" anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={closeMenu}>
-        <MenuItem onClick={handleToggleAuthorType}>
+      <Menu anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={closeMenu}>
+        <MenuItem test-id={'toggle-author-type-btn'} onClick={handleToggleAuthorType}>
           {isGroupAuthor(refAuthor) ? 'Set to individual author' : 'Set to group author'}
         </MenuItem>
-        <MenuItem onClick={handleDelete}>Delete author</MenuItem>
+        <MenuItem test-id={'delete-author-btn'} onClick={handleDelete}>
+          Delete author
+        </MenuItem>
       </Menu>
     </section>
   );
