@@ -10,7 +10,12 @@ export const useReferenceAuthorStyles = makeStyles((theme) => ({
       marginBottom: 0
     },
     '& > .drag-handle': {
-      cursor: 'grab'
+      cursor: 'grab',
+      width: 10,
+      height: 16,
+      marginRight: theme.spacing(0.75),
+      marginLeft: -1 * theme.spacing(2),
+      zIndex: 1
     }
   },
   lastName: {
@@ -26,7 +31,7 @@ export const useReferenceAuthorStyles = makeStyles((theme) => ({
 
 export const useReferenceFormStyles = makeStyles((theme) => ({
   root: {
-    padding: theme.spacing(0, 1),
+    padding: theme.spacing(0, 1, 0, 2),
     width: 500
   },
   inputField: {
