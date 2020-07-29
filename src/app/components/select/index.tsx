@@ -68,8 +68,8 @@ export const Select: React.FC<SelectProps> = React.memo(
           label={label}
           classes={{ root: value === blankValue ? classes.blankOptionSelected : undefined }}
         >
-          {muiOptions.map((option) => (
-            <MenuItem disabled={option.disabled} value={option.muiValue}>
+          {muiOptions.map((option, index) => (
+            <MenuItem key={index} disabled={option.disabled} value={option.muiValue}>
               {option.label}
             </MenuItem>
           ))}

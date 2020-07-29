@@ -7,8 +7,8 @@ import * as manuscriptActions from 'app/actions/manuscript.actions';
 import { ActionButton } from 'app/components/action-button';
 import { createNewRelatedArticle, RelatedArticle } from 'app/models/related-article';
 import { useRelatedArticleStyles } from 'app/containers/related-article-form-dialog/styles';
-import { PromptDialog } from 'app/components/prompt-dialog';
 import { Select } from 'app/components/select';
+import { renderConfirmDialog } from 'app/components/prompt-dialog';
 
 const labelProps = { shrink: true };
 
@@ -16,25 +16,9 @@ interface RelatedArticleFormDialogProps {
   article?: RelatedArticle;
 }
 
-const renderConfirmDialog = (title: string, msg: string, onAccept: () => void, onReject: () => void) => {
-  return (
-    <PromptDialog
-      title={title}
-      message={msg}
-      isOpen={true}
-      onAccept={onAccept}
-      onReject={onReject}
-      acceptLabel="Delete"
-      rejectLabel="Cancel"
-      acceptVariant="containedWarning"
-      rejectVariant="secondaryOutlined"
-    />
-  );
-};
-
 export const RelatedArticleFormDialog: React.FC<RelatedArticleFormDialogProps> = ({ article }) => {
   const [userArticle, setUserArticle] = useState(article || createNewRelatedArticle());
-  const [isConfirmShown, setConfirmSnow] = useState<boolean>(false);
+  const [isConfirmShown, setConfirmShow] = useState<boolean>(false);
   const isNewArticle = !article;
   const classes = useRelatedArticleStyles();
   const dispatch = useDispatch();
@@ -44,14 +28,14 @@ export const RelatedArticleFormDialog: React.FC<RelatedArticleFormDialogProps> =
   }, [dispatch]);
 
   const handleAccept = useCallback(() => {
-    setConfirmSnow(false);
+    setConfirmShow(false);
     dispatch(manuscriptActions.deleteRelatedArticleAction(userArticle));
     closeDialog();
-  }, [setConfirmSnow, userArticle, closeDialog, dispatch]);
+  }, [setConfirmShow, userArticle, closeDialog, dispatch]);
 
   const handleReject = useCallback(() => {
-    setConfirmSnow(false);
-  }, [setConfirmSnow]);
+    setConfirmShow(false);
+  }, [setConfirmShow]);
 
   const handleFormChange = useCallback(
     (event: ChangeEvent<{ name: string; value: any }>) => {
@@ -76,8 +60,8 @@ export const RelatedArticleFormDialog: React.FC<RelatedArticleFormDialogProps> =
   }, [closeDialog, userArticle, dispatch, isNewArticle]);
 
   const handleDelete = useCallback(() => {
-    setConfirmSnow(true);
-  }, [setConfirmSnow]);
+    setConfirmShow(true);
+  }, [setConfirmShow]);
 
   return (
     <section className={classes.root}>

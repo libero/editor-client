@@ -7,7 +7,7 @@ import { useAuthorFormStyles } from './styles';
 import { createAuthor, createBioEditorState, Person } from 'app/models/person';
 import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
 import * as manuscriptActions from 'app/actions/manuscript.actions';
-import { PromptDialog } from 'app/components/prompt-dialog';
+import { renderConfirmDialog } from 'app/components/prompt-dialog';
 import { ActionButton } from 'app/components/action-button';
 import { LinkedAffiliationsList } from './linked-affiliations-list';
 import { getAffiliations, getAuthorAffiliations } from 'app/selectors/manuscript.selectors';
@@ -21,22 +21,6 @@ interface AuthorFormDialogProps {
   author?: Person;
 }
 
-const renderConfirmDialog = (title: string, msg: string, onAccept: () => void, onReject: () => void) => {
-  return (
-    <PromptDialog
-      title={title}
-      message={msg}
-      isOpen={true}
-      onAccept={onAccept}
-      onReject={onReject}
-      acceptLabel="Delete"
-      rejectLabel="Cancel"
-      acceptVariant="containedWarning"
-      rejectVariant="secondaryOutlined"
-    />
-  );
-};
-
 const labelProps = { shrink: true };
 
 export const AuthorFormDialog: React.FC<AuthorFormDialogProps> = (props) => {
@@ -46,7 +30,7 @@ export const AuthorFormDialog: React.FC<AuthorFormDialogProps> = (props) => {
   const [author, setAuthor] = useState<Person>(
     props.author || createAuthor(undefined, { firstName: '', lastName: '', bio: createBioEditorState() })
   );
-  const [isConfirmShown, setConfirmSnow] = useState<boolean>(false);
+  const [isConfirmShown, setConfirmShow] = useState<boolean>(false);
 
   const allAffiliations = useSelector(getAffiliations);
   const linkedAffiliations = useSelector(getAuthorAffiliations)(author);
@@ -57,14 +41,14 @@ export const AuthorFormDialog: React.FC<AuthorFormDialogProps> = (props) => {
   }, [dispatch]);
 
   const handleDelete = useCallback(() => {
-    setConfirmSnow(true);
-  }, [setConfirmSnow]);
+    setConfirmShow(true);
+  }, [setConfirmShow]);
 
   const handleAccept = useCallback(() => {
-    setConfirmSnow(false);
+    setConfirmShow(false);
     dispatch(manuscriptActions.deleteAuthorAction(author));
     closeDialog();
-  }, [setConfirmSnow, author, closeDialog, dispatch]);
+  }, [setConfirmShow, author, closeDialog, dispatch]);
 
   const updateAuthorInfo = useCallback(
     (fieldName: string, value: ValueOf<Person>) => {
@@ -84,8 +68,8 @@ export const AuthorFormDialog: React.FC<AuthorFormDialogProps> = (props) => {
   );
 
   const handleReject = useCallback(() => {
-    setConfirmSnow(false);
-  }, [setConfirmSnow]);
+    setConfirmShow(false);
+  }, [setConfirmShow]);
 
   const handleFormChange = useCallback(
     (event: SyntheticEvent) => updateAuthorInfo(event.target['name'], event.target['value']),

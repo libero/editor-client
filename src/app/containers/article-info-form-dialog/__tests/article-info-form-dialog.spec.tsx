@@ -22,7 +22,8 @@ describe('Article Info Form Dialog', () => {
       articleInfo: {
         articleDOI: '',
         dtd: '1',
-        articleType: ''
+        articleType: '',
+        publisherId: ''
       }
     });
   });

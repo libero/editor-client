@@ -52,3 +52,19 @@ export const PromptDialog: React.FC<PromptDialogProps> = (props) => {
     </Dialog>
   );
 };
+
+export const renderConfirmDialog = (title: string, msg: string, onAccept: () => void, onReject: () => void) => {
+  return (
+    <PromptDialog
+      title={title}
+      message={msg}
+      isOpen={true}
+      onAccept={onAccept}
+      onReject={onReject}
+      acceptLabel="Delete"
+      rejectLabel="Cancel"
+      acceptVariant="containedWarning"
+      rejectVariant="secondaryOutlined"
+    />
+  );
+};

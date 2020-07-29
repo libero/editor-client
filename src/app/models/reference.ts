@@ -2,12 +2,13 @@ import { DOMParser as ProseMirrorDOMParser } from 'prosemirror-model';
 import { EditorState } from 'prosemirror-state';
 import { gapCursor } from 'prosemirror-gapcursor';
 import { dropCursor } from 'prosemirror-dropcursor';
+import { v4 as uuidv4 } from 'uuid';
 
 import * as referenceInfoConfig from 'app/models/config/reference-info.config';
 import { buildInputRules } from 'app/models/plugins/input-rules';
 import { getTextContentFromPath, makeSchemaFromConfig } from 'app/models/utils';
 
-type ReferencePerson =
+export type ReferencePerson =
   | {
       firstName: string;
       lastName: string;
@@ -16,7 +17,7 @@ type ReferencePerson =
       groupName: string;
     };
 
-type ReferenceType =
+export type ReferenceType =
   | 'journal'
   | 'periodical'
   | 'book'
@@ -172,6 +173,15 @@ export interface Reference {
     | ThesisReference;
 }
 
+export function createBlankReference(): Reference {
+  return {
+    id: uuidv4(),
+    authors: [],
+    referenceInfo: undefined,
+    type: undefined
+  };
+}
+
 export function createReference(xmlId: string, referenceXml: Element): Reference {
   const reference: Reference = {
     id: xmlId,
@@ -231,7 +241,7 @@ function createReferencePersonList(referenceXml: Element, groupType: string): Re
   return Array.from(contributors.children).map((contributorXml) => {
     if (contributorXml.nodeName === 'name') {
       return {
-        firstName: getTextContentFromPath(referenceXml, 'given-names') || '',
+        firstName: getTextContentFromPath(contributorXml, 'given-names') || '',
         lastName: getTextContentFromPath(contributorXml, 'surname') || ''
       };
     } else {

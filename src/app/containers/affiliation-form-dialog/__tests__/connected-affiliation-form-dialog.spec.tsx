@@ -3,13 +3,11 @@ import { create } from 'react-test-renderer';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { mount } from 'enzyme';
-import { EditorState } from 'prosemirror-state';
 
 import * as manuscriptActions from 'app/actions/manuscript.actions';
-import { getInitialHistory, getLoadableStateSuccess } from 'app/utils/state.utils';
 import { ConnectedAffiliationFormDialog } from 'app/containers/affiliation-form-dialog/connected-affiliation-form-dialog';
 import { AffiliationFormDialog } from 'app/containers/affiliation-form-dialog/affiliation-form-dialog';
-import {givenState} from "app/test-utils/reducer-test-helpers";
+import { givenState } from 'app/test-utils/reducer-test-helpers';
 
 jest.mock('app/containers/affiliation-form-dialog/affiliation-form-dialog', () => ({
   AffiliationFormDialog: () => <div data-cmp="AffiliationsFormDialog"></div>
