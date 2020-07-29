@@ -2,9 +2,16 @@
 
 exports[`Reference Authors List should add a new author entry 1`] = `
 <section>
+   
   <section
     className="makeStyles-authorInputFields-1"
   >
+    <img
+      alt="drag handle"
+      aria-hidden={true}
+      className="drag-handle"
+      src="drag-indicator-grey.svg"
+    />
     <div
       data-cmp="TextField"
     />
@@ -32,6 +39,12 @@ exports[`Reference Authors List should add a new author entry 1`] = `
   <section
     className="makeStyles-authorInputFields-1"
   >
+    <img
+      alt="drag handle"
+      aria-hidden={true}
+      className="drag-handle"
+      src="drag-indicator-grey.svg"
+    />
     <div
       data-cmp="TextField"
     />
@@ -59,6 +72,12 @@ exports[`Reference Authors List should add a new author entry 1`] = `
   <section
     className="makeStyles-authorInputFields-1"
   >
+    <img
+      alt="drag handle"
+      aria-hidden={true}
+      className="drag-handle"
+      src="drag-indicator-grey.svg"
+    />
     <div
       data-cmp="TextField"
     />
@@ -83,14 +102,22 @@ exports[`Reference Authors List should add a new author entry 1`] = `
   <div
     data-cmp="Button"
   />
+   
 </section>
 `;
 
 exports[`Reference Authors List should delete author 1`] = `
 <section>
+   
   <section
     className="makeStyles-authorInputFields-1"
   >
+    <img
+      alt="drag handle"
+      aria-hidden={true}
+      className="drag-handle"
+      src="drag-indicator-grey.svg"
+    />
     <div
       data-cmp="TextField"
     />
@@ -118,6 +145,12 @@ exports[`Reference Authors List should delete author 1`] = `
   <section
     className="makeStyles-authorInputFields-1"
   >
+    <img
+      alt="drag handle"
+      aria-hidden={true}
+      className="drag-handle"
+      src="drag-indicator-grey.svg"
+    />
     <div
       data-cmp="TextField"
     />
@@ -145,6 +178,12 @@ exports[`Reference Authors List should delete author 1`] = `
   <section
     className="makeStyles-authorInputFields-1"
   >
+    <img
+      alt="drag handle"
+      aria-hidden={true}
+      className="drag-handle"
+      src="drag-indicator-grey.svg"
+    />
     <div
       data-cmp="TextField"
     />
@@ -169,14 +208,22 @@ exports[`Reference Authors List should delete author 1`] = `
   <div
     data-cmp="Button"
   />
+   
 </section>
 `;
 
 exports[`Reference Authors List should render a list 1`] = `
 <section>
+   
   <section
     className="makeStyles-authorInputFields-1"
   >
+    <img
+      alt="drag handle"
+      aria-hidden={true}
+      className="drag-handle"
+      src="drag-indicator-grey.svg"
+    />
     <div
       data-cmp="TextField"
     />
@@ -204,6 +251,12 @@ exports[`Reference Authors List should render a list 1`] = `
   <section
     className="makeStyles-authorInputFields-1"
   >
+    <img
+      alt="drag handle"
+      aria-hidden={true}
+      className="drag-handle"
+      src="drag-indicator-grey.svg"
+    />
     <div
       data-cmp="TextField"
     />
@@ -231,6 +284,12 @@ exports[`Reference Authors List should render a list 1`] = `
   <section
     className="makeStyles-authorInputFields-1"
   >
+    <img
+      alt="drag handle"
+      aria-hidden={true}
+      className="drag-handle"
+      src="drag-indicator-grey.svg"
+    />
     <div
       data-cmp="TextField"
     />
@@ -255,14 +314,22 @@ exports[`Reference Authors List should render a list 1`] = `
   <div
     data-cmp="Button"
   />
+   
 </section>
 `;
 
 exports[`Reference Authors List should toggle author type to group author 1`] = `
 <section>
+   
   <section
     className="makeStyles-authorInputFields-1"
   >
+    <img
+      alt="drag handle"
+      aria-hidden={true}
+      className="drag-handle"
+      src="drag-indicator-grey.svg"
+    />
     <div
       data-cmp="TextField"
     />
@@ -290,6 +357,12 @@ exports[`Reference Authors List should toggle author type to group author 1`] = 
   <section
     className="makeStyles-authorInputFields-1"
   >
+    <img
+      alt="drag handle"
+      aria-hidden={true}
+      className="drag-handle"
+      src="drag-indicator-grey.svg"
+    />
     <div
       data-cmp="TextField"
     />
@@ -317,6 +390,12 @@ exports[`Reference Authors List should toggle author type to group author 1`] = 
   <section
     className="makeStyles-authorInputFields-1"
   >
+    <img
+      alt="drag handle"
+      aria-hidden={true}
+      className="drag-handle"
+      src="drag-indicator-grey.svg"
+    />
     <div
       data-cmp="TextField"
     />
@@ -341,14 +420,22 @@ exports[`Reference Authors List should toggle author type to group author 1`] = 
   <div
     data-cmp="Button"
   />
+   
 </section>
 `;
 
 exports[`Reference Authors List should toggle author type to individual author 1`] = `
 <section>
+   
   <section
     className="makeStyles-authorInputFields-1"
   >
+    <img
+      alt="drag handle"
+      aria-hidden={true}
+      className="drag-handle"
+      src="drag-indicator-grey.svg"
+    />
     <div
       data-cmp="TextField"
     />
@@ -376,6 +463,12 @@ exports[`Reference Authors List should toggle author type to individual author 1
   <section
     className="makeStyles-authorInputFields-1"
   >
+    <img
+      alt="drag handle"
+      aria-hidden={true}
+      className="drag-handle"
+      src="drag-indicator-grey.svg"
+    />
     <div
       data-cmp="TextField"
     />
@@ -403,6 +496,12 @@ exports[`Reference Authors List should toggle author type to individual author 1
   <section
     className="makeStyles-authorInputFields-1"
   >
+    <img
+      alt="drag handle"
+      aria-hidden={true}
+      className="drag-handle"
+      src="drag-indicator-grey.svg"
+    />
     <div
       data-cmp="TextField"
     />
@@ -427,5 +526,6 @@ exports[`Reference Authors List should toggle author type to individual author 1
   <div
     data-cmp="Button"
   />
+   
 </section>
 `;

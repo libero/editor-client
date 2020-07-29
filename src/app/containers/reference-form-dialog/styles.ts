@@ -3,10 +3,14 @@ import { makeStyles } from '@material-ui/core/styles';
 export const useReferenceAuthorStyles = makeStyles((theme) => ({
   authorInputFields: {
     display: 'flex',
+    zIndex: theme.zIndex.modal + 1,
     alignItems: 'center',
     marginBottom: theme.spacing(3),
     '&:last-of-type': {
       marginBottom: 0
+    },
+    '& > .drag-handle': {
+      cursor: 'grab'
     }
   },
   lastName: {

@@ -1,6 +1,6 @@
 import React from 'react';
 import configureMockStore from 'redux-mock-store';
-import { create, act } from 'react-test-renderer';
+import { create } from 'react-test-renderer';
 import { Provider } from 'react-redux';
 
 import { ReferenceFormDialog } from 'app/containers/reference-form-dialog/index';

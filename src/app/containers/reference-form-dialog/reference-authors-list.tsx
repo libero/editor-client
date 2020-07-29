@@ -1,11 +1,13 @@
 import React, { useCallback, SyntheticEvent } from 'react';
 import { TextField, IconButton, Menu, MenuItem } from '@material-ui/core';
-import { has } from 'lodash';
+import { has, isEqual } from 'lodash';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { SortableHandle, SortableContainer, SortableElement } from 'react-sortable-hoc';
 
 import { ReferencePerson } from 'app/models/reference';
 import { useReferenceAuthorStyles } from 'app/containers/reference-form-dialog/styles';
 import { ActionButton } from 'app/components/action-button';
+import DragIcon from 'app/assets/drag-indicator-grey.svg';
 
 interface ReferenceAuthorsListProps {
   refAuthors: ReferencePerson[];
@@ -23,6 +25,16 @@ const labelProps = { shrink: true };
 const isGroupAuthor = (refAuthor: ReferencePerson) => {
   return has(refAuthor, 'groupName');
 };
+
+const DragHandle = React.memo(
+  SortableHandle(() => <img src={DragIcon} alt="drag handle" aria-hidden={true} className="drag-handle" />),
+  isEqual
+);
+
+const SortableList = React.memo(
+  SortableContainer(({ children }) => <section> {children} </section>),
+  isEqual
+);
 
 const renderSingleAuthorForm = (classes, refAuthor, handleFormChange) => (
   <>
@@ -60,8 +72,9 @@ const renderGroupAuthorForm = (classes, refAuthor, handleFormChange) => (
   />
 );
 
-const RefAuthorInput: React.FC<RefAuthorInputProps> = ({ refAuthor, onChange, onDelete }) => {
+const RefAuthorInput = SortableElement(({ value, onChange, onDelete }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const refAuthor = value.author;
   const handleFormChange = useCallback(
     (event: SyntheticEvent) => {
       const newRefAuthor = { ...refAuthor, [event.target['name']]: event.target['value'] };
@@ -99,6 +112,7 @@ const RefAuthorInput: React.FC<RefAuthorInputProps> = ({ refAuthor, onChange, on
 
   return (
     <section className={classes.authorInputFields}>
+      <DragHandle />
       {isGroupAuthor(refAuthor)
         ? renderGroupAuthorForm(classes, refAuthor, handleFormChange)
         : renderSingleAuthorForm(classes, refAuthor, handleFormChange)}
@@ -115,9 +129,10 @@ const RefAuthorInput: React.FC<RefAuthorInputProps> = ({ refAuthor, onChange, on
       </Menu>
     </section>
   );
-};
+});
 
 export const ReferenceAuthorsList: React.FC<ReferenceAuthorsListProps> = ({ refAuthors, onChange }) => {
+  const classes = useReferenceAuthorStyles();
   const handleAuthorChange = useCallback(
     (index: number) => (author: ReferencePerson) => {
       const updatedAuthorsList = [...refAuthors];
@@ -140,17 +155,30 @@ export const ReferenceAuthorsList: React.FC<ReferenceAuthorsListProps> = ({ refA
     [refAuthors, onChange]
   );
 
+  const onSortEnd = useCallback(
+    ({ oldIndex, newIndex }) => {
+      const authorsList = [...refAuthors];
+
+      const movedAuthor = authorsList[oldIndex];
+      authorsList.splice(oldIndex, 1);
+      authorsList.splice(newIndex, 0, movedAuthor);
+      onChange(authorsList);
+    },
+    [onChange, refAuthors]
+  );
+
   return (
-    <section>
+    <SortableList onSortEnd={onSortEnd} axis="y" useDragHandle={true}>
       {refAuthors.map((author, index) => (
         <RefAuthorInput
+          index={index}
           key={index}
-          refAuthor={author}
+          value={{ author }}
           onChange={handleAuthorChange(index)}
           onDelete={handleAuthorDelete(index)}
         />
       ))}
       <ActionButton variant="addEntity" title="Author" onClick={addNewAuthor} />
-    </section>
+    </SortableList>
   );
 };

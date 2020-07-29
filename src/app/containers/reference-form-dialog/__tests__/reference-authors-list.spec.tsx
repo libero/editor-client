@@ -77,4 +77,14 @@ describe('Reference Authors List', () => {
     expect(wrapper).toMatchSnapshot();
     expect(onChange).toHaveBeenCalledWith([AUTHORS[0], AUTHORS[1], { firstName: '', lastName: 'Test 55' }]);
   });
+
+  it('should rearrange authors', () => {
+    const onChange = jest.fn();
+    const wrapper = create(<ReferenceAuthorsList refAuthors={AUTHORS} onChange={onChange} />);
+    act(() => {
+      const onSortEnd = wrapper.root.find((n) => n.props['onSortEnd']).props['onSortEnd'];
+      onSortEnd({ oldIndex: 0, newIndex: 1 });
+    });
+    expect(onChange).toHaveBeenCalledWith([AUTHORS[1], AUTHORS[0], AUTHORS[2]]);
+  });
 });
