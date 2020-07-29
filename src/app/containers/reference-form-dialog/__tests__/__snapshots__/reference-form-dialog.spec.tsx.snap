@@ -1,0 +1,154 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Reference form dialog renders form 1`] = `
+<section
+  className="makeStyles-root-1"
+>
+  <div
+    data-cmp="FormControl"
+  >
+    <div
+      data-cmp="InputLabel"
+    >
+      Reference type
+    </div>
+    <div
+      data-cmp="Index"
+    >
+      <div
+        data-cmp="MenuItem"
+      >
+        Please select
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Journal Article
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Periodical Article
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Book
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Report
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Data
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Web Article
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Pre-print Article
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Software
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Conference proceedings
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Thesis
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Patent
+      </div>
+    </div>
+  </div>
+  <section>
+    <section
+      className="makeStyles-authorInputFields-7"
+    >
+      <div
+        data-cmp="TextField"
+      />
+      <div
+        data-cmp="TextField"
+      />
+      <div
+        data-cmp="iconButton"
+      />
+      <div
+        data-cmp="Menu"
+      >
+        <div
+          data-cmp="MenuItem"
+        >
+          Set to group author
+        </div>
+        <div
+          data-cmp="MenuItem"
+        >
+          Delete author
+        </div>
+      </div>
+    </section>
+    <section
+      className="makeStyles-authorInputFields-7"
+    >
+      <div
+        data-cmp="TextField"
+      />
+      <div
+        data-cmp="iconButton"
+      />
+      <div
+        data-cmp="Menu"
+      >
+        <div
+          data-cmp="MenuItem"
+        >
+          Set to individual author
+        </div>
+        <div
+          data-cmp="MenuItem"
+        >
+          Delete author
+        </div>
+      </div>
+    </section>
+    <div
+      data-cmp="Button"
+    />
+  </section>
+  <div
+    className="makeStyles-buttonPanel-3"
+  >
+    <div
+      data-cmp="Button"
+    />
+    <div
+      aria-hidden={true}
+      className="makeStyles-spacer-4"
+    />
+    <div
+      data-cmp="Button"
+    />
+    <div
+      data-cmp="Button"
+    />
+  </div>
+</section>
+`;

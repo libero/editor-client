@@ -143,7 +143,12 @@ export const ReferenceAuthorsList: React.FC<ReferenceAuthorsListProps> = ({ refA
   return (
     <section>
       {refAuthors.map((author, index) => (
-        <RefAuthorInput refAuthor={author} onChange={handleAuthorChange(index)} onDelete={handleAuthorDelete(index)} />
+        <RefAuthorInput
+          key={index}
+          refAuthor={author}
+          onChange={handleAuthorChange(index)}
+          onDelete={handleAuthorDelete(index)}
+        />
       ))}
       <ActionButton variant="addEntity" title="Author" onClick={addNewAuthor} />
     </section>

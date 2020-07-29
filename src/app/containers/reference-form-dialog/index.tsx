@@ -11,7 +11,7 @@ import { renderConfirmDialog } from 'app/components/prompt-dialog';
 import { ReferenceAuthorsList } from 'app/containers/reference-form-dialog/reference-authors-list';
 
 interface ReferenceFormDialogProps {
-  reference: Reference;
+  reference?: Reference;
 }
 
 export const ReferenceFormDialog: React.FC<ReferenceFormDialogProps> = ({ reference }) => {
@@ -76,6 +76,7 @@ export const ReferenceFormDialog: React.FC<ReferenceFormDialogProps> = ({ refere
       <Select
         className={classes.inputField}
         name="type"
+        test-id={'ref-type'}
         placeholder="Please select"
         fullWidth
         blankValue={undefined}
@@ -96,7 +97,11 @@ export const ReferenceFormDialog: React.FC<ReferenceFormDialogProps> = ({ refere
           { label: 'Patent', value: 'patent' }
         ]}
       />
-      <ReferenceAuthorsList refAuthors={userReference.authors} onChange={handleAuthorsListChange} />
+      <ReferenceAuthorsList
+        test-id={'ref-authors'}
+        refAuthors={userReference.authors}
+        onChange={handleAuthorsListChange}
+      />
       <div className={classes.buttonPanel}>
         {!isNewReference ? <ActionButton variant="outlinedWarning" onClick={handleDelete} title="Delete" /> : undefined}
         <div aria-hidden={true} className={classes.spacer}></div>
