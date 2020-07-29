@@ -132,7 +132,6 @@ const RefAuthorInput = SortableElement(({ value, onChange, onDelete }) => {
 });
 
 export const ReferenceAuthorsList: React.FC<ReferenceAuthorsListProps> = ({ refAuthors, onChange }) => {
-  const classes = useReferenceAuthorStyles();
   const handleAuthorChange = useCallback(
     (index: number) => (author: ReferencePerson) => {
       const updatedAuthorsList = [...refAuthors];
