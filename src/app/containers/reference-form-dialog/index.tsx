@@ -16,7 +16,7 @@ interface ReferenceFormDialogProps {
 
 export const ReferenceFormDialog: React.FC<ReferenceFormDialogProps> = ({ reference }) => {
   const classes = useReferenceFormStyles();
-  const [isConfirmShown, setConfirmSnow] = useState<boolean>(false);
+  const [isConfirmShown, setConfirmShow] = useState<boolean>(false);
   const isNewReference = !reference;
   const [userReference, setReference] = useState<Reference>(reference || createBlankReference());
   const dispatch = useDispatch();
@@ -58,15 +58,15 @@ export const ReferenceFormDialog: React.FC<ReferenceFormDialogProps> = ({ refere
   }, [userReference, closeDialog, dispatch, isNewReference]);
 
   const handleReject = useCallback(() => {
-    setConfirmSnow(false);
-  }, [setConfirmSnow]);
+    setConfirmShow(false);
+  }, [setConfirmShow]);
 
   const handleDelete = useCallback(() => {
-    setConfirmSnow(true);
-  }, [setConfirmSnow]);
+    setConfirmShow(true);
+  }, [setConfirmShow]);
 
   const handleAccept = useCallback(() => {
-    setConfirmSnow(false);
+    setConfirmShow(false);
     dispatch(manuscriptActions.deleteReferenceAction(userReference));
     closeDialog();
   }, [closeDialog, dispatch, userReference]);

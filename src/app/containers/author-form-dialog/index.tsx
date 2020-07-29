@@ -30,7 +30,7 @@ export const AuthorFormDialog: React.FC<AuthorFormDialogProps> = (props) => {
   const [author, setAuthor] = useState<Person>(
     props.author || createAuthor(undefined, { firstName: '', lastName: '', bio: createBioEditorState() })
   );
-  const [isConfirmShown, setConfirmSnow] = useState<boolean>(false);
+  const [isConfirmShown, setConfirmShow] = useState<boolean>(false);
 
   const allAffiliations = useSelector(getAffiliations);
   const linkedAffiliations = useSelector(getAuthorAffiliations)(author);
@@ -41,14 +41,14 @@ export const AuthorFormDialog: React.FC<AuthorFormDialogProps> = (props) => {
   }, [dispatch]);
 
   const handleDelete = useCallback(() => {
-    setConfirmSnow(true);
-  }, [setConfirmSnow]);
+    setConfirmShow(true);
+  }, [setConfirmShow]);
 
   const handleAccept = useCallback(() => {
-    setConfirmSnow(false);
+    setConfirmShow(false);
     dispatch(manuscriptActions.deleteAuthorAction(author));
     closeDialog();
-  }, [setConfirmSnow, author, closeDialog, dispatch]);
+  }, [setConfirmShow, author, closeDialog, dispatch]);
 
   const updateAuthorInfo = useCallback(
     (fieldName: string, value: ValueOf<Person>) => {
@@ -68,8 +68,8 @@ export const AuthorFormDialog: React.FC<AuthorFormDialogProps> = (props) => {
   );
 
   const handleReject = useCallback(() => {
-    setConfirmSnow(false);
-  }, [setConfirmSnow]);
+    setConfirmShow(false);
+  }, [setConfirmShow]);
 
   const handleFormChange = useCallback(
     (event: SyntheticEvent) => updateAuthorInfo(event.target['name'], event.target['value']),

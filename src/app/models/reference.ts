@@ -241,7 +241,7 @@ function createReferencePersonList(referenceXml: Element, groupType: string): Re
   return Array.from(contributors.children).map((contributorXml) => {
     if (contributorXml.nodeName === 'name') {
       return {
-        firstName: getTextContentFromPath(referenceXml, 'given-names') || '',
+        firstName: getTextContentFromPath(contributorXml, 'given-names') || '',
         lastName: getTextContentFromPath(contributorXml, 'surname') || ''
       };
     } else {
