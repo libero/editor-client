@@ -176,7 +176,7 @@ export interface Reference {
 export function createBlankReference(): Reference {
   return {
     id: uuidv4(),
-    authors: [],
+    authors: [{ firstName: '', lastName: '' }],
     referenceInfo: undefined,
     type: undefined
   };

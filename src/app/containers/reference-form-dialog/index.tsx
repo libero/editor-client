@@ -1,5 +1,6 @@
 import React, { useCallback, useState, ChangeEvent } from 'react';
 import { useDispatch } from 'react-redux';
+import { get, set } from 'lodash';
 
 import { createBlankReference, Reference, ReferencePerson, ReferenceType } from 'app/models/reference';
 import { Select } from 'app/components/select';
@@ -9,6 +10,8 @@ import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions'
 import * as manuscriptActions from 'app/actions/manuscript.actions';
 import { renderConfirmDialog } from 'app/components/prompt-dialog';
 import { ReferenceAuthorsList } from 'app/containers/reference-form-dialog/reference-authors-list';
+import { getFormConfigForType } from 'app/containers/reference-form-dialog/referenc-forms.config';
+import { renderFormControl } from 'app/containers/reference-form-dialog/reference-form-renderer';
 
 interface ReferenceFormDialogProps {
   reference?: Reference;
@@ -23,10 +26,15 @@ export const ReferenceFormDialog: React.FC<ReferenceFormDialogProps> = ({ refere
 
   const handleReferenceTypeChange = useCallback(
     (event: ChangeEvent<{ name: string; value: ReferenceType }>) => {
-      setReference({
+      const newRef = {
         ...userReference,
         type: event.target['value']
-      });
+      };
+      if (!newRef.referenceInfo) {
+        set(newRef, 'referenceInfo', {});
+      }
+
+      setReference(newRef);
     },
     [userReference]
   );
@@ -43,6 +51,19 @@ export const ReferenceFormDialog: React.FC<ReferenceFormDialogProps> = ({ refere
       });
     },
     [userReference, setReference]
+  );
+
+  const handleRefInfoChange = useCallback(
+    (name, value) => {
+      setReference({
+        ...userReference,
+        referenceInfo: {
+          ...userReference.referenceInfo,
+          [name]: value
+        }
+      });
+    },
+    [userReference]
   );
 
   const handleDone = useCallback(() => {
@@ -70,6 +91,20 @@ export const ReferenceFormDialog: React.FC<ReferenceFormDialogProps> = ({ refere
     dispatch(manuscriptActions.deleteReferenceAction(userReference));
     closeDialog();
   }, [closeDialog, dispatch, userReference]);
+
+  const formConfig = getFormConfigForType(userReference.type);
+  const form = formConfig
+    ? Object.entries(formConfig).map(([key, config]) => {
+        return renderFormControl(
+          config.type,
+          config.label,
+          key,
+          classes.inputField,
+          get(userReference, `referenceInfo.${key}`),
+          handleRefInfoChange
+        );
+      })
+    : undefined;
 
   return (
     <section className={classes.root}>
@@ -102,6 +137,7 @@ export const ReferenceFormDialog: React.FC<ReferenceFormDialogProps> = ({ refere
         refAuthors={userReference.authors}
         onChange={handleAuthorsListChange}
       />
+      {form}
       <div className={classes.buttonPanel}>
         {!isNewReference ? <ActionButton variant="outlinedWarning" onClick={handleDelete} title="Delete" /> : undefined}
         <div aria-hidden={true} className={classes.spacer}></div>

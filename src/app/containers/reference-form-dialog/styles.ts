@@ -5,10 +5,7 @@ export const useReferenceAuthorStyles = makeStyles((theme) => ({
     display: 'flex',
     zIndex: theme.zIndex.modal + 1,
     alignItems: 'center',
-    marginBottom: theme.spacing(3),
-    '&:last-of-type': {
-      marginBottom: 0
-    },
+    marginTop: theme.spacing(3),
     '& > .drag-handle': {
       cursor: 'grab',
       width: 10,
@@ -35,7 +32,10 @@ export const useReferenceFormStyles = makeStyles((theme) => ({
     width: 500
   },
   inputField: {
-    marginBottom: theme.spacing(3)
+    marginTop: theme.spacing(3),
+    '&:first-child': {
+      marginTop: 0
+    }
   },
   buttonPanel: {
     display: 'flex',
