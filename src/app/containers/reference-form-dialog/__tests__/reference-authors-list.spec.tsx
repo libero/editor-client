@@ -1,7 +1,7 @@
 import React from 'react';
 import { create, act } from 'react-test-renderer';
 
-import { ReferenceAuthorsList } from 'app/containers/reference-form-dialog/reference-authors-list';
+import { ReferenceContributorsList } from 'app/containers/reference-form-dialog/reference-contributors-list';
 import { ActionButton } from 'app/components/action-button';
 
 jest.mock('@material-ui/core', () => ({
@@ -23,13 +23,13 @@ describe('Reference Authors List', () => {
   ];
 
   it('should render a list', () => {
-    const wrapper = create(<ReferenceAuthorsList refAuthors={AUTHORS} onChange={jest.fn()} />);
+    const wrapper = create(<ReferenceContributorsList refAuthors={AUTHORS} onChange={jest.fn()} />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should add a new author entry', () => {
     const onChange = jest.fn();
-    const wrapper = create(<ReferenceAuthorsList refAuthors={AUTHORS} onChange={onChange} />);
+    const wrapper = create(<ReferenceContributorsList refAuthors={AUTHORS} onChange={onChange} />);
     act(() => {
       wrapper.root.findByType(ActionButton).props['onClick']();
     });
@@ -39,7 +39,7 @@ describe('Reference Authors List', () => {
 
   it('should delete author', () => {
     const onChange = jest.fn();
-    const wrapper = create(<ReferenceAuthorsList refAuthors={AUTHORS} onChange={onChange} />);
+    const wrapper = create(<ReferenceContributorsList refAuthors={AUTHORS} onChange={onChange} />);
     act(() => {
       wrapper.root.findAllByProps({ 'test-id': 'delete-author-btn' })[0].props['onClick']();
     });
@@ -49,7 +49,7 @@ describe('Reference Authors List', () => {
 
   it('should update author', () => {
     const onChange = jest.fn();
-    const wrapper = create(<ReferenceAuthorsList refAuthors={AUTHORS} onChange={onChange} />);
+    const wrapper = create(<ReferenceContributorsList refAuthors={AUTHORS} onChange={onChange} />);
     act(() => {
       wrapper.root
         .findAllByProps({ name: 'firstName' })[0]
@@ -60,7 +60,7 @@ describe('Reference Authors List', () => {
 
   it('should toggle author type to group author', () => {
     const onChange = jest.fn();
-    const wrapper = create(<ReferenceAuthorsList refAuthors={AUTHORS} onChange={onChange} />);
+    const wrapper = create(<ReferenceContributorsList refAuthors={AUTHORS} onChange={onChange} />);
     act(() => {
       wrapper.root.findAllByProps({ 'test-id': 'toggle-author-type-btn' })[0].props['onClick']();
     });
@@ -70,7 +70,7 @@ describe('Reference Authors List', () => {
 
   it('should toggle author type to individual author', () => {
     const onChange = jest.fn();
-    const wrapper = create(<ReferenceAuthorsList refAuthors={AUTHORS} onChange={onChange} />);
+    const wrapper = create(<ReferenceContributorsList refAuthors={AUTHORS} onChange={onChange} />);
     act(() => {
       wrapper.root.findAllByProps({ 'test-id': 'toggle-author-type-btn' })[2].props['onClick']();
     });
@@ -80,7 +80,7 @@ describe('Reference Authors List', () => {
 
   it('should rearrange authors', () => {
     const onChange = jest.fn();
-    const wrapper = create(<ReferenceAuthorsList refAuthors={AUTHORS} onChange={onChange} />);
+    const wrapper = create(<ReferenceContributorsList refAuthors={AUTHORS} onChange={onChange} />);
     act(() => {
       const onSortEnd = wrapper.root.find((n) => n.props['onSortEnd']).props['onSortEnd'];
       onSortEnd({ oldIndex: 0, newIndex: 1 });

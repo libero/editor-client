@@ -1,7 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-export const useReferenceAuthorStyles = makeStyles((theme) => ({
-  authorInputFields: {
+export const useReferenceContributorStyles = makeStyles((theme) => ({
+  contributorInputFields: {
     display: 'flex',
     zIndex: theme.zIndex.modal + 1,
     alignItems: 'center',
@@ -37,9 +37,13 @@ export const useReferenceFormStyles = makeStyles((theme) => ({
       marginTop: 0
     }
   },
+  missingFieldsSection: {
+    marginTop: theme.spacing(3),
+    borderColor: theme.palette.error.main,
+  },
   buttonPanel: {
     display: 'flex',
-    marginTop: theme.spacing(1),
+    marginTop: theme.spacing(3),
     '& > *:last-child': {
       marginLeft: theme.spacing(2)
     }

@@ -1,27 +1,27 @@
 import { ReferenceType } from 'app/models/reference';
 
-interface FormControlConfigType {
+export interface FormControlConfigType {
   type: string;
   label: string;
 }
 
 export const JOURNAL_FORM: Record<string, FormControlConfigType> = {
   year: { type: 'number', label: 'Year' },
-  source: { type: 'rich-text', label: 'Source' },
   articleTitle: { type: 'rich-text', label: 'Title' },
+  source: { type: 'rich-text', label: 'Journal title' },
   volume: { type: 'number', label: 'Volume' },
   firstPage: { type: 'string', label: 'First page' },
   lastPage: { type: 'string', label: 'Last page' },
   elocationId: { type: 'string', label: 'eLocation ID' },
-  inPress: { type: 'boolean', label: 'In press' },
   doi: { type: 'string', label: 'DOI' },
-  pmid: { type: 'string', label: 'PMID' }
+  pmid: { type: 'string', label: 'PMID' },
+  inPress: { type: 'boolean', label: 'In press' }
 };
 
 export const PERIODICAL_FORM: Record<string, FormControlConfigType> = {
   date: { type: 'date', label: 'Date' },
-  source: { type: 'rich-text', label: 'Source' },
   articleTitle: { type: 'rich-text', label: 'Title' },
+  source: { type: 'rich-text', label: 'Journal title' },
   volume: { type: 'number', label: 'Volume' },
   firstPage: { type: 'string', label: 'First page' },
   lastPage: { type: 'string', label: 'Last page' },
@@ -30,24 +30,24 @@ export const PERIODICAL_FORM: Record<string, FormControlConfigType> = {
 
 export const BOOK_FORM: Record<string, FormControlConfigType> = {
   year: { type: 'number', label: 'Year' },
-  chapterTitle: { type: 'rich-text', label: 'Chapter' },
+  chapterTitle: { type: 'rich-text', label: 'Chapter title' },
+  source: { type: 'rich-text', label: 'Book title' },
   edition: { type: 'string', label: 'Edition' },
-  publisherLocation: { type: 'string', label: 'Publisher Location' },
-  publisherName: { type: 'string', label: 'Publisher Name' },
-  source: { type: 'rich-text', label: 'Source' },
   volume: { type: 'number', label: 'Volume' },
-  // editors
   firstPage: { type: 'string', label: 'First page' },
   lastPage: { type: 'string', label: 'Last page' },
+  elocationId: { type: 'string', label: 'eLocation ID' },
+  publisherName: { type: 'string', label: 'Publisher Name' },
+  publisherLocation: { type: 'string', label: 'Publisher Location' },
+  editors: { type: 'editors-list', label: '' },
   doi: { type: 'string', label: 'DOI' },
   pmid: { type: 'string', label: 'PMID' },
-  inPress: { type: 'boolean', label: 'In press' },
-  elocationId: { type: 'string', label: 'eLocation ID' }
+  inPress: { type: 'boolean', label: 'In press' }
 };
 
 export const REPORT_FORM: Record<string, FormControlConfigType> = {
   year: { type: 'number', label: 'Year' },
-  source: { type: 'rich-text', label: 'Source' },
+  source: { type: 'rich-text', label: 'Title' },
   publisherName: { type: 'string', label: 'Publisher Name' },
   doi: { type: 'string', label: 'DOI' },
   extLink: { type: 'string', label: 'ext link' }
@@ -55,79 +55,79 @@ export const REPORT_FORM: Record<string, FormControlConfigType> = {
 
 export const DATA_FORM: Record<string, FormControlConfigType> = {
   year: { type: 'number', label: 'Year' },
-  dataTitle: { type: 'rich-text', label: 'Title' },
+  dataTitle: { type: 'rich-text', label: 'Data title' },
   source: { type: 'rich-text', label: 'Source' },
-  doi: { type: 'string', label: 'DOI' },
   version: { type: 'string', label: 'Version' },
-  extLink: { type: 'string', label: 'ext link' },
+  doi: { type: 'string', label: 'DOI' },
   accessionId: { type: 'string', label: 'Accession' },
   accessionUrl: { type: 'string', label: 'Accession URL' },
+  extLink: { type: 'string', label: 'ext link' },
   specificUse: { type: 'string', label: 'Specific Use' }
 };
 
 export const WEB_FORM: Record<string, FormControlConfigType> = {
+  dateInCitation: { type: 'date', label: 'Date' },
   year: { type: 'number', label: 'Year' },
+  articleTitle: { type: 'rich-text', label: 'Article title' },
   source: { type: 'rich-text', label: 'Source' },
-  articleTitle: { type: 'rich-text', label: 'Title' },
-  extLink: { type: 'string', label: 'ext link' },
-  dateInCitation: { type: 'date', label: 'Date in citation' }
+  extLink: { type: 'string', label: 'ext link' }
 };
 
 export const PREPRINT_FORM: Record<string, FormControlConfigType> = {
   year: { type: 'number', label: 'Year' },
-  articleTitle: { type: 'rich-text', label: 'Title' },
-  source: { type: 'rich-text', label: 'Source' },
-  extLink: { type: 'string', label: 'ext link' },
-  dateInCitation: { type: 'date', label: 'Date in citation' },
+  dateInCitation: { type: 'date', label: 'Date' },
+  articleTitle: { type: 'rich-text', label: 'Article title' },
+  source: { type: 'rich-text', label: 'Journal title' },
   doi: { type: 'string', label: 'DOI' },
-  pmid: { type: 'string', label: 'PMID' }
+  pmid: { type: 'string', label: 'PMID' },
+  extLink: { type: 'string', label: 'ext link' }
 };
 
 export const SOFTWARE_FORM: Record<string, FormControlConfigType> = {
   year: { type: 'number', label: 'Year' },
-  source: { type: 'rich-text', label: 'Source' },
   dataTitle: { type: 'rich-text', label: 'Title' },
-  version: { type: 'string', label: 'Version' },
-  publisherLocation: { type: 'string', label: 'Publisher Location' },
+  source: { type: 'rich-text', label: 'Source' },
   publisherName: { type: 'string', label: 'Publisher Name' },
-  extLink: { type: 'string', label: 'ext link' },
+  publisherLocation: { type: 'string', label: 'Publisher Location' },
+  version: { type: 'string', label: 'Version' },
   doi: { type: 'string', label: 'DOI' },
-  pmid: { type: 'string', label: 'PMID' }
+  pmid: { type: 'string', label: 'PMID' },
+  extLink: { type: 'string', label: 'ext link' }
 };
 
 export const CONFPROC_FORM: Record<string, FormControlConfigType> = {
   year: { type: 'number', label: 'Year' },
-  articleTitle: { type: 'rich-text', label: 'Title' },
+  articleTitle: { type: 'rich-text', label: 'Article title' },
   conferenceName: { type: 'string', label: 'Conference name' },
   conferenceLocation: { type: 'string', label: 'Conference location' },
   conferenceDate: { type: 'date', label: 'Conference date' },
   volume: { type: 'number', label: 'Volume' },
-  extLink: { type: 'string', label: 'ext link' },
+  firstPage: { type: 'string', label: 'First page' },
+  lastPage: { type: 'string', label: 'Last page' },
   elocationId: { type: 'string', label: 'eLocation ID' },
   doi: { type: 'string', label: 'DOI' },
   pmid: { type: 'string', label: 'PMID' },
-  firstPage: { type: 'string', label: 'First page' },
-  lastPage: { type: 'string', label: 'Last page' }
+  extLink: { type: 'string', label: 'ext link' }
 };
 
 export const THESIS_FORM: Record<string, FormControlConfigType> = {
   year: { type: 'number', label: 'Year' },
-  articleTitle: { type: 'rich-text', label: 'Title' },
-  publisherLocation: { type: 'string', label: 'Publisher Location' },
+  articleTitle: { type: 'rich-text', label: 'Article title' },
   publisherName: { type: 'string', label: 'Publisher Name' },
-  extLink: { type: 'string', label: 'ext link' },
+  publisherLocation: { type: 'string', label: 'Publisher Location' },
   doi: { type: 'string', label: 'DOI' },
-  pmid: { type: 'string', label: 'PMID' }
+  pmid: { type: 'string', label: 'PMID' },
+  extLink: { type: 'string', label: 'ext link' }
 };
 
 export const PATENT_FORM: Record<string, FormControlConfigType> = {
   year: { type: 'number', label: 'Year' },
+  articleTitle: { type: 'rich-text', label: 'Article title' },
   source: { type: 'rich-text', label: 'Source' },
-  articleTitle: { type: 'rich-text', label: 'Title' },
   publisherName: { type: 'string', label: 'Publisher Name' },
+  patent: { type: 'string', label: 'Patent' },
   doi: { type: 'string', label: 'DOI' },
   pmid: { type: 'string', label: 'PMID' },
-  patent: { type: 'string', label: 'Patent' },
   extLink: { type: 'string', label: 'ext link' }
 };
 

@@ -3,7 +3,6 @@ import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 
 import { AuthorsInfoDetails } from 'app/containers/manuscript/authors-info-details/index';
-import { getInitialHistory, getLoadableStateSuccess } from 'app/utils/state.utils';
 import { EditorState } from 'prosemirror-state';
 import { create } from 'react-test-renderer';
 import { mount } from 'enzyme';
@@ -12,6 +11,7 @@ import { AuthorFormDialog } from 'app/containers/author-form-dialog';
 import { IconButton } from '@material-ui/core';
 import { ActionButton } from 'app/components/action-button';
 import { Person } from 'app/models/person';
+import { givenState } from 'app/test-utils/reducer-test-helpers';
 
 jest.mock('@material-ui/core', () => ({
   Button: ({ label }) => <div data-cmp="Button">{label}</div>,
@@ -43,7 +43,7 @@ describe('Authors info details', () => {
   const mockStore = configureMockStore([]);
 
   it('renders authors list', () => {
-    const mockState = getInitialHistory({
+    const mockState = givenState({
       title: new EditorState(),
       abstract: new EditorState(),
       affiliations: [],
@@ -51,9 +51,7 @@ describe('Authors info details', () => {
       authors: AUTHORS,
       references: []
     });
-    const store = mockStore({
-      manuscript: getLoadableStateSuccess(mockState)
-    });
+    const store = mockStore({ manuscript: mockState });
     const wrapper = create(
       <Provider store={store}>
         <AuthorsInfoDetails />
@@ -64,7 +62,7 @@ describe('Authors info details', () => {
   });
 
   it('dispatches edit action', () => {
-    const mockState = getInitialHistory({
+    const mockState = givenState({
       title: new EditorState(),
       affiliations: [],
       abstract: new EditorState(),
@@ -73,9 +71,7 @@ describe('Authors info details', () => {
       references: []
     });
 
-    const store = mockStore({
-      manuscript: getLoadableStateSuccess(mockState)
-    });
+    const store = mockStore({ manuscript: mockState });
 
     jest.spyOn(store, 'dispatch');
 
@@ -97,7 +93,7 @@ describe('Authors info details', () => {
   });
 
   it('dispatches add action', () => {
-    const mockState = getInitialHistory({
+    const mockState = givenState({
       title: new EditorState(),
       abstract: new EditorState(),
       affiliations: [],
@@ -106,9 +102,7 @@ describe('Authors info details', () => {
       references: []
     });
 
-    const store = mockStore({
-      manuscript: getLoadableStateSuccess(mockState)
-    });
+    const store = mockStore({ manuscript: mockState });
 
     jest.spyOn(store, 'dispatch');
 

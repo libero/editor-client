@@ -2,6 +2,8 @@ import React, { useCallback, SyntheticEvent } from 'react';
 import { TextField, FormControlLabel, Checkbox } from '@material-ui/core';
 import { EditorState, Transaction } from 'prosemirror-state';
 import { RichTextInput } from 'app/components/rich-text-input';
+import { ReferenceContributor } from 'app/models/reference';
+import { ReferenceContributorsList } from 'app/containers/reference-form-dialog/reference-contributors-list';
 
 export type RefInfoChangeCallback<T> = (name: string, value: T) => void;
 
@@ -90,6 +92,26 @@ export const NumberInput: React.FC<ReferenceInputTypeProps<number>> = (props) =>
   );
 };
 
+export const EditorsListInput: React.FC<ReferenceInputTypeProps<ReferenceContributor[]>> = (props) => {
+  const { onChange, name } = props;
+  const handleChange = useCallback(
+    (editors: ReferenceContributor[]) => {
+      onChange(name, editors);
+    },
+    [onChange, name]
+  );
+
+  return (
+    <ReferenceContributorsList
+      className={props.className}
+      refContributors={props.value}
+      onChange={handleChange}
+      entityName="editor"
+      addCtaLabel={'Editor'}
+    />
+  );
+};
+
 export const TextInput: React.FC<ReferenceInputTypeProps<EditorState>> = (props) => {
   const { onChange, name, value } = props;
   const handleChange = useCallback(
@@ -143,6 +165,7 @@ export function renderFormControl<T>(
     'rich-text': TextInput,
     number: NumberInput,
     boolean: CheckboxInput,
+    'editors-list': EditorsListInput,
     date: DateInput
   }[type];
 

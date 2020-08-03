@@ -1,17 +1,29 @@
 import React, { useCallback, useState, ChangeEvent } from 'react';
 import { useDispatch } from 'react-redux';
-import { get, set } from 'lodash';
+import { get, has, pick } from 'lodash';
 
-import { createBlankReference, Reference, ReferencePerson, ReferenceType } from 'app/models/reference';
+import {
+  createBlankReference,
+  Reference,
+  ReferenceContributor,
+  ReferenceType,
+  createEmptyRefInfoByType,
+  ReferenceInfoType
+} from 'app/models/reference';
 import { Select } from 'app/components/select';
 import { useReferenceFormStyles } from 'app/containers/reference-form-dialog/styles';
 import { ActionButton } from 'app/components/action-button';
 import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
 import * as manuscriptActions from 'app/actions/manuscript.actions';
 import { renderConfirmDialog } from 'app/components/prompt-dialog';
-import { ReferenceAuthorsList } from 'app/containers/reference-form-dialog/reference-authors-list';
-import { getFormConfigForType } from 'app/containers/reference-form-dialog/referenc-forms.config';
+import { ReferenceContributorsList } from 'app/containers/reference-form-dialog/reference-contributors-list';
+import {
+  FormControlConfigType,
+  getFormConfigForType
+} from 'app/containers/reference-form-dialog/referenc-forms.config';
 import { renderFormControl } from 'app/containers/reference-form-dialog/reference-form-renderer';
+import { EditorState } from 'prosemirror-state';
+import { SectionContainer } from 'app/components/section-container';
 
 interface ReferenceFormDialogProps {
   reference?: Reference;
@@ -22,18 +34,20 @@ export const ReferenceFormDialog: React.FC<ReferenceFormDialogProps> = ({ refere
   const [isConfirmShown, setConfirmShow] = useState<boolean>(false);
   const isNewReference = !reference;
   const [userReference, setReference] = useState<Reference>(reference || createBlankReference());
+  const [missingFieldsInfo, setMissingFieldsInfo] = useState<Partial<ReferenceInfoType>>({});
+  const [missingFieldsConfig, setMissingFieldsConfig] = useState<Record<string, FormControlConfigType>>({});
   const dispatch = useDispatch();
 
   const handleReferenceTypeChange = useCallback(
     (event: ChangeEvent<{ name: string; value: ReferenceType }>) => {
+      const newRefInfo = createEmptyRefInfoByType(event.target['value']);
       const newRef = {
         ...userReference,
-        type: event.target['value']
+        type: event.target['value'],
+        referenceInfo: transferValues(userReference.referenceInfo, newRefInfo)
       };
-      if (!newRef.referenceInfo) {
-        set(newRef, 'referenceInfo', {});
-      }
-
+      setMissingFieldsInfo(getDiffFieldValues(userReference.referenceInfo, newRefInfo));
+      setMissingFieldsConfig(getDiffFieldsConfig(userReference.type, newRef.type));
       setReference(newRef);
     },
     [userReference]
@@ -44,7 +58,7 @@ export const ReferenceFormDialog: React.FC<ReferenceFormDialogProps> = ({ refere
   }, [dispatch]);
 
   const handleAuthorsListChange = useCallback(
-    (refAuthors: ReferencePerson[]) => {
+    (refAuthors: ReferenceContributor[]) => {
       setReference({
         ...userReference,
         authors: refAuthors
@@ -64,6 +78,16 @@ export const ReferenceFormDialog: React.FC<ReferenceFormDialogProps> = ({ refere
       });
     },
     [userReference]
+  );
+
+  const handleMissingFieldsInfoChange = useCallback(
+    (name, value) => {
+      setMissingFieldsInfo({
+        ...missingFieldsInfo,
+        [name]: value
+      });
+    },
+    [missingFieldsInfo]
   );
 
   const handleDone = useCallback(() => {
@@ -106,6 +130,13 @@ export const ReferenceFormDialog: React.FC<ReferenceFormDialogProps> = ({ refere
       })
     : undefined;
 
+  console.log(missingFieldsInfo);
+
+  const diffForm = Object.entries(missingFieldsInfo).map(([key, value]) => {
+    const config = missingFieldsConfig[key];
+    return renderFormControl(config.type, config.label, key, classes.inputField, value, handleMissingFieldsInfoChange);
+  });
+
   return (
     <section className={classes.root}>
       <Select
@@ -120,24 +151,32 @@ export const ReferenceFormDialog: React.FC<ReferenceFormDialogProps> = ({ refere
         onChange={handleReferenceTypeChange}
         options={[
           { label: 'Journal Article', value: 'journal' },
-          { label: 'Periodical Article', value: 'periodical' },
           { label: 'Book', value: 'book' },
-          { label: 'Report', value: 'report' },
           { label: 'Data', value: 'data' },
-          { label: 'Web Article', value: 'web' },
-          { label: 'Pre-print Article', value: 'preprint' },
           { label: 'Software', value: 'software' },
+          { label: 'Preprint', value: 'preprint' },
+          { label: 'Web Article', value: 'web' },
           { label: 'Conference proceedings', value: 'confproc' },
+          { label: 'Report', value: 'report' },
           { label: 'Thesis', value: 'thesis' },
-          { label: 'Patent', value: 'patent' }
+          { label: 'Patent', value: 'patent' },
+          { label: 'Periodical Article', value: 'periodical' }
         ]}
       />
-      <ReferenceAuthorsList
+      <ReferenceContributorsList
+        className={classes.inputField}
+        addCtaLabel={'Author'}
+        entityName={'author'}
         test-id={'ref-authors'}
-        refAuthors={userReference.authors}
+        refContributors={userReference.authors}
         onChange={handleAuthorsListChange}
       />
       {form}
+      {diffForm.length > 0 ? (
+        <SectionContainer label="These fields will be lost" variant="outlined" className={classes.missingFieldsSection}>
+          {diffForm}
+        </SectionContainer>
+      ) : undefined}
       <div className={classes.buttonPanel}>
         {!isNewReference ? <ActionButton variant="outlinedWarning" onClick={handleDelete} title="Delete" /> : undefined}
         <div aria-hidden={true} className={classes.spacer}></div>
@@ -155,3 +194,40 @@ export const ReferenceFormDialog: React.FC<ReferenceFormDialogProps> = ({ refere
     </section>
   );
 };
+
+function transferValues(prevRefInfo: ReferenceInfoType, nextRefInfo: ReferenceInfoType): ReferenceInfoType {
+  Object.entries(nextRefInfo).forEach(([key, value]) => {
+    nextRefInfo[key] = get(prevRefInfo, key, value);
+  });
+  return nextRefInfo;
+}
+
+function getDiffFieldValues(
+  prevRefInfo: ReferenceInfoType,
+  nextRefInfo: ReferenceInfoType
+): Partial<ReferenceInfoType> {
+  console.log(prevRefInfo);
+  const diffKeys = Object.keys(prevRefInfo).filter(
+    (key: ReferenceType) => !has(nextRefInfo, key) && !isValueEmpty(prevRefInfo[key])
+  );
+  return pick(prevRefInfo, diffKeys);
+}
+
+function getDiffFieldsConfig(prevType: ReferenceType, nextType: ReferenceType): Record<string, FormControlConfigType> {
+  const prevConfig = getFormConfigForType(prevType);
+  const nextConfig = getFormConfigForType(nextType);
+  const diffKeys = Object.keys(prevConfig).filter((key: ReferenceType) => !has(nextConfig, key));
+  return pick(prevConfig, diffKeys);
+}
+
+function isValueEmpty(value: EditorState | Array<ReferenceContributor> | string | number): boolean {
+  if (value instanceof EditorState) {
+    return value.doc && (value.doc.childCount <= 1 || value.doc.firstChild.textContent.trim().length < 0);
+  }
+
+  if (Array.isArray(value)) {
+    return value.length === 0;
+  }
+
+  return !value;
+}
