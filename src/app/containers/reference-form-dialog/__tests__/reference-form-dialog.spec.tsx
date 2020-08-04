@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 
 import { ReferenceFormDialog } from 'app/containers/reference-form-dialog/index';
 import { givenState } from 'app/test-utils/reducer-test-helpers';
-import { createEmptyRefInfoByType, ReferenceType } from 'app/models/reference';
+import { ReferenceType } from 'app/models/reference';
 import { mount } from 'enzyme';
 import * as manuscriptActions from 'app/actions/manuscript.actions';
 import { PromptDialog } from 'app/components/prompt-dialog';
