@@ -68,7 +68,7 @@ export const DATA_FORM: Record<string, FormControlConfigType> = {
 };
 
 export const WEB_FORM: Record<string, FormControlConfigType> = {
-  year: { type: 'number', label: 'Year', className: refFormGrid.secondCol },
+  year: { type: 'number', label: 'Year', className: refFormGrid.firstCol },
   articleTitle: { type: 'rich-text', label: 'Article title', className: refFormGrid.fullWidth },
   source: { type: 'rich-text', label: 'Source', className: refFormGrid.fullWidth },
   extLink: { type: 'string', label: 'URL', className: refFormGrid.fullWidth },
