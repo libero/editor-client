@@ -41,6 +41,19 @@ export const useReferenceFormStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(3),
     borderColor: theme.palette.error.main,
   },
+  missingFieldsRow: {
+    display: 'flex',
+    alignItems: 'flex-start'
+  },
+  warningMessage: {
+    color: theme.palette.error.main
+  },
+  deleteButton: {
+    height: 32,
+    width: 32,
+    alignSelf: 'center',
+    marginLeft: theme.spacing(1)
+  },
   buttonPanel: {
     display: 'flex',
     marginTop: theme.spacing(3),

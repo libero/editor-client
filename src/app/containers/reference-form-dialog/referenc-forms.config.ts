@@ -1,134 +1,136 @@
 import { ReferenceType } from 'app/models/reference';
+import refFormGrid from './ref-form-grid.module.scss';
 
 export interface FormControlConfigType {
   type: string;
   label: string;
+  className?: string;
 }
 
 export const JOURNAL_FORM: Record<string, FormControlConfigType> = {
-  year: { type: 'number', label: 'Year' },
-  articleTitle: { type: 'rich-text', label: 'Title' },
-  source: { type: 'rich-text', label: 'Journal title' },
-  volume: { type: 'number', label: 'Volume' },
-  firstPage: { type: 'string', label: 'First page' },
-  lastPage: { type: 'string', label: 'Last page' },
-  elocationId: { type: 'string', label: 'eLocation ID' },
-  doi: { type: 'string', label: 'DOI' },
-  pmid: { type: 'string', label: 'PMID' },
-  inPress: { type: 'boolean', label: 'In press' }
+  year: { type: 'number', label: 'Year', className: refFormGrid.firstCol },
+  articleTitle: { type: 'rich-text', label: 'Title', className: refFormGrid.fullWidth },
+  source: { type: 'rich-text', label: 'Journal title', className: refFormGrid.fullWidth },
+  volume: { type: 'number', label: 'Volume', className: refFormGrid.firstCol },
+  firstPage: { type: 'string', label: 'First page', className: refFormGrid.secondCol },
+  lastPage: { type: 'string', label: 'Last page', className: refFormGrid.thirdCol },
+  elocationId: { type: 'string', label: 'eLocation ID', className: refFormGrid.fullWidth },
+  doi: { type: 'string', label: 'DOI', className: refFormGrid.fullWidth },
+  pmid: { type: 'string', label: 'PMID', className: refFormGrid.fullWidth },
+  inPress: { type: 'boolean', label: 'In press', className: refFormGrid.fullWidth }
 };
 
 export const PERIODICAL_FORM: Record<string, FormControlConfigType> = {
-  date: { type: 'date', label: 'Date' },
-  articleTitle: { type: 'rich-text', label: 'Title' },
-  source: { type: 'rich-text', label: 'Periodical title' },
-  volume: { type: 'number', label: 'Volume' },
-  firstPage: { type: 'string', label: 'First page' },
-  lastPage: { type: 'string', label: 'Last page' },
-  extLink: { type: 'string', label: 'URL' }
+  date: { type: 'date', label: 'Date', className: refFormGrid.dateField },
+  articleTitle: { type: 'rich-text', label: 'Title', className: refFormGrid.fullWidth },
+  source: { type: 'rich-text', label: 'Periodical title', className: refFormGrid.fullWidth },
+  volume: { type: 'number', label: 'Volume', className: refFormGrid.firstCol },
+  firstPage: { type: 'string', label: 'First page', className: refFormGrid.secondCol },
+  lastPage: { type: 'string', label: 'Last page', className: refFormGrid.thirdCol },
+  extLink: { type: 'string', label: 'URL', className: refFormGrid.fullWidth }
 };
 
 export const BOOK_FORM: Record<string, FormControlConfigType> = {
-  year: { type: 'number', label: 'Year' },
-  chapterTitle: { type: 'rich-text', label: 'Chapter title' },
-  source: { type: 'rich-text', label: 'Book title' },
-  edition: { type: 'string', label: 'Edition' },
-  volume: { type: 'number', label: 'Volume' },
-  firstPage: { type: 'string', label: 'First page' },
-  lastPage: { type: 'string', label: 'Last page' },
-  elocationId: { type: 'string', label: 'eLocation ID' },
-  publisherName: { type: 'string', label: 'Publisher Name' },
-  publisherLocation: { type: 'string', label: 'Publisher Location' },
-  editors: { type: 'editors-list', label: '' },
-  doi: { type: 'string', label: 'DOI' },
-  pmid: { type: 'string', label: 'PMID' },
-  inPress: { type: 'boolean', label: 'In press' }
+  year: { type: 'number', label: 'Year', className: refFormGrid.firstCol },
+  chapterTitle: { type: 'rich-text', label: 'Chapter title', className: refFormGrid.fullWidth },
+  source: { type: 'rich-text', label: 'Book title', className: refFormGrid.fullWidth },
+  edition: { type: 'string', label: 'Edition', className: refFormGrid.fullWidth },
+  volume: { type: 'number', label: 'Volume', className: refFormGrid.firstCol },
+  firstPage: { type: 'string', label: 'First page', className: refFormGrid.secondCol },
+  lastPage: { type: 'string', label: 'Last page', className: refFormGrid.thirdCol },
+  elocationId: { type: 'string', label: 'eLocation ID', className: refFormGrid.fullWidth },
+  publisherName: { type: 'string', label: 'Publisher Name', className: refFormGrid.fullWidth },
+  publisherLocation: { type: 'string', label: 'Publisher Location', className: refFormGrid.fullWidth },
+  editors: { type: 'editors-list', label: '', className: refFormGrid.fullWidth },
+  doi: { type: 'string', label: 'DOI', className: refFormGrid.fullWidth },
+  pmid: { type: 'string', label: 'PMID', className: refFormGrid.fullWidth },
+  inPress: { type: 'boolean', label: 'In press', className: refFormGrid.fullWidth }
 };
 
 export const REPORT_FORM: Record<string, FormControlConfigType> = {
-  year: { type: 'number', label: 'Year' },
-  source: { type: 'rich-text', label: 'Title' },
-  publisherName: { type: 'string', label: 'Publisher Name' },
-  doi: { type: 'string', label: 'DOI' },
-  extLink: { type: 'string', label: 'URL' }
+  year: { type: 'number', label: 'Year', className: refFormGrid.firstCol },
+  source: { type: 'rich-text', label: 'Title', className: refFormGrid.fullWidth },
+  publisherName: { type: 'string', label: 'Publisher Name', className: refFormGrid.fullWidth },
+  doi: { type: 'string', label: 'DOI', className: refFormGrid.fullWidth },
+  extLink: { type: 'string', label: 'URL', className: refFormGrid.fullWidth }
 };
 
 export const DATA_FORM: Record<string, FormControlConfigType> = {
-  year: { type: 'number', label: 'Year' },
-  dataTitle: { type: 'rich-text', label: 'Data title' },
-  source: { type: 'rich-text', label: 'Source' },
-  version: { type: 'string', label: 'Version' },
-  doi: { type: 'string', label: 'DOI' },
-  accessionId: { type: 'string', label: 'Accession' },
-  accessionUrl: { type: 'string', label: 'Accession URL' },
-  extLink: { type: 'string', label: 'URL' },
-  specificUse: { type: 'string', label: 'Specific Use' }
+  year: { type: 'number', label: 'Year', className: refFormGrid.firstCol },
+  dataTitle: { type: 'rich-text', label: 'Data title', className: refFormGrid.fullWidth },
+  source: { type: 'rich-text', label: 'Source', className: refFormGrid.fullWidth },
+  version: { type: 'string', label: 'Version', className: refFormGrid.halfWidth },
+  doi: { type: 'string', label: 'DOI', className: refFormGrid.fullWidth },
+  accessionId: { type: 'string', label: 'Accession', className: refFormGrid.fullWidth },
+  accessionUrl: { type: 'string', label: 'Accession URL', className: refFormGrid.fullWidth },
+  extLink: { type: 'string', label: 'URL', className: refFormGrid.fullWidth },
+  specificUse: { type: 'string', label: 'Specific Use', className: refFormGrid.fullWidth }
 };
 
 export const WEB_FORM: Record<string, FormControlConfigType> = {
-  dateInCitation: { type: 'date', label: 'Date' },
-  year: { type: 'number', label: 'Year' },
-  articleTitle: { type: 'rich-text', label: 'Article title' },
-  source: { type: 'rich-text', label: 'Source' },
-  extLink: { type: 'string', label: 'URL' }
+  year: { type: 'number', label: 'Year', className: refFormGrid.secondCol },
+  articleTitle: { type: 'rich-text', label: 'Article title', className: refFormGrid.fullWidth },
+  source: { type: 'rich-text', label: 'Source', className: refFormGrid.fullWidth },
+  extLink: { type: 'string', label: 'URL', className: refFormGrid.fullWidth },
+  dateInCitation: { type: 'date', label: 'Accessed Date', className: refFormGrid.dateField }
 };
 
 export const PREPRINT_FORM: Record<string, FormControlConfigType> = {
-  year: { type: 'number', label: 'Year' },
-  dateInCitation: { type: 'date', label: 'Date' },
-  articleTitle: { type: 'rich-text', label: 'Article title' },
-  source: { type: 'rich-text', label: 'Journal title' },
-  doi: { type: 'string', label: 'DOI' },
-  pmid: { type: 'string', label: 'PMID' },
-  extLink: { type: 'string', label: 'URL' }
+  year: { type: 'number', label: 'Year', className: refFormGrid.firstCol },
+  dateInCitation: { type: 'date', label: 'Date', className: refFormGrid.dateField },
+  articleTitle: { type: 'rich-text', label: 'Article title', className: refFormGrid.fullWidth },
+  source: { type: 'rich-text', label: 'Journal title', className: refFormGrid.fullWidth },
+  doi: { type: 'string', label: 'DOI', className: refFormGrid.fullWidth },
+  pmid: { type: 'string', label: 'PMID', className: refFormGrid.fullWidth },
+  extLink: { type: 'string', label: 'URL', className: refFormGrid.fullWidth }
 };
 
 export const SOFTWARE_FORM: Record<string, FormControlConfigType> = {
-  year: { type: 'number', label: 'Year' },
-  dataTitle: { type: 'rich-text', label: 'Title' },
-  source: { type: 'rich-text', label: 'Source' },
-  publisherName: { type: 'string', label: 'Publisher Name' },
-  publisherLocation: { type: 'string', label: 'Publisher Location' },
-  version: { type: 'string', label: 'Version' },
-  doi: { type: 'string', label: 'DOI' },
-  pmid: { type: 'string', label: 'PMID' },
-  extLink: { type: 'string', label: 'ext link' }
+  year: { type: 'number', label: 'Year', className: refFormGrid.firstCol },
+  dataTitle: { type: 'rich-text', label: 'Title', className: refFormGrid.fullWidth },
+  source: { type: 'rich-text', label: 'Source', className: refFormGrid.fullWidth },
+  publisherName: { type: 'string', label: 'Publisher Name', className: refFormGrid.fullWidth },
+  publisherLocation: { type: 'string', label: 'Publisher Location', className: refFormGrid.fullWidth },
+  version: { type: 'string', label: 'Version', className: refFormGrid.halfWidth },
+  doi: { type: 'string', label: 'DOI', className: refFormGrid.fullWidth },
+  pmid: { type: 'string', label: 'PMID', className: refFormGrid.fullWidth },
+  extLink: { type: 'string', label: 'URL', className: refFormGrid.fullWidth }
 };
 
 export const CONFPROC_FORM: Record<string, FormControlConfigType> = {
-  year: { type: 'number', label: 'Year' },
-  articleTitle: { type: 'rich-text', label: 'Article title' },
-  conferenceName: { type: 'string', label: 'Conference name' },
-  conferenceLocation: { type: 'string', label: 'Conference location' },
-  conferenceDate: { type: 'date', label: 'Conference date' },
-  volume: { type: 'number', label: 'Volume' },
-  firstPage: { type: 'string', label: 'First page' },
-  lastPage: { type: 'string', label: 'Last page' },
-  elocationId: { type: 'string', label: 'eLocation ID' },
-  doi: { type: 'string', label: 'DOI' },
-  pmid: { type: 'string', label: 'PMID' },
-  extLink: { type: 'string', label: 'ext link' }
+  year: { type: 'number', label: 'Year', className: refFormGrid.firstCol },
+  articleTitle: { type: 'rich-text', label: 'Article title', className: refFormGrid.fullWidth },
+  conferenceName: { type: 'rich-text', label: 'Conference name', className: refFormGrid.fullWidth },
+  conferenceLocation: { type: 'string', label: 'Conference location', className: refFormGrid.fullWidth },
+  conferenceDate: { type: 'date', label: 'Conference date', className: refFormGrid.dateField },
+  volume: { type: 'number', label: 'Volume', className: refFormGrid.firstCol },
+  firstPage: { type: 'string', label: 'First page', className: refFormGrid.secondCol },
+  lastPage: { type: 'string', label: 'Last page', className: refFormGrid.thirdCol },
+  elocationId: { type: 'string', label: 'eLocation ID', className: refFormGrid.fullWidth },
+  doi: { type: 'string', label: 'DOI', className: refFormGrid.fullWidth },
+  pmid: { type: 'string', label: 'PMID', className: refFormGrid.fullWidth },
+  extLink: { type: 'string', label: 'URL', className: refFormGrid.fullWidth }
 };
 
 export const THESIS_FORM: Record<string, FormControlConfigType> = {
-  year: { type: 'number', label: 'Year' },
-  articleTitle: { type: 'rich-text', label: 'Article title' },
-  publisherName: { type: 'string', label: 'Publisher Name' },
-  publisherLocation: { type: 'string', label: 'Publisher Location' },
-  doi: { type: 'string', label: 'DOI' },
-  pmid: { type: 'string', label: 'PMID' },
-  extLink: { type: 'string', label: 'ext link' }
+  year: { type: 'number', label: 'Year', className: refFormGrid.firstCol },
+  articleTitle: { type: 'rich-text', label: 'Article title', className: refFormGrid.fullWidth },
+  publisherName: { type: 'string', label: 'Publisher Name', className: refFormGrid.fullWidth },
+  publisherLocation: { type: 'string', label: 'Publisher Location', className: refFormGrid.fullWidth },
+  doi: { type: 'string', label: 'DOI', className: refFormGrid.fullWidth },
+  pmid: { type: 'string', label: 'PMID', className: refFormGrid.fullWidth },
+  extLink: { type: 'string', label: 'URL', className: refFormGrid.fullWidth }
 };
 
 export const PATENT_FORM: Record<string, FormControlConfigType> = {
-  year: { type: 'number', label: 'Year' },
-  articleTitle: { type: 'rich-text', label: 'Article title' },
-  source: { type: 'rich-text', label: 'Source' },
-  publisherName: { type: 'string', label: 'Publisher Name' },
-  patent: { type: 'string', label: 'Patent' },
-  doi: { type: 'string', label: 'DOI' },
-  pmid: { type: 'string', label: 'PMID' },
-  extLink: { type: 'string', label: 'ext link' }
+  year: { type: 'number', label: 'Year', className: refFormGrid.firstCol },
+  articleTitle: { type: 'rich-text', label: 'Article title', className: refFormGrid.fullWidth },
+  source: { type: 'rich-text', label: 'Source', className: refFormGrid.fullWidth },
+  publisherName: { type: 'string', label: 'Publisher Name', className: refFormGrid.fullWidth },
+  patent: { type: 'string', label: 'Patent', className: refFormGrid.fullWidth },
+  doi: { type: 'string', label: 'DOI', className: refFormGrid.fullWidth },
+  pmid: { type: 'string', label: 'PMID', className: refFormGrid.fullWidth },
+  extLink: { type: 'string', label: 'URL', className: refFormGrid.fullWidth }
 };
 
 export function getFormConfigForType(type: ReferenceType): Record<string, FormControlConfigType> {

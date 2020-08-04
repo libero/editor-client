@@ -1,6 +1,10 @@
 import React, { useCallback, useState, ChangeEvent } from 'react';
 import { useDispatch } from 'react-redux';
 import { get, has, pick } from 'lodash';
+import DeleteIcon from '@material-ui/icons/Delete';
+import classNames from 'classnames';
+import { IconButton } from '@material-ui/core';
+import { EditorState } from 'prosemirror-state';
 
 import {
   createBlankReference,
@@ -22,8 +26,8 @@ import {
   getFormConfigForType
 } from 'app/containers/reference-form-dialog/referenc-forms.config';
 import { renderFormControl } from 'app/containers/reference-form-dialog/reference-form-renderer';
-import { EditorState } from 'prosemirror-state';
 import { SectionContainer } from 'app/components/section-container';
+import refFormGrid from './ref-form-grid.module.scss';
 
 interface ReferenceFormDialogProps {
   reference?: Reference;
@@ -106,6 +110,15 @@ export const ReferenceFormDialog: React.FC<ReferenceFormDialogProps> = ({ refere
     setConfirmShow(false);
   }, [setConfirmShow]);
 
+  const handleDeleteRow = useCallback(
+    (fieldName: string) => () => {
+      const updateMissingFields = { ...missingFieldsInfo };
+      delete updateMissingFields[fieldName];
+      setMissingFieldsInfo(updateMissingFields);
+    },
+    [missingFieldsInfo]
+  );
+
   const handleDelete = useCallback(() => {
     setConfirmShow(true);
   }, [setConfirmShow]);
@@ -123,18 +136,23 @@ export const ReferenceFormDialog: React.FC<ReferenceFormDialogProps> = ({ refere
           config.type,
           config.label,
           key,
-          classes.inputField,
+          classNames(config.className),
           get(userReference, `referenceInfo.${key}`),
           handleRefInfoChange
         );
       })
     : undefined;
 
-  console.log(missingFieldsInfo);
-
   const diffForm = Object.entries(missingFieldsInfo).map(([key, value]) => {
     const config = missingFieldsConfig[key];
-    return renderFormControl(config.type, config.label, key, classes.inputField, value, handleMissingFieldsInfoChange);
+    return (
+      <div className={classNames(classes.missingFieldsRow, classes.inputField)}>
+        {renderFormControl(config.type, config.label, key, '', value, handleMissingFieldsInfoChange)}
+        <IconButton classes={{ root: classes.deleteButton }} onClick={handleDeleteRow(key)}>
+          <DeleteIcon fontSize="small" />
+        </IconButton>
+      </div>
+    );
   });
 
   return (
@@ -171,11 +189,12 @@ export const ReferenceFormDialog: React.FC<ReferenceFormDialogProps> = ({ refere
         refContributors={userReference.authors}
         onChange={handleAuthorsListChange}
       />
-      {form}
+      <div className={classNames(classes.inputField, refFormGrid.container)}>{form}</div>
       {diffForm.length > 0 ? (
-        <SectionContainer label="These fields will be lost" variant="outlined" className={classes.missingFieldsSection}>
+        <div className={classes.missingFieldsSection}>
+          <span className={classes.warningMessage}>Unsupported elements for reference type</span>
           {diffForm}
-        </SectionContainer>
+        </div>
       ) : undefined}
       <div className={classes.buttonPanel}>
         {!isNewReference ? <ActionButton variant="outlinedWarning" onClick={handleDelete} title="Delete" /> : undefined}
@@ -206,7 +225,6 @@ function getDiffFieldValues(
   prevRefInfo: ReferenceInfoType,
   nextRefInfo: ReferenceInfoType
 ): Partial<ReferenceInfoType> {
-  console.log(prevRefInfo);
   const diffKeys = Object.keys(prevRefInfo).filter(
     (key: ReferenceType) => !has(nextRefInfo, key) && !isValueEmpty(prevRefInfo[key])
   );
