@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 
 import { ReferenceFormDialog } from 'app/containers/reference-form-dialog/index';
 import { givenState } from 'app/test-utils/reducer-test-helpers';
-import { ReferenceType } from 'app/models/reference';
+import { createEmptyRefInfoByType, ReferenceType } from 'app/models/reference';
 import { mount } from 'enzyme';
 import * as manuscriptActions from 'app/actions/manuscript.actions';
 import { PromptDialog } from 'app/components/prompt-dialog';
@@ -16,11 +16,26 @@ jest.mock('@material-ui/core', () => ({
   Select: ({ children }) => <div data-cmp="Index">{children}</div>,
   MenuItem: ({ children }) => <div data-cmp="MenuItem">{children}</div>,
   FormControl: ({ children }) => <div data-cmp="FormControl">{children}</div>,
+  FormControlLabel: ({ children }) => <div data-cmp="FormControlLabel">{children}</div>,
   InputLabel: ({ children }) => <div data-cmp="InputLabel">{children}</div>,
   TextField: () => <div data-cmp="TextField"></div>,
+  Checkbox: () => <div data-cmp="CheckboxInput"></div>,
   IconButton: () => <div data-cmp="iconButton"></div>,
   Button: () => <div data-cmp="Button"></div>
 }));
+
+jest.mock('@material-ui/lab', () => ({
+  ToggleButtonGroup: ({ children }) => <div data-cmp="ToggleButtonGroup">{children}</div>,
+  ToggleButton: ({ children }) => <div data-cmp="ToggleButton">{children}</div>
+}));
+
+jest.mock('@material-ui/core/styles', () => {
+  return {
+    ThemeProvider: ({ children }) => <>{children}</>,
+    createMuiTheme: jest.fn(),
+    makeStyles: jest.requireActual('@material-ui/core/styles').makeStyles
+  };
+});
 
 describe('Reference form dialog', () => {
   const mockStore = configureMockStore([]);
@@ -87,7 +102,7 @@ describe('Reference form dialog', () => {
         id: expect.any(String),
         type: 'journal',
         authors: [{ firstName: 'First Name', lastName: 'last name' }],
-        referenceInfo: undefined
+        referenceInfo: expect.any(Object)
       })
     );
   });

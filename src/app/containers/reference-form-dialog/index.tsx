@@ -49,8 +49,10 @@ export const ReferenceFormDialog: React.FC<ReferenceFormDialogProps> = ({ refere
         type: event.target['value'],
         referenceInfo: transferValues(userReference.referenceInfo, newRefInfo)
       };
-      setMissingFieldsInfo(getDiffFieldValues(userReference.referenceInfo, newRefInfo));
-      setMissingFieldsConfig(getDiffFieldsConfig(userReference.type, newRef.type));
+      if (userReference.referenceInfo) {
+        setMissingFieldsInfo(getDiffFieldValues(userReference.referenceInfo, newRefInfo));
+        setMissingFieldsConfig(getDiffFieldsConfig(userReference.type, newRef.type));
+      }
       setReference(newRef);
     },
     [userReference]

@@ -8,6 +8,24 @@ import { ReferenceList } from 'app/containers/manuscript/references-list/index';
 import { givenState } from 'app/test-utils/reducer-test-helpers';
 import { createReferenceAnnotatedValue, Reference } from 'app/models/reference';
 
+jest.mock('@material-ui/core', () => ({
+  Button: ({ label }) => <div data-cmp="Button">{label}</div>,
+  IconButton: () => <div data-cmp="IconButton"></div>
+}));
+
+jest.mock('@material-ui/core/styles', () => {
+  return {
+    ThemeProvider: ({ children }) => <>{children}</>,
+    createMuiTheme: jest.fn(),
+    makeStyles: jest.requireActual('@material-ui/core/styles').makeStyles
+  };
+});
+
+jest.mock('@material-ui/lab', () => ({
+  ToggleButtonGroup: ({ children }) => <div data-cmp="ToggleButtonGroup">{children}</div>,
+  ToggleButton: ({ children }) => <div data-cmp="ToggleButton">{children}</div>
+}));
+
 const ReferenceData = [
   {
     id: 'bib1',
@@ -60,11 +78,6 @@ const ReferenceData = [
     }
   }
 ] as Reference[];
-
-jest.mock('@material-ui/core', () => ({
-  Button: ({ label }) => <div data-cmp="Button">{label}</div>,
-  IconButton: () => <div data-cmp="IconButton"></div>
-}));
 
 describe('References List', () => {
   const mockStore = configureMockStore([]);

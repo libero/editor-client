@@ -39,7 +39,7 @@ export const useReferenceFormStyles = makeStyles((theme) => ({
   },
   missingFieldsSection: {
     marginTop: theme.spacing(3),
-    borderColor: theme.palette.error.main,
+    borderColor: theme.palette.error.main
   },
   missingFieldsRow: {
     display: 'flex',

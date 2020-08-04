@@ -103,7 +103,7 @@ const RefContributorInput = SortableElement<RefContributorInputProps>(({ value, 
     if (isGroupRefContributor(contributor)) {
       onChange({ firstName: '', lastName: contributor['groupName'] });
     } else {
-      onChange({ groupName: `${contributor['lastName']} ${contributor['firstName']} ` });
+      onChange({ groupName: `${contributor['lastName']} ${contributor['firstName']}` });
     }
     closeMenu();
   }, [contributor, onChange, closeMenu]);

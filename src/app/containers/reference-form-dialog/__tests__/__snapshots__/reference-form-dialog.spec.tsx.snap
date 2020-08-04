@@ -28,17 +28,7 @@ exports[`Reference form dialog renders form 1`] = `
       <div
         data-cmp="MenuItem"
       >
-        Periodical Article
-      </div>
-      <div
-        data-cmp="MenuItem"
-      >
         Book
-      </div>
-      <div
-        data-cmp="MenuItem"
-      >
-        Report
       </div>
       <div
         data-cmp="MenuItem"
@@ -48,22 +38,27 @@ exports[`Reference form dialog renders form 1`] = `
       <div
         data-cmp="MenuItem"
       >
-        Web Article
-      </div>
-      <div
-        data-cmp="MenuItem"
-      >
-        Pre-print Article
-      </div>
-      <div
-        data-cmp="MenuItem"
-      >
         Software
       </div>
       <div
         data-cmp="MenuItem"
       >
+        Preprint
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Web Article
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
         Conference proceedings
+      </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Report
       </div>
       <div
         data-cmp="MenuItem"
@@ -75,12 +70,19 @@ exports[`Reference form dialog renders form 1`] = `
       >
         Patent
       </div>
+      <div
+        data-cmp="MenuItem"
+      >
+        Periodical Article
+      </div>
     </div>
   </div>
-  <section>
+  <section
+    className="makeStyles-inputField-2"
+  >
      
     <section
-      className="makeStyles-authorInputFields-7"
+      className="makeStyles-contributorInputFields-11"
     >
       <img
         alt="drag handle"
@@ -108,12 +110,13 @@ exports[`Reference form dialog renders form 1`] = `
         <div
           data-cmp="MenuItem"
         >
-          Delete author
+          Delete 
+          author
         </div>
       </div>
     </section>
     <section
-      className="makeStyles-authorInputFields-7"
+      className="makeStyles-contributorInputFields-11"
     >
       <img
         alt="drag handle"
@@ -138,7 +141,8 @@ exports[`Reference form dialog renders form 1`] = `
         <div
           data-cmp="MenuItem"
         >
-          Delete author
+          Delete 
+          author
         </div>
       </div>
     </section>
@@ -148,14 +152,66 @@ exports[`Reference form dialog renders form 1`] = `
      
   </section>
   <div
-    className="makeStyles-buttonPanel-3"
+    className="makeStyles-inputField-2 container"
+  >
+    <div
+      data-cmp="TextField"
+    />
+    <div
+      className="makeStyles-container-19 fullWidth makeStyles-root-22 makeStyles-outlinedVariant-23"
+    >
+      <label
+        className="makeStyles-label-25"
+      >
+        Title
+      </label>
+      <div
+        data-cmp="ToggleButtonGroup"
+      />
+    </div>
+    <div
+      className="makeStyles-container-19 fullWidth makeStyles-root-22 makeStyles-outlinedVariant-23"
+    >
+      <label
+        className="makeStyles-label-25"
+      >
+        Journal title
+      </label>
+      <div
+        data-cmp="ToggleButtonGroup"
+      />
+    </div>
+    <div
+      data-cmp="TextField"
+    />
+    <div
+      data-cmp="TextField"
+    />
+    <div
+      data-cmp="TextField"
+    />
+    <div
+      data-cmp="TextField"
+    />
+    <div
+      data-cmp="TextField"
+    />
+    <div
+      data-cmp="TextField"
+    />
+    <div
+      data-cmp="FormControlLabel"
+    />
+  </div>
+  <div
+    className="makeStyles-buttonPanel-7"
   >
     <div
       data-cmp="Button"
     />
     <div
       aria-hidden={true}
-      className="makeStyles-spacer-4"
+      className="makeStyles-spacer-8"
     />
     <div
       data-cmp="Button"
