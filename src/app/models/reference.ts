@@ -541,7 +541,7 @@ function createBookReference(referenceXml: Element): BookReference {
 
 function createNewBookReference(): BookReference {
   return {
-    chapterTitle: undefined,
+    chapterTitle: createReferenceAnnotatedValue(),
     edition: '',
     editors: [],
     elocationId: '',
