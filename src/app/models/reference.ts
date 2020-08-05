@@ -8,7 +8,7 @@ import * as referenceInfoConfig from 'app/models/config/reference-info.config';
 import { buildInputRules } from 'app/models/plugins/input-rules';
 import { getTextContentFromPath, makeSchemaFromConfig } from 'app/models/utils';
 
-export type ReferencePerson =
+export type ReferenceContributor =
   | {
       firstName: string;
       lastName: string;
@@ -16,6 +16,19 @@ export type ReferencePerson =
   | {
       groupName: string;
     };
+
+export type ReferenceInfoType =
+  | JournalReference
+  | BookReference
+  | ConferenceReference
+  | DataReference
+  | PeriodicalReference
+  | PrePrintReference
+  | ReportReference
+  | PatentReference
+  | SoftwareReference
+  | WebReference
+  | ThesisReference;
 
 export type ReferenceType =
   | 'journal'
@@ -61,7 +74,7 @@ export interface BookReference {
   publisherName: string;
   source: EditorState;
   volume: number;
-  editors: ReferencePerson[];
+  editors: ReferenceContributor[];
   firstPage: string;
   lastPage: string;
   doi: string;
@@ -157,26 +170,15 @@ export interface ConferenceReference {
 
 export interface Reference {
   id: string;
-  authors: Array<ReferencePerson>;
+  authors: Array<ReferenceContributor>;
   type: ReferenceType;
-  referenceInfo:
-    | JournalReference
-    | BookReference
-    | ConferenceReference
-    | DataReference
-    | PeriodicalReference
-    | PrePrintReference
-    | ReportReference
-    | PatentReference
-    | SoftwareReference
-    | WebReference
-    | ThesisReference;
+  referenceInfo: ReferenceInfoType;
 }
 
 export function createBlankReference(): Reference {
   return {
     id: uuidv4(),
-    authors: [],
+    authors: [{ firstName: '', lastName: '' }],
     referenceInfo: undefined,
     type: undefined
   };
@@ -232,7 +234,7 @@ export function createReference(xmlId: string, referenceXml: Element): Reference
   return reference;
 }
 
-function createReferencePersonList(referenceXml: Element, groupType: string): ReferencePerson[] {
+function createReferencePersonList(referenceXml: Element, groupType: string): ReferenceContributor[] {
   const contributors = referenceXml.querySelector(`person-group[person-group-type=${groupType}]`);
   if (!contributors) {
     return [];
@@ -267,6 +269,21 @@ function createJournalReference(referenceXml: Element): JournalReference {
   };
 }
 
+function createNewJournalReference(): JournalReference {
+  return {
+    articleTitle: createReferenceAnnotatedValue(),
+    doi: '',
+    elocationId: '',
+    firstPage: '',
+    inPress: false,
+    lastPage: '',
+    pmid: '',
+    source: createReferenceAnnotatedValue(),
+    volume: 0,
+    year: 1900
+  };
+}
+
 function createPatentReference(referenceXml: Element): PatentReference {
   return {
     year: parseInt(referenceXml.querySelector('year').textContent),
@@ -277,6 +294,19 @@ function createPatentReference(referenceXml: Element): PatentReference {
     patent: getTextContentFromPath(referenceXml, 'patent') || '',
     doi: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="doi"]') || '',
     pmid: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="pmid"]') || ''
+  };
+}
+
+function createNewPatentReference(): PatentReference {
+  return {
+    articleTitle: createReferenceAnnotatedValue(),
+    doi: '',
+    extLink: '',
+    patent: '',
+    publisherName: '',
+    pmid: '',
+    source: createReferenceAnnotatedValue(),
+    year: 1900
   };
 }
 
@@ -296,6 +326,18 @@ function createPeriodicalReference(referenceXml: Element): PeriodicalReference {
   };
 }
 
+function createNewPeriodicalReference(): PeriodicalReference {
+  return {
+    articleTitle: createReferenceAnnotatedValue(),
+    date: '',
+    firstPage: '',
+    lastPage: '',
+    volume: 0,
+    extLink: '',
+    source: createReferenceAnnotatedValue()
+  };
+}
+
 function createReportReference(referenceXml: Element): ReportReference {
   return {
     year: parseInt(referenceXml.querySelector('year').textContent),
@@ -303,6 +345,16 @@ function createReportReference(referenceXml: Element): ReportReference {
     publisherName: getTextContentFromPath(referenceXml, 'publisher-name') || '',
     extLink: getTextContentFromPath(referenceXml, 'ext-link') || '',
     doi: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="doi"]') || ''
+  };
+}
+
+function createNewReportReference(): ReportReference {
+  return {
+    doi: '',
+    extLink: '',
+    publisherName: '',
+    source: createReferenceAnnotatedValue(),
+    year: 1900
   };
 }
 
@@ -320,6 +372,20 @@ function createSoftwareReference(referenceXml: Element): SoftwareReference {
   };
 }
 
+function createNewSoftwareReference(): SoftwareReference {
+  return {
+    dataTitle: createReferenceAnnotatedValue(),
+    doi: '',
+    extLink: '',
+    pmid: '',
+    publisherLocation: '',
+    publisherName: '',
+    source: createReferenceAnnotatedValue(),
+    version: '',
+    year: 1900
+  };
+}
+
 function createThesisReference(referenceXml: Element): ThesisReference {
   return {
     year: parseInt(referenceXml.querySelector('year').textContent),
@@ -332,6 +398,18 @@ function createThesisReference(referenceXml: Element): ThesisReference {
   };
 }
 
+function createNewThesisReference(): ThesisReference {
+  return {
+    articleTitle: createReferenceAnnotatedValue(),
+    doi: '',
+    extLink: '',
+    pmid: '',
+    publisherLocation: '',
+    publisherName: '',
+    year: 1900
+  };
+}
+
 function createWebReference(referenceXml: Element): WebReference {
   return {
     year: parseInt(referenceXml.querySelector('year').textContent),
@@ -341,6 +419,17 @@ function createWebReference(referenceXml: Element): WebReference {
     dateInCitation: getTextContentFromPath(referenceXml, 'date-in-citation') || ''
   };
 }
+
+function createNewWebReference(): WebReference {
+  return {
+    articleTitle: createReferenceAnnotatedValue(),
+    dateInCitation: '',
+    extLink: '',
+    source: createReferenceAnnotatedValue(),
+    year: 1900
+  };
+}
+
 function createConferenceReference(referenceXml: Element): ConferenceReference {
   return {
     year: parseInt(referenceXml.querySelector('year').textContent),
@@ -358,6 +447,23 @@ function createConferenceReference(referenceXml: Element): ConferenceReference {
   };
 }
 
+function createNewConferenceReference(): ConferenceReference {
+  return {
+    articleTitle: createReferenceAnnotatedValue(),
+    conferenceDate: '',
+    conferenceLocation: '',
+    conferenceName: createReferenceAnnotatedValue(),
+    doi: '',
+    elocationId: '',
+    extLink: '',
+    firstPage: '',
+    lastPage: '',
+    pmid: '',
+    volume: 0,
+    year: 1900
+  };
+}
+
 function createPrePrintReference(referenceXml: Element): PrePrintReference {
   return {
     year: parseInt(referenceXml.querySelector('year').textContent),
@@ -366,6 +472,17 @@ function createPrePrintReference(referenceXml: Element): PrePrintReference {
     doi: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="doi"]') || '',
     pmid: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="pmid"]') || '',
     extLink: getTextContentFromPath(referenceXml, 'ext-link') || ''
+  };
+}
+
+function createNewPrePrintReference(): PrePrintReference {
+  return {
+    articleTitle: createReferenceAnnotatedValue(),
+    year: 1900,
+    doi: '',
+    extLink: '',
+    pmid: '',
+    source: createReferenceAnnotatedValue()
   };
 }
 
@@ -388,8 +505,22 @@ function createDataReference(referenceXml: Element): DataReference {
   };
 }
 
+function createNewDataReference(): DataReference {
+  return {
+    dataTitle: createReferenceAnnotatedValue(),
+    year: 1900,
+    doi: '',
+    extLink: '',
+    accessionId: '',
+    accessionUrl: '',
+    specificUse: '',
+    version: '',
+    source: createReferenceAnnotatedValue()
+  };
+}
+
 function createBookReference(referenceXml: Element): BookReference {
-  const editors: ReferencePerson[] = createReferencePersonList(referenceXml, 'editor');
+  const editors: ReferenceContributor[] = createReferencePersonList(referenceXml, 'editor');
   return {
     year: parseInt(referenceXml.querySelector('year').textContent),
     source: createReferenceAnnotatedValue(referenceXml.querySelector('source')),
@@ -408,7 +539,26 @@ function createBookReference(referenceXml: Element): BookReference {
   };
 }
 
-export function createReferenceAnnotatedValue(content: Node): EditorState {
+function createNewBookReference(): BookReference {
+  return {
+    chapterTitle: createReferenceAnnotatedValue(),
+    edition: '',
+    editors: [],
+    elocationId: '',
+    firstPage: '',
+    inPress: false,
+    lastPage: '',
+    pmid: '',
+    publisherLocation: '',
+    publisherName: '',
+    volume: 0,
+    year: 1900,
+    doi: '',
+    source: createReferenceAnnotatedValue()
+  };
+}
+
+export function createReferenceAnnotatedValue(content?: Node): EditorState {
   const schema = makeSchemaFromConfig(
     referenceInfoConfig.topNode,
     referenceInfoConfig.nodes,
@@ -426,4 +576,20 @@ export function createReferenceAnnotatedValue(content: Node): EditorState {
     schema,
     plugins: [buildInputRules(), gapCursor(), dropCursor()]
   });
+}
+
+export function createEmptyRefInfoByType(type: ReferenceType): Reference['referenceInfo'] {
+  return {
+    journal: createNewJournalReference,
+    periodical: createNewPeriodicalReference,
+    book: createNewBookReference,
+    report: createNewReportReference,
+    data: createNewDataReference,
+    web: createNewWebReference,
+    preprint: createNewPrePrintReference,
+    software: createNewSoftwareReference,
+    confproc: createNewConferenceReference,
+    thesis: createNewThesisReference,
+    patent: createNewPatentReference
+  }[type]();
 }

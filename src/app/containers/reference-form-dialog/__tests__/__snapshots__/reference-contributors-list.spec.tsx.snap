@@ -1,10 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Reference Authors List should add a new author entry 1`] = `
-<section>
+exports[`Reference Contributors List should add a new contributor entry 1`] = `
+<section
+  className="class-name"
+>
    
   <section
-    className="makeStyles-authorInputFields-1"
+    className="makeStyles-contributorInputFields-1"
   >
     <img
       alt="drag handle"
@@ -27,17 +29,18 @@ exports[`Reference Authors List should add a new author entry 1`] = `
       <div
         data-cmp="MenuItem"
       >
-        Set to group author
+        Set to group contributor
       </div>
       <div
         data-cmp="MenuItem"
       >
-        Delete author
+        Delete 
+        contributor
       </div>
     </div>
   </section>
   <section
-    className="makeStyles-authorInputFields-1"
+    className="makeStyles-contributorInputFields-1"
   >
     <img
       alt="drag handle"
@@ -60,17 +63,18 @@ exports[`Reference Authors List should add a new author entry 1`] = `
       <div
         data-cmp="MenuItem"
       >
-        Set to group author
+        Set to group contributor
       </div>
       <div
         data-cmp="MenuItem"
       >
-        Delete author
+        Delete 
+        contributor
       </div>
     </div>
   </section>
   <section
-    className="makeStyles-authorInputFields-1"
+    className="makeStyles-contributorInputFields-1"
   >
     <img
       alt="drag handle"
@@ -90,12 +94,13 @@ exports[`Reference Authors List should add a new author entry 1`] = `
       <div
         data-cmp="MenuItem"
       >
-        Set to individual author
+        Set to individual contributor
       </div>
       <div
         data-cmp="MenuItem"
       >
-        Delete author
+        Delete 
+        contributor
       </div>
     </div>
   </section>
@@ -106,11 +111,13 @@ exports[`Reference Authors List should add a new author entry 1`] = `
 </section>
 `;
 
-exports[`Reference Authors List should delete author 1`] = `
-<section>
+exports[`Reference Contributors List should delete contributor 1`] = `
+<section
+  className="class-name"
+>
    
   <section
-    className="makeStyles-authorInputFields-1"
+    className="makeStyles-contributorInputFields-1"
   >
     <img
       alt="drag handle"
@@ -133,17 +140,18 @@ exports[`Reference Authors List should delete author 1`] = `
       <div
         data-cmp="MenuItem"
       >
-        Set to group author
+        Set to group contributor
       </div>
       <div
         data-cmp="MenuItem"
       >
-        Delete author
+        Delete 
+        contributor
       </div>
     </div>
   </section>
   <section
-    className="makeStyles-authorInputFields-1"
+    className="makeStyles-contributorInputFields-1"
   >
     <img
       alt="drag handle"
@@ -166,17 +174,18 @@ exports[`Reference Authors List should delete author 1`] = `
       <div
         data-cmp="MenuItem"
       >
-        Set to group author
+        Set to group contributor
       </div>
       <div
         data-cmp="MenuItem"
       >
-        Delete author
+        Delete 
+        contributor
       </div>
     </div>
   </section>
   <section
-    className="makeStyles-authorInputFields-1"
+    className="makeStyles-contributorInputFields-1"
   >
     <img
       alt="drag handle"
@@ -196,12 +205,13 @@ exports[`Reference Authors List should delete author 1`] = `
       <div
         data-cmp="MenuItem"
       >
-        Set to individual author
+        Set to individual contributor
       </div>
       <div
         data-cmp="MenuItem"
       >
-        Delete author
+        Delete 
+        contributor
       </div>
     </div>
   </section>
@@ -212,11 +222,13 @@ exports[`Reference Authors List should delete author 1`] = `
 </section>
 `;
 
-exports[`Reference Authors List should render a list 1`] = `
-<section>
+exports[`Reference Contributors List should render a list 1`] = `
+<section
+  className="class-name"
+>
    
   <section
-    className="makeStyles-authorInputFields-1"
+    className="makeStyles-contributorInputFields-1"
   >
     <img
       alt="drag handle"
@@ -239,17 +251,18 @@ exports[`Reference Authors List should render a list 1`] = `
       <div
         data-cmp="MenuItem"
       >
-        Set to group author
+        Set to group contributor
       </div>
       <div
         data-cmp="MenuItem"
       >
-        Delete author
+        Delete 
+        contributor
       </div>
     </div>
   </section>
   <section
-    className="makeStyles-authorInputFields-1"
+    className="makeStyles-contributorInputFields-1"
   >
     <img
       alt="drag handle"
@@ -272,17 +285,18 @@ exports[`Reference Authors List should render a list 1`] = `
       <div
         data-cmp="MenuItem"
       >
-        Set to group author
+        Set to group contributor
       </div>
       <div
         data-cmp="MenuItem"
       >
-        Delete author
+        Delete 
+        contributor
       </div>
     </div>
   </section>
   <section
-    className="makeStyles-authorInputFields-1"
+    className="makeStyles-contributorInputFields-1"
   >
     <img
       alt="drag handle"
@@ -302,12 +316,13 @@ exports[`Reference Authors List should render a list 1`] = `
       <div
         data-cmp="MenuItem"
       >
-        Set to individual author
+        Set to individual contributor
       </div>
       <div
         data-cmp="MenuItem"
       >
-        Delete author
+        Delete 
+        contributor
       </div>
     </div>
   </section>
@@ -318,11 +333,13 @@ exports[`Reference Authors List should render a list 1`] = `
 </section>
 `;
 
-exports[`Reference Authors List should toggle author type to group author 1`] = `
-<section>
+exports[`Reference Contributors List should toggle contributor type to group author 1`] = `
+<section
+  className="class-name"
+>
    
   <section
-    className="makeStyles-authorInputFields-1"
+    className="makeStyles-contributorInputFields-1"
   >
     <img
       alt="drag handle"
@@ -345,17 +362,18 @@ exports[`Reference Authors List should toggle author type to group author 1`] = 
       <div
         data-cmp="MenuItem"
       >
-        Set to group author
+        Set to group contributor
       </div>
       <div
         data-cmp="MenuItem"
       >
-        Delete author
+        Delete 
+        contributor
       </div>
     </div>
   </section>
   <section
-    className="makeStyles-authorInputFields-1"
+    className="makeStyles-contributorInputFields-1"
   >
     <img
       alt="drag handle"
@@ -378,17 +396,18 @@ exports[`Reference Authors List should toggle author type to group author 1`] = 
       <div
         data-cmp="MenuItem"
       >
-        Set to group author
+        Set to group contributor
       </div>
       <div
         data-cmp="MenuItem"
       >
-        Delete author
+        Delete 
+        contributor
       </div>
     </div>
   </section>
   <section
-    className="makeStyles-authorInputFields-1"
+    className="makeStyles-contributorInputFields-1"
   >
     <img
       alt="drag handle"
@@ -408,12 +427,13 @@ exports[`Reference Authors List should toggle author type to group author 1`] = 
       <div
         data-cmp="MenuItem"
       >
-        Set to individual author
+        Set to individual contributor
       </div>
       <div
         data-cmp="MenuItem"
       >
-        Delete author
+        Delete 
+        contributor
       </div>
     </div>
   </section>
@@ -424,11 +444,13 @@ exports[`Reference Authors List should toggle author type to group author 1`] = 
 </section>
 `;
 
-exports[`Reference Authors List should toggle author type to individual author 1`] = `
-<section>
+exports[`Reference Contributors List should toggle contributor type to individual author 1`] = `
+<section
+  className="class-name"
+>
    
   <section
-    className="makeStyles-authorInputFields-1"
+    className="makeStyles-contributorInputFields-1"
   >
     <img
       alt="drag handle"
@@ -451,17 +473,18 @@ exports[`Reference Authors List should toggle author type to individual author 1
       <div
         data-cmp="MenuItem"
       >
-        Set to group author
+        Set to group contributor
       </div>
       <div
         data-cmp="MenuItem"
       >
-        Delete author
+        Delete 
+        contributor
       </div>
     </div>
   </section>
   <section
-    className="makeStyles-authorInputFields-1"
+    className="makeStyles-contributorInputFields-1"
   >
     <img
       alt="drag handle"
@@ -484,17 +507,18 @@ exports[`Reference Authors List should toggle author type to individual author 1
       <div
         data-cmp="MenuItem"
       >
-        Set to group author
+        Set to group contributor
       </div>
       <div
         data-cmp="MenuItem"
       >
-        Delete author
+        Delete 
+        contributor
       </div>
     </div>
   </section>
   <section
-    className="makeStyles-authorInputFields-1"
+    className="makeStyles-contributorInputFields-1"
   >
     <img
       alt="drag handle"
@@ -514,12 +538,13 @@ exports[`Reference Authors List should toggle author type to individual author 1
       <div
         data-cmp="MenuItem"
       >
-        Set to individual author
+        Set to individual contributor
       </div>
       <div
         data-cmp="MenuItem"
       >
-        Delete author
+        Delete 
+        contributor
       </div>
     </div>
   </section>

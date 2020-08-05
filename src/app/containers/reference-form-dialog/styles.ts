@@ -1,14 +1,11 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-export const useReferenceAuthorStyles = makeStyles((theme) => ({
-  authorInputFields: {
+export const useReferenceContributorStyles = makeStyles((theme) => ({
+  contributorInputFields: {
     display: 'flex',
     zIndex: theme.zIndex.modal + 1,
     alignItems: 'center',
-    marginBottom: theme.spacing(3),
-    '&:last-of-type': {
-      marginBottom: 0
-    },
+    marginTop: theme.spacing(3),
     '& > .drag-handle': {
       cursor: 'grab',
       width: 10,
@@ -35,11 +32,31 @@ export const useReferenceFormStyles = makeStyles((theme) => ({
     width: 500
   },
   inputField: {
-    marginBottom: theme.spacing(3)
+    marginTop: theme.spacing(3),
+    '&:first-child': {
+      marginTop: 0
+    }
+  },
+  missingFieldsSection: {
+    marginTop: theme.spacing(3),
+    borderColor: theme.palette.error.main
+  },
+  missingFieldsRow: {
+    display: 'flex',
+    alignItems: 'flex-start'
+  },
+  warningMessage: {
+    color: theme.palette.error.main
+  },
+  deleteButton: {
+    height: 32,
+    width: 32,
+    alignSelf: 'center',
+    marginLeft: theme.spacing(1)
   },
   buttonPanel: {
     display: 'flex',
-    marginTop: theme.spacing(1),
+    marginTop: theme.spacing(3),
     '& > *:last-child': {
       marginLeft: theme.spacing(2)
     }
