@@ -28,7 +28,8 @@ export const useReferenceContributorStyles = makeStyles((theme) => ({
 
 export const useReferenceFormStyles = makeStyles((theme) => ({
   root: {
-    padding: theme.spacing(0, 1, 0, 2),
+    padding: theme.spacing(0, 1.5, 0, 2),
+    marginLeft: theme.spacing(0.5),
     width: 500
   },
   inputField: {

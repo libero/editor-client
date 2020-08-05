@@ -1,10 +1,11 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export const useArticleInfoFormStyles = makeStyles((theme) => ({
-  root: {},
+  root: {
+    padding: theme.spacing(1, 2.5, 0, 2.5)
+  },
 
   inputField: {
-    width: 500,
     marginBottom: theme.spacing(3)
   },
 

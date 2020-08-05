@@ -1,7 +1,9 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export const useAffiliationFormStyles = makeStyles((theme) => ({
-  root: {},
+  root: {
+    padding: theme.spacing(1, 1.5, 0, 2.5)
+  },
 
   inputField: {
     marginBottom: theme.spacing(3)
