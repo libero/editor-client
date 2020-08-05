@@ -83,7 +83,7 @@ export const renderBookReference = (reference: Reference) => {
   const authors = getReferenceAuthors(reference);
   const editors = referenceInfo.editors
     .map((editor) => {
-      return get(editor, 'groupName', `${editor['lastName']} ${editor['firstName']}`);;
+      return get(editor, 'groupName', `${editor['lastName']} ${editor['firstName']}`);
     })
     .join(', ');
 
@@ -163,8 +163,12 @@ export const renderReportReference = (reference: Reference) => {
   return (
     <>
       {authors}. {referenceInfo.year}. <em>{getAnnotatedText(referenceInfo.source)}</em>
+      <strong>{referenceInfo.volume ? ` ${referenceInfo.volume}:` : undefined}</strong>
+      {referenceInfo.publisherLocation ? ` ${referenceInfo.publisherLocation}:` : undefined}
       {referenceInfo.publisherName ? ` ${referenceInfo.publisherName}. ` : undefined}
       {renderDoi(referenceInfo.doi)}
+      {renderPmid(referenceInfo.pmid)}
+      {referenceInfo.isbn ? ` ${referenceInfo.isbn}. ` : undefined}
       {referenceInfo.extLink ? getExtLinkTag(referenceInfo.extLink) : undefined}
     </>
   );

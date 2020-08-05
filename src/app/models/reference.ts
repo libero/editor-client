@@ -44,10 +44,10 @@ export type ReferenceType =
   | 'patent';
 
 export interface JournalReference {
-  year: number;
+  year: string;
   source: EditorState;
   articleTitle: EditorState;
-  volume: number;
+  volume: string;
   firstPage: string;
   lastPage: string;
   elocationId: string;
@@ -60,20 +60,20 @@ export interface PeriodicalReference {
   date: string;
   source: EditorState;
   articleTitle: EditorState;
-  volume: number;
+  volume: string;
   firstPage: string;
   lastPage: string;
   extLink: string;
 }
 
 export interface BookReference {
-  year: number;
+  year: string;
   chapterTitle: EditorState;
   edition: string;
   publisherLocation: string;
   publisherName: string;
   source: EditorState;
-  volume: number;
+  volume: string;
   editors: ReferenceContributor[];
   firstPage: string;
   lastPage: string;
@@ -84,15 +84,19 @@ export interface BookReference {
 }
 
 export interface ReportReference {
-  year: number;
+  year: string;
   source: EditorState;
   publisherName: string;
+  publisherLocation: string;
+  pmid: string;
+  volume: string;
+  isbn: string;
   doi: string;
   extLink: string;
 }
 
 export interface PatentReference {
-  year: number;
+  year: string;
   source: EditorState;
   articleTitle: EditorState;
   publisherName: string;
@@ -103,19 +107,18 @@ export interface PatentReference {
 }
 
 export interface DataReference {
-  year: number;
+  year: string;
   dataTitle: EditorState;
   source: EditorState;
   doi: string;
   version: string;
   extLink: string;
   accessionId: string;
-  accessionUrl: string;
-  specificUse: string;
+  specificUse?: string;
 }
 
 export interface WebReference {
-  year: number;
+  year: string;
   source: EditorState;
   articleTitle: EditorState;
   extLink: string;
@@ -123,7 +126,7 @@ export interface WebReference {
 }
 
 export interface PrePrintReference {
-  year: number;
+  year: string;
   articleTitle: EditorState;
   source: EditorState;
   extLink: string;
@@ -132,7 +135,7 @@ export interface PrePrintReference {
 }
 
 export interface ThesisReference {
-  year: number;
+  year: string;
   articleTitle: EditorState;
   publisherName: string;
   publisherLocation: string;
@@ -142,7 +145,7 @@ export interface ThesisReference {
 }
 
 export interface SoftwareReference {
-  year: number;
+  year: string;
   source: EditorState;
   dataTitle: EditorState;
   version: string;
@@ -154,12 +157,12 @@ export interface SoftwareReference {
 }
 
 export interface ConferenceReference {
-  year: number;
+  year: string;
   articleTitle: EditorState;
   conferenceName: EditorState;
   conferenceLocation: string;
   conferenceDate: string;
-  volume: number;
+  volume: string;
   extLink: string;
   elocationId: string;
   doi: string;
@@ -256,7 +259,7 @@ function createReferencePersonList(referenceXml: Element, groupType: string): Re
 
 function createJournalReference(referenceXml: Element): JournalReference {
   return {
-    year: parseInt(referenceXml.querySelector('year').textContent),
+    year: getTextContentFromPath(referenceXml, 'year'),
     source: createReferenceAnnotatedValue(referenceXml.querySelector('source')),
     articleTitle: createReferenceAnnotatedValue(referenceXml.querySelector('article-title')),
     doi: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="doi"]') || '',
@@ -265,7 +268,7 @@ function createJournalReference(referenceXml: Element): JournalReference {
     firstPage: getTextContentFromPath(referenceXml, 'fpage'),
     lastPage: getTextContentFromPath(referenceXml, 'lpage'),
     inPress: getTextContentFromPath(referenceXml, 'comment') === 'In press',
-    volume: parseInt(getTextContentFromPath(referenceXml, 'volume') || '0')
+    volume: getTextContentFromPath(referenceXml, 'volume')
   };
 }
 
@@ -279,14 +282,14 @@ function createNewJournalReference(): JournalReference {
     lastPage: '',
     pmid: '',
     source: createReferenceAnnotatedValue(),
-    volume: 0,
-    year: 1900
+    volume: '',
+    year: ''
   };
 }
 
 function createPatentReference(referenceXml: Element): PatentReference {
   return {
-    year: parseInt(referenceXml.querySelector('year').textContent),
+    year: getTextContentFromPath(referenceXml, 'year'),
     source: createReferenceAnnotatedValue(referenceXml.querySelector('source')),
     articleTitle: createReferenceAnnotatedValue(referenceXml.querySelector('article-title')),
     publisherName: getTextContentFromPath(referenceXml, 'publisher-name') || '',
@@ -306,7 +309,7 @@ function createNewPatentReference(): PatentReference {
     publisherName: '',
     pmid: '',
     source: createReferenceAnnotatedValue(),
-    year: 1900
+    year: ''
   };
 }
 
@@ -322,7 +325,7 @@ function createPeriodicalReference(referenceXml: Element): PeriodicalReference {
     firstPage: getTextContentFromPath(referenceXml, 'fpage'),
     lastPage: getTextContentFromPath(referenceXml, 'lpage'),
     extLink: getTextContentFromPath(referenceXml, 'ext-link') || '',
-    volume: parseInt(getTextContentFromPath(referenceXml, 'volume') || '0')
+    volume: getTextContentFromPath(referenceXml, 'volume')
   };
 }
 
@@ -332,7 +335,7 @@ function createNewPeriodicalReference(): PeriodicalReference {
     date: '',
     firstPage: '',
     lastPage: '',
-    volume: 0,
+    volume: '',
     extLink: '',
     source: createReferenceAnnotatedValue()
   };
@@ -340,11 +343,15 @@ function createNewPeriodicalReference(): PeriodicalReference {
 
 function createReportReference(referenceXml: Element): ReportReference {
   return {
-    year: parseInt(referenceXml.querySelector('year').textContent),
+    year: getTextContentFromPath(referenceXml, 'year'),
     source: createReferenceAnnotatedValue(referenceXml.querySelector('source')),
+    publisherLocation: getTextContentFromPath(referenceXml, 'publisher-loc') || '',
     publisherName: getTextContentFromPath(referenceXml, 'publisher-name') || '',
     extLink: getTextContentFromPath(referenceXml, 'ext-link') || '',
-    doi: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="doi"]') || ''
+    volume: getTextContentFromPath(referenceXml, 'volume'),
+    doi: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="doi"]') || '',
+    pmid: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="pmid"]') || '',
+    isbn: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="isbn"]') || ''
   };
 }
 
@@ -353,14 +360,18 @@ function createNewReportReference(): ReportReference {
     doi: '',
     extLink: '',
     publisherName: '',
+    publisherLocation: '',
+    isbn: '',
+    pmid: '',
+    volume: '',
     source: createReferenceAnnotatedValue(),
-    year: 1900
+    year: ''
   };
 }
 
 function createSoftwareReference(referenceXml: Element): SoftwareReference {
   return {
-    year: parseInt(referenceXml.querySelector('year').textContent),
+    year: getTextContentFromPath(referenceXml, 'year'),
     dataTitle: createReferenceAnnotatedValue(referenceXml.querySelector('data-title')),
     source: createReferenceAnnotatedValue(referenceXml.querySelector('source')),
     version: getTextContentFromPath(referenceXml, 'version') || '',
@@ -382,13 +393,13 @@ function createNewSoftwareReference(): SoftwareReference {
     publisherName: '',
     source: createReferenceAnnotatedValue(),
     version: '',
-    year: 1900
+    year: ''
   };
 }
 
 function createThesisReference(referenceXml: Element): ThesisReference {
   return {
-    year: parseInt(referenceXml.querySelector('year').textContent),
+    year: getTextContentFromPath(referenceXml, 'year'),
     articleTitle: createReferenceAnnotatedValue(referenceXml.querySelector('article-title')),
     publisherLocation: getTextContentFromPath(referenceXml, 'publisher-loc') || '',
     publisherName: getTextContentFromPath(referenceXml, 'publisher-name') || '',
@@ -406,13 +417,13 @@ function createNewThesisReference(): ThesisReference {
     pmid: '',
     publisherLocation: '',
     publisherName: '',
-    year: 1900
+    year: ''
   };
 }
 
 function createWebReference(referenceXml: Element): WebReference {
   return {
-    year: parseInt(referenceXml.querySelector('year').textContent),
+    year: getTextContentFromPath(referenceXml, 'year'),
     source: createReferenceAnnotatedValue(referenceXml.querySelector('source')),
     articleTitle: createReferenceAnnotatedValue(referenceXml.querySelector('article-title')),
     extLink: getTextContentFromPath(referenceXml, 'ext-link') || '',
@@ -426,13 +437,13 @@ function createNewWebReference(): WebReference {
     dateInCitation: '',
     extLink: '',
     source: createReferenceAnnotatedValue(),
-    year: 1900
+    year: ''
   };
 }
 
 function createConferenceReference(referenceXml: Element): ConferenceReference {
   return {
-    year: parseInt(referenceXml.querySelector('year').textContent),
+    year: getTextContentFromPath(referenceXml, 'year'),
     articleTitle: createReferenceAnnotatedValue(referenceXml.querySelector('article-title')),
     conferenceName: createReferenceAnnotatedValue(referenceXml.querySelector('conf-name')),
     conferenceLocation: getTextContentFromPath(referenceXml, 'conf-loc') || '',
@@ -443,7 +454,7 @@ function createConferenceReference(referenceXml: Element): ConferenceReference {
     firstPage: getTextContentFromPath(referenceXml, 'fpage'),
     lastPage: getTextContentFromPath(referenceXml, 'lpage'),
     elocationId: getTextContentFromPath(referenceXml, 'elocation-id') || '',
-    volume: parseInt(getTextContentFromPath(referenceXml, 'volume') || '0')
+    volume: getTextContentFromPath(referenceXml, 'volume')
   };
 }
 
@@ -459,14 +470,14 @@ function createNewConferenceReference(): ConferenceReference {
     firstPage: '',
     lastPage: '',
     pmid: '',
-    volume: 0,
-    year: 1900
+    volume: '',
+    year: ''
   };
 }
 
 function createPrePrintReference(referenceXml: Element): PrePrintReference {
   return {
-    year: parseInt(referenceXml.querySelector('year').textContent),
+    year: getTextContentFromPath(referenceXml, 'year'),
     source: createReferenceAnnotatedValue(referenceXml.querySelector('source')),
     articleTitle: createReferenceAnnotatedValue(referenceXml.querySelector('article-title')),
     doi: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="doi"]') || '',
@@ -478,7 +489,7 @@ function createPrePrintReference(referenceXml: Element): PrePrintReference {
 function createNewPrePrintReference(): PrePrintReference {
   return {
     articleTitle: createReferenceAnnotatedValue(),
-    year: 1900,
+    year: '',
     doi: '',
     extLink: '',
     pmid: '',
@@ -489,12 +500,11 @@ function createNewPrePrintReference(): PrePrintReference {
 function createDataReference(referenceXml: Element): DataReference {
   const accessionEl = referenceXml.querySelector('pub-id[pub-id-type="accession"]');
   return {
-    year: parseInt(referenceXml.querySelector('year').textContent),
+    year: getTextContentFromPath(referenceXml, 'year'),
     source: createReferenceAnnotatedValue(referenceXml.querySelector('source')),
     dataTitle: createReferenceAnnotatedValue(referenceXml.querySelector('data-title')),
     doi: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="doi"]') || '',
     accessionId: accessionEl ? accessionEl.textContent : '',
-    accessionUrl: accessionEl ? accessionEl.getAttribute('href') : '',
     extLink:
       getTextContentFromPath(referenceXml, 'ext-link') ||
       (referenceXml.querySelector('pub-id[pub-id-type="accession"]')
@@ -508,12 +518,11 @@ function createDataReference(referenceXml: Element): DataReference {
 function createNewDataReference(): DataReference {
   return {
     dataTitle: createReferenceAnnotatedValue(),
-    year: 1900,
+    year: '',
     doi: '',
     extLink: '',
     accessionId: '',
-    accessionUrl: '',
-    specificUse: '',
+    specificUse: undefined,
     version: '',
     source: createReferenceAnnotatedValue()
   };
@@ -522,7 +531,7 @@ function createNewDataReference(): DataReference {
 function createBookReference(referenceXml: Element): BookReference {
   const editors: ReferenceContributor[] = createReferencePersonList(referenceXml, 'editor');
   return {
-    year: parseInt(referenceXml.querySelector('year').textContent),
+    year: getTextContentFromPath(referenceXml, 'year'),
     source: createReferenceAnnotatedValue(referenceXml.querySelector('source')),
     chapterTitle: createReferenceAnnotatedValue(referenceXml.querySelector('chapter-title')),
     publisherLocation: getTextContentFromPath(referenceXml, 'publisher-loc') || '',
@@ -535,7 +544,7 @@ function createBookReference(referenceXml: Element): BookReference {
     firstPage: getTextContentFromPath(referenceXml, 'fpage'),
     lastPage: getTextContentFromPath(referenceXml, 'lpage'),
     inPress: getTextContentFromPath(referenceXml, 'comment') === 'In press',
-    volume: parseInt(getTextContentFromPath(referenceXml, 'volume') || '0')
+    volume: getTextContentFromPath(referenceXml, 'volume')
   };
 }
 
@@ -551,8 +560,8 @@ function createNewBookReference(): BookReference {
     pmid: '',
     publisherLocation: '',
     publisherName: '',
-    volume: 0,
-    year: 1900,
+    volume: '',
+    year: '',
     doi: '',
     source: createReferenceAnnotatedValue()
   };
