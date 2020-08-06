@@ -1,6 +1,7 @@
 import React, { useCallback, SyntheticEvent, useState } from 'react';
 import { TextField } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
+import { isEqual } from 'lodash';
 
 import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
 import * as manuscriptActions from 'app/actions/manuscript.actions';
@@ -34,7 +35,9 @@ export const ArticleInfoFormDialog: React.FC<{}> = () => {
   );
 
   const handleAccept = useCallback(() => {
-    dispatch(manuscriptActions.updateArticleInformationAction(userArticleInfo));
+    if (!isEqual(userArticleInfo, articleInfo)) {
+      dispatch(manuscriptActions.updateArticleInformationAction(userArticleInfo));
+    }
     closeDialog();
   }, [closeDialog, userArticleInfo, dispatch]);
 

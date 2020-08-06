@@ -5,10 +5,11 @@ import { Provider } from 'react-redux';
 
 import { ReferenceFormDialog } from 'app/containers/reference-form-dialog/index';
 import { givenState } from 'app/test-utils/reducer-test-helpers';
-import { ReferenceType } from 'app/models/reference';
+import { createEmptyRefInfoByType, ReferenceType } from 'app/models/reference';
 import { mount } from 'enzyme';
 import * as manuscriptActions from 'app/actions/manuscript.actions';
 import { PromptDialog } from 'app/components/prompt-dialog';
+import { cloneDeep } from 'lodash';
 
 jest.mock('@material-ui/core', () => ({
   Dialog: () => <div data-cmp="Dialog"></div>,
@@ -18,10 +19,14 @@ jest.mock('@material-ui/core', () => ({
   FormControl: ({ children }) => <div data-cmp="FormControl">{children}</div>,
   FormControlLabel: ({ children }) => <div data-cmp="FormControlLabel">{children}</div>,
   InputLabel: ({ children }) => <div data-cmp="InputLabel">{children}</div>,
-  TextField: () => <div data-cmp="TextField"></div>,
-  Checkbox: () => <div data-cmp="CheckboxInput"></div>,
-  IconButton: () => <div data-cmp="iconButton"></div>,
-  Button: () => <div data-cmp="Button"></div>
+  TextField: ({ children }) => <div data-cmp="TextField">{children}</div>,
+  Checkbox: ({ children }) => <div data-cmp="CheckboxInput">{children}</div>,
+  IconButton: ({ children }) => <div data-cmp="iconButton">{children}</div>,
+  Button: ({ children }) => <div data-cmp="Button">{children}</div>
+}));
+
+jest.mock('app/components/rich-text-input', () => ({
+  RichTextInput: ({ children }) => <div data-cmp="RichTextInput">{children}</div>
 }));
 
 jest.mock('@material-ui/lab', () => ({
@@ -65,7 +70,7 @@ describe('Reference form dialog', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should dispatch update action', () => {
+  it('should not dispatch update action when no changes', () => {
     const store = mockStore({ manuscript: mockState });
     jest.spyOn(store, 'dispatch');
 
@@ -76,9 +81,28 @@ describe('Reference form dialog', () => {
     );
 
     wrapper.find({ title: 'Done' }).prop('onClick')();
-    expect(store.dispatch).toHaveBeenCalledWith(
+    expect(store.dispatch).not.toHaveBeenCalledWith(
       manuscriptActions.updateReferenceAction(mockState.data.present.references[0])
     );
+  });
+
+  it('should dispatch update action', () => {
+    const store = mockStore({ manuscript: mockState });
+    jest.spyOn(store, 'dispatch');
+
+    const wrapper = mount(
+      <Provider store={store}>
+        <ReferenceFormDialog reference={mockState.data.present.references[0]} />
+      </Provider>
+    );
+    wrapper.find({ name: 'firstName' }).at(0).prop('onChange')({ target: { name: 'firstName', value: 'new value' } });
+    const updatedReference = cloneDeep(mockState.data.present.references[0]);
+    updatedReference.authors[0].firstName = 'new value';
+
+    wrapper.update();
+    wrapper.find({ title: 'Done' }).prop('onClick')();
+    wrapper.update();
+    expect(store.dispatch).toHaveBeenCalledWith(manuscriptActions.updateReferenceAction(updatedReference));
   });
 
   it('should dispatch add action', () => {

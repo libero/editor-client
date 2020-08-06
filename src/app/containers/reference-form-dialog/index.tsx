@@ -27,6 +27,7 @@ import {
 } from 'app/containers/reference-form-dialog/referenc-forms.config';
 import { renderFormControl } from 'app/containers/reference-form-dialog/reference-form-renderer';
 import refFormGrid from './ref-form-grid.module.scss';
+import { objectsEqual } from 'app/utils/view.utils';
 
 interface ReferenceFormDialogProps {
   reference?: Reference;
@@ -101,11 +102,11 @@ export const ReferenceFormDialog: React.FC<ReferenceFormDialogProps> = ({ refere
     );
     if (isNewReference) {
       dispatch(manuscriptActions.addReferenceAction(userReference));
-    } else {
+    } else if (!objectsEqual(userReference, reference)) {
       dispatch(manuscriptActions.updateReferenceAction(userReference));
     }
     closeDialog();
-  }, [userReference, closeDialog, dispatch, isNewReference]);
+  }, [userReference, isNewReference, closeDialog, dispatch, reference]);
 
   const handleReject = useCallback(() => {
     setConfirmShow(false);
