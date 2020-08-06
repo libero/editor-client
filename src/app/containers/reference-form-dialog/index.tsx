@@ -24,7 +24,7 @@ import { ReferenceContributorsList } from 'app/containers/reference-form-dialog/
 import {
   FormControlConfigType,
   getFormConfigForType
-} from 'app/containers/reference-form-dialog/referenc-forms.config';
+} from 'app/containers/reference-form-dialog/reference-forms.config';
 import { renderFormControl } from 'app/containers/reference-form-dialog/reference-form-renderer';
 import refFormGrid from './ref-form-grid.module.scss';
 

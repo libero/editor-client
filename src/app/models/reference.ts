@@ -427,7 +427,7 @@ function createWebReference(referenceXml: Element): WebReference {
     source: createReferenceAnnotatedValue(referenceXml.querySelector('source')),
     articleTitle: createReferenceAnnotatedValue(referenceXml.querySelector('article-title')),
     extLink: getTextContentFromPath(referenceXml, 'ext-link') || '',
-    dateInCitation: getTextContentFromPath(referenceXml, 'date-in-citation') || ''
+    dateInCitation: referenceXml.querySelector('date-in-citation').getAttribute('iso-8601-date') || ''
   };
 }
 
@@ -499,6 +499,7 @@ function createNewPrePrintReference(): PrePrintReference {
 
 function createDataReference(referenceXml: Element): DataReference {
   const accessionEl = referenceXml.querySelector('pub-id[pub-id-type="accession"]');
+  const specificUse = referenceXml.getAttribute('specific-use');
   return {
     year: getTextContentFromPath(referenceXml, 'year'),
     source: createReferenceAnnotatedValue(referenceXml.querySelector('source')),
@@ -511,7 +512,7 @@ function createDataReference(referenceXml: Element): DataReference {
         ? referenceXml.querySelector('pub-id[pub-id-type="accession"]').getAttribute('xlink:href')
         : ''),
     version: getTextContentFromPath(referenceXml, 'version') || '',
-    specificUse: referenceXml.getAttribute('specific-use')
+    specificUse: ['generated', 'analyzed'].includes(specificUse) ? specificUse : undefined
   };
 }
 
