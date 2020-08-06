@@ -88,7 +88,10 @@ export const SpecificUseInput: React.FC<ReferenceInputTypeProps<string>> = (prop
       label={props.label}
       value={props.value}
       onChange={handleChange}
-      options={[{ label: 'Analyzed', value: 'analyzed' }, { label: 'Generated', value: 'generated' }]}
+      options={[
+        { label: 'Analyzed', value: 'analyzed' },
+        { label: 'Generated', value: 'generated' }
+      ]}
     />
   );
 };

@@ -158,7 +158,7 @@ Object {
         "type": "text",
       },
     },
-    "specificUse": null,
+    "specificUse": undefined,
     "version": "NM_009324.2",
     "year": "2014",
   },
@@ -316,7 +316,7 @@ Object {
         "type": "text",
       },
     },
-    "date": "1993-September-9",
+    "date": "1993-09-09",
     "extLink": "",
     "firstPage": "1",
     "lastPage": "4",
@@ -588,7 +588,7 @@ Object {
         "type": "text",
       },
     },
-    "dateInCitation": "January 1, 2019",
+    "dateInCitation": "2019-01-01",
     "extLink": "https://www.nytimes.com/2019/01/01/science/watson-dna-genetics-race.html",
     "source": Object {
       "doc": Object {

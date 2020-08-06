@@ -209,12 +209,13 @@ export const renderPatentReference = (reference: Reference) => {
 export const renderWebReference = (reference: Reference) => {
   const referenceInfo = reference.referenceInfo as WebReference;
   const authors = getReferenceAuthors(reference);
+  const formattedDate = referenceInfo.dateInCitation ? formatDate(referenceInfo.dateInCitation) : undefined;
   return (
     <>
       {authors}. {referenceInfo.year}. {getAnnotatedText(referenceInfo.articleTitle, '. ')}
       <em>{getAnnotatedText(referenceInfo.source, ' ')}</em>
       {referenceInfo.extLink ? getExtLinkTag(referenceInfo.extLink) : undefined}
-      {referenceInfo.dateInCitation ? ` [Accessed: ${referenceInfo.dateInCitation}]` : undefined}
+      {formattedDate ? ` [Accessed: ${formattedDate}]` : undefined}
     </>
   );
 };
