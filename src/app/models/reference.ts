@@ -314,12 +314,8 @@ function createNewPatentReference(): PatentReference {
 }
 
 function createPeriodicalReference(referenceXml: Element): PeriodicalReference {
-  const day = getTextContentFromPath(referenceXml, 'string-date > day');
-  const month = getTextContentFromPath(referenceXml, 'string-date > month');
-  const year = getTextContentFromPath(referenceXml, 'string-date > year');
-
   return {
-    date: `${year}-${month}-${day}`,
+    date: referenceXml.querySelector('string-date > year').getAttribute('iso-8601-date'),
     source: createReferenceAnnotatedValue(referenceXml.querySelector('source')),
     articleTitle: createReferenceAnnotatedValue(referenceXml.querySelector('article-title')),
     firstPage: getTextContentFromPath(referenceXml, 'fpage'),

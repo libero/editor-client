@@ -209,9 +209,7 @@ export const renderPatentReference = (reference: Reference) => {
 export const renderWebReference = (reference: Reference) => {
   const referenceInfo = reference.referenceInfo as WebReference;
   const authors = getReferenceAuthors(reference);
-  const formattedDate = referenceInfo.dateInCitation
-    ? moment(referenceInfo.dateInCitation).format('MMMM D, YYYY')
-    : undefined;
+  const formattedDate = referenceInfo.dateInCitation ? formatDate(referenceInfo.dateInCitation) : undefined;
   return (
     <>
       {authors}. {referenceInfo.year}. {getAnnotatedText(referenceInfo.articleTitle, '. ')}
