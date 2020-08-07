@@ -9,9 +9,7 @@ export function stringifyEditorState(editorState: EditorState): string {
   return temporaryContainer.innerHTML;
 }
 
-type ManuscriptObject = Record<string, unknown>;
-
-export function objectsEqual(obj1: ManuscriptObject, obj2: ManuscriptObject): boolean {
+export function objectsEqual(obj1: unknown, obj2: unknown): boolean {
   return isEqualWith(obj1, obj2, (value1, value2) => {
     if (value1 instanceof EditorState && value2 instanceof EditorState) {
       return value1.doc.eq(value2.doc);
