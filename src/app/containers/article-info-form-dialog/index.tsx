@@ -39,7 +39,7 @@ export const ArticleInfoFormDialog: React.FC<{}> = () => {
       dispatch(manuscriptActions.updateArticleInformationAction(userArticleInfo));
     }
     closeDialog();
-  }, [closeDialog, userArticleInfo, dispatch]);
+  }, [closeDialog, articleInfo, userArticleInfo, dispatch]);
 
   return (
     <section className={classes.root}>
