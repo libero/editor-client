@@ -7,7 +7,7 @@ import { ManuscriptEditor } from 'app/containers/manuscript/manuscript-editor';
 import {
   addNewKeywordAction,
   deleteKeywordAction,
-  updateAbstractAction,
+  updateAbstractAction, updateAcknowledgementsAction,
   updateImpactStatementAction,
   updateKeywordAction,
   updateNewKeywordAction,
@@ -68,6 +68,22 @@ describe('manuscript editor', () => {
 
     wrapper.root.findByProps({ name: 'abstract' }).props.onChange(changeArg);
     expect(store.dispatch).toBeCalledWith(updateAbstractAction(changeArg));
+  });
+
+  it('should dispatch changes for acknowledgements', () => {
+    const mockEditorState = givenState({});
+    const store = mockStore({ manuscript: mockEditorState });
+    jest.spyOn(store, 'dispatch');
+
+    const wrapper = create(
+      <Provider store={store}>
+        <ManuscriptEditor />
+      </Provider>
+    );
+    const changeArg = mockEditorState.data.present.acknowledgements.tr;
+
+    wrapper.root.findByProps({ name: 'acknowledgements' }).props.onChange(changeArg);
+    expect(store.dispatch).toBeCalledWith(updateAcknowledgementsAction(changeArg));
   });
 
   it('should dispatch changes for impact statement', () => {

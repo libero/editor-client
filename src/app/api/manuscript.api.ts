@@ -5,7 +5,8 @@ import {
   createKeywordGroupsState,
   createAbstractState,
   createReferencesState,
-  createImpactStatementState
+  createImpactStatementState,
+  createAcknowledgementsState
 } from 'app/models/manuscript-state.factory';
 import { createAuthorsState } from 'app/models/person';
 import { createAffiliationsState } from 'app/models/affiliation';
@@ -30,6 +31,12 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
   const references = doc.querySelectorAll('ref-list ref element-citation');
   const authorNotes = doc.querySelector('author-notes');
   const relatedArticles = doc.querySelectorAll('related-article');
+  const acknowledgements = doc.querySelector('ack');
+
+  const ackTitle = acknowledgements.querySelector('title');
+  if (ackTitle) {
+    acknowledgements.removeChild(ackTitle);
+  }
 
   return {
     title: createTitleState(title),
@@ -40,6 +47,7 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
     affiliations: createAffiliationsState(Array.from(affiliations)),
     references: createReferencesState(Array.from(references)),
     relatedArticles: createRelatedArticleState(Array.from(relatedArticles)),
+    acknowledgements: createAcknowledgementsState(acknowledgements),
     articleInfo: {
       articleType: doc.querySelector('article').getAttribute('article-type'),
       dtd: doc.querySelector('article').getAttribute('dtd-version'),

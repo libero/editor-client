@@ -11,6 +11,7 @@ export function givenState(overrides: Partial<Manuscript>): ManuscriptHistorySta
       title: createDummyEditorState(),
       abstract: createDummyEditorState(),
       impactStatement: createDummyEditorState(),
+      acknowledgements: createDummyEditorState(),
       authors: [],
       relatedArticles: [],
       affiliations: [],

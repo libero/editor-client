@@ -130,10 +130,62 @@ Array [
         onClick={[Function]}
       />
       <div
+        className="makeStyles-root-17 makeStyles-plainVariant-19"
+      >
+        <label
+          className="makeStyles-label-20"
+        >
+          Acknowledgements
+        </label>
+        <div
+          className="prosemirrorContainer"
+        />
+      </div>
+      <div
+        aria-hidden="true"
+        className="makeStyles-spacer-15"
+        onClick={[Function]}
+      />
+      <div
         onClick={[Function]}
       >
+        <section>
+          <div
+            className="makeStyles-root-17 makeStyles-plainVariant-19"
+          >
+            <label
+              className="makeStyles-label-20"
+            >
+              References
+            </label>
+            <ul
+              className="makeStyles-list-37"
+            />
+          </div>
+        </section>
         <div
-          className="makeStyles-sectionContainer-37 makeStyles-root-17 makeStyles-plainVariant-19"
+          aria-hidden="true"
+          className="makeStyles-spacer-15"
+          onClick={[Function]}
+        />
+        <section>
+          <div
+            className="makeStyles-root-17 makeStyles-plainVariant-19"
+          >
+            <label
+              className="makeStyles-label-20"
+            >
+              Author Information
+            </label>
+          </div>
+        </section>
+        <div
+          aria-hidden="true"
+          className="makeStyles-spacer-15"
+          onClick={[Function]}
+        />
+        <div
+          className="makeStyles-sectionContainer-39 makeStyles-root-17 makeStyles-plainVariant-19"
         >
           <label
             className="makeStyles-label-20"
@@ -141,7 +193,7 @@ Array [
             Article information
           </label>
           <section
-            className="makeStyles-infoSection-38"
+            className="makeStyles-infoSection-40"
           >
             <div>
               <strong>
@@ -174,42 +226,7 @@ Array [
               Related articles
             </label>
             <ul
-              className="makeStyles-list-41"
-            />
-          </div>
-        </section>
-        <div
-          aria-hidden="true"
-          className="makeStyles-spacer-15"
-          onClick={[Function]}
-        />
-        <section>
-          <div
-            className="makeStyles-root-17 makeStyles-plainVariant-19"
-          >
-            <label
-              className="makeStyles-label-20"
-            >
-              Author Information
-            </label>
-          </div>
-        </section>
-        <div
-          aria-hidden="true"
-          className="makeStyles-spacer-15"
-          onClick={[Function]}
-        />
-        <section>
-          <div
-            className="makeStyles-root-17 makeStyles-plainVariant-19"
-          >
-            <label
-              className="makeStyles-label-20"
-            >
-              References
-            </label>
-            <ul
-              className="makeStyles-list-46"
+              className="makeStyles-list-43"
             />
           </div>
         </section>
