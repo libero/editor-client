@@ -6,7 +6,7 @@ export const useModalContainerStyles = makeStyles((theme) => ({
   },
 
   dialogContent: {
-    margin: theme.spacing(0, 4),
-    padding: theme.spacing(1, 0, 4, 0)
+    margin: theme.spacing(0, 1.5, 4, 1.5),
+    padding: 0
   }
 }));

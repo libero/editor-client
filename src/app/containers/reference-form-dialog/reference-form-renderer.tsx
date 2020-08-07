@@ -1,9 +1,10 @@
-import React, { useCallback, SyntheticEvent } from 'react';
+import React, { useCallback, SyntheticEvent, ChangeEvent } from 'react';
 import { TextField, FormControlLabel, Checkbox } from '@material-ui/core';
 import { EditorState, Transaction } from 'prosemirror-state';
 import { RichTextInput } from 'app/components/rich-text-input';
-import { ReferenceContributor } from 'app/models/reference';
+import { ReferenceContributor, ReferenceType } from 'app/models/reference';
 import { ReferenceContributorsList } from 'app/containers/reference-form-dialog/reference-contributors-list';
+import { Select } from 'app/components/select';
 
 export type RefInfoChangeCallback<T> = (name: string, value: T) => void;
 
@@ -62,6 +63,35 @@ export const DateInput: React.FC<ReferenceInputTypeProps<string>> = (props) => {
       variant="outlined"
       value={props.value}
       onChange={handleChange}
+    />
+  );
+};
+
+export const SpecificUseInput: React.FC<ReferenceInputTypeProps<string>> = (props) => {
+  const { onChange } = props;
+  const handleChange = useCallback(
+    (event: ChangeEvent<{ name: string; value: ReferenceType }>) => {
+      const name = event.target['name'];
+      const value = event.target['value'];
+      onChange(name, value);
+    },
+    [onChange]
+  );
+
+  return (
+    <Select
+      className={props.className}
+      name={props.name}
+      placeholder="Please select"
+      fullWidth
+      blankValue={undefined}
+      label={props.label}
+      value={props.value}
+      onChange={handleChange}
+      options={[
+        { label: 'Analyzed', value: 'analyzed' },
+        { label: 'Generated', value: 'generated' }
+      ]}
     />
   );
 };
@@ -165,6 +195,7 @@ export function renderFormControl<T>(
     'rich-text': TextInput,
     number: NumberInput,
     boolean: CheckboxInput,
+    'specific-use': SpecificUseInput,
     'editors-list': EditorsListInput,
     date: DateInput
   }[type];

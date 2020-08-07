@@ -45,8 +45,8 @@ Object {
         "type": "text",
       },
     },
-    "volume": 0,
-    "year": 2010,
+    "volume": undefined,
+    "year": "2010",
   },
   "type": "book",
 }
@@ -107,8 +107,8 @@ Object {
     "firstPage": "1877",
     "lastPage": "1886",
     "pmid": "",
-    "volume": 0,
-    "year": 2014,
+    "volume": undefined,
+    "year": "2014",
   },
   "type": "confproc",
 }
@@ -130,7 +130,6 @@ Object {
   "id": "id",
   "referenceInfo": Object {
     "accessionId": "NM_009324",
-    "accessionUrl": null,
     "dataTitle": Object {
       "doc": Object {
         "content": Array [
@@ -159,9 +158,9 @@ Object {
         "type": "text",
       },
     },
-    "specificUse": null,
+    "specificUse": undefined,
     "version": "NM_009324.2",
-    "year": 2014,
+    "year": "2014",
   },
   "type": "data",
 }
@@ -227,8 +226,8 @@ Object {
         "type": "text",
       },
     },
-    "volume": 337,
-    "year": 2012,
+    "volume": "337",
+    "year": "2012",
   },
   "type": "journal",
 }
@@ -280,7 +279,7 @@ Object {
         "type": "text",
       },
     },
-    "year": 2015,
+    "year": "2015",
   },
   "type": "patent",
 }
@@ -317,7 +316,7 @@ Object {
         "type": "text",
       },
     },
-    "date": "1993-September-9",
+    "date": "1993-09-09",
     "extLink": "",
     "firstPage": "1",
     "lastPage": "4",
@@ -331,7 +330,7 @@ Object {
         "type": "text",
       },
     },
-    "volume": 0,
+    "volume": undefined,
   },
   "type": "periodical",
 }
@@ -381,7 +380,7 @@ Object {
         "type": "text",
       },
     },
-    "year": 2019,
+    "year": "2019",
   },
   "type": "preprint",
 }
@@ -404,6 +403,9 @@ Object {
   "referenceInfo": Object {
     "doi": "",
     "extLink": "http://www.who.int/malaria/publications/world-malaria-report-2015/en/",
+    "isbn": "",
+    "pmid": "",
+    "publisherLocation": "Geneva",
     "publisherName": "World Health Organization",
     "source": Object {
       "doc": Object {
@@ -415,7 +417,8 @@ Object {
         "type": "text",
       },
     },
-    "year": 2015,
+    "volume": undefined,
+    "year": "2015",
   },
   "type": "report",
 }
@@ -438,6 +441,9 @@ Object {
   "referenceInfo": Object {
     "doi": "",
     "extLink": "http://www.who.int/malaria/publications/world-malaria-report-2015/en/",
+    "isbn": "",
+    "pmid": "",
+    "publisherLocation": "Geneva",
     "publisherName": "World Health Organization",
     "source": Object {
       "doc": Object {
@@ -449,7 +455,8 @@ Object {
         "type": "text",
       },
     },
-    "year": 2015,
+    "volume": undefined,
+    "year": "2015",
   },
   "type": "report",
 }
@@ -502,7 +509,7 @@ Object {
       },
     },
     "version": "",
-    "year": 2014,
+    "year": "2014",
   },
   "type": "software",
 }
@@ -544,7 +551,7 @@ Object {
     "pmid": "31038122",
     "publisherLocation": "Vienna, Austria",
     "publisherName": "R Foundation for Statistical Computing",
-    "year": 2014,
+    "year": "2014",
   },
   "type": "thesis",
 }
@@ -581,7 +588,7 @@ Object {
         "type": "text",
       },
     },
-    "dateInCitation": "January 1, 2019",
+    "dateInCitation": "2019-01-01",
     "extLink": "https://www.nytimes.com/2019/01/01/science/watson-dna-genetics-race.html",
     "source": Object {
       "doc": Object {
@@ -593,7 +600,7 @@ Object {
         "type": "text",
       },
     },
-    "year": 2019,
+    "year": "2019",
   },
   "type": "web",
 }
