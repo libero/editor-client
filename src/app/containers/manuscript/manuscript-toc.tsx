@@ -4,7 +4,7 @@ import { Drawer, Divider, Hidden, List, ListItem, ListItemText } from '@material
 import classNames from 'classnames';
 
 import { useOutlinePanelStyles } from './styles';
-import { getArticleInformation } from 'app/selectors/manuscript.selectors';
+import { getArticleInformation, getJournalMeta } from 'app/selectors/manuscript.selectors';
 import { ClearFocus } from 'app/containers/manuscript/clear-focus';
 
 export interface ManuscriptTOCProps {
@@ -17,6 +17,7 @@ export const ManuscriptTOC: React.FC<ManuscriptTOCProps> = (props) => {
   const { tocOpen, handleTocToggle } = props;
 
   const articleInfo = useSelector(getArticleInformation);
+  const journalMeta = useSelector(getJournalMeta);
 
   const drawer = (
     <React.Fragment>
@@ -29,7 +30,7 @@ export const ManuscriptTOC: React.FC<ManuscriptTOCProps> = (props) => {
         </ClearFocus>
       </section>
       <Divider />
-      <List>
+      <List classes={{ root: classes.outlineList }}>
         {['Title', 'Abstract'].map((text, index) => (
           <ListItem button key={text}>
             <ListItemText primary={text} />
@@ -37,6 +38,10 @@ export const ManuscriptTOC: React.FC<ManuscriptTOCProps> = (props) => {
         ))}
       </List>
       <ClearFocus className={classes.whiteSpace} />
+      <section className={classes.journalMeta}>
+        <div>{journalMeta.publisherName}</div>
+        <div>ISSN: {journalMeta.issn}</div>
+      </section>
     </React.Fragment>
   );
 
