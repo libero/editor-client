@@ -28,18 +28,18 @@ export const useReferenceContributorStyles = makeStyles((theme) => ({
 
 export const useReferenceFormStyles = makeStyles((theme) => ({
   root: {
-    padding: theme.spacing(1, 1.5, 0, 2),
+    padding: theme.spacing(1, 2.5, 0, 2),
     marginLeft: theme.spacing(0.5),
     width: 500
   },
   inputField: {
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(2.5),
     '&:first-child': {
       marginTop: 0
     }
   },
   missingFieldsSection: {
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(2.5),
     borderColor: theme.palette.error.main
   },
   missingFieldsRow: {

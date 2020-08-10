@@ -2,11 +2,11 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export const useAuthorFormStyles = makeStyles((theme) => ({
   root: {
-    padding: theme.spacing(1, 1.5, 0, 2.5)
+    padding: theme.spacing(1, 2.5, 0, 2.5)
   },
 
   inputField: {
-    marginBottom: theme.spacing(3)
+    marginBottom: theme.spacing(2.5)
   },
 
   buttonPanel: {
@@ -23,7 +23,7 @@ export const useAuthorFormStyles = makeStyles((theme) => ({
 
   authorAffiliationRow: {
     display: 'flex',
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(2.5),
     '&:first-child': {
       marginTop: 0
     }
