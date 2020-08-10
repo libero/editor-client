@@ -106,7 +106,6 @@ Object {
     "extLink": "",
     "firstPage": "1877",
     "lastPage": "1886",
-    "pmid": "",
     "volume": undefined,
     "year": "2014",
   },
@@ -267,7 +266,6 @@ Object {
     "doi": "",
     "extLink": "https://patents.google.com/patent/WO2015087996A1/en",
     "patent": "2015087996",
-    "pmid": "",
     "publisherName": "",
     "source": Object {
       "doc": Object {
@@ -495,7 +493,6 @@ Object {
     },
     "doi": "",
     "extLink": "http://www.R-project.org/",
-    "pmid": "",
     "publisherLocation": "Vienna, Austria",
     "publisherName": "R Foundation for Statistical Computing",
     "source": Object {

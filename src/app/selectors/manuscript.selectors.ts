@@ -30,6 +30,8 @@ export const getArticleInformation = createSelector(getManuscriptData, (data) =>
 
 export const getReferences = createSelector(getManuscriptData, (data) => get(data, 'present.references', []));
 
+export const getJournalMeta = createSelector(getManuscriptData, (data) => get(data, 'present.journalMeta', []));
+
 export const getAffiliatedAuthors = createSelector(getManuscriptData, ({ present }) => (affId: string) => {
   return present.authors.filter((author) => author.affiliations.includes(affId));
 });
