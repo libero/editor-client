@@ -2,7 +2,13 @@ import React, { useCallback, SyntheticEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { EditorState, Transaction } from 'prosemirror-state';
 
-import { getAbstract, getImpactStatement, getKeywordGroups, getTitle } from 'app/selectors/manuscript.selectors';
+import {
+  getAbstract,
+  getAcknowledgements,
+  getImpactStatement,
+  getKeywordGroups,
+  getTitle
+} from 'app/selectors/manuscript.selectors';
 import * as manuscriptActions from 'app/actions/manuscript.actions';
 import { RichTextEditor } from 'app/components/rich-text-editor';
 import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
@@ -28,6 +34,7 @@ export const ManuscriptEditor: React.FC = () => {
 
   const title: EditorState = useSelector(getTitle);
   const abstract: EditorState = useSelector(getAbstract);
+  const acknowledgements: EditorState = useSelector(getAcknowledgements);
   const impactStatement: EditorState = useSelector(getImpactStatement);
   const focusedPath = useSelector(getFocusedEditorStatePath);
   const allKeywords: KeywordGroups = useSelector(getKeywordGroups);
@@ -66,6 +73,13 @@ export const ManuscriptEditor: React.FC = () => {
   const handleImpactStatementChange = useCallback(
     (diff: Transaction): void => {
       dispatch(manuscriptActions.updateImpactStatementAction(diff));
+    },
+    [dispatch]
+  );
+
+  const handleAcknowledgementsChange = useCallback(
+    (diff: Transaction): void => {
+      dispatch(manuscriptActions.updateAcknowledgementsAction(diff));
     },
     [dispatch]
   );
@@ -158,15 +172,24 @@ export const ManuscriptEditor: React.FC = () => {
           onFocusSwitch={handleFocusSwitch}
         />
         <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
-        {renderKeywords(allKeywords)}
+        <RichTextEditor
+          editorState={acknowledgements}
+          label="Acknowledgements"
+          name="acknowledgements"
+          isActive={isInputFocused('acknowledgements', focusedPath)}
+          onChange={handleAcknowledgementsChange}
+          onFocusSwitch={handleFocusSwitch}
+        />
+        <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
         <ClearFocus>
-          <ArticleInformation />
-          <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
-          <RelatedArticles />
+          <ReferenceList />
           <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
           <AuthorsInfoDetails />
           <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
-          <ReferenceList />
+          <ArticleInformation />
+          <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
+          {renderKeywords(allKeywords)}
+          <RelatedArticles />
         </ClearFocus>
       </div>
     </div>

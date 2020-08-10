@@ -17,22 +17,28 @@ export interface RichTextEditorProps {
   onFocusSwitch?: (state: EditorState, name: string) => void;
 }
 
+const restoreSelection = debounce((editorView, from, to) => {
+  if (editorView.state.selection) {
+    const $from = editorView.state.doc.resolve(from);
+    const $to = editorView.state.doc.resolve(to);
+    const change = editorView.state.tr.setSelection(new TextSelection($from, $to));
+    editorView.dispatch(change);
+  }
+
+}, 50);
+
 export const RichTextEditor: React.FC<RichTextEditorProps> = React.memo((props) => {
   const { editorState, label, onChange, onFocusSwitch, name, isActive } = props;
   const prosemirrorRef = useRef<ProseMirrorEditorView>();
 
   useEffect(() => {
     if (isActive && prosemirrorRef.current && !prosemirrorRef.current.editorView.hasFocus()) {
-      const { $from, $to } = editorState.selection;
+      const { from, to } = editorState.selection;
+      restoreSelection(prosemirrorRef.current.editorView, from, to);
       prosemirrorRef.current.focus();
       // position needs to be reset after focus when selection is not empty
-      debounce(() => {
-        const view = prosemirrorRef.current.editorView;
-        const change = view.state.tr.setSelection(new TextSelection($from, $to));
-        view.dispatch(change);
-      }, 50)();
     }
-  }, [editorState, isActive, prosemirrorRef]);
+  }, [isActive, prosemirrorRef, editorState]);
 
   const options = useMemo(
     () => ({
