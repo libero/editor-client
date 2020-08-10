@@ -14,6 +14,8 @@ export const getTitle = createSelector(getManuscriptData, (data) => get(data, 'p
 
 export const getAbstract = createSelector(getManuscriptData, (data) => get(data, 'present.abstract'));
 
+export const getAcknowledgements = createSelector(getManuscriptData, (data) => get(data, 'present.acknowledgements'));
+
 export const getImpactStatement = createSelector(getManuscriptData, (data) => get(data, 'present.impactStatement'));
 
 export const getKeywordGroups = createSelector(getManuscriptData, (data) => get(data, 'present.keywordGroups'));
@@ -27,6 +29,8 @@ export const getRelatedArticles = createSelector(getManuscriptData, (data) => ge
 export const getArticleInformation = createSelector(getManuscriptData, (data) => get(data, 'present.articleInfo', []));
 
 export const getReferences = createSelector(getManuscriptData, (data) => get(data, 'present.references', []));
+
+export const getJournalMeta = createSelector(getManuscriptData, (data) => get(data, 'present.journalMeta', []));
 
 export const getAffiliatedAuthors = createSelector(getManuscriptData, ({ present }) => (affId: string) => {
   return present.authors.filter((author) => author.affiliations.includes(affId));

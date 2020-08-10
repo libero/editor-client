@@ -6,7 +6,7 @@ export const useArticleInfoFormStyles = makeStyles((theme) => ({
   },
 
   inputField: {
-    marginBottom: theme.spacing(3)
+    marginBottom: theme.spacing(2.5)
   },
 
   buttonPanel: {

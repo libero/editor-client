@@ -5,7 +5,10 @@ export const useRelatedArticleStyles = makeStyles((theme) => ({
     padding: theme.spacing(1, 2.5, 0, 2.5)
   },
 
-  inputField: { width: '100%', marginBottom: theme.spacing(3) },
+  inputField: {
+    width: '100%',
+    marginBottom: theme.spacing(2.5)
+  },
 
   buttonPanel: {
     display: 'flex',
