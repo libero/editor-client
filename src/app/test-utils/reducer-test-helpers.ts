@@ -11,6 +11,10 @@ export function givenState(overrides: Partial<Manuscript>): ManuscriptHistorySta
       title: createDummyEditorState(),
       abstract: createDummyEditorState(),
       impactStatement: createDummyEditorState(),
+      journalMeta: {
+        publisherName: '',
+        issn: ''
+      },
       authors: [],
       relatedArticles: [],
       affiliations: [],

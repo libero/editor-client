@@ -19,24 +19,24 @@ exports[`<ManuscriptTOC> renders 1`] = `
           onClick={[Function]}
         >
           <h1
-            className="makeStyles-title-5"
+            className="makeStyles-title-7"
           >
             Libero Editor
           </h1>
           <h3
-            className="makeStyles-infoText-6"
+            className="makeStyles-infoText-8"
           >
             Software: v
             0.0.0-test
           </h3>
           <h3
-            className="makeStyles-infoText-6 makeStyles-dtd-7"
+            className="makeStyles-infoText-8 makeStyles-dtd-9"
           >
             JATS: 
              DTD
           </h3>
           <h3
-            className="makeStyles-infoText-6"
+            className="makeStyles-infoText-8"
           >
             Type: 
           </h3>
@@ -67,6 +67,14 @@ exports[`<ManuscriptTOC> renders 1`] = `
         className="makeStyles-whiteSpace-4"
         onClick={[Function]}
       />
+      <section
+        className="makeStyles-journalMeta-6"
+      >
+        <div />
+        <div>
+          ISSN: 
+        </div>
+      </section>
     </div>
   </div>
   <div
@@ -83,24 +91,24 @@ exports[`<ManuscriptTOC> renders 1`] = `
           onClick={[Function]}
         >
           <h1
-            className="makeStyles-title-5"
+            className="makeStyles-title-7"
           >
             Libero Editor
           </h1>
           <h3
-            className="makeStyles-infoText-6"
+            className="makeStyles-infoText-8"
           >
             Software: v
             0.0.0-test
           </h3>
           <h3
-            className="makeStyles-infoText-6 makeStyles-dtd-7"
+            className="makeStyles-infoText-8 makeStyles-dtd-9"
           >
             JATS: 
              DTD
           </h3>
           <h3
-            className="makeStyles-infoText-6"
+            className="makeStyles-infoText-8"
           >
             Type: 
           </h3>
@@ -131,6 +139,14 @@ exports[`<ManuscriptTOC> renders 1`] = `
         className="makeStyles-whiteSpace-4"
         onClick={[Function]}
       />
+      <section
+        className="makeStyles-journalMeta-6"
+      >
+        <div />
+        <div>
+          ISSN: 
+        </div>
+      </section>
     </div>
   </div>
 </nav>

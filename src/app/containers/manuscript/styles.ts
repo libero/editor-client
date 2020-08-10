@@ -65,13 +65,25 @@ export const useOutlinePanelStyles = makeStyles((theme) => ({
     display: 'flex',
     flexGrow: 0,
     alignItems: 'flex-start',
-    paddingLeft: theme.spacing(2),
+    paddingLeft: theme.spacing(3),
     paddingBottom: theme.spacing(1.5),
+    paddingTop: theme.spacing(1.5),
     flexDirection: 'column',
     justifyContent: 'center'
   },
   whiteSpace: {
     flex: 1
+  },
+  outlineList: {
+    paddingLeft: theme.spacing(1)
+  },
+  journalMeta: {
+    color: 'rgba(0,0,0,0.54)',
+    'font-size': '12px',
+    lineHeight: '19px',
+    'font-weight': '400',
+    marginLeft: theme.spacing(3),
+    marginBottom: theme.spacing(1)
   },
   title: {
     color: 'rgba(0,0,0,0.54)',

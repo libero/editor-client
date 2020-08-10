@@ -24,23 +24,23 @@ Array [
     />
   </nav>,
   <div
-    className="makeStyles-contentWrapper-13"
+    className="makeStyles-contentWrapper-15"
     data-test-id="container-wrapper"
     onClick={[Function]}
   >
     <div
       aria-hidden="true"
-      className="makeStyles-toolbarPlaceholder-16"
+      className="makeStyles-toolbarPlaceholder-18"
     />
     <div
-      className="makeStyles-content-14"
+      className="makeStyles-content-16"
       onClick={[Function]}
     >
       <div
-        className="makeStyles-root-17 makeStyles-plainVariant-19"
+        className="makeStyles-root-19 makeStyles-plainVariant-21"
       >
         <label
-          className="makeStyles-label-20"
+          className="makeStyles-label-22"
         >
           Title
         </label>
@@ -53,20 +53,20 @@ Array [
       >
         <div
           aria-hidden="true"
-          className="makeStyles-spacer-15"
+          className="makeStyles-spacer-17"
           onClick={[Function]}
         />
         <section>
           <div
-            className="makeStyles-root-17 makeStyles-plainVariant-19"
+            className="makeStyles-root-19 makeStyles-plainVariant-21"
           >
             <label
-              className="makeStyles-label-20"
+              className="makeStyles-label-22"
             >
               Authors
             </label>
             <div
-              className="makeStyles-sortableContainer-22"
+              className="makeStyles-sortableContainer-24"
             >
                
                
@@ -75,15 +75,15 @@ Array [
         </section>
         <div
           aria-hidden="true"
-          className="makeStyles-spacer-15"
+          className="makeStyles-spacer-17"
           onClick={[Function]}
         />
         <section>
           <div
-            className="makeStyles-root-17 makeStyles-plainVariant-19"
+            className="makeStyles-root-19 makeStyles-plainVariant-21"
           >
             <label
-              className="makeStyles-label-20"
+              className="makeStyles-label-22"
             >
               Affiliations
             </label>
@@ -91,15 +91,15 @@ Array [
         </section>
         <div
           aria-hidden="true"
-          className="makeStyles-spacer-15"
+          className="makeStyles-spacer-17"
           onClick={[Function]}
         />
       </div>
       <div
-        className="makeStyles-root-17 makeStyles-plainVariant-19"
+        className="makeStyles-root-19 makeStyles-plainVariant-21"
       >
         <label
-          className="makeStyles-label-20"
+          className="makeStyles-label-22"
         >
           Abstract
         </label>
@@ -109,14 +109,14 @@ Array [
       </div>
       <div
         aria-hidden="true"
-        className="makeStyles-spacer-15"
+        className="makeStyles-spacer-17"
         onClick={[Function]}
       />
       <div
-        className="makeStyles-root-17 makeStyles-plainVariant-19"
+        className="makeStyles-root-19 makeStyles-plainVariant-21"
       >
         <label
-          className="makeStyles-label-20"
+          className="makeStyles-label-22"
         >
           Impact statement
         </label>
@@ -126,22 +126,22 @@ Array [
       </div>
       <div
         aria-hidden="true"
-        className="makeStyles-spacer-15"
+        className="makeStyles-spacer-17"
         onClick={[Function]}
       />
       <div
         onClick={[Function]}
       >
         <div
-          className="makeStyles-sectionContainer-37 makeStyles-root-17 makeStyles-plainVariant-19"
+          className="makeStyles-sectionContainer-39 makeStyles-root-19 makeStyles-plainVariant-21"
         >
           <label
-            className="makeStyles-label-20"
+            className="makeStyles-label-22"
           >
             Article information
           </label>
           <section
-            className="makeStyles-infoSection-38"
+            className="makeStyles-infoSection-40"
           >
             <div>
               <strong>
@@ -161,34 +161,34 @@ Array [
         </div>
         <div
           aria-hidden="true"
-          className="makeStyles-spacer-15"
+          className="makeStyles-spacer-17"
           onClick={[Function]}
         />
         <section>
           <div
-            className="makeStyles-root-17 makeStyles-plainVariant-19"
+            className="makeStyles-root-19 makeStyles-plainVariant-21"
           >
             <label
-              className="makeStyles-label-20"
+              className="makeStyles-label-22"
             >
               Related articles
             </label>
             <ul
-              className="makeStyles-list-41"
+              className="makeStyles-list-43"
             />
           </div>
         </section>
         <div
           aria-hidden="true"
-          className="makeStyles-spacer-15"
+          className="makeStyles-spacer-17"
           onClick={[Function]}
         />
         <section>
           <div
-            className="makeStyles-root-17 makeStyles-plainVariant-19"
+            className="makeStyles-root-19 makeStyles-plainVariant-21"
           >
             <label
-              className="makeStyles-label-20"
+              className="makeStyles-label-22"
             >
               Author Information
             </label>
@@ -196,20 +196,20 @@ Array [
         </section>
         <div
           aria-hidden="true"
-          className="makeStyles-spacer-15"
+          className="makeStyles-spacer-17"
           onClick={[Function]}
         />
         <section>
           <div
-            className="makeStyles-root-17 makeStyles-plainVariant-19"
+            className="makeStyles-root-19 makeStyles-plainVariant-21"
           >
             <label
-              className="makeStyles-label-20"
+              className="makeStyles-label-22"
             >
               References
             </label>
             <ul
-              className="makeStyles-list-46"
+              className="makeStyles-list-48"
             />
           </div>
         </section>
