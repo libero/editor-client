@@ -41,7 +41,7 @@ describe('Article Info Form Dialog', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('dispatches update article info action', () => {
+  it('does not dispatch update article info action when no changes', () => {
     const store = mockStore({ manuscript: mockState });
     jest.spyOn(store, 'dispatch');
 
@@ -52,7 +52,26 @@ describe('Article Info Form Dialog', () => {
     );
 
     wrapper.find({ title: 'Done' }).prop('onClick')(mockState.data.present.articleInfo, []);
-    expect(store.dispatch).toHaveBeenCalledWith(
+    expect(store.dispatch).not.toHaveBeenCalledWith(
+      manuscriptActions.updateArticleInformationAction(mockState.data.present.articleInfo)
+    );
+  });
+
+  it('dispatches update article info action', () => {
+    const store = mockStore({ manuscript: mockState });
+    jest.spyOn(store, 'dispatch');
+
+    const wrapper = mount(
+      <Provider store={store}>
+        <ArticleInfoFormDialog />
+      </Provider>
+    );
+
+    wrapper.find({ name: 'articleDOI' }).prop('onChange')({ target: { name: 'articleDOI', value: 'changed' } });
+    wrapper.update();
+
+    wrapper.find({ title: 'Done' }).prop('onClick')(mockState.data.present.articleInfo, []);
+    expect(store.dispatch).not.toHaveBeenCalledWith(
       manuscriptActions.updateArticleInformationAction(mockState.data.present.articleInfo)
     );
   });

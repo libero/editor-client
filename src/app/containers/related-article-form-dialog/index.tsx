@@ -1,6 +1,7 @@
 import React, { useCallback, ChangeEvent, useState } from 'react';
 import { TextField } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
+import { isEqual } from 'lodash';
 
 import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
 import * as manuscriptActions from 'app/actions/manuscript.actions';
@@ -17,7 +18,7 @@ interface RelatedArticleFormDialogProps {
 }
 
 export const RelatedArticleFormDialog: React.FC<RelatedArticleFormDialogProps> = ({ article }) => {
-  const [userArticle, setUserArticle] = useState(article || createNewRelatedArticle());
+  const [userArticle, setUserArticle] = useState<RelatedArticle>(article || createNewRelatedArticle());
   const [isConfirmShown, setConfirmShow] = useState<boolean>(false);
   const isNewArticle = !article;
   const classes = useRelatedArticleStyles();
@@ -52,12 +53,11 @@ export const RelatedArticleFormDialog: React.FC<RelatedArticleFormDialogProps> =
   const handleDone = useCallback(() => {
     if (isNewArticle) {
       dispatch(manuscriptActions.addRelatedArticleAction(userArticle));
-    } else {
+    } else if (isEqual(userArticle, article)) {
       dispatch(manuscriptActions.updateRelatedArticleAction(userArticle));
     }
-
     closeDialog();
-  }, [closeDialog, userArticle, dispatch, isNewArticle]);
+  }, [closeDialog, userArticle, dispatch, isNewArticle, article]);
 
   const handleDelete = useCallback(() => {
     setConfirmShow(true);
