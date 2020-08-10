@@ -13,7 +13,7 @@ jest.mock('app/containers/affiliation-form-dialog/affiliation-form-dialog', () =
   AffiliationFormDialog: () => <div data-cmp="AffiliationsFormDialog"></div>
 }));
 
-describe('Author Form Dialog', () => {
+describe('Affiliation Form Dialog', () => {
   const mockStore = configureMockStore([]);
   let mockState;
 
@@ -56,12 +56,33 @@ describe('Author Form Dialog', () => {
       </Provider>
     );
 
-    wrapper.find(AffiliationFormDialog).prop('onAccept')(mockState.data.present.affiliations[0], []);
+    const updatedAffiliation = { ...mockState.data.present.affiliations[0] };
+    updatedAffiliation.institution = { name: 'new value' };
+
+    wrapper.find(AffiliationFormDialog).prop('onAccept')(updatedAffiliation, []);
+    expect(store.dispatch).toHaveBeenCalledWith(manuscriptActions.updateAffiliationAction(updatedAffiliation));
+
     expect(store.dispatch).toHaveBeenCalledWith(
+      manuscriptActions.linkAffiliationsAction({ affiliation: updatedAffiliation, authors: [] })
+    );
+  });
+
+  it('does not dispatch update affiliation action when no changes', () => {
+    const store = mockStore({ manuscript: mockState });
+    jest.spyOn(store, 'dispatch');
+
+    const wrapper = mount(
+      <Provider store={store}>
+        <ConnectedAffiliationFormDialog affiliation={mockState.data.present.affiliations[0]} />
+      </Provider>
+    );
+
+    wrapper.find(AffiliationFormDialog).prop('onAccept')(mockState.data.present.affiliations[0], []);
+    expect(store.dispatch).not.toHaveBeenCalledWith(
       manuscriptActions.updateAffiliationAction(mockState.data.present.affiliations[0])
     );
 
-    expect(store.dispatch).toHaveBeenCalledWith(
+    expect(store.dispatch).not.toHaveBeenCalledWith(
       manuscriptActions.linkAffiliationsAction({ affiliation: mockState.data.present.affiliations[0], authors: [] })
     );
   });

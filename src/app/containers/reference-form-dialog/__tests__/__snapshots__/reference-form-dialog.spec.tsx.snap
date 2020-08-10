@@ -98,7 +98,18 @@ exports[`Reference form dialog renders form 1`] = `
       />
       <div
         data-cmp="iconButton"
-      />
+      >
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+          />
+        </svg>
+      </div>
       <div
         data-cmp="Menu"
       >
@@ -129,7 +140,18 @@ exports[`Reference form dialog renders form 1`] = `
       />
       <div
         data-cmp="iconButton"
-      />
+      >
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+          />
+        </svg>
+      </div>
       <div
         data-cmp="Menu"
       >
@@ -148,7 +170,9 @@ exports[`Reference form dialog renders form 1`] = `
     </section>
     <div
       data-cmp="Button"
-    />
+    >
+      Author
+    </div>
      
   </section>
   <div
@@ -158,29 +182,11 @@ exports[`Reference form dialog renders form 1`] = `
       data-cmp="TextField"
     />
     <div
-      className="makeStyles-container-19 fullWidth makeStyles-root-22 makeStyles-outlinedVariant-23"
-    >
-      <label
-        className="makeStyles-label-25"
-      >
-        Title
-      </label>
-      <div
-        data-cmp="ToggleButtonGroup"
-      />
-    </div>
+      data-cmp="RichTextInput"
+    />
     <div
-      className="makeStyles-container-19 fullWidth makeStyles-root-22 makeStyles-outlinedVariant-23"
-    >
-      <label
-        className="makeStyles-label-25"
-      >
-        Journal title
-      </label>
-      <div
-        data-cmp="ToggleButtonGroup"
-      />
-    </div>
+      data-cmp="RichTextInput"
+    />
     <div
       data-cmp="TextField"
     />
@@ -208,17 +214,23 @@ exports[`Reference form dialog renders form 1`] = `
   >
     <div
       data-cmp="Button"
-    />
+    >
+      Delete
+    </div>
     <div
       aria-hidden={true}
       className="makeStyles-spacer-8"
     />
     <div
       data-cmp="Button"
-    />
+    >
+      Cancel
+    </div>
     <div
       data-cmp="Button"
-    />
+    >
+      Done
+    </div>
   </div>
 </section>
 `;

@@ -123,8 +123,27 @@ describe('Author Form Dialog', () => {
         <AuthorFormDialog author={mockState.data.present.authors[0]} />
       </Provider>
     );
+
+    wrapper.find({ name: 'lastName' }).prop('onChange')({ target: { name: 'lastName', value: 'new value' } });
+    wrapper.update();
     wrapper.find({ title: 'Done' }).prop('onClick')();
-    expect(store.dispatch).toBeCalledWith(updateAuthorAction(mockState.data.present.authors[0]));
+    const updatedAuthor = { ...mockState.data.present.authors[0], lastName: 'new value' };
+    expect(store.dispatch).toBeCalledWith(updateAuthorAction(updatedAuthor));
+  });
+
+  it('does not dispatch an event when no changes made', () => {
+    const store = mockStore({
+      manuscript: mockState
+    });
+    jest.spyOn(store, 'dispatch');
+
+    const wrapper = mount(
+      <Provider store={store}>
+        <AuthorFormDialog author={mockState.data.present.authors[0]} />
+      </Provider>
+    );
+    wrapper.find({ title: 'Done' }).prop('onClick')();
+    expect(store.dispatch).not.toBeCalledWith(updateAuthorAction(mockState.data.present.authors[0]));
   });
 
   it('dispatches an event to delete author', () => {
