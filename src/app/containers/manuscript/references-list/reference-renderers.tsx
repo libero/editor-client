@@ -31,7 +31,7 @@ const getAnnotatedText = (editorState: EditorState, suffix: string = '') => {
 };
 
 const formatDate = (isoDate: string) => {
-  return moment(isoDate).format('MMMM D, YYYY ');
+  return moment(isoDate).format('MMMM D, YYYY');
 };
 
 const renderDoi = (doi: string | undefined) => {
@@ -120,7 +120,7 @@ export const renderConferenceReference = (reference: Reference) => {
         : undefined}
       {referenceInfo.conferenceDate ? ` ${referenceInfo.conferenceDate}.` : undefined}
       {referenceInfo.elocationId ? ` ${referenceInfo.elocationId}.` : undefined}
-      {renderDoi(referenceInfo.doi)} {renderPmid(referenceInfo.pmid)}
+      {renderDoi(referenceInfo.doi)}
       {referenceInfo.extLink ? getExtLinkTag(referenceInfo.extLink) : undefined}
     </>
   );
@@ -150,7 +150,6 @@ export const renderSoftwareReference = (reference: Reference) => {
       {referenceInfo.publisherLocation ? ` ${referenceInfo.publisherLocation}:` : undefined}
       {referenceInfo.publisherName ? ` ${referenceInfo.publisherName}. ` : undefined}
       {renderDoi(referenceInfo.doi)}
-      {renderPmid(referenceInfo.pmid)}
       {referenceInfo.version ? ` version: ${referenceInfo.version}. ` : undefined}
       {referenceInfo.extLink ? getExtLinkTag(referenceInfo.extLink) : undefined}
     </>
@@ -199,7 +198,6 @@ export const renderPatentReference = (reference: Reference) => {
       <em>{getAnnotatedText(referenceInfo.source)}</em>
       {referenceInfo.publisherName ? ` ${referenceInfo.publisherName}.` : undefined}
       {renderDoi(referenceInfo.doi)}
-      {renderPmid(referenceInfo.pmid)}
       {referenceInfo.patent ? ` ${referenceInfo.patent}. ` : undefined}
       {referenceInfo.extLink ? getExtLinkTag(referenceInfo.extLink) : undefined}
     </>

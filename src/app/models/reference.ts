@@ -101,7 +101,6 @@ export interface PatentReference {
   articleTitle: EditorState;
   publisherName: string;
   doi: string;
-  pmid: string;
   patent: string;
   extLink: string;
 }
@@ -153,7 +152,6 @@ export interface SoftwareReference {
   publisherLocation: string;
   extLink: string;
   doi: string;
-  pmid: string;
 }
 
 export interface ConferenceReference {
@@ -166,7 +164,6 @@ export interface ConferenceReference {
   extLink: string;
   elocationId: string;
   doi: string;
-  pmid: string;
   firstPage: string;
   lastPage: string;
 }
@@ -295,8 +292,7 @@ function createPatentReference(referenceXml: Element): PatentReference {
     publisherName: getTextContentFromPath(referenceXml, 'publisher-name') || '',
     extLink: getTextContentFromPath(referenceXml, 'ext-link') || '',
     patent: getTextContentFromPath(referenceXml, 'patent') || '',
-    doi: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="doi"]') || '',
-    pmid: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="pmid"]') || ''
+    doi: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="doi"]') || ''
   };
 }
 
@@ -307,7 +303,6 @@ function createNewPatentReference(): PatentReference {
     extLink: '',
     patent: '',
     publisherName: '',
-    pmid: '',
     source: createReferenceAnnotatedValue(),
     year: ''
   };
@@ -374,7 +369,6 @@ function createSoftwareReference(referenceXml: Element): SoftwareReference {
     publisherLocation: getTextContentFromPath(referenceXml, 'publisher-loc') || '',
     publisherName: getTextContentFromPath(referenceXml, 'publisher-name') || '',
     doi: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="doi"]') || '',
-    pmid: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="pmid"]') || '',
     extLink: getTextContentFromPath(referenceXml, 'ext-link') || ''
   };
 }
@@ -384,7 +378,6 @@ function createNewSoftwareReference(): SoftwareReference {
     dataTitle: createReferenceAnnotatedValue(),
     doi: '',
     extLink: '',
-    pmid: '',
     publisherLocation: '',
     publisherName: '',
     source: createReferenceAnnotatedValue(),
@@ -446,7 +439,6 @@ function createConferenceReference(referenceXml: Element): ConferenceReference {
     conferenceDate: getTextContentFromPath(referenceXml, 'conf-date') || '',
     extLink: getTextContentFromPath(referenceXml, 'ext-link') || '',
     doi: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="doi"]') || '',
-    pmid: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="pmid"]') || '',
     firstPage: getTextContentFromPath(referenceXml, 'fpage'),
     lastPage: getTextContentFromPath(referenceXml, 'lpage'),
     elocationId: getTextContentFromPath(referenceXml, 'elocation-id') || '',
@@ -465,7 +457,6 @@ function createNewConferenceReference(): ConferenceReference {
     extLink: '',
     firstPage: '',
     lastPage: '',
-    pmid: '',
     volume: '',
     year: ''
   };
