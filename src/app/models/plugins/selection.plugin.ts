@@ -6,7 +6,7 @@ export const SelectPlugin = new Plugin({
     init(config, instance) {
       return { deco: DecorationSet.empty };
     },
-    apply(transaction, state, prevEditorState, editorState) {
+    apply(transaction, value, prevEditorState, editorState) {
       const sel = transaction.selection;
       if (sel) {
         const decos = [
@@ -21,7 +21,7 @@ export const SelectPlugin = new Plugin({
         return { deco };
       }
 
-      return state;
+      return value;
     }
   },
   props: {

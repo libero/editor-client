@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 import * as referenceInfoConfig from 'app/models/config/reference-info.config';
 import { buildInputRules } from 'app/models/plugins/input-rules';
 import { getTextContentFromPath, makeSchemaFromConfig } from 'app/models/utils';
+import { SelectPlugin } from 'app/models/plugins/selection.plugin';
 
 export type ReferenceContributor =
   | {
@@ -571,7 +572,7 @@ export function createReferenceAnnotatedValue(content?: Node): EditorState {
   return EditorState.create({
     doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),
     schema,
-    plugins: [buildInputRules(), gapCursor(), dropCursor()]
+    plugins: [buildInputRules(), gapCursor(), dropCursor(), SelectPlugin]
   });
 }
 
