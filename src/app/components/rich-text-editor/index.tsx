@@ -18,10 +18,13 @@ export interface RichTextEditorProps {
 }
 
 const restoreSelection = debounce((editorView, from, to) => {
-  const $from = editorView.state.editorView.state.selection.resolve(from);
-  const $to = editorView.state.editorView.state.selection.resolve(to);
-  const change = editorView.state.editorView.setSelection(new TextSelection($from, $to));
-  editorView.dispatch(change);
+  if (editorView.state.selection) {
+    const $from = editorView.state.doc.resolve(from);
+    const $to = editorView.state.doc.resolve(to);
+    const change = editorView.state.tr.setSelection(new TextSelection($from, $to));
+    editorView.dispatch(change);
+  }
+
 }, 50);
 
 export const RichTextEditor: React.FC<RichTextEditorProps> = React.memo((props) => {
@@ -35,7 +38,7 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = React.memo((props) 
       prosemirrorRef.current.focus();
       // position needs to be reset after focus when selection is not empty
     }
-  }, [isActive, prosemirrorRef]);
+  }, [isActive, prosemirrorRef, editorState]);
 
   const options = useMemo(
     () => ({
