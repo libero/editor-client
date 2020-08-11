@@ -5,11 +5,21 @@ exports[`Article Info Form Dialog renders edit article information dialog 1`] = 
   className="makeStyles-root-1"
 >
   <div
-    data-cmp="TextField"
-  />
-  <div
-    data-cmp="TextField"
-  />
+    className="container"
+  >
+    <div
+      data-cmp="TextField"
+    />
+    <div
+      data-cmp="TextField"
+    />
+    <div
+      data-cmp="TextField"
+    />
+    <div
+      data-cmp="TextField"
+    />
+  </div>
   <div
     className="makeStyles-buttonPanel-3"
   >

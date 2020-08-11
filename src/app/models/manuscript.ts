@@ -18,6 +18,8 @@ export interface ArticleInformation {
   dtd: string;
   articleDOI: string;
   publisherId: string;
+  volume: string;
+  elocationId: string;
 }
 
 interface JournalMeta {

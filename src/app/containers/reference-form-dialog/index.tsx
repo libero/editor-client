@@ -26,7 +26,7 @@ import {
   getFormConfigForType
 } from 'app/containers/reference-form-dialog/reference-forms.config';
 import { renderFormControl } from 'app/containers/reference-form-dialog/reference-form-renderer';
-import refFormGrid from './ref-form-grid.module.scss';
+import refFormGrid from 'app/styles/form-grid.module.scss';
 import { objectsEqual } from 'app/utils/view.utils';
 
 interface ReferenceFormDialogProps {
