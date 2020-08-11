@@ -11,7 +11,7 @@ export const useAuthorFormStyles = makeStyles((theme) => ({
 
   buttonPanel: {
     display: 'flex',
-    marginTop: theme.spacing(1),
+    marginTop: theme.spacing(4),
     '& > *:last-child': {
       marginLeft: theme.spacing(2)
     }
@@ -46,7 +46,7 @@ export const useAuthorFormStyles = makeStyles((theme) => ({
 
   correspondingAuthorCheckbox: {
     marginLeft: theme.spacing(2),
-    marginBottom: theme.spacing(4)
+    marginBottom: theme.spacing(1.25)
   },
 
   deleteButton: {

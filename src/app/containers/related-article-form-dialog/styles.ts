@@ -12,7 +12,7 @@ export const useRelatedArticleStyles = makeStyles((theme) => ({
 
   buttonPanel: {
     display: 'flex',
-    marginTop: theme.spacing(1),
+    marginTop: theme.spacing(4),
     '& > *:last-child': {
       marginLeft: theme.spacing(2)
     }
