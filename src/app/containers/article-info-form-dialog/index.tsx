@@ -2,7 +2,6 @@ import React, { useCallback, SyntheticEvent, useState } from 'react';
 import { TextField } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { isEqual } from 'lodash';
-import classNames from 'classnames';
 
 import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
 import * as manuscriptActions from 'app/actions/manuscript.actions';
