@@ -17,7 +17,7 @@ export const JOURNAL_FORM: Record<string, FormControlConfigType> = {
   elocationId: { type: 'string', label: 'eLocation ID', className: refFormGrid.fullWidth },
   doi: { type: 'string', label: 'DOI', className: refFormGrid.fullWidth },
   pmid: { type: 'string', label: 'PMID', className: refFormGrid.fullWidth },
-  inPress: { type: 'boolean', label: 'In press', className: refFormGrid.fullWidth }
+  inPress: { type: 'boolean', label: 'In press', className: refFormGrid.inPress }
 };
 
 export const PERIODICAL_FORM: Record<string, FormControlConfigType> = {
@@ -44,7 +44,7 @@ export const BOOK_FORM: Record<string, FormControlConfigType> = {
   publisherName: { type: 'string', label: 'Publisher Name', className: refFormGrid.fullWidth },
   doi: { type: 'string', label: 'DOI', className: refFormGrid.fullWidth },
   pmid: { type: 'string', label: 'PMID', className: refFormGrid.fullWidth },
-  inPress: { type: 'boolean', label: 'In press', className: refFormGrid.fullWidth }
+  inPress: { type: 'boolean', label: 'In press', className: refFormGrid.inPress }
 };
 
 export const REPORT_FORM: Record<string, FormControlConfigType> = {

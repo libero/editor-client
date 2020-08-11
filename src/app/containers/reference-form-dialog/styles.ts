@@ -57,7 +57,7 @@ export const useReferenceFormStyles = makeStyles((theme) => ({
   },
   buttonPanel: {
     display: 'flex',
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(4),
     '& > *:last-child': {
       marginLeft: theme.spacing(2)
     }
