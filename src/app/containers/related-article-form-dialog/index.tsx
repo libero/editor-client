@@ -53,7 +53,7 @@ export const RelatedArticleFormDialog: React.FC<RelatedArticleFormDialogProps> =
   const handleDone = useCallback(() => {
     if (isNewArticle) {
       dispatch(manuscriptActions.addRelatedArticleAction(userArticle));
-    } else if (isEqual(userArticle, article)) {
+    } else if (!isEqual(userArticle, article)) {
       dispatch(manuscriptActions.updateRelatedArticleAction(userArticle));
     }
     closeDialog();

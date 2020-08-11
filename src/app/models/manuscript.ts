@@ -20,13 +20,20 @@ export interface ArticleInformation {
   publisherId: string;
 }
 
+interface JournalMeta {
+  publisherName: string;
+  issn: string;
+}
+
 export type Manuscript = {
+  journalMeta: JournalMeta;
   title: EditorState;
   articleInfo: ArticleInformation;
   authors: Person[];
   affiliations: Affiliation[];
   abstract: EditorState;
   impactStatement: EditorState;
+  acknowledgements: EditorState;
   keywordGroups: KeywordGroups;
   references: Reference[];
   relatedArticles: RelatedArticle[];

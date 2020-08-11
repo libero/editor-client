@@ -61,10 +61,11 @@ describe('Related Article Form Dialog', () => {
       </Provider>
     );
 
+    wrapper.find({ name: 'href' }).prop('onChange')({ target: { name: 'href', value: 'new value' } });
+    wrapper.update();
     wrapper.find({ title: 'Done' }).prop('onClick')();
-    expect(store.dispatch).toHaveBeenCalledWith(
-      manuscriptActions.updateRelatedArticleAction(mockState.data.present.relatedArticles[0])
-    );
+    const updatedAuthor = { ...mockState.data.present.relatedArticles[0], href: 'new value' };
+    expect(store.dispatch).toHaveBeenCalledWith(manuscriptActions.updateRelatedArticleAction(updatedAuthor));
   });
 
   it('dispatches add related article action', () => {
