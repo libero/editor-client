@@ -19,10 +19,12 @@ describe('Article information', () => {
   const mockStore = configureMockStore([]);
 
   it('renders article information', () => {
-    const mockState = givenState({
-      articleInfo: {
-        articleDOI: 'SOME_ID'
-      }
+    const mockState = givenState({});
+    Object.assign(mockState.data.present.articleInfo, {
+      articleDOI: '',
+      dtd: '1',
+      articleType: '',
+      publisherId: ''
     });
     const store = mockStore({
       manuscript: mockState
@@ -37,11 +39,8 @@ describe('Article information', () => {
   });
 
   it('edits article information', () => {
-    const mockState = givenState({
-      articleInfo: {
-        articleDOI: 'SOME_ID'
-      }
-    });
+    const mockState = givenState({});
+    mockState.data.present.articleInfo.articleDOI = 'SOME_ID';
     const store = mockStore({
       manuscript: mockState
     });

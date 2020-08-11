@@ -7,6 +7,17 @@ exports[`Article Info Form Dialog renders edit article information dialog 1`] = 
   <div
     className="container"
   >
+    <input
+      data-cmp="Select"
+      onChange={[Function]}
+    />
+    <input
+      data-cmp="Select"
+      onChange={[Function]}
+    />
+    <div
+      data-cmp="TextField"
+    />
     <div
       data-cmp="TextField"
     />

@@ -14,28 +14,62 @@ exports[`Article information renders article information 1`] = `
   >
     <div>
       <strong>
+         Subject: 
+      </strong>
+       
+      
+    </div>
+    <div>
+      <strong>
+         Article type: 
+      </strong>
+       
+      
+    </div>
+    <div>
+      <strong>
          Article DOI: 
       </strong>
        
-      SOME_ID
+      
     </div>
     <div>
       <strong>
          Publisher ID: 
       </strong>
        
+      
     </div>
     <div>
       <strong>
          eLocation ID: 
       </strong>
        
+      
+    </div>
+    <div>
+      <strong>
+         Year: 
+      </strong>
+       
+      Invalid date
     </div>
     <div>
       <strong>
          Volume: 
       </strong>
        
+      
+    </div>
+    <div>
+       
+    </div>
+    <div>
+      <strong>
+         Published: 
+      </strong>
+       
+      Invalid date
     </div>
   </section>
   <div

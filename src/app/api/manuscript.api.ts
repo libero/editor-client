@@ -6,7 +6,8 @@ import {
   createAbstractState,
   createReferencesState,
   createImpactStatementState,
-  createAcknowledgementsState
+  createAcknowledgementsState,
+  createArticleInfoState
 } from 'app/models/manuscript-state.factory';
 import { createAuthorsState } from 'app/models/person';
 import { createAffiliationsState } from 'app/models/affiliation';
@@ -43,14 +44,7 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
     references: createReferencesState(Array.from(references)),
     relatedArticles: createRelatedArticleState(Array.from(relatedArticles)),
     acknowledgements: createAcknowledgementsState(acknowledgements),
-    articleInfo: {
-      articleType: doc.querySelector('article').getAttribute('article-type'),
-      dtd: doc.querySelector('article').getAttribute('dtd-version'),
-      articleDOI: getTextContentFromPath(doc, 'article-id[pub-id-type="doi"]'),
-      elocationId: getTextContentFromPath(doc, 'elocation-id'),
-      volume: getTextContentFromPath(doc, 'volume'),
-      publisherId: getTextContentFromPath(doc, 'article-id[pub-id-type="publisher-id"]')
-    },
+    articleInfo: createArticleInfoState(doc),
     journalMeta: {
       publisherName: getTextContentFromPath(doc, 'journal-meta publisher publisher-name'),
       issn: getTextContentFromPath(doc, 'journal-meta issn')

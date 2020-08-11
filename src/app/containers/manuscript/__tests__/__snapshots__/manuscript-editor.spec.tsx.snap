@@ -327,6 +327,20 @@ exports[`manuscript editor should render 1`] = `
         >
           <div>
             <strong>
+               Subject: 
+            </strong>
+             
+            
+          </div>
+          <div>
+            <strong>
+               Article type: 
+            </strong>
+             
+            
+          </div>
+          <div>
+            <strong>
                Article DOI: 
             </strong>
              
@@ -348,10 +362,27 @@ exports[`manuscript editor should render 1`] = `
           </div>
           <div>
             <strong>
+               Year: 
+            </strong>
+             
+            Invalid date
+          </div>
+          <div>
+            <strong>
                Volume: 
             </strong>
              
             
+          </div>
+          <div>
+             
+          </div>
+          <div>
+            <strong>
+               Published: 
+            </strong>
+             
+            Invalid date
           </div>
         </section>
         <button
