@@ -17,7 +17,7 @@ import { makeSchemaFromConfig } from 'app/models/utils';
 import { SelectPlugin } from './plugins/selection.plugin';
 import { PlaceholderPlugin } from 'app/models/plugins/placeholder.plugin';
 
-export function createTitleState(content: Node): EditorState {
+export function createTitleState(content: Element): EditorState {
   const schema = makeSchemaFromConfig(titleConfig.topNode, titleConfig.nodes, titleConfig.marks);
 
   const xmlContentDocument = document.implementation.createDocument('', '', null);
@@ -33,7 +33,7 @@ export function createTitleState(content: Node): EditorState {
   });
 }
 
-export function createAbstractState(content: Node): EditorState {
+export function createAbstractState(content: Element): EditorState {
   const schema = makeSchemaFromConfig(abstractConfig.topNode, abstractConfig.nodes, abstractConfig.marks);
   const xmlContentDocument = document.implementation.createDocument('', '', null);
 
@@ -48,7 +48,7 @@ export function createAbstractState(content: Node): EditorState {
   });
 }
 
-export function createImpactStatementState(content: Node): EditorState {
+export function createImpactStatementState(content: Element): EditorState {
   const schema = makeSchemaFromConfig(abstractConfig.topNode, abstractConfig.nodes, abstractConfig.marks);
   const xmlContentDocument = document.implementation.createDocument('', '', null);
 
@@ -63,7 +63,14 @@ export function createImpactStatementState(content: Node): EditorState {
   });
 }
 
-export function createAcknowledgementsState(content: Node): EditorState {
+export function createAcknowledgementsState(content?: Element): EditorState {
+  if (content) {
+    const ackTitle = content.querySelector('title');
+    if (ackTitle) {
+      content.removeChild(ackTitle);
+    }
+  }
+
   const schema = makeSchemaFromConfig(
     acknowledgementsConfig.topNode,
     acknowledgementsConfig.nodes,
