@@ -50,7 +50,7 @@ export const ArticleInfoFormDialog: React.FC<{}> = () => {
           fullWidth
           name="articleDOI"
           label="Article DOI"
-          classes={{ root: classNames(classes.inputField, formGrid.fullWidth) }}
+          classes={{ root: formGrid.fullWidth }}
           InputLabelProps={labelProps}
           variant="outlined"
           multiline
@@ -61,7 +61,7 @@ export const ArticleInfoFormDialog: React.FC<{}> = () => {
           fullWidth
           name="publisherId"
           label="Publisher ID"
-          classes={{ root: classNames(classes.inputField, formGrid.fullWidth) }}
+          classes={{ root: formGrid.fullWidth }}
           InputLabelProps={labelProps}
           variant="outlined"
           multiline
@@ -72,7 +72,7 @@ export const ArticleInfoFormDialog: React.FC<{}> = () => {
           fullWidth
           name="elocationId"
           label="eLocation ID"
-          classes={{ root: classNames(classes.inputField, formGrid.fullWidth) }}
+          classes={{ root: formGrid.fullWidth }}
           InputLabelProps={labelProps}
           variant="outlined"
           multiline
@@ -83,7 +83,7 @@ export const ArticleInfoFormDialog: React.FC<{}> = () => {
           fullWidth
           name="volume"
           label="Volume"
-          classes={{ root: classNames(classes.inputField, formGrid.firstCol) }}
+          classes={{ root: formGrid.firstCol }}
           InputLabelProps={labelProps}
           variant="outlined"
           multiline
