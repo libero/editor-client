@@ -33,11 +33,6 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
   const relatedArticles = doc.querySelectorAll('related-article');
   const acknowledgements = doc.querySelector('ack');
 
-  const ackTitle = acknowledgements.querySelector('title');
-  if (ackTitle) {
-    acknowledgements.removeChild(ackTitle);
-  }
-
   return {
     title: createTitleState(title),
     abstract: createAbstractState(abstract),
