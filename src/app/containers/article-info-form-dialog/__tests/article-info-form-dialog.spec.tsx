@@ -17,7 +17,6 @@ jest.mock('app/components/select', () => ({
   Select: ({ onChange, value }) => <input onChange={onChange} value={value} data-cmp="Select" />
 }));
 
-
 describe('Article Info Form Dialog', () => {
   const mockStore = configureMockStore([]);
   let mockState;
