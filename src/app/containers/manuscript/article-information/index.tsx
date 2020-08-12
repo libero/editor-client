@@ -27,7 +27,7 @@ export const ArticleInformation: React.FC<{}> = () => {
     <SectionContainer label="Article information" className={classes.sectionContainer}>
       <section className={classes.infoSection}>
         <div>
-          <strong> Subject: </strong> {articleInfo.subjects.join(', ')}
+          <strong> Subject(s): </strong> {articleInfo.subjects.join(', ')}
         </div>
         <div>
           <strong> Article type: </strong> {articleInfo.articleType}
@@ -42,20 +42,14 @@ export const ArticleInformation: React.FC<{}> = () => {
           <strong> eLocation ID: </strong> {articleInfo.elocationId}
         </div>
         <div>
-          <strong> Year: </strong> {publicationDate.format('YYYY')}
+          <strong> Year: </strong> {publicationDate.isValid() ? publicationDate.format('YYYY') : ''}
         </div>
         <div>
           <strong> Volume: </strong> {articleInfo.volume}
         </div>
         <div>&nbsp;</div>
         <div>
-          <strong> Published: </strong> {publicationDate.format('MMMM D, YYYY')}
-        </div>
-        <div>
-          <strong> eLocation ID: </strong> {articleInfo.elocationId}
-        </div>
-        <div>
-          <strong> Volume: </strong> {articleInfo.volume}
+          <strong> Published: </strong> {publicationDate.isValid() ? publicationDate.format('MMMM D, YYYY') : ''}
         </div>
       </section>
       <IconButton classes={{ root: classes.editButton }} onClick={editArticleInfo}>

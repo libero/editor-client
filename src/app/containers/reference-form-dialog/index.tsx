@@ -5,6 +5,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import classNames from 'classnames';
 import { IconButton } from '@material-ui/core';
 import { EditorState } from 'prosemirror-state';
+import { Alert } from '@material-ui/lab';
 
 import {
   createBlankReference,
@@ -149,7 +150,7 @@ export const ReferenceFormDialog: React.FC<ReferenceFormDialogProps> = ({ refere
     const config = missingFieldsConfig[key];
     return (
       <div className={classNames(classes.missingFieldsRow, classes.inputField)}>
-        {renderFormControl(config.type, config.label, key, '', value, handleMissingFieldsInfoChange)}
+        {renderFormControl(config.type, config.label, key, '', value, handleMissingFieldsInfoChange, true)}
         <IconButton classes={{ root: classes.deleteButton }} onClick={handleDeleteRow(key)}>
           <DeleteIcon fontSize="small" />
         </IconButton>
@@ -194,7 +195,9 @@ export const ReferenceFormDialog: React.FC<ReferenceFormDialogProps> = ({ refere
       <div className={classNames(classes.inputField, refFormGrid.container)}>{form}</div>
       {diffForm.length > 0 ? (
         <div className={classes.missingFieldsSection}>
-          <span className={classes.warningMessage}>Unsupported elements for reference type</span>
+          <Alert elevation={0} variant="filled" severity="error" classes={{ root: classes.missingFieldsMessage }}>
+            Unsupported elements for reference type
+          </Alert>
           {diffForm}
         </div>
       ) : undefined}
@@ -236,7 +239,7 @@ function getDiffFieldValues(
 function getDiffFieldsConfig(prevType: ReferenceType, nextType: ReferenceType): Record<string, FormControlConfigType> {
   const prevConfig = getFormConfigForType(prevType);
   const nextConfig = getFormConfigForType(nextType);
-  const diffKeys = Object.keys(prevConfig).filter((key: ReferenceType) => !has(nextConfig, key));
+  const diffKeys = Object.keys(prevConfig).filter((key: ReferenceType) => !Boolean(nextConfig[key]));
   return pick(prevConfig, diffKeys);
 }
 

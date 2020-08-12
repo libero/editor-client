@@ -27,6 +27,7 @@ interface RefContributorInputProps {
 }
 
 const labelProps = { shrink: true };
+const inputProps = { autocomplete: 'off' };
 
 const isGroupRefContributor = (refContributor: ReferenceContributor) => {
   return has(refContributor, 'groupName');
@@ -50,6 +51,7 @@ const renderRefContributorForm = (classes, refContributor, handleFormChange) => 
       label="Surname(s)"
       classes={{ root: classes.lastName }}
       InputLabelProps={labelProps}
+      inputProps={inputProps}
       variant="outlined"
       value={refContributor['lastName']}
       onChange={handleFormChange}
@@ -59,6 +61,7 @@ const renderRefContributorForm = (classes, refContributor, handleFormChange) => 
       name="firstName"
       label="Given name"
       InputLabelProps={labelProps}
+      inputProps={inputProps}
       variant="outlined"
       value={refContributor['firstName']}
       onChange={handleFormChange}
@@ -72,6 +75,7 @@ const renderGroupForm = (classes, refGroup, handleFormChange) => (
     name="groupName"
     label="Group Name"
     InputLabelProps={labelProps}
+    inputProps={inputProps}
     variant="outlined"
     value={refGroup['groupName']}
     onChange={handleFormChange}
@@ -143,6 +147,10 @@ export const ReferenceContributorsList: React.FC<ReferenceRefContributorsListPro
   refContributors,
   onChange
 }) => {
+  if (!refContributors.length) {
+    refContributors = [{ firstName: '', lastName: '' }];
+  }
+
   const handleRefContributorChange = useCallback(
     (index: number) => (refContributor: ReferenceContributor) => {
       const updatedRefContributorsList = [...refContributors];

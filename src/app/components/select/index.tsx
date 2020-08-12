@@ -11,7 +11,9 @@ interface SelectProps {
   blankValue?: SelectValueType;
   className?: string;
   label?: string;
+  canUnselect?: boolean;
   fullWidth?: boolean;
+  error?: boolean;
   placeholder?: string;
   value?: SelectValueType;
   options: Array<{ label: string; value: SelectValueType }>;
@@ -19,7 +21,7 @@ interface SelectProps {
 }
 
 export const Select: React.FC<SelectProps> = React.memo(
-  ({ fullWidth, placeholder, name, className, label, value, options, onChange, blankValue }) => {
+  ({ fullWidth, placeholder, name, className, label, value, options, onChange, blankValue, canUnselect, error }) => {
     const classes = useSelectComponentStyles();
     const labelId = getNextId();
     const muiOptions = options.map((option) => ({
@@ -33,7 +35,7 @@ export const Select: React.FC<SelectProps> = React.memo(
         muiValue: getNextId(),
         label: placeholder,
         value: blankValue,
-        disabled: true
+        disabled: !canUnselect
       });
     }
 
@@ -55,7 +57,7 @@ export const Select: React.FC<SelectProps> = React.memo(
       [muiOptions, onChange]
     );
     return (
-      <FormControl variant="outlined" className={className} fullWidth={fullWidth}>
+      <FormControl variant="outlined" className={className} fullWidth={fullWidth} error={error}>
         <InputLabel shrink id={labelId}>
           {label}
         </InputLabel>
