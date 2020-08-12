@@ -142,10 +142,10 @@ export function createArticleInfoState(doc: Document): ArticleInformation {
   return {
     articleType: doc.querySelector('article').getAttribute('article-type'),
     dtd: doc.querySelector('article').getAttribute('dtd-version'),
-    articleDOI: getTextContentFromPath(doc, 'article-id[pub-id-type="doi"]'),
-    elocationId: getTextContentFromPath(doc, 'elocation-id'),
-    volume: getTextContentFromPath(doc, 'volume'),
-    publisherId: getTextContentFromPath(doc, 'article-id[pub-id-type="publisher-id"]'),
+    articleDOI: getTextContentFromPath(doc, 'article-meta article-id[pub-id-type="doi"]'),
+    elocationId: getTextContentFromPath(doc, 'article-meta elocation-id'),
+    volume: getTextContentFromPath(doc, 'article-meta volume'),
+    publisherId: getTextContentFromPath(doc, 'article-meta article-id[pub-id-type="publisher-id"]'),
     subjects: subjects,
     publicationDate
   };

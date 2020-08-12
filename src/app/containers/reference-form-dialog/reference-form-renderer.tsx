@@ -14,6 +14,7 @@ interface ReferenceInputTypeProps<T> {
   className?: string;
   value: T;
   onChange: RefInfoChangeCallback<T>;
+  error?: boolean;
 }
 
 export const StringInput: React.FC<ReferenceInputTypeProps<string>> = (props) => {
@@ -37,6 +38,7 @@ export const StringInput: React.FC<ReferenceInputTypeProps<string>> = (props) =>
       variant="outlined"
       value={props.value}
       onChange={handleChange}
+      error={props.error}
     />
   );
 };
@@ -63,6 +65,7 @@ export const DateInput: React.FC<ReferenceInputTypeProps<string>> = (props) => {
       variant="outlined"
       value={props.value}
       onChange={handleChange}
+      error={props.error}
     />
   );
 };
@@ -158,6 +161,7 @@ export const TextInput: React.FC<ReferenceInputTypeProps<EditorState>> = (props)
       onChange={handleChange}
       label={props.label}
       className={props.className}
+      error={props.error}
     />
   );
 };
@@ -188,7 +192,8 @@ export function renderFormControl<T>(
   name: string,
   className: string,
   value: T,
-  onChange: RefInfoChangeCallback<T>
+  onChange: RefInfoChangeCallback<T>,
+  error: boolean = false
 ): React.ReactElement {
   const Component = {
     string: StringInput,
@@ -204,6 +209,6 @@ export function renderFormControl<T>(
     return;
   }
 
-  const props = { label, name, value, onChange, className };
+  const props = { label, name, value, onChange, className, error };
   return <Component {...props} />;
 }

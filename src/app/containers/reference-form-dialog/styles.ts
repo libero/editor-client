@@ -4,8 +4,11 @@ export const useReferenceContributorStyles = makeStyles((theme) => ({
   contributorInputFields: {
     display: 'flex',
     zIndex: theme.zIndex.modal + 1,
-    alignItems: 'center',
     marginTop: theme.spacing(2.5),
+    alignItems: 'center',
+    '&:first-child': {
+      marginTop: theme.spacing(0)
+    },
     '& > .drag-handle': {
       cursor: 'grab',
       width: 10,
@@ -40,14 +43,15 @@ export const useReferenceFormStyles = makeStyles((theme) => ({
   },
   missingFieldsSection: {
     marginTop: theme.spacing(2.5),
-    borderColor: theme.palette.error.main
+    marginBottom: theme.spacing(2)
+  },
+  missingFieldsMessage: {
+    marginTop: theme.spacing(0.5),
+    marginBottom: theme.spacing(3)
   },
   missingFieldsRow: {
     display: 'flex',
     alignItems: 'flex-start'
-  },
-  warningMessage: {
-    color: theme.palette.error.main
   },
   deleteButton: {
     height: 32,

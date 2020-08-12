@@ -14,10 +14,11 @@ interface RichTextInputProps {
   name: string;
   className?: string;
   label: string;
+  error?: boolean;
   onChange(value: Transaction): void;
 }
 
-export const RichTextInput: React.FC<RichTextInputProps> = ({ label, onChange, editorState, className }) => {
+export const RichTextInput: React.FC<RichTextInputProps> = ({ label, onChange, editorState, className, error }) => {
   const [isFocused, setFocused] = useState(false);
   const classes = useRichTextInputStyles();
   const prosemirrorEditorView = useRef();
@@ -48,7 +49,7 @@ export const RichTextInput: React.FC<RichTextInputProps> = ({ label, onChange, e
       focused={isFocused}
       variant="outlined"
       label={label}
-      className={classNames(classes.container, className)}
+      className={classNames(classes.container, className, { [classes.errorState]: error })}
     >
       <ToggleButtonGroup classes={{ root: classNames(classes.toolbar, { [classes.hideToolbar]: !isFocused }) }}>
         {editorView ? getMenuForEditor(editorState, editorView) : undefined}

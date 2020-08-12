@@ -89,6 +89,7 @@ export const ArticleInfoFormDialog: React.FC<{}> = () => {
           name="subjects.0"
           placeholder="Please select"
           fullWidth
+          canUnselect={true}
           blankValue={undefined}
           label="Subject *"
           value={userArticleInfo.subjects[0]}
@@ -100,6 +101,7 @@ export const ArticleInfoFormDialog: React.FC<{}> = () => {
           name="subjects.1"
           placeholder="Please select"
           fullWidth
+          canUnselect={true}
           blankValue={undefined}
           label="Subject"
           value={userArticleInfo.subjects[1]}

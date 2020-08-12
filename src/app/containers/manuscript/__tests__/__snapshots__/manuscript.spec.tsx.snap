@@ -197,7 +197,7 @@ Array [
           >
             <div>
               <strong>
-                 Subject: 
+                 Subject(s): 
               </strong>
                
               
@@ -235,7 +235,7 @@ Array [
                  Year: 
               </strong>
                
-              Invalid date
+              
             </div>
             <div>
               <strong>
@@ -250,20 +250,6 @@ Array [
             <div>
               <strong>
                  Published: 
-              </strong>
-               
-              Invalid date
-            </div>
-            <div>
-              <strong>
-                 eLocation ID: 
-              </strong>
-               
-              
-            </div>
-            <div>
-              <strong>
-                 Volume: 
               </strong>
                
               
