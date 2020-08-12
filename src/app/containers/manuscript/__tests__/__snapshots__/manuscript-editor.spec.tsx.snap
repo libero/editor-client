@@ -327,17 +327,17 @@ exports[`manuscript editor should render 1`] = `
         >
           <div>
             <strong>
-               Subject:
+               Subject: 
             </strong>
-
-
+             
+            
           </div>
           <div>
             <strong>
-               Article type:
+               Article type: 
             </strong>
-
-
+             
+            
           </div>
           <div>
             <strong>
@@ -355,48 +355,48 @@ exports[`manuscript editor should render 1`] = `
           </div>
           <div>
             <strong>
-               eLocation ID:
+               eLocation ID: 
             </strong>
-
-
+             
+            
           </div>
           <div>
             <strong>
-               Year:
+               Year: 
             </strong>
-
+             
             Invalid date
           </div>
           <div>
             <strong>
-               Volume:
+               Volume: 
             </strong>
-
-
+             
+            
           </div>
           <div>
              
           </div>
           <div>
             <strong>
-               Published:
+               Published: 
             </strong>
-
+             
             Invalid date
           </div>
           <div>
             <strong>
-               eLocation ID:
+               eLocation ID: 
             </strong>
-
-
+             
+            
           </div>
           <div>
             <strong>
-               Volume:
+               Volume: 
             </strong>
-
-
+             
+            
           </div>
         </section>
         <button
