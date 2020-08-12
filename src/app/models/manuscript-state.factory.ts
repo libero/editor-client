@@ -11,9 +11,9 @@ import * as abstractConfig from './config/abstract.config';
 import * as acknowledgementsConfig from './config/acknowledgements.config';
 
 import { buildInputRules } from './plugins/input-rules';
-import { ArticleInformation, KeywordGroups } from './manuscript';
+import { KeywordGroups } from './manuscript';
 import { createReference, Reference } from 'app/models/reference';
-import { getTextContentFromPath, makeSchemaFromConfig } from 'app/models/utils';
+import { makeSchemaFromConfig } from 'app/models/utils';
 import { SelectPlugin } from './plugins/selection.plugin';
 import { PlaceholderPlugin } from 'app/models/plugins/placeholder.plugin';
 
@@ -122,31 +122,4 @@ function createKeywordState(keyword?: Element): EditorState {
     schema,
     plugins: [buildInputRules(), gapCursor(), dropCursor(), keymap(baseKeymap)]
   });
-}
-
-export function createArticleInfoState(doc: Document): ArticleInformation {
-  const subjects = Array.from(doc.querySelectorAll('subj-group[subj-group-type="subject"] subject')).map(
-    (el: Element) => el.textContent
-  );
-
-  let publicationDate = '';
-  const pubDateNode = doc.querySelector('pub-date[date-type="pub"][publication-format="electronic"]');
-  if (pubDateNode) {
-    publicationDate = [
-      pubDateNode.querySelector('year').textContent,
-      pubDateNode.querySelector('month').textContent,
-      pubDateNode.querySelector('day').textContent
-    ].join('-');
-  }
-
-  return {
-    articleType: doc.querySelector('article').getAttribute('article-type'),
-    dtd: doc.querySelector('article').getAttribute('dtd-version'),
-    articleDOI: getTextContentFromPath(doc, 'article-meta article-id[pub-id-type="doi"]'),
-    elocationId: getTextContentFromPath(doc, 'article-meta elocation-id'),
-    volume: getTextContentFromPath(doc, 'article-meta volume'),
-    publisherId: getTextContentFromPath(doc, 'article-meta article-id[pub-id-type="publisher-id"]'),
-    subjects: subjects,
-    publicationDate
-  };
 }

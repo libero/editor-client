@@ -10,7 +10,9 @@ import { useArticleInfoFormStyles } from 'app/containers/article-info-form-dialo
 import { getArticleInformation } from 'app/selectors/manuscript.selectors';
 import formGrid from 'app/styles/form-grid.module.scss';
 import { Select } from 'app/components/select';
-import { ArticleInformation } from 'app/models/manuscript';
+import { ArticleInformation } from 'app/models/article-information';
+import { SectionContainer } from 'app/components/section-container';
+import { stringifyEditorState } from 'app/utils/view.utils';
 
 const labelProps = { shrink: true };
 
@@ -159,6 +161,26 @@ export const ArticleInfoFormDialog: React.FC<{}> = () => {
           value={userArticleInfo.publicationDate}
           onChange={handleFormChange}
         />
+        <Select
+          className={formGrid.fullWidth}
+          name="licenseType"
+          placeholder="Please select"
+          fullWidth
+          blankValue={undefined}
+          label="License type"
+          value={userArticleInfo.licenseType}
+          onChange={handleSubjectChange}
+          options={[
+            { label: 'CC-BY-4', value: 'CC-BY-4' },
+            { label: 'CC0', value: 'CC0' }
+          ]}
+        />
+        <SectionContainer label="Copyright statement" variant="outlined" className={formGrid.fullWidth}>
+          {userArticleInfo.copyrightStatement}
+        </SectionContainer>
+        <SectionContainer label="Permissions" variant="outlined" className={formGrid.fullWidth}>
+          <div dangerouslySetInnerHTML={{ __html: stringifyEditorState(userArticleInfo.licenseText) }} />
+        </SectionContainer>
       </div>
       <div className={classes.buttonPanel}>
         <ActionButton variant="secondaryOutlined" onClick={closeDialog} title="Cancel" />

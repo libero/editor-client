@@ -9,6 +9,7 @@ import { useArticleInformationStyles } from 'app/containers/manuscript/article-i
 import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
 import { ArticleInfoFormDialog } from 'app/containers/article-info-form-dialog';
 import moment from 'moment';
+import {stringifyEditorState} from "app/utils/view.utils";
 
 export const ArticleInformation: React.FC<{}> = () => {
   const articleInfo = useSelector(getArticleInformation);
@@ -51,6 +52,9 @@ export const ArticleInformation: React.FC<{}> = () => {
         <div>
           <strong> Published: </strong> {publicationDate.isValid() ? publicationDate.format('MMMM D, YYYY') : ''}
         </div>
+        <div>&nbsp;</div>
+        <div>{articleInfo.copyrightStatement}</div>
+        <div dangerouslySetInnerHTML={{ __html: stringifyEditorState(articleInfo.licenseText) }} />
       </section>
       <IconButton classes={{ root: classes.editButton }} onClick={editArticleInfo}>
         <EditIcon fontSize="small" />

@@ -28,7 +28,10 @@ export function givenState(overrides: Partial<Manuscript>): ManuscriptHistorySta
         volume: '',
         elocationId: '',
         subjects: [],
-        publicationDate: ''
+        publicationDate: '',
+        licenseType: 'CC0',
+        copyrightStatement: '',
+        licenseText: createDummyEditorState()
       },
       references: [],
       ...overrides

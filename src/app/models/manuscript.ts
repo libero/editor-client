@@ -4,6 +4,7 @@ import { Person } from './person';
 import { Affiliation } from 'app/models/affiliation';
 import { Reference } from 'app/models/reference';
 import { RelatedArticle } from 'app/models/related-article';
+import { ArticleInformation } from 'app/models/article-information';
 
 export interface KeywordGroups {
   [keywordType: string]: {
@@ -11,17 +12,6 @@ export interface KeywordGroups {
     keywords: EditorState[];
     newKeyword: EditorState;
   };
-}
-
-export interface ArticleInformation {
-  articleType: string;
-  dtd: string;
-  articleDOI: string;
-  publisherId: string;
-  volume: string;
-  elocationId: string;
-  subjects: Array<string>;
-  publicationDate: string;
 }
 
 interface JournalMeta {

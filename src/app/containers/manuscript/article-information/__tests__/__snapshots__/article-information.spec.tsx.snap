@@ -71,6 +71,19 @@ exports[`Article information renders article information 1`] = `
        
       
     </div>
+    <div>
+       
+    </div>
+    <div>
+      
+    </div>
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "",
+        }
+      }
+    />
   </section>
   <div
     data-cmp="IconButton"

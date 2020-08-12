@@ -6,13 +6,13 @@ import {
   createAbstractState,
   createReferencesState,
   createImpactStatementState,
-  createAcknowledgementsState,
-  createArticleInfoState
+  createAcknowledgementsState
 } from 'app/models/manuscript-state.factory';
 import { createAuthorsState } from 'app/models/person';
 import { createAffiliationsState } from 'app/models/affiliation';
 import { getTextContentFromPath } from 'app/models/utils';
 import { createRelatedArticleState } from 'app/models/related-article';
+import {createArticleInfoState} from "app/models/article-information";
 
 const manuscriptUrl = (id: string): string => {
   return process.env.NODE_ENV === 'development' ? `./manuscripts/${id}/manuscript.xml` : `/api/v1/articles/${id}/`;
