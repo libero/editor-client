@@ -25,6 +25,18 @@ exports[`Article information renders article information 1`] = `
       </strong>
        
     </div>
+    <div>
+      <strong>
+         eLocation ID: 
+      </strong>
+       
+    </div>
+    <div>
+      <strong>
+         Volume: 
+      </strong>
+       
+    </div>
   </section>
   <div
     data-cmp="IconButton"

@@ -339,6 +339,20 @@ exports[`manuscript editor should render 1`] = `
              
             
           </div>
+          <div>
+            <strong>
+               eLocation ID: 
+            </strong>
+             
+            
+          </div>
+          <div>
+            <strong>
+               Volume: 
+            </strong>
+             
+            
+          </div>
         </section>
         <button
           className="MuiButtonBase-root MuiIconButton-root makeStyles-editButton-29"

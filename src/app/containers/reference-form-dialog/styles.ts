@@ -5,7 +5,7 @@ export const useReferenceContributorStyles = makeStyles((theme) => ({
     display: 'flex',
     zIndex: theme.zIndex.modal + 1,
     alignItems: 'center',
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(2.5),
     '& > .drag-handle': {
       cursor: 'grab',
       width: 10,

@@ -16,7 +16,7 @@ import { RichTextInput } from 'app/components/rich-text-input';
 import { OrcidIcon } from 'app/assets/icons';
 import { Select } from 'app/components/select';
 import { ValueOf } from 'app/utils/types';
-import {objectsEqual} from "app/utils/view.utils";
+import { objectsEqual } from 'app/utils/view.utils';
 
 interface AuthorFormDialogProps {
   author?: Person;

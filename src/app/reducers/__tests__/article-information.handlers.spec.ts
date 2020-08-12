@@ -11,11 +11,15 @@ describe('article information handler', () => {
       articleDOI: 'newID',
       dtd: '1',
       publisherId: '12345',
-      articleType: 'insight-article'
+      articleType: 'insight-article',
+      elocationId: '',
+      volume: ''
     };
     const updatedState = cloneDeep(state);
     updatedState.data.present.articleInfo = updatedInfo;
-    updatedState.data.past = [{ articleInfo: { articleDOI: '', dtd: '', articleType: '', publisherId: '' } }];
+    updatedState.data.past = [
+      { articleInfo: { articleDOI: '', dtd: '', articleType: '', publisherId: '', elocationId: '', volume: '' } }
+    ];
 
     const newState = updateArticleInformation(state, updatedInfo);
     expect(newState).toEqual(updatedState);

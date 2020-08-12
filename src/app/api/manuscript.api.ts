@@ -47,6 +47,8 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
       articleType: doc.querySelector('article').getAttribute('article-type'),
       dtd: doc.querySelector('article').getAttribute('dtd-version'),
       articleDOI: getTextContentFromPath(doc, 'article-id[pub-id-type="doi"]'),
+      elocationId: getTextContentFromPath(doc, 'elocation-id'),
+      volume: getTextContentFromPath(doc, 'volume'),
       publisherId: getTextContentFromPath(doc, 'article-id[pub-id-type="publisher-id"]')
     },
     journalMeta: {
