@@ -13,18 +13,21 @@ jest.mock('@material-ui/core', () => ({
   Button: () => <div data-cmp="Button"></div>
 }));
 
+jest.mock('app/components/select', () => ({
+  Select: ({ onChange, value }) => <input onChange={onChange} value={value} data-cmp="Select" />
+}));
+
 describe('Article Info Form Dialog', () => {
   const mockStore = configureMockStore([]);
   let mockState;
 
   beforeEach(() => {
-    mockState = givenState({
-      articleInfo: {
-        articleDOI: '',
-        dtd: '1',
-        articleType: '',
-        publisherId: ''
-      }
+    mockState = givenState({});
+    Object.assign(mockState.data.present.articleInfo, {
+      articleDOI: '',
+      dtd: '1',
+      articleType: '',
+      publisherId: ''
     });
   });
 

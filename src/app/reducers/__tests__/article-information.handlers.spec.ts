@@ -11,14 +11,27 @@ describe('article information handler', () => {
       articleDOI: 'newID',
       dtd: '1',
       publisherId: '12345',
+      publicationDate: '',
       articleType: 'insight-article',
       elocationId: '',
+      subjects: [],
       volume: ''
     };
     const updatedState = cloneDeep(state);
     updatedState.data.present.articleInfo = updatedInfo;
     updatedState.data.past = [
-      { articleInfo: { articleDOI: '', dtd: '', articleType: '', publisherId: '', elocationId: '', volume: '' } }
+      {
+        articleInfo: {
+          articleDOI: '',
+          dtd: '',
+          articleType: '',
+          publisherId: '',
+          elocationId: '',
+          volume: '',
+          subjects: [],
+          publicationDate: ''
+        }
+      }
     ];
 
     const newState = updateArticleInformation(state, updatedInfo);

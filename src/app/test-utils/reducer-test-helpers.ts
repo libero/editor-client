@@ -26,7 +26,9 @@ export function givenState(overrides: Partial<Manuscript>): ManuscriptHistorySta
         articleDOI: '',
         publisherId: '',
         volume: '',
-        elocationId: ''
+        elocationId: '',
+        subjects: [],
+        publicationDate: ''
       },
       references: [],
       ...overrides

@@ -20,6 +20,8 @@ export interface ArticleInformation {
   publisherId: string;
   volume: string;
   elocationId: string;
+  subjects: Array<string>;
+  publicationDate: string;
 }
 
 interface JournalMeta {
