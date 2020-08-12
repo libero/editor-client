@@ -11,6 +11,7 @@ import { getArticleInformation } from 'app/selectors/manuscript.selectors';
 import formGrid from 'app/styles/form-grid.module.scss';
 import { Select } from 'app/components/select';
 import { ArticleInformation } from 'app/models/manuscript';
+import formGrid from 'app/styles/form-grid.module.scss';
 
 const labelProps = { shrink: true };
 

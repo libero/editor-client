@@ -51,6 +51,12 @@ export const ArticleInformation: React.FC<{}> = () => {
         <div>
           <strong> Published: </strong> {publicationDate.format('MMMM D, YYYY')}
         </div>
+        <div>
+          <strong> eLocation ID: </strong> {articleInfo.elocationId}
+        </div>
+        <div>
+          <strong> Volume: </strong> {articleInfo.volume}
+        </div>
       </section>
       <IconButton classes={{ root: classes.editButton }} onClick={editArticleInfo}>
         <EditIcon fontSize="small" />
