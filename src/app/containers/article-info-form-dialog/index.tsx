@@ -7,10 +7,16 @@ import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions'
 import * as manuscriptActions from 'app/actions/manuscript.actions';
 import { ActionButton } from 'app/components/action-button';
 import { useArticleInfoFormStyles } from 'app/containers/article-info-form-dialog/styles';
-import { getArticleInformation } from 'app/selectors/manuscript.selectors';
+import { getArticleInformation, getAuthors } from 'app/selectors/manuscript.selectors';
 import formGrid from 'app/styles/form-grid.module.scss';
 import { Select } from 'app/components/select';
-import { ArticleInformation } from 'app/models/article-information';
+import {
+  ArticleInformation,
+  getCopyrightStatement,
+  getLicenseTextEditorState,
+  LICENSE_CC0,
+  LICENSE_CC_BY_4
+} from 'app/models/article-information';
 import { SectionContainer } from 'app/components/section-container';
 import { stringifyEditorState } from 'app/utils/view.utils';
 
@@ -43,7 +49,7 @@ export const ArticleInfoFormDialog: React.FC<{}> = () => {
   const articleInfo = useSelector(getArticleInformation);
 
   const [userArticleInfo, setArticleInfo] = useState<ArticleInformation>(articleInfo);
-
+  const authors = useSelector(getAuthors);
   const closeDialog = useCallback(() => {
     dispatch(manuscriptEditorActions.hideModalDialog());
   }, [dispatch]);
@@ -74,6 +80,21 @@ export const ArticleInfoFormDialog: React.FC<{}> = () => {
       setArticleInfo(updatedArticleInfo);
     },
     [userArticleInfo, setArticleInfo]
+  );
+
+  const handleLicenseTypeChange = useCallback(
+    (event: ChangeEvent<{ name: string; value: string }>) => {
+      const newLicenseType = event.target['value'];
+      const updatedArticleInfo = {
+        ...userArticleInfo,
+        licenseType: newLicenseType,
+        licenseText: getLicenseTextEditorState(newLicenseType),
+        copyrightStatement:
+          newLicenseType === LICENSE_CC_BY_4 ? getCopyrightStatement(authors, userArticleInfo.publicationDate) : ''
+      };
+      setArticleInfo(updatedArticleInfo);
+    },
+    [userArticleInfo, authors]
   );
 
   const handleAccept = useCallback(() => {
@@ -163,21 +184,22 @@ export const ArticleInfoFormDialog: React.FC<{}> = () => {
         />
         <Select
           className={formGrid.fullWidth}
-          name="licenseType"
           placeholder="Please select"
           fullWidth
           blankValue={undefined}
           label="License type"
           value={userArticleInfo.licenseType}
-          onChange={handleSubjectChange}
+          onChange={handleLicenseTypeChange}
           options={[
-            { label: 'CC-BY-4', value: 'CC-BY-4' },
-            { label: 'CC0', value: 'CC0' }
+            { label: LICENSE_CC_BY_4, value: LICENSE_CC_BY_4 },
+            { label: LICENSE_CC0, value: LICENSE_CC0 }
           ]}
         />
-        <SectionContainer label="Copyright statement" variant="outlined" className={formGrid.fullWidth}>
-          {userArticleInfo.copyrightStatement}
-        </SectionContainer>
+        {userArticleInfo.licenseType === LICENSE_CC_BY_4 ? (
+          <SectionContainer label="Copyright statement" variant="outlined" className={formGrid.fullWidth}>
+            {userArticleInfo.copyrightStatement}
+          </SectionContainer>
+        ) : undefined}
         <SectionContainer label="Permissions" variant="outlined" className={formGrid.fullWidth}>
           <div dangerouslySetInnerHTML={{ __html: stringifyEditorState(userArticleInfo.licenseText) }} />
         </SectionContainer>

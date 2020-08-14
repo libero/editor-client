@@ -3,6 +3,8 @@ import { Person } from 'app/models/person';
 import { ManuscriptHistoryState } from 'app/store';
 import { MoveAuthorPayload } from 'app/actions/manuscript.actions';
 import { getReorderedAffiliations } from 'app/reducers/affiliations.handlers';
+import { getCopyrightStatement, LICENSE_CC_BY_4 } from 'app/models/article-information';
+import { Manuscript } from 'app/models/manuscript';
 
 export function updateAuthor(state: ManuscriptHistoryState, payload: Person): ManuscriptHistoryState {
   const authorIndex = state.data.present.authors.findIndex(({ id }) => id === payload.id);
@@ -50,15 +52,23 @@ export function moveAuthor(state: ManuscriptHistoryState, payload: MoveAuthorPay
   const { index, author } = payload;
   const currentIndex = state.data.present.authors.findIndex(({ id }) => id === author.id);
 
-  const newDiff = {
-    authors: state.data.present.authors,
-    affiliations: state.data.present.affiliations
-  };
-
   const newManuscript = cloneManuscript(state.data.present);
   newManuscript.authors.splice(currentIndex, 1);
   newManuscript.authors.splice(index, 0, author);
   newManuscript.affiliations = getReorderedAffiliations(newManuscript.authors, newManuscript.affiliations);
+
+  const newDiff: Partial<Manuscript> = {
+    authors: state.data.present.authors,
+    affiliations: state.data.present.affiliations
+  };
+
+  if (state.data.present.articleInfo.licenseType === LICENSE_CC_BY_4) {
+    newManuscript.articleInfo.copyrightStatement = getCopyrightStatement(
+      newManuscript.authors,
+      state.data.present.articleInfo.publicationDate
+    );
+    newDiff.articleInfo = state.data.present.articleInfo;
+  }
 
   return {
     ...state,
