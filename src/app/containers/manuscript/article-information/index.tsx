@@ -9,7 +9,7 @@ import { useArticleInformationStyles } from 'app/containers/manuscript/article-i
 import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
 import { ArticleInfoFormDialog } from 'app/containers/article-info-form-dialog';
 import moment from 'moment';
-import {stringifyEditorState} from "app/utils/view.utils";
+import { stringifyEditorState } from 'app/utils/view.utils';
 
 export const ArticleInformation: React.FC<{}> = () => {
   const articleInfo = useSelector(getArticleInformation);
