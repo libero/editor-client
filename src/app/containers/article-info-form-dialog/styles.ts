@@ -17,7 +17,6 @@ export const useArticleInfoFormStyles = makeStyles((theme) => ({
       marginLeft: theme.spacing(2)
     }
   },
-
   spacer: {
     flexGrow: 1
   }

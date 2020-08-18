@@ -1,6 +1,6 @@
 import { ManuscriptHistoryState } from 'app/store';
 import { cloneManuscript } from 'app/utils/state.utils';
-import { ArticleInformation } from 'app/models/manuscript';
+import { ArticleInformation } from 'app/models/article-information';
 
 export function updateArticleInformation(
   state: ManuscriptHistoryState,

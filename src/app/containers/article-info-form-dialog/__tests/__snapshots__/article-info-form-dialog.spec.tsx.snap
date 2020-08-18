@@ -30,6 +30,21 @@ exports[`Article Info Form Dialog renders edit article information dialog 1`] = 
     <div
       data-cmp="TextField"
     />
+    <input
+      data-cmp="Select"
+      onChange={[Function]}
+      value="CC0"
+    />
+    <div
+      className="fullWidth makeStyles-root-5 makeStyles-outlinedVariant-6"
+    >
+      <label
+        className="makeStyles-label-8"
+      >
+        Permissions
+      </label>
+      <span />
+    </div>
   </div>
   <div
     className="makeStyles-buttonPanel-3"

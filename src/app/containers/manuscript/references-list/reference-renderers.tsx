@@ -2,6 +2,8 @@ import React from 'react';
 import { EditorState } from 'prosemirror-state';
 import moment from 'moment';
 import { get } from 'lodash';
+import Interweave from 'interweave';
+
 import {
   BookReference,
   ConferenceReference,
@@ -23,7 +25,7 @@ const getAnnotatedText = (editorState: EditorState, suffix: string = '') => {
     const html = stringifyEditorState(editorState);
     return (
       <>
-        <span dangerouslySetInnerHTML={{ __html: html }} />
+        <Interweave content={html} />
         {suffix}
       </>
     );
