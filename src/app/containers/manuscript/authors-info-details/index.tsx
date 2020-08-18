@@ -3,6 +3,7 @@ import { IconButton } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
 import EditIcon from '@material-ui/icons/Edit';
 import { isBoolean, isEqual } from 'lodash';
+import Interweave from 'interweave';
 
 import { SectionContainer } from 'app/components/section-container';
 import { getAuthorAffiliations, getAuthors } from 'app/selectors/manuscript.selectors';
@@ -92,7 +93,9 @@ const AuthorInfo: React.FC<AuthorInfoProps> = React.memo(({ author }) => {
           </div>
         ) : undefined}
         {author.bio ? (
-          <div className={classes.authorBio} dangerouslySetInnerHTML={{ __html: stringifyEditorState(author.bio) }} />
+          <div className={classes.authorBio}>
+            <Interweave content={stringifyEditorState(author.bio)} />
+          </div>
         ) : undefined}
       </div>
       <IconButton classes={{ root: classes.editButton }} onClick={editAuthor}>

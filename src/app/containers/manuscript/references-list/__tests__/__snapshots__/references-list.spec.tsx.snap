@@ -24,22 +24,18 @@ exports[`References List renders the component 1`] = `
             . 
             2012
             . 
-            <span
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "Molecular architecture and assembly principles of <em>Vibrio cholerae</em> biofilms",
-                }
-              }
-            />
+            <span>
+              Molecular architecture and assembly principles of 
+              <em>
+                Vibrio cholerae
+              </em>
+               biofilms
+            </span>
             . 
             <em>
-              <span
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": "Science",
-                  }
-                }
-              />
+              <span>
+                Science
+              </span>
               
             </em>
              
@@ -64,22 +60,14 @@ exports[`References List renders the component 1`] = `
             . 
             2010
             . 
-            <span
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "The skull and brain",
-                }
-              }
-            />
+            <span>
+              The skull and brain
+            </span>
             . 
             <em>
-              <span
-                dangerouslySetInnerHTML={
-                  Object {
-                    "__html": "The skull and brain",
-                  }
-                }
-              />
+              <span>
+                The skull and brain
+              </span>
                
             </em>
              

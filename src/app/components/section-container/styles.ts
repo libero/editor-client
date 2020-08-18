@@ -5,6 +5,7 @@ export const useSectionContainerStyles = makeStyles((theme) => ({
     position: 'relative',
     padding: theme.spacing(2, 1, 1, 1.5),
     border: `solid 1px`,
+    lineHeight: '24px',
     borderRadius: theme.spacing(0.5),
     boxSizing: 'border-box',
     '&:hover': {
@@ -22,6 +23,7 @@ export const useSectionContainerStyles = makeStyles((theme) => ({
 
   label: {
     position: 'absolute',
+    lineHeight: '0.75rem',
     top: -5,
     left: theme.spacing(1),
     fontSize: '0.75rem',

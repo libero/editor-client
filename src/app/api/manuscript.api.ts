@@ -6,13 +6,13 @@ import {
   createAbstractState,
   createReferencesState,
   createImpactStatementState,
-  createAcknowledgementsState,
-  createArticleInfoState
+  createAcknowledgementsState
 } from 'app/models/manuscript-state.factory';
 import { createAuthorsState } from 'app/models/person';
 import { createAffiliationsState } from 'app/models/affiliation';
 import { getTextContentFromPath } from 'app/models/utils';
 import { createRelatedArticleState } from 'app/models/related-article';
+import { createArticleInfoState } from 'app/models/article-information';
 
 const manuscriptUrl = (id: string): string => {
   return process.env.NODE_ENV === 'development' ? `./manuscripts/${id}/manuscript.xml` : `/api/v1/articles/${id}/`;
@@ -34,17 +34,19 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
   const relatedArticles = doc.querySelectorAll('related-article');
   const acknowledgements = doc.querySelector('ack');
 
+  const authorsState = createAuthorsState(Array.from(authors), authorNotes);
+
   return {
     title: createTitleState(title),
     abstract: createAbstractState(abstract),
     impactStatement: createImpactStatementState(impactStatement),
     keywordGroups: createKeywordGroupsState(Array.from(keywordGroups)),
-    authors: createAuthorsState(Array.from(authors), authorNotes),
+    authors: authorsState,
     affiliations: createAffiliationsState(Array.from(affiliations)),
     references: createReferencesState(Array.from(references)),
     relatedArticles: createRelatedArticleState(Array.from(relatedArticles)),
     acknowledgements: createAcknowledgementsState(acknowledgements),
-    articleInfo: createArticleInfoState(doc),
+    articleInfo: createArticleInfoState(doc, authorsState),
     journalMeta: {
       publisherName: getTextContentFromPath(doc, 'journal-meta publisher publisher-name'),
       issn: getTextContentFromPath(doc, 'journal-meta issn')

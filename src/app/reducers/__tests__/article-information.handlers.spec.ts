@@ -8,6 +8,7 @@ describe('article information handler', () => {
   it('updates article info', () => {
     const state = givenState({});
     const updatedInfo = {
+      ...state.data.present.articleInfo,
       articleDOI: 'newID',
       dtd: '1',
       publisherId: '12345',
@@ -22,6 +23,7 @@ describe('article information handler', () => {
     updatedState.data.past = [
       {
         articleInfo: {
+          ...state.data.present.articleInfo,
           articleDOI: '',
           dtd: '',
           articleType: '',
