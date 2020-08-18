@@ -49,7 +49,7 @@ export const ReferenceFormDialog: React.FC<ReferenceFormDialogProps> = ({ refere
       const newRef = {
         ...userReference,
         type: event.target['value'],
-        referenceInfo: transferValues(userReference.referenceInfo, newRefInfo)
+        referenceInfo: transferValues(userReference.referenceInfo, newRefInfo, missingFieldsInfo)
       };
       if (userReference.referenceInfo) {
         setMissingFieldsInfo(getDiffFieldValues(userReference.referenceInfo, newRefInfo));
@@ -57,7 +57,7 @@ export const ReferenceFormDialog: React.FC<ReferenceFormDialogProps> = ({ refere
       }
       setReference(newRef);
     },
-    [userReference]
+    [userReference, missingFieldsInfo]
   );
 
   const closeDialog = useCallback(() => {
@@ -219,10 +219,15 @@ export const ReferenceFormDialog: React.FC<ReferenceFormDialogProps> = ({ refere
   );
 };
 
-function transferValues(prevRefInfo: ReferenceInfoType, nextRefInfo: ReferenceInfoType): ReferenceInfoType {
+function transferValues(
+  prevRefInfo: ReferenceInfoType,
+  nextRefInfo: ReferenceInfoType,
+  prevMissingInfo: Partial<ReferenceInfoType> = {}
+): ReferenceInfoType {
   Object.entries(nextRefInfo).forEach(([key, value]) => {
-    nextRefInfo[key] = get(prevRefInfo, key, value);
+    nextRefInfo[key] = get(prevRefInfo, key, get(prevMissingInfo, key, value));
   });
+
   return nextRefInfo;
 }
 
