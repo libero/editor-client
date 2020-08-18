@@ -260,13 +260,9 @@ Array [
             <div>
               
             </div>
-            <div
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "",
-                }
-              }
-            />
+            <div>
+              <span />
+            </div>
           </section>
         </div>
         <div

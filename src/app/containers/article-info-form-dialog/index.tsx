@@ -2,6 +2,7 @@ import React, { useCallback, SyntheticEvent, useState, ChangeEvent } from 'react
 import { TextField } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { isEqual, set } from 'lodash';
+import Interweave from 'interweave';
 
 import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
 import * as manuscriptActions from 'app/actions/manuscript.actions';
@@ -201,7 +202,7 @@ export const ArticleInfoFormDialog: React.FC<{}> = () => {
           </SectionContainer>
         ) : undefined}
         <SectionContainer label="Permissions" variant="outlined" className={formGrid.fullWidth}>
-          <div dangerouslySetInnerHTML={{ __html: stringifyEditorState(userArticleInfo.licenseText) }} />
+          <Interweave content={stringifyEditorState(userArticleInfo.licenseText)} />
         </SectionContainer>
       </div>
       <div className={classes.buttonPanel}>

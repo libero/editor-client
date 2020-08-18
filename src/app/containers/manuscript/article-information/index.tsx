@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import { IconButton } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import { useSelector, useDispatch } from 'react-redux';
+import Interweave from 'interweave';
 
 import { SectionContainer } from 'app/components/section-container';
 import { getArticleInformation } from 'app/selectors/manuscript.selectors';
@@ -54,7 +55,9 @@ export const ArticleInformation: React.FC<{}> = () => {
         </div>
         <div>&nbsp;</div>
         <div>{articleInfo.copyrightStatement}</div>
-        <div dangerouslySetInnerHTML={{ __html: stringifyEditorState(articleInfo.licenseText) }} />
+        <div>
+          <Interweave content={stringifyEditorState(articleInfo.licenseText)} />
+        </div>
       </section>
       <IconButton classes={{ root: classes.editButton }} onClick={editArticleInfo}>
         <EditIcon fontSize="small" />
