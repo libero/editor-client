@@ -390,13 +390,9 @@ exports[`manuscript editor should render 1`] = `
           <div>
             
           </div>
-          <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "",
-              }
-            }
-          />
+          <div>
+            <span />
+          </div>
         </section>
         <button
           className="MuiButtonBase-root MuiIconButton-root makeStyles-editButton-29"

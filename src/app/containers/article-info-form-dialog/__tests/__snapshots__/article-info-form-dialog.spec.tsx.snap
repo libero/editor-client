@@ -43,13 +43,7 @@ exports[`Article Info Form Dialog renders edit article information dialog 1`] = 
       >
         Permissions
       </label>
-      <div
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "",
-          }
-        }
-      />
+      <span />
     </div>
   </div>
   <div
