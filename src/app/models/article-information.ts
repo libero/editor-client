@@ -14,16 +14,13 @@ export const LICENSE_CC0 = 'CC0';
 
 const LICENSE_CC_BY_4_TEXT = `This article is distributed under the terms of the 
     <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/">
-        Creative Commons Attribution License
-    </ext-link>, which permits unrestricted use and redistribution provided that the original author 
+        Creative Commons Attribution License</ext-link>, which permits unrestricted use and redistribution provided that the original author 
     and source are credited.`;
 
 const LICENSE_CC0_TEXT = `This is an open-access article, free of all copyright, and may be freely reproduced, 
     distributed, transmitted, modified, built upon, or otherwise used by anyone for any lawful purpose.
     The work is made available under the
-    <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/publicdomain/zero/1.0/">
-        Creative Commons CC0 public domain dedication
-    </ext-link>.`;
+    <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/publicdomain/zero/1.0/">Creative Commons CC0 public domain dedication</ext-link>.`;
 
 export interface ArticleInformation {
   articleType: string;

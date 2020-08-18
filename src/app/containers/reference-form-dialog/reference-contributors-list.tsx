@@ -1,4 +1,5 @@
 import React, { useCallback, SyntheticEvent } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { TextField, IconButton, Menu, MenuItem } from '@material-ui/core';
 import { has, isEqual } from 'lodash';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
@@ -27,7 +28,7 @@ interface RefContributorInputProps {
 }
 
 const labelProps = { shrink: true };
-const inputProps = { autocomplete: 'off' };
+const noAutocomplete = () => ({ autocomplete: uuidv4() });
 
 const isGroupRefContributor = (refContributor: ReferenceContributor) => {
   return has(refContributor, 'groupName');
@@ -51,7 +52,7 @@ const renderRefContributorForm = (classes, refContributor, handleFormChange) => 
       label="Surname(s)"
       classes={{ root: classes.lastName }}
       InputLabelProps={labelProps}
-      inputProps={inputProps}
+      inputProps={noAutocomplete()}
       variant="outlined"
       value={refContributor['lastName']}
       onChange={handleFormChange}
@@ -61,7 +62,7 @@ const renderRefContributorForm = (classes, refContributor, handleFormChange) => 
       name="firstName"
       label="Given name"
       InputLabelProps={labelProps}
-      inputProps={inputProps}
+      inputProps={noAutocomplete()}
       variant="outlined"
       value={refContributor['firstName']}
       onChange={handleFormChange}
@@ -75,7 +76,7 @@ const renderGroupForm = (classes, refGroup, handleFormChange) => (
     name="groupName"
     label="Group Name"
     InputLabelProps={labelProps}
-    inputProps={inputProps}
+    inputProps={noAutocomplete()}
     variant="outlined"
     value={refGroup['groupName']}
     onChange={handleFormChange}
