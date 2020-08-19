@@ -52,12 +52,13 @@ export const ReferenceFormDialog: React.FC<ReferenceFormDialogProps> = ({ refere
         referenceInfo: transferValues(userReference.referenceInfo, newRefInfo, missingFieldsInfo)
       };
       if (userReference.referenceInfo) {
-        setMissingFieldsInfo(getDiffFieldValues(userReference.referenceInfo, newRefInfo));
-        setMissingFieldsConfig(getDiffFieldsConfig(userReference.type, newRef.type));
+        const missingInfo = getDiffFieldValues(userReference.referenceInfo, newRefInfo, missingFieldsInfo);
+        setMissingFieldsInfo(missingInfo);
+        setMissingFieldsConfig(getDiffFieldsConfig(userReference.type, newRef.type, missingFieldsConfig, missingInfo));
       }
       setReference(newRef);
     },
-    [userReference, missingFieldsInfo]
+    [userReference, missingFieldsInfo, missingFieldsConfig]
   );
 
   const closeDialog = useCallback(() => {
@@ -150,7 +151,15 @@ export const ReferenceFormDialog: React.FC<ReferenceFormDialogProps> = ({ refere
     const config = missingFieldsConfig[key];
     return (
       <div className={classNames(classes.missingFieldsRow, classes.inputField)}>
-        {renderFormControl(config.type, config.label, key, '', value, handleMissingFieldsInfoChange, true)}
+        {renderFormControl(
+          config.type,
+          config.label,
+          key,
+          classes.missingField,
+          value,
+          handleMissingFieldsInfoChange,
+          true
+        )}
         <IconButton classes={{ root: classes.deleteButton }} onClick={handleDeleteRow(key)}>
           <DeleteIcon fontSize="small" />
         </IconButton>
@@ -233,24 +242,38 @@ function transferValues(
 
 function getDiffFieldValues(
   prevRefInfo: ReferenceInfoType,
-  nextRefInfo: ReferenceInfoType
+  nextRefInfo: ReferenceInfoType,
+  prevMissingInfo: Partial<ReferenceInfoType> = {}
 ): Partial<ReferenceInfoType> {
-  const diffKeys = Object.keys(prevRefInfo).filter(
-    (key: ReferenceType) => !has(nextRefInfo, key) && !isValueEmpty(prevRefInfo[key])
-  );
-  return pick(prevRefInfo, diffKeys);
+  const diffKeys = Object.keys(prevRefInfo).filter((key) => !has(nextRefInfo, key) && !isValueEmpty(prevRefInfo[key]));
+  const unsalvagedFieldKeys = Object.keys(prevMissingInfo).filter((key) => !has(nextRefInfo, key));
+  return {
+    ...pick(prevRefInfo, diffKeys),
+    ...pick(prevMissingInfo, unsalvagedFieldKeys)
+  };
 }
 
-function getDiffFieldsConfig(prevType: ReferenceType, nextType: ReferenceType): Record<string, FormControlConfigType> {
+function getDiffFieldsConfig(
+  prevType: ReferenceType,
+  nextType: ReferenceType,
+  prevMissingFieldsConfig: Record<string, FormControlConfigType> = {},
+  currentMissingFields: Partial<ReferenceInfoType> = {}
+): Record<string, FormControlConfigType> {
   const prevConfig = getFormConfigForType(prevType);
   const nextConfig = getFormConfigForType(nextType);
   const diffKeys = Object.keys(prevConfig).filter((key: ReferenceType) => !Boolean(nextConfig[key]));
-  return pick(prevConfig, diffKeys);
+  const unsalvagedFieldsConfigKeys = Object.keys(currentMissingFields).filter((key) =>
+    has(prevMissingFieldsConfig, key)
+  );
+  return {
+    ...pick(prevConfig, diffKeys),
+    ...pick(prevMissingFieldsConfig, unsalvagedFieldsConfigKeys)
+  };
 }
 
 function isValueEmpty(value: EditorState | Array<ReferenceContributor> | string | number): boolean {
   if (value instanceof EditorState) {
-    return value.doc && (value.doc.childCount <= 1 || value.doc.firstChild.textContent.trim().length < 0);
+    return !value.doc || value.doc.childCount === 0 || value.doc.textContent.trim().length === 0;
   }
 
   if (Array.isArray(value)) {

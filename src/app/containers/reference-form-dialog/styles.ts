@@ -53,6 +53,9 @@ export const useReferenceFormStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'flex-start'
   },
+  missingField: {
+    flexGrow: 1
+  },
   deleteButton: {
     height: 32,
     width: 32,

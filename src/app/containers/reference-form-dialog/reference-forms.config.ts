@@ -67,7 +67,7 @@ export const DATA_FORM: Record<string, FormControlConfigType> = {
   doi: { type: 'string', label: 'DOI', className: formGrid.fullWidth },
   accessionId: { type: 'string', label: 'Accession', className: formGrid.fullWidth },
   extLink: { type: 'string', label: 'URL', className: formGrid.fullWidth },
-  specificUse: { type: 'specific-use', label: 'Specific Use', className: formGrid.fullWidth }
+  specificUse: { type: 'specific-use', label: 'Generated/Analyzed', className: formGrid.fullWidth }
 };
 
 export const WEB_FORM: Record<string, FormControlConfigType> = {
