@@ -59,12 +59,19 @@ export const ArticleInfoFormDialog: React.FC<{}> = () => {
     (event: SyntheticEvent) => {
       const fieldName = event.target['name'];
       const newValue = event.target['value'];
-      setArticleInfo({
+      const newArticleInfo = {
         ...userArticleInfo,
         [fieldName]: newValue
-      });
+      };
+      if (fieldName === 'publicationDate') {
+        newArticleInfo.copyrightStatement =
+          newArticleInfo.licenseType === LICENSE_CC_BY_4
+            ? getCopyrightStatement(authors, userArticleInfo.publicationDate)
+            : '';
+      }
+      setArticleInfo(newArticleInfo);
     },
-    [userArticleInfo, setArticleInfo]
+    [userArticleInfo, authors]
   );
 
   const handleSubjectChange = useCallback(
@@ -187,7 +194,7 @@ export const ArticleInfoFormDialog: React.FC<{}> = () => {
           className={formGrid.fullWidth}
           placeholder="Please select"
           fullWidth
-          blankValue={undefined}
+          blankValue={''}
           label="License type"
           value={userArticleInfo.licenseType}
           onChange={handleLicenseTypeChange}
@@ -201,9 +208,11 @@ export const ArticleInfoFormDialog: React.FC<{}> = () => {
             {userArticleInfo.copyrightStatement}
           </SectionContainer>
         ) : undefined}
-        <SectionContainer label="Permissions" variant="outlined" className={formGrid.fullWidth}>
-          <Interweave content={stringifyEditorState(userArticleInfo.licenseText)} />
-        </SectionContainer>
+        {userArticleInfo.licenseType ? (
+          <SectionContainer label="Permissions" variant="outlined" className={formGrid.fullWidth}>
+            <Interweave content={stringifyEditorState(userArticleInfo.licenseText)} />
+          </SectionContainer>
+        ) : undefined}
       </div>
       <div className={classes.buttonPanel}>
         <ActionButton variant="secondaryOutlined" onClick={closeDialog} title="Cancel" />

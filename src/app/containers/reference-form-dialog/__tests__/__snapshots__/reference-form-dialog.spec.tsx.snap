@@ -82,7 +82,7 @@ exports[`Reference form dialog renders form 1`] = `
   >
      
     <section
-      className="makeStyles-contributorInputFields-11"
+      className="makeStyles-contributorInputFields-12"
     >
       <img
         alt="drag handle"
@@ -127,7 +127,7 @@ exports[`Reference form dialog renders form 1`] = `
       </div>
     </section>
     <section
-      className="makeStyles-contributorInputFields-11"
+      className="makeStyles-contributorInputFields-12"
     >
       <img
         alt="drag handle"
@@ -210,7 +210,7 @@ exports[`Reference form dialog renders form 1`] = `
     />
   </div>
   <div
-    className="makeStyles-buttonPanel-7"
+    className="makeStyles-buttonPanel-8"
   >
     <div
       data-cmp="Button"
@@ -219,7 +219,7 @@ exports[`Reference form dialog renders form 1`] = `
     </div>
     <div
       aria-hidden={true}
-      className="makeStyles-spacer-8"
+      className="makeStyles-spacer-9"
     />
     <div
       data-cmp="Button"
