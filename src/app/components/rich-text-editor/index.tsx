@@ -7,6 +7,7 @@ import 'prosemirror-example-setup/style/style.css';
 import 'prosemirror-menu/style/menu.css';
 import { ProseMirrorEditorView } from './prosemirror-editor-view';
 import { SectionContainer } from 'app/components/section-container';
+import { ReferenceCitationNodeView } from 'app/components/reference-editor-popup';
 
 export interface RichTextEditorProps {
   editorState: EditorState;
@@ -24,7 +25,6 @@ const restoreSelection = debounce((editorView, from, to) => {
     const change = editorView.state.tr.setSelection(new TextSelection($from, $to));
     editorView.dispatch(change);
   }
-
 }, 50);
 
 export const RichTextEditor: React.FC<RichTextEditorProps> = React.memo((props) => {
@@ -42,6 +42,11 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = React.memo((props) 
 
   const options = useMemo(
     () => ({
+      nodeViews: {
+        refCitation(node, view) {
+          return new ReferenceCitationNodeView(node, view);
+        }
+      },
       handleDOMEvents: {
         focus: ({ state }: EditorView) => {
           if (onFocusSwitch && !isActive) {

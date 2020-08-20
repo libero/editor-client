@@ -6,7 +6,8 @@ import {
   createAbstractState,
   createReferencesState,
   createImpactStatementState,
-  createAcknowledgementsState
+  createAcknowledgementsState,
+  createBodyState
 } from 'app/models/manuscript-state.factory';
 import { createAuthorsState } from 'app/models/person';
 import { createAffiliationsState } from 'app/models/affiliation';
@@ -33,6 +34,7 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
   const authorNotes = doc.querySelector('author-notes');
   const relatedArticles = doc.querySelectorAll('related-article');
   const acknowledgements = doc.querySelector('ack');
+  const body = doc.querySelector('body');
 
   const authorsState = createAuthorsState(Array.from(authors), authorNotes);
 
@@ -42,6 +44,7 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
     impactStatement: createImpactStatementState(impactStatement),
     keywordGroups: createKeywordGroupsState(Array.from(keywordGroups)),
     authors: authorsState,
+    body: createBodyState(body),
     affiliations: createAffiliationsState(Array.from(affiliations)),
     references: createReferencesState(Array.from(references)),
     relatedArticles: createRelatedArticleState(Array.from(relatedArticles)),

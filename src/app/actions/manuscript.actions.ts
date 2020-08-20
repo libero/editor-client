@@ -48,6 +48,7 @@ export interface ApplyChangePayload {
 export const loadManuscriptAction = createAsyncAction<string, Manuscript>('LOAD_MANUSCRIPT');
 export const updateTitleAction = createAction<Transaction>('UPDATE_TITLE');
 export const updateAbstractAction = createAction<Transaction>('UPDATE_ABSTRACT');
+export const updateBodyAction = createAction<Transaction>('UPDATE_BODY');
 export const updateAcknowledgementsAction = createAction<Transaction>('UPDATE_ACKNOWLEDGEMENTS');
 export const updateImpactStatementAction = createAction<Transaction>('UPDATE_IMPACT_STATEMENT');
 export const updateKeywordAction = createAction<KeywordUpdatePayload>('UPDATE_KEYWORD');

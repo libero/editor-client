@@ -8,6 +8,7 @@ import { baseKeymap } from 'prosemirror-commands';
 import * as titleConfig from './config/title.config';
 import * as keywordConfig from './config/keywords.config';
 import * as abstractConfig from './config/abstract.config';
+import * as bodyConfig from './config/body.config';
 import * as acknowledgementsConfig from './config/acknowledgements.config';
 
 import { buildInputRules } from './plugins/input-rules';
@@ -45,6 +46,21 @@ export function createAbstractState(content: Element): EditorState {
     doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),
     schema,
     plugins: [buildInputRules(), gapCursor(), dropCursor(), SelectPlugin]
+  });
+}
+
+export function createBodyState(content: Element): EditorState {
+  const schema = makeSchemaFromConfig(bodyConfig.topNode, bodyConfig.nodes, bodyConfig.marks);
+  const xmlContentDocument = document.implementation.createDocument('', '', null);
+
+  if (content) {
+    xmlContentDocument.appendChild(content);
+  }
+
+  return EditorState.create({
+    doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),
+    schema,
+    plugins: [buildInputRules(), gapCursor(), dropCursor(), keymap(baseKeymap), SelectPlugin]
   });
 }
 

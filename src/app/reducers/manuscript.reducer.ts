@@ -24,6 +24,7 @@ import { addReference, deleteReference, updateReference } from 'app/reducers/ref
 import { updateArticleInformation } from 'app/reducers/article-information.handlers';
 import { addRelatedArticle, deleteRelatedArticle, updateRelatedArticle } from 'app/reducers/related-articles.handlers';
 import { updateAcknowledgements } from 'app/reducers/acknowledgements.handlers';
+import { updateBody } from 'app/reducers/body.handlers';
 
 const initialState = getInitialLoadableState() as ManuscriptHistoryState;
 
@@ -61,6 +62,7 @@ manuscriptReducer.on(manuscriptActions.applyChangeAction, (state, payload) => ({
 
 manuscriptReducer.on(manuscriptActions.updateTitleAction, updateTitle);
 manuscriptReducer.on(manuscriptActions.updateAbstractAction, updateAbstract);
+manuscriptReducer.on(manuscriptActions.updateBodyAction, updateBody);
 manuscriptReducer.on(manuscriptActions.updateImpactStatementAction, updateImpactStatement);
 manuscriptReducer.on(manuscriptActions.updateAcknowledgementsAction, updateAcknowledgements);
 manuscriptReducer.on(manuscriptActions.updateAuthorAction, updateAuthor);

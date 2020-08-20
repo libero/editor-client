@@ -14,6 +14,8 @@ export const getTitle = createSelector(getManuscriptData, (data) => get(data, 'p
 
 export const getAbstract = createSelector(getManuscriptData, (data) => get(data, 'present.abstract'));
 
+export const getBody = createSelector(getManuscriptData, (data) => get(data, 'present.body'));
+
 export const getAcknowledgements = createSelector(getManuscriptData, (data) => get(data, 'present.acknowledgements'));
 
 export const getImpactStatement = createSelector(getManuscriptData, (data) => get(data, 'present.impactStatement'));
