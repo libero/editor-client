@@ -147,6 +147,23 @@ Array [
         onClick={[Function]}
       />
       <div
+        className="makeStyles-root-19 makeStyles-plainVariant-21"
+      >
+        <label
+          className="makeStyles-label-22"
+        >
+          Main text
+        </label>
+        <div
+          className="prosemirrorContainer"
+        />
+      </div>
+      <div
+        aria-hidden="true"
+        className="makeStyles-spacer-17"
+        onClick={[Function]}
+      />
+      <div
         onClick={[Function]}
       >
         <section>

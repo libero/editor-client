@@ -49,6 +49,57 @@ export const nodes = {
     }
   },
 
+  section: {
+    content: 'block*',
+    group: 'block',
+    parseDOM: [{ tag: 'sec' }],
+    toDOM() {
+      return ['section', 0];
+    }
+  },
+
+  heading: {
+    attrs: { level: { default: 1 } },
+    content: 'inline*',
+    group: 'block',
+    parseDOM: [
+      {
+        tag: 'sec > title',
+        getAttrs(dom) {
+          return { level: dom.parentNode.getAttribute('id')[1] };
+        }
+      }
+    ],
+    toDOM(node) {
+      return ['h' + node.attrs.level, 0];
+    }
+  },
+
+  refCitation: {
+    content: 'text*',
+    attrs: {
+      refId: { default: undefined },
+      refText: { default: undefined }
+    },
+    group: 'inline',
+    atom: true,
+    inline: true,
+    parseDOM: [
+      {
+        tag: 'xref[ref-type="bibr"]',
+        getAttrs(dom) {
+          return {
+            refText: dom.textContent,
+            refId: dom.getAttribute('rid')
+          };
+        }
+      }
+    ],
+    toDOM(node) {
+      return ['a', { href: '#', class: 'citation' }, 0];
+    }
+  },
+
   text: {
     group: 'inline'
   }

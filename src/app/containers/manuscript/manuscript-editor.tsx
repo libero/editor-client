@@ -5,6 +5,7 @@ import { EditorState, Transaction } from 'prosemirror-state';
 import {
   getAbstract,
   getAcknowledgements,
+  getBody,
   getImpactStatement,
   getKeywordGroups,
   getTitle
@@ -34,6 +35,7 @@ export const ManuscriptEditor: React.FC = () => {
 
   const title: EditorState = useSelector(getTitle);
   const abstract: EditorState = useSelector(getAbstract);
+  const body: EditorState = useSelector(getBody);
   const acknowledgements: EditorState = useSelector(getAcknowledgements);
   const impactStatement: EditorState = useSelector(getImpactStatement);
   const focusedPath = useSelector(getFocusedEditorStatePath);
@@ -80,6 +82,13 @@ export const ManuscriptEditor: React.FC = () => {
   const handleAcknowledgementsChange = useCallback(
     (diff: Transaction): void => {
       dispatch(manuscriptActions.updateAcknowledgementsAction(diff));
+    },
+    [dispatch]
+  );
+
+  const handleBodyChange = useCallback(
+    (diff: Transaction): void => {
+      dispatch(manuscriptActions.updateBodyAction(diff));
     },
     [dispatch]
   );
@@ -178,6 +187,15 @@ export const ManuscriptEditor: React.FC = () => {
           name="acknowledgements"
           isActive={isInputFocused('acknowledgements', focusedPath)}
           onChange={handleAcknowledgementsChange}
+          onFocusSwitch={handleFocusSwitch}
+        />
+        <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
+        <RichTextEditor
+          editorState={body}
+          label="Main text"
+          name="body"
+          isActive={isInputFocused('body', focusedPath)}
+          onChange={handleBodyChange}
           onFocusSwitch={handleFocusSwitch}
         />
         <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />

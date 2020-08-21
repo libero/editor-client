@@ -36,10 +36,10 @@ exports[`Article Info Form Dialog renders edit article information dialog 1`] = 
       value="CC0"
     />
     <div
-      className="fullWidth makeStyles-root-5 makeStyles-outlinedVariant-6"
+      className="fullWidth makeStyles-root-6 makeStyles-outlinedVariant-7"
     >
       <label
-        className="makeStyles-label-8"
+        className="makeStyles-label-9"
       >
         Permissions
       </label>
@@ -47,7 +47,7 @@ exports[`Article Info Form Dialog renders edit article information dialog 1`] = 
     </div>
   </div>
   <div
-    className="makeStyles-buttonPanel-3"
+    className="makeStyles-buttonPanel-4"
   >
     <div
       data-cmp="Button"
