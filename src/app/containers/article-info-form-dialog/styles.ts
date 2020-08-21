@@ -9,6 +9,11 @@ export const useArticleInfoFormStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(2.5)
   },
 
+  copyrightStatement: {
+    paddingBottom: theme.spacing(2),
+    paddingTop: theme.spacing(2)
+  },
+
   buttonPanel: {
     display: 'flex',
     justifyContent: 'flex-end',

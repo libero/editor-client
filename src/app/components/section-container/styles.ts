@@ -24,7 +24,7 @@ export const useSectionContainerStyles = makeStyles((theme) => ({
   label: {
     position: 'absolute',
     lineHeight: '0.75rem',
-    top: -5,
+    top: -7,
     left: theme.spacing(1),
     fontSize: '0.75rem',
     color: theme.palette.text.secondary,

@@ -49,7 +49,7 @@ export const DropDownMenu: React.FC<DropDownMenuProps> = ({ title, entries }) =>
         {title}
         <ArrowDropDownIcon />
       </Button>
-      <Popper anchorEl={menuRef.current} role={undefined} transition disablePortal open={open}>
+      <Popper className={classes.menuContainer} anchorEl={menuRef.current} role={undefined} transition open={open}>
         <Paper>
           <ClickAwayListener onClickAway={handleMenuClose}>
             <MenuList autoFocusItem={open}>{menuItems}</MenuList>
