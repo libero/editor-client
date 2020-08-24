@@ -7,7 +7,8 @@ import { ManuscriptEditor } from 'app/containers/manuscript/manuscript-editor';
 import {
   addNewKeywordAction,
   deleteKeywordAction,
-  updateAbstractAction, updateAcknowledgementsAction,
+  updateAbstractAction,
+  updateAcknowledgementsAction,
   updateImpactStatementAction,
   updateKeywordAction,
   updateNewKeywordAction,
@@ -19,6 +20,10 @@ import { createNewKeywordState } from 'app/models/manuscript-state.factory';
 
 jest.mock('app/components/rich-text-input', () => ({
   RichTextInput: () => <div data-cmp="rich-text-input"></div>
+}));
+
+jest.mock('app/components/reference-citation-editor-popup', () => ({
+  ReferenceCitationEditorPopup: () => <div data-cmp="ReferenceCitationEditorPopup"></div>
 }));
 
 describe('manuscript editor', () => {
