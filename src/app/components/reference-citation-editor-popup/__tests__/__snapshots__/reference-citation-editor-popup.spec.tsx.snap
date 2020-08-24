@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReferenceCitationEditor should render component 1`] = `
+<div
+  data-cmp="Popover"
+>
+  <ul
+    className="makeStyles-refSelectionList-1"
+  >
+    <li
+      className="makeStyles-refSelectionListItem-2"
+      data-ref-id="bib1"
+      onClick={[Function]}
+    >
+      <div
+        className="makeStyles-refContent-4"
+      >
+        <span>
+          Berk V et al.. 2012. Molecular architecture and assembly principles of 
+          <em>
+            Vibrio cholerae
+          </em>
+           biofilms. Science
+        </span>
+      </div>
+      <div
+        className="makeStyles-refTick-5"
+      >
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root makeStyles-hiddenIcon-3 MuiSvgIcon-colorPrimary"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+          />
+        </svg>
+      </div>
+    </li>
+    <li
+      className="makeStyles-refSelectionListItem-2"
+      data-ref-id="bib2"
+      onClick={[Function]}
+    >
+      <div
+        className="makeStyles-refContent-4"
+      >
+        <span>
+          Feyerabend PK et al.. 2010. The skull and brain. The skull and brain
+        </span>
+      </div>
+      <div
+        className="makeStyles-refTick-5"
+      >
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root makeStyles-hiddenIcon-3 MuiSvgIcon-colorPrimary"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+          />
+        </svg>
+      </div>
+    </li>
+  </ul>
+</div>
+`;
