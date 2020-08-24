@@ -1,10 +1,10 @@
-import React, { useCallback, SyntheticEvent } from 'react';
+import React, { useCallback, SyntheticEvent, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { Node as ProsemirrorNode } from 'prosemirror-model';
 import { EditorView, NodeView } from 'prosemirror-view';
 import { useSelector, Provider } from 'react-redux';
 import { ThemeProvider } from '@material-ui/core/styles';
-import { Popover } from '@material-ui/core';
+import { Popover, TextField } from '@material-ui/core';
 import { has, get } from 'lodash';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import Interweave from 'interweave';
@@ -64,10 +64,21 @@ const getRefNodeText = (ref: Reference) => {
 export const ReferenceCitationEditorPopup: React.FC<ReferenceCitationEditorPopupProps> = (props) => {
   const { editorView, x, y, node, onClose, onChange } = props;
   const refs = useSelector(getReferences);
+  const [filteredRefs, setFilteredRefs] = useState<Reference[]>(refs);
   const classes = useReferenceEditorStyles();
 
   const refId = node.attrs['refId'];
-
+  const handleFilterChange = useCallback(
+    (event) => {
+      const filterValue = event.target['value'];
+      setFilteredRefs(
+        refs.filter((ref) => {
+          return getRefListItemText(ref).indexOf(filterValue) >= 0;
+        })
+      );
+    },
+    [refs]
+  );
   const handleClick = useCallback(
     (event: SyntheticEvent) => {
       event.preventDefault();
@@ -99,8 +110,15 @@ export const ReferenceCitationEditorPopup: React.FC<ReferenceCitationEditorPopup
         horizontal: 'left'
       }}
     >
+      <TextField
+        classes={{ root: classes.filterField }}
+        InputLabelProps={{ shrink: true }}
+        label="Filter list"
+        variant="outlined"
+        onChange={handleFilterChange}
+      />
       <ul className={classes.refSelectionList}>
-        {refs.map((ref) => (
+        {filteredRefs.map((ref) => (
           <li className={classes.refSelectionListItem} key={ref.id} data-ref-id={ref.id} onClick={handleClick}>
             <div className={classes.refContent}>
               <Interweave content={getRefListItemText(ref)} />
