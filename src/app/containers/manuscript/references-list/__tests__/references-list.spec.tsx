@@ -37,7 +37,7 @@ const ReferenceData = [
     ],
     type: 'journal',
     referenceInfo: {
-      year: 2012,
+      year: '2012',
       source: stringToEditorState('Science'),
       articleTitle: stringToEditorState(
         'Molecular architecture and assembly principles of <italic>Vibrio cholerae</italic> biofilms'
@@ -48,7 +48,7 @@ const ReferenceData = [
       firstPage: '236',
       lastPage: '239',
       inPress: false,
-      volume: 337
+      volume: '337'
     }
   },
   {
@@ -61,7 +61,7 @@ const ReferenceData = [
     ],
     type: 'book',
     referenceInfo: {
-      year: 2010,
+      year: '2010',
       source: stringToEditorState('The skull and brain'),
       chapterTitle: stringToEditorState('The skull and brain'),
       publisherLocation: 'London',
@@ -71,10 +71,10 @@ const ReferenceData = [
       doi: '',
       pmid: '',
       elocationId: '',
-      firstPage: 0,
-      lastPage: 0,
+      firstPage: '0',
+      lastPage: '0',
       inPress: false,
-      volume: 0
+      volume: '0'
     }
   }
 ] as Reference[];

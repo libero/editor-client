@@ -4,6 +4,14 @@ import { RichTextEditor } from 'app/components/rich-text-editor/index';
 import { create } from 'react-test-renderer';
 import { shallow } from 'enzyme';
 
+jest.mock('@material-ui/core/styles', () => {
+  return {
+    ThemeProvider: ({ children }) => <>{children}</>,
+    createMuiTheme: jest.fn(),
+    makeStyles: jest.requireActual('@material-ui/core/styles').makeStyles
+  };
+});
+
 describe('ReachTextEditorComponent', () => {
   it('renders the editor when editor state is provided', () => {
     const sampleState = new EditorState();

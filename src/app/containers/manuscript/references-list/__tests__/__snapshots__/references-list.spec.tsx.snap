@@ -71,10 +71,13 @@ exports[`References List renders the component 1`] = `
                
             </em>
              
-            <strong />
+            <strong>
+               0. 
+            </strong>
              4th Edition.
              London:
              Verso. 
+            p. 0-0. 
           </div>
           <div
             data-cmp="IconButton"

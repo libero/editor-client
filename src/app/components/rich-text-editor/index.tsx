@@ -7,7 +7,7 @@ import 'prosemirror-example-setup/style/style.css';
 import 'prosemirror-menu/style/menu.css';
 import { ProseMirrorEditorView } from './prosemirror-editor-view';
 import { SectionContainer } from 'app/components/section-container';
-import { ReferenceCitationNodeView } from 'app/components/reference-editor-popup';
+import { ReferenceCitationNodeView } from 'app/components/reference-citation-editor-popup';
 
 export interface RichTextEditorProps {
   editorState: EditorState;

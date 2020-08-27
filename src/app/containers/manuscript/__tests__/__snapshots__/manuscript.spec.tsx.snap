@@ -166,20 +166,9 @@ Array [
       <div
         onClick={[Function]}
       >
-        <section>
-          <div
-            className="makeStyles-root-19 makeStyles-plainVariant-21"
-          >
-            <label
-              className="makeStyles-label-22"
-            >
-              References
-            </label>
-            <ul
-              className="makeStyles-list-39"
-            />
-          </div>
-        </section>
+        <div
+          data-cmp="ReferenceList"
+        />
         <div
           aria-hidden="true"
           className="makeStyles-spacer-17"
@@ -202,7 +191,7 @@ Array [
           onClick={[Function]}
         />
         <div
-          className="makeStyles-sectionContainer-41 makeStyles-root-19 makeStyles-plainVariant-21"
+          className="makeStyles-sectionContainer-40 makeStyles-root-19 makeStyles-plainVariant-21"
         >
           <label
             className="makeStyles-label-22"
@@ -210,7 +199,7 @@ Array [
             Article information
           </label>
           <section
-            className="makeStyles-infoSection-42"
+            className="makeStyles-infoSection-41"
           >
             <div>
               <strong>
@@ -297,7 +286,7 @@ Array [
               Related articles
             </label>
             <ul
-              className="makeStyles-list-45"
+              className="makeStyles-list-44"
             />
           </div>
         </section>

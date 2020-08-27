@@ -13,6 +13,28 @@ jest.mock('app/components/rich-text-input', () => ({
   RichTextInput: () => <div data-cmp="rich-text-input"></div>
 }));
 
+jest.mock('app/components/keywords', () => ({
+  KeywordEditor: () => <div data-cmp="keyword editor"></div>
+}));
+
+jest.mock('app/containers/manuscript/references-list', () => ({
+  ReferenceList: () => <div data-cmp="ReferenceList"></div>
+}));
+
+jest.mock('@material-ui/lab', () => ({
+  ToggleButtonGroup: ({ children }) => <div data-cmp="ToggleButtonGroup">{children}</div>,
+  ToggleButton: ({ children }) => <div data-cmp="ToggleButton">{children}</div>,
+}));
+
+jest.mock('@material-ui/core/styles', () => {
+  return {
+    ThemeProvider: ({ children }) => <>{children}</>,
+    createMuiTheme: jest.fn(),
+    makeStyles: jest.requireActual('@material-ui/core/styles').makeStyles,
+    withStyles: jest.requireActual('@material-ui/core/styles').withStyles
+  };
+});
+
 describe('Manuscript container', () => {
   const mockStore = configureMockStore([]);
 
