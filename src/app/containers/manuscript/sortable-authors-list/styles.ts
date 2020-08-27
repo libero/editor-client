@@ -4,7 +4,8 @@ export const useAuthorsListStyles = makeStyles((theme) => ({
   sortableContainer: {
     display: 'flex',
     flexWrap: 'wrap',
-    userSelect: 'none'
+    userSelect: 'none',
+    minHeight: theme.spacing(2.75)
   },
   chip: {
     marginRight: theme.spacing(1),

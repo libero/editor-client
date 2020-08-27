@@ -7,6 +7,7 @@ export const useRelatedArticleStyles = makeStyles((theme) => ({
   list: {
     marginTop: 0,
     marginLeft: theme.spacing(3),
+    minHeight: theme.spacing(2.75),
     listStyle: 'disc',
     '& li + li': {
       marginTop: theme.spacing(1)

@@ -2,6 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export const useRelatedArticleStyles = makeStyles((theme) => ({
   root: {
+    width: 500,
     padding: theme.spacing(1, 2.5, 0, 2.5)
   },
 

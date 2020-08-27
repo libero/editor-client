@@ -102,7 +102,7 @@ export function createArticleInfoState(doc: Document, authors: Person[]): Articl
     (licenseType === LICENSE_CC_BY_4 ? getCopyrightStatement(authors, publicationDate) : '');
 
   return {
-    articleType: doc.querySelector('article').getAttribute('article-type'),
+    articleType: getTextContentFromPath(doc, 'article-meta subj-group[subj-group-type="heading"]'),
     dtd: doc.querySelector('article').getAttribute('dtd-version'),
     articleDOI: getTextContentFromPath(doc, 'article-meta article-id[pub-id-type="doi"]'),
     elocationId: getTextContentFromPath(doc, 'article-meta elocation-id'),
