@@ -1,5 +1,4 @@
 import React, { useCallback, useState, ChangeEvent } from 'react';
-import { useDispatch } from 'react-redux';
 import { get, has, pick } from 'lodash';
 import DeleteIcon from '@material-ui/icons/Delete';
 import classNames from 'classnames';
@@ -18,8 +17,6 @@ import {
 import { Select } from 'app/components/select';
 import { useReferenceFormStyles } from 'app/containers/reference-form-dialog/styles';
 import { ActionButton } from 'app/components/action-button';
-import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
-import * as manuscriptActions from 'app/actions/manuscript.actions';
 import { renderConfirmDialog } from 'app/components/prompt-dialog';
 import { ReferenceContributorsList } from 'app/containers/reference-form-dialog/reference-contributors-list';
 import {
@@ -32,17 +29,23 @@ import { objectsEqual } from 'app/utils/view.utils';
 
 interface ReferenceFormDialogProps {
   reference?: Reference;
+  onAccept(reference: Reference): void;
+  onCancel(): void;
+  onDelete(reference: Reference): void;
 }
 
-export const ReferenceFormDialog: React.FC<ReferenceFormDialogProps> = ({ reference }) => {
+export const ReferenceFormDialog: React.FC<ReferenceFormDialogProps> = ({
+  reference,
+  onAccept,
+  onCancel,
+  onDelete
+}) => {
   const classes = useReferenceFormStyles();
   const [isConfirmShown, setConfirmShow] = useState<boolean>(false);
   const isNewReference = !reference;
   const [userReference, setReference] = useState<Reference>(reference || createBlankReference());
   const [missingFieldsInfo, setMissingFieldsInfo] = useState<Partial<ReferenceInfoType>>({});
   const [missingFieldsConfig, setMissingFieldsConfig] = useState<Record<string, FormControlConfigType>>({});
-  const dispatch = useDispatch();
-
   const handleReferenceTypeChange = useCallback(
     (event: ChangeEvent<{ name: string; value: ReferenceType }>) => {
       const newRefInfo = createEmptyRefInfoByType(event.target['value']);
@@ -60,10 +63,6 @@ export const ReferenceFormDialog: React.FC<ReferenceFormDialogProps> = ({ refere
     },
     [userReference, missingFieldsInfo, missingFieldsConfig]
   );
-
-  const closeDialog = useCallback(() => {
-    dispatch(manuscriptEditorActions.hideModalDialog());
-  }, [dispatch]);
 
   const handleAuthorsListChange = useCallback(
     (refAuthors: ReferenceContributor[]) => {
@@ -102,13 +101,12 @@ export const ReferenceFormDialog: React.FC<ReferenceFormDialogProps> = ({ refere
     userReference.authors = userReference.authors.filter(
       (author) => author['firstName'] || author['lastName'] || author['groupName']
     );
-    if (isNewReference) {
-      dispatch(manuscriptActions.addReferenceAction(userReference));
-    } else if (!objectsEqual(userReference, reference)) {
-      dispatch(manuscriptActions.updateReferenceAction(userReference));
+    if (!objectsEqual(userReference, reference)) {
+      onAccept(userReference);
+    } else {
+      onCancel();
     }
-    closeDialog();
-  }, [userReference, isNewReference, closeDialog, dispatch, reference]);
+  }, [userReference, reference, onAccept, onCancel]);
 
   const handleReject = useCallback(() => {
     setConfirmShow(false);
@@ -129,9 +127,8 @@ export const ReferenceFormDialog: React.FC<ReferenceFormDialogProps> = ({ refere
 
   const handleAccept = useCallback(() => {
     setConfirmShow(false);
-    dispatch(manuscriptActions.deleteReferenceAction(userReference));
-    closeDialog();
-  }, [closeDialog, dispatch, userReference]);
+    onDelete(userReference);
+  }, [userReference, onDelete]);
 
   const formConfig = getFormConfigForType(userReference.type);
   const form = formConfig
@@ -213,7 +210,7 @@ export const ReferenceFormDialog: React.FC<ReferenceFormDialogProps> = ({ refere
       <div className={classes.buttonPanel}>
         {!isNewReference ? <ActionButton variant="outlinedWarning" onClick={handleDelete} title="Delete" /> : undefined}
         <div aria-hidden={true} className={classes.spacer}></div>
-        <ActionButton variant="secondaryOutlined" onClick={closeDialog} title="Cancel" />
+        <ActionButton variant="secondaryOutlined" onClick={onCancel} title="Cancel" />
         <ActionButton variant="primaryContained" onClick={handleDone} title="Done" />
       </div>
       {isConfirmShown

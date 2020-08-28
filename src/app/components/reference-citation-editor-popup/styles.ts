@@ -13,10 +13,19 @@ export const useReferenceEditorStyles = makeStyles((theme) => ({
     margin: theme.spacing(0, 1.5),
     border: 'solid 1px rgba(0, 0, 0, 0.23)',
     borderBottom: 'none',
+    '&:first-child': {
+      borderTopLeftRadius: theme.spacing(0.5),
+      borderTopRightRadius: theme.spacing(0.5)
+    },
     '&:last-child': {
       borderBottom: 'solid 1px rgba(0, 0, 0, 0.23)',
-      marginBottom: theme.spacing(1.5)
+      marginBottom: theme.spacing(1.5),
+      borderBottomLeftRadius: theme.spacing(0.5),
+      borderBottomRightRadius: theme.spacing(0.5)
     }
+  },
+  addReferenceIcon: {
+    marginTop: theme.spacing(0.25)
   },
   filterField: {
     width: `calc(100% - ${theme.spacing(3)}px)`,

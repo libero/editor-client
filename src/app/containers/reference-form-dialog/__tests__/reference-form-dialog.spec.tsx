@@ -3,13 +3,14 @@ import configureMockStore from 'redux-mock-store';
 import { create } from 'react-test-renderer';
 import { Provider } from 'react-redux';
 
-import { ReferenceFormDialog } from 'app/containers/reference-form-dialog/index';
+import { ReferenceFormDialog } from 'app/containers/reference-form-dialog/reference-form-dialog';
 import { givenState } from 'app/test-utils/reducer-test-helpers';
-import { createEmptyRefInfoByType, ReferenceType } from 'app/models/reference';
+import { ReferenceType } from 'app/models/reference';
 import { mount } from 'enzyme';
 import * as manuscriptActions from 'app/actions/manuscript.actions';
 import { PromptDialog } from 'app/components/prompt-dialog';
 import { cloneDeep } from 'lodash';
+import { ConnectedReferenceFormDialog } from 'app/containers/reference-form-dialog/connected-reference-form-dialog';
 
 jest.mock('@material-ui/core', () => ({
   Dialog: () => <div data-cmp="Dialog"></div>,
@@ -63,7 +64,7 @@ describe('Reference form dialog', () => {
     const store = mockStore({ manuscript: mockState });
     const wrapper = create(
       <Provider store={store}>
-        <ReferenceFormDialog reference={mockState.data.present.references[0]} />
+        <ConnectedReferenceFormDialog reference={mockState.data.present.references[0]} />
       </Provider>
     );
 
@@ -76,7 +77,7 @@ describe('Reference form dialog', () => {
 
     const wrapper = mount(
       <Provider store={store}>
-        <ReferenceFormDialog reference={mockState.data.present.references[0]} />
+        <ConnectedReferenceFormDialog reference={mockState.data.present.references[0]} />
       </Provider>
     );
 
@@ -92,7 +93,7 @@ describe('Reference form dialog', () => {
 
     const wrapper = mount(
       <Provider store={store}>
-        <ReferenceFormDialog reference={mockState.data.present.references[0]} />
+        <ConnectedReferenceFormDialog reference={mockState.data.present.references[0]} />
       </Provider>
     );
     wrapper.find({ name: 'firstName' }).at(0).prop('onChange')({ target: { name: 'firstName', value: 'new value' } });
@@ -111,7 +112,7 @@ describe('Reference form dialog', () => {
 
     const wrapper = mount(
       <Provider store={store}>
-        <ReferenceFormDialog />
+        <ConnectedReferenceFormDialog />
       </Provider>
     );
 
@@ -137,7 +138,7 @@ describe('Reference form dialog', () => {
 
     const wrapper = mount(
       <Provider store={store}>
-        <ReferenceFormDialog reference={mockState.data.present.references[0]} />
+        <ConnectedReferenceFormDialog reference={mockState.data.present.references[0]} />
       </Provider>
     );
 

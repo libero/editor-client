@@ -139,7 +139,6 @@ describe('ReferenceCitationEditor', () => {
     });
 
     const node = editorView.state.doc.firstChild.content.firstChild;
-
     const wrapper = mount(
       <Provider store={store}>
         <ReferenceCitationEditorPopup
@@ -153,8 +152,7 @@ describe('ReferenceCitationEditor', () => {
       </Provider>
     );
 
-    wrapper.find('li').at(0).simulate('click');
-
+    wrapper.find('li').at(1).simulate('click');
     expect(handleChange).toHaveBeenCalledWith(ReferenceData[0]);
   });
 
