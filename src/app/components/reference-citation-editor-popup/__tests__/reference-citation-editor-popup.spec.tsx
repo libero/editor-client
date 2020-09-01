@@ -32,7 +32,11 @@ jest.mock('app/containers/reference-form-dialog/reference-form-dialog', () => ({
 jest.mock('app/containers/modal-container', () => ({
   ModalContainer: (props) => {
     const Component = props.component;
-    return <div data-cmp="ModalContainer"><Component /></div>
+    return (
+      <div data-cmp="ModalContainer">
+        <Component />
+      </div>
+    );
   }
 }));
 
