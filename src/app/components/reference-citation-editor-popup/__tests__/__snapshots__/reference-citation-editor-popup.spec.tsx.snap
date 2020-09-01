@@ -13,6 +13,7 @@ exports[`ReferenceCitationEditor should render component 1`] = `
   >
     <li
       className="makeStyles-refSelectionListItem-2"
+      onClick={[Function]}
     >
       <svg
         aria-hidden={true}
@@ -35,7 +36,7 @@ exports[`ReferenceCitationEditor should render component 1`] = `
         className="makeStyles-refContent-6"
       >
         <span>
-          Berk V et al.. 2012. Molecular architecture and assembly principles of 
+          Berk V. 2012. Molecular architecture and assembly principles of 
           <em>
             Vibrio cholerae
           </em>
@@ -66,7 +67,7 @@ exports[`ReferenceCitationEditor should render component 1`] = `
         className="makeStyles-refContent-6"
       >
         <span>
-          Feyerabend PK et al.. 2010. The skull and brain. The skull and brain
+          Feyerabend PK. 2010. The skull and brain. The skull and brain
         </span>
       </div>
       <div

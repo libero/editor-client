@@ -28,7 +28,8 @@ jest.mock('@material-ui/core/styles', () => {
   return {
     ThemeProvider: ({ children }) => <>{children}</>,
     createMuiTheme: jest.fn(),
-    makeStyles: jest.requireActual('@material-ui/core/styles').makeStyles
+    makeStyles: jest.requireActual('@material-ui/core/styles').makeStyles,
+    withStyles: jest.requireActual('@material-ui/core/styles').withStyles
   };
 });
 
