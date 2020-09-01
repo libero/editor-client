@@ -7,6 +7,7 @@ export const useReferenceEditorStyles = makeStyles((theme) => ({
     overflow: 'auto'
   },
   refSelectionListItem: {
+    cursor: 'pointer',
     padding: theme.spacing(1, 1.5),
     display: 'flex',
     lineHeight: '24px',
@@ -23,6 +24,9 @@ export const useReferenceEditorStyles = makeStyles((theme) => ({
       borderBottomLeftRadius: theme.spacing(0.5),
       borderBottomRightRadius: theme.spacing(0.5)
     }
+  },
+  clearFilterIcon: {
+    cursor: 'pointer'
   },
   addReferenceIcon: {
     marginTop: theme.spacing(0.25)

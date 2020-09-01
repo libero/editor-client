@@ -7,6 +7,7 @@ exports[`ReferenceCitationEditor should render component 1`] = `
   <input
     data-cmp="TextField"
     onChange={[Function]}
+    value=""
   />
   <ul
     className="makeStyles-refSelectionList-1"
@@ -17,7 +18,7 @@ exports[`ReferenceCitationEditor should render component 1`] = `
     >
       <svg
         aria-hidden={true}
-        className="MuiSvgIcon-root makeStyles-addReferenceIcon-3 MuiSvgIcon-fontSizeSmall"
+        className="MuiSvgIcon-root makeStyles-addReferenceIcon-4 MuiSvgIcon-fontSizeSmall"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -33,7 +34,7 @@ exports[`ReferenceCitationEditor should render component 1`] = `
       onClick={[Function]}
     >
       <div
-        className="makeStyles-refContent-6"
+        className="makeStyles-refContent-7"
       >
         <span>
           Berk V. 2012. Molecular architecture and assembly principles of 
@@ -44,11 +45,11 @@ exports[`ReferenceCitationEditor should render component 1`] = `
         </span>
       </div>
       <div
-        className="makeStyles-refTick-7"
+        className="makeStyles-refTick-8"
       >
         <svg
           aria-hidden={true}
-          className="MuiSvgIcon-root makeStyles-hiddenIcon-5 MuiSvgIcon-colorPrimary"
+          className="MuiSvgIcon-root makeStyles-hiddenIcon-6 MuiSvgIcon-colorPrimary"
           focusable="false"
           viewBox="0 0 24 24"
         >
@@ -64,18 +65,18 @@ exports[`ReferenceCitationEditor should render component 1`] = `
       onClick={[Function]}
     >
       <div
-        className="makeStyles-refContent-6"
+        className="makeStyles-refContent-7"
       >
         <span>
           Feyerabend PK. 2010. The skull and brain. The skull and brain
         </span>
       </div>
       <div
-        className="makeStyles-refTick-7"
+        className="makeStyles-refTick-8"
       >
         <svg
           aria-hidden={true}
-          className="MuiSvgIcon-root makeStyles-hiddenIcon-5 MuiSvgIcon-colorPrimary"
+          className="MuiSvgIcon-root makeStyles-hiddenIcon-6 MuiSvgIcon-colorPrimary"
           focusable="false"
           viewBox="0 0 24 24"
         >
