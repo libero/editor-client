@@ -83,6 +83,7 @@ export const nodes = {
     },
     group: 'inline',
     atom: true,
+    leaf: true,
     inline: true,
     parseDOM: [
       {

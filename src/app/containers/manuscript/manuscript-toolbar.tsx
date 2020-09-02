@@ -15,6 +15,7 @@ import * as manuscriptActions from 'app/actions/manuscript.actions';
 
 import {
   canApplyMarkToSelection,
+  canInsertNodeAtSelection,
   canRedoChanges,
   canUndoChanges,
   isMarkAppliedToSelection
@@ -36,10 +37,14 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
   const canUndo = useSelector(canUndoChanges);
   const canRedo = useSelector(canRedoChanges);
   const canApply = useSelector(canApplyMarkToSelection);
+  const canInsert = useSelector(canInsertNodeAtSelection);
   const isApplied = useSelector(isMarkAppliedToSelection);
 
   const invokeUndo = useCallback(() => dispatch(manuscriptActions.undoAction()), [dispatch]);
   const invokeRedo = useCallback(() => dispatch(manuscriptActions.redoAction()), [dispatch]);
+  const insertReferenceCitation = useCallback(() => {
+    dispatch(manuscriptActions.insertReferenceCitationAction());
+  }, [dispatch]);
   const invokeToggleMark = useCallback(
     (mark: string) => () => {
       dispatch(manuscriptActions.toggleMarkAction(mark));
@@ -132,24 +137,19 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
           title="INSERT"
           entries={[
             { title: 'Figure', enabled: false, action: undefined },
+            { title: 'Inline Graphic', enabled: false, action: undefined },
             { title: 'Table', enabled: false, action: undefined },
             { title: 'Block Quote', enabled: false, action: undefined },
             { title: 'Equation', enabled: false, action: undefined },
             { title: 'File', enabled: false, action: undefined },
-            { title: 'Footnote', enabled: false, action: undefined },
-            { title: 'Math', enabled: false, action: undefined },
-            { title: 'Inline Graphic', enabled: false, action: undefined },
-            { title: 'Citation', enabled: false, action: undefined },
-            { title: 'Figure Reference', enabled: false, action: undefined },
-            { title: 'Table Reference', enabled: false, action: undefined },
-            { title: 'Footnote Reference', enabled: false, action: undefined },
-            { title: 'Equation Reference', enabled: false, action: undefined },
-            { title: 'Figure Reference', enabled: false, action: undefined },
-            { title: 'Table Reference', enabled: false, action: undefined },
-            { title: 'File Reference', enabled: false, action: undefined },
-            { title: 'Author', enabled: false, action: undefined },
-            { title: 'Affiliation', enabled: false, action: undefined },
-            { title: 'Reference', enabled: false, action: undefined }
+            { title: 'Inline Math', enabled: false, action: undefined },
+            null,
+            { title: 'Reference Citation', enabled: canInsert('refCitation'), action: insertReferenceCitation },
+            { title: 'Figure Citation', enabled: false, action: undefined },
+            { title: 'Table citation', enabled: false, action: undefined },
+            { title: 'Footnote citation', enabled: false, action: undefined },
+            { title: 'Equation citation', enabled: false, action: undefined },
+            { title: 'File Citation', enabled: false, action: undefined }
           ]}
         />
       </Toolbar>

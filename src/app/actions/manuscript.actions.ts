@@ -76,3 +76,4 @@ export const undoAction = createAction<void>('UNDO');
 export const redoAction = createAction<void>('REDO');
 export const toggleMarkAction = createAction<string>('TOGGLE_MARK');
 export const linkAction = createAction<void>('LINK');
+export const insertReferenceCitationAction = createAction<void>('INSERT_REFERENCE_CITATION');

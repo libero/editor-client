@@ -1,5 +1,6 @@
 import React, { useCallback, SyntheticEvent, useState } from 'react';
 import ReactDOM from 'react-dom';
+import { v4 as uuidv4 } from 'uuid';
 import { Node as ProsemirrorNode } from 'prosemirror-model';
 import { EditorView, NodeView } from 'prosemirror-view';
 import { useSelector, Provider, useDispatch } from 'react-redux';
@@ -10,6 +11,7 @@ import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import Interweave from 'interweave';
 import AddIcon from '@material-ui/icons/Add';
 import CancelIcon from '@material-ui/icons/Cancel';
+import { NodeSelection, TextSelection } from 'prosemirror-state';
 
 import { theme } from 'app/styles/theme';
 import { Reference, ReferenceContributor } from 'app/models/reference';
@@ -191,19 +193,28 @@ export const ReferenceCitationEditorPopup: React.FC<ReferenceCitationEditorPopup
 export class ReferenceCitationNodeView implements NodeView {
   dom?: HTMLAnchorElement;
   refEditorContainer: HTMLDivElement;
-  isEditorOpen: boolean = false;
+  nodeSelection: NodeSelection;
 
   constructor(private node: ProsemirrorNode, private view: EditorView) {
     this.dom = document.createElement('a');
     this.dom.style.cursor = 'pointer';
-    this.dom.textContent = node.attrs.refText;
+    this.dom.textContent = this.node.attrs.refText || '???';
 
     this.handleChange = this.handleChange.bind(this);
     this.close = this.close.bind(this);
+    // case for new citation
+    if (!this.node.attrs.refId && !this.node.attrs.refText) {
+      // const change = this.view.state.tr;
+      // const nodeStart = this.view.state.selection.anchor - this.view.state.selection.$anchor.nodeBefore.nodeSize - 3;
+      // change.setSelection(new TextSelection(change.doc.resolve(nodeStart)));
+      // this.view.dispatch(change);
+    }
   }
 
   selectNode() {
+    console.log('node selected');
     this.dom.classList.add('ProseMirror-selectednode');
+    this.nodeSelection = this.view.state.selection as NodeSelection;
     this.open();
   }
 
@@ -233,7 +244,6 @@ export class ReferenceCitationNodeView implements NodeView {
       </Provider>,
       this.refEditorContainer
     );
-    this.isEditorOpen = true;
   }
 
   close() {
@@ -243,13 +253,16 @@ export class ReferenceCitationNodeView implements NodeView {
   }
 
   handleChange(ref: Reference) {
-    const { from, to } = this.view.state.selection;
+    const { from, to } = this.nodeSelection;
     const schema = this.view.state.schema;
     const change = this.view.state.tr.replaceWith(
       from,
       to,
-      schema.nodes['refCitation'].create({ refId: ref.id, refText: getRefNodeText(ref) })
+      schema.nodes['refCitation'].create({ refId: ref.id || uuidv4(), refText: getRefNodeText(ref) })
     );
+    // due browser managing cursor position on focus and blur the cursor is sometimes reset to 0
+    // to rectify this behaviour we move cursor back to before the citation
+    change.setSelection(new TextSelection(change.doc.resolve(this.nodeSelection.$from.pos)));
     this.view.dispatch(change);
     this.close();
   }

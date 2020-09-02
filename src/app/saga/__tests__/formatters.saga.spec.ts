@@ -1,29 +1,22 @@
-import { EditorState } from 'prosemirror-state';
 import { runSaga } from 'redux-saga';
 
 import { toggleMarkSaga } from 'app/saga/formatters.saga';
 import { applyChangeAction, toggleMarkAction } from 'app/actions/manuscript.actions';
+import { givenState } from 'app/test-utils/reducer-test-helpers';
 import { createNewKeywordState } from 'app/models/manuscript-state.factory';
-import { getInitialHistory, getLoadableStateSuccess } from 'app/utils/state.utils';
 
-describe('manuscript saga', () => {
+describe('formatters saga', () => {
   it('should load data', async () => {
     const dispatched = [];
-    const manuscriptState = getLoadableStateSuccess(
-      getInitialHistory({
-        title: new EditorState(),
-        abstract: new EditorState(),
-        keywordGroups: {
-          kwdGroup: {
-            title: 'Test',
-            keywords: [],
-            newKeyword: createNewKeywordState()
-          }
-        },
-        authors: [],
-        affiliations: []
-      })
-    );
+    const manuscriptState = givenState({
+      keywordGroups: {
+        kwdGroup: {
+          title: 'Test',
+          keywords: [],
+          newKeyword: createNewKeywordState()
+        }
+      }
+    });
     await runSaga(
       {
         dispatch: (action) => dispatched.push(action),
