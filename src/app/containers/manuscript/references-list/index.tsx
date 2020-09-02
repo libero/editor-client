@@ -22,7 +22,7 @@ import {
   renderWebReference
 } from 'app/containers/manuscript/references-list/reference-renderers';
 import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
-import { ReferenceFormDialog } from 'app/containers/reference-form-dialog';
+import { ConnectedReferenceFormDialog } from 'app/containers/reference-form-dialog/connected-reference-form-dialog';
 
 interface ReferenceItemProps {
   onEditCallback: (reference: Reference) => void;
@@ -79,7 +79,7 @@ export const ReferenceList: React.FC<{}> = () => {
   const handleAddReference = useCallback(() => {
     dispatch(
       manuscriptEditorActions.showModalDialog({
-        component: ReferenceFormDialog,
+        component: ConnectedReferenceFormDialog,
         title: 'Reference'
       })
     );
@@ -89,7 +89,7 @@ export const ReferenceList: React.FC<{}> = () => {
     (reference: Reference) => {
       dispatch(
         manuscriptEditorActions.showModalDialog({
-          component: ReferenceFormDialog,
+          component: ConnectedReferenceFormDialog,
           title: 'Reference',
           props: { reference }
         })

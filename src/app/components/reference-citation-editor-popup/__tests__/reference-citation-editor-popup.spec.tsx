@@ -11,6 +11,7 @@ import { createReferenceAnnotatedValue, Reference } from 'app/models/reference';
 import { givenState } from 'app/test-utils/reducer-test-helpers';
 import { Popover } from '@material-ui/core';
 import { EditorState } from 'prosemirror-state';
+import { ReferenceFormDialog } from 'app/containers/reference-form-dialog/reference-form-dialog';
 
 jest.mock('@material-ui/core', () => ({
   Popover: ({ children }) => <div data-cmp="Popover">{children}</div>,
@@ -24,11 +25,27 @@ jest.mock('@material-ui/core', () => ({
   )
 }));
 
+jest.mock('app/containers/reference-form-dialog/reference-form-dialog', () => ({
+  ReferenceFormDialog: ({ children }) => <div data-cmp="ReferenceFormDialog">{children}</div>
+}));
+
+jest.mock('app/containers/modal-container', () => ({
+  ModalContainer: (props) => {
+    const Component = props.component;
+    return (
+      <div data-cmp="ModalContainer">
+        <Component />
+      </div>
+    );
+  }
+}));
+
 jest.mock('@material-ui/core/styles', () => {
   return {
     ThemeProvider: ({ children }) => <>{children}</>,
     createMuiTheme: jest.fn(),
-    makeStyles: jest.requireActual('@material-ui/core/styles').makeStyles
+    makeStyles: jest.requireActual('@material-ui/core/styles').makeStyles,
+    withStyles: jest.requireActual('@material-ui/core/styles').withStyles
   };
 });
 
@@ -139,7 +156,6 @@ describe('ReferenceCitationEditor', () => {
     });
 
     const node = editorView.state.doc.firstChild.content.firstChild;
-
     const wrapper = mount(
       <Provider store={store}>
         <ReferenceCitationEditorPopup
@@ -153,8 +169,7 @@ describe('ReferenceCitationEditor', () => {
       </Provider>
     );
 
-    wrapper.find('li').at(0).simulate('click');
-
+    wrapper.find('li').at(1).simulate('click');
     expect(handleChange).toHaveBeenCalledWith(ReferenceData[0]);
   });
 
@@ -193,6 +208,44 @@ describe('ReferenceCitationEditor', () => {
     wrapper.find(Popover).prop('onClose')(new Event('input'), 'backdropClick');
 
     expect(handleClose).toHaveBeenCalled();
+  });
+
+  it('should open add reference dialog', () => {
+    const handleClose = jest.fn();
+    const handleChange = jest.fn();
+    const el = document.createElement('main-text');
+    el.innerHTML = `<p><xref ref-type="bibr" rid="bib5">Harmon (2019)</xref></p>`;
+    const editorState = createBodyState(el);
+
+    const viewContainer = document.createElement('div');
+    const editorView = new EditorView(viewContainer, {
+      state: editorState,
+      dispatchTransaction: jest.fn()
+    });
+
+    const store = mockStore({
+      manuscript: givenState({ references: ReferenceData })
+    });
+
+    const node = editorView.state.doc.firstChild.content.firstChild;
+
+    const wrapper = mount(
+      <Provider store={store}>
+        <ReferenceCitationEditorPopup
+          editorView={editorView}
+          onChange={handleChange}
+          node={node}
+          onClose={handleClose}
+          x={100}
+          y={200}
+        />
+      </Provider>
+    );
+
+    expect(wrapper.find(ReferenceFormDialog).length).toBe(0);
+    wrapper.find('li').at(0).simulate('click');
+    wrapper.update();
+    expect(wrapper.find(ReferenceFormDialog).length).toBe(1);
   });
 });
 
