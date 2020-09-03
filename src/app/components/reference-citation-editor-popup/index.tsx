@@ -203,7 +203,6 @@ export class ReferenceCitationNodeView implements NodeView {
   }
 
   selectNode() {
-    console.log('node selected');
     this.dom.classList.add('ProseMirror-selectednode');
     this.nodeSelection = this.view.state.selection as NodeSelection;
     this.open();
@@ -253,7 +252,7 @@ export class ReferenceCitationNodeView implements NodeView {
     );
     // due browser managing cursor position on focus and blur the cursor is sometimes reset to 0
     // to rectify this behaviour we move cursor back to before the citation
-    change.setSelection(new TextSelection(change.doc.resolve(this.nodeSelection.$from.pos)));
+    // change.setSelection(new TextSelection(change.doc.resolve(this.nodeSelection.$from.pos)));
     this.view.dispatch(change);
     this.close();
   }
