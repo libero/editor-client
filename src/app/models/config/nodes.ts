@@ -76,14 +76,13 @@ export const nodes = {
   },
 
   refCitation: {
-    content: 'text*',
+    content: undefined,
     attrs: {
       refId: { default: undefined },
       refText: { default: undefined }
     },
     group: 'inline',
     atom: true,
-    leaf: true,
     inline: true,
     parseDOM: [
       {

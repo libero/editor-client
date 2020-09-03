@@ -193,7 +193,7 @@ export class ReferenceCitationNodeView implements NodeView {
   refEditorContainer: HTMLDivElement;
   nodeSelection: NodeSelection;
 
-  constructor(private node: ProsemirrorNode, private view: EditorView) {
+  constructor(private node: ProsemirrorNode, private view: EditorView, private getPos) {
     this.dom = document.createElement('a');
     this.dom.style.cursor = 'pointer';
     this.dom.textContent = this.node.attrs.refText || '???';
@@ -204,7 +204,6 @@ export class ReferenceCitationNodeView implements NodeView {
 
   selectNode() {
     this.dom.classList.add('ProseMirror-selectednode');
-    this.nodeSelection = this.view.state.selection as NodeSelection;
     this.open();
   }
 
@@ -243,16 +242,15 @@ export class ReferenceCitationNodeView implements NodeView {
   }
 
   handleChange(ref: Reference) {
-    const { from, to } = this.nodeSelection;
     const schema = this.view.state.schema;
     const change = this.view.state.tr.replaceWith(
-      from,
-      to,
+      this.getPos(),
+      this.getPos() + this.node.nodeSize,
       schema.nodes['refCitation'].create({ refId: ref.id || uuidv4(), refText: getRefNodeText(ref) })
     );
     // due browser managing cursor position on focus and blur the cursor is sometimes reset to 0
     // to rectify this behaviour we move cursor back to before the citation
-    change.setSelection(new TextSelection(change.doc.resolve(this.nodeSelection.$from.pos)));
+    change.setSelection(new TextSelection(change.doc.resolve(this.getPos())));
     this.view.dispatch(change);
     this.close();
   }
