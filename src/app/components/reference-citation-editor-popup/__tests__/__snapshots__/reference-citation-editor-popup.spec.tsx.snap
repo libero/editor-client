@@ -37,7 +37,7 @@ exports[`ReferenceCitationEditor should render component 1`] = `
         className="makeStyles-refContent-7"
       >
         <span>
-          Berk V. 2012. Molecular architecture and assembly principles of 
+          Berk. 2012. Molecular architecture and assembly principles of 
           <em>
             Vibrio cholerae
           </em>
@@ -68,7 +68,7 @@ exports[`ReferenceCitationEditor should render component 1`] = `
         className="makeStyles-refContent-7"
       >
         <span>
-          Feyerabend PK. 2010. The skull and brain. The skull and brain
+          Feyerabend. 2010. The skull and brain. The skull and brain
         </span>
       </div>
       <div

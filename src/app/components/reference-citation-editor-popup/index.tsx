@@ -34,9 +34,7 @@ interface ReferenceCitationEditorPopupProps {
 }
 
 const getRefContributorName = (contributor: ReferenceContributor): string => {
-  return has(contributor, 'groupName')
-    ? `${get(contributor, 'groupName', '')}`
-    : `${get(contributor, 'lastName', '')} ${get(contributor, 'firstName', '')}`;
+  return get(contributor, 'groupName', get(contributor, 'lastName', ''));
 };
 
 const getRefListAuthorsNames = (ref: Reference) => {
@@ -66,7 +64,7 @@ const getRefListItemText = (ref: Reference) => {
 };
 
 const getRefNodeText = (ref: Reference) => {
-  return [getRefListAuthorsNames(ref), get(ref.referenceInfo, 'year')].filter(Boolean).join('. ');
+  return [getRefListAuthorsNames(ref), get(ref.referenceInfo, 'year')].filter(Boolean).join(', ');
 };
 
 const renderReferenceModal = (props: ReactFCProps<typeof ReferenceFormDialog>) => {
