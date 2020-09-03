@@ -28,9 +28,12 @@ export const makeKeywordContainerStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    padding: theme.spacing(0.5, 0.5, 0.5, 1.5),
+    paddingLeft: theme.spacing(1.5),
     '& .ProseMirror': {
       flex: 1
+    },
+    '&:first-of-type': {
+      paddingLeft: 0
     }
   }
 }));
