@@ -200,13 +200,6 @@ export class ReferenceCitationNodeView implements NodeView {
 
     this.handleChange = this.handleChange.bind(this);
     this.close = this.close.bind(this);
-    // case for new citation
-    if (!this.node.attrs.refId && !this.node.attrs.refText) {
-      // const change = this.view.state.tr;
-      // const nodeStart = this.view.state.selection.anchor - this.view.state.selection.$anchor.nodeBefore.nodeSize - 3;
-      // change.setSelection(new TextSelection(change.doc.resolve(nodeStart)));
-      // this.view.dispatch(change);
-    }
   }
 
   selectNode() {
