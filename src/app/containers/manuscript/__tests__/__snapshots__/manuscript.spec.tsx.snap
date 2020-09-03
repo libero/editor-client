@@ -135,7 +135,7 @@ Array [
         <label
           className="makeStyles-label-22"
         >
-          Acknowledgements
+          Main text
         </label>
         <div
           className="prosemirrorContainer"
@@ -152,7 +152,7 @@ Array [
         <label
           className="makeStyles-label-22"
         >
-          Main text
+          Acknowledgements
         </label>
         <div
           className="prosemirrorContainer"

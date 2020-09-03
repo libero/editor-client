@@ -189,7 +189,7 @@ exports[`manuscript editor should render 1`] = `
       <label
         className="makeStyles-label-8"
       >
-        Acknowledgements
+        Main text
       </label>
       <div
         className="prosemirrorContainer"
@@ -206,7 +206,7 @@ exports[`manuscript editor should render 1`] = `
       <label
         className="makeStyles-label-8"
       >
-        Main text
+        Acknowledgements
       </label>
       <div
         className="prosemirrorContainer"

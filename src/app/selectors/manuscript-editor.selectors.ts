@@ -51,8 +51,15 @@ export const isMarkAppliedToSelection = createSelector(
 
 export const canApplyMarkToSelection = createSelector(
   getFocusedEditorState,
-  (editorState: EditorState) => (mark: string) => {
-    return editorState && editorState.schema.marks[mark];
+  (editorState: EditorState) => (markName: string) => {
+    return editorState && editorState.schema.marks[markName];
+  }
+);
+
+export const canInsertNodeAtSelection = createSelector(
+  getFocusedEditorState,
+  (editorState: EditorState) => (nodeName: string) => {
+    return editorState && editorState.schema.nodes[nodeName];
   }
 );
 

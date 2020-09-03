@@ -1,7 +1,7 @@
-import { EditorState, Transaction } from 'prosemirror-state';
+import { EditorState, Transaction, NodeSelection } from 'prosemirror-state';
 import { toggleMark } from 'prosemirror-commands';
 import { all, takeLatest, call, put, select } from 'redux-saga/effects';
-import { MarkType } from 'prosemirror-model';
+import { MarkType, Fragment } from 'prosemirror-model';
 
 import * as manuscriptActions from 'app/actions/manuscript.actions';
 import { Action } from 'app/utils/action.utils';
@@ -25,6 +25,25 @@ export function* toggleMarkSaga(action: Action<string>) {
   }
 }
 
+export function* insertReferenceCitationSaga() {
+  const editorState: EditorState = yield select(getFocusedEditorState);
+  if (editorState && editorState.schema.nodes['refCitation']) {
+    const path = yield select(getFocusedEditorStatePath);
+    const { empty, $from, $to } = editorState.selection;
+    let content = Fragment.empty;
+    if (!empty && $from.sameParent($to) && $from.parent.inlineContent) {
+      content = $from.parent.content.cut($from.parentOffset, $to.parentOffset);
+    }
+    const change = editorState.tr.replaceSelectionWith(editorState.schema.nodes['refCitation'].create(null, content));
+    const resolvedPos = change.doc.resolve(change.selection.anchor - change.selection.$anchor.nodeBefore.nodeSize);
+    change.setSelection(new NodeSelection(resolvedPos));
+    yield put(manuscriptActions.applyChangeAction({ path, change }));
+  }
+}
+
 export default function* () {
-  yield all([takeLatest(manuscriptActions.toggleMarkAction.getType(), toggleMarkSaga)]);
+  yield all([
+    takeLatest(manuscriptActions.toggleMarkAction.getType(), toggleMarkSaga),
+    takeLatest(manuscriptActions.insertReferenceCitationAction.getType(), insertReferenceCitationSaga)
+  ]);
 }

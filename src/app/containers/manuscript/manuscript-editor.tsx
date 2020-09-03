@@ -182,20 +182,20 @@ export const ManuscriptEditor: React.FC = () => {
         />
         <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
         <RichTextEditor
-          editorState={acknowledgements}
-          label="Acknowledgements"
-          name="acknowledgements"
-          isActive={isInputFocused('acknowledgements', focusedPath)}
-          onChange={handleAcknowledgementsChange}
-          onFocusSwitch={handleFocusSwitch}
-        />
-        <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
-        <RichTextEditor
           editorState={body}
           label="Main text"
           name="body"
           isActive={isInputFocused('body', focusedPath)}
           onChange={handleBodyChange}
+          onFocusSwitch={handleFocusSwitch}
+        />
+        <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
+        <RichTextEditor
+          editorState={acknowledgements}
+          label="Acknowledgements"
+          name="acknowledgements"
+          isActive={isInputFocused('acknowledgements', focusedPath)}
+          onChange={handleAcknowledgementsChange}
           onFocusSwitch={handleFocusSwitch}
         />
         <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />

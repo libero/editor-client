@@ -1,19 +1,19 @@
 import React, { useCallback, useRef } from 'react';
-import { Popper, ClickAwayListener, Paper, MenuList, Button, MenuItem } from '@material-ui/core';
+import { Popper, ClickAwayListener, Paper, MenuList, Button, MenuItem, Divider } from '@material-ui/core';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
 import { useDropDownStyles } from './styles';
 
-export interface DropDownMenuItemProps {
+export type DropDownMenuItemProps = {
   title: string;
   enabled: boolean;
   selected?: boolean;
   action(): void;
-}
+};
 
 export interface DropDownMenuProps {
   title: string;
-  entries: DropDownMenuItemProps[];
+  entries: Array<DropDownMenuItemProps | null>;
 }
 
 export const DropDownMenu: React.FC<DropDownMenuProps> = ({ title, entries }) => {
@@ -30,17 +30,20 @@ export const DropDownMenu: React.FC<DropDownMenuProps> = ({ title, entries }) =>
     setOpen(false);
   }, []);
 
-  const menuItems = entries.map((entry, index) => {
-    return (
-      <MenuItem
-        disabled={!entry.enabled}
-        key={index}
-        selected={entry.selected}
-        onClick={handleMenuItemClick.bind(null, entry.action)}
-      >
-        {entry.title}
-      </MenuItem>
-    );
+  const menuItems = entries.map((entry: DropDownMenuItemProps | null, index: number) => {
+    if (entry) {
+      return (
+        <MenuItem
+          disabled={!entry.enabled}
+          key={index}
+          selected={entry.selected}
+          onClick={handleMenuItemClick.bind(null, entry.action)}
+        >
+          {entry.title}
+        </MenuItem>
+      );
+    }
+    return <Divider />;
   });
 
   return (

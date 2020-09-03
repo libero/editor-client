@@ -76,7 +76,7 @@ export const nodes = {
   },
 
   refCitation: {
-    content: 'text*',
+    content: undefined,
     attrs: {
       refId: { default: undefined },
       refText: { default: undefined }

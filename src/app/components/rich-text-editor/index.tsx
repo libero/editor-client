@@ -43,8 +43,8 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = React.memo((props) 
   const options = useMemo(
     () => ({
       nodeViews: {
-        refCitation(node, view) {
-          return new ReferenceCitationNodeView(node, view);
+        refCitation(node, view, getPos) {
+          return new ReferenceCitationNodeView(node, view, getPos);
         }
       },
       handleDOMEvents: {

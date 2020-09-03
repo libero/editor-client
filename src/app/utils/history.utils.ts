@@ -30,7 +30,6 @@ export function undoChange(state: ManuscriptHistory): ManuscriptHistory {
   const past = [...state.past];
   const diff = past.pop();
   const undoDiff = invertDiff(state.present, diff);
-
   const updatedManuscript = applyDiffToManuscript(state.present, undoDiff);
 
   const redoDiff = makeDiff(state.present, diff);
@@ -64,7 +63,9 @@ function invertDiff(manuscript: Manuscript, diff: ManuscriptDiff): ManuscriptDif
     }
 
     if (diff[key] instanceof Transaction) {
-      const invertedSteps = (diff[key] as Transaction).steps.map((step) => step.invert((diff[key] as Transaction).doc));
+      const invertedSteps = (diff[key] as Transaction).steps.map((step, index) => {
+        return step.invert((diff[key] as Transaction).docs[index]);
+      });
       const invertedTransaction = get(manuscript, key).tr;
       invertedSteps.reverse().forEach((step) => invertedTransaction.maybeStep(step));
       acc[key] = invertedTransaction;
