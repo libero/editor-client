@@ -10,7 +10,7 @@ import { has, get } from 'lodash';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import Interweave from 'interweave';
 import AddIcon from '@material-ui/icons/Add';
-import CancelIcon from '@material-ui/icons/Cancel';
+import ClearIcon from '@material-ui/icons/Clear';
 import { NodeSelection, TextSelection } from 'prosemirror-state';
 
 import { theme } from 'app/styles/theme';
@@ -100,6 +100,8 @@ export const ReferenceCitationEditorPopup: React.FC<ReferenceCitationEditorPopup
       const newRefId = (event.currentTarget as HTMLLIElement).dataset['refId'];
       if (newRefId !== refId) {
         onChange(refs.find(({ id }) => id === newRefId));
+      } else {
+        onChange(undefined);
       }
     },
     [onChange, refId, refs]
@@ -155,7 +157,7 @@ export const ReferenceCitationEditorPopup: React.FC<ReferenceCitationEditorPopup
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">
-              <CancelIcon onClick={clearFilterField} classes={{ root: classes.clearFilterIcon }} />
+              <ClearIcon onClick={clearFilterField} color="disabled" classes={{ root: classes.clearFilterIcon }} />
             </InputAdornment>
           )
         }}
@@ -242,11 +244,15 @@ export class ReferenceCitationNodeView implements NodeView {
   }
 
   handleChange(ref: Reference) {
+    const attrs = ref
+      ? { refId: ref.id || uuidv4(), refText: getRefNodeText(ref) }
+      : { refId: undefined, refText: undefined };
+
     const schema = this.view.state.schema;
     const change = this.view.state.tr.replaceWith(
       this.getPos(),
       this.getPos() + this.node.nodeSize,
-      schema.nodes['refCitation'].create({ refId: ref.id || uuidv4(), refText: getRefNodeText(ref) })
+      schema.nodes['refCitation'].create(attrs)
     );
     // due browser managing cursor position on focus and blur the cursor is sometimes reset to 0
     // to rectify this behaviour we move cursor back to before the citation
