@@ -2,90 +2,100 @@
 
 exports[`ReferenceCitationEditor should render component 1`] = `
 <div
-  data-cmp="Popover"
+  data-cmp="Popper"
 >
-  <input
-    data-cmp="TextField"
-    onChange={[Function]}
-    value=""
-  />
-  <ul
-    className="makeStyles-refSelectionList-1"
+  <div
+    data-cmp="Paper"
   >
-    <li
-      className="makeStyles-refSelectionListItem-2"
-      onClick={[Function]}
+    <div
+      data-cmp="ClickAwayListener"
     >
-      <svg
-        aria-hidden={true}
-        className="MuiSvgIcon-root makeStyles-addReferenceIcon-4 MuiSvgIcon-fontSizeSmall"
-        focusable="false"
-        viewBox="0 0 24 24"
-      >
-        <path
-          d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+      <div>
+        <input
+          data-cmp="TextField"
+          onChange={[Function]}
+          value=""
         />
-      </svg>
-       Reference
-    </li>
-    <li
-      className="makeStyles-refSelectionListItem-2"
-      data-ref-id="bib1"
-      onClick={[Function]}
-    >
-      <div
-        className="makeStyles-refContent-7"
-      >
-        <span>
-          Berk. 2012. Molecular architecture and assembly principles of 
-          <em>
-            Vibrio cholerae
-          </em>
-           biofilms. Science
-        </span>
-      </div>
-      <div
-        className="makeStyles-refTick-8"
-      >
-        <svg
-          aria-hidden={true}
-          className="MuiSvgIcon-root makeStyles-hiddenIcon-6 MuiSvgIcon-colorPrimary"
-          focusable="false"
-          viewBox="0 0 24 24"
+        <ul
+          className="makeStyles-refSelectionList-1"
         >
-          <path
-            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
-          />
-        </svg>
+          <li
+            className="makeStyles-refSelectionListItem-2"
+            onClick={[Function]}
+          >
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root makeStyles-addReferenceIcon-4 MuiSvgIcon-fontSizeSmall"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+              />
+            </svg>
+             Reference
+          </li>
+          <li
+            className="makeStyles-refSelectionListItem-2"
+            data-ref-id="bib1"
+            onClick={[Function]}
+          >
+            <div
+              className="makeStyles-refContent-7"
+            >
+              <span>
+                Berk. 2012. Molecular architecture and assembly principles of 
+                <em>
+                  Vibrio cholerae
+                </em>
+                 biofilms. Science
+              </span>
+            </div>
+            <div
+              className="makeStyles-refTick-8"
+            >
+              <svg
+                aria-hidden={true}
+                className="MuiSvgIcon-root makeStyles-hiddenIcon-6 MuiSvgIcon-colorPrimary"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                />
+              </svg>
+            </div>
+          </li>
+          <li
+            className="makeStyles-refSelectionListItem-2"
+            data-ref-id="bib2"
+            onClick={[Function]}
+          >
+            <div
+              className="makeStyles-refContent-7"
+            >
+              <span>
+                Feyerabend. 2010. The skull and brain. The skull and brain
+              </span>
+            </div>
+            <div
+              className="makeStyles-refTick-8"
+            >
+              <svg
+                aria-hidden={true}
+                className="MuiSvgIcon-root makeStyles-hiddenIcon-6 MuiSvgIcon-colorPrimary"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                />
+              </svg>
+            </div>
+          </li>
+        </ul>
       </div>
-    </li>
-    <li
-      className="makeStyles-refSelectionListItem-2"
-      data-ref-id="bib2"
-      onClick={[Function]}
-    >
-      <div
-        className="makeStyles-refContent-7"
-      >
-        <span>
-          Feyerabend. 2010. The skull and brain. The skull and brain
-        </span>
-      </div>
-      <div
-        className="makeStyles-refTick-8"
-      >
-        <svg
-          aria-hidden={true}
-          className="MuiSvgIcon-root makeStyles-hiddenIcon-6 MuiSvgIcon-colorPrimary"
-          focusable="false"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
-          />
-        </svg>
-      </div>
-    </li>
-  </ul>
+    </div>
+  </div>
 </div>
 `;

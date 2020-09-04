@@ -9,12 +9,14 @@ import { ReferenceCitationEditorPopup } from 'app/components/reference-citation-
 import { Provider } from 'react-redux';
 import { createReferenceAnnotatedValue, Reference } from 'app/models/reference';
 import { givenState } from 'app/test-utils/reducer-test-helpers';
-import { Popover } from '@material-ui/core';
+import { ClickAwayListener } from '@material-ui/core';
 import { EditorState } from 'prosemirror-state';
 import { ReferenceFormDialog } from 'app/containers/reference-form-dialog/reference-form-dialog';
 
 jest.mock('@material-ui/core', () => ({
-  Popover: ({ children }) => <div data-cmp="Popover">{children}</div>,
+  Popper: ({ children }) => <div data-cmp="Popper">{children}</div>,
+  Paper: ({ children }) => <div data-cmp="Paper">{children}</div>,
+  ClickAwayListener: ({ children }) => <div data-cmp="ClickAwayListener">{children}</div>,
   IconButton: ({ children }) => <div data-cmp="IconButton">{children}</div>,
   InputAdornment: ({ children }) => <div data-cmp="InputAdornment">{children}</div>,
   Button: ({ children }) => <div data-cmp="Button">{children}</div>,
@@ -129,8 +131,7 @@ describe('ReferenceCitationEditor', () => {
           onChange={jest.fn()}
           node={node}
           onClose={jest.fn()}
-          x={100}
-          y={200}
+          anchorEl={null}
         />
       </Provider>
     );
@@ -163,8 +164,7 @@ describe('ReferenceCitationEditor', () => {
           onChange={handleChange}
           node={node}
           onClose={handleClose}
-          x={100}
-          y={200}
+          anchorEl={null}
         />
       </Provider>
     );
@@ -199,13 +199,12 @@ describe('ReferenceCitationEditor', () => {
           onChange={handleChange}
           node={node}
           onClose={handleClose}
-          x={100}
-          y={200}
+          anchorEl={null}
         />
       </Provider>
     );
 
-    wrapper.find(Popover).prop('onClose')(new Event('input'), 'backdropClick');
+    wrapper.find(ClickAwayListener).prop('onClickAway')({} as React.MouseEvent<Document, MouseEvent>);
 
     expect(handleClose).toHaveBeenCalled();
   });
@@ -235,9 +234,8 @@ describe('ReferenceCitationEditor', () => {
           editorView={editorView}
           onChange={handleChange}
           node={node}
+          anchorEl={null}
           onClose={handleClose}
-          x={100}
-          y={200}
         />
       </Provider>
     );
