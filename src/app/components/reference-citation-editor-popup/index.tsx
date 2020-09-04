@@ -5,13 +5,13 @@ import { Node as ProsemirrorNode } from 'prosemirror-model';
 import { EditorView, NodeView } from 'prosemirror-view';
 import { useSelector, Provider, useDispatch } from 'react-redux';
 import { ThemeProvider } from '@material-ui/core/styles';
-import { Popover, TextField, InputAdornment } from '@material-ui/core';
+import { TextField, InputAdornment, Popper, Paper, ClickAwayListener } from '@material-ui/core';
 import { has, get } from 'lodash';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import Interweave from 'interweave';
 import AddIcon from '@material-ui/icons/Add';
 import ClearIcon from '@material-ui/icons/Clear';
-import { NodeSelection, TextSelection } from 'prosemirror-state';
+import { TextSelection } from 'prosemirror-state';
 
 import { theme } from 'app/styles/theme';
 import { Reference, ReferenceContributor } from 'app/models/reference';
@@ -27,10 +27,9 @@ import * as manuscriptActions from 'app/actions/manuscript.actions';
 interface ReferenceCitationEditorPopupProps {
   editorView: EditorView | undefined;
   onClose(): void;
+  anchorEl: HTMLElement;
   onChange(ref: Reference): void;
   node?: ProsemirrorNode;
-  y: number;
-  x: number;
 }
 
 const getRefContributorName = (contributor: ReferenceContributor): string => {
@@ -72,7 +71,7 @@ const renderReferenceModal = (props: ReactFCProps<typeof ReferenceFormDialog>) =
 };
 
 export const ReferenceCitationEditorPopup: React.FC<ReferenceCitationEditorPopupProps> = (props) => {
-  const { editorView, x, y, node, onClose, onChange } = props;
+  const { editorView, node, onClose, onChange, anchorEl } = props;
   const refs = useSelector(getReferences);
   const [filteredRefs, setFilteredRefs] = useState<Reference[]>(refs);
   const [filterValue, setFilterValue] = useState<string>('');
@@ -134,66 +133,63 @@ export const ReferenceCitationEditorPopup: React.FC<ReferenceCitationEditorPopup
   }
 
   return (
-    <Popover
-      open={true}
-      onClose={onClose}
-      anchorReference="anchorPosition"
-      anchorPosition={{ top: y, left: x }}
-      anchorOrigin={{
-        vertical: 'top',
-        horizontal: 'left'
-      }}
-      transformOrigin={{
-        vertical: 'top',
-        horizontal: 'left'
-      }}
+    <Popper open={true} anchorEl={anchorEl}
     >
-      <TextField
-        classes={{ root: classes.filterField }}
-        InputLabelProps={{ shrink: true }}
-        label="Filter list"
-        value={filterValue}
-        variant="outlined"
-        InputProps={{
-          endAdornment: (
-            <InputAdornment position="end">
-              <ClearIcon onClick={clearFilterField} color="disabled" classes={{ root: classes.clearFilterIcon }} />
-            </InputAdornment>
-          )
-        }}
-        onChange={handleFilterChange}
-      />
-      <ul className={classes.refSelectionList}>
-        <li className={classes.refSelectionListItem} onClick={openReferenceFormDialog}>
-          <AddIcon fontSize="small" classes={{ root: classes.addReferenceIcon }} /> Reference
-        </li>
-        {filteredRefs.map((ref) => (
-          <li className={classes.refSelectionListItem} key={ref.id} data-ref-id={ref.id} onClick={handleClick}>
-            <div className={classes.refContent}>
-              <Interweave content={getRefListItemText(ref)} />
-            </div>
-            <div className={classes.refTick}>
-              <CheckCircleIcon color="primary" className={ref.id !== refId ? classes.hiddenIcon : ''} />
-            </div>
-          </li>
-        ))}
-      </ul>
-      {isReferenceDialogShown
-        ? renderReferenceModal({
-            reference: undefined,
-            onAccept: handleAddReference,
-            onCancel: closeReferenceFormDialog,
-            onDelete: undefined
-          })
-        : undefined}
-    </Popover>
+      <Paper>
+        <ClickAwayListener onClickAway={onClose} mouseEvent="onMouseUp">
+          <div>
+            <TextField
+              classes={{ root: classes.filterField }}
+              InputLabelProps={{ shrink: true }}
+              label="Filter list"
+              value={filterValue}
+              variant="outlined"
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <ClearIcon
+                      onClick={clearFilterField}
+                      color="disabled"
+                      classes={{ root: classes.clearFilterIcon }}
+                    />
+                  </InputAdornment>
+                )
+              }}
+              onChange={handleFilterChange}
+            />
+            <ul className={classes.refSelectionList}>
+              <li className={classes.refSelectionListItem} onClick={openReferenceFormDialog}>
+                <AddIcon fontSize="small" classes={{ root: classes.addReferenceIcon }} /> Reference
+              </li>
+              {filteredRefs.map((ref) => (
+                <li className={classes.refSelectionListItem} key={ref.id} data-ref-id={ref.id} onClick={handleClick}>
+                  <div className={classes.refContent}>
+                    <Interweave content={getRefListItemText(ref)} />
+                  </div>
+                  <div className={classes.refTick}>
+                    <CheckCircleIcon color="primary" className={ref.id !== refId ? classes.hiddenIcon : ''} />
+                  </div>
+                </li>
+              ))}
+            </ul>
+            {isReferenceDialogShown
+              ? renderReferenceModal({
+                  reference: undefined,
+                  onAccept: handleAddReference,
+                  onCancel: closeReferenceFormDialog,
+                  onDelete: undefined
+                })
+              : undefined}
+          </div>
+        </ClickAwayListener>
+      </Paper>
+    </Popper>
   );
 };
 
 export class ReferenceCitationNodeView implements NodeView {
   dom?: HTMLAnchorElement;
   refEditorContainer: HTMLDivElement;
-  nodeSelection: NodeSelection;
 
   constructor(private node: ProsemirrorNode, private view: EditorView, private getPos) {
     this.dom = document.createElement('a');
@@ -210,26 +206,19 @@ export class ReferenceCitationNodeView implements NodeView {
   }
 
   open() {
-    const { $from } = this.view.state.selection;
-    const start = this.view.coordsAtPos($from.pos);
-
     this.refEditorContainer = this.view.dom.parentNode.appendChild(document.createElement('div'));
     this.refEditorContainer.style.position = 'absolute';
     this.refEditorContainer.style.zIndex = '10';
-
-    const x = start.left;
-    const y = start.bottom;
 
     ReactDOM.render(
       <Provider store={store}>
         <ThemeProvider theme={theme}>
           <ReferenceCitationEditorPopup
+            anchorEl={this.dom}
             editorView={this.view}
             node={this.node}
             onClose={this.close}
             onChange={this.handleChange}
-            x={x}
-            y={y}
           />
         </ThemeProvider>
       </Provider>,

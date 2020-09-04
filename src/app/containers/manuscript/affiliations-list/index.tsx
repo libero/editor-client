@@ -40,7 +40,7 @@ export const AffiliationsList: React.FC<{}> = () => {
   }, [dispatch]);
 
   const renderAffiliation = (aff: Affiliation) => (
-    <div key={aff.id} className={classes.listItem}>
+    <li key={aff.id} className={classes.listItem}>
       <div className={classes.orderLabel}>({aff.label})</div>
       <div className={classes.affiliationInfo}>
         {[aff.institution.name, aff.address.city, aff.country].filter((field) => Boolean(field)).join(', ')}
@@ -48,12 +48,14 @@ export const AffiliationsList: React.FC<{}> = () => {
       <IconButton classes={{ root: classes.editButton }} onClick={editAffiliation.bind(null, aff)}>
         <EditIcon fontSize="small" />
       </IconButton>
-    </div>
+    </li>
   );
 
   return (
     <section>
-      <SectionContainer label="Affiliations">{affiliations.map(renderAffiliation)}</SectionContainer>
+      <SectionContainer label="Affiliations">
+        <ul className={classes.root}>{affiliations.map(renderAffiliation)}</ul>
+      </SectionContainer>
       <ActionButton title="Affiliation" variant="addEntity" onClick={addAffiliation} className={classes.addButton} />
     </section>
   );
