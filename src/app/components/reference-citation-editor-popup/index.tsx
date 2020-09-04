@@ -206,15 +206,9 @@ export class ReferenceCitationNodeView implements NodeView {
   }
 
   open() {
-    const { $from } = this.view.state.selection;
-    const start = this.view.coordsAtPos($from.pos);
-
     this.refEditorContainer = this.view.dom.parentNode.appendChild(document.createElement('div'));
     this.refEditorContainer.style.position = 'absolute';
     this.refEditorContainer.style.zIndex = '10';
-
-    const x = start.left;
-    const y = start.bottom;
 
     ReactDOM.render(
       <Provider store={store}>
