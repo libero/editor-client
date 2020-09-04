@@ -45,7 +45,7 @@ export function createAbstractState(content: Element): EditorState {
   return EditorState.create({
     doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),
     schema,
-    plugins: [buildInputRules(), gapCursor(), dropCursor(), SelectPlugin]
+    plugins: [buildInputRules(), gapCursor(), dropCursor(), SelectPlugin, PlaceholderPlugin('Enter abstract')]
   });
 }
 
@@ -60,7 +60,14 @@ export function createBodyState(content: Element): EditorState {
   return EditorState.create({
     doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),
     schema,
-    plugins: [buildInputRules(), gapCursor(), dropCursor(), keymap(baseKeymap), SelectPlugin]
+    plugins: [
+      buildInputRules(),
+      gapCursor(),
+      dropCursor(),
+      keymap(baseKeymap),
+      SelectPlugin,
+      PlaceholderPlugin('Enter main text')
+    ]
   });
 }
 
