@@ -1,6 +1,9 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export const useAffiliationStyles = makeStyles((theme) => ({
+  root: {
+    minHeight: theme.spacing(2.75)
+  },
   addButton: {
     marginLeft: theme.spacing(1)
   },

@@ -103,9 +103,12 @@ exports[`manuscript editor should render 1`] = `
           >
             Affiliations
           </label>
+          <ul
+            className="makeStyles-root-19"
+          />
         </div>
         <button
-          className="MuiButtonBase-root MuiButton-root makeStyles-addEntityButton_root-17 MuiButton-text makeStyles-addButton-19 MuiButton-textSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
+          className="MuiButtonBase-root MuiButton-root makeStyles-addEntityButton_root-17 MuiButton-text makeStyles-addButton-20 MuiButton-textSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
@@ -230,7 +233,7 @@ exports[`manuscript editor should render 1`] = `
             References
           </label>
           <ul
-            className="makeStyles-list-25"
+            className="makeStyles-list-26"
           />
         </div>
         <button
@@ -288,7 +291,7 @@ exports[`manuscript editor should render 1`] = `
           </label>
         </div>
         <button
-          className="MuiButtonBase-root MuiButton-root makeStyles-addEntityButton_root-17 MuiButton-text makeStyles-addAuthorButton-26 MuiButton-textSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
+          className="MuiButtonBase-root MuiButton-root makeStyles-addEntityButton_root-17 MuiButton-text makeStyles-addAuthorButton-27 MuiButton-textSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
@@ -332,7 +335,7 @@ exports[`manuscript editor should render 1`] = `
         onClick={[Function]}
       />
       <div
-        className="makeStyles-sectionContainer-27 makeStyles-root-5 makeStyles-plainVariant-7"
+        className="makeStyles-sectionContainer-28 makeStyles-root-5 makeStyles-plainVariant-7"
       >
         <label
           className="makeStyles-label-8"
@@ -340,7 +343,7 @@ exports[`manuscript editor should render 1`] = `
           Article information
         </label>
         <section
-          className="makeStyles-infoSection-28"
+          className="makeStyles-infoSection-29"
         >
           <div>
             <strong>
@@ -412,7 +415,7 @@ exports[`manuscript editor should render 1`] = `
           </div>
         </section>
         <button
-          className="MuiButtonBase-root MuiIconButton-root makeStyles-editButton-29"
+          className="MuiButtonBase-root MuiIconButton-root makeStyles-editButton-30"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
@@ -460,7 +463,7 @@ exports[`manuscript editor should render 1`] = `
             Related articles
           </label>
           <ul
-            className="makeStyles-list-31"
+            className="makeStyles-list-32"
           />
         </div>
         <button
