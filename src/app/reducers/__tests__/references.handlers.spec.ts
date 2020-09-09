@@ -5,7 +5,15 @@ import { givenState } from 'app/test-utils/reducer-test-helpers';
 import { Reference } from 'app/models/reference';
 import { addReference, deleteReference, updateReference } from 'app/reducers/references.handlers';
 
-jest.mock('../../utils/history.utils');
+jest.mock('app/utils/history.utils', () => ({
+  updateManuscriptState: jest.fn((state) => {
+    return {
+      past: [{}],
+      present: jest.requireActual('app/utils/state.utils').cloneManuscript(state.present),
+      future: []
+    };
+  })
+}));
 
 const REFERENCE: Reference = {
   id: 'bib1',
@@ -17,16 +25,16 @@ const REFERENCE: Reference = {
   ],
   type: 'journal',
   referenceInfo: {
-    year: 2012,
+    year: '2012',
     source: new EditorState(),
     articleTitle: new EditorState(),
     doi: '',
     pmid: '',
     elocationId: '',
-    firstPage: 236,
-    lastPage: 239,
+    firstPage: '236',
+    lastPage: '239',
     inPress: false,
-    volume: 337
+    volume: '337'
   }
 };
 

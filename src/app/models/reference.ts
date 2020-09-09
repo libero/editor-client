@@ -8,6 +8,7 @@ import * as referenceInfoConfig from 'app/models/config/reference-info.config';
 import { buildInputRules } from 'app/models/plugins/input-rules';
 import { getTextContentFromPath, makeSchemaFromConfig } from 'app/models/utils';
 import { SelectPlugin } from 'app/models/plugins/selection.plugin';
+import { get } from 'lodash';
 
 export type ReferenceContributor =
   | {
@@ -590,4 +591,22 @@ export function createEmptyRefInfoByType(type: ReferenceType): Reference['refere
     thesis: createNewThesisReference,
     patent: createNewPatentReference
   }[type]();
+}
+
+export function getRefContributorName(contributor: ReferenceContributor): string {
+  return get(contributor, 'groupName', get(contributor, 'lastName', ''));
+}
+
+export function getRefListAuthorsNames(ref: Reference): string {
+  let authorNames = getRefContributorName(ref.authors[0]);
+  if (ref.authors.length === 2) {
+    authorNames += ` and ${getRefContributorName(ref.authors[1])}`;
+  } else if (ref.authors.length > 2) {
+    authorNames += ' et al.';
+  }
+  return authorNames;
+}
+
+export function getRefNodeText(ref: Reference): string {
+  return [getRefListAuthorsNames(ref), get(ref.referenceInfo, 'year')].filter(Boolean).join(', ');
 }

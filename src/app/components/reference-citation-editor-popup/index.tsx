@@ -14,7 +14,7 @@ import ClearIcon from '@material-ui/icons/Clear';
 import { TextSelection } from 'prosemirror-state';
 
 import { theme } from 'app/styles/theme';
-import { Reference, ReferenceContributor } from 'app/models/reference';
+import { getRefListAuthorsNames, getRefNodeText, Reference } from 'app/models/reference';
 import { getReferences } from 'app/selectors/manuscript.selectors';
 import { store } from 'app/store';
 import { stringifyEditorState } from 'app/utils/view.utils';
@@ -32,20 +32,6 @@ interface ReferenceCitationEditorPopupProps {
   node?: ProsemirrorNode;
 }
 
-const getRefContributorName = (contributor: ReferenceContributor): string => {
-  return get(contributor, 'groupName', get(contributor, 'lastName', ''));
-};
-
-const getRefListAuthorsNames = (ref: Reference) => {
-  let authorNames = getRefContributorName(ref.authors[0]);
-  if (ref.authors.length === 2) {
-    authorNames += ` and ${getRefContributorName(ref.authors[1])}`;
-  } else if (ref.authors.length > 2) {
-    authorNames += ' et al.';
-  }
-  return authorNames;
-};
-
 const getRefListItemText = (ref: Reference) => {
   return [
     getRefListAuthorsNames(ref),
@@ -60,10 +46,6 @@ const getRefListItemText = (ref: Reference) => {
   ]
     .filter(Boolean)
     .join('. ');
-};
-
-const getRefNodeText = (ref: Reference) => {
-  return [getRefListAuthorsNames(ref), get(ref.referenceInfo, 'year')].filter(Boolean).join(', ');
 };
 
 const renderReferenceModal = (props: ReactFCProps<typeof ReferenceFormDialog>) => {
