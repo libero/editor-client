@@ -226,10 +226,19 @@ export class ReferenceCitationNodeView implements NodeView {
     );
   }
 
+  stopEvent(event) {
+    return Boolean(this.refEditorContainer) && this.dom.contains(event.target);
+  }
+
+  ignoreMutation() {
+    return true;
+  }
+
   close() {
     this.dom.classList.remove('ProseMirror-selectednode');
     ReactDOM.unmountComponentAtNode(this.refEditorContainer);
     this.refEditorContainer.parentNode.removeChild(this.refEditorContainer);
+    this.refEditorContainer = null;
   }
 
   handleChange(ref: Reference) {
