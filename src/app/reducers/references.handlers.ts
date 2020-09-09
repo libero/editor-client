@@ -1,24 +1,30 @@
+import { Node as ProsemirrorNode } from 'prosemirror-model';
+
 import { ManuscriptHistoryState } from 'app/store';
-import { Reference } from 'app/models/reference';
+import { getRefNodeText, Reference } from 'app/models/reference';
 import { cloneManuscript } from 'app/utils/state.utils';
+import { updateManuscriptState } from 'app/utils/history.utils';
 
 export function updateReference(state: ManuscriptHistoryState, payload: Reference): ManuscriptHistoryState {
   const referenceIndex = state.data.present.references.findIndex(({ id }) => id === payload.id);
+  const { body } = state.data.present;
+  const changes = body.tr;
+  const newAttrs = { refId: payload.id, refText: getRefNodeText(payload) };
 
-  const newDiff = {
-    references: state.data.present.references
-  };
-
-  const newManuscript = cloneManuscript(state.data.present);
-  newManuscript.references[referenceIndex] = payload;
+  body.doc.descendants((node: ProsemirrorNode, pos: number, parent: ProsemirrorNode) => {
+    if (node.type.name === 'refCitation' && node.attrs['refId'] === payload.id) {
+      changes.replaceWith(pos, pos + node.nodeSize, body.schema.nodes['refCitation'].create(newAttrs));
+    }
+    return Boolean(node.childCount);
+  });
+  const newState = updateManuscriptState(state.data, 'body', changes);
+  console.log(newState);
+  newState.present.references[referenceIndex] = payload;
+  newState.past[newState.past.length - 1]['references'] = state.data.present.references;
 
   return {
     ...state,
-    data: {
-      past: [...state.data.past, newDiff],
-      present: newManuscript,
-      future: []
-    }
+    data: newState
   };
 }
 
