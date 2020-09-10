@@ -18,6 +18,7 @@ import {
   canInsertNodeAtSelection,
   canRedoChanges,
   canUndoChanges,
+  canToggleHeadingAtSelection,
   isMarkAppliedToSelection
 } from 'app/selectors/manuscript-editor.selectors';
 
@@ -39,12 +40,22 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
   const canApply = useSelector(canApplyMarkToSelection);
   const canInsert = useSelector(canInsertNodeAtSelection);
   const isApplied = useSelector(isMarkAppliedToSelection);
+  const canToggleHeading = useSelector(canToggleHeadingAtSelection);
 
   const invokeUndo = useCallback(() => dispatch(manuscriptActions.undoAction()), [dispatch]);
   const invokeRedo = useCallback(() => dispatch(manuscriptActions.redoAction()), [dispatch]);
+
   const insertReferenceCitation = useCallback(() => {
     dispatch(manuscriptActions.insertReferenceCitationAction());
   }, [dispatch]);
+
+  const toggleHeading = useCallback(
+    (headingLevel: number) => () => {
+      dispatch(manuscriptActions.insertHeading(headingLevel));
+    },
+    [dispatch]
+  );
+
   const invokeToggleMark = useCallback(
     (mark: string) => () => {
       dispatch(manuscriptActions.toggleMarkAction(mark));
@@ -85,10 +96,11 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
         <DropDownMenu
           title="PARAGRAPH"
           entries={[
-            { title: 'Heading 1', enabled: false, action: undefined },
-            { title: 'Heading 2', enabled: false, action: undefined },
-            { title: 'Heading 3', enabled: false, action: undefined },
-            { title: 'Paragraph', enabled: false, action: undefined },
+            { title: 'Heading 1', enabled: canToggleHeading(1), action: toggleHeading(1) },
+            { title: 'Heading 2', enabled: canToggleHeading(2), action: toggleHeading(2) },
+            { title: 'Heading 3', enabled: canToggleHeading(3), action: toggleHeading(3) },
+            { title: 'Heading 4', enabled: canToggleHeading(4), action: toggleHeading(4) },
+            { title: 'Paragraph', enabled: canInsert('paragraph'), action: undefined },
             { title: 'Bulleted List', enabled: false, action: undefined },
             { title: 'Numbered List', enabled: false, action: undefined },
             { title: 'Preformat', enabled: false, action: undefined }

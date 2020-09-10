@@ -1,3 +1,15 @@
+function getTitleLevel(title: Element): number {
+  let parent = title.parentNode;
+  let level = 1;
+  while (parent.nodeName !== 'body') {
+    parent = parent.parentNode;
+    if (parent.nodeName === 'sec') {
+      level++;
+    }
+  }
+  return level;
+}
+
 export const nodes = {
   doc: {
     content: 'block+'
@@ -66,7 +78,7 @@ export const nodes = {
       {
         tag: 'sec > title',
         getAttrs(dom) {
-          return { level: dom.parentNode.getAttribute('id')[1] };
+          return { level: getTitleLevel(dom) };
         }
       }
     ],
