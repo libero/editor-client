@@ -18,7 +18,6 @@ export function updateReference(state: ManuscriptHistoryState, payload: Referenc
     return Boolean(node.childCount);
   });
   const newState = updateManuscriptState(state.data, 'body', changes);
-  console.log(newState);
   newState.present.references[referenceIndex] = payload;
   newState.past[newState.past.length - 1]['references'] = state.data.present.references;
 

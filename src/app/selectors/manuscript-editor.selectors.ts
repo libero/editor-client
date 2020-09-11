@@ -63,5 +63,25 @@ export const canInsertNodeAtSelection = createSelector(
   }
 );
 
+export const canToggleHeadingAtSelection = createSelector(
+  getFocusedEditorState,
+  (editorState: EditorState) => (headingLevel: number) => {
+    if (editorState && editorState.schema.nodes.heading) {
+      const wrapperNode = editorState.selection.$from.parent;
+      return (
+        (wrapperNode.type.name === 'heading' && wrapperNode.attrs.level !== headingLevel) ||
+        wrapperNode.type.name === 'paragraph'
+      );
+    }
+  }
+);
+
+export const canToggleParagraphAtSelection = createSelector(getFocusedEditorState, (editorState: EditorState) => {
+  if (editorState && editorState.schema.nodes.heading) {
+    const wrapperNode = editorState.selection.$from.parent;
+    return wrapperNode.type.name === 'heading';
+  }
+});
+
 export const isModalVisible = createSelector(getManuscriptEditorState, ({ modal }) => modal.isVisible);
 export const getModalParams = createSelector(getManuscriptEditorState, ({ modal }) => modal.params);

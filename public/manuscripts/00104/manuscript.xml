@@ -228,9 +228,21 @@
       </list-item>
       <list-item><p>Second entry</p></list-item>
     </list>
-    <sec id="s1">
-      <title><?proof margin=“10”?><!--Adjusting above space for section head (increasing). Can have a value between -6 to 12-->Disclaimer</title>
-      <p>The content of this publication does not necessarily reflect the views or policies of the Department of Health and Human Services, nor does mention of trade names, commercial products, or organizations imply endorsement by the US Government.</p>
+    <sec>
+        <title><?proof margin=“10”?><!--Adjusting above space for section head (increasing). Can have a value between -6 to 12-->Disclaimer</title>
+        <p>The content of this publication does not necessarily reflect the views or policies of the Department of Health and Human Services, nor does mention of trade names, commercial products, or organizations imply endorsement by the US Government.</p>
+        <sec>
+            <title> Second level heading </title>
+            <p>The content of the second level section</p>
+            <sec>
+                <title> Third level heading </title>
+                <p>The content of the third level section</p>
+                <sec>
+                    <title> Fourth level heading </title>
+                    <p>The content of the fourth level section</p>
+                </sec>
+            </sec>
+        </sec>
     </sec>
   </body>
     <back>

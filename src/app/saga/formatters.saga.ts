@@ -1,5 +1,5 @@
 import { EditorState, Transaction, NodeSelection } from 'prosemirror-state';
-import { toggleMark } from 'prosemirror-commands';
+import { toggleMark, setBlockType } from 'prosemirror-commands';
 import { all, takeLatest, call, put, select } from 'redux-saga/effects';
 import { MarkType, Fragment } from 'prosemirror-model';
 
@@ -41,9 +41,41 @@ export function* insertReferenceCitationSaga() {
   }
 }
 
+export function* insertHeadingSaga(action: Action<number>) {
+  const editorState: EditorState = yield select(getFocusedEditorState);
+  if (editorState && editorState.schema.nodes['heading']) {
+    const path = yield select(getFocusedEditorStatePath);
+    const commandAction = new Promise((resolve) => {
+      const command = setBlockType(editorState.schema.nodes['heading'], { level: action.payload });
+      command(editorState, (change: Transaction) => {
+        resolve(change);
+      });
+    });
+    const change = yield commandAction;
+    yield put(manuscriptActions.applyChangeAction({ path, change }));
+  }
+}
+
+export function* insertParagraphSaga(action: Action<number>) {
+  const editorState: EditorState = yield select(getFocusedEditorState);
+  if (editorState && editorState.schema.nodes['heading']) {
+    const path = yield select(getFocusedEditorStatePath);
+    const commandAction = new Promise((resolve) => {
+      const command = setBlockType(editorState.schema.nodes['paragraph']);
+      command(editorState, (change: Transaction) => {
+        resolve(change);
+      });
+    });
+    const change = yield commandAction;
+    yield put(manuscriptActions.applyChangeAction({ path, change }));
+  }
+}
+
 export default function* () {
   yield all([
     takeLatest(manuscriptActions.toggleMarkAction.getType(), toggleMarkSaga),
-    takeLatest(manuscriptActions.insertReferenceCitationAction.getType(), insertReferenceCitationSaga)
+    takeLatest(manuscriptActions.insertReferenceCitationAction.getType(), insertReferenceCitationSaga),
+    takeLatest(manuscriptActions.insertHeading.getType(), insertHeadingSaga),
+    takeLatest(manuscriptActions.insertParagraph.getType(), insertParagraphSaga)
   ]);
 }
