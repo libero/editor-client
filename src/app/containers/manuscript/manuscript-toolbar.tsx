@@ -19,7 +19,8 @@ import {
   canRedoChanges,
   canUndoChanges,
   canToggleHeadingAtSelection,
-  isMarkAppliedToSelection
+  isMarkAppliedToSelection,
+  canToggleParagraphAtSelection
 } from 'app/selectors/manuscript-editor.selectors';
 
 import { useToolbarStyles } from './styles';
@@ -41,6 +42,7 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
   const canInsert = useSelector(canInsertNodeAtSelection);
   const isApplied = useSelector(isMarkAppliedToSelection);
   const canToggleHeading = useSelector(canToggleHeadingAtSelection);
+  const canToggleParagraph = useSelector(canToggleParagraphAtSelection);
 
   const invokeUndo = useCallback(() => dispatch(manuscriptActions.undoAction()), [dispatch]);
   const invokeRedo = useCallback(() => dispatch(manuscriptActions.redoAction()), [dispatch]);
@@ -55,6 +57,10 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
     },
     [dispatch]
   );
+
+  const toggleParagraph = useCallback(() => {
+    dispatch(manuscriptActions.insertParagraph());
+  }, [dispatch]);
 
   const invokeToggleMark = useCallback(
     (mark: string) => () => {
@@ -100,7 +106,7 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
             { title: 'Heading 2', enabled: canToggleHeading(2), action: toggleHeading(2) },
             { title: 'Heading 3', enabled: canToggleHeading(3), action: toggleHeading(3) },
             { title: 'Heading 4', enabled: canToggleHeading(4), action: toggleHeading(4) },
-            { title: 'Paragraph', enabled: canInsert('paragraph'), action: undefined },
+            { title: 'Paragraph', enabled: canToggleParagraph, action: toggleParagraph },
             { title: 'Bulleted List', enabled: false, action: undefined },
             { title: 'Numbered List', enabled: false, action: undefined },
             { title: 'Preformat', enabled: false, action: undefined }

@@ -1,11 +1,11 @@
 function getTitleLevel(title: Element): number {
   let parent = title.parentNode;
   let level = 1;
-  while (parent.nodeName !== 'body') {
-    parent = parent.parentNode;
+  while (parent && parent.nodeName !== 'body') {
     if (parent.nodeName === 'sec') {
       level++;
     }
+    parent = parent.parentNode;
   }
   return level;
 }
@@ -45,7 +45,6 @@ export const nodes = {
   keyword: {
     content: 'text*',
     atom: true,
-    // inline: true,
     parseDOM: [{ tag: 'kwd' }],
     toDOM() {
       return ['div', 0];

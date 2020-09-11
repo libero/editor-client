@@ -78,3 +78,4 @@ export const toggleMarkAction = createAction<string>('TOGGLE_MARK');
 export const linkAction = createAction<void>('LINK');
 export const insertReferenceCitationAction = createAction<void>('INSERT_REFERENCE_CITATION');
 export const insertHeading = createAction<number>('INSERT_HEADING');
+export const insertParagraph = createAction<void>('INSERT_PARAGRAPH');

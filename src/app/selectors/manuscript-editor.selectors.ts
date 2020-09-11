@@ -76,5 +76,12 @@ export const canToggleHeadingAtSelection = createSelector(
   }
 );
 
+export const canToggleParagraphAtSelection = createSelector(getFocusedEditorState, (editorState: EditorState) => {
+  if (editorState && editorState.schema.nodes.heading) {
+    const wrapperNode = editorState.selection.$from.parent;
+    return wrapperNode.type.name === 'heading';
+  }
+});
+
 export const isModalVisible = createSelector(getManuscriptEditorState, ({ modal }) => modal.isVisible);
 export const getModalParams = createSelector(getManuscriptEditorState, ({ modal }) => modal.params);
