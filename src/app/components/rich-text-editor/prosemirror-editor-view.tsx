@@ -3,11 +3,35 @@ import { EditorState, Transaction } from 'prosemirror-state';
 import { EditorProps, EditorView } from 'prosemirror-view';
 import classnames from 'classnames';
 import 'prosemirror-view/style/prosemirror.css';
+import { DOMSerializer, Slice } from 'prosemirror-model';
+import { get } from 'lodash';
 
 import './prosemirror-styles.scss';
 
 interface ProseMirrorEditorViewState {
   editorState: EditorState;
+}
+
+function clipboardTextSerializer(slice: Slice): string {
+  const content = slice.content;
+  const text = [];
+  let separated = true;
+  const blockSeparator = ' ';
+  content.nodesBetween(0, content.size, (node, pos) => {
+    if (node.isText) {
+      text.push(node.text);
+      separated = !blockSeparator;
+    } else if (node.isLeaf && node.type.spec.toClipboardText) {
+      text.push(node.type.spec.toClipboardText(node));
+      separated = !blockSeparator;
+    } else if (!separated && node.isBlock) {
+      text.push(blockSeparator);
+      separated = true;
+    }
+    return true;
+  });
+
+  return text.join('');
 }
 
 export interface ProseMirrorEditorViewProps {
@@ -50,9 +74,16 @@ export class ProseMirrorEditorView extends React.Component<ProseMirrorEditorView
 
   private createEditorView = (element: HTMLElement) => {
     if (element) {
+      const clipboardSerializer = DOMSerializer.fromSchema(this.props.editorState.schema);
+      Object.entries(this.props.editorState.schema.nodes).forEach(([nodeName, nodeType]) => {
+        clipboardSerializer.nodes[nodeName] = get(nodeType, 'spec.toClipboardDOM', clipboardSerializer.nodes[nodeName]);
+      });
+
       const additionalOptions = this.props.options || {};
       this.editorView = new EditorView(element, {
         ...additionalOptions,
+        clipboardSerializer,
+        clipboardTextSerializer,
         state: this.props.editorState,
         dispatchTransaction: (tx: Transaction) => this.props.onChange(tx)
       });

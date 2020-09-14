@@ -16,7 +16,7 @@ export const marks = {
   },
 
   italic: {
-    parseDOM: [{ tag: 'italic' }],
+    parseDOM: [{ tag: 'italic' }, { tag: 'em' }],
     toDOM(): DOMOutputSpecArray {
       return ['em', 0];
     }

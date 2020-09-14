@@ -4,6 +4,8 @@ import { EditorState } from 'prosemirror-state';
 import { ProseMirrorEditorView } from 'app/components/rich-text-editor/prosemirror-editor-view';
 import { EditorView } from 'prosemirror-view';
 import { mount } from 'enzyme';
+import {createDummyEditorState} from "app/test-utils/reducer-test-helpers";
+import { DOMSerializer } from 'prosemirror-model';
 
 jest.mock('prosemirror-view');
 
@@ -23,7 +25,7 @@ describe('prosemirror view', () => {
   });
 
   it('should render', () => {
-    const sampleState = new EditorState();
+    const sampleState = createDummyEditorState();
     const onChangeHandler = jest.fn();
 
     const component = create(<ProseMirrorEditorView editorState={sampleState} onChange={onChangeHandler} />, {
@@ -32,12 +34,17 @@ describe('prosemirror view', () => {
     expect(component).toMatchSnapshot();
     expect(EditorView).toBeCalledWith(
       { props: { className: 'prosemirrorContainer' }, type: 'div' },
-      { state: sampleState, dispatchTransaction: expect.any(Function) }
+      {
+        state: sampleState,
+        clipboardSerializer: expect.any(DOMSerializer),
+        clipboardTextSerializer: expect.any(Function),
+        dispatchTransaction: expect.any(Function)
+      }
     );
   });
 
   it('should trigger onChange', () => {
-    const sampleState = new EditorState();
+    const sampleState = createDummyEditorState();
     const onChangeHandler = jest.fn();
 
     create(<ProseMirrorEditorView editorState={sampleState} onChange={onChangeHandler} />, { createNodeMock });
@@ -49,7 +56,7 @@ describe('prosemirror view', () => {
   });
 
   it('should update EditorView when props change', () => {
-    const sampleState = new EditorState();
+    const sampleState = createDummyEditorState();
     const onChangeHandler = jest.fn();
 
     const component = mount(<ProseMirrorEditorView editorState={sampleState} onChange={onChangeHandler} />);
@@ -59,7 +66,7 @@ describe('prosemirror view', () => {
   });
 
   it('should destroy EditorView when unmount', () => {
-    const sampleState = new EditorState();
+    const sampleState = createDummyEditorState();
     const onChangeHandler = jest.fn();
 
     const component = mount(<ProseMirrorEditorView editorState={sampleState} onChange={onChangeHandler} />);

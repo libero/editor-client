@@ -68,11 +68,11 @@ export const ReferenceCitationEditorPopup: React.FC<ReferenceCitationEditorPopup
       setFilterValue(event.target['value']);
       setFilteredRefs(
         refs.filter((ref) => {
-          return getRefListItemText(ref).toLowerCase().indexOf(filterValue) >= 0;
+          return getRefListItemText(ref).toLowerCase().indexOf(filterValue) >= 0 || refId === ref.id;
         })
       );
     },
-    [refs, setFilterValue]
+    [refs, setFilterValue, refId]
   );
   const handleClick = useCallback(
     (event: SyntheticEvent) => {
