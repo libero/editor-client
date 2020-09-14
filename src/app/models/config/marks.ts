@@ -23,21 +23,21 @@ export const marks = {
   },
 
   strikethrough: {
-    parseDOM: [{ tag: 'sc' }],
+    parseDOM: [{ tag: 'sc' }, { tag: 'strike' }],
     toDOM(): DOMOutputSpecArray {
       return ['strike', 0];
     }
   },
 
   underline: {
-    parseDOM: [{ tag: 'underline' }],
+    parseDOM: [{ tag: 'underline' }, { tag: 'u' }],
     toDOM(): DOMOutputSpecArray {
       return ['u', 0];
     }
   },
 
   bold: {
-    parseDOM: [{ tag: 'bold' }],
+    parseDOM: [{ tag: 'bold' }, { tag: 'strong' }],
     toDOM(): DOMOutputSpecArray {
       return ['strong', 0];
     }
@@ -53,13 +53,17 @@ export const marks = {
         getAttrs(dom) {
           return { href: dom.getAttribute('xlink:href') };
         }
+      },
+      {
+        tag: 'a[href]',
+        getAttrs(dom) {
+          return { href: dom.getAttribute('href') };
+        }
       }
     ],
     toDOM(node) {
       const { href } = node.attrs;
-      return ['a', { href }, 0];
+      return ['a', { href, 'link-type': 'ext-link' }, 0];
     }
   }
 };
-
-export type MarksType = keyof typeof marks;

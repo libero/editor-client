@@ -72,6 +72,7 @@ export const nodes = {
   heading: {
     attrs: { level: { default: 1 } },
     content: 'inline*',
+    defining: true,
     group: 'block',
     parseDOM: [
       {
@@ -79,7 +80,11 @@ export const nodes = {
         getAttrs(dom) {
           return { level: getTitleLevel(dom) };
         }
-      }
+      },
+      { tag: 'h1', attrs: { level: 1 } },
+      { tag: 'h2', attrs: { level: 2 } },
+      { tag: 'h3', attrs: { level: 3 } },
+      { tag: 'h4', attrs: { level: 4 } }
     ],
     toDOM(node) {
       return ['h' + node.attrs.level, 0];
@@ -104,10 +109,28 @@ export const nodes = {
             refId: dom.getAttribute('rid')
           };
         }
+      },
+      {
+        tag: 'a.citation[data-cit-type="reference"]',
+        getAttrs(dom) {
+          return {
+            refText: dom.getAttribute('data-ref-text'),
+            refId: dom.getAttribute('data-ref-id')
+          };
+        }
       }
     ],
     toDOM(node) {
-      return ['a', { href: '#', class: 'citation' }, 0];
+      return [
+        'a',
+        {
+          href: '#',
+          class: 'citation',
+          'data-cit-type': 'reference',
+          'data-ref-id': node.attrs.refId,
+          'data-ref-text': node.attrs.refText
+        }
+      ];
     }
   },
 
