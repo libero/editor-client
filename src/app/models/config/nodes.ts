@@ -1,3 +1,5 @@
+import { DOMOutputSpec } from 'prosemirror-model';
+
 function getTitleLevel(title: Element): number {
   let parent = title.parentNode;
   let level = 1;
@@ -120,7 +122,20 @@ export const nodes = {
         }
       }
     ],
-    toDOM(node) {
+    toClipboardDOM(node): DOMOutputSpec {
+      const refCitationDom = document.createElement('a');
+      refCitationDom.setAttribute('href', '#');
+      refCitationDom.setAttribute('data-cit-type', 'reference');
+      refCitationDom.setAttribute('data-ref-id', node.attrs.refId);
+      refCitationDom.setAttribute('data-ref-text', node.attrs.refText);
+      refCitationDom.classList.add('citation');
+      refCitationDom.innerHTML = `${node.attrs.refText}`;
+      return refCitationDom;
+    },
+    toClipboardText(node): string {
+      return node.attrs.refText;
+    },
+    toDOM(node): DOMOutputSpec {
       return [
         'a',
         {

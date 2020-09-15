@@ -12,7 +12,7 @@ export const useManuscriptStyles = makeStyles((theme) => ({
     maxWidth: 700,
     boxSizing: 'border-box',
     width: '100%',
-    padding: theme.spacing(2),
+    padding: theme.spacing(5, 2),
     margin: '0 auto'
   },
   spacer: {
