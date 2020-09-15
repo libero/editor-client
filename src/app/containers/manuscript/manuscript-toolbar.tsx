@@ -20,7 +20,8 @@ import {
   canUndoChanges,
   canToggleHeadingAtSelection,
   isMarkAppliedToSelection,
-  canToggleParagraphAtSelection
+  canToggleParagraphAtSelection,
+  isActiveContainer
 } from 'app/selectors/manuscript-editor.selectors';
 
 import { useToolbarStyles } from './styles';
@@ -43,6 +44,7 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
   const isApplied = useSelector(isMarkAppliedToSelection);
   const canToggleHeading = useSelector(canToggleHeadingAtSelection);
   const canToggleParagraph = useSelector(canToggleParagraphAtSelection);
+  const checkActiveContainer = useSelector(isActiveContainer);
 
   const invokeUndo = useCallback(() => dispatch(manuscriptActions.undoAction()), [dispatch]);
   const invokeRedo = useCallback(() => dispatch(manuscriptActions.redoAction()), [dispatch]);
@@ -57,6 +59,21 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
     },
     [dispatch]
   );
+
+  const getSectionMenuTitle = useCallback(() => {
+    const activeContainer = Object.entries({
+      paragraph: ['paragraph'],
+      'heading 1': ['heading', { level: 1 }],
+      'heading 2': ['heading', { level: 2 }],
+      'heading 3': ['heading', { level: 3 }],
+      'heading 4': ['heading', { level: 4 }]
+    }).find(([, entry]) => {
+      const nodeName: string = entry[0] as string;
+      const attrs = entry[1] as Record<string, string | number>;
+      return checkActiveContainer(nodeName, attrs);
+    });
+    return activeContainer ? activeContainer[0].toUpperCase() : 'PARAGRAPH';
+  }, [checkActiveContainer]);
 
   const toggleParagraph = useCallback(() => {
     dispatch(manuscriptActions.insertParagraph());
@@ -100,7 +117,7 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
           </ToggleButton>
         </ToggleButtonGroup>
         <DropDownMenu
-          title="PARAGRAPH"
+          title={getSectionMenuTitle()}
           entries={[
             { title: 'Heading 1', enabled: canToggleHeading(1), action: toggleHeading(1) },
             { title: 'Heading 2', enabled: canToggleHeading(2), action: toggleHeading(2) },

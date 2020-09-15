@@ -31,7 +31,7 @@ export const nodes = {
     content: 'inline*',
     parseDOM: [{ tag: 'article-title' }],
     toDOM(node) {
-      return ['h1', 0];
+      return ['h1', { class: 'article-title' }, 0];
     }
   },
 
