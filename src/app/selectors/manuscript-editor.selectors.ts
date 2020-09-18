@@ -102,3 +102,7 @@ export const isActiveContainer = createSelector(
 
 export const isModalVisible = createSelector(getManuscriptEditorState, ({ modal }) => modal.isVisible);
 export const getModalParams = createSelector(getManuscriptEditorState, ({ modal }) => modal.params);
+export const getManuscriptBodyTOC = createSelector(
+  getManuscriptEditorState,
+  ({ manuscriptBodyTOC }) => manuscriptBodyTOC
+);

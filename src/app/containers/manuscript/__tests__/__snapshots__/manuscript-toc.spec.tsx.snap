@@ -30,7 +30,7 @@ exports[`<ManuscriptTOC> renders 1`] = `
             0.0.0-test
           </h3>
           <h3
-            className="makeStyles-infoText-8 makeStyles-dtd-9"
+            className="makeStyles-infoText-8 makeStyles-dtd-11"
           >
             JATS: 
              DTD
@@ -48,6 +48,48 @@ exports[`<ManuscriptTOC> renders 1`] = `
       <div
         data-cmp="list"
       >
+        <div
+          data-cmp="list-item"
+        >
+          <div
+            data-cmp="list-item-text"
+          />
+        </div>
+        <div
+          data-cmp="list-item"
+        >
+          <div
+            data-cmp="list-item-text"
+          />
+        </div>
+        <div
+          data-cmp="list-item"
+        >
+          <div
+            data-cmp="list-item-text"
+          />
+        </div>
+        <div
+          data-cmp="list-item"
+        >
+          <div
+            data-cmp="list-item-text"
+          />
+        </div>
+        <div
+          data-cmp="list-item"
+        >
+          <div
+            data-cmp="list-item-text"
+          />
+        </div>
+        <div
+          data-cmp="list-item"
+        >
+          <div
+            data-cmp="list-item-text"
+          />
+        </div>
         <div
           data-cmp="list-item"
         >
@@ -102,7 +144,7 @@ exports[`<ManuscriptTOC> renders 1`] = `
             0.0.0-test
           </h3>
           <h3
-            className="makeStyles-infoText-8 makeStyles-dtd-9"
+            className="makeStyles-infoText-8 makeStyles-dtd-11"
           >
             JATS: 
              DTD
@@ -120,6 +162,48 @@ exports[`<ManuscriptTOC> renders 1`] = `
       <div
         data-cmp="list"
       >
+        <div
+          data-cmp="list-item"
+        >
+          <div
+            data-cmp="list-item-text"
+          />
+        </div>
+        <div
+          data-cmp="list-item"
+        >
+          <div
+            data-cmp="list-item-text"
+          />
+        </div>
+        <div
+          data-cmp="list-item"
+        >
+          <div
+            data-cmp="list-item-text"
+          />
+        </div>
+        <div
+          data-cmp="list-item"
+        >
+          <div
+            data-cmp="list-item-text"
+          />
+        </div>
+        <div
+          data-cmp="list-item"
+        >
+          <div
+            data-cmp="list-item-text"
+          />
+        </div>
+        <div
+          data-cmp="list-item"
+        >
+          <div
+            data-cmp="list-item-text"
+          />
+        </div>
         <div
           data-cmp="list-item"
         >

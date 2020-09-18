@@ -1,11 +1,14 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Drawer, Divider, Hidden, List, ListItem, ListItemText } from '@material-ui/core';
 import classNames from 'classnames';
 
 import { useOutlinePanelStyles } from './styles';
 import { getArticleInformation, getJournalMeta } from 'app/selectors/manuscript.selectors';
 import { ClearFocus } from 'app/containers/manuscript/clear-focus';
+import { getManuscriptBodyTOC } from 'app/selectors/manuscript-editor.selectors';
+import { TableOfContent, TOCEntry } from 'app/models/manuscript';
+import { scrollIntoViewAction } from 'app/actions/manuscript-editor.actions';
 
 export interface ManuscriptTOCProps {
   tocOpen: boolean;
@@ -14,10 +17,26 @@ export interface ManuscriptTOCProps {
 
 export const ManuscriptTOC: React.FC<ManuscriptTOCProps> = (props) => {
   const classes = useOutlinePanelStyles(props);
+  const dispatch = useDispatch();
   const { tocOpen, handleTocToggle } = props;
 
   const articleInfo = useSelector(getArticleInformation);
   const journalMeta = useSelector(getJournalMeta);
+  const manuscriptBodyTOC = useSelector(getManuscriptBodyTOC);
+  const toc: TableOfContent = [
+    { level: 1, title: 'Title', id: 'title' },
+    { level: 1, title: 'Abstract', id: 'abstract' },
+    { level: 1, title: 'Impact statement', id: 'impactStatement' },
+    ...manuscriptBodyTOC,
+    { level: 1, title: 'Acknowledgements', id: 'acknowledgement' }
+  ];
+
+  const handleTOCClick = useCallback(
+    (entry: TOCEntry) => () => {
+      dispatch(scrollIntoViewAction(entry));
+    },
+    [dispatch]
+  );
 
   const drawer = (
     <React.Fragment>
@@ -31,9 +50,12 @@ export const ManuscriptTOC: React.FC<ManuscriptTOCProps> = (props) => {
       </section>
       <Divider />
       <List classes={{ root: classes.outlineList }}>
-        {['Title', 'Abstract'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemText primary={text} />
+        {toc.map((entry, index) => (
+          <ListItem button key={entry.title} onClick={handleTOCClick(entry)}>
+            <ListItemText
+              classes={{ primary: entry.level === 1 ? classes.tocLevel1 : classes.tocLevel2 }}
+              primary={entry.title}
+            />
           </ListItem>
         ))}
       </List>

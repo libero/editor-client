@@ -12,6 +12,7 @@ import { ReferenceCitationNodeView } from 'app/components/reference-citation-edi
 export interface RichTextEditorProps {
   editorState: EditorState;
   label?: string;
+  id?: string;
   name?: string;
   isActive: boolean;
   onChange?: (change: Transaction, name: string) => void;
@@ -28,7 +29,7 @@ const restoreSelection = debounce((editorView, from, to) => {
 }, 50);
 
 export const RichTextEditor: React.FC<RichTextEditorProps> = React.memo((props) => {
-  const { editorState, label, onChange, onFocusSwitch, name, isActive } = props;
+  const { editorState, label, onChange, onFocusSwitch, name, isActive, id } = props;
   const prosemirrorRef = useRef<ProseMirrorEditorView>();
 
   useEffect(() => {
@@ -62,7 +63,7 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = React.memo((props) 
   const handleChange = useCallback((tr) => onChange(tr, name), [name, onChange]);
 
   return (
-    <SectionContainer label={label} focused={isActive}>
+    <SectionContainer label={label} focused={isActive} id={id}>
       {editorState ? (
         <ProseMirrorEditorView
           ref={prosemirrorRef}
