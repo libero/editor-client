@@ -7,7 +7,7 @@ import { useOutlinePanelStyles } from './styles';
 import { getArticleInformation, getJournalMeta } from 'app/selectors/manuscript.selectors';
 import { ClearFocus } from 'app/containers/manuscript/clear-focus';
 import { getManuscriptBodyTOC } from 'app/selectors/manuscript-editor.selectors';
-import { TableOfContent, TOCEntry } from 'app/models/manuscript';
+import { TableOfContents, TOCEntry } from 'app/models/manuscript';
 import { scrollIntoViewAction } from 'app/actions/manuscript-editor.actions';
 
 export interface ManuscriptTOCProps {
@@ -23,12 +23,13 @@ export const ManuscriptTOC: React.FC<ManuscriptTOCProps> = (props) => {
   const articleInfo = useSelector(getArticleInformation);
   const journalMeta = useSelector(getJournalMeta);
   const manuscriptBodyTOC = useSelector(getManuscriptBodyTOC);
-  const toc: TableOfContent = [
+  const toc: TableOfContents = [
     { level: 1, title: 'Title', id: 'title' },
     { level: 1, title: 'Abstract', id: 'abstract' },
     { level: 1, title: 'Impact statement', id: 'impactStatement' },
+    { level: 1, title: 'Main text', id: 'mainBody' },
     ...manuscriptBodyTOC,
-    { level: 1, title: 'Acknowledgements', id: 'acknowledgement' }
+    { level: 1, title: 'Acknowledgements', id: 'acknowledgements' }
   ];
 
   const handleTOCClick = useCallback(

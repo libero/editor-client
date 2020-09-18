@@ -5,7 +5,7 @@ import { Node as ProsemirrorNode } from 'prosemirror-model';
 import * as manuscriptActions from 'app/actions/manuscript.actions';
 import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
 import { Action } from 'app/utils/action.utils';
-import { TableOfContent, TOCEntry } from 'app/models/manuscript';
+import { TableOfContents, TOCEntry } from 'app/models/manuscript';
 import { getBody } from 'app/selectors/manuscript.selectors';
 import { setBodyTOCAction } from 'app/actions/manuscript-editor.actions';
 import { ApplyChangePayload } from 'app/actions/manuscript.actions';
@@ -17,8 +17,8 @@ function getElementOffset(el: Element) {
   return { top: rect.top + scrollTop, left: rect.left + scrollLeft };
 }
 
-function getTOCForBody(editorState: EditorState): TableOfContent {
-  const toc = [] as TableOfContent;
+function getTOCForBody(editorState: EditorState): TableOfContents {
+  const toc = [] as TableOfContents;
   editorState.doc.forEach((node: ProsemirrorNode) => {
     if (node.type.name === 'heading') {
       toc.push({ title: node.textContent, level: node.attrs.level, id: node.attrs.domId });
@@ -49,8 +49,10 @@ export function* updateTOCOnFormatOrInsertSaga(action: Action<ApplyChangePayload
 export function* scrollViewSaga(action: Action<TOCEntry>) {
   const entry = action.payload;
   const domElement = document.getElementById(entry.id);
-  const domElementTop = getElementOffset(domElement).top;
-  document.documentElement.scrollTop = domElementTop - 80;
+  if (domElement) {
+    const domElementTop = getElementOffset(domElement).top;
+    document.documentElement.scrollTop = domElementTop - 80;
+  }
   yield null;
 }
 

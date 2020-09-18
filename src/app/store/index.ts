@@ -8,7 +8,7 @@ import { manuscriptEditorReducer } from 'app/reducers/manuscript-editor.reducer'
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { history } from './history';
 import { ModalPayload } from 'app/actions/manuscript-editor.actions';
-import { TableOfContent } from 'app/models/manuscript';
+import { TableOfContents } from 'app/models/manuscript';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -16,7 +16,7 @@ export type ManuscriptHistoryState = LoadableState<ManuscriptHistory>;
 
 export interface ManuscriptEditorState {
   focusedManuscriptPath: string | undefined;
-  manuscriptBodyTOC: TableOfContent;
+  manuscriptBodyTOC: TableOfContents;
   modal: {
     params?: ModalPayload;
     isVisible: boolean;

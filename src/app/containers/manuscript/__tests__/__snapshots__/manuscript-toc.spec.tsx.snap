@@ -104,6 +104,13 @@ exports[`<ManuscriptTOC> renders 1`] = `
             data-cmp="list-item-text"
           />
         </div>
+        <div
+          data-cmp="list-item"
+        >
+          <div
+            data-cmp="list-item-text"
+          />
+        </div>
       </div>
       <div
         className="makeStyles-whiteSpace-4"
@@ -162,6 +169,13 @@ exports[`<ManuscriptTOC> renders 1`] = `
       <div
         data-cmp="list"
       >
+        <div
+          data-cmp="list-item"
+        >
+          <div
+            data-cmp="list-item-text"
+          />
+        </div>
         <div
           data-cmp="list-item"
         >

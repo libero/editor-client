@@ -137,6 +137,7 @@ Array [
       />
       <div
         className="makeStyles-root-21 makeStyles-plainVariant-23"
+        id="mainBody"
       >
         <label
           className="makeStyles-label-24"

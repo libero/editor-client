@@ -187,6 +187,7 @@ export const ManuscriptEditor: React.FC = () => {
         <RichTextEditor
           editorState={body}
           label="Main text"
+          id="mainBody"
           name="body"
           isActive={isInputFocused('body', focusedPath)}
           onChange={handleBodyChange}

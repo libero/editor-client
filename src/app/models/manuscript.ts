@@ -40,7 +40,7 @@ export interface TOCEntry {
   level: number;
 }
 
-export type TableOfContent = Array<TOCEntry>;
+export type TableOfContents = Array<TOCEntry>;
 
 export type ManuscriptDiff = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

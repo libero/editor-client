@@ -1,5 +1,5 @@
 import { createAction } from 'redux-act';
-import { TableOfContent, TOCEntry } from 'app/models/manuscript';
+import { TableOfContents, TOCEntry } from 'app/models/manuscript';
 
 export interface ModalPayload<P = {}> {
   component: React.FC<P>;
@@ -8,7 +8,7 @@ export interface ModalPayload<P = {}> {
 }
 
 export const setFocusAction = createAction<string>('SET_FOCUS');
-export const setBodyTOCAction = createAction<TableOfContent>('SET_BODY_TOC');
+export const setBodyTOCAction = createAction<TableOfContents>('SET_BODY_TOC');
 export const scrollIntoViewAction = createAction<TOCEntry>('SCROLL_INTO_VIEW');
 export const removeFocusAction = createAction<void>('REMOVE_FOCUS');
 export const updateFocusPathAction = createAction<string>('UPDATE_FOCUS_PATH');
