@@ -3,12 +3,12 @@ import { EditorState } from 'prosemirror-state';
 import { gapCursor } from 'prosemirror-gapcursor';
 import { dropCursor } from 'prosemirror-dropcursor';
 import { v4 as uuidv4 } from 'uuid';
+import { get } from 'lodash';
 
 import * as referenceInfoConfig from 'app/models/config/reference-info.config';
 import { buildInputRules } from 'app/models/plugins/input-rules';
 import { getTextContentFromPath, makeSchemaFromConfig } from 'app/models/utils';
 import { SelectPlugin } from 'app/models/plugins/selection.plugin';
-import { get } from 'lodash';
 
 export type ReferenceContributor =
   | {
@@ -609,4 +609,20 @@ export function getRefListAuthorsNames(ref: Reference): string {
 
 export function getRefNodeText(ref: Reference): string {
   return [getRefListAuthorsNames(ref), get(ref.referenceInfo, 'year')].filter(Boolean).join(', ');
+}
+
+export function sortReferencesList(refs: Reference[]): void {
+  refs.sort((ref1, ref2) => {
+    return getAuthorLastNameForSorting(ref1) < getAuthorLastNameForSorting(ref2)
+      ? -1
+      : getAuthorLastNameForSorting(ref1) > getAuthorLastNameForSorting(ref2)
+      ? 1
+      : get(ref1, 'referenceInfo.year', '') < get(ref2, 'referenceInfo.year', '')
+      ? -1
+      : 1;
+  });
+}
+
+function getAuthorLastNameForSorting(ref: Reference): string {
+  return ref.authors.length ? get(ref.authors[0], 'groupName', get(ref.authors[0], 'lastName')) : '';
 }

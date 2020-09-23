@@ -1,4 +1,5 @@
-import { createReference } from 'app/models/reference';
+import { createEmptyRefInfoByType, createReference, Reference, sortReferencesList } from 'app/models/reference';
+import { set } from 'lodash';
 
 describe('Reference model', () => {
   it('creates journal reference', () => {
@@ -174,6 +175,24 @@ describe('Reference model', () => {
       'patent'
     );
     expect(createReference('id', el.querySelector('element-citation'))).toMatchSnapshot();
+  });
+
+  it('should sort references list', () => {
+    const refs: Reference[] = [
+      { id: '', type: 'web', authors: [{ groupName: 'Berk' }], referenceInfo: createEmptyRefInfoByType('web') },
+      { id: '', type: 'web', authors: [{ groupName: 'Twerk' }], referenceInfo: createEmptyRefInfoByType('web') },
+      { id: '', type: 'web', authors: [{ groupName: 'Schwerk' }], referenceInfo: createEmptyRefInfoByType('web') },
+      { id: '', type: 'web', authors: [{ groupName: 'Berk' }], referenceInfo: createEmptyRefInfoByType('web') }
+    ];
+
+    set(refs[0], 'referenceInfo.year', '2009');
+    set(refs[1], 'referenceInfo.year', '2001');
+    set(refs[2], 'referenceInfo.year', '2011');
+    set(refs[3], 'referenceInfo.year', '2007');
+
+    const sortedList = [...refs];
+    sortReferencesList(sortedList);
+    expect(sortedList).toEqual([refs[3], refs[0], refs[2], refs[1]]);
   });
 });
 
