@@ -90,10 +90,10 @@ export const nodes = {
           };
         }
       },
-      { tag: 'h1', attrs: { level: 1 } },
-      { tag: 'h2', attrs: { level: 2 } },
-      { tag: 'h3', attrs: { level: 3 } },
-      { tag: 'h4', attrs: { level: 4 } }
+      { tag: 'h1', attrs: { level: 1, domId: uuidv4() } },
+      { tag: 'h2', attrs: { level: 2, domId: uuidv4() } },
+      { tag: 'h3', attrs: { level: 3, domId: uuidv4() } },
+      { tag: 'h4', attrs: { level: 4, domId: uuidv4() } }
     ],
     toDOM(node) {
       return ['h' + node.attrs.level, { id: node.attrs.domId }, 0];
