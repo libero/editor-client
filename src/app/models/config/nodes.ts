@@ -1,4 +1,5 @@
 import { DOMOutputSpec } from 'prosemirror-model';
+import { v4 as uuidv4 } from 'uuid';
 
 function getTitleLevel(title: Element): number {
   let parent = title.parentNode;
@@ -72,7 +73,10 @@ export const nodes = {
   },
 
   heading: {
-    attrs: { level: { default: 1 } },
+    attrs: {
+      level: { default: 1 },
+      domId: { default: '' }
+    },
     content: 'inline*',
     defining: true,
     group: 'block',
@@ -80,16 +84,19 @@ export const nodes = {
       {
         tag: 'sec > title',
         getAttrs(dom) {
-          return { level: getTitleLevel(dom) };
+          return {
+            level: getTitleLevel(dom),
+            domId: uuidv4()
+          };
         }
       },
-      { tag: 'h1', attrs: { level: 1 } },
-      { tag: 'h2', attrs: { level: 2 } },
-      { tag: 'h3', attrs: { level: 3 } },
-      { tag: 'h4', attrs: { level: 4 } }
+      { tag: 'h1', attrs: { level: 1, domId: uuidv4() } },
+      { tag: 'h2', attrs: { level: 2, domId: uuidv4() } },
+      { tag: 'h3', attrs: { level: 3, domId: uuidv4() } },
+      { tag: 'h4', attrs: { level: 4, domId: uuidv4() } }
     ],
     toDOM(node) {
-      return ['h' + node.attrs.level, 0];
+      return ['h' + node.attrs.level, { id: node.attrs.domId }, 0];
     }
   },
 

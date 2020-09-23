@@ -1,4 +1,5 @@
 import { Transaction } from 'prosemirror-state';
+
 import { ManuscriptHistoryState } from 'app/store';
 import { updateManuscriptState } from 'app/utils/history.utils';
 

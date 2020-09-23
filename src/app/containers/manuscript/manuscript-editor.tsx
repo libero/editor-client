@@ -151,6 +151,7 @@ export const ManuscriptEditor: React.FC = () => {
         <RichTextEditor
           editorState={title}
           label="Title"
+          id="title"
           isActive={isInputFocused('title', focusedPath)}
           name="title"
           onChange={handleTitleChange}
@@ -166,6 +167,7 @@ export const ManuscriptEditor: React.FC = () => {
         <RichTextEditor
           editorState={abstract}
           label="Abstract"
+          id="abstract"
           name="abstract"
           isActive={isInputFocused('abstract', focusedPath)}
           onChange={handleAbstractChange}
@@ -175,6 +177,7 @@ export const ManuscriptEditor: React.FC = () => {
         <RichTextEditor
           editorState={impactStatement}
           label="Impact statement"
+          id="impactStatement"
           name="impactStatement"
           isActive={isInputFocused('impactStatement', focusedPath)}
           onChange={handleImpactStatementChange}
@@ -184,6 +187,7 @@ export const ManuscriptEditor: React.FC = () => {
         <RichTextEditor
           editorState={body}
           label="Main text"
+          id="mainBody"
           name="body"
           isActive={isInputFocused('body', focusedPath)}
           onChange={handleBodyChange}
@@ -193,6 +197,7 @@ export const ManuscriptEditor: React.FC = () => {
         <RichTextEditor
           editorState={acknowledgements}
           label="Acknowledgements"
+          id="acknowledgements"
           name="acknowledgements"
           isActive={isInputFocused('acknowledgements', focusedPath)}
           onChange={handleAcknowledgementsChange}

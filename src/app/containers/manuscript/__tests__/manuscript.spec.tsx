@@ -51,6 +51,9 @@ describe('Manuscript container', () => {
   it('renders when data is loaded', () => {
     const mockState = givenState({});
     const store = mockStore({
+      manuscriptEditor: {
+        manuscriptBodyTOC: []
+      },
       manuscript: mockState
     });
     const wrapper = create(

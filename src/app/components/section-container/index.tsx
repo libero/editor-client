@@ -9,13 +9,14 @@ const DEFAULT_VARIANT = 'plain';
 
 interface SectionContainerProps {
   label: string;
+  id?: string;
   focused?: boolean;
   className?: string;
   variant?: SectionContainerVariant;
 }
 
 export const SectionContainer: React.FC<SectionContainerProps> = React.memo((props) => {
-  const { children, label, variant, className, focused } = props;
+  const { children, label, variant, className, focused, id } = props;
   const classes = useSectionContainerStyles();
   const containerRef = useRef<HTMLDivElement>();
 
@@ -29,7 +30,7 @@ export const SectionContainer: React.FC<SectionContainerProps> = React.memo((pro
   }, [classes, focused, variant]);
 
   return (
-    <div className={classNames(className, variantClass)} ref={containerRef}>
+    <div className={classNames(className, variantClass)} ref={containerRef} id={id}>
       <label className={classes.label}>{label}</label>
       {children}
     </div>

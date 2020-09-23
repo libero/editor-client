@@ -16,6 +16,7 @@ exports[`manuscript editor should render 1`] = `
   >
     <div
       className="makeStyles-root-5 makeStyles-plainVariant-7"
+      id="title"
     >
       <label
         className="makeStyles-label-8"
@@ -154,6 +155,7 @@ exports[`manuscript editor should render 1`] = `
     </div>
     <div
       className="makeStyles-root-5 makeStyles-plainVariant-7"
+      id="abstract"
     >
       <label
         className="makeStyles-label-8"
@@ -171,6 +173,7 @@ exports[`manuscript editor should render 1`] = `
     />
     <div
       className="makeStyles-root-5 makeStyles-plainVariant-7"
+      id="impactStatement"
     >
       <label
         className="makeStyles-label-8"
@@ -188,6 +191,7 @@ exports[`manuscript editor should render 1`] = `
     />
     <div
       className="makeStyles-root-5 makeStyles-plainVariant-7"
+      id="mainBody"
     >
       <label
         className="makeStyles-label-8"
@@ -205,6 +209,7 @@ exports[`manuscript editor should render 1`] = `
     />
     <div
       className="makeStyles-root-5 makeStyles-plainVariant-7"
+      id="acknowledgements"
     >
       <label
         className="makeStyles-label-8"

@@ -37,6 +37,14 @@ describe('<ManuscriptTOC>', () => {
 
   it('renders', () => {
     const store = mockStore({
+      manuscriptEditor: {
+        manuscriptBodyTOC: [
+          { level: 1, title: 'H1', id: '1' },
+          { level: 2, title: 'H2', id: '2' },
+          { level: 3, title: 'H2', id: '3' },
+          { level: 4, title: 'H2', id: '4' }
+        ]
+      },
       manuscript: getLoadableStateSuccess({
         past: [{}],
         present: {},

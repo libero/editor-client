@@ -98,6 +98,16 @@ export const useOutlinePanelStyles = makeStyles((theme) => ({
     'font-weight': '400'
   },
 
+  tocLevel1: {
+    fontSize: '14px',
+    fontWeight: 'bold'
+  },
+
+  tocLevel2: {
+    fontSize: '14px',
+    paddingLeft: theme.spacing(3)
+  },
+
   dtd: {
     marginTop: theme.spacing(1)
   }

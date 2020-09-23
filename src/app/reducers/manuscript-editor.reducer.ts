@@ -4,6 +4,7 @@ import { ManuscriptEditorState } from 'app/store';
 
 const initialState: ManuscriptEditorState = {
   focusedManuscriptPath: undefined,
+  manuscriptBodyTOC: [],
   modal: {
     isVisible: false
   }
@@ -14,6 +15,11 @@ export const manuscriptEditorReducer = createReducer<ManuscriptEditorState>({}, 
 manuscriptEditorReducer.on(manuscriptEditorAction.updateFocusPathAction, (state, payload) => ({
   ...state,
   focusedManuscriptPath: payload
+}));
+
+manuscriptEditorReducer.on(manuscriptEditorAction.setBodyTOCAction, (state, payload) => ({
+  ...state,
+  manuscriptBodyTOC: payload
 }));
 
 manuscriptEditorReducer.on(manuscriptEditorAction.removeFocusAction, (state) => ({
