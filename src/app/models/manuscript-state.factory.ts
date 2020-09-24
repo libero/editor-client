@@ -13,7 +13,7 @@ import * as acknowledgementsConfig from './config/acknowledgements.config';
 
 import { buildInputRules } from './plugins/input-rules';
 import { KeywordGroups } from './manuscript';
-import { createReference, Reference } from 'app/models/reference';
+import { createReference, Reference, sortReferencesList } from 'app/models/reference';
 import { makeSchemaFromConfig } from 'app/models/utils';
 import { SelectPlugin } from './plugins/selection.plugin';
 import { PlaceholderPlugin } from 'app/models/plugins/placeholder.plugin';
@@ -132,10 +132,12 @@ export function createNewKeywordState(): EditorState {
 }
 
 export function createReferencesState(referencesXml: Element[]): Reference[] {
-  return referencesXml.map((referenceXml: Element) => {
+  const referencesList = referencesXml.map((referenceXml: Element) => {
     const id = (referenceXml.parentNode as Element).getAttribute('id');
     return createReference(id, referenceXml);
   });
+  sortReferencesList(referencesList);
+  return referencesList;
 }
 
 function createKeywordState(keyword?: Element): EditorState {
