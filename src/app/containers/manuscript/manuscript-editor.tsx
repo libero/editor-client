@@ -159,9 +159,9 @@ export const ManuscriptEditor: React.FC = () => {
         />
         <ClearFocus>
           <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
-          <SortableAuthorsList />
+          <SortableAuthorsList id="authors" />
           <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
-          <AffiliationsList />
+          <AffiliationsList id="affiliations" />
           <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
         </ClearFocus>
         <RichTextEditor
@@ -187,7 +187,6 @@ export const ManuscriptEditor: React.FC = () => {
         <RichTextEditor
           editorState={body}
           label="Main text"
-          id="mainBody"
           name="body"
           isActive={isInputFocused('body', focusedPath)}
           onChange={handleBodyChange}
@@ -205,14 +204,14 @@ export const ManuscriptEditor: React.FC = () => {
         />
         <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
         <ClearFocus>
-          <ReferenceList />
+          <ReferenceList id="references" />
           <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
-          <AuthorsInfoDetails />
+          <AuthorsInfoDetails id="author-details" />
           <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
-          <ArticleInformation />
+          <ArticleInformation id="article-info" />
           <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
           {renderKeywords(allKeywords)}
-          <RelatedArticles />
+          <RelatedArticles id="realted-acticles" />
         </ClearFocus>
       </div>
     </div>

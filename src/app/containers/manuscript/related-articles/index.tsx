@@ -10,8 +10,9 @@ import { RelatedArticle } from 'app/models/related-article';
 import { ActionButton } from 'app/components/action-button';
 import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
 import { RelatedArticleFormDialog } from 'app/containers/related-article-form-dialog';
+import { ComponentWithId } from 'app/utils/types';
 
-export const RelatedArticles: React.FC = () => {
+export const RelatedArticles: React.FC<ComponentWithId> = ({ id }) => {
   const relatedArticles = useSelector(getRelatedArticles);
   const classes = useRelatedArticleStyles();
   const dispatch = useDispatch();
@@ -41,7 +42,7 @@ export const RelatedArticles: React.FC = () => {
 
   return (
     <section>
-      <SectionContainer label="Related articles">
+      <SectionContainer label="Related articles" id={id}>
         <ul className={classes.list}>
           {relatedArticles.map((relatedArticle) => (
             <li>

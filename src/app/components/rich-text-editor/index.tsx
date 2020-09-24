@@ -8,11 +8,11 @@ import 'prosemirror-menu/style/menu.css';
 import { ProseMirrorEditorView } from './prosemirror-editor-view';
 import { SectionContainer } from 'app/components/section-container';
 import { ReferenceCitationNodeView } from 'app/components/reference-citation-editor-popup';
+import { ComponentWithId } from 'app/utils/types';
 
 export interface RichTextEditorProps {
   editorState: EditorState;
   label?: string;
-  id?: string;
   name?: string;
   isActive: boolean;
   onChange?: (change: Transaction, name: string) => void;
@@ -28,7 +28,7 @@ const restoreSelection = debounce((editorView, from, to) => {
   }
 }, 50);
 
-export const RichTextEditor: React.FC<RichTextEditorProps> = React.memo((props) => {
+export const RichTextEditor: React.FC<ComponentWithId<RichTextEditorProps>> = React.memo((props) => {
   const { editorState, label, onChange, onFocusSwitch, name, isActive, id } = props;
   const prosemirrorRef = useRef<ProseMirrorEditorView>();
 

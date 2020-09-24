@@ -3,19 +3,19 @@ import { isEqual } from 'lodash';
 import classNames from 'classnames';
 
 import { useSectionContainerStyles } from './styles';
+import { ComponentWithId } from 'app/utils/types';
 
 type SectionContainerVariant = 'outlined' | 'plain';
 const DEFAULT_VARIANT = 'plain';
 
 interface SectionContainerProps {
   label: string;
-  id?: string;
   focused?: boolean;
   className?: string;
   variant?: SectionContainerVariant;
 }
 
-export const SectionContainer: React.FC<SectionContainerProps> = React.memo((props) => {
+export const SectionContainer: React.FC<ComponentWithId<SectionContainerProps>> = React.memo((props) => {
   const { children, label, variant, className, focused, id } = props;
   const classes = useSectionContainerStyles();
   const containerRef = useRef<HTMLDivElement>();

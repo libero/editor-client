@@ -18,8 +18,9 @@ import { AuthorFormDialog } from 'app/containers/author-form-dialog';
 import { stringifyEditorState } from 'app/utils/view.utils';
 import { OrcidIcon } from 'app/assets/icons';
 import { getAffiliationDisplayName } from 'app/models/affiliation';
+import { ComponentWithId } from 'app/utils/types';
 
-export const AuthorsInfoDetails: React.FC = () => {
+export const AuthorsInfoDetails: React.FC<ComponentWithId> = ({ id }) => {
   const authors = useSelector(getAuthors);
   const classes = useAuthorsDetailsListStyles();
   const dispatch = useDispatch();
@@ -35,7 +36,7 @@ export const AuthorsInfoDetails: React.FC = () => {
 
   return (
     <section>
-      <SectionContainer label="Author Information">
+      <SectionContainer label="Author Information" id={id}>
         {authors.map((author) => (
           <AuthorInfo key={author.id} author={author} />
         ))}

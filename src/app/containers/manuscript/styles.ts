@@ -74,9 +74,6 @@ export const useOutlinePanelStyles = makeStyles((theme) => ({
   whiteSpace: {
     flex: 1
   },
-  outlineList: {
-    paddingLeft: theme.spacing(1)
-  },
   journalMeta: {
     color: 'rgba(0,0,0,0.54)',
     'font-size': '12px',
@@ -99,13 +96,14 @@ export const useOutlinePanelStyles = makeStyles((theme) => ({
   },
 
   tocLevel1: {
+    paddingLeft: theme.spacing(1),
     fontSize: '14px',
     fontWeight: 'bold'
   },
 
   tocLevel2: {
     fontSize: '14px',
-    paddingLeft: theme.spacing(3)
+    paddingLeft: theme.spacing(5)
   },
 
   dtd: {

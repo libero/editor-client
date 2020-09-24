@@ -75,7 +75,7 @@ export const nodes = {
   heading: {
     attrs: {
       level: { default: 1 },
-      domId: { default: '' }
+      domId: { default: uuidv4() }
     },
     content: 'inline*',
     defining: true,

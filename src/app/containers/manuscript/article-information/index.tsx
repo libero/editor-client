@@ -11,8 +11,9 @@ import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions'
 import { ArticleInfoFormDialog } from 'app/containers/article-info-form-dialog';
 import moment from 'moment';
 import { stringifyEditorState } from 'app/utils/view.utils';
+import { ComponentWithId } from 'app/utils/types';
 
-export const ArticleInformation: React.FC<{}> = () => {
+export const ArticleInformation: React.FC<ComponentWithId> = ({ id }) => {
   const articleInfo = useSelector(getArticleInformation);
   const dispatch = useDispatch();
   const editArticleInfo = useCallback(() => {
@@ -26,7 +27,7 @@ export const ArticleInformation: React.FC<{}> = () => {
   const publicationDate = moment(articleInfo.publicationDate);
   const classes = useArticleInformationStyles();
   return (
-    <SectionContainer label="Article information" className={classes.sectionContainer}>
+    <SectionContainer id={id} label="Article information" className={classes.sectionContainer}>
       <section className={classes.infoSection}>
         <div>
           <strong> Subject(s): </strong> {articleInfo.subjects.join(', ')}
