@@ -6,7 +6,7 @@ import * as manuscriptActions from 'app/actions/manuscript.actions';
 import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
 import { Action } from 'app/utils/action.utils';
 import { TableOfContents, TOCEntry } from 'app/models/manuscript';
-import { getBody } from 'app/selectors/manuscript.selectors';
+import { getBody, getManuscriptData } from 'app/selectors/manuscript.selectors';
 import { setBodyTOCAction } from 'app/actions/manuscript-editor.actions';
 import { ApplyChangePayload } from 'app/actions/manuscript.actions';
 
@@ -43,6 +43,22 @@ export function* updateTOCOnFormatOrInsertSaga(action: Action<ApplyChangePayload
   // only update toc when body changes
   if (action.payload.path === 'body') {
     yield updateTOC();
+  } else {
+    yield null;
+  }
+}
+
+export function* updateTOCOnUndoRedoSaga(action: Action<void>) {
+  // only update toc when body changes
+  const manuscriptHistory = yield select(getManuscriptData);
+  if (action.type === manuscriptActions.undoAction.getType()) {
+    if (Object.keys(manuscriptHistory.future[0]).includes('body')) {
+      yield updateTOC();
+    }
+  } else if (action.type === manuscriptActions.redoAction.getType()) {
+    if (Object.keys(manuscriptHistory.past[manuscriptHistory.past.length - 1]).includes('body')) {
+      yield updateTOC();
+    }
   }
 }
 
@@ -59,6 +75,8 @@ export function* scrollViewSaga(action: Action<TOCEntry>) {
 export default function* () {
   yield all([takeLatest(manuscriptActions.applyChangeAction.getType(), updateTOCOnFormatOrInsertSaga)]);
   yield all([takeLatest(manuscriptActions.updateBodyAction.getType(), updateTOCOnBodyEditSaga)]);
+  yield all([takeLatest(manuscriptActions.undoAction.getType(), updateTOCOnUndoRedoSaga)]);
+  yield all([takeLatest(manuscriptActions.redoAction.getType(), updateTOCOnUndoRedoSaga)]);
   yield all([takeLatest(manuscriptActions.loadManuscriptAction.success.getType(), updateTOC)]);
   yield all([takeLatest(manuscriptEditorActions.scrollIntoViewAction.getType(), scrollViewSaga)]);
 }
