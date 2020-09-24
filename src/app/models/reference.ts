@@ -613,13 +613,14 @@ export function getRefNodeText(ref: Reference): string {
 
 export function sortReferencesList(refs: Reference[]): void {
   refs.sort((ref1, ref2) => {
-    return getAuthorLastNameForSorting(ref1) < getAuthorLastNameForSorting(ref2)
-      ? -1
-      : getAuthorLastNameForSorting(ref1) > getAuthorLastNameForSorting(ref2)
-      ? 1
-      : get(ref1, 'referenceInfo.year', '') < get(ref2, 'referenceInfo.year', '')
-      ? -1
-      : 1;
+    if (getAuthorLastNameForSorting(ref1) < getAuthorLastNameForSorting(ref2)) {
+      return -1;
+    } else if (getAuthorLastNameForSorting(ref1) > getAuthorLastNameForSorting(ref2)) {
+      return 1;
+    } else if (get(ref1, 'referenceInfo.year', '') < get(ref2, 'referenceInfo.year', '')) {
+      return -1;
+    }
+    return 1;
   });
 }
 
