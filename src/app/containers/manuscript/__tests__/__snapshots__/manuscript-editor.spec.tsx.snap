@@ -38,6 +38,7 @@ exports[`manuscript editor should render 1`] = `
       <section>
         <div
           className="makeStyles-root-5 makeStyles-plainVariant-7"
+          id="authors"
         >
           <label
             className="makeStyles-label-8"
@@ -191,7 +192,6 @@ exports[`manuscript editor should render 1`] = `
     />
     <div
       className="makeStyles-root-5 makeStyles-plainVariant-7"
-      id="mainBody"
     >
       <label
         className="makeStyles-label-8"
@@ -231,6 +231,7 @@ exports[`manuscript editor should render 1`] = `
       <section>
         <div
           className="makeStyles-root-5 makeStyles-plainVariant-7"
+          id="references"
         >
           <label
             className="makeStyles-label-8"
@@ -288,6 +289,7 @@ exports[`manuscript editor should render 1`] = `
       <section>
         <div
           className="makeStyles-root-5 makeStyles-plainVariant-7"
+          id="author-details"
         >
           <label
             className="makeStyles-label-8"
@@ -341,6 +343,7 @@ exports[`manuscript editor should render 1`] = `
       />
       <div
         className="makeStyles-sectionContainer-28 makeStyles-root-5 makeStyles-plainVariant-7"
+        id="article-info"
       >
         <label
           className="makeStyles-label-8"
@@ -461,6 +464,7 @@ exports[`manuscript editor should render 1`] = `
       <section>
         <div
           className="makeStyles-root-5 makeStyles-plainVariant-7"
+          id="realted-acticles"
         >
           <label
             className="makeStyles-label-8"

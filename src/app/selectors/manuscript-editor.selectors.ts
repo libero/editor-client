@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 import { EditorState } from 'prosemirror-state';
-import { get, has } from 'lodash';
+import { get } from 'lodash';
 
 import { ApplicationState, ManuscriptEditorState } from 'app/store';
 import { getManuscriptData } from './manuscript.selectors';
@@ -89,14 +89,10 @@ export const isActiveContainer = createSelector(
     if (!editorState) {
       return false;
     }
-    const nodeType = editorState.schema.nodes[nodeName];
-    const { $from, to } = editorState.selection;
 
-    // case of NodeSelection
-    if (has(editorState.selection, 'node')) {
-      return get(editorState.selection, 'node').hasMarkup(nodeType);
-    }
-    return to <= $from.end() && $from.parent.hasMarkup(nodeType, attrs);
+    const { $from } = editorState.selection;
+    const node = get(editorState.selection, 'node', $from.parent);
+    return node.type.name === nodeName && (attrs && attrs.level ? node.attrs.level === attrs.level : true);
   }
 );
 

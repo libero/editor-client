@@ -23,6 +23,7 @@ import {
 } from 'app/containers/manuscript/references-list/reference-renderers';
 import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
 import { ConnectedReferenceFormDialog } from 'app/containers/reference-form-dialog/connected-reference-form-dialog';
+import {ComponentWithId} from "app/utils/types";
 
 interface ReferenceItemProps {
   onEditCallback: (reference: Reference) => void;
@@ -71,7 +72,7 @@ const ReferenceItem: React.FC<ReferenceItemProps> = ({ onEditCallback, reference
   );
 };
 
-export const ReferenceList: React.FC<{}> = () => {
+export const ReferenceList: React.FC<ComponentWithId> = ({ id }) => {
   const references = useSelector(getReferences);
   const classes = useReferencesListStyles();
   const dispatch = useDispatch();
@@ -100,7 +101,7 @@ export const ReferenceList: React.FC<{}> = () => {
 
   return (
     <section>
-      <SectionContainer label="References">
+      <SectionContainer label="References" id={id}>
         <ul className={classes.list}>
           {references.map((reference) => (
             <ReferenceItem key={reference.id} reference={reference} onEditCallback={handleEditReference} />

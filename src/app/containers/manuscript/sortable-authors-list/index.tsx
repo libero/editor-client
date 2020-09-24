@@ -3,6 +3,7 @@ import { Chip } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import { useDispatch, useSelector } from 'react-redux';
 import { SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
+import { isEqual } from 'lodash';
 
 import DragIcon from 'app/assets/drag-indicator.svg';
 import * as manuscriptActions from 'app/actions/manuscript.actions';
@@ -13,7 +14,7 @@ import { SectionContainer } from 'app/components/section-container';
 import { getAuthorAffiliationsLabels, getAuthorDisplayName, Person } from 'app/models/person';
 import { AuthorFormDialog } from 'app/containers/author-form-dialog';
 import { ActionButton } from 'app/components/action-button';
-import { isEqual } from 'lodash';
+import { ComponentWithId } from 'app/utils/types';
 
 const DragHandle = React.memo(
   SortableHandle(() => <img src={DragIcon} alt="drag handle" aria-hidden={true} className="drag-handle" />),
@@ -61,7 +62,7 @@ const SortableList = React.memo(
   isEqual
 );
 
-export const SortableAuthorsList: React.FC = React.memo(() => {
+export const SortableAuthorsList: React.FC<ComponentWithId> = React.memo(({ id }) => {
   const authors = useSelector(getAuthors);
   const affiliations = useSelector(getAffiliations);
   const dispatch = useDispatch();
@@ -102,7 +103,7 @@ export const SortableAuthorsList: React.FC = React.memo(() => {
 
   return (
     <section>
-      <SectionContainer label="Authors">
+      <SectionContainer label="Authors" id={id}>
         <SortableList className={classes.sortableContainer} onSortEnd={onSortEnd} axis="xy" useDragHandle={true}>
           {authors.map((value, index) => (
             <SortableItem

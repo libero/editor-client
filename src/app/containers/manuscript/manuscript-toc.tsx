@@ -25,11 +25,16 @@ export const ManuscriptTOC: React.FC<ManuscriptTOCProps> = (props) => {
   const manuscriptBodyTOC = useSelector(getManuscriptBodyTOC);
   const toc: TableOfContents = [
     { level: 1, title: 'Title', id: 'title' },
+    { level: 1, title: 'Authors', id: 'authors' },
+    { level: 1, title: 'Affiliations', id: 'affiliations' },
     { level: 1, title: 'Abstract', id: 'abstract' },
     { level: 1, title: 'Impact statement', id: 'impactStatement' },
-    { level: 1, title: 'Main text', id: 'mainBody' },
     ...manuscriptBodyTOC,
-    { level: 1, title: 'Acknowledgements', id: 'acknowledgements' }
+    { level: 1, title: 'Acknowledgements', id: 'acknowledgements' },
+    { level: 1, title: 'References', id: 'references' },
+    { level: 1, title: 'Author information', id: 'author-details' },
+    { level: 1, title: 'Article information', id: 'article-info' },
+    { level: 1, title: 'Related articles', id: 'realted-acticles' }
   ];
 
   const handleTOCClick = useCallback(
@@ -50,11 +55,12 @@ export const ManuscriptTOC: React.FC<ManuscriptTOCProps> = (props) => {
         </ClearFocus>
       </section>
       <Divider />
-      <List classes={{ root: classes.outlineList }}>
+      <List>
         {toc.map((entry, index) => (
           <ListItem button key={entry.title} onClick={handleTOCClick(entry)}>
             <ListItemText
-              classes={{ primary: entry.level === 1 ? classes.tocLevel1 : classes.tocLevel2 }}
+              disableTypography
+              classes={{ root: entry.level === 1 ? classes.tocLevel1 : classes.tocLevel2 }}
               primary={entry.title}
             />
           </ListItem>
