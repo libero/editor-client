@@ -19,24 +19,24 @@ exports[`<ManuscriptTOC> renders 1`] = `
           onClick={[Function]}
         >
           <h1
-            className="makeStyles-title-7"
+            className="makeStyles-title-6"
           >
             Libero Editor
           </h1>
           <h3
-            className="makeStyles-infoText-8"
+            className="makeStyles-infoText-7"
           >
             Software: v
             0.0.0-test
           </h3>
           <h3
-            className="makeStyles-infoText-8 makeStyles-dtd-11"
+            className="makeStyles-infoText-7 makeStyles-dtd-10"
           >
             JATS: 
              DTD
           </h3>
           <h3
-            className="makeStyles-infoText-8"
+            className="makeStyles-infoText-7"
           >
             Type: 
           </h3>
@@ -111,13 +111,48 @@ exports[`<ManuscriptTOC> renders 1`] = `
             data-cmp="list-item-text"
           />
         </div>
+        <div
+          data-cmp="list-item"
+        >
+          <div
+            data-cmp="list-item-text"
+          />
+        </div>
+        <div
+          data-cmp="list-item"
+        >
+          <div
+            data-cmp="list-item-text"
+          />
+        </div>
+        <div
+          data-cmp="list-item"
+        >
+          <div
+            data-cmp="list-item-text"
+          />
+        </div>
+        <div
+          data-cmp="list-item"
+        >
+          <div
+            data-cmp="list-item-text"
+          />
+        </div>
+        <div
+          data-cmp="list-item"
+        >
+          <div
+            data-cmp="list-item-text"
+          />
+        </div>
       </div>
       <div
         className="makeStyles-whiteSpace-4"
         onClick={[Function]}
       />
       <section
-        className="makeStyles-journalMeta-6"
+        className="makeStyles-journalMeta-5"
       >
         <div />
         <div>
@@ -140,24 +175,24 @@ exports[`<ManuscriptTOC> renders 1`] = `
           onClick={[Function]}
         >
           <h1
-            className="makeStyles-title-7"
+            className="makeStyles-title-6"
           >
             Libero Editor
           </h1>
           <h3
-            className="makeStyles-infoText-8"
+            className="makeStyles-infoText-7"
           >
             Software: v
             0.0.0-test
           </h3>
           <h3
-            className="makeStyles-infoText-8 makeStyles-dtd-11"
+            className="makeStyles-infoText-7 makeStyles-dtd-10"
           >
             JATS: 
              DTD
           </h3>
           <h3
-            className="makeStyles-infoText-8"
+            className="makeStyles-infoText-7"
           >
             Type: 
           </h3>
@@ -232,13 +267,48 @@ exports[`<ManuscriptTOC> renders 1`] = `
             data-cmp="list-item-text"
           />
         </div>
+        <div
+          data-cmp="list-item"
+        >
+          <div
+            data-cmp="list-item-text"
+          />
+        </div>
+        <div
+          data-cmp="list-item"
+        >
+          <div
+            data-cmp="list-item-text"
+          />
+        </div>
+        <div
+          data-cmp="list-item"
+        >
+          <div
+            data-cmp="list-item-text"
+          />
+        </div>
+        <div
+          data-cmp="list-item"
+        >
+          <div
+            data-cmp="list-item-text"
+          />
+        </div>
+        <div
+          data-cmp="list-item"
+        >
+          <div
+            data-cmp="list-item-text"
+          />
+        </div>
       </div>
       <div
         className="makeStyles-whiteSpace-4"
         onClick={[Function]}
       />
       <section
-        className="makeStyles-journalMeta-6"
+        className="makeStyles-journalMeta-5"
       >
         <div />
         <div>
