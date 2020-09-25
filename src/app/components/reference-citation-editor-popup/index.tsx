@@ -186,6 +186,11 @@ export class ReferenceCitationNodeView implements NodeView {
     this.open();
   }
 
+  deselectNode() {
+    this.dom.classList.remove('ProseMirror-selectednode');
+    this.close();
+  }
+
   open() {
     this.refEditorContainer = this.view.dom.parentNode.appendChild(document.createElement('div'));
     this.refEditorContainer.style.position = 'absolute';
