@@ -50,19 +50,23 @@ export function addReference(state: ManuscriptHistoryState, payload: Reference):
 export function deleteReference(state: ManuscriptHistoryState, payload: Reference): ManuscriptHistoryState {
   const referenceIndex = state.data.present.references.findIndex(({ id }) => id === payload.id);
 
-  const newDiff = {
-    references: state.data.present.references
-  };
+  const { body } = state.data.present;
+  const changes = body.tr;
+  let documentReducedBy = 0;
+  changes.doc.descendants((node: ProsemirrorNode, pos: number, parent: ProsemirrorNode) => {
+    if (node.type.name === 'refCitation' && node.attrs['refId'] === payload.id) {
+      changes.replace(pos - documentReducedBy, pos - documentReducedBy + node.nodeSize);
+      documentReducedBy += node.nodeSize;
+    }
+    return Boolean(node.childCount);
+  });
+  const newState = updateManuscriptState(state.data, 'body', changes);
 
-  const newManuscript = cloneManuscript(state.data.present);
-  newManuscript.references.splice(referenceIndex, 1);
+  newState.present.references.splice(referenceIndex, 1);
+  newState.past[newState.past.length - 1]['references'] = state.data.present.references;
 
   return {
     ...state,
-    data: {
-      past: [...state.data.past, newDiff],
-      present: newManuscript,
-      future: []
-    }
+    data: newState
   };
 }
