@@ -16,14 +16,14 @@ export const marks = {
   },
 
   italic: {
-    parseDOM: [{ tag: 'italic' }, { tag: 'em' }],
+    parseDOM: [{ tag: 'italic' }, { tag: 'em' }, { tag: 'i' }],
     toDOM(): DOMOutputSpecArray {
       return ['em', 0];
     }
   },
 
   strikethrough: {
-    parseDOM: [{ tag: 'sc' }, { tag: 'strike' }],
+    parseDOM: [{ tag: 'sc' }, { tag: 'strike' }, { tag: 's' }],
     toDOM(): DOMOutputSpecArray {
       return ['strike', 0];
     }
@@ -37,7 +37,7 @@ export const marks = {
   },
 
   bold: {
-    parseDOM: [{ tag: 'bold' }, { tag: 'strong' }],
+    parseDOM: [{ tag: 'bold' }, { tag: 'strong' }, { tag: 'b' }],
     toDOM(): DOMOutputSpecArray {
       return ['strong', 0];
     }
