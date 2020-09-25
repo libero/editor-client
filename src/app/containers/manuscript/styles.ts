@@ -96,6 +96,7 @@ export const useOutlinePanelStyles = makeStyles((theme) => ({
   },
 
   tocLevel1: {
+    lineHeight: '1.4',
     paddingLeft: theme.spacing(1),
     fontSize: '14px',
     fontWeight: 'bold'
@@ -103,6 +104,7 @@ export const useOutlinePanelStyles = makeStyles((theme) => ({
 
   tocLevel2: {
     fontSize: '14px',
+    lineHeight: '1.4',
     paddingLeft: theme.spacing(5)
   },
 

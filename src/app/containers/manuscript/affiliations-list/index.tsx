@@ -12,7 +12,7 @@ import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions'
 import { ConnectedAffiliationFormDialog } from 'app/containers/affiliation-form-dialog';
 import { ComponentWithId } from 'app/utils/types';
 
-export const AffiliationsList: React.FC<ComponentWithId> = () => {
+export const AffiliationsList: React.FC<ComponentWithId> = ({ id }) => {
   const classes = useAffiliationStyles();
   const affiliations = useSelector(getAffiliations);
   const dispatch = useDispatch();
@@ -54,7 +54,7 @@ export const AffiliationsList: React.FC<ComponentWithId> = () => {
 
   return (
     <section>
-      <SectionContainer label="Affiliations">
+      <SectionContainer label="Affiliations" id={id}>
         <ul className={classes.root}>{affiliations.map(renderAffiliation)}</ul>
       </SectionContainer>
       <ActionButton title="Affiliation" variant="addEntity" onClick={addAffiliation} className={classes.addButton} />
