@@ -99,6 +99,7 @@ exports[`manuscript editor should render 1`] = `
       <section>
         <div
           className="makeStyles-root-5 makeStyles-plainVariant-7"
+          id="affiliations"
         >
           <label
             className="makeStyles-label-8"

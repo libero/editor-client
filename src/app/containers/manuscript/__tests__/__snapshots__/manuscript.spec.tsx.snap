@@ -83,6 +83,7 @@ Array [
         <section>
           <div
             className="makeStyles-root-20 makeStyles-plainVariant-22"
+            id="affiliations"
           >
             <label
               className="makeStyles-label-23"
