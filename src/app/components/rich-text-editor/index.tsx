@@ -9,7 +9,6 @@ import { ProseMirrorEditorView } from './prosemirror-editor-view';
 import { SectionContainer } from 'app/components/section-container';
 import { ReferenceCitationNodeView } from 'app/components/reference-citation-editor-popup';
 import { ComponentWithId } from 'app/utils/types';
-import {LinkNodeView} from "app/components/link-editor-popup";
 
 export interface RichTextEditorProps {
   editorState: EditorState;
@@ -45,9 +44,6 @@ export const RichTextEditor: React.FC<ComponentWithId<RichTextEditorProps>> = Re
   const options = useMemo(
     () => ({
       nodeViews: {
-        link(node, view) {
-          return new LinkNodeView(node, view);
-        },
         refCitation(node, view, getPos) {
           return new ReferenceCitationNodeView(node, view, getPos);
         }
