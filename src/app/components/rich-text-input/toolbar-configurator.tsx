@@ -81,12 +81,12 @@ const renderLinkPopup = (editorState: EditorState, editorView: EditorView) => {
     onClose();
   };
 
-  // ReactDOM.render(
-  //   <ThemeProvider theme={theme}>
-  //     <LinkEditorPopup editorView={editorView} onApply={onApply} onClose={onClose} {...coords} />
-  //   </ThemeProvider>,
-  //   linkContainer
-  // );
+  ReactDOM.render(
+    <ThemeProvider theme={theme}>
+      <LinkEditorPopup editorView={editorView} onApply={onApply} onClose={onClose} {...coords} />
+    </ThemeProvider>,
+    linkContainer
+  );
 };
 
 /* History Actions */

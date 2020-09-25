@@ -1,7 +1,7 @@
 import React, { useState, useCallback, SyntheticEvent } from 'react';
 import ReactDOM from 'react-dom';
 import { debounce } from 'lodash';
-import { TextField, IconButton, InputAdornment, Popper, Paper, ClickAwayListener } from '@material-ui/core';
+import { TextField, IconButton, InputAdornment, Popover } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/core/styles';
 import { EditorView, NodeView } from 'prosemirror-view';
 import { Node as ProsemirrorNode } from 'prosemirror-model';
@@ -16,11 +16,12 @@ interface LinkEditorPopupProps {
   editorView: EditorView | undefined;
   onClose: () => void;
   onApply: (href: string) => void;
-  anchorEl: HTMLElement;
   node?: ProsemirrorNode;
+  y: number;
+  x: number;
 }
 
-export const LinkEditorPopup: React.FC<LinkEditorPopupProps> = ({ editorView, node, onApply, onClose, anchorEl }) => {
+export const LinkEditorPopup: React.FC<LinkEditorPopupProps> = ({ editorView, node, onApply, onClose, x, y }) => {
   const classes = useLinkEditorStyles();
   const [link, setLink] = useState<string>(node ? node.attrs.href : '');
 
@@ -47,37 +48,46 @@ export const LinkEditorPopup: React.FC<LinkEditorPopupProps> = ({ editorView, no
   }
 
   return (
-    <Popper open={true} anchorEl={anchorEl} style={{ zIndex: 1300 }}>
-      <Paper>
-        <ClickAwayListener onClickAway={onClose} mouseEvent="onMouseUp">
-          <div className={classes.container}>
-            <TextField
-              fullWidth
-              classes={{ root: classes.textField }}
-              name="link"
-              label="Link"
-              InputLabelProps={{ shrink: true }}
-              variant="outlined"
-              value={link}
-              onChange={handleOnChange}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <span className={classes.clearTextButton} onClick={handleClearField}>
-                      <CloseIcon />
-                    </span>
-                  </InputAdornment>
-                )
-              }}
-            />
-            <IconButton size="small" onClick={handleLaunchClick} classes={{ root: classes.launchButton }}>
-              <LaunchIcon fontSize="small" />
-            </IconButton>
-            <ActionButton variant="primaryContained" onClick={handleApplyClick} title="Apply" />
-          </div>
-        </ClickAwayListener>
-      </Paper>
-    </Popper>
+    <Popover
+      open={true}
+      onClose={onClose}
+      anchorReference="anchorPosition"
+      anchorPosition={{ top: y, left: x }}
+      anchorOrigin={{
+        vertical: 'top',
+        horizontal: 'left'
+      }}
+      transformOrigin={{
+        vertical: 'top',
+        horizontal: 'left'
+      }}
+    >
+      <div className={classes.container}>
+        <TextField
+          fullWidth
+          classes={{ root: classes.textField }}
+          name="link"
+          label="Link"
+          InputLabelProps={{ shrink: true }}
+          variant="outlined"
+          value={link}
+          onChange={handleOnChange}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <span className={classes.clearTextButton} onClick={handleClearField}>
+                  <CloseIcon />
+                </span>
+              </InputAdornment>
+            )
+          }}
+        />
+        <IconButton size="small" onClick={handleLaunchClick} classes={{ root: classes.launchButton }}>
+          <LaunchIcon fontSize="small" />
+        </IconButton>
+        <ActionButton variant="primaryContained" onClick={handleApplyClick} title="Apply" />
+      </div>
+    </Popover>
   );
 };
 
@@ -89,7 +99,6 @@ export class LinkNodeView implements NodeView {
   constructor(private node: ProsemirrorNode, private view: EditorView) {
     this.dom = document.createElement('a');
     this.dom.style.cursor = 'pointer';
-    console.log(node.attrs);
     this.dom.setAttribute('href', this.node.attrs.href);
     this.dom.addEventListener('contextmenu', this.openLinkInNewWindow.bind(this));
     this.dom.addEventListener(
@@ -102,10 +111,6 @@ export class LinkNodeView implements NodeView {
         }
       }, 100)
     );
-
-    if (!node.attrs.href) {
-      this.dom.dispatchEvent(new Event('click'));
-    }
   }
 
   openLinkInNewWindow(event: MouseEvent) {
@@ -117,18 +122,25 @@ export class LinkNodeView implements NodeView {
   }
 
   open() {
+    const { $from } = this.view.state.selection;
+    const start = this.view.coordsAtPos($from.pos);
+
     this.linkEditorContainer = this.view.dom.parentNode.appendChild(document.createElement('div'));
     this.linkEditorContainer.style.position = 'absolute';
     this.linkEditorContainer.style.zIndex = '10';
 
+    const x = start.left;
+    const y = start.bottom;
+
     ReactDOM.render(
       <ThemeProvider theme={theme}>
         <LinkEditorPopup
-          anchorEl={this.dom}
           editorView={this.view}
           node={this.node}
           onClose={this.close.bind(this)}
           onApply={this.handleApply.bind(this)}
+          x={x}
+          y={y}
         />
       </ThemeProvider>,
       this.linkEditorContainer
