@@ -613,9 +613,12 @@ export function getRefNodeText(ref: Reference): string {
 
 export function sortReferencesList(refs: Reference[]): void {
   refs.sort((ref1, ref2) => {
-    if (getAuthorLastNameForSorting(ref1) < getAuthorLastNameForSorting(ref2)) {
+    const ref1LastNames = getAuthorLastNamesForSorting(ref1);
+    const ref2LastNames = getAuthorLastNamesForSorting(ref2);
+
+    if (ref1LastNames < ref2LastNames) {
       return -1;
-    } else if (getAuthorLastNameForSorting(ref1) > getAuthorLastNameForSorting(ref2)) {
+    } else if (ref1LastNames > ref2LastNames) {
       return 1;
     } else if (get(ref1, 'referenceInfo.year', '') < get(ref2, 'referenceInfo.year', '')) {
       return -1;
@@ -624,6 +627,12 @@ export function sortReferencesList(refs: Reference[]): void {
   });
 }
 
-function getAuthorLastNameForSorting(ref: Reference): string {
-  return ref.authors.length ? get(ref.authors[0], 'groupName', get(ref.authors[0], 'lastName')) : '';
+function getAuthorLastNamesForSorting(ref: Reference): string {
+  return ref.authors.length > 0
+    ? ref.authors
+        .map((refAuthor) => {
+          return get(refAuthor, 'groupName', get(refAuthor, 'lastName'));
+        })
+        .join('')
+    : '';
 }
