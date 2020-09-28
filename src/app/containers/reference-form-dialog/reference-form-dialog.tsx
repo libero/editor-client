@@ -216,7 +216,7 @@ export const ReferenceFormDialog: React.FC<ReferenceFormDialogProps> = ({
       {isConfirmShown
         ? renderConfirmDialog(
             'You are deleting a reference',
-            'Deleting a a reference can leave unlinked citations. Are you sure you want to proceed?',
+            'Deleting a reference will remove all linked citations from this article. Are you sure you want to proceed?',
             handleAccept,
             handleReject
           )
