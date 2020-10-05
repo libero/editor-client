@@ -1,5 +1,6 @@
 import { DOMOutputSpec } from 'prosemirror-model';
 import { v4 as uuidv4 } from 'uuid';
+import { getTextContentFromPath } from 'app/models/utils';
 
 function getTitleLevel(title: Element): number {
   let parent = title.parentNode;
@@ -153,6 +154,24 @@ export const nodes = {
           'data-ref-text': node.attrs.refText
         }
       ];
+    }
+  },
+
+  boxText: {
+    content: 'block*',
+    group: 'block',
+    parseDOM: [
+      {
+        tag: 'boxed-text',
+        getAttrs(dom) {
+          return {
+            label: getTextContentFromPath(dom, 'label') || ''
+          };
+        }
+      }
+    ],
+    toDOM() {
+      return ['section', { class: 'box-text' }, 0];
     }
   },
 

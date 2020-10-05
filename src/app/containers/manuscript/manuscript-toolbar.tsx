@@ -53,9 +53,13 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
     dispatch(manuscriptActions.insertReferenceCitationAction());
   }, [dispatch]);
 
+  const insertBox = useCallback(() => {
+    dispatch(manuscriptActions.insertBoxAction());
+  }, [dispatch]);
+
   const toggleHeading = useCallback(
     (headingLevel: number) => () => {
-      dispatch(manuscriptActions.insertHeading(headingLevel));
+      dispatch(manuscriptActions.insertHeadingAction(headingLevel));
     },
     [dispatch]
   );
@@ -76,7 +80,7 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
   }, [checkActiveContainer]);
 
   const toggleParagraph = useCallback(() => {
-    dispatch(manuscriptActions.insertParagraph());
+    dispatch(manuscriptActions.insertParagraphAction());
   }, [dispatch]);
 
   const invokeToggleMark = useCallback(
@@ -175,6 +179,7 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
             { title: 'Inline Graphic', enabled: false, action: undefined },
             { title: 'Table', enabled: false, action: undefined },
             { title: 'Block Quote', enabled: false, action: undefined },
+            { title: 'Box', enabled: canInsert('boxText'), action: insertBox },
             { title: 'Equation', enabled: false, action: undefined },
             { title: 'File', enabled: false, action: undefined },
             { title: 'Inline Math', enabled: false, action: undefined },

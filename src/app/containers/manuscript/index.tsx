@@ -2,7 +2,6 @@ import React, { useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { Backdrop, CircularProgress } from '@material-ui/core';
 
-
 import { isManuscriptLoaded } from 'app/selectors/manuscript.selectors';
 import { ManuscriptToolbar } from './manuscript-toolbar';
 import { ManuscriptEditor } from './manuscript-editor';

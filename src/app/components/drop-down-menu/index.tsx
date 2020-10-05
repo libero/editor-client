@@ -43,7 +43,7 @@ export const DropDownMenu: React.FC<DropDownMenuProps> = ({ title, entries }) =>
         </MenuItem>
       );
     }
-    return <Divider />;
+    return <Divider key={index} />;
   });
 
   return (

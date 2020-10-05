@@ -3,7 +3,7 @@ import { runSaga } from 'redux-saga';
 import { insertHeadingSaga, insertReferenceCitationSaga, toggleMarkSaga } from 'app/saga/formatters.saga';
 import {
   applyChangeAction,
-  insertHeading,
+  insertHeadingAction,
   insertReferenceCitationAction,
   toggleMarkAction
 } from 'app/actions/manuscript.actions';
@@ -53,7 +53,7 @@ describe('formatters saga', () => {
         })
       },
       insertHeadingSaga,
-      insertHeading(1)
+      insertHeadingAction(1)
     ).toPromise();
 
     expect(dispatched).toEqual([applyChangeAction({ path: 'body', change: expect.any(Object) })]);

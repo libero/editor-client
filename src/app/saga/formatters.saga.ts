@@ -41,6 +41,27 @@ export function* insertReferenceCitationSaga() {
   }
 }
 
+export function* insertBoxSaga() {
+  const editorState: EditorState = yield select(getFocusedEditorState);
+  if (editorState && editorState.schema.nodes['boxText']) {
+    const path = yield select(getFocusedEditorStatePath);
+    const { empty, $from, $to } = editorState.selection;
+
+    let content = Fragment.empty;
+    if (!empty && $from.sameParent($to) && $from.parent.inlineContent) {
+      content = $from.parent.content.cut($from.parentOffset, $to.parentOffset);
+    }
+
+    const paragraph = editorState.schema.nodes['paragraph'].create(null, content);
+    const change = editorState.tr
+      .split($from.indexAfter())
+      .insert($from.pos, editorState.schema.nodes['boxText'].create(null, paragraph))
+      .deleteSelection();
+
+    yield put(manuscriptActions.applyChangeAction({ path, change }));
+  }
+}
+
 export function* insertHeadingSaga(action: Action<number>) {
   const editorState: EditorState = yield select(getFocusedEditorState);
   if (editorState && editorState.schema.nodes['heading']) {
@@ -75,7 +96,8 @@ export default function* () {
   yield all([
     takeLatest(manuscriptActions.toggleMarkAction.getType(), toggleMarkSaga),
     takeLatest(manuscriptActions.insertReferenceCitationAction.getType(), insertReferenceCitationSaga),
-    takeLatest(manuscriptActions.insertHeading.getType(), insertHeadingSaga),
-    takeLatest(manuscriptActions.insertParagraph.getType(), insertParagraphSaga)
+    takeLatest(manuscriptActions.insertBoxAction.getType(), insertBoxSaga),
+    takeLatest(manuscriptActions.insertHeadingAction.getType(), insertHeadingSaga),
+    takeLatest(manuscriptActions.insertParagraphAction.getType(), insertParagraphSaga)
   ]);
 }

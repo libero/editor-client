@@ -238,7 +238,7 @@ export class ReferenceCitationNodeView implements NodeView {
       this.getPos() + this.node.nodeSize,
       schema.nodes['refCitation'].create(attrs)
     );
-    // due browser managing cursor position on focus and blur the cursor is sometimes reset to 0
+    // due to browser managing cursor position on focus and blur the cursor is sometimes reset to 0
     // to rectify this behaviour we move cursor back to before the citation
     change.setSelection(new TextSelection(change.doc.resolve(this.getPos())));
     this.view.dispatch(change);

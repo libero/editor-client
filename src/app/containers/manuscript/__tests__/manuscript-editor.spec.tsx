@@ -22,6 +22,10 @@ jest.mock('app/components/rich-text-input', () => ({
   RichTextInput: () => <div data-cmp="rich-text-input"></div>
 }));
 
+jest.mock('app/components/rich-text-editor', () => ({
+  RichTextEditor: () => <div data-cmp="rich-text-editor"></div>
+}));
+
 jest.mock('app/components/reference-citation-editor-popup', () => ({
   ReferenceCitationEditorPopup: () => <div data-cmp="ReferenceCitationEditorPopup"></div>
 }));

@@ -15,18 +15,8 @@ exports[`manuscript editor should render 1`] = `
     onClick={[Function]}
   >
     <div
-      className="makeStyles-root-5 makeStyles-plainVariant-7"
-      id="title"
-    >
-      <label
-        className="makeStyles-label-8"
-      >
-        Title
-      </label>
-      <div
-        className="prosemirrorContainer"
-      />
-    </div>
+      data-cmp="rich-text-editor"
+    />
     <div
       onClick={[Function]}
     >
@@ -37,23 +27,23 @@ exports[`manuscript editor should render 1`] = `
       />
       <section>
         <div
-          className="makeStyles-root-5 makeStyles-plainVariant-7"
+          className="makeStyles-root-9 makeStyles-plainVariant-11"
           id="authors"
         >
           <label
-            className="makeStyles-label-8"
+            className="makeStyles-label-12"
           >
             Authors
           </label>
           <div
-            className="makeStyles-sortableContainer-10"
+            className="makeStyles-sortableContainer-5"
           >
              
              
           </div>
         </div>
         <button
-          className="MuiButtonBase-root MuiButton-root makeStyles-addEntityButton_root-17 MuiButton-text makeStyles-addAuthorButton-13 MuiButton-textSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
+          className="MuiButtonBase-root MuiButton-root makeStyles-addEntityButton_root-17 MuiButton-text makeStyles-addAuthorButton-8 MuiButton-textSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
@@ -98,11 +88,11 @@ exports[`manuscript editor should render 1`] = `
       />
       <section>
         <div
-          className="makeStyles-root-5 makeStyles-plainVariant-7"
+          className="makeStyles-root-9 makeStyles-plainVariant-11"
           id="affiliations"
         >
           <label
-            className="makeStyles-label-8"
+            className="makeStyles-label-12"
           >
             Affiliations
           </label>
@@ -156,71 +146,32 @@ exports[`manuscript editor should render 1`] = `
       />
     </div>
     <div
-      className="makeStyles-root-5 makeStyles-plainVariant-7"
-      id="abstract"
-    >
-      <label
-        className="makeStyles-label-8"
-      >
-        Abstract
-      </label>
-      <div
-        className="prosemirrorContainer"
-      />
-    </div>
+      data-cmp="rich-text-editor"
+    />
     <div
       aria-hidden="true"
       className="makeStyles-spacer-3"
       onClick={[Function]}
     />
     <div
-      className="makeStyles-root-5 makeStyles-plainVariant-7"
-      id="impactStatement"
-    >
-      <label
-        className="makeStyles-label-8"
-      >
-        Impact statement
-      </label>
-      <div
-        className="prosemirrorContainer"
-      />
-    </div>
+      data-cmp="rich-text-editor"
+    />
     <div
       aria-hidden="true"
       className="makeStyles-spacer-3"
       onClick={[Function]}
     />
     <div
-      className="makeStyles-root-5 makeStyles-plainVariant-7"
-    >
-      <label
-        className="makeStyles-label-8"
-      >
-        Main text
-      </label>
-      <div
-        className="prosemirrorContainer"
-      />
-    </div>
+      data-cmp="rich-text-editor"
+    />
     <div
       aria-hidden="true"
       className="makeStyles-spacer-3"
       onClick={[Function]}
     />
     <div
-      className="makeStyles-root-5 makeStyles-plainVariant-7"
-      id="acknowledgements"
-    >
-      <label
-        className="makeStyles-label-8"
-      >
-        Acknowledgements
-      </label>
-      <div
-        className="prosemirrorContainer"
-      />
-    </div>
+      data-cmp="rich-text-editor"
+    />
     <div
       aria-hidden="true"
       className="makeStyles-spacer-3"
@@ -231,11 +182,11 @@ exports[`manuscript editor should render 1`] = `
     >
       <section>
         <div
-          className="makeStyles-root-5 makeStyles-plainVariant-7"
+          className="makeStyles-root-9 makeStyles-plainVariant-11"
           id="references"
         >
           <label
-            className="makeStyles-label-8"
+            className="makeStyles-label-12"
           >
             References
           </label>
@@ -289,11 +240,11 @@ exports[`manuscript editor should render 1`] = `
       />
       <section>
         <div
-          className="makeStyles-root-5 makeStyles-plainVariant-7"
+          className="makeStyles-root-9 makeStyles-plainVariant-11"
           id="author-details"
         >
           <label
-            className="makeStyles-label-8"
+            className="makeStyles-label-12"
           >
             Author Information
           </label>
@@ -343,11 +294,11 @@ exports[`manuscript editor should render 1`] = `
         onClick={[Function]}
       />
       <div
-        className="makeStyles-sectionContainer-28 makeStyles-root-5 makeStyles-plainVariant-7"
+        className="makeStyles-sectionContainer-28 makeStyles-root-9 makeStyles-plainVariant-11"
         id="article-info"
       >
         <label
-          className="makeStyles-label-8"
+          className="makeStyles-label-12"
         >
           Article information
         </label>
@@ -464,11 +415,11 @@ exports[`manuscript editor should render 1`] = `
       />
       <section>
         <div
-          className="makeStyles-root-5 makeStyles-plainVariant-7"
+          className="makeStyles-root-9 makeStyles-plainVariant-11"
           id="realted-acticles"
         >
           <label
-            className="makeStyles-label-8"
+            className="makeStyles-label-12"
           >
             Related articles
           </label>

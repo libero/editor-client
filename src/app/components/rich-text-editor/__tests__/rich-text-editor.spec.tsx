@@ -1,46 +1,81 @@
 import React from 'react';
-import { EditorState } from 'prosemirror-state';
-import { RichTextEditor } from 'app/components/rich-text-editor/index';
 import { create } from 'react-test-renderer';
-import { shallow } from 'enzyme';
+import { EditorState } from 'prosemirror-state';
+import { EditorView } from 'prosemirror-view';
+import { mount } from 'enzyme';
+import { DOMSerializer } from 'prosemirror-model';
 
-jest.mock('@material-ui/core/styles', () => {
-  return {
-    ThemeProvider: ({ children }) => <>{children}</>,
-    createMuiTheme: jest.fn(),
-    makeStyles: jest.requireActual('@material-ui/core/styles').makeStyles,
-    withStyles: jest.requireActual('@material-ui/core/styles').withStyles
-  };
-});
+import { ProseMirrorEditorView } from 'app/components/rich-text-editor/prosemirror-editor-view';
+import { createDummyEditorState } from 'app/test-utils/reducer-test-helpers';
 
-describe('ReachTextEditorComponent', () => {
-  it('renders the editor when editor state is provided', () => {
-    const sampleState = new EditorState();
+jest.mock('prosemirror-view');
 
-    const onChangeHandler = jest.fn();
+const createNodeMock = (element) => {
+  return element;
+};
 
-    const component = create(<RichTextEditor isActive={false} editorState={sampleState} onChange={onChangeHandler} />);
-    expect(component).toMatchSnapshot();
+describe('prosemirror view', () => {
+  let mockEditorView;
+
+  beforeEach(() => {
+    mockEditorView = {
+      updateState: jest.fn(),
+      destroy: jest.fn()
+    };
+    (EditorView as jest.Mock).mockImplementation(() => mockEditorView);
   });
 
-  it('renders nothing when no EditorState is provided', () => {
-    const sampleState = null;
+  it('should render', () => {
+    const sampleState = createDummyEditorState();
     const onChangeHandler = jest.fn();
 
-    const component = create(<RichTextEditor isActive={false} editorState={sampleState} onChange={onChangeHandler} />);
+    const component = create(<ProseMirrorEditorView editorState={sampleState} onChange={onChangeHandler} />, {
+      createNodeMock
+    });
     expect(component).toMatchSnapshot();
-  });
-
-  it('fires onChange when prosemirror-view triggers onChange', () => {
-    const sampleState = new EditorState();
-    const onChangeHandler = jest.fn();
-
-    const component = shallow(
-      <RichTextEditor name="RTEInput" isActive={false} editorState={sampleState} onChange={onChangeHandler} />
+    expect(EditorView).toBeCalledWith(
+      { props: { className: 'prosemirrorContainer' }, type: 'div' },
+      {
+        state: sampleState,
+        clipboardSerializer: expect.any(DOMSerializer),
+        clipboardTextSerializer: expect.any(Function),
+        dispatchTransaction: expect.any(Function)
+      }
     );
-    const changeArg = Symbol();
-    component.find('ProseMirrorEditorView').props().onChange.call(null, changeArg);
+  });
 
-    expect(onChangeHandler).toHaveBeenCalledWith(changeArg, 'RTEInput');
+  it('should trigger onChange', () => {
+    const sampleState = createDummyEditorState();
+    const onChangeHandler = jest.fn();
+
+    create(<ProseMirrorEditorView editorState={sampleState} onChange={onChangeHandler} />, { createNodeMock });
+    const { dispatchTransaction } = (EditorView as jest.Mock).mock.calls[0][1];
+
+    const tx = {};
+    dispatchTransaction(tx);
+    expect(onChangeHandler).toHaveBeenCalledWith(tx);
+  });
+
+  it('should update EditorView when props change', () => {
+    const sampleState = createDummyEditorState();
+    const onChangeHandler = jest.fn();
+
+    const component = mount(<ProseMirrorEditorView editorState={sampleState} onChange={onChangeHandler} />);
+    const newState = new EditorState();
+    component.setProps({ onChange: onChangeHandler, editorState: newState });
+    expect(mockEditorView.updateState).toBeCalledWith(newState);
+  });
+
+  it('should destroy EditorView when unmount', () => {
+    const sampleState = createDummyEditorState();
+    const onChangeHandler = jest.fn();
+
+    const component = mount(<ProseMirrorEditorView editorState={sampleState} onChange={onChangeHandler} />);
+    component.unmount();
+    expect(mockEditorView.destroy).toBeCalled();
+  });
+
+  afterEach(() => {
+    (EditorView as jest.Mock).mockReset();
   });
 });
