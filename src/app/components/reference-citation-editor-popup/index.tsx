@@ -180,13 +180,11 @@ export class ReferenceCitationNodeView implements NodeView {
   }
 
   selectNode = () => {
-    console.log('node selected');
     this.dom.classList.add('ProseMirror-selectednode');
     this.open();
   };
 
   deselectNode() {
-    console.log('node deselected');
     this.dom.classList.remove('ProseMirror-selectednode');
     this.close();
   }
