@@ -111,6 +111,9 @@ export class LinkNodeView implements NodeView {
         }
       }, 100)
     );
+    if (this.node.attrs.href === undefined) {
+      this.open();
+    }
   }
 
   openLinkInNewWindow(event: MouseEvent) {
