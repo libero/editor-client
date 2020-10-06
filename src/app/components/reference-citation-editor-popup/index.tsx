@@ -176,17 +176,17 @@ export class ReferenceCitationNodeView implements NodeView {
     this.dom = document.createElement('a');
     this.dom.style.cursor = 'pointer';
     this.dom.textContent = this.node.attrs.refText || '???';
-
-    this.handleChange = this.handleChange.bind(this);
-    this.close = this.close.bind(this);
+    this.dom.addEventListener('click', this.selectNode);
   }
 
-  selectNode() {
+  selectNode = () => {
+    console.log('node selected');
     this.dom.classList.add('ProseMirror-selectednode');
     this.open();
-  }
+  };
 
   deselectNode() {
+    console.log('node deselected');
     this.dom.classList.remove('ProseMirror-selectednode');
     this.close();
   }
@@ -212,22 +212,24 @@ export class ReferenceCitationNodeView implements NodeView {
     );
   }
 
-  stopEvent(event) {
-    return Boolean(this.refEditorContainer) && this.dom.contains(event.target);
+  stopEvent() {
+    return true;
   }
 
   ignoreMutation() {
     return true;
   }
 
-  close() {
+  close = () => {
     this.dom.classList.remove('ProseMirror-selectednode');
-    ReactDOM.unmountComponentAtNode(this.refEditorContainer);
-    this.refEditorContainer.parentNode.removeChild(this.refEditorContainer);
-    this.refEditorContainer = null;
-  }
+    if (this.refEditorContainer) {
+      ReactDOM.unmountComponentAtNode(this.refEditorContainer);
+      this.refEditorContainer.parentNode.removeChild(this.refEditorContainer);
+      this.refEditorContainer = null;
+    }
+  };
 
-  handleChange(ref: Reference) {
+  handleChange = (ref: Reference) => {
     const attrs = ref
       ? { refId: ref.id || uuidv4(), refText: getRefNodeText(ref) }
       : { refId: undefined, refText: undefined };
@@ -243,5 +245,5 @@ export class ReferenceCitationNodeView implements NodeView {
     change.setSelection(new TextSelection(change.doc.resolve(this.getPos())));
     this.view.dispatch(change);
     this.close();
-  }
+  };
 }

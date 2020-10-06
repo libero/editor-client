@@ -162,7 +162,11 @@
     </front>
   <body>
     <boxed-text>
-        <p><bold>Related research article</bold> Srinivasan S, Kaplan CN, Mahadevan L. 2019. A multiphase theory for spreadingmicrobial swarms and films. <italic>eLife</italic> <bold>8</bold>:e42697. doi: <ext-link ext-link-type="uri" xlink:href="http://doi.org/10.7554/eLife.42697">10.7554/eLife.42697</ext-link></p>
+        <p><bold>Related research article</bold>
+            <xref ref-type="bibr" rid="bib5">Harmon (2019)</xref>
+            Srinivasan S, Kaplan CN, Mahadevan L. 2019. A multiphase theory for spreadingmicrobial swarms and films. <italic>eLife</italic> <bold>8</bold>:e42697.
+            doi: <ext-link ext-link-type="uri" xlink:href="http://doi.org/10.7554/eLife.42697">10.7554/eLife.42697</ext-link>
+        </p>
         <p><bold>Related research article</bold> Zoolander D, Hansel, Mugatu J. 2019. Second related article title (if present). <italic>eLife</italic> <bold>8</bold>:e00067. doi: <ext-link ext-link-type="uri" xlink:href="http://doi.org/10.7554/eLife.00067">10.7554/eLife.00067</ext-link></p>
     </boxed-text>
 

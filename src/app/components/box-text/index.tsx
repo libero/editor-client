@@ -67,13 +67,14 @@ export class BoxTextNodeView implements NodeView {
       this.view.state.selection.$anchor.pos > this.getPos() &&
       this.view.state.selection.$anchor.pos < this.getPos() + this.node.nodeSize;
     if (hasCursor) {
+      console.log('focus restored');
       this.boxTextEditor.current.focus();
     }
     return true;
   }
 
-  stopEvent() {
-    return true;
+  stopEvent(evt) {
+    return this.dom.contains(evt.target);
   }
 
   ignoreMutation() {
