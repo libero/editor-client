@@ -158,7 +158,7 @@ export const nodes = {
   },
 
   boxText: {
-    content: 'block*',
+    content: 'paragraph*',
     group: 'block',
     parseDOM: [
       {

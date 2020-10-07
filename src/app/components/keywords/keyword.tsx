@@ -15,12 +15,12 @@ interface KeywordProps {
   onChange: (state: Transaction) => void;
   onDelete: () => void;
   isActive: boolean;
-  onFocusSwitch: (state: EditorState) => void;
+  onFocus: (state: EditorState) => void;
   onBlur: () => void;
 }
 
 export const Keyword: React.FC<KeywordProps> = (props) => {
-  const { editorState, onDelete, onChange, onFocusSwitch, isActive, onBlur } = props;
+  const { editorState, onDelete, onChange, onFocus, isActive, onBlur } = props;
   const prosemirrorRef = useRef(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -54,7 +54,7 @@ export const Keyword: React.FC<KeywordProps> = (props) => {
   }, [containerRef, focusOnDblClick, preventSingleClickWhenInactive]);
 
   const handleFocusEvent = (view: EditorView): boolean => {
-    onFocusSwitch(view.state);
+    onFocus(view.state);
     return true;
   };
 

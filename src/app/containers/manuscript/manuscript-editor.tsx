@@ -135,7 +135,7 @@ export const ManuscriptEditor: React.FC = () => {
             onAdd={handleKeywordAdd}
             onChange={handleKeywordsChange}
             onDelete={handleKeywordDelete}
-            onFocusSwitch={handleKeywordFocus}
+            onFocus={handleKeywordFocus}
             onBlur={handleBlur}
           />
           <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
@@ -155,7 +155,7 @@ export const ManuscriptEditor: React.FC = () => {
           isActive={isInputFocused('title', focusedPath)}
           name="title"
           onChange={handleTitleChange}
-          onFocusSwitch={handleFocusSwitch}
+          onFocus={handleFocusSwitch}
         />
         <ClearFocus>
           <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
@@ -171,7 +171,7 @@ export const ManuscriptEditor: React.FC = () => {
           name="abstract"
           isActive={isInputFocused('abstract', focusedPath)}
           onChange={handleAbstractChange}
-          onFocusSwitch={handleFocusSwitch}
+          onFocus={handleFocusSwitch}
         />
         <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
         <RichTextEditor
@@ -181,7 +181,7 @@ export const ManuscriptEditor: React.FC = () => {
           name="impactStatement"
           isActive={isInputFocused('impactStatement', focusedPath)}
           onChange={handleImpactStatementChange}
-          onFocusSwitch={handleFocusSwitch}
+          onFocus={handleFocusSwitch}
         />
         <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
         <RichTextEditor
@@ -190,7 +190,7 @@ export const ManuscriptEditor: React.FC = () => {
           name="body"
           isActive={isInputFocused('body', focusedPath)}
           onChange={handleBodyChange}
-          onFocusSwitch={handleFocusSwitch}
+          onFocus={handleFocusSwitch}
         />
         <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
         <RichTextEditor
@@ -200,7 +200,7 @@ export const ManuscriptEditor: React.FC = () => {
           name="acknowledgements"
           isActive={isInputFocused('acknowledgements', focusedPath)}
           onChange={handleAcknowledgementsChange}
-          onFocusSwitch={handleFocusSwitch}
+          onFocus={handleFocusSwitch}
         />
         <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
         <ClearFocus>

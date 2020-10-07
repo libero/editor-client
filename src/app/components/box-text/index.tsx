@@ -20,7 +20,12 @@ export class BoxTextNodeView implements NodeView {
   dom?: HTMLElement;
   boxTextEditor: React.RefObject<BoxTextEditorHandle>;
 
-  constructor(private node: ProsemirrorNode, private view: EditorView, private getPos) {
+  constructor(
+    private node: ProsemirrorNode,
+    private view: EditorView,
+    private getPos: () => number,
+    private isContainerActive: () => boolean
+  ) {
     this.dom = document.createElement('section');
     this.boxTextEditor = React.createRef();
     ReactDOM.render(
@@ -50,7 +55,9 @@ export class BoxTextNodeView implements NodeView {
 
   handleSelectionChange = (anchor: number, head: number) => {
     const offset = this.getPos() + 1;
-    const selection = TextSelection.create(this.view.state.doc, anchor + offset, head + offset);
+    const start = Math.min(anchor, head);
+    const end = Math.max(anchor, head);
+    const selection = TextSelection.create(this.view.state.doc, start + offset, end + offset);
     if (!selection.eq(this.view.state.selection)) {
       const selectionChange = this.view.state.tr.setSelection(selection);
       this.view.dispatch(selectionChange);
@@ -66,8 +73,8 @@ export class BoxTextNodeView implements NodeView {
     const hasCursor =
       this.view.state.selection.$anchor.pos > this.getPos() &&
       this.view.state.selection.$anchor.pos < this.getPos() + this.node.nodeSize;
-    if (hasCursor) {
-      console.log('focus restored');
+    if (hasCursor && this.isContainerActive() && !this.boxTextEditor.current.hasFocus()) {
+      console.log('refocus node view editor');
       this.boxTextEditor.current.focus();
     }
     return true;
