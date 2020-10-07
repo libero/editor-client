@@ -74,7 +74,6 @@ export class BoxTextNodeView implements NodeView {
       this.view.state.selection.$anchor.pos > this.getPos() &&
       this.view.state.selection.$anchor.pos < this.getPos() + this.node.nodeSize;
     if (hasCursor && this.isContainerActive() && !this.boxTextEditor.current.hasFocus()) {
-      console.log('refocus node view editor');
       this.boxTextEditor.current.focus();
     }
     return true;
