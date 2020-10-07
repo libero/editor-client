@@ -55,9 +55,8 @@ export function* insertBoxSaga() {
     const paragraph = editorState.schema.nodes['paragraph'].create(null, content);
     const change = editorState.tr
       .split($from.pos)
-      .insert($from.pos, editorState.schema.nodes['boxText'].create(null, paragraph))
+      .insert($from.pos + 1, editorState.schema.nodes['boxText'].create(null, paragraph))
       .deleteSelection();
-
     yield put(manuscriptActions.applyChangeAction({ path, change }));
   }
 }
