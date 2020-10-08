@@ -66,9 +66,11 @@ export class BoxTextNodeView implements NodeView {
   };
 
   update(node: ProsemirrorNode) {
-    if (!node.eq(this.node)) {
-      this.boxTextEditor.current.updateContent(createBoxedTextState(node));
+    if (!node.sameMarkup(this.node)) {
+      return false;
     }
+
+    this.boxTextEditor.current.updateContent(node);
 
     const hasCursor =
       this.view.state.selection.$from.pos >= this.getPos() &&
