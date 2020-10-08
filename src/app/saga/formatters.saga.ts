@@ -29,7 +29,7 @@ async function insertBox(editorState: EditorState): Promise<Transaction> {
   if (!change.doc.nodeAt($from.after()).textContent) {
     change.setSelection(NodeSelection.create(change.doc, $from.after())).replaceSelectionWith(box);
   } else {
-    change.insert($from.after(), box);
+    change.insert($from.pos, box);
   }
   return change;
 }
