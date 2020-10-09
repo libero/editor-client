@@ -177,6 +177,9 @@ export class ReferenceCitationNodeView implements NodeView {
     this.dom.style.cursor = 'pointer';
     this.dom.textContent = this.node.attrs.refText || '???';
     this.dom.addEventListener('click', this.selectNode);
+    if (this.node.attrs.refId === undefined) {
+      this.open();
+    }
   }
 
   selectNode = () => {
@@ -210,14 +213,6 @@ export class ReferenceCitationNodeView implements NodeView {
     );
   }
 
-  stopEvent() {
-    return true;
-  }
-
-  ignoreMutation() {
-    return true;
-  }
-
   close = () => {
     this.dom.classList.remove('ProseMirror-selectednode');
     if (this.refEditorContainer) {
@@ -228,9 +223,7 @@ export class ReferenceCitationNodeView implements NodeView {
   };
 
   handleChange = (ref: Reference) => {
-    const attrs = ref
-      ? { refId: ref.id || uuidv4(), refText: getRefNodeText(ref) }
-      : { refId: undefined, refText: undefined };
+    const attrs = ref ? { refId: ref.id || uuidv4(), refText: getRefNodeText(ref) } : { refId: null, refText: null };
 
     const schema = this.view.state.schema;
     const change = this.view.state.tr.replaceWith(
