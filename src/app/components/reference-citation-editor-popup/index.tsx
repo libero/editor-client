@@ -34,8 +34,7 @@ interface ReferenceCitationEditorPopupProps {
 
 const getRefListItemText = (ref: Reference) => {
   return [
-    getRefListAuthorsNames(ref),
-    get(ref.referenceInfo, 'year'),
+    `${getRefListAuthorsNames(ref)}, ${get(ref.referenceInfo, 'year')}`,
     has(ref.referenceInfo, 'chapterTitle') ? stringifyEditorState(get(ref.referenceInfo, 'chapterTitle')) : undefined,
     has(ref.referenceInfo, 'articleTitle') ? stringifyEditorState(get(ref.referenceInfo, 'articleTitle')) : undefined,
     has(ref.referenceInfo, 'dataTitle') ? stringifyEditorState(get(ref.referenceInfo, 'dataTitle')) : undefined,
