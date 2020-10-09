@@ -11,7 +11,6 @@ import { ReferenceCitationNodeView } from 'app/components/reference-citation-edi
 import { ComponentWithId } from 'app/utils/types';
 import { BoxTextNodeView } from 'app/components/box-text';
 import { hasParentNodeOf } from 'app/utils/view.utils';
-import { LinkNodeView } from 'app/components/link-editor-popup';
 
 export interface RichTextEditorProps {
   editorState: EditorState;
@@ -20,7 +19,8 @@ export interface RichTextEditorProps {
   isActive: boolean;
   variant?: SectionContainerVariant;
   onChange?: (change: Transaction, name: string) => void;
-  onFocusSwitch?: (state: EditorState, name: string) => void;
+  onFocus?: (state: EditorState, name: string) => void;
+  onBlur?: (state: EditorState, name: string) => void;
 }
 
 export interface RichTextEditorState {
@@ -38,7 +38,7 @@ const restoreSelection = debounce((editorView, from, to) => {
 
 export class RichTextEditor extends React.Component<ComponentWithId<RichTextEditorProps>, RichTextEditorState> {
   private options;
-  private editorView: EditorView;
+  public editorView: EditorView;
 
   constructor(props: ComponentWithId<RichTextEditorProps>) {
     super(props);
@@ -49,17 +49,20 @@ export class RichTextEditor extends React.Component<ComponentWithId<RichTextEdit
         refCitation(node, view, getPos) {
           return new ReferenceCitationNodeView(node, view, getPos);
         },
-        boxText(node, view, getPos) {
-          return new BoxTextNodeView(node, view, getPos);
-        },
-        link(node, view) {
-          return new LinkNodeView(node, view);
+        boxText: (node, view, getPos) => {
+          return new BoxTextNodeView(node, view, getPos, () => this.props.isActive);
         }
       },
       handleDOMEvents: {
         focus: ({ state }: EditorView) => {
-          if (this.props.onFocusSwitch && !this.props.isActive) {
-            this.props.onFocusSwitch(state, this.props.name);
+          if (this.props.onFocus && !this.props.isActive) {
+            this.props.onFocus(state, this.props.name);
+          }
+          return true;
+        },
+        blur: ({ state }: EditorView) => {
+          if (this.props.onBlur && this.props.isActive) {
+            this.props.onBlur(state, this.props.name);
           }
           return true;
         }
@@ -82,12 +85,8 @@ export class RichTextEditor extends React.Component<ComponentWithId<RichTextEdit
       this.updateEditorState(this.props.editorState);
     }
 
-    // when component updates we need to restore
-    if (this.props.isActive && this.editorView && !this.editorView.hasFocus()) {
-      if (!this.isFocusControlDelegated()) {
-        this.focusEditor();
-      }
-    }
+    // when component updates we need to restore focus
+    this.restoreFocus();
   }
 
   componentWillUnmount() {
@@ -146,6 +145,18 @@ export class RichTextEditor extends React.Component<ComponentWithId<RichTextEdit
   private isFocusControlDelegated() {
     const { $from } = this.editorView.state.selection;
     return hasParentNodeOf($from, 'boxText');
+  }
+
+  // focus is restored based on 3 conditions
+  // #1 - component is active acc. to application state (prop: isActive)
+  // #2 - editor does not have focus
+  // #3 - focus is not delegated to a node view
+  private restoreFocus() {
+    if (this.props.isActive && this.editorView && !this.editorView.hasFocus()) {
+      if (!this.isFocusControlDelegated()) {
+        this.focusEditor();
+      }
+    }
   }
 }
 

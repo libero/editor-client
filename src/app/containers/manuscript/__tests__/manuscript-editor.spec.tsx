@@ -122,7 +122,7 @@ describe('manuscript editor', () => {
       </Provider>
     );
 
-    wrapper.root.findByProps({ name: 'abstract' }).props.onFocusSwitch(null, 'abstract');
+    wrapper.root.findByProps({ name: 'abstract' }).props.onFocus(null, 'abstract');
     expect(store.dispatch).toBeCalledWith(setFocusAction('abstract'));
   });
 
@@ -206,7 +206,7 @@ describe('manuscript editor', () => {
       </Provider>
     );
 
-    wrapper.root.findByProps({ name: 'group' }).props.onFocusSwitch('group', 0, false);
+    wrapper.root.findByProps({ name: 'group' }).props.onFocus('group', 0, false);
     expect(store.dispatch).toBeCalledWith(setFocusAction('keywordGroups.group.keywords.0'));
   });
 

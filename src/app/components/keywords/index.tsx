@@ -16,7 +16,7 @@ interface KeywordsEditorProps {
   onChange: (groupType: string, index: number, change: Transaction) => void;
   onNewKeywordChange: (groupType: string, change: Transaction) => void;
   onAdd: (groupType: string, state: EditorState) => void;
-  onFocusSwitch: (groupType: string, index: number | undefined, isNewKeywordFocused?: boolean) => void;
+  onFocus: (groupType: string, index: number | undefined, isNewKeywordFocused?: boolean) => void;
   onBlur: () => void;
 }
 
@@ -32,7 +32,7 @@ export const KeywordsEditor: React.FC<KeywordsEditorProps> = (props) => {
     onDelete,
     name,
     onAdd,
-    onFocusSwitch,
+    onFocus,
     newKeyword,
     onNewKeywordChange,
     activeKeywordPath,
@@ -42,9 +42,9 @@ export const KeywordsEditor: React.FC<KeywordsEditorProps> = (props) => {
 
   const handleFocus = useCallback(
     (index: number) => {
-      onFocusSwitch(name, index);
+      onFocus(name, index);
     },
-    [name, onFocusSwitch]
+    [name, onFocus]
   );
 
   const renderKeywords = (keywords: EditorState[]) => {
@@ -56,7 +56,7 @@ export const KeywordsEditor: React.FC<KeywordsEditorProps> = (props) => {
           onChange={onChange.bind(null, name, index)}
           editorState={keywordEditorState}
           onDelete={onDelete.bind(null, name, index)}
-          onFocusSwitch={handleFocus.bind(null, index)}
+          onFocus={handleFocus.bind(null, index)}
           onBlur={onBlur}
         />
       );
@@ -64,8 +64,8 @@ export const KeywordsEditor: React.FC<KeywordsEditorProps> = (props) => {
   };
 
   const handleNewKeywordFocus = useCallback(() => {
-    onFocusSwitch(name, undefined, true);
-  }, [name, onFocusSwitch]);
+    onFocus(name, undefined, true);
+  }, [name, onFocus]);
 
   const isGroupFocused = activeKeywordPath && activeKeywordPath.startsWith(`keywordGroups.${name}`);
 

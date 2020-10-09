@@ -231,9 +231,7 @@ export class ReferenceCitationNodeView implements NodeView {
   };
 
   handleChange = (ref: Reference) => {
-    const attrs = ref
-      ? { refId: ref.id || uuidv4(), refText: getRefNodeText(ref) }
-      : { refId: null, refText: null };
+    const attrs = ref ? { refId: ref.id || uuidv4(), refText: getRefNodeText(ref) } : { refId: null, refText: null };
 
     const schema = this.view.state.schema;
     const change = this.view.state.tr.replaceWith(
