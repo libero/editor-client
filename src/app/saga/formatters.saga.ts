@@ -1,4 +1,4 @@
-import { EditorState, Transaction, NodeSelection } from 'prosemirror-state';
+import { EditorState, Transaction } from 'prosemirror-state';
 import { toggleMark, setBlockType } from 'prosemirror-commands';
 import { all, takeLatest, call, put, select } from 'redux-saga/effects';
 import { MarkType, Fragment } from 'prosemirror-model';
