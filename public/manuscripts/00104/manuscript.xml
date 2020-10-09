@@ -161,8 +161,17 @@
         </article-meta>
     </front>
   <body>
-    <boxed-text><p><bold>Related research article</bold> Srinivasan S, Kaplan CN, Mahadevan L. 2019. A multiphase theory for spreadingmicrobial swarms and films. <italic>eLife</italic> <bold>8</bold>:e42697. doi: <ext-link ext-link-type="uri" xlink:href="http://doi.org/10.7554/eLife.42697">10.7554/eLife.42697</ext-link></p><p><bold>Related research article</bold> Zoolander D, Hansel, Mugatu J. 2019. Second related article title (if present). <italic>eLife</italic> <bold>8</bold>:e00067. doi: <ext-link ext-link-type="uri" xlink:href="http://doi.org/10.7554/eLife.00067">10.7554/eLife.00067</ext-link></p></boxed-text>
+    <boxed-text>
+        <p><bold>Related research article</bold>
+            <xref ref-type="bibr" rid="bib5">Harmon (2019)</xref>
+            Srinivasan S, Kaplan CN, Mahadevan L. 2019. A multiphase theory for spreadingmicrobial swarms and films. <italic>eLife</italic> <bold>8</bold>:e42697.
+            doi: <ext-link ext-link-type="uri" xlink:href="http://doi.org/10.7554/eLife.42697">10.7554/eLife.42697</ext-link>
+        </p>
+        <p><bold>Related research article</bold> Zoolander D, Hansel, Mugatu J. 2019. Second related article title (if present). <italic>eLife</italic> <bold>8</bold>:e00067. doi: <ext-link ext-link-type="uri" xlink:href="http://doi.org/10.7554/eLife.00067">10.7554/eLife.00067</ext-link></p>
+    </boxed-text>
+
     <p>Lorem ipsum dolor <italic>sit amet</italic>, consectetur adipiscing elit (<xref ref-type="bibr" rid="bib20">Srinivasan et al., 2019</xref>; <xref ref-type="bibr" rid="bib25">Zoolander et al., 2019</xref>). Etiam imperdiet tortor nec enim feugiat euismod <xref ref-type="bibr" rid="bib2">Feyerabend (2010)</xref>. Etiam malesuada tristique quam non fringilla (<xref ref-type="bibr" rid="bib3">Foley et al., 2018</xref>). Curabitur sem neque, pretium et lorem ac, porta lobortis nisl. Curabitur suscipit semper sodales. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus cursus faucibus felis, consequat rutrum neque vehicula eget (<ext-link ext-link-type="uri" xlink:href="http://www.broadinstitute.org/igv/">http://www.broadinstitute.org/igv/</ext-link>). Donec in neque et ligula tristique semper id sit amet quam. Proin varius, arcu posuere faucibus rhoncus, leo neque porttitor augue, sit amet cursus neque neque quis turpis. Maecenas dignissim aliquam orci, maximus scelerisque nisl imperdiet in. (<xref ref-type="bibr" rid="bib1">Berk et al., 2012</xref>; <xref ref-type="bibr" rid="bib4">Gavrilov et al., 2014</xref>; <xref ref-type="bibr" rid="bib24">Zhang et al., 2014</xref>).</p>
+
     <list list-type="bullet">
       <list-item><p>First entry</p>
         <list list-type="bullet">

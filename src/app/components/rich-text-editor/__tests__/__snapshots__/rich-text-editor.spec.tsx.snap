@@ -1,24 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ReachTextEditorComponent renders nothing when no EditorState is provided 1`] = `
+exports[`prosemirror view should render 1`] = `
 <div
-  className="makeStyles-root-1 makeStyles-plainVariant-3"
->
-  <label
-    className="makeStyles-label-4"
-  />
-</div>
-`;
-
-exports[`ReachTextEditorComponent renders the editor when editor state is provided 1`] = `
-<div
-  className="makeStyles-root-1 makeStyles-plainVariant-3"
->
-  <label
-    className="makeStyles-label-4"
-  />
-  <div
-    className="prosemirrorContainer"
-  />
-</div>
+  className="prosemirrorContainer"
+/>
 `;

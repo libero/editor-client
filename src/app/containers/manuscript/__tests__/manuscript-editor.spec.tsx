@@ -22,6 +22,10 @@ jest.mock('app/components/rich-text-input', () => ({
   RichTextInput: () => <div data-cmp="rich-text-input"></div>
 }));
 
+jest.mock('app/components/rich-text-editor', () => ({
+  RichTextEditor: () => <div data-cmp="rich-text-editor"></div>
+}));
+
 jest.mock('app/components/reference-citation-editor-popup', () => ({
   ReferenceCitationEditorPopup: () => <div data-cmp="ReferenceCitationEditorPopup"></div>
 }));
@@ -118,7 +122,7 @@ describe('manuscript editor', () => {
       </Provider>
     );
 
-    wrapper.root.findByProps({ name: 'abstract' }).props.onFocusSwitch(null, 'abstract');
+    wrapper.root.findByProps({ name: 'abstract' }).props.onFocus(null, 'abstract');
     expect(store.dispatch).toBeCalledWith(setFocusAction('abstract'));
   });
 
@@ -202,7 +206,7 @@ describe('manuscript editor', () => {
       </Provider>
     );
 
-    wrapper.root.findByProps({ name: 'group' }).props.onFocusSwitch('group', 0, false);
+    wrapper.root.findByProps({ name: 'group' }).props.onFocus('group', 0, false);
     expect(store.dispatch).toBeCalledWith(setFocusAction('keywordGroups.group.keywords.0'));
   });
 

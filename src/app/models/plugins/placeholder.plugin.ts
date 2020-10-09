@@ -6,7 +6,7 @@ export function PlaceholderPlugin(placeholderText: string): Plugin {
     props: {
       decorations(state: EditorState) {
         const doc = state.doc;
-        if (doc.childCount > 1 || doc.firstChild.textContent.trim().length > 0) {
+        if (doc.childCount > 1 || doc.textContent.trim().length > 0) {
           return;
         }
 

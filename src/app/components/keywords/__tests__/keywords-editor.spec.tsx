@@ -16,7 +16,7 @@ describe('KeywordsEditorComponent', () => {
       onDelete: jest.fn(),
       onChange: jest.fn(),
       onAdd: jest.fn(),
-      onFocusSwitch: jest.fn(),
+      onFocus: jest.fn(),
       onNewKeywordChange: jest.fn(),
       onBlur: jest.fn()
     };
@@ -34,7 +34,7 @@ describe('KeywordsEditorComponent', () => {
       onDelete: jest.fn(),
       onChange: jest.fn(),
       onAdd: jest.fn(),
-      onFocusSwitch: jest.fn(),
+      onFocus: jest.fn(),
       onNewKeywordChange: jest.fn(),
       onBlur: jest.fn()
     };
@@ -59,7 +59,7 @@ describe('KeywordsEditorComponent', () => {
       onDelete: jest.fn(),
       onChange: jest.fn(),
       onAdd: jest.fn(),
-      onFocusSwitch: jest.fn(),
+      onFocus: jest.fn(),
       onNewKeywordChange: jest.fn(),
       onBlur: jest.fn()
     };

@@ -1,5 +1,5 @@
 import { EditorState, Transaction, NodeSelection } from 'prosemirror-state';
-import { toggleMark, setBlockType } from 'prosemirror-commands';
+import { toggleMark, setBlockType, splitBlockKeepMarks } from 'prosemirror-commands';
 import { all, takeLatest, call, put, select } from 'redux-saga/effects';
 import { MarkType, Fragment } from 'prosemirror-model';
 
@@ -13,6 +13,25 @@ async function makeTransactionForMark(editorState: EditorState, mark: MarkType):
       resolve(change);
     });
   });
+}
+
+async function insertBox(editorState: EditorState): Promise<Transaction> {
+  const change = await new Promise<Transaction>((resolve) => {
+    splitBlockKeepMarks(editorState, (tr: Transaction) => resolve(tr));
+  });
+  const { empty, $from, $to } = editorState.selection;
+  const content =
+    !empty && $from.sameParent($to) && $from.parent.inlineContent
+      ? $from.parent.content.cut($from.parentOffset, $to.parentOffset)
+      : editorState.schema.nodes.paragraph.createAndFill(null, editorState.schema.text(' '));
+
+  const box = editorState.schema.nodes['boxText'].createAndFill(null, content);
+  if (!change.doc.nodeAt($from.after()).textContent) {
+    change.setSelection(NodeSelection.create(change.doc, $from.after())).replaceSelectionWith(box);
+  } else {
+    change.insert($from.pos, box);
+  }
+  return change;
 }
 
 export function* toggleMarkSaga(action: Action<string>) {
@@ -37,6 +56,15 @@ export function* insertReferenceCitationSaga() {
     const change = editorState.tr.replaceSelectionWith(editorState.schema.nodes['refCitation'].create(null, content));
     const resolvedPos = change.doc.resolve(change.selection.anchor - change.selection.$anchor.nodeBefore.nodeSize);
     change.setSelection(new NodeSelection(resolvedPos));
+    yield put(manuscriptActions.applyChangeAction({ path, change }));
+  }
+}
+
+export function* insertBoxSaga() {
+  const editorState: EditorState = yield select(getFocusedEditorState);
+  if (editorState && editorState.schema.nodes['boxText']) {
+    const path = yield select(getFocusedEditorStatePath);
+    const change = yield insertBox(editorState);
     yield put(manuscriptActions.applyChangeAction({ path, change }));
   }
 }
@@ -75,7 +103,8 @@ export default function* () {
   yield all([
     takeLatest(manuscriptActions.toggleMarkAction.getType(), toggleMarkSaga),
     takeLatest(manuscriptActions.insertReferenceCitationAction.getType(), insertReferenceCitationSaga),
-    takeLatest(manuscriptActions.insertHeading.getType(), insertHeadingSaga),
-    takeLatest(manuscriptActions.insertParagraph.getType(), insertParagraphSaga)
+    takeLatest(manuscriptActions.insertBoxAction.getType(), insertBoxSaga),
+    takeLatest(manuscriptActions.insertHeadingAction.getType(), insertHeadingSaga),
+    takeLatest(manuscriptActions.insertParagraphAction.getType(), insertParagraphSaga)
   ]);
 }

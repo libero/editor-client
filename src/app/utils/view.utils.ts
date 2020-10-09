@@ -1,4 +1,4 @@
-import { DOMSerializer } from 'prosemirror-model';
+import { DOMSerializer, ResolvedPos } from 'prosemirror-model';
 import { EditorState } from 'prosemirror-state';
 import { isEqualWith } from 'lodash';
 
@@ -16,4 +16,14 @@ export function objectsEqual(obj1: unknown, obj2: unknown): boolean {
     }
     return undefined;
   });
+}
+
+export function hasParentNodeOf($pos: ResolvedPos, nodeName: string): boolean {
+  for (let i = $pos.depth; i > 0; i--) {
+    const node = $pos.node(i);
+    if (node.type.name === nodeName) {
+      return true;
+    }
+  }
+  return false;
 }

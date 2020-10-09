@@ -1,22 +1,30 @@
-import React, { useMemo, useRef, useEffect, useCallback } from 'react';
+import React from 'react';
 import { EditorView } from 'prosemirror-view';
 import { EditorState, Transaction, TextSelection } from 'prosemirror-state';
-import { isEqual, debounce } from 'lodash';
+import { debounce, get } from 'lodash';
+import { DOMSerializer, Slice } from 'prosemirror-model';
 
 import 'prosemirror-example-setup/style/style.css';
 import 'prosemirror-menu/style/menu.css';
-import { ProseMirrorEditorView } from './prosemirror-editor-view';
-import { SectionContainer } from 'app/components/section-container';
+import { SectionContainer, SectionContainerVariant } from 'app/components/section-container';
 import { ReferenceCitationNodeView } from 'app/components/reference-citation-editor-popup';
 import { ComponentWithId } from 'app/utils/types';
+import { BoxTextNodeView } from 'app/components/box-text';
+import { hasParentNodeOf } from 'app/utils/view.utils';
 
 export interface RichTextEditorProps {
   editorState: EditorState;
   label?: string;
   name?: string;
   isActive: boolean;
+  variant?: SectionContainerVariant;
   onChange?: (change: Transaction, name: string) => void;
-  onFocusSwitch?: (state: EditorState, name: string) => void;
+  onFocus?: (state: EditorState, name: string) => void;
+  onBlur?: (state: EditorState, name: string) => void;
+}
+
+export interface RichTextEditorState {
+  internalState: EditorState;
 }
 
 const restoreSelection = debounce((editorView, from, to) => {
@@ -28,50 +36,148 @@ const restoreSelection = debounce((editorView, from, to) => {
   }
 }, 50);
 
-export const RichTextEditor: React.FC<ComponentWithId<RichTextEditorProps>> = React.memo((props) => {
-  const { editorState, label, onChange, onFocusSwitch, name, isActive, id } = props;
-  const prosemirrorRef = useRef<ProseMirrorEditorView>();
+export class RichTextEditor extends React.Component<ComponentWithId<RichTextEditorProps>, RichTextEditorState> {
+  private options;
+  public editorView: EditorView;
 
-  useEffect(() => {
-    if (isActive && prosemirrorRef.current && !prosemirrorRef.current.editorView.hasFocus()) {
-      const { from, to } = editorState.selection;
-      restoreSelection(prosemirrorRef.current.editorView, from, to);
-      prosemirrorRef.current.focus();
-      // position needs to be reset after focus when selection is not empty
-    }
-  }, [isActive, prosemirrorRef, editorState]);
-
-  const options = useMemo(
-    () => ({
+  constructor(props: ComponentWithId<RichTextEditorProps>) {
+    super(props);
+    this.state = { internalState: this.props.editorState };
+    this.handleChange = this.handleChange.bind(this);
+    this.options = {
       nodeViews: {
         refCitation(node, view, getPos) {
           return new ReferenceCitationNodeView(node, view, getPos);
+        },
+        boxText: (node, view, getPos) => {
+          return new BoxTextNodeView(node, view, getPos, () => this.props.isActive);
         }
       },
       handleDOMEvents: {
         focus: ({ state }: EditorView) => {
-          if (onFocusSwitch && !isActive) {
-            onFocusSwitch(state, name);
+          if (this.props.onFocus && !this.props.isActive) {
+            this.props.onFocus(state, this.props.name);
+          }
+          return true;
+        },
+        blur: ({ state }: EditorView) => {
+          if (this.props.onBlur && this.props.isActive) {
+            this.props.onBlur(state, this.props.name);
           }
           return true;
         }
       }
-    }),
-    [onFocusSwitch, name, isActive]
-  );
+    };
+  }
 
-  const handleChange = useCallback((tr) => onChange(tr, name), [name, onChange]);
+  focus() {
+    this.focusEditor();
+  }
 
-  return (
-    <SectionContainer label={label} focused={isActive} id={id}>
-      {editorState ? (
-        <ProseMirrorEditorView
-          ref={prosemirrorRef}
-          options={options}
-          editorState={editorState}
-          onChange={handleChange}
-        />
-      ) : null}
-    </SectionContainer>
-  );
-}, isEqual);
+  blur() {
+    (this.editorView.dom as HTMLDivElement).blur();
+  }
+
+  componentDidUpdate() {
+    // editor state is kept in sync between app state and editor state. App state will change when using formating
+    // or any toolbar menu. In this case when change comes from outside it needs to override editor state
+    if (!this.props.editorState.doc.eq(this.editorView.state.doc)) {
+      this.updateEditorState(this.props.editorState);
+    }
+
+    // when component updates we need to restore focus
+    this.restoreFocus();
+  }
+
+  componentWillUnmount() {
+    if (this.editorView) {
+      this.editorView.destroy();
+    }
+  }
+
+  updateEditorState(editorState: EditorState) {
+    this.editorView.updateState(editorState);
+  }
+
+  render() {
+    return (
+      <SectionContainer
+        label={this.props.label}
+        focused={this.props.isActive}
+        id={this.props.id}
+        variant={this.props.variant}
+      >
+        <div ref={this.createEditorView} className="prosemirrorContainer" />
+      </SectionContainer>
+    );
+  }
+
+  private handleChange(change: Transaction) {
+    const newState = this.editorView.state.apply(change);
+    this.updateEditorState(newState);
+    this.props.onChange(change, this.props.name);
+  }
+
+  private createEditorView = (element: HTMLElement) => {
+    if (element) {
+      const clipboardSerializer = DOMSerializer.fromSchema(this.props.editorState.schema);
+      Object.entries(this.props.editorState.schema.nodes).forEach(([nodeName, nodeType]) => {
+        clipboardSerializer.nodes[nodeName] = get(nodeType, 'spec.toClipboardDOM', clipboardSerializer.nodes[nodeName]);
+      });
+
+      const additionalOptions = this.options || {};
+      this.editorView = new EditorView(element, {
+        ...additionalOptions,
+        clipboardSerializer,
+        clipboardTextSerializer,
+        state: this.props.editorState,
+        dispatchTransaction: this.handleChange
+      });
+    }
+  };
+
+  private focusEditor() {
+    const { from, to } = this.editorView.state.selection;
+    restoreSelection(this.editorView, from, to);
+    this.editorView.focus();
+  }
+
+  private isFocusControlDelegated() {
+    const { $from } = this.editorView.state.selection;
+    return hasParentNodeOf($from, 'boxText');
+  }
+
+  // focus is restored based on 3 conditions
+  // #1 - component is active acc. to application state (prop: isActive)
+  // #2 - editor does not have focus
+  // #3 - focus is not delegated to a node view
+  private restoreFocus() {
+    if (this.props.isActive && this.editorView && !this.editorView.hasFocus()) {
+      if (!this.isFocusControlDelegated()) {
+        this.focusEditor();
+      }
+    }
+  }
+}
+
+function clipboardTextSerializer(slice: Slice): string {
+  const content = slice.content;
+  const text = [];
+  let separated = true;
+  const blockSeparator = ' ';
+  content.nodesBetween(0, content.size, (node, pos) => {
+    if (node.isText) {
+      text.push(node.text);
+      separated = !blockSeparator;
+    } else if (node.isLeaf && node.type.spec.toClipboardText) {
+      text.push(node.type.spec.toClipboardText(node));
+      separated = !blockSeparator;
+    } else if (!separated && node.isBlock) {
+      text.push(blockSeparator);
+      separated = true;
+    }
+    return true;
+  });
+
+  return text.join('');
+}

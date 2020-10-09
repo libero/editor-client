@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import { useSectionContainerStyles } from './styles';
 import { ComponentWithId } from 'app/utils/types';
 
-type SectionContainerVariant = 'outlined' | 'plain';
+export type SectionContainerVariant = 'outlined' | 'plain';
 const DEFAULT_VARIANT = 'plain';
 
 interface SectionContainerProps {
