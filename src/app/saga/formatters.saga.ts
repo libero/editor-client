@@ -35,8 +35,6 @@ export function* insertReferenceCitationSaga() {
       content = $from.parent.content.cut($from.parentOffset, $to.parentOffset);
     }
     const change = editorState.tr.replaceSelectionWith(editorState.schema.nodes['refCitation'].create(null, content));
-    const resolvedPos = change.doc.resolve(change.selection.anchor - change.selection.$anchor.nodeBefore.nodeSize);
-    change.setSelection(new NodeSelection(resolvedPos));
     yield put(manuscriptActions.applyChangeAction({ path, change }));
   }
 }

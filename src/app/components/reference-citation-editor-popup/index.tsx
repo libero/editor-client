@@ -34,7 +34,8 @@ interface ReferenceCitationEditorPopupProps {
 
 const getRefListItemText = (ref: Reference) => {
   return [
-    `${getRefListAuthorsNames(ref)}, ${get(ref.referenceInfo, 'year')}`,
+    getRefListAuthorsNames(ref),
+    get(ref.referenceInfo, 'year'),
     has(ref.referenceInfo, 'chapterTitle') ? stringifyEditorState(get(ref.referenceInfo, 'chapterTitle')) : undefined,
     has(ref.referenceInfo, 'articleTitle') ? stringifyEditorState(get(ref.referenceInfo, 'articleTitle')) : undefined,
     has(ref.referenceInfo, 'dataTitle') ? stringifyEditorState(get(ref.referenceInfo, 'dataTitle')) : undefined,
@@ -211,14 +212,6 @@ export class ReferenceCitationNodeView implements NodeView {
       this.refEditorContainer
     );
   }
-  //
-  // stopEvent() {
-  //   return true;
-  // }
-  //
-  // ignoreMutation() {
-  //   return true;
-  // }
 
   close = () => {
     this.dom.classList.remove('ProseMirror-selectednode');
