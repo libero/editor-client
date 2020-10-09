@@ -57,7 +57,7 @@ export const ManuscriptTOC: React.FC<ManuscriptTOCProps> = (props) => {
       <Divider />
       <List>
         {toc.map((entry, index) => (
-          <ListItem button key={entry.title} onClick={handleTOCClick(entry)}>
+          <ListItem button key={index} onClick={handleTOCClick(entry)}>
             <ListItemText
               disableTypography
               classes={{ root: entry.level === 1 ? classes.tocLevel1 : classes.tocLevel2 }}
