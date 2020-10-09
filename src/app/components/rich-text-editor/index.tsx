@@ -11,6 +11,7 @@ import { ReferenceCitationNodeView } from 'app/components/reference-citation-edi
 import { ComponentWithId } from 'app/utils/types';
 import { BoxTextNodeView } from 'app/components/box-text';
 import { hasParentNodeOf } from 'app/utils/view.utils';
+import {LinkNodeView} from "app/components/link-editor-popup";
 
 export interface RichTextEditorProps {
   editorState: EditorState;
@@ -51,6 +52,9 @@ export class RichTextEditor extends React.Component<ComponentWithId<RichTextEdit
         },
         boxText: (node, view, getPos) => {
           return new BoxTextNodeView(node, view, getPos, () => this.props.isActive);
+        },
+        link(node, view) {
+          return new LinkNodeView(node, view);
         }
       },
       handleDOMEvents: {

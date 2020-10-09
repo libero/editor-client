@@ -112,7 +112,7 @@ export class LinkNodeView implements NodeView {
       }, 100)
     );
     if (this.node.attrs.href === undefined) {
-      this.open();
+      this.dom.dispatchEvent(new Event('click'));
     }
   }
 
@@ -176,6 +176,11 @@ export class LinkNodeView implements NodeView {
     this.dom.classList.remove('ProseMirror-selectednode');
     ReactDOM.unmountComponentAtNode(this.linkEditorContainer);
     this.linkEditorContainer.parentNode.removeChild(this.linkEditorContainer);
+  }
+
+  stopEvent(event) {
+    console.log(event);
+    return this.dom.contains(event.target);
   }
 
   handleApply(href: string) {

@@ -212,14 +212,14 @@ export class ReferenceCitationNodeView implements NodeView {
       this.refEditorContainer
     );
   }
-
-  stopEvent() {
-    return true;
-  }
-
-  ignoreMutation() {
-    return true;
-  }
+  //
+  // stopEvent() {
+  //   return true;
+  // }
+  //
+  // ignoreMutation() {
+  //   return true;
+  // }
 
   close = () => {
     this.dom.classList.remove('ProseMirror-selectednode');
