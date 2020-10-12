@@ -45,9 +45,11 @@ export function* insertBoxSaga() {
     const path = yield select(getFocusedEditorStatePath);
     const { empty, $from, $to } = editorState.selection;
 
-    let content = Fragment.empty;
+    let content;
     if (!empty && $from.sameParent($to) && $from.parent.inlineContent) {
       content = $from.parent.content.cut($from.parentOffset, $to.parentOffset);
+    } else {
+      content = editorState.schema.text(' ');
     }
 
     const paragraph = editorState.schema.nodes['paragraph'].create(null, content);
