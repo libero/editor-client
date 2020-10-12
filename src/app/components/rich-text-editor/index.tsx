@@ -11,7 +11,7 @@ import { ReferenceCitationNodeView } from 'app/components/reference-citation-edi
 import { ComponentWithId } from 'app/utils/types';
 import { BoxTextNodeView } from 'app/components/box-text';
 import { hasParentNodeOf } from 'app/utils/view.utils';
-import {LinkNodeView} from "app/components/link-editor-popup";
+import { LinkNodeView } from 'app/components/link-editor-popup';
 
 export interface RichTextEditorProps {
   editorState: EditorState;

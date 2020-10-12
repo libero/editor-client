@@ -4,13 +4,14 @@ import { debounce } from 'lodash';
 import { TextField, IconButton, InputAdornment, Popover } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/core/styles';
 import { EditorView, NodeView } from 'prosemirror-view';
-import { Node as ProsemirrorNode } from 'prosemirror-model';
+import { Node as ProsemirrorNode, ResolvedPos } from 'prosemirror-model';
 import LaunchIcon from '@material-ui/icons/Launch';
 import CloseIcon from '@material-ui/icons/Close';
 
 import { useLinkEditorStyles } from 'app/components/link-editor-popup/styles';
 import { ActionButton } from 'app/components/action-button';
 import { theme } from 'app/styles/theme';
+import { TextSelection } from 'prosemirror-state';
 
 interface LinkEditorPopupProps {
   editorView: EditorView | undefined;
@@ -163,9 +164,9 @@ export class LinkNodeView implements NodeView {
 
   updateMark(href: string) {
     const markType = this.view.state.schema.marks.link;
-    const { from, $from, $to, to } = this.view.state.selection;
-    const linkStart = from - $from.nodeBefore.nodeSize;
-    const linkEnd = to + $to.nodeAfter.nodeSize;
+    const { $from } = this.view.state.selection as TextSelection;
+    const { from: linkStart, to: linkEnd } = this.getMarkExtent($from);
+
     const transaction = this.view.state.tr;
     transaction.removeMark(linkStart, linkEnd, markType);
     transaction.addMark(linkStart, linkEnd, markType.create({ href }));
@@ -179,7 +180,6 @@ export class LinkNodeView implements NodeView {
   }
 
   stopEvent(event) {
-    console.log(event);
     return this.dom.contains(event.target);
   }
 
@@ -196,5 +196,23 @@ export class LinkNodeView implements NodeView {
     if (this.linkEditorView) {
       this.close();
     }
+  }
+
+  private getMarkExtent($start: ResolvedPos) {
+    const markType = this.view.state.schema.marks.link;
+    let startIndex = $start.index();
+    let endIndex = $start.indexAfter();
+    while (startIndex > 0 && markType.isInSet($start.parent.child(startIndex - 1).marks)) {
+      startIndex--;
+    }
+    while (endIndex < $start.parent.childCount && markType.isInSet($start.parent.child(endIndex).marks)) endIndex++;
+    let startPos = $start.start();
+    let endPos = startPos;
+    for (let i = 0; i < endIndex; i++) {
+      const size = $start.parent.child(i).nodeSize;
+      if (i < startIndex) startPos += size;
+      endPos += size;
+    }
+    return { from: startPos, to: endPos };
   }
 }
