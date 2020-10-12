@@ -16,20 +16,21 @@ async function makeTransactionForMark(editorState: EditorState, mark: MarkType):
 }
 
 async function insertBox(editorState: EditorState): Promise<Transaction> {
-  const change = await new Promise<Transaction>((resolve) => {
-    splitBlockKeepMarks(editorState, (tr: Transaction) => resolve(tr));
-  });
   const { empty, $from, $to } = editorState.selection;
   const content =
     !empty && $from.sameParent($to) && $from.parent.inlineContent
       ? $from.parent.content.cut($from.parentOffset, $to.parentOffset)
       : editorState.schema.nodes.paragraph.createAndFill(null, editorState.schema.text(' '));
 
+  const change = await new Promise<Transaction>((resolve) => {
+    splitBlockKeepMarks(editorState, (tr: Transaction) => resolve(tr));
+  });
+
   const box = editorState.schema.nodes['boxText'].createAndFill(null, content);
-  if (!change.doc.nodeAt($from.after()).textContent) {
+  if (!change.selection.$from.parent.textContent) {
     change.setSelection(NodeSelection.create(change.doc, $from.after())).replaceSelectionWith(box);
   } else {
-    change.insert($from.pos, box);
+    change.insert(change.selection.$from.pos - 1, box);
   }
   return change;
 }
