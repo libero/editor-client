@@ -1,5 +1,5 @@
-import { EditorState, Transaction } from 'prosemirror-state';
-import { toggleMark, setBlockType } from 'prosemirror-commands';
+import { EditorState, Transaction, NodeSelection } from 'prosemirror-state';
+import { toggleMark, setBlockType, splitBlockKeepMarks } from 'prosemirror-commands';
 import { all, takeLatest, call, put, select } from 'redux-saga/effects';
 import { MarkType, Fragment } from 'prosemirror-model';
 
@@ -13,6 +13,31 @@ async function makeTransactionForMark(editorState: EditorState, mark: MarkType):
       resolve(change);
     });
   });
+}
+
+async function insertBox(editorState: EditorState): Promise<Transaction> {
+  const { empty, $from, $to } = editorState.selection;
+  const content =
+    !empty && $from.sameParent($to) && $from.parent.inlineContent
+      ? $from.parent.content.cut($from.parentOffset, $to.parentOffset)
+      : editorState.schema.nodes.paragraph.createAndFill(null, editorState.schema.text(' '));
+
+  const change = await new Promise<Transaction>((resolve) => {
+    // only split paragraph if it has content
+    if (editorState.selection.$from.parent.textContent.trim()) {
+      splitBlockKeepMarks(editorState, (tr: Transaction) => resolve(tr));
+    } else {
+      resolve(editorState.tr);
+    }
+  });
+
+  const box = editorState.schema.nodes['boxText'].createAndFill(null, content);
+  if (!change.selection.$from.parent.textContent.trim()) {
+    change.setSelection(NodeSelection.create(change.doc, change.selection.$from.pos - 1)).replaceSelectionWith(box);
+  } else {
+    change.insert(change.selection.$from.pos - 1, box);
+  }
+  return change;
 }
 
 export function* toggleMarkSaga(action: Action<string>) {
@@ -43,18 +68,7 @@ export function* insertBoxSaga() {
   const editorState: EditorState = yield select(getFocusedEditorState);
   if (editorState && editorState.schema.nodes['boxText']) {
     const path = yield select(getFocusedEditorStatePath);
-    const { empty, $from, $to } = editorState.selection;
-
-    let content = Fragment.empty;
-    if (!empty && $from.sameParent($to) && $from.parent.inlineContent) {
-      content = $from.parent.content.cut($from.parentOffset, $to.parentOffset);
-    }
-
-    const paragraph = editorState.schema.nodes['paragraph'].create(null, content);
-    const change = editorState.tr
-      .split($from.pos)
-      .insert($from.pos + 1, editorState.schema.nodes['boxText'].create(null, paragraph))
-      .deleteSelection();
+    const change = yield insertBox(editorState);
     yield put(manuscriptActions.applyChangeAction({ path, change }));
   }
 }
