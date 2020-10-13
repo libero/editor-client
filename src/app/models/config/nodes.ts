@@ -162,7 +162,24 @@ export const nodes = {
     group: 'block',
     parseDOM: [
       {
-        tag: 'boxed-text',
+        tag: 'boxed-text'
+      }
+    ],
+    toDOM() {
+      return ['section', { class: 'box-text' }, 0];
+    }
+  },
+
+  figure: {
+    content: 'figureTitle figureLegend*',
+    group: 'block',
+    atom: true,
+    attrs: {
+      label: { default: '' }
+    },
+    parseDOM: [
+      {
+        tag: 'fig',
         getAttrs(dom) {
           return {
             label: getTextContentFromPath(dom, 'label') || ''
@@ -171,7 +188,29 @@ export const nodes = {
       }
     ],
     toDOM() {
-      return ['section', { class: 'box-text' }, 0];
+      return ['section', { class: 'figure' }, 0];
+    }
+  },
+
+  figureTitle: {
+    content: 'inline*',
+    parseDOM: [{ tag: 'caption > title' }, { tag: 'label', ignore: true }, { tag: 'permissions', ignore: true }],
+    context: 'figure',
+    toDOM() {
+      return ['p', 0];
+    }
+  },
+
+  figureLegend: {
+    content: 'inline*',
+    parseDOM: [
+      { tag: 'caption > p', priority: 100 },
+      { tag: 'label', ignore: true },
+      { tag: 'permissions', ignore: true }
+    ],
+    context: 'figure',
+    toDOM() {
+      return ['p', 0];
     }
   },
 

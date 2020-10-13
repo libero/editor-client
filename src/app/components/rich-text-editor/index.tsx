@@ -12,6 +12,7 @@ import { ComponentWithId } from 'app/utils/types';
 import { BoxTextNodeView } from 'app/components/box-text';
 import { hasParentNodeOf } from 'app/utils/view.utils';
 import { LinkNodeView } from 'app/components/link-editor-popup';
+import { FigureNodeView } from 'app/components/figure';
 
 export interface RichTextEditorProps {
   editorState: EditorState;
@@ -55,6 +56,9 @@ export class RichTextEditor extends React.Component<ComponentWithId<RichTextEdit
         },
         link(node, view) {
           return new LinkNodeView(node, view);
+        },
+        figure: (node, view, getPos) => {
+          return new FigureNodeView(node, view, getPos, () => this.props.isActive);
         }
       },
       handleDOMEvents: {
@@ -100,7 +104,9 @@ export class RichTextEditor extends React.Component<ComponentWithId<RichTextEdit
   }
 
   updateEditorState(editorState: EditorState) {
-    this.editorView.updateState(editorState);
+    if (editorState !== this.editorView.state) {
+      this.editorView.updateState(editorState);
+    }
   }
 
   render() {
@@ -148,7 +154,7 @@ export class RichTextEditor extends React.Component<ComponentWithId<RichTextEdit
 
   private isFocusControlDelegated() {
     const { $from } = this.editorView.state.selection;
-    return hasParentNodeOf($from, 'boxText');
+    return hasParentNodeOf($from, ['boxText', 'figure']);
   }
 
   // focus is restored based on 3 conditions
