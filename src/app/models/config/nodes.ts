@@ -171,7 +171,7 @@ export const nodes = {
   },
 
   figure: {
-    content: 'figureTitle figureLegend*',
+    content: 'figureTitle figureLegend+',
     group: 'block',
     atom: true,
     attrs: {

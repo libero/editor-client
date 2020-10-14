@@ -3,7 +3,7 @@ import { NodeView, EditorView } from 'prosemirror-view';
 import { Node as ProsemirrorNode } from 'prosemirror-model';
 import ReactDOM from 'react-dom';
 import { ThemeProvider } from '@material-ui/core/styles';
-import { Transaction, EditorState, TextSelection, NodeSelection } from 'prosemirror-state';
+import { Transaction, TextSelection, NodeSelection } from 'prosemirror-state';
 
 import { StepMap } from 'prosemirror-transform';
 

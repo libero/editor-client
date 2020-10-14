@@ -31,10 +31,13 @@ interface FigureEditorProps {
 
 export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => {
   const { figureNode, onNodeChange, onSelectionChange, onDelete } = props;
-  const [isEditorActive, setEditorActive] = useState<boolean>(false);
+  const [isTitleEditorActive, setTitleEditorActive] = useState<boolean>(false);
+  const [isLegendEditorActive, setLegendEditorActive] = useState<boolean>(false);
   const [internalTitleState, setInternalTitleState] = useState<EditorState>(createFigureTitleState(figureNode));
+  const [internalLegendState, setInternalLegendState] = useState<EditorState>(createFigureLegendState(figureNode));
   const classes = useFigureEditorStyles();
   const titleEditorRef = useRef(null);
+  const legendEditorRef = useRef(null);
 
   useImperativeHandle(ref, () => ({
     updateContent: (updatedFigureNode: ProsemirrorNode) => {
@@ -45,18 +48,6 @@ export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => 
       )[0];
 
       titleEditorRef.current.updateEditorState(getUpdatedStateForNode(updatedTitleNode, state));
-      // const start = node.content.findDiffStart(view.state.doc.content);
-      // if (start !== null) {
-      //   let { a: endA, b: endB } = node.content.findDiffEnd(view.state.doc.content);
-      //   const overlap = start - Math.min(endA, endB);
-      //   if (overlap > 0) {
-      //     endA += overlap;
-      //     endB += overlap;
-      //   }
-      //   titleEditorRef.current.editorView.dispatch(
-      //     view.state.tr.replace(start, endB, node.slice(start, endA)).setMeta('parentChange', true)
-      //   );
-      // }
     },
     focus: () => {
       titleEditorRef.current.focus();
@@ -76,13 +67,33 @@ export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => 
     [onNodeChange, onSelectionChange]
   );
 
+  const handleLegendChange = useCallback(
+    (change: Transaction) => {
+      setInternalLegendState(legendEditorRef.current.editorView.state);
+      if (change.docChanged && !change.getMeta('parentChange')) {
+        onNodeChange(change);
+      } else {
+        onSelectionChange(change.selection.$from.pos, change.selection.$to.pos);
+      }
+    },
+    [onNodeChange, onSelectionChange]
+  );
+
   const handleTitleFocus = useCallback(() => {
-    setEditorActive(true);
-  }, [setEditorActive]);
+    setTitleEditorActive(true);
+  }, [setTitleEditorActive]);
 
   const handleTitleBlur = useCallback(() => {
-    setEditorActive(false);
-  }, [setEditorActive]);
+    setTitleEditorActive(false);
+  }, [setTitleEditorActive]);
+
+  const handleLegendFocus = useCallback(() => {
+    setLegendEditorActive(true);
+  }, [setTitleEditorActive]);
+
+  const handleLegendBlur = useCallback(() => {
+    setLegendEditorActive(false);
+  }, [setTitleEditorActive]);
 
   return (
     <div className={classes.figureContainer}>
@@ -99,13 +110,23 @@ export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => 
         />
         <RichTextEditor
           ref={titleEditorRef}
-          isActive={isEditorActive}
+          isActive={isTitleEditorActive}
           variant="outlined"
           label="Title"
           editorState={internalTitleState}
           onChange={handleTitleChange}
           onFocus={handleTitleFocus}
           onBlur={handleTitleBlur}
+        ></RichTextEditor>
+        <RichTextEditor
+          ref={legendEditorRef}
+          isActive={isLegendEditorActive}
+          variant="outlined"
+          label="Legend"
+          editorState={internalLegendState}
+          onChange={handleLegendChange}
+          onFocus={handleLegendFocus}
+          onBlur={handleLegendBlur}
         ></RichTextEditor>
       </div>
       <IconButton classes={{ root: classes.deleteButton }} onClick={onDelete}>
@@ -119,14 +140,15 @@ function createFigureTitleState(node: ProsemirrorNode): EditorState {
   const titleNode = findChildrenByType(node, node.type.schema.nodes.figureTitle)[0];
   return EditorState.create({
     doc: titleNode,
-    plugins: [
-      buildInputRules(),
-      gapCursor(),
-      dropCursor(),
-      keymap(baseKeymap),
-      SelectPlugin,
-      PlaceholderPlugin('Enter main text')
-    ]
+    plugins: [buildInputRules(), gapCursor(), dropCursor(), keymap(baseKeymap), SelectPlugin, PlaceholderPlugin('')]
+  });
+}
+
+function createFigureLegendState(node: ProsemirrorNode): EditorState {
+  const legendNode = findChildrenByType(node, node.type.schema.nodes.figureLegend)[0];
+  return EditorState.create({
+    doc: legendNode,
+    plugins: [buildInputRules(), gapCursor(), dropCursor(), keymap(baseKeymap), SelectPlugin, PlaceholderPlugin('')]
   });
 }
 
