@@ -57,8 +57,16 @@ export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => 
         updatedFigureNode.type.schema.nodes.figureLegend
       )[0];
 
-      titleEditorRef.current.updateEditorState(getUpdatedStateForNode(updatedTitleNode.node, state));
-      legendEditorRef.current.updateEditorState(getUpdatedStateForNode(updatedLegendNode.node, state));
+      const titleChange = getUpdatesForNode(updatedTitleNode.node, state);
+      if (titleChange) {
+        titleEditorRef.current.editorView.dispatch(titleChange);
+      }
+
+      const legendChange = getUpdatesForNode(updatedLegendNode.node, state);
+      if (legendChange) {
+        legendEditorRef.current.editorView.dispatch(legendChange);
+      }
+
       setTitleOffset(updatedTitleNode.offset);
       setLegendOffset(updatedLegendNode.offset);
     },
@@ -178,7 +186,7 @@ function createFigureLegendState(node: ProsemirrorNode): EditorState {
   });
 }
 
-function getUpdatedStateForNode(updatedNode: ProsemirrorNode, state: EditorState): EditorState {
+function getUpdatesForNode(updatedNode: ProsemirrorNode, state: EditorState): Transaction | null {
   const start = updatedNode.content.findDiffStart(state.doc.content);
   if (start !== null) {
     let { a: endA, b: endB } = updatedNode.content.findDiffEnd(get(state, 'doc.content'));
@@ -188,11 +196,10 @@ function getUpdatedStateForNode(updatedNode: ProsemirrorNode, state: EditorState
       endB += overlap;
     }
 
-    const change = state.tr.replace(start, endB, updatedNode.slice(start, endA)).setMeta('parentChange', true);
-    return state.apply(change);
+    return state.tr.replace(start, endB, updatedNode.slice(start, endA)).setMeta('parentChange', true);
   }
 
-  return state;
+  return null;
 }
 
 function findChildrenByType(

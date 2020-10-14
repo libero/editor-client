@@ -63,8 +63,6 @@ export class FigureNodeView implements NodeView {
     if (!node.sameMarkup(this.node)) {
       return false;
     }
-    this.figureEditor.current.updateContent(node);
-
     if (this.isContainerActive() && !this.figureEditor.current.hasFocus()) {
       this.figureEditor.current.focusFromSelection(this.view.state.selection, this.getPos());
     }
