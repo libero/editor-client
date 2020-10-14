@@ -27,13 +27,3 @@ export function hasParentNodeOf($pos: ResolvedPos, nodeNames: string[]): boolean
   }
   return false;
 }
-
-export function findChildrenByType(node: ProsemirrorNode, nodeType: NodeSpec) {
-  const foundChildren = [];
-  node.descendants((childNode) => {
-    if (nodeType === childNode.type) {
-      foundChildren.push(childNode);
-    }
-  });
-  return foundChildren;
-}

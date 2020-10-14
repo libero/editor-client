@@ -1,6 +1,6 @@
 import React, { useCallback, useRef, useImperativeHandle, useState } from 'react';
-import { EditorState, Transaction } from 'prosemirror-state';
-import { Node as ProsemirrorNode } from 'prosemirror-model';
+import { EditorState, Transaction, Selection } from 'prosemirror-state';
+import { Node as ProsemirrorNode, NodeSpec } from 'prosemirror-model';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { IconButton, TextField } from '@material-ui/core';
 import { gapCursor } from 'prosemirror-gapcursor';
@@ -14,18 +14,17 @@ import { useFigureEditorStyles } from 'app/components/figure/styles';
 import { buildInputRules } from 'app/models/plugins/input-rules';
 import { SelectPlugin } from 'app/models/plugins/selection.plugin';
 import { PlaceholderPlugin } from 'app/models/plugins/placeholder.plugin';
-import { findChildrenByType } from 'app/utils/view.utils';
 
 export interface FigureEditorHandle {
   updateContent(node: ProsemirrorNode): void;
-  focus(): void;
+  focusFromSelection(selection: Selection, figurePos: number): void;
   hasFocus(): boolean;
 }
 
 interface FigureEditorProps {
   figureNode: ProsemirrorNode;
   onDelete(): void;
-  onNodeChange(change: Transaction): void;
+  onNodeChange(change: Transaction, offset: number): void;
   onSelectionChange(from: number, anchor: number): void;
 }
 
@@ -35,6 +34,12 @@ export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => 
   const [isLegendEditorActive, setLegendEditorActive] = useState<boolean>(false);
   const [internalTitleState, setInternalTitleState] = useState<EditorState>(createFigureTitleState(figureNode));
   const [internalLegendState, setInternalLegendState] = useState<EditorState>(createFigureLegendState(figureNode));
+  const [titleOffset, setTitleOffset] = useState<number>(
+    findChildrenByType(figureNode, figureNode.type.schema.nodes.figureTitle)[0].offset
+  );
+  const [legendOffset, setLegendOffset] = useState<number>(
+    findChildrenByType(figureNode, figureNode.type.schema.nodes.figureLegend)[0].offset
+  );
   const classes = useFigureEditorStyles();
   const titleEditorRef = useRef(null);
   const legendEditorRef = useRef(null);
@@ -47,36 +52,55 @@ export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => 
         updatedFigureNode.type.schema.nodes.figureTitle
       )[0];
 
-      titleEditorRef.current.updateEditorState(getUpdatedStateForNode(updatedTitleNode, state));
+      const updatedLegendNode = findChildrenByType(
+        updatedFigureNode,
+        updatedFigureNode.type.schema.nodes.figureLegend
+      )[0];
+
+      titleEditorRef.current.updateEditorState(getUpdatedStateForNode(updatedTitleNode.node, state));
+      legendEditorRef.current.updateEditorState(getUpdatedStateForNode(updatedLegendNode.node, state));
+      setTitleOffset(updatedTitleNode.offset);
+      setLegendOffset(updatedLegendNode.offset);
     },
-    focus: () => {
-      titleEditorRef.current.focus();
+    focusFromSelection: (selection: Selection, figurePos: number) => {
+      const cursorPos = selection.$from.pos;
+      if (
+        figurePos + titleOffset <= cursorPos &&
+        cursorPos <= figurePos + titleOffset + internalTitleState.doc.nodeSize
+      ) {
+        titleEditorRef.current.focus();
+      } else if (
+        figurePos + legendOffset <= cursorPos &&
+        cursorPos <= figurePos + legendOffset + internalLegendState.doc.nodeSize
+      ) {
+        legendEditorRef.current.focus();
+      }
     },
-    hasFocus: () => titleEditorRef.current.editorView.hasFocus()
+    hasFocus: () => titleEditorRef.current.editorView.hasFocus() || legendEditorRef.current.editorView.hasFocus()
   }));
 
   const handleTitleChange = useCallback(
     (change: Transaction) => {
       setInternalTitleState(titleEditorRef.current.editorView.state);
       if (change.docChanged && !change.getMeta('parentChange')) {
-        onNodeChange(change);
+        onNodeChange(change, titleOffset);
       } else {
-        onSelectionChange(change.selection.$from.pos, change.selection.$to.pos);
+        onSelectionChange(change.selection.$from.pos + titleOffset, change.selection.$to.pos + titleOffset);
       }
     },
-    [onNodeChange, onSelectionChange]
+    [onNodeChange, onSelectionChange, titleOffset]
   );
 
   const handleLegendChange = useCallback(
     (change: Transaction) => {
       setInternalLegendState(legendEditorRef.current.editorView.state);
       if (change.docChanged && !change.getMeta('parentChange')) {
-        onNodeChange(change);
+        onNodeChange(change, legendOffset);
       } else {
-        onSelectionChange(change.selection.$from.pos, change.selection.$to.pos);
+        onSelectionChange(change.selection.$from.pos + legendOffset, change.selection.$to.pos + legendOffset);
       }
     },
-    [onNodeChange, onSelectionChange]
+    [legendOffset, onNodeChange, onSelectionChange]
   );
 
   const handleTitleFocus = useCallback(() => {
@@ -89,11 +113,11 @@ export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => 
 
   const handleLegendFocus = useCallback(() => {
     setLegendEditorActive(true);
-  }, [setTitleEditorActive]);
+  }, []);
 
   const handleLegendBlur = useCallback(() => {
     setLegendEditorActive(false);
-  }, [setTitleEditorActive]);
+  }, []);
 
   return (
     <div className={classes.figureContainer}>
@@ -108,16 +132,18 @@ export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => 
           multiline
           value={figureNode.attrs.label}
         />
-        <RichTextEditor
-          ref={titleEditorRef}
-          isActive={isTitleEditorActive}
-          variant="outlined"
-          label="Title"
-          editorState={internalTitleState}
-          onChange={handleTitleChange}
-          onFocus={handleTitleFocus}
-          onBlur={handleTitleBlur}
-        ></RichTextEditor>
+        <div className={classes.inputField}>
+          <RichTextEditor
+            ref={titleEditorRef}
+            isActive={isTitleEditorActive}
+            variant="outlined"
+            label="Title"
+            editorState={internalTitleState}
+            onChange={handleTitleChange}
+            onFocus={handleTitleFocus}
+            onBlur={handleTitleBlur}
+          ></RichTextEditor>
+        </div>
         <RichTextEditor
           ref={legendEditorRef}
           isActive={isLegendEditorActive}
@@ -139,7 +165,7 @@ export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => 
 function createFigureTitleState(node: ProsemirrorNode): EditorState {
   const titleNode = findChildrenByType(node, node.type.schema.nodes.figureTitle)[0];
   return EditorState.create({
-    doc: titleNode,
+    doc: titleNode.node,
     plugins: [buildInputRules(), gapCursor(), dropCursor(), keymap(baseKeymap), SelectPlugin, PlaceholderPlugin('')]
   });
 }
@@ -147,7 +173,7 @@ function createFigureTitleState(node: ProsemirrorNode): EditorState {
 function createFigureLegendState(node: ProsemirrorNode): EditorState {
   const legendNode = findChildrenByType(node, node.type.schema.nodes.figureLegend)[0];
   return EditorState.create({
-    doc: legendNode,
+    doc: legendNode.node,
     plugins: [buildInputRules(), gapCursor(), dropCursor(), keymap(baseKeymap), SelectPlugin, PlaceholderPlugin('')]
   });
 }
@@ -167,4 +193,17 @@ function getUpdatedStateForNode(updatedNode: ProsemirrorNode, state: EditorState
   }
 
   return state;
+}
+
+function findChildrenByType(
+  node: ProsemirrorNode,
+  nodeType: NodeSpec
+): Array<{ node: ProsemirrorNode; offset: number }> {
+  const foundChildren = [];
+  node.descendants((childNode, pos) => {
+    if (nodeType === childNode.type) {
+      foundChildren.push({ node: childNode, offset: pos });
+    }
+  });
+  return foundChildren;
 }

@@ -12,7 +12,7 @@ import { FigureEditor, FigureEditorHandle } from 'app/components/figure/figure-e
 
 export class FigureNodeView implements NodeView {
   dom?: HTMLElement;
-  boxTextEditor: React.RefObject<FigureEditorHandle>;
+  figureEditor: React.RefObject<FigureEditorHandle>;
 
   constructor(
     private node: ProsemirrorNode,
@@ -21,11 +21,11 @@ export class FigureNodeView implements NodeView {
     private isContainerActive: () => boolean
   ) {
     this.dom = document.createElement('section');
-    this.boxTextEditor = React.createRef();
+    this.figureEditor = React.createRef();
     ReactDOM.render(
       <ThemeProvider theme={theme}>
         <FigureEditor
-          ref={this.boxTextEditor}
+          ref={this.figureEditor}
           figureNode={this.node}
           onDelete={this.handleDelete}
           onNodeChange={this.handleNodeChange}
@@ -36,8 +36,8 @@ export class FigureNodeView implements NodeView {
     );
   }
 
-  handleNodeChange = (nodeViewChange: Transaction) => {
-    this.view.dispatch(this.transformNodeViewChanges(nodeViewChange));
+  handleNodeChange = (nodeViewChange: Transaction, offset: number) => {
+    this.view.dispatch(this.transformNodeViewChanges(nodeViewChange, offset));
   };
 
   handleDelete = () => {
@@ -63,14 +63,10 @@ export class FigureNodeView implements NodeView {
     if (!node.sameMarkup(this.node)) {
       return false;
     }
-    this.boxTextEditor.current.updateContent(node);
+    this.figureEditor.current.updateContent(node);
 
-    const hasCursor =
-      this.view.state.selection.$from.pos >= this.getPos() &&
-      this.view.state.selection.$from.pos <= this.getPos() + this.node.nodeSize;
-
-    if (hasCursor && this.isContainerActive() && !this.boxTextEditor.current.hasFocus()) {
-      this.boxTextEditor.current.focus();
+    if (this.isContainerActive() && !this.figureEditor.current.hasFocus()) {
+      this.figureEditor.current.focusFromSelection(this.view.state.selection, this.getPos());
     }
     return true;
   }
@@ -83,9 +79,9 @@ export class FigureNodeView implements NodeView {
     return true;
   }
 
-  private transformNodeViewChanges(change: Transaction): Transaction {
+  private transformNodeViewChanges(change: Transaction, additionalOffset: number): Transaction {
     const parentChange = this.view.state.tr;
-    const offsetMap = StepMap.offset(this.getPos() + 2);
+    const offsetMap = StepMap.offset(this.getPos() + 2 + additionalOffset);
     const steps = change.steps;
     for (let i = 0; i < steps.length; i++) {
       parentChange.step(steps[i].map(offsetMap));
