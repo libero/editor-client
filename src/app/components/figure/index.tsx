@@ -28,7 +28,8 @@ export class FigureNodeView implements NodeView {
           ref={this.figureEditor}
           figureNode={this.node}
           onDelete={this.handleDelete}
-          onNodeChange={this.handleNodeChange}
+          onLabelChange={this.handleLabelChange}
+          onNodeChange={this.handleContentChange}
           onSelectionChange={this.handleSelectionChange}
         />
       </ThemeProvider>,
@@ -36,7 +37,11 @@ export class FigureNodeView implements NodeView {
     );
   }
 
-  handleNodeChange = (nodeViewChange: Transaction, offset: number) => {
+  handleLabelChange = (label: string) => {
+    this.view.dispatch(this.view.state.tr.setNodeMarkup(this.getPos(), null, { label }));
+  };
+
+  handleContentChange = (nodeViewChange: Transaction, offset: number) => {
     this.view.dispatch(this.transformNodeViewChanges(nodeViewChange, offset));
   };
 
@@ -61,8 +66,9 @@ export class FigureNodeView implements NodeView {
 
   update(node: ProsemirrorNode) {
     if (!node.sameMarkup(this.node)) {
-      return false;
+      this.node = node;
     }
+    this.figureEditor.current.updateContent(node);
     if (this.isContainerActive() && !this.figureEditor.current.hasFocus()) {
       this.figureEditor.current.focusFromSelection(this.view.state.selection, this.getPos());
     }

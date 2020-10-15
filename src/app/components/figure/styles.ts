@@ -21,5 +21,8 @@ export const useFigureEditorStyles = makeStyles((theme) => ({
   },
   inputField: {
     marginBottom: theme.spacing(2.5)
+  },
+  image: {
+    maxWidth: '100%'
   }
 }));

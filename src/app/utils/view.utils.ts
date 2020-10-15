@@ -1,4 +1,4 @@
-import { DOMSerializer, ResolvedPos, Node as ProsemirrorNode, NodeSpec } from 'prosemirror-model';
+import { DOMSerializer, ResolvedPos } from 'prosemirror-model';
 import { EditorState } from 'prosemirror-state';
 import { isEqualWith } from 'lodash';
 

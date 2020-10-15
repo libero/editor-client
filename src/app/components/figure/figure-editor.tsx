@@ -25,13 +25,15 @@ interface FigureEditorProps {
   figureNode: ProsemirrorNode;
   onDelete(): void;
   onNodeChange(change: Transaction, offset: number): void;
+  onLabelChange(label: string): void;
   onSelectionChange(from: number, anchor: number): void;
 }
 
 export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => {
-  const { figureNode, onNodeChange, onSelectionChange, onDelete } = props;
+  const { figureNode, onNodeChange, onSelectionChange, onDelete, onLabelChange } = props;
   const [isTitleEditorActive, setTitleEditorActive] = useState<boolean>(false);
   const [isLegendEditorActive, setLegendEditorActive] = useState<boolean>(false);
+  const [label, setLabel] = useState<string>(figureNode.attrs.label);
   const [internalTitleState, setInternalTitleState] = useState<EditorState>(createFigureTitleState(figureNode));
   const [internalLegendState, setInternalLegendState] = useState<EditorState>(createFigureLegendState(figureNode));
   const [titleOffset, setTitleOffset] = useState<number>(
@@ -46,7 +48,7 @@ export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => 
 
   useImperativeHandle(ref, () => ({
     updateContent: (updatedFigureNode: ProsemirrorNode) => {
-      const state = titleEditorRef.current.editorView.state;
+      setLabel(updatedFigureNode.attrs.label);
       const updatedTitleNode = findChildrenByType(
         updatedFigureNode,
         updatedFigureNode.type.schema.nodes.figureTitle
@@ -57,12 +59,12 @@ export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => 
         updatedFigureNode.type.schema.nodes.figureLegend
       )[0];
 
-      const titleChange = getUpdatesForNode(updatedTitleNode.node, state);
+      const titleChange = getUpdatesForNode(updatedTitleNode.node, titleEditorRef.current.editorView.state);
       if (titleChange) {
         titleEditorRef.current.editorView.dispatch(titleChange);
       }
 
-      const legendChange = getUpdatesForNode(updatedLegendNode.node, state);
+      const legendChange = getUpdatesForNode(updatedLegendNode.node, legendEditorRef.current.editorView.state);
       if (legendChange) {
         legendEditorRef.current.editorView.dispatch(legendChange);
       }
@@ -86,6 +88,14 @@ export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => 
     },
     hasFocus: () => titleEditorRef.current.editorView.hasFocus() || legendEditorRef.current.editorView.hasFocus()
   }));
+
+  const handleLabelChange = useCallback(
+    (event) => {
+      onLabelChange(event.target.value);
+      setLabel(event.target.value);
+    },
+    [onLabelChange]
+  );
 
   const handleTitleChange = useCallback(
     (change: Transaction) => {
@@ -132,14 +142,18 @@ export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => 
       <div className={classes.figureContent}>
         <TextField
           fullWidth
-          name="href"
-          label="Article DOI"
+          name="figureNumber"
+          label="Figure number"
           classes={{ root: classes.inputField }}
           InputLabelProps={{ shrink: true }}
           variant="outlined"
           multiline
-          value={figureNode.attrs.label}
+          value={label}
+          onChange={handleLabelChange}
         />
+        <div className={classes.inputField}>
+          <img className={classes.image} src={figureNode.attrs.img} />
+        </div>
         <div className={classes.inputField}>
           <RichTextEditor
             ref={titleEditorRef}
@@ -195,7 +209,6 @@ function getUpdatesForNode(updatedNode: ProsemirrorNode, state: EditorState): Tr
       endA += overlap;
       endB += overlap;
     }
-
     return state.tr.replace(start, endB, updatedNode.slice(start, endA)).setMeta('parentChange', true);
   }
 
