@@ -19,7 +19,6 @@ import { makeSchemaFromConfig } from 'app/models/utils';
 import { SelectPlugin } from './plugins/selection.plugin';
 import { PlaceholderPlugin } from 'app/models/plugins/placeholder.plugin';
 
-
 export function createTitleState(content: Element): EditorState {
   const schema = makeSchemaFromConfig(titleConfig.topNode, titleConfig.nodes, titleConfig.marks);
 
