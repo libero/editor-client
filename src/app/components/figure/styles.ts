@@ -3,7 +3,13 @@ import { makeStyles } from '@material-ui/core/styles';
 export const useFigureEditorStyles = makeStyles((theme) => ({
   figureContainer: {
     display: 'flex',
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
+    '& label': {
+      backgroundColor: '#FAFAFA'
+    },
+    '& .Mui-focused fieldset': {
+      borderWidth: '1px'
+    }
   },
   figureContent: {
     flexGrow: 1,
