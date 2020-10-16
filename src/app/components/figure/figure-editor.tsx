@@ -8,12 +8,14 @@ import { dropCursor } from 'prosemirror-dropcursor';
 import { keymap } from 'prosemirror-keymap';
 import { baseKeymap } from 'prosemirror-commands';
 import { get } from 'lodash';
+import AddPhotoAlternateIcon from '@material-ui/icons/AddPhotoAlternate';
 
 import { RichTextEditor } from 'app/components/rich-text-editor';
 import { useFigureEditorStyles } from 'app/components/figure/styles';
 import { buildInputRules } from 'app/models/plugins/input-rules';
 import { SelectPlugin } from 'app/models/plugins/selection.plugin';
 import { PlaceholderPlugin } from 'app/models/plugins/placeholder.plugin';
+import { uploadImage } from 'app/utils/view.utils';
 
 export interface FigureEditorHandle {
   updateContent(node: ProsemirrorNode): void;
@@ -26,14 +28,16 @@ interface FigureEditorProps {
   onDelete(): void;
   onNodeChange(change: Transaction, offset: number): void;
   onLabelChange(label: string): void;
+  onImageChange(img: string): void;
   onSelectionChange(from: number, anchor: number): void;
 }
 
 export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => {
-  const { figureNode, onNodeChange, onSelectionChange, onDelete, onLabelChange } = props;
+  const { figureNode, onNodeChange, onSelectionChange, onDelete, onLabelChange, onImageChange } = props;
   const [isTitleEditorActive, setTitleEditorActive] = useState<boolean>(false);
   const [isLegendEditorActive, setLegendEditorActive] = useState<boolean>(false);
   const [label, setLabel] = useState<string>(figureNode.attrs.label);
+  const [image, setImage] = useState<string>(figureNode.attrs.img);
   const [internalTitleState, setInternalTitleState] = useState<EditorState>(createFigureTitleState(figureNode));
   const [internalLegendState, setInternalLegendState] = useState<EditorState>(createFigureLegendState(figureNode));
   const [titleOffset, setTitleOffset] = useState<number>(
@@ -71,6 +75,7 @@ export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => 
 
       setTitleOffset(updatedTitleNode.offset);
       setLegendOffset(updatedLegendNode.offset);
+      setImage(updatedFigureNode.attrs.img);
     },
     focusFromSelection: (selection: Selection, figurePos: number) => {
       const cursorPos = selection.$from.pos;
@@ -137,6 +142,12 @@ export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => 
     setLegendEditorActive(false);
   }, []);
 
+  const handleUploadImageClick = useCallback(() => {
+    uploadImage((imgSource: string) => {
+      onImageChange(imgSource);
+    });
+  }, [onImageChange]);
+
   return (
     <div className={classes.figureContainer}>
       <div className={classes.figureContent}>
@@ -151,8 +162,11 @@ export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => 
           value={label}
           onChange={handleLabelChange}
         />
-        <div className={classes.inputField}>
-          <img className={classes.image} alt="figure" src={figureNode.attrs.img} />
+        <div className={classes.imageContainer}>
+          <img className={classes.image} alt="figure" src={image} />
+          <IconButton classes={{ root: classes.uploadImageCta }} onClick={handleUploadImageClick}>
+            <AddPhotoAlternateIcon fontSize="small" />
+          </IconButton>
         </div>
         <div className={classes.inputField}>
           <RichTextEditor

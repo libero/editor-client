@@ -57,6 +57,10 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
     dispatch(manuscriptActions.insertBoxAction());
   }, [dispatch]);
 
+  const insertFigure = useCallback(() => {
+    dispatch(manuscriptActions.insertFigureAction());
+  }, [dispatch]);
+
   const toggleHeading = useCallback(
     (headingLevel: number) => () => {
       dispatch(manuscriptActions.insertHeadingAction(headingLevel));
@@ -175,7 +179,7 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
         <DropDownMenu
           title="INSERT"
           entries={[
-            { title: 'Figure', enabled: false, action: undefined },
+            { title: 'Figure', enabled: canInsert('figure'), action: insertFigure },
             { title: 'Inline Graphic', enabled: false, action: undefined },
             { title: 'Table', enabled: false, action: undefined },
             { title: 'Block Quote', enabled: false, action: undefined },
