@@ -152,7 +152,7 @@ export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => 
           onChange={handleLabelChange}
         />
         <div className={classes.inputField}>
-          <img className={classes.image} src={figureNode.attrs.img} />
+          <img className={classes.image} alt="figure" src={figureNode.attrs.img} />
         </div>
         <div className={classes.inputField}>
           <RichTextEditor
