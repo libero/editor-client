@@ -77,6 +77,6 @@ export const redoAction = createAction<void>('REDO');
 export const toggleMarkAction = createAction<string>('TOGGLE_MARK');
 export const insertReferenceCitationAction = createAction<void>('INSERT_REFERENCE_CITATION');
 export const insertBoxAction = createAction<void>('INSERT_BOX');
-export const insertFigureAction = createAction<void>('INSERT_FIGURE');
+export const insertFigureAction = createAction<string>('INSERT_FIGURE');
 export const insertHeadingAction = createAction<number>('INSERT_HEADING');
 export const insertParagraphAction = createAction<void>('INSERT_PARAGRAPH');

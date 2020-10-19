@@ -62,7 +62,7 @@ export class FigureNodeView implements NodeView {
   };
 
   handleSelectionChange = (anchor: number, head: number) => {
-    const offset = this.getPos() + 1;
+    const offset = this.getPos();
     const start = Math.min(anchor, head);
     const end = Math.max(anchor, head);
     const selection = TextSelection.create(this.view.state.doc, start + offset, end + offset);

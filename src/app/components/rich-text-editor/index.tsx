@@ -154,7 +154,7 @@ export class RichTextEditor extends React.Component<ComponentWithId<RichTextEdit
 
   private isFocusControlDelegated() {
     const { $from } = this.editorView.state.selection;
-    return hasParentNodeOf($from, ['boxText', 'figure']);
+    return this.editorView.dom.contains(document.activeElement) || hasParentNodeOf($from, ['boxText', 'figure']);
   }
 
   // focus is restored based on 3 conditions

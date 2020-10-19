@@ -40,6 +40,25 @@ async function insertBox(editorState: EditorState): Promise<Transaction> {
   return change;
 }
 
+async function insertFigure(editorState: EditorState, imageSource: string): Promise<Transaction> {
+  const change = await new Promise<Transaction>((resolve) => {
+    // only split paragraph if it has content
+    if (editorState.selection.$from.parent.textContent.trim()) {
+      splitBlockKeepMarks(editorState, (tr: Transaction) => resolve(tr));
+    } else {
+      resolve(editorState.tr);
+    }
+  });
+
+  const figure = editorState.schema.nodes['figure'].createAndFill({ label: '', img: imageSource });
+  if (!change.selection.$from.parent.textContent.trim()) {
+    change.setSelection(NodeSelection.create(change.doc, change.selection.$from.pos - 1)).replaceSelectionWith(figure);
+  } else {
+    change.insert(change.selection.$from.pos - 1, figure);
+  }
+  return change;
+}
+
 export function* toggleMarkSaga(action: Action<string>) {
   const mark = action.payload;
   const editorState: EditorState = yield select(getFocusedEditorState);
@@ -69,6 +88,15 @@ export function* insertBoxSaga() {
   if (editorState && editorState.schema.nodes['boxText']) {
     const path = yield select(getFocusedEditorStatePath);
     const change = yield insertBox(editorState);
+    yield put(manuscriptActions.applyChangeAction({ path, change }));
+  }
+}
+
+export function* insertFigureSaga(action: Action<string>) {
+  const editorState: EditorState = yield select(getFocusedEditorState);
+  if (editorState && editorState.schema.nodes['figure']) {
+    const path = yield select(getFocusedEditorStatePath);
+    const change = yield insertFigure(editorState, action.payload);
     yield put(manuscriptActions.applyChangeAction({ path, change }));
   }
 }
@@ -108,6 +136,7 @@ export default function* () {
     takeLatest(manuscriptActions.toggleMarkAction.getType(), toggleMarkSaga),
     takeLatest(manuscriptActions.insertReferenceCitationAction.getType(), insertReferenceCitationSaga),
     takeLatest(manuscriptActions.insertBoxAction.getType(), insertBoxSaga),
+    takeLatest(manuscriptActions.insertFigureAction.getType(), insertFigureSaga),
     takeLatest(manuscriptActions.insertHeadingAction.getType(), insertHeadingSaga),
     takeLatest(manuscriptActions.insertParagraphAction.getType(), insertParagraphSaga)
   ]);

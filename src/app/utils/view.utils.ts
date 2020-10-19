@@ -30,7 +30,7 @@ export function hasParentNodeOf($pos: ResolvedPos, nodeNames: string[]): boolean
 
 const SUPPORTED_IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/gif'];
 
-export async function uploadImage(onSelectCallback: (img: string) => void) {
+export function uploadImage(onSelectCallback: (img: string) => void): void {
   const fileInput = document.createElement('input');
   fileInput.type = 'file';
   fileInput.accept = SUPPORTED_IMAGE_TYPES.join(',');
