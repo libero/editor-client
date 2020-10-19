@@ -85,7 +85,7 @@ export class FigureNodeView implements NodeView {
 
   private transformNodeViewChanges(change: Transaction, additionalOffset: number): Transaction {
     const parentChange = this.view.state.tr;
-    const offsetMap = StepMap.offset(this.getPos() + 2 + additionalOffset);
+    const offsetMap = StepMap.offset(this.getPos() + additionalOffset);
     const steps = change.steps;
     for (let i = 0; i < steps.length; i++) {
       parentChange.step(steps[i].map(offsetMap));
