@@ -17,6 +17,24 @@ import { SelectPlugin } from 'app/models/plugins/selection.plugin';
 import { PlaceholderPlugin } from 'app/models/plugins/placeholder.plugin';
 import { uploadImage } from 'app/utils/view.utils';
 
+/* Prosemirror relies heavily on the positioning of nodes in its internal state presentation.
+  Given figure structure
+
+  <figure>
+    <figureTitle>Title content</figureTitle>
+    <figureLegend>Legend content</figureLegend>
+  </figure>
+
+  Method getPos of NodeView will return a position of just before the <figure>. Then position of figureTitle node
+  in the entire document will be getPos() + 1 and the position of text content of title is getPos() + 2.
+  When creating a new EditorState for figureTitleNode we supply the node itself as a document. In this new document
+  the position of text is 0 (zero), thus we are losing the offset of "2". Wh
+  en translating all changes to the main document we need to put this adjustments back.
+ */
+
+const FIGURE_TITLE_CONTENT_OFFSET_CORRECTION = 2;
+const FIGURE_LEGEND_CONTENT_OFFSET_CORRECTION = 2;
+
 export interface FigureEditorHandle {
   updateContent(node: ProsemirrorNode): void;
   focusFromSelection(selection: Selection, figurePos: number): void;
@@ -41,10 +59,12 @@ export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => 
   const [internalTitleState, setInternalTitleState] = useState<EditorState>(createFigureTitleState(figureNode));
   const [internalLegendState, setInternalLegendState] = useState<EditorState>(createFigureLegendState(figureNode));
   const [titleOffset, setTitleOffset] = useState<number>(
-    findChildrenByType(figureNode, figureNode.type.schema.nodes.figureTitle)[0].offset
+    findChildrenByType(figureNode, figureNode.type.schema.nodes.figureTitle)[0].offset +
+      FIGURE_TITLE_CONTENT_OFFSET_CORRECTION
   );
   const [legendOffset, setLegendOffset] = useState<number>(
-    findChildrenByType(figureNode, figureNode.type.schema.nodes.figureLegend)[0].offset
+    findChildrenByType(figureNode, figureNode.type.schema.nodes.figureLegend)[0].offset +
+      FIGURE_LEGEND_CONTENT_OFFSET_CORRECTION
   );
   const classes = useFigureEditorStyles();
   const titleEditorRef = useRef(null);
@@ -73,8 +93,8 @@ export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => 
         legendEditorRef.current.editorView.dispatch(legendChange);
       }
 
-      setTitleOffset(updatedTitleNode.offset);
-      setLegendOffset(updatedLegendNode.offset);
+      setTitleOffset(updatedTitleNode.offset + FIGURE_TITLE_CONTENT_OFFSET_CORRECTION);
+      setLegendOffset(updatedLegendNode.offset + FIGURE_LEGEND_CONTENT_OFFSET_CORRECTION);
       setImage(updatedFigureNode.attrs.img);
     },
     focusFromSelection: (selection: Selection, figurePos: number) => {
@@ -238,6 +258,7 @@ function findChildrenByType(
     if (nodeType === childNode.type) {
       foundChildren.push({ node: childNode, offset: pos });
     }
+    return !childNode.type.inlineContent;
   });
   return foundChildren;
 }

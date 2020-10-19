@@ -7,8 +7,8 @@ export const useFigureEditorStyles = makeStyles((theme) => ({
     '& label': {
       backgroundColor: '#FAFAFA'
     },
-    '& .Mui-focused fieldset': {
-      borderWidth: '1px'
+    '& .MuiOutlinedInput-root.Mui-focused fieldset': {
+      borderWidth: 1
     }
   },
   figureContent: {
