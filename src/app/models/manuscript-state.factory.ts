@@ -4,6 +4,7 @@ import { gapCursor } from 'prosemirror-gapcursor';
 import { dropCursor } from 'prosemirror-dropcursor';
 import { keymap } from 'prosemirror-keymap';
 import { baseKeymap } from 'prosemirror-commands';
+import { set } from 'lodash';
 
 import * as titleConfig from './config/title.config';
 import * as keywordConfig from './config/keywords.config';
@@ -49,13 +50,15 @@ export function createAbstractState(content: Element): EditorState {
   });
 }
 
-export function createBodyState(content: Element): EditorState {
+export function createBodyState(content: Element, id: string): EditorState {
   const schema = makeSchemaFromConfig(bodyConfig.topNode, bodyConfig.nodes, bodyConfig.marks);
   const xmlContentDocument = document.implementation.createDocument('', '', null);
 
   if (content) {
     xmlContentDocument.appendChild(content);
   }
+
+  set(xmlContentDocument, 'manuscriptPath', `/manuscripts/${id}`);
 
   return EditorState.create({
     doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),

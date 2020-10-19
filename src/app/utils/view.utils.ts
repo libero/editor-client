@@ -18,10 +18,10 @@ export function objectsEqual(obj1: unknown, obj2: unknown): boolean {
   });
 }
 
-export function hasParentNodeOf($pos: ResolvedPos, nodeName: string): boolean {
+export function hasParentNodeOf($pos: ResolvedPos, nodeNames: string[]): boolean {
   for (let i = $pos.depth; i > 0; i--) {
     const node = $pos.node(i);
-    if (node.type.name === nodeName) {
+    if (nodeNames.includes(node.type.name)) {
       return true;
     }
   }
