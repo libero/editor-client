@@ -29,6 +29,7 @@ export class FigureNodeView implements NodeView {
           figureNode={this.node}
           onDelete={this.handleDelete}
           onLabelChange={this.handleLabelChange}
+          onImageChange={this.handleImageChange}
           onNodeChange={this.handleContentChange}
           onSelectionChange={this.handleSelectionChange}
         />
@@ -38,7 +39,15 @@ export class FigureNodeView implements NodeView {
   }
 
   handleLabelChange = (label: string) => {
-    this.view.dispatch(this.view.state.tr.setNodeMarkup(this.getPos(), null, { label }));
+    const newAttributes = { label, img: this.node.attrs.img };
+    const change = this.view.state.tr.setNodeMarkup(this.getPos(), null, newAttributes);
+    this.view.dispatch(change);
+  };
+
+  handleImageChange = (img: string) => {
+    const newAttributes = { img, label: this.node.attrs.label };
+    const change = this.view.state.tr.setNodeMarkup(this.getPos(), null, newAttributes);
+    this.view.dispatch(change);
   };
 
   handleContentChange = (nodeViewChange: Transaction, offset: number) => {
@@ -53,7 +62,7 @@ export class FigureNodeView implements NodeView {
   };
 
   handleSelectionChange = (anchor: number, head: number) => {
-    const offset = this.getPos() + 1;
+    const offset = this.getPos();
     const start = Math.min(anchor, head);
     const end = Math.max(anchor, head);
     const selection = TextSelection.create(this.view.state.doc, start + offset, end + offset);

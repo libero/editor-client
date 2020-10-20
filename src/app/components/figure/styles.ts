@@ -28,6 +28,15 @@ export const useFigureEditorStyles = makeStyles((theme) => ({
   inputField: {
     marginBottom: theme.spacing(2.5)
   },
+  imageContainer: {
+    marginBottom: theme.spacing(2.5),
+    position: 'relative'
+  },
+  uploadImageCta: {
+    position: 'absolute',
+    top: theme.spacing(1),
+    right: theme.spacing(1)
+  },
   image: {
     maxWidth: '100%'
   }
