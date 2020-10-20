@@ -27,3 +27,27 @@ export function hasParentNodeOf($pos: ResolvedPos, nodeNames: string[]): boolean
   }
   return false;
 }
+
+const SUPPORTED_IMAGE_TYPES = ['image/jpeg', 'image/png'];
+
+export function uploadImage(onSelectCallback: (img: string) => void): void {
+  const fileInput = document.createElement('input');
+  fileInput.type = 'file';
+  fileInput.accept = SUPPORTED_IMAGE_TYPES.join(',');
+  fileInput.addEventListener('change', () => {
+    const file: File = fileInput.files[0];
+    if (!SUPPORTED_IMAGE_TYPES.includes(file.type)) {
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      if (e.target.result instanceof ArrayBuffer) {
+        throw new Error('Invalid FileReader return format. File reader must read a string via readAsDataUrl');
+      }
+      onSelectCallback(e.target.result);
+    };
+    reader.readAsDataURL(file);
+  });
+  fileInput.click();
+}
