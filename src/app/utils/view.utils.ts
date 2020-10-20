@@ -28,7 +28,7 @@ export function hasParentNodeOf($pos: ResolvedPos, nodeNames: string[]): boolean
   return false;
 }
 
-const SUPPORTED_IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/gif'];
+const SUPPORTED_IMAGE_TYPES = ['image/jpeg', 'image/png'];
 
 export function uploadImage(onSelectCallback: (img: string) => void): void {
   const fileInput = document.createElement('input');
