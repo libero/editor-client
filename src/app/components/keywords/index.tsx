@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useRef, useEffect } from 'react';
 import { EditorState, Transaction } from 'prosemirror-state';
 
 import { NewKeywordSection } from './new-keyword-section';
@@ -24,6 +24,11 @@ const isActiveKeyword = (group: string, index: number, activeKeywordPath?: strin
   return activeKeywordPath === `keywordGroups.${group}.keywords.${index}`;
 };
 
+const preventClickPropagation = (e: Event) => {
+  e.stopPropagation();
+  e.preventDefault();
+};
+
 export const KeywordsEditor: React.FC<KeywordsEditorProps> = (props) => {
   const {
     keywords,
@@ -39,6 +44,7 @@ export const KeywordsEditor: React.FC<KeywordsEditorProps> = (props) => {
     onBlur
   } = props;
   const classes = makeKeywordContainerStyles();
+  const keywordsDomContainer = useRef<HTMLElement>();
 
   const handleFocus = useCallback(
     (index: number) => {
@@ -46,6 +52,14 @@ export const KeywordsEditor: React.FC<KeywordsEditorProps> = (props) => {
     },
     [name, onFocus]
   );
+
+  useEffect(() => {
+    if (keywordsDomContainer.current) {
+      const container = keywordsDomContainer.current;
+      container.addEventListener('click', preventClickPropagation);
+      return () => container.removeEventListener('click', preventClickPropagation);
+    }
+  }, [keywordsDomContainer]);
 
   const renderKeywords = (keywords: EditorState[]) => {
     return keywords.map((keywordEditorState, index) => {
@@ -71,7 +85,7 @@ export const KeywordsEditor: React.FC<KeywordsEditorProps> = (props) => {
 
   return (
     <SectionContainer label={label} focused={isGroupFocused}>
-      <section className={classes.keywordsSection}>
+      <section className={classes.keywordsSection} ref={keywordsDomContainer}>
         {renderKeywords(keywords)}
         <NewKeywordSection
           className={classes.newKeywordEditor}
