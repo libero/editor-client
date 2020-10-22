@@ -1,11 +1,14 @@
-import { EditorState, Transaction, NodeSelection } from 'prosemirror-state';
-import { toggleMark, setBlockType, splitBlockKeepMarks } from 'prosemirror-commands';
+import { EditorState, Transaction } from 'prosemirror-state';
+import { toggleMark, setBlockType } from 'prosemirror-commands';
 import { all, takeLatest, call, put, select } from 'redux-saga/effects';
 import { MarkType, Fragment } from 'prosemirror-model';
 
 import * as manuscriptActions from 'app/actions/manuscript.actions';
 import { Action } from 'app/utils/action.utils';
 import { getFocusedEditorState, getFocusedEditorStatePath } from 'app/selectors/manuscript-editor.selectors';
+import { insertBox } from 'app/utils/prosemirror/box.helpers';
+import { insertFigure } from 'app/utils/prosemirror/figure.helpers';
+import { wrapInListOrChangeListType } from 'app/utils/prosemirror/list.helpers';
 
 async function makeTransactionForMark(editorState: EditorState, mark: MarkType): Promise<Transaction> {
   return new Promise((resolve) => {
@@ -13,50 +16,6 @@ async function makeTransactionForMark(editorState: EditorState, mark: MarkType):
       resolve(change);
     });
   });
-}
-
-async function insertBox(editorState: EditorState): Promise<Transaction> {
-  const { empty, $from, $to } = editorState.selection;
-  const content =
-    !empty && $from.sameParent($to) && $from.parent.inlineContent
-      ? $from.parent.content.cut($from.parentOffset, $to.parentOffset)
-      : editorState.schema.nodes.paragraph.createAndFill(null, editorState.schema.text(' '));
-
-  const change = await new Promise<Transaction>((resolve) => {
-    // only split paragraph if it has content
-    if (editorState.selection.$from.parent.textContent.trim()) {
-      splitBlockKeepMarks(editorState, (tr: Transaction) => resolve(tr));
-    } else {
-      resolve(editorState.tr);
-    }
-  });
-
-  const box = editorState.schema.nodes['boxText'].createAndFill(null, content);
-  if (!change.selection.$from.parent.textContent.trim()) {
-    change.setSelection(NodeSelection.create(change.doc, change.selection.$from.pos - 1)).replaceSelectionWith(box);
-  } else {
-    change.insert(change.selection.$from.pos - 1, box);
-  }
-  return change;
-}
-
-async function insertFigure(editorState: EditorState, imageSource: string): Promise<Transaction> {
-  const change = await new Promise<Transaction>((resolve) => {
-    // only split paragraph if it has content
-    if (editorState.selection.$from.parent.textContent.trim()) {
-      splitBlockKeepMarks(editorState, (tr: Transaction) => resolve(tr));
-    } else {
-      resolve(editorState.tr);
-    }
-  });
-
-  const figure = editorState.schema.nodes['figure'].createAndFill({ label: '', img: imageSource });
-  if (!change.selection.$from.parent.textContent.trim()) {
-    change.setSelection(NodeSelection.create(change.doc, change.selection.$from.pos - 1)).replaceSelectionWith(figure);
-  } else {
-    change.insert(change.selection.$from.pos - 1, figure);
-  }
-  return change;
 }
 
 export function* toggleMarkSaga(action: Action<string>) {
@@ -116,7 +75,20 @@ export function* insertHeadingSaga(action: Action<number>) {
   }
 }
 
-export function* insertParagraphSaga(action: Action<number>) {
+export function* insertListOrChangeTypeSaga(action: Action<string>) {
+  const editorState: EditorState = yield select(getFocusedEditorState);
+  const knowsLists = editorState && (editorState.schema.nodes['orderedList'] || editorState.schema.nodes['bulletList']);
+  if (knowsLists) {
+    const path = yield select(getFocusedEditorStatePath);
+    const listNodeType =
+      action.payload === 'order' ? editorState.schema.nodes['orderedList'] : editorState.schema.nodes['bulletList'];
+
+    const change = yield wrapInListOrChangeListType(editorState, listNodeType);
+    yield put(manuscriptActions.applyChangeAction({ path, change }));
+  }
+}
+
+export function* insertParagraphSaga() {
   const editorState: EditorState = yield select(getFocusedEditorState);
   if (editorState && editorState.schema.nodes['heading']) {
     const path = yield select(getFocusedEditorStatePath);
@@ -137,6 +109,7 @@ export default function* () {
     takeLatest(manuscriptActions.insertReferenceCitationAction.getType(), insertReferenceCitationSaga),
     takeLatest(manuscriptActions.insertBoxAction.getType(), insertBoxSaga),
     takeLatest(manuscriptActions.insertFigureAction.getType(), insertFigureSaga),
+    takeLatest(manuscriptActions.insertListAction.getType(), insertListOrChangeTypeSaga),
     takeLatest(manuscriptActions.insertHeadingAction.getType(), insertHeadingSaga),
     takeLatest(manuscriptActions.insertParagraphAction.getType(), insertParagraphSaga)
   ]);

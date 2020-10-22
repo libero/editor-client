@@ -21,7 +21,8 @@ import {
   canToggleHeadingAtSelection,
   isMarkAppliedToSelection,
   canToggleParagraphAtSelection,
-  isActiveContainer
+  isActiveContainer,
+  canToggleListAtSelection
 } from 'app/selectors/manuscript-editor.selectors';
 
 import { useToolbarStyles } from './styles';
@@ -45,6 +46,7 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
   const isApplied = useSelector(isMarkAppliedToSelection);
   const canToggleHeading = useSelector(canToggleHeadingAtSelection);
   const canToggleParagraph = useSelector(canToggleParagraphAtSelection);
+  const canToggleList = useSelector(canToggleListAtSelection);
   const checkActiveContainer = useSelector(isActiveContainer);
 
   const invokeUndo = useCallback(() => dispatch(manuscriptActions.undoAction()), [dispatch]);
@@ -56,6 +58,14 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
 
   const insertBox = useCallback(() => {
     dispatch(manuscriptActions.insertBoxAction());
+  }, [dispatch]);
+
+  const toggleOrderList = useCallback(() => {
+    dispatch(manuscriptActions.insertListAction('order'));
+  }, [dispatch]);
+
+  const toggleBulletList = useCallback(() => {
+    dispatch(manuscriptActions.insertListAction('bullet'));
   }, [dispatch]);
 
   const insertFigure = useCallback(() => {
@@ -135,8 +145,8 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
             { title: 'Heading 3', enabled: canToggleHeading(3), action: toggleHeading(3) },
             { title: 'Heading 4', enabled: canToggleHeading(4), action: toggleHeading(4) },
             { title: 'Paragraph', enabled: canToggleParagraph, action: toggleParagraph },
-            { title: 'Bulleted List', enabled: false, action: undefined },
-            { title: 'Numbered List', enabled: false, action: undefined },
+            { title: 'Bulleted List', enabled: canToggleList('bullet'), action: toggleBulletList },
+            { title: 'Numbered List', enabled: canToggleList('order'), action: toggleOrderList },
             { title: 'Preformat', enabled: false, action: undefined }
           ]}
         />

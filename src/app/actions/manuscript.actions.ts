@@ -8,6 +8,7 @@ import { Affiliation } from 'app/models/affiliation';
 import { Reference } from 'app/models/reference';
 import { RelatedArticle } from 'app/models/related-article';
 import { ArticleInformation } from 'app/models/article-information';
+import { ListType } from 'app/utils/types';
 
 export interface KeywordUpdatePayload {
   keywordGroup: string;
@@ -77,6 +78,7 @@ export const redoAction = createAction<void>('REDO');
 export const toggleMarkAction = createAction<string>('TOGGLE_MARK');
 export const insertReferenceCitationAction = createAction<void>('INSERT_REFERENCE_CITATION');
 export const insertBoxAction = createAction<void>('INSERT_BOX');
+export const insertListAction = createAction<ListType>('INSERT_LIST');
 export const insertFigureAction = createAction<string>('INSERT_FIGURE');
 export const insertHeadingAction = createAction<number>('INSERT_HEADING');
 export const insertParagraphAction = createAction<void>('INSERT_PARAGRAPH');

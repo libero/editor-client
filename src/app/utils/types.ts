@@ -7,3 +7,5 @@ export type ValueOf<T> = T[keyof T];
 export type ComponentWithId<T = {}> = {
   [k in keyof T]: T[k];
 } & { id?: string };
+
+export type ListType = 'order' | 'bullet';

@@ -8,6 +8,9 @@ export const nodes = [
   'boxText',
   'figure',
   'figureTitle',
+  'listItem',
+  'orderedList',
+  'bulletList',
   'figureLegend'
 ];
 export const topNode = 'doc';
