@@ -78,5 +78,22 @@
       margin: 0;
       padding: 0;
     }
+
+    ul { list-style: disc; }
+    ol { list-style: decimal; }
+
+    li {
+      p, p:last-child {
+        margin: 0 0 16px 0;
+      }
+
+      & ul { list-style: circle; }
+      & li ul { list-style: square; }
+      & li li ul { list-style: disc; }
+
+      & ol { list-style: lower-latin; }
+      & li ol { list-style: lower-roman; }
+      & li li ol { list-style: decimal; }
+    }
   }
 }

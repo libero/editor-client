@@ -4,6 +4,8 @@ import { get } from 'lodash';
 
 import { ApplicationState, ManuscriptEditorState } from 'app/store';
 import { getManuscriptData } from './manuscript.selectors';
+import { canWrapInList, isWrappedInList } from 'app/utils/prosemirror/list.helpers';
+import { ListType } from 'app/utils/types';
 
 function isMarkActive(state: EditorState, mark: string): boolean {
   const { from, $from, to, empty } = state.selection;
@@ -70,7 +72,7 @@ export const canToggleHeadingAtSelection = createSelector(
       const wrapperNode = editorState.selection.$from.parent;
       return (
         (wrapperNode.type.name === 'heading' && wrapperNode.attrs.level !== headingLevel) ||
-        wrapperNode.type.name === 'paragraph'
+        wrapperNode.type.name !== 'heading'
       );
     }
   }
@@ -79,9 +81,25 @@ export const canToggleHeadingAtSelection = createSelector(
 export const canToggleParagraphAtSelection = createSelector(getFocusedEditorState, (editorState: EditorState) => {
   if (editorState && editorState.schema.nodes.heading) {
     const wrapperNode = editorState.selection.$from.parent;
-    return wrapperNode.type.name === 'heading';
+    return wrapperNode.type.name !== 'paragraph';
   }
 });
+
+export const canToggleListAtSelection = createSelector(
+  getFocusedEditorState,
+  (editorState: EditorState) => (listType: ListType) => {
+    if (editorState && editorState.schema.nodes.orderedList && editorState.schema.nodes.bulletList) {
+      const listNodeType =
+        listType === 'order' ? editorState.schema.nodes.orderedList : editorState.schema.nodes.bulletList;
+      const alternativeListType =
+        listType === 'order' ? editorState.schema.nodes.bulletList : editorState.schema.nodes.orderedList;
+      return (
+        (!isWrappedInList(editorState, listNodeType) && canWrapInList(editorState, listNodeType)) ||
+        isWrappedInList(editorState, alternativeListType)
+      );
+    }
+  }
+);
 
 export const isActiveContainer = createSelector(
   getFocusedEditorState,

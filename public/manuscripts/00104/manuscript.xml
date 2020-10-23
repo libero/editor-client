@@ -173,14 +173,25 @@
     <p>Lorem ipsum dolor <italic>sit amet</italic>, consectetur adipiscing elit (<xref ref-type="bibr" rid="bib20">Srinivasan et al., 2019</xref>; <xref ref-type="bibr" rid="bib25">Zoolander et al., 2019</xref>). Etiam imperdiet tortor nec enim feugiat euismod <xref ref-type="bibr" rid="bib2">Feyerabend (2010)</xref>. Etiam malesuada tristique quam non fringilla (<xref ref-type="bibr" rid="bib3">Foley et al., 2018</xref>). Curabitur sem neque, pretium et lorem ac, porta lobortis nisl. Curabitur suscipit semper sodales. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus cursus faucibus felis, consequat rutrum neque vehicula eget (<ext-link ext-link-type="uri" xlink:href="http://www.broadinstitute.org/igv/">http://www.broadinstitute.org/igv/</ext-link>). Donec in neque et ligula tristique semper id sit amet quam. Proin varius, arcu posuere faucibus rhoncus, leo neque porttitor augue, sit amet cursus neque neque quis turpis. Maecenas dignissim aliquam orci, maximus scelerisque nisl imperdiet in. (<xref ref-type="bibr" rid="bib1">Berk et al., 2012</xref>; <xref ref-type="bibr" rid="bib4">Gavrilov et al., 2014</xref>; <xref ref-type="bibr" rid="bib24">Zhang et al., 2014</xref>).</p>
 
     <list list-type="bullet">
-      <list-item><p>First entry</p>
+      <list-item><p>First entry (bullet)</p>
         <list list-type="bullet">
-          <list-item><p>First sub-entry</p></list-item>
-          <list-item><p>Second sub-entry</p>
+          <list-item><p>First sub-entry (bullet)</p></list-item>
+          <list-item>
+              <p>Second sub-entry (bullet)</p>
+              <list list-type="bullet">
+                  <list-item><p>First sub-entry (bullet)</p></list-item>
+                  <list-item>
+                      <p>Second sub-entry (bullet)</p>
+                      <list list-type="bullet">
+                          <list-item><p>First sub-entry (bullet)</p></list-item>
+                          <list-item><p>Second sub-entry (bullet)</p></list-item>
+                      </list>
+                  </list-item>
+              </list>
           </list-item>
         </list>
       </list-item>
-      <list-item><p>Second entry</p></list-item>
+      <list-item><p>Second entry (bullet)</p></list-item>
     </list>
     <p><xref ref-type="bibr" rid="bib5">Harmon (2019)</xref> integer suscipit purus a semper dictum . Duis finibus elementum ex sit amet pulvinar (<xref ref-type="bibr" rid="bib5">Harmon, 2019</xref>; <xref ref-type="bibr" rid="bib7">Heissler and Sellers, 2016b</xref>). Cras <xref ref-type="bibr" rid="bib7">Heissler and Sellers (2016b)</xref> nec est in sem iaculis fermentum (<xref ref-type="bibr" rid="bib8">Hogarth et al., 2012</xref>). Aenean sit amet turpis pulvinar, ornare nisl ac, porta nisl. Vivamus sit amet maximus elit (<xref ref-type="fig" rid="fig1">Figure 1</xref>). Duis a ultrices augue. Duis id ipsum iaculis, imperdiet leo a, cursus purus (<xref ref-type="bibr" rid="bib9">Kok et al., 2015</xref>).</p>
     <fig id="fig1" position="float"><?float page=“2” width='90' position="top"?><!--'page' - use this attribute to place a float on a specific page. 'width' - set a float to specific width - values are 70 to 150. Note: tables/boxes cannot be resized with this option. 'position' - use to define the float position (i.e placed at the top or bottom of the page), values are top or bottom. -->
@@ -228,14 +239,25 @@
       <attrib>Image credit: Peggy Mason</attrib>
     </fig>
     <list list-type="order">
-      <list-item><p>First entry</p>
-        <list list-type="bullet">
-          <list-item><p>First sub-entry</p></list-item>
-          <list-item><p>Second sub-entry</p>
+      <list-item><p>First entry (ordered)</p>
+        <list list-type="order">
+          <list-item><p>First sub-entry (bullet)</p></list-item>
+          <list-item>
+              <p>Second sub-entry (bullet)</p>
+              <list list-type="order">
+                  <list-item><p>First sub-entry (bullet)</p></list-item>
+                  <list-item>
+                      <p>Second sub-entry (bullet)</p>
+                      <list list-type="order">
+                          <list-item><p>First sub-entry (bullet)</p></list-item>
+                          <list-item><p>Second sub-entry (bullet)</p></list-item>
+                      </list>
+                  </list-item>
+              </list>
           </list-item>
         </list>
       </list-item>
-      <list-item><p>Second entry</p></list-item>
+      <list-item><p>Second entry (ordered)</p></list-item>
     </list>
     <sec>
         <title><?proof margin=“10”?><!--Adjusting above space for section head (increasing). Can have a value between -6 to 12-->Disclaimer</title>

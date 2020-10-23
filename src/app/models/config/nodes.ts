@@ -218,6 +218,33 @@ export const nodes = {
     }
   },
 
+  orderedList: {
+    group: 'block',
+    content: 'listItem+',
+    parseDOM: [{ tag: 'list[list-type=order]' }],
+    toDOM(node) {
+      return ['ol', 0];
+    }
+  },
+
+  bulletList: {
+    group: 'block',
+    content: 'listItem+',
+    parseDOM: [{ tag: 'list[list-type=bullet]' }],
+    toDOM() {
+      return ['ul', 0];
+    }
+  },
+
+  listItem: {
+    content: 'paragraph block*',
+    parseDOM: [{ tag: 'list-item' }],
+    toDOM() {
+      return ['li', 0];
+    },
+    defining: true
+  },
+
   text: {
     group: 'inline'
   }

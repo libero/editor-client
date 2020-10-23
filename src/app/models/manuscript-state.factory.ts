@@ -18,6 +18,7 @@ import { createReference, Reference, sortReferencesList } from 'app/models/refer
 import { makeSchemaFromConfig } from 'app/models/utils';
 import { SelectPlugin } from './plugins/selection.plugin';
 import { PlaceholderPlugin } from 'app/models/plugins/placeholder.plugin';
+import { createListKeymap } from 'app/utils/prosemirror/list.helpers';
 
 export function createTitleState(content: Element): EditorState {
   const schema = makeSchemaFromConfig(titleConfig.topNode, titleConfig.nodes, titleConfig.marks);
@@ -67,6 +68,7 @@ export function createBodyState(content: Element, id: string): EditorState {
       buildInputRules(),
       gapCursor(),
       dropCursor(),
+      keymap(createListKeymap(schema)),
       keymap(baseKeymap),
       SelectPlugin,
       PlaceholderPlugin('Enter main text')
