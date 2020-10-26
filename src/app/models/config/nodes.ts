@@ -2,6 +2,7 @@ import { DOMOutputSpec } from 'prosemirror-model';
 import { v4 as uuidv4 } from 'uuid';
 import { getTextContentFromPath } from 'app/models/utils';
 import { get } from 'lodash';
+import { createFigureLicenseState } from 'app/models/figure-license';
 
 function getTitleLevel(title: Element): number {
   let parent = title.parentNode;
@@ -177,7 +178,8 @@ export const nodes = {
     atom: true,
     attrs: {
       label: { default: '' },
-      img: { default: '' }
+      img: { default: '' },
+      licenses: { default: [] }
     },
     parseDOM: [
       {
@@ -186,7 +188,8 @@ export const nodes = {
           const path = get(dom.ownerDocument, 'manuscriptPath');
           return {
             label: getTextContentFromPath(dom, 'label') || '',
-            img: path + '/' + get(dom.querySelector('graphic'), 'attributes.xlink:href.value')
+            img: path + '/' + get(dom.querySelector('graphic'), 'attributes.xlink:href.value'),
+            licenses: Array.from(dom.querySelectorAll('permissions')).map(createFigureLicenseState)
           };
         }
       }
