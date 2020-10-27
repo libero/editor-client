@@ -1,5 +1,5 @@
-import axios from 'axios';
-import { Manuscript } from 'app/models/manuscript';
+import axios from "axios";
+import { Manuscript } from "app/models/manuscript";
 import {
   createTitleState,
   createKeywordGroupsState,
@@ -7,34 +7,39 @@ import {
   createReferencesState,
   createImpactStatementState,
   createAcknowledgementsState,
-  createBodyState
-} from 'app/models/manuscript-state.factory';
-import { createAuthorsState } from 'app/models/person';
-import { createAffiliationsState } from 'app/models/affiliation';
-import { getTextContentFromPath } from 'app/models/utils';
-import { createRelatedArticleState } from 'app/models/related-article';
-import { createArticleInfoState } from 'app/models/article-information';
+  createBodyState,
+} from "app/models/manuscript-state.factory";
+import { createAuthorsState } from "app/models/person";
+import { createAffiliationsState } from "app/models/affiliation";
+import { getTextContentFromPath } from "app/models/utils";
+import { createRelatedArticleState } from "app/models/related-article";
+import { createArticleInfoState } from "app/models/article-information";
 
 const manuscriptUrl = (id: string): string => {
-  return process.env.NODE_ENV === 'development' ? `./manuscripts/${id}/manuscript.xml` : `/api/v1/articles/${id}/`;
+  // TODO: this need revisited when the entiire app neesd to be run locally 
+  return process.env.REACT_APP_API_URL
+    ? `${process.env.REACT_APP_API_URL}/articles/${id}`
+    : `./manuscripts/${id}/manuscript.xml`;
 };
 
 export async function getManuscriptContent(id: string): Promise<Manuscript> {
-  const { data } = await axios.get<string>(manuscriptUrl(id), { headers: { Accept: 'application/xml' } });
+  const { data } = await axios.get<string>(manuscriptUrl(id), {
+    headers: { Accept: "application/xml" },
+  });
 
   const parser = new DOMParser();
-  const doc = parser.parseFromString(data, 'text/xml');
-  const title = doc.querySelector('title-group article-title');
-  const keywordGroups = doc.querySelectorAll('kwd-group');
-  const abstract = doc.querySelector('abstract:not([abstract-type])');
+  const doc = parser.parseFromString(data, "text/xml");
+  const title = doc.querySelector("title-group article-title");
+  const keywordGroups = doc.querySelectorAll("kwd-group");
+  const abstract = doc.querySelector("abstract:not([abstract-type])");
   const impactStatement = doc.querySelector('abstract[abstract-type="toc"]');
   const authors = doc.querySelectorAll('contrib[contrib-type="author"]');
-  const affiliations = doc.querySelectorAll('contrib-group:first-of-type aff');
-  const references = doc.querySelectorAll('ref-list ref element-citation');
-  const authorNotes = doc.querySelector('author-notes');
-  const relatedArticles = doc.querySelectorAll('related-article');
-  const acknowledgements = doc.querySelector('ack');
-  const body = doc.querySelector('body');
+  const affiliations = doc.querySelectorAll("contrib-group:first-of-type aff");
+  const references = doc.querySelectorAll("ref-list ref element-citation");
+  const authorNotes = doc.querySelector("author-notes");
+  const relatedArticles = doc.querySelectorAll("related-article");
+  const acknowledgements = doc.querySelector("ack");
+  const body = doc.querySelector("body");
 
   const authorsState = createAuthorsState(Array.from(authors), authorNotes);
 
@@ -51,8 +56,11 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
     acknowledgements: createAcknowledgementsState(acknowledgements),
     articleInfo: createArticleInfoState(doc, authorsState),
     journalMeta: {
-      publisherName: getTextContentFromPath(doc, 'journal-meta publisher publisher-name'),
-      issn: getTextContentFromPath(doc, 'journal-meta issn')
-    }
+      publisherName: getTextContentFromPath(
+        doc,
+        "journal-meta publisher publisher-name"
+      ),
+      issn: getTextContentFromPath(doc, "journal-meta issn"),
+    },
   } as Manuscript;
 }
