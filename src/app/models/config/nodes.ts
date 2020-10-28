@@ -1,14 +1,14 @@
-import { DOMOutputSpec } from 'prosemirror-model';
-import { v4 as uuidv4 } from 'uuid';
-import { getTextContentFromPath } from 'app/models/utils';
-import { get } from 'lodash';
-import { createFigureLicenseState } from 'app/models/figure-license';
+import { DOMOutputSpec } from "prosemirror-model";
+import { v4 as uuidv4 } from "uuid";
+import { getTextContentFromPath } from "app/models/utils";
+import { get } from "lodash";
+import { createFigureLicenseState } from "app/models/figure-license";
 
 function getTitleLevel(title: Element): number {
   let parent = title.parentNode;
   let level = 1;
-  while (parent && parent.nodeName !== 'body') {
-    if (parent.nodeName === 'sec') {
+  while (parent && parent.nodeName !== "body") {
+    if (parent.nodeName === "sec") {
       level++;
     }
     parent = parent.parentNode;
@@ -18,98 +18,98 @@ function getTitleLevel(title: Element): number {
 
 export const nodes = {
   doc: {
-    content: 'block+'
+    content: "block+",
   },
 
   annotatedReferenceInfoDoc: {
-    group: 'block',
-    content: 'inline*',
-    parseDOM: [{ tag: 'article-title' }, { tag: 'source' }],
+    group: "block",
+    content: "inline*",
+    parseDOM: [{ tag: "article-title" }, { tag: "source" }],
     toDOM(node) {
-      return ['p', 0];
-    }
+      return ["p", 0];
+    },
   },
 
-  'article-title': {
-    group: 'block',
-    content: 'inline*',
-    parseDOM: [{ tag: 'article-title' }],
+  "article-title": {
+    group: "block",
+    content: "inline*",
+    parseDOM: [{ tag: "article-title" }],
     toDOM(node) {
-      return ['h1', { class: 'article-title' }, 0];
-    }
+      return ["h1", { class: "article-title" }, 0];
+    },
   },
 
   abstract: {
-    group: 'block',
-    content: 'paragraph',
-    parseDOM: [{ tag: 'abstract' }],
+    group: "block",
+    content: "paragraph",
+    parseDOM: [{ tag: "abstract" }],
     toDOM(node) {
-      return ['p', { class: 'abstract' }, 0];
-    }
+      return ["p", { class: "abstract" }, 0];
+    },
   },
 
   keyword: {
-    content: 'text*',
+    content: "text*",
     atom: true,
-    parseDOM: [{ tag: 'kwd' }],
+    parseDOM: [{ tag: "kwd" }],
     toDOM() {
-      return ['div', 0];
-    }
+      return ["div", 0];
+    },
   },
 
   paragraph: {
-    content: 'inline*',
-    group: 'block',
-    parseDOM: [{ tag: 'p' }],
+    content: "inline*",
+    group: "block",
+    parseDOM: [{ tag: "p" }],
     toDOM() {
-      return ['p', { class: 'paragraph' }, 0];
-    }
+      return ["p", { class: "paragraph" }, 0];
+    },
   },
 
   section: {
-    content: 'block*',
-    group: 'block',
-    parseDOM: [{ tag: 'sec' }],
+    content: "block*",
+    group: "block",
+    parseDOM: [{ tag: "sec" }],
     toDOM() {
-      return ['section', 0];
-    }
+      return ["section", 0];
+    },
   },
 
   heading: {
     attrs: {
       level: { default: 1 },
-      domId: { default: uuidv4() }
+      domId: { default: uuidv4() },
     },
-    content: 'inline*',
+    content: "inline*",
     defining: true,
-    group: 'block',
+    group: "block",
     parseDOM: [
       {
-        tag: 'sec > title',
+        tag: "sec > title",
         getAttrs(dom) {
           return {
             level: getTitleLevel(dom),
-            domId: uuidv4()
+            domId: uuidv4(),
           };
-        }
+        },
       },
-      { tag: 'h1', attrs: { level: 1, domId: uuidv4() } },
-      { tag: 'h2', attrs: { level: 2, domId: uuidv4() } },
-      { tag: 'h3', attrs: { level: 3, domId: uuidv4() } },
-      { tag: 'h4', attrs: { level: 4, domId: uuidv4() } }
+      { tag: "h1", attrs: { level: 1, domId: uuidv4() } },
+      { tag: "h2", attrs: { level: 2, domId: uuidv4() } },
+      { tag: "h3", attrs: { level: 3, domId: uuidv4() } },
+      { tag: "h4", attrs: { level: 4, domId: uuidv4() } },
     ],
     toDOM(node) {
-      return ['h' + node.attrs.level, { id: node.attrs.domId }, 0];
-    }
+      return ["h" + node.attrs.level, { id: node.attrs.domId }, 0];
+    },
   },
 
   refCitation: {
     content: undefined,
     attrs: {
       refId: { default: undefined },
-      refText: { default: undefined }
+      refText: { default: undefined },
     },
-    group: 'inline',
+    group: "inline",
     atom: true,
     inline: true,
     parseDOM: [
@@ -118,27 +118,27 @@ export const nodes = {
         getAttrs(dom) {
           return {
             refText: dom.textContent,
-            refId: dom.getAttribute('rid')
+            refId: dom.getAttribute("rid"),
           };
-        }
+        },
       },
       {
         tag: 'a.citation[data-cit-type="reference"]',
         getAttrs(dom) {
           return {
-            refText: dom.getAttribute('data-ref-text'),
-            refId: dom.getAttribute('data-ref-id')
+            refText: dom.getAttribute("data-ref-text"),
+            refId: dom.getAttribute("data-ref-id"),
           };
-        }
-      }
+        },
+      },
     ],
     toClipboardDOM(node): DOMOutputSpec {
-      const refCitationDom = document.createElement('a');
-      refCitationDom.setAttribute('href', '#');
-      refCitationDom.setAttribute('data-cit-type', 'reference');
-      refCitationDom.setAttribute('data-ref-id', node.attrs.refId);
-      refCitationDom.setAttribute('data-ref-text', node.attrs.refText);
-      refCitationDom.classList.add('citation');
+      const refCitationDom = document.createElement("a");
+      refCitationDom.setAttribute("href", "#");
+      refCitationDom.setAttribute("data-cit-type", "reference");
+      refCitationDom.setAttribute("data-ref-id", node.attrs.refId);
+      refCitationDom.setAttribute("data-ref-text", node.attrs.refText);
+      refCitationDom.classList.add("citation");
       refCitationDom.innerHTML = `${node.attrs.refText}`;
       return refCitationDom;
     },
@@ -147,110 +147,128 @@ export const nodes = {
     },
     toDOM(node): DOMOutputSpec {
       return [
-        'a',
+        "a",
         {
-          href: '#',
-          class: 'citation',
-          'data-cit-type': 'reference',
-          'data-ref-id': node.attrs.refId,
-          'data-ref-text': node.attrs.refText
-        }
+          href: "#",
+          class: "citation",
+          "data-cit-type": "reference",
+          "data-ref-id": node.attrs.refId,
+          "data-ref-text": node.attrs.refText,
+        },
       ];
-    }
+    },
   },
 
   boxText: {
-    content: 'paragraph*',
-    group: 'block',
+    content: "paragraph*",
+    group: "block",
     parseDOM: [
       {
-        tag: 'boxed-text'
-      }
+        tag: "boxed-text",
+      },
     ],
     toDOM() {
-      return ['section', { class: 'box-text' }, 0];
-    }
+      return ["section", { class: "box-text" }, 0];
+    },
   },
 
   figure: {
-    content: 'figureTitle figureLegend+',
-    group: 'block',
+    content: "figureTitle figureLegend+",
+    group: "block",
     atom: true,
     attrs: {
-      label: { default: '' },
-      img: { default: '' },
-      licenses: { default: [] }
+      label: { default: "" },
+      img: { default: "" },
+      licenses: { default: [] },
     },
     parseDOM: [
       {
-        tag: 'fig',
+        tag: "fig",
         getAttrs(dom) {
-          const path = get(dom.ownerDocument, 'manuscriptPath');
+          const paths = get(dom.ownerDocument, "manuscriptPath").split("/");
           return {
-            label: getTextContentFromPath(dom, 'label') || '',
-            img: path + '/' + get(dom.querySelector('graphic'), 'attributes.xlink:href.value'),
-            licenses: Array.from(dom.querySelectorAll('permissions')).map(createFigureLicenseState)
+            label: getTextContentFromPath(dom, "label") || "",
+            img:
+              process.env.REACT_APP_API_URL +
+              "/" +
+              "articles" +
+              "/" +
+              paths[2] +
+              "/" +
+              "assets" +
+              "/" +
+              get(
+                dom.querySelector("graphic"),
+                "attributes.xlink:href.value"
+              ).replace("tif", "jpg"),
+            licenses: Array.from(dom.querySelectorAll("permissions")).map(
+              createFigureLicenseState
+            ),
           };
-        }
-      }
+        },
+      },
     ],
     toDOM() {
-      return ['section', { class: 'figure' }, 0];
-    }
+      return ["section", { class: "figure" }, 0];
+    },
   },
 
   figureTitle: {
-    content: 'inline*',
-    parseDOM: [{ tag: 'caption > title' }, { tag: 'label', ignore: true }, { tag: 'permissions', ignore: true }],
-    context: 'figure',
+    content: "inline*",
+    parseDOM: [
+      { tag: "caption > title" },
+      { tag: "label", ignore: true },
+      { tag: "permissions", ignore: true },
+    ],
+    context: "figure",
     toDOM() {
-      return ['p', 0];
-    }
+      return ["p", 0];
+    },
   },
 
   figureLegend: {
-    content: 'inline*',
+    content: "inline*",
     parseDOM: [
-      { tag: 'caption > p', priority: 100 },
-      { tag: 'label', ignore: true },
-      { tag: 'permissions', ignore: true }
+      { tag: "caption > p", priority: 100 },
+      { tag: "label", ignore: true },
+      { tag: "permissions", ignore: true },
     ],
-    context: 'figure',
+    context: "figure",
     toDOM() {
-      return ['p', 0];
-    }
+      return ["p", 0];
+    },
   },
 
   orderedList: {
-    group: 'block',
-    content: 'listItem+',
-    parseDOM: [{ tag: 'list[list-type=order]' }],
+    group: "block",
+    content: "listItem+",
+    parseDOM: [{ tag: "list[list-type=order]" }],
     toDOM(node) {
-      return ['ol', 0];
-    }
+      return ["ol", 0];
+    },
   },
 
   bulletList: {
-    group: 'block',
-    content: 'listItem+',
-    parseDOM: [{ tag: 'list[list-type=bullet]' }],
+    group: "block",
+    content: "listItem+",
+    parseDOM: [{ tag: "list[list-type=bullet]" }],
     toDOM() {
-      return ['ul', 0];
-    }
+      return ["ul", 0];
+    },
   },
 
   listItem: {
-    content: 'paragraph block*',
-    parseDOM: [{ tag: 'list-item' }],
+    content: "paragraph block*",
+    parseDOM: [{ tag: "list-item" }],
     toDOM() {
-      return ['li', 0];
+      return ["li", 0];
     },
-    defining: true
+    defining: true,
   },
 
   text: {
-    group: 'inline'
-  }
+    group: "inline",
+  },
 };
 
 export type NodesType = keyof typeof nodes;
