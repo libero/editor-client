@@ -185,22 +185,15 @@ export const nodes = {
       {
         tag: "fig",
         getAttrs(dom) {
-          const paths = get(dom.ownerDocument, "manuscriptPath").split("/");
+          const [_, __, id] = get(dom.ownerDocument, "manuscriptPath").split(
+            "/"
+          );
           return {
             label: getTextContentFromPath(dom, "label") || "",
-            img:
-              process.env.REACT_APP_API_URL +
-              "/" +
-              "articles" +
-              "/" +
-              paths[2] +
-              "/" +
-              "assets" +
-              "/" +
-              get(
-                dom.querySelector("graphic"),
-                "attributes.xlink:href.value"
-              ).replace("tif", "jpg"),
+            img: `${process.env.REACT_APP_API_URL}/articles/${id}/assets/${get(
+              dom.querySelector("graphic"),
+              "attributes.xlink:href.value"
+            ).replace("tif", "jpg")}`,
             licenses: Array.from(dom.querySelectorAll("permissions")).map(
               createFigureLicenseState
             ),
