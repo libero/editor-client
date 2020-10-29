@@ -6,3 +6,4 @@ start_api:
 	# cd ../editor-article-store
 	# $(MAKE) -f $(shell pwd)/Makefile start_dev
 	$(shell make start_dev)
+	make start_dev
