@@ -17,6 +17,14 @@ in your favourite browser.
 The page will reload automatically if you make edits.<br />
 You will also see any lint errors in the console.
 
+### Running all services with client reloading
+1. `make start_all`
+2. Go to http://localhost:9000
+
+This proxies `9000` to `http://localhost:3000` and any `/api/*` to `http://localhost:8080`. This works via the nginx proxy setup via the docker-compose file
+
+
+
 ### Test
 `npm test` launches the test runner in the interactive watch mode.<br />
 On any changes the tests will re-run automatically.

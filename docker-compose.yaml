@@ -1,46 +1,10 @@
-version: '3.4'
+version: '3'
 services:
-  editor-client:
-    build:
-      context: './'
-    image: editor-client:${IMAGE_TAG:-local}
-    ports:
-      - 80:80
-  editor-article-store:
-    image: liberoadmin/editor-article-store:stable
-    network_mode: "service:localstack"
-    depends_on:
-      - mongo
-      - localstack
-  localstack:
-    image: localstack/localstack
-    ports:
-      - 4566:4566
-      # this is exposing the editor-article-store which is making use of localstacks network for host resolving reasons
-      - 8080:8080
-    environment:
-      - SERVICES=s3,sqs
-    healthcheck:
-      test: 'echo -e "GET /health\n\n" | nc localhost 4566'
-      interval: 1m
-      timeout: 10s
-      retries: 3
-    container_name: localstack
+  nginx:
+    image: nginx
+    network_mode: bridge
+    # container_name: editor-reverse-proxy
     volumes:
-      - "./.localstack/startup:/docker-entrypoint-initaws.d"
-      - "./.localstack/config:/etc/localstackconf"
-  mongo:
-    image: mongo
-    container_name: editor_mongo
-    restart: always
-    healthcheck:
-      test: echo 'db.runCommand("ping").ok' |  mongo localhost:27017/test --quiet
-      interval: 10s
-      timeout: 10s
-      retries: 3
-      start_period: 20s
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: password
+        - ./nginx.conf:/etc/nginx/nginx.conf
     ports:
-      - 27017:27017
+      - 9000:9000
