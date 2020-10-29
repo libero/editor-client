@@ -188,10 +188,9 @@ export const nodes = {
           const [_, __, id] = get(dom.ownerDocument, "manuscriptPath").split(
             "/"
           );
-          // todo  - this approach won't work with JWT tokens - is this a problem?
           return {
             label: getTextContentFromPath(dom, "label") || "",
-            img: `${process.env.REACT_APP_API_URL}/articles/${id}/assets/${get(
+            img: `/api/v1/articles/${id}/assets/${get(
               dom.querySelector("graphic"),
               "attributes.xlink:href.value"
             ).replace("tif", "jpg")}`,
