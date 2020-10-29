@@ -1,9 +1,4 @@
-# .ONESHELL: # Only applies to all target
+.PHONY: start_api
 
 start_api:
-	# docker-compose -f ../editor-article-store/docker-compose.yaml up -d localstack 
-	$(shell cd ../editor-article-store; pwd)
-	# cd ../editor-article-store
-	# $(MAKE) -f $(shell pwd)/Makefile start_dev
-	# $(shell make start_dev)
-	$(MAKE) start_dev
+	$(MAKE) -C ../editor-article-store start_dev
