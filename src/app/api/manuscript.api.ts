@@ -44,7 +44,7 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
     impactStatement: createImpactStatementState(impactStatement),
     keywordGroups: createKeywordGroupsState(Array.from(keywordGroups)),
     authors: authorsState,
-    body: createBodyState(body),
+    body: createBodyState(body, id),
     affiliations: createAffiliationsState(Array.from(affiliations)),
     references: createReferencesState(Array.from(references)),
     relatedArticles: createRelatedArticleState(Array.from(relatedArticles)),
