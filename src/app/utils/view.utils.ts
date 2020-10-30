@@ -1,6 +1,8 @@
-import { DOMSerializer, ResolvedPos } from 'prosemirror-model';
+import React from 'react';
+import { DOMSerializer, ResolvedPos, Node as ProsemirrorNode } from 'prosemirror-model';
 import { EditorState } from 'prosemirror-state';
 import { isEqualWith } from 'lodash';
+import { EditorView } from 'prosemirror-view';
 
 export function stringifyEditorState(editorState: EditorState): string {
   const fragment = DOMSerializer.fromSchema(editorState.schema).serializeFragment(editorState.doc.content);
@@ -51,3 +53,11 @@ export function uploadImage(onSelectCallback: (img: string) => void): void {
   });
   fileInput.click();
 }
+
+interface NodeViewContext {
+  view: EditorView;
+  node: ProsemirrorNode;
+  getPos: () => number;
+}
+
+export const NodeViewContext = React.createContext<NodeViewContext>(null);

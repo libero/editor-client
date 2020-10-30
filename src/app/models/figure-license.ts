@@ -1,56 +1,48 @@
-import { EditorState } from 'prosemirror-state';
-import { DOMParser as ProseMirrorDOMParser } from 'prosemirror-model';
-import { gapCursor } from 'prosemirror-gapcursor';
-import { dropCursor } from 'prosemirror-dropcursor';
-import { keymap } from 'prosemirror-keymap';
-import { baseKeymap } from 'prosemirror-commands';
-
-import { getTextContentFromPath, makeSchemaFromConfig } from 'app/models/utils';
-import * as figureLicenseConfig from 'app/models/config/figure-license.config';
-import { buildInputRules } from 'app/models/plugins/input-rules';
-import { createListKeymap } from 'app/utils/prosemirror/list.helpers';
-import { SelectPlugin } from 'app/models/plugins/selection.plugin';
-import { PlaceholderPlugin } from 'app/models/plugins/placeholder.plugin';
+import { getTextContentFromPath } from 'app/models/utils';
 
 export interface FigureLicense {
   copyrightHolder: string;
   copyrightStatement: string;
   copyrightYear: string;
-  license: EditorState;
+  licenseType: string;
 }
 
-export function createFigureLicenseState(el: Element): FigureLicense {
+export const FIGURE_LICENSE_CC0 = 'LICENSE_CCO';
+export const FIGURE_LICENSE_CC_BY_4 = 'LICENSE_CC_BY_4';
+export const FIGURE_LICENSE_OTHER = 'LICENSE_OTHER';
+
+export const FIGURE_LICENSE_SELECT_OPTIONS = [
+  { label: 'CCO', value: FIGURE_LICENSE_CC0 },
+  { label: 'CC_BY_4', value: FIGURE_LICENSE_CC_BY_4 },
+  { label: 'Other', value: FIGURE_LICENSE_CC_BY_4 }
+];
+
+const LICENSE_URLS_MAP = {
+  'http://creativecommons.org/licenses/by/4.0/': FIGURE_LICENSE_CC_BY_4,
+  'http://creativecommons.org/publicdomain/zero/1.0/': FIGURE_LICENSE_CC0
+};
+
+export function createFigureLicenseAttributes(el: Element): FigureLicense {
   return {
-    copyrightHolder: getTextContentFromPath(el, 'copyright-statement'),
+    copyrightHolder: getTextContentFromPath(el, 'copyright-holder'),
     copyrightStatement: getTextContentFromPath(el, 'copyright-statement'),
     copyrightYear: getTextContentFromPath(el, 'copyright-year'),
-    license: createLicenseState(el.querySelector('license-p'))
+    licenseType: getLicenseType(el)
   };
 }
 
-function createLicenseState(content: Element): EditorState {
-  const schema = makeSchemaFromConfig(
-    figureLicenseConfig.topNode,
-    figureLicenseConfig.nodes,
-    figureLicenseConfig.marks
-  );
-  const xmlContentDocument = document.implementation.createDocument('', '', null);
+export function createEmptyLicenseAttributes(): FigureLicense {
+  return {
+    copyrightHolder: '',
+    copyrightStatement: '',
+    copyrightYear: '',
+    licenseType: undefined
+  };
+}
 
-  if (content) {
-    xmlContentDocument.appendChild(content);
-  }
+function getLicenseType(el: Element): string {
+  const licenseUrl =
+    getTextContentFromPath(el, 'license_ref') || el.querySelector('license').getAttribute('xlink:href') || '';
 
-  return EditorState.create({
-    doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),
-    schema,
-    plugins: [
-      buildInputRules(),
-      gapCursor(),
-      dropCursor(),
-      keymap(createListKeymap(schema)),
-      keymap(baseKeymap),
-      SelectPlugin,
-      PlaceholderPlugin('Enter main text')
-    ]
-  });
+  return LICENSE_URLS_MAP[licenseUrl] || FIGURE_LICENSE_OTHER;
 }

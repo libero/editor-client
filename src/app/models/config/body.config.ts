@@ -6,11 +6,12 @@ export const nodes = [
   'refCitation',
   'heading',
   'boxText',
+  'figureLicense',
   'figure',
   'figureTitle',
+  'figureLegend',
   'listItem',
   'orderedList',
-  'bulletList',
-  'figureLegend'
+  'bulletList'
 ];
 export const topNode = 'doc';

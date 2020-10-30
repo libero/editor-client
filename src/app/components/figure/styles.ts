@@ -50,3 +50,29 @@ export const useFigureEditorStyles = makeStyles((theme) => ({
     borderColor: '#C4C4C4'
   }
 }));
+
+export const useFigureLicenseListStyles = makeStyles((theme) => ({
+
+}));
+
+export const useFigureLicenseEditorStyles = (theme) => ({
+  smallField: {
+    width: 150,
+    marginRight: theme.spacing(2)
+  },
+  deleteButton: {
+    flexGrow: 0,
+    padding: 6,
+    alignSelf: 'center'
+  },
+  spacer: {
+    flexGrow: 1
+  },
+  inputField: {
+    marginBottom: theme.spacing(2.5)
+  },
+  fieldsRow: {
+    display: 'flex',
+    marginBottom: theme.spacing(2.5)
+  }
+});
