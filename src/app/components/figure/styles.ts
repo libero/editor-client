@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
+import { CSSProperties } from '@material-ui/core/styles/withStyles';
 
 export const useFigureEditorStyles = makeStyles((theme) => ({
   figureContainer: {
@@ -51,11 +52,7 @@ export const useFigureEditorStyles = makeStyles((theme) => ({
   }
 }));
 
-export const useFigureLicenseListStyles = makeStyles((theme) => ({
-
-}));
-
-export const useFigureLicenseEditorStyles = (theme) => ({
+export const useFigureLicenseEditorStyles = (theme): Record<string, CSSProperties> => ({
   smallField: {
     width: 150,
     marginRight: theme.spacing(2)

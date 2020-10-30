@@ -52,21 +52,21 @@ export abstract class NodeEditor<T> extends React.Component<NodeEditorProps & T,
     return this.state.isEditorActive;
   }
 
-  protected handleEditorFocus = () => {
+  protected handleEditorFocus = (): void => {
     this.setState({ isEditorActive: true });
   };
 
-  protected handleEditorBlur = () => {
+  protected handleEditorBlur = (): void => {
     this.setState({ isEditorActive: false });
   };
 
   // this function should handle
-  protected handleInternalEditorStateChange = (change: Transaction) => {
+  protected handleInternalEditorStateChange = (change: Transaction): void => {
     this.setState({ editorState: this.state.editorState.apply(change) });
     this.context.view.dispatch(this.translateChanges(change));
   };
 
-  private createInternalEditorState() {
+  private createInternalEditorState(): EditorState {
     return EditorState.create({
       doc: this.props.node,
       plugins: [buildInputRules(), gapCursor(), dropCursor(), keymap(baseKeymap), SelectPlugin]
@@ -100,7 +100,7 @@ export abstract class NodeEditor<T> extends React.Component<NodeEditorProps & T,
     return null;
   }
 
-  private translateChanges(change: Transaction) {
+  private translateChanges(change: Transaction): Transaction {
     const translatedChange = this.context.view.state.tr;
     if (change.docChanged) {
       const offsetMap = StepMap.offset(this.context.getPos() + this.props.offset);
