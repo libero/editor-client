@@ -187,12 +187,12 @@ export const nodes = {
         getAttrs(dom) {
           const paths = get(dom.ownerDocument, 'manuscriptPath').split('/');
           const id = paths[2];
+          const url = process.env.REACT_APP_NO_SERVER 
+            ? get(dom.ownerDocument, 'manuscriptPath') + '/' + get(dom.querySelector('graphic'), 'attributes.xlink:href.value') 
+            : `/api/v1/articles/${id}/assets/${get(dom.querySelector('graphic'), 'attributes.xlink:href.value').replace('tif', 'jpg')}`;
           return {
             label: getTextContentFromPath(dom, 'label') || '',
-            img: `/api/v1/articles/${id}/assets/${get(
-              dom.querySelector('graphic'),
-              'attributes.xlink:href.value'
-            ).replace('tif', 'jpg')}`,
+            img: url,
             licenses: Array.from(dom.querySelectorAll('permissions')).map(createFigureLicenseState)
           };
         }
