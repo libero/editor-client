@@ -185,20 +185,17 @@ export const nodes = {
       {
         tag: 'fig',
         getAttrs(dom) {
-          const [_, __, id] = get(dom.ownerDocument, "manuscriptPath").split(
-            "/"
-          );
+          const paths = get(dom.ownerDocument, 'manuscriptPath').split('/');
+          const id = paths [2];
           return {
-            label: getTextContentFromPath(dom, "label") || "",
+            label: getTextContentFromPath(dom, 'label') || '',
             img: `/api/v1/articles/${id}/assets/${get(
-              dom.querySelector("graphic"),
-              "attributes.xlink:href.value"
-            ).replace("tif", "jpg")}`,
-            licenses: Array.from(dom.querySelectorAll("permissions")).map(
-              createFigureLicenseState
-            ),
+              dom.querySelector('graphic'),
+              'attributes.xlink:href.value'
+            ).replace('tif', 'jpg')}`,
+            licenses: Array.from(dom.querySelectorAll('permissions')).map(createFigureLicenseState)
           };
-        },
+        }
       }
     ],
     toDOM() {
