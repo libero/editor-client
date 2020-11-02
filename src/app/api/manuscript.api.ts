@@ -16,7 +16,7 @@ import { createRelatedArticleState } from 'app/models/related-article';
 import { createArticleInfoState } from 'app/models/article-information';
 
 const manuscriptUrl = (id: string): string => {
-  return process.env.NODE_ENV === 'development' ? `./manuscripts/${id}/manuscript.xml` : `/api/v1/articles/${id}/`;
+  return process.env.REACT_APP_NO_SERVER ? `./manuscripts/${id}/manuscript.xml` : `/api/v1/articles/${id}`;
 };
 
 export async function getManuscriptContent(id: string): Promise<Manuscript> {
