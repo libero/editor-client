@@ -46,6 +46,7 @@ export const useFigureEditorStyles = makeStyles((theme) => ({
   },
   image: {
     maxWidth: '100%',
+    minHeight: 58,
     borderRadius: theme.shape.borderRadius,
     border: 'solid 1px #C4C4C4'
   }
