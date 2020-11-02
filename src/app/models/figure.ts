@@ -42,7 +42,7 @@ export function createEmptyLicenseAttributes(): Figure {
   };
 }
 
-export function getFigureImageUrl(el: Element) {
+export function getFigureImageUrl(el: Element): string {
   const paths = get(el.ownerDocument, 'manuscriptPath').split('/');
   const id = paths[2];
 
