@@ -5,6 +5,7 @@ import { Node as ProsemirrorNode } from 'prosemirror-model';
 import { FigureLicenseEditor } from 'app/components/figure/figure-license-editor';
 import { NodeViewContext } from 'app/utils/view.utils';
 import { createEmptyLicenseAttributes } from 'app/models/figure';
+import { useFigureEditorStyles } from 'app/components/figure/styles';
 
 interface FigureLicenseListProps {
   licenses: Array<{
@@ -18,6 +19,7 @@ const FIGURE_LICENSE_NODE_OFFSET_CORRECTION = 2;
 export const FigureLicensesList: React.FC<FigureLicenseListProps> = (props) => {
   const { licenses } = props;
   const nodeViewContext = useContext(NodeViewContext);
+  const classes = useFigureEditorStyles();
 
   const handleAddNewLicense = useCallback(() => {
     const newNodePosition = nodeViewContext.getPos() + nodeViewContext.node.nodeSize - 1;
@@ -40,7 +42,7 @@ export const FigureLicensesList: React.FC<FigureLicenseListProps> = (props) => {
           />
         );
       })}
-      <Button onClick={handleAddNewLicense} color="primary">
+      <Button classes={{ root: classes.addLicenseCta }} onClick={handleAddNewLicense} color="primary">
         Add Licence
       </Button>
     </section>

@@ -50,19 +50,28 @@ export const useFigureEditorStyles = makeStyles((theme) => ({
     minHeight: 58,
     borderRadius: theme.shape.borderRadius,
     border: 'solid 1px #C4C4C4'
+  },
+
+  addLicenseCta: {
+    fontSize: '0.875rem',
+    textTransform: 'none',
+    marginLeft: theme.spacing(1),
+    marginTop: theme.spacing(1)
   }
 }));
 
 export const useFigureLicenseEditorStyles = (theme): Record<string, CSSProperties> => ({
   editorContainer: {
-    display: 'flex'
+    display: 'flex',
+    paddingTop: theme.spacing(2.5)
   },
   editorForm: {
+    flexGrow: 1,
     borderRadius: theme.shape.borderRadius,
     borderColor: 'rgba(0, 0, 0, 0.23)',
     borderStyle: 'solid',
     borderWidth: '1px',
-    marginRight: theme.spacing(1),
+    margin: theme.spacing(0, 1, 0, 0),
     padding: theme.spacing(1.5)
   },
   smallField: {

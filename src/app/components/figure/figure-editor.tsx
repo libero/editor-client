@@ -98,7 +98,7 @@ export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => 
             offset={titleNodeData.offset + FIGURE_TITLE_CONTENT_OFFSET_CORRECTION}
           />
         </div>
-        <div className={classes.inputField}>
+        <div>
           <FigureContentEditor
             label="Legend"
             node={legendNodeData.node}
