@@ -186,7 +186,7 @@ export const nodes = {
         tag: 'fig',
         getAttrs(dom) {
           const paths = get(dom.ownerDocument, 'manuscriptPath').split('/');
-          const id = paths [2];
+          const id = paths[2];
           return {
             label: getTextContentFromPath(dom, 'label') || '',
             img: `/api/v1/articles/${id}/assets/${get(
