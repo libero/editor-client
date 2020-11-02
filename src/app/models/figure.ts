@@ -1,6 +1,8 @@
+import { get } from 'lodash';
+
 import { getTextContentFromPath } from 'app/models/utils';
 
-export interface FigureLicense {
+export interface Figure {
   copyrightHolder: string;
   copyrightStatement: string;
   copyrightYear: string;
@@ -22,7 +24,7 @@ const LICENSE_URLS_MAP = {
   'http://creativecommons.org/publicdomain/zero/1.0/': FIGURE_LICENSE_CC0
 };
 
-export function createFigureLicenseAttributes(el: Element): FigureLicense {
+export function createFigureLicenseAttributes(el: Element): Figure {
   return {
     copyrightHolder: getTextContentFromPath(el, 'copyright-holder'),
     copyrightStatement: getTextContentFromPath(el, 'copyright-statement'),
@@ -31,13 +33,25 @@ export function createFigureLicenseAttributes(el: Element): FigureLicense {
   };
 }
 
-export function createEmptyLicenseAttributes(): FigureLicense {
+export function createEmptyLicenseAttributes(): Figure {
   return {
     copyrightHolder: '',
     copyrightStatement: '',
     copyrightYear: '',
     licenseType: undefined
   };
+}
+
+export function getFigureImageUrl(el: Element) {
+  const paths = get(el.ownerDocument, 'manuscriptPath').split('/');
+  const id = paths[2];
+
+  return process.env.REACT_APP_NO_SERVER
+    ? get(el.ownerDocument, 'manuscriptPath') + '/' + get(el.querySelector('graphic'), 'attributes.xlink:href.value')
+    : `/api/v1/articles/${id}/assets/${get(el.querySelector('graphic'), 'attributes.xlink:href.value').replace(
+        'tif',
+        'jpg'
+      )}`;
 }
 
 function getLicenseType(el: Element): string {

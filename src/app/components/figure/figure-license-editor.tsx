@@ -4,7 +4,7 @@ import { withStyles, WithStyles } from '@material-ui/core/styles';
 import { Node as ProsemirrorNode } from 'prosemirror-model';
 import DeleteIcon from '@material-ui/icons/Delete';
 
-import { FIGURE_LICENSE_CC0, FIGURE_LICENSE_SELECT_OPTIONS, FigureLicense } from 'app/models/figure-license';
+import { FIGURE_LICENSE_CC0, FIGURE_LICENSE_SELECT_OPTIONS, Figure } from 'app/models/figure';
 import { RichTextEditor } from 'app/components/rich-text-editor';
 import { NodeEditor } from 'app/components/node-editor/node-editor';
 import { useFigureLicenseEditorStyles } from 'app/components/figure/styles';
@@ -20,7 +20,7 @@ interface FigureLicenseEditorProps extends WithStyles<typeof useFigureLicenseEdi
 
 class FigureContentEditorComponent extends NodeEditor<FigureLicenseEditorProps> {
   render() {
-    const license: FigureLicense = this.props.node.attrs.licenseInfo as FigureLicense;
+    const license: Figure = this.props.node.attrs.licenseInfo as Figure;
     const classes = this.props.classes;
     return (
       <section className={classes.editorContainer}>
@@ -93,7 +93,7 @@ class FigureContentEditorComponent extends NodeEditor<FigureLicenseEditorProps> 
     const newAttributes = {
       ...this.props.node.attrs.licenseInfo,
       [event.target['name']]: event.target['value']
-    } as FigureLicense;
+    } as Figure;
     const change = this.context.view.state.tr;
     change.setNodeMarkup(this.context.getPos() + this.props.offset - 1, null, { licenseInfo: newAttributes });
     this.context.view.dispatch(change);

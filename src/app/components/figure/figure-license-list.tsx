@@ -4,7 +4,7 @@ import { Node as ProsemirrorNode } from 'prosemirror-model';
 
 import { FigureLicenseEditor } from 'app/components/figure/figure-license-editor';
 import { NodeViewContext } from 'app/utils/view.utils';
-import { createEmptyLicenseAttributes } from 'app/models/figure-license';
+import { createEmptyLicenseAttributes } from 'app/models/figure';
 
 interface FigureLicenseListProps {
   licenses: Array<{

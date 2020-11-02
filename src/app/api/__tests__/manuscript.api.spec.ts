@@ -17,6 +17,6 @@ describe('manuscript API', () => {
     expect(result.keywordGroups).toEqual(expect.any(Object));
     expect(result.authors).toEqual(expect.any(Array));
 
-    expect(axios.get).toHaveBeenCalledWith('/api/v1/articles/SOME_ID/', { headers: { Accept: 'application/xml' } });
+    expect(axios.get).toHaveBeenCalledWith('/api/v1/articles/SOME_ID', { headers: { Accept: 'application/xml' } });
   });
 });
