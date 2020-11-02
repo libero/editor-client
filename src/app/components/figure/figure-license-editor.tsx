@@ -23,69 +23,69 @@ class FigureContentEditorComponent extends NodeEditor<FigureLicenseEditorProps> 
     const license: FigureLicense = this.props.node.attrs.licenseInfo as FigureLicense;
     const classes = this.props.classes;
     return (
-      <div>
-        <div className={classes.fieldsRow}>
-          <Select
-            className={classes.smallField}
-            name="licenseType"
-            placeholder="Please select"
-            canUnselect={false}
-            blankValue={undefined}
-            label="Licence type"
-            options={FIGURE_LICENSE_SELECT_OPTIONS}
-            value={license.licenseType}
-            onChange={this.handleFormChange}
-          />
+      <section className={classes.editorContainer}>
+        <div className={classes.editorForm}>
+          <div className={classes.fieldsRow}>
+            <Select
+              className={classes.smallField}
+              name="licenseType"
+              placeholder="Please select"
+              canUnselect={false}
+              blankValue={undefined}
+              label="Licence type"
+              options={FIGURE_LICENSE_SELECT_OPTIONS}
+              value={license.licenseType}
+              onChange={this.handleFormChange}
+            />
+            {license.licenseType !== FIGURE_LICENSE_CC0 ? (
+              <TextField
+                classes={{ root: classes.smallField }}
+                name="copyrightYear"
+                label="Year"
+                InputLabelProps={{ shrink: true }}
+                variant="outlined"
+                value={license.copyrightYear}
+                onChange={this.handleFormChange}
+              />
+            ) : undefined}
+          </div>
+          <div className={classes.inputField}>
+            <RichTextEditor
+              isActive={this.state.isEditorActive}
+              label={`License ${this.props.index + 1}`}
+              variant="outlined"
+              editorState={this.state.editorState}
+              onChange={this.handleInternalEditorStateChange}
+            />
+          </div>
           {license.licenseType !== FIGURE_LICENSE_CC0 ? (
-            <TextField
-              classes={{ root: classes.smallField }}
-              name="copyrightYear"
-              label="Year"
-              InputLabelProps={{ shrink: true }}
-              variant="outlined"
-              value={license.copyrightYear}
-              onChange={this.handleFormChange}
-            />
+            <>
+              <TextField
+                fullWidth
+                name="copyrightStatement"
+                label={`License ${this.props.index + 1} statement`}
+                classes={{ root: classes.inputField }}
+                InputLabelProps={{ shrink: true }}
+                variant="outlined"
+                value={license.copyrightStatement}
+                onChange={this.handleFormChange}
+              />
+              <TextField
+                fullWidth
+                name="copyrightHolder"
+                label={`License ${this.props.index + 1} holder`}
+                InputLabelProps={{ shrink: true }}
+                variant="outlined"
+                value={license.copyrightHolder}
+                onChange={this.handleFormChange}
+              />
+            </>
           ) : undefined}
-          <div className={classes.spacer}></div>
-          <IconButton classes={{ root: classes.deleteButton }} onClick={this.handleDelete}>
-            <DeleteIcon fontSize="small" />
-          </IconButton>
         </div>
-        <div className={classes.inputField}>
-          <RichTextEditor
-            isActive={this.state.isEditorActive}
-            label={`License ${this.props.index + 1}`}
-            variant="outlined"
-            editorState={this.state.editorState}
-            onChange={this.handleInternalEditorStateChange}
-          />
-        </div>
-        {license.licenseType !== FIGURE_LICENSE_CC0 ? (
-          <>
-            <TextField
-              fullWidth
-              name="copyrightStatement"
-              label={`License ${this.props.index + 1} statement`}
-              classes={{ root: classes.inputField }}
-              InputLabelProps={{ shrink: true }}
-              variant="outlined"
-              value={license.copyrightStatement}
-              onChange={this.handleFormChange}
-            />
-            <TextField
-              fullWidth
-              name="copyrightHolder"
-              label={`License ${this.props.index + 1} holder`}
-              classes={{ root: classes.inputField }}
-              InputLabelProps={{ shrink: true }}
-              variant="outlined"
-              value={license.copyrightHolder}
-              onChange={this.handleFormChange}
-            />
-          </>
-        ) : undefined}
-      </div>
+        <IconButton classes={{ root: classes.deleteButton }} onClick={this.handleDelete}>
+          <DeleteIcon fontSize="small" />
+        </IconButton>
+      </section>
     );
   }
 

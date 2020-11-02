@@ -53,6 +53,17 @@ export const useFigureEditorStyles = makeStyles((theme) => ({
 }));
 
 export const useFigureLicenseEditorStyles = (theme): Record<string, CSSProperties> => ({
+  editorContainer: {
+    display: 'flex'
+  },
+  editorForm: {
+    borderRadius: theme.shape.borderRadius,
+    borderColor: 'rgba(0, 0, 0, 0.23)',
+    borderStyle: 'solid',
+    borderWidth: '1px',
+    marginRight: theme.spacing(1),
+    padding: theme.spacing(1.5)
+  },
   smallField: {
     width: 150,
     marginRight: theme.spacing(2)
@@ -60,13 +71,16 @@ export const useFigureLicenseEditorStyles = (theme): Record<string, CSSPropertie
   deleteButton: {
     flexGrow: 0,
     padding: 6,
-    alignSelf: 'center'
+    alignSelf: 'flex-start'
   },
   spacer: {
     flexGrow: 1
   },
   inputField: {
-    marginBottom: theme.spacing(2.5)
+    marginBottom: theme.spacing(2.5),
+    '&:last-child': {
+      marginBottom: 0
+    }
   },
   fieldsRow: {
     display: 'flex',
