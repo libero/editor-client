@@ -22,8 +22,8 @@ export const FigureLicensesList: React.FC<FigureLicenseListProps> = (props) => {
   const classes = useFigureEditorStyles();
 
   const handleAddNewLicense = useCallback(() => {
-    const newNodePosition = nodeViewContext.getPos() + nodeViewContext.node.nodeSize - 1;
-    const newNode = nodeViewContext.view.state.schema.nodes.figureLicense.createAndFill({
+    const newNodePosition = nodeViewContext.getPos() + nodeViewContext.getNode().nodeSize - 1;
+    const newNode = nodeViewContext.view.state.schema.nodes.figureLicense.create({
       licenseInfo: createEmptyLicenseAttributes()
     });
     const change = nodeViewContext.view.state.tr.insert(newNodePosition, newNode);

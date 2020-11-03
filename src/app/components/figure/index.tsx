@@ -28,7 +28,7 @@ export class FigureNodeView implements NodeView {
           value={{
             view: this.view,
             getPos: this.getPos,
-            node: this.node
+            getNode: () => this.node
           }}
         >
           <FigureEditor

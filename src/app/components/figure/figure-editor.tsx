@@ -51,6 +51,7 @@ export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => 
   const titleNodeData = findChildrenByType(figureNode, figureNode.type.schema.nodes.figureTitle)[0];
   const legendNodeData = findChildrenByType(figureNode, figureNode.type.schema.nodes.figureLegend)[0];
   const licenseNodesData = findChildrenByType(figureNode, figureNode.type.schema.nodes.figureLicense);
+  console.log(licenseNodesData);
 
   const handleLabelChange = useCallback(
     (event) => {

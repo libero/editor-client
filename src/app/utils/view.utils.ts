@@ -56,7 +56,7 @@ export function uploadImage(onSelectCallback: (img: string) => void): void {
 
 interface NodeViewContext {
   view: EditorView;
-  node: ProsemirrorNode;
+  getNode: () => ProsemirrorNode;
   getPos: () => number;
 }
 
