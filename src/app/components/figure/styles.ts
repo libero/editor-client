@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
+import { CSSProperties } from '@material-ui/core/styles/withStyles';
 
 export const useFigureEditorStyles = makeStyles((theme) => ({
   figureContainer: {
@@ -49,5 +50,50 @@ export const useFigureEditorStyles = makeStyles((theme) => ({
     minHeight: 58,
     borderRadius: theme.shape.borderRadius,
     border: 'solid 1px #C4C4C4'
+  },
+
+  addLicenseCta: {
+    fontSize: '0.875rem',
+    textTransform: 'none',
+    marginLeft: theme.spacing(1),
+    marginTop: theme.spacing(1)
   }
 }));
+
+export const useFigureLicenseEditorStyles = (theme): Record<string, CSSProperties> => ({
+  editorContainer: {
+    display: 'flex',
+    paddingTop: theme.spacing(2.5)
+  },
+  editorForm: {
+    flexGrow: 1,
+    borderRadius: theme.shape.borderRadius,
+    borderColor: 'rgba(0, 0, 0, 0.23)',
+    borderStyle: 'solid',
+    borderWidth: '1px',
+    margin: theme.spacing(0, 1, 0, 0),
+    padding: theme.spacing(1.5)
+  },
+  smallField: {
+    width: 150,
+    marginRight: theme.spacing(2)
+  },
+  deleteButton: {
+    flexGrow: 0,
+    padding: 6,
+    alignSelf: 'flex-start'
+  },
+  spacer: {
+    flexGrow: 1
+  },
+  inputField: {
+    marginBottom: theme.spacing(2.5),
+    '&:last-child': {
+      marginBottom: 0
+    }
+  },
+  fieldsRow: {
+    display: 'flex',
+    marginBottom: theme.spacing(2.5)
+  }
+});

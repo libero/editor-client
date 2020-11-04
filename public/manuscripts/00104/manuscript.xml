@@ -214,7 +214,7 @@
         <copyright-statement xml:lang="en">© 2010 Verso</copyright-statement>
         <copyright-year>2015</copyright-year>
         <copyright-holder xml:lang="en">Verso</copyright-holder>
-        <license xml:lang="en">
+        <license xml:lang="en" xlink:href="http://creativecommons.org/licenses/by/4.0/">
           <license-p>Panel A reprinted from <xref ref-type="bibr" rid="bib2">Feyerabend (2010)</xref> with permission.</license-p>
         </license>
       </permissions>
@@ -222,7 +222,8 @@
         <copyright-statement>&#x00A9; 2007, Seans Potato Business, Wikimedia Commons, Creative Commons Attribution-Share Alike 3.0 Unported</copyright-statement>
         <copyright-year>2007</copyright-year>
         <copyright-holder>Seans Potato Business, Wikimedia Commons</copyright-holder>
-        <license>
+        <license xlink:href="http://creativecommons.org/licenses/by/4.0/">
+          <ali:license_ref start_date="2014-02-03">http://creativecommons.org/licenses/by/4.0/</ali:license_ref>
           <license-p>Mouse used in Figure 1 parts B-C is reproduced with permission from Seans Potato Business.</license-p>
         </license>
       </permissions>

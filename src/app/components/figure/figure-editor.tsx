@@ -1,21 +1,15 @@
-import React, { useCallback, useRef, useImperativeHandle, useState } from 'react';
-import { EditorState, Transaction, Selection } from 'prosemirror-state';
+import React, { useCallback, useImperativeHandle, useState } from 'react';
+import { Selection } from 'prosemirror-state';
 import { Node as ProsemirrorNode, NodeSpec } from 'prosemirror-model';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { IconButton, TextField } from '@material-ui/core';
-import { gapCursor } from 'prosemirror-gapcursor';
-import { dropCursor } from 'prosemirror-dropcursor';
-import { keymap } from 'prosemirror-keymap';
-import { baseKeymap } from 'prosemirror-commands';
-import { get } from 'lodash';
 import AddPhotoAlternateIcon from '@material-ui/icons/AddPhotoAlternate';
 
-import { RichTextEditor } from 'app/components/rich-text-editor';
 import { useFigureEditorStyles } from 'app/components/figure/styles';
-import { buildInputRules } from 'app/models/plugins/input-rules';
-import { SelectPlugin } from 'app/models/plugins/selection.plugin';
-import { PlaceholderPlugin } from 'app/models/plugins/placeholder.plugin';
 import { uploadImage } from 'app/utils/view.utils';
+import { FigureContentEditor } from 'app/components/figure/figure-content-editor';
+import { EditorView } from 'prosemirror-view';
+import { FigureLicensesList } from './figure-license-list';
 
 /* Prosemirror relies heavily on the positioning of nodes in its internal state presentation.
   Given figure structure
@@ -42,131 +36,41 @@ export interface FigureEditorHandle {
 }
 
 interface FigureEditorProps {
-  figureNode: ProsemirrorNode;
+  node: ProsemirrorNode;
+  getParentNodePos: () => number;
+  parentView: EditorView;
   onDelete(): void;
-  onNodeChange(change: Transaction, offset: number): void;
-  onLabelChange(label: string): void;
-  onImageChange(img: string): void;
-  onSelectionChange(from: number, anchor: number): void;
+  onAttributesChange(img: string, label: string): void;
 }
 
 export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => {
-  const { figureNode, onNodeChange, onSelectionChange, onDelete, onLabelChange, onImageChange } = props;
-  const [isTitleEditorActive, setTitleEditorActive] = useState<boolean>(false);
-  const [isLegendEditorActive, setLegendEditorActive] = useState<boolean>(false);
-  const [label, setLabel] = useState<string>(figureNode.attrs.label);
-  const [image, setImage] = useState<string>(figureNode.attrs.img);
-  const [internalTitleState, setInternalTitleState] = useState<EditorState>(createFigureTitleState(figureNode));
-  const [internalLegendState, setInternalLegendState] = useState<EditorState>(createFigureLegendState(figureNode));
-  const [titleOffset, setTitleOffset] = useState<number>(
-    findChildrenByType(figureNode, figureNode.type.schema.nodes.figureTitle)[0].offset +
-      FIGURE_TITLE_CONTENT_OFFSET_CORRECTION
-  );
-  const [legendOffset, setLegendOffset] = useState<number>(
-    findChildrenByType(figureNode, figureNode.type.schema.nodes.figureLegend)[0].offset +
-      FIGURE_LEGEND_CONTENT_OFFSET_CORRECTION
-  );
+  const { onDelete, onAttributesChange } = props;
+  const [figureNode, setFigureNode] = useState<ProsemirrorNode>(props.node);
+
   const classes = useFigureEditorStyles();
-  const titleEditorRef = useRef(null);
-  const legendEditorRef = useRef(null);
-
-  useImperativeHandle(ref, () => ({
-    updateContent: (updatedFigureNode: ProsemirrorNode) => {
-      setLabel(updatedFigureNode.attrs.label);
-      const updatedTitleNode = findChildrenByType(
-        updatedFigureNode,
-        updatedFigureNode.type.schema.nodes.figureTitle
-      )[0];
-
-      const updatedLegendNode = findChildrenByType(
-        updatedFigureNode,
-        updatedFigureNode.type.schema.nodes.figureLegend
-      )[0];
-
-      const titleChange = getUpdatesForNode(updatedTitleNode.node, titleEditorRef.current.editorView.state);
-      if (titleChange) {
-        titleEditorRef.current.editorView.dispatch(titleChange);
-      }
-
-      const legendChange = getUpdatesForNode(updatedLegendNode.node, legendEditorRef.current.editorView.state);
-      if (legendChange) {
-        legendEditorRef.current.editorView.dispatch(legendChange);
-      }
-
-      setTitleOffset(updatedTitleNode.offset + FIGURE_TITLE_CONTENT_OFFSET_CORRECTION);
-      setLegendOffset(updatedLegendNode.offset + FIGURE_LEGEND_CONTENT_OFFSET_CORRECTION);
-      setImage(updatedFigureNode.attrs.img);
-    },
-    focusFromSelection: (selection: Selection, figurePos: number) => {
-      const cursorPos = selection.$from.pos;
-      if (
-        figurePos + titleOffset <= cursorPos &&
-        cursorPos <= figurePos + titleOffset + internalTitleState.doc.nodeSize
-      ) {
-        titleEditorRef.current.focus();
-      } else if (
-        figurePos + legendOffset <= cursorPos &&
-        cursorPos <= figurePos + legendOffset + internalLegendState.doc.nodeSize
-      ) {
-        legendEditorRef.current.focus();
-      }
-    },
-    hasFocus: () => titleEditorRef.current.editorView.hasFocus() || legendEditorRef.current.editorView.hasFocus()
-  }));
+  const titleNodeData = findChildrenByType(figureNode, figureNode.type.schema.nodes.figureTitle)[0];
+  const legendNodeData = findChildrenByType(figureNode, figureNode.type.schema.nodes.figureLegend)[0];
+  const licenseNodesData = findChildrenByType(figureNode, figureNode.type.schema.nodes.figureLicense);
+  console.log(licenseNodesData);
 
   const handleLabelChange = useCallback(
     (event) => {
-      onLabelChange(event.target.value);
-      setLabel(event.target.value);
+      onAttributesChange(event.target['value'], figureNode.attrs.img);
     },
-    [onLabelChange]
+    [figureNode, onAttributesChange]
   );
-
-  const handleTitleChange = useCallback(
-    (change: Transaction) => {
-      setInternalTitleState(titleEditorRef.current.editorView.state);
-      if (change.docChanged && !change.getMeta('parentChange')) {
-        onNodeChange(change, titleOffset);
-      } else {
-        onSelectionChange(change.selection.$from.pos + titleOffset, change.selection.$to.pos + titleOffset);
-      }
-    },
-    [onNodeChange, onSelectionChange, titleOffset]
-  );
-
-  const handleLegendChange = useCallback(
-    (change: Transaction) => {
-      setInternalLegendState(legendEditorRef.current.editorView.state);
-      if (change.docChanged && !change.getMeta('parentChange')) {
-        onNodeChange(change, legendOffset);
-      } else {
-        onSelectionChange(change.selection.$from.pos + legendOffset, change.selection.$to.pos + legendOffset);
-      }
-    },
-    [legendOffset, onNodeChange, onSelectionChange]
-  );
-
-  const handleTitleFocus = useCallback(() => {
-    setTitleEditorActive(true);
-  }, [setTitleEditorActive]);
-
-  const handleTitleBlur = useCallback(() => {
-    setTitleEditorActive(false);
-  }, [setTitleEditorActive]);
-
-  const handleLegendFocus = useCallback(() => {
-    setLegendEditorActive(true);
-  }, []);
-
-  const handleLegendBlur = useCallback(() => {
-    setLegendEditorActive(false);
-  }, []);
 
   const handleUploadImageClick = useCallback(() => {
     uploadImage((imgSource: string) => {
-      onImageChange(imgSource);
+      onAttributesChange(figureNode.attrs.label, imgSource);
     });
-  }, [onImageChange]);
+  }, [onAttributesChange, figureNode]);
+
+  useImperativeHandle(ref, () => ({
+    updateContent: (updatedFigureNode: ProsemirrorNode) => {
+      setFigureNode(updatedFigureNode);
+    }
+  }));
 
   return (
     <div className={classes.figureContainer}>
@@ -179,37 +83,30 @@ export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => 
           InputLabelProps={{ shrink: true }}
           variant="outlined"
           multiline
-          value={label}
+          value={figureNode.attrs.label}
           onChange={handleLabelChange}
         />
         <div className={classes.imageContainer}>
-          <img className={classes.image} alt="figure" src={image} />
+          <img className={classes.image} alt="figure" src={figureNode.attrs.img} />
           <IconButton classes={{ root: classes.uploadImageCta }} onClick={handleUploadImageClick}>
             <AddPhotoAlternateIcon fontSize="small" />
           </IconButton>
         </div>
         <div className={classes.inputField}>
-          <RichTextEditor
-            ref={titleEditorRef}
-            isActive={isTitleEditorActive}
-            variant="outlined"
+          <FigureContentEditor
             label="Title"
-            editorState={internalTitleState}
-            onChange={handleTitleChange}
-            onFocus={handleTitleFocus}
-            onBlur={handleTitleBlur}
-          ></RichTextEditor>
+            node={titleNodeData.node}
+            offset={titleNodeData.offset + FIGURE_TITLE_CONTENT_OFFSET_CORRECTION}
+          />
         </div>
-        <RichTextEditor
-          ref={legendEditorRef}
-          isActive={isLegendEditorActive}
-          variant="outlined"
-          label="Legend"
-          editorState={internalLegendState}
-          onChange={handleLegendChange}
-          onFocus={handleLegendFocus}
-          onBlur={handleLegendBlur}
-        ></RichTextEditor>
+        <div>
+          <FigureContentEditor
+            label="Legend"
+            node={legendNodeData.node}
+            offset={legendNodeData.offset + FIGURE_LEGEND_CONTENT_OFFSET_CORRECTION}
+          />
+        </div>
+        <FigureLicensesList licenses={licenseNodesData} />
       </div>
       <IconButton classes={{ root: classes.deleteButton }} onClick={onDelete}>
         <DeleteIcon fontSize="small" />
@@ -217,37 +114,6 @@ export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => 
     </div>
   );
 });
-
-function createFigureTitleState(node: ProsemirrorNode): EditorState {
-  const titleNode = findChildrenByType(node, node.type.schema.nodes.figureTitle)[0];
-  return EditorState.create({
-    doc: titleNode.node,
-    plugins: [buildInputRules(), gapCursor(), dropCursor(), keymap(baseKeymap), SelectPlugin, PlaceholderPlugin('')]
-  });
-}
-
-function createFigureLegendState(node: ProsemirrorNode): EditorState {
-  const legendNode = findChildrenByType(node, node.type.schema.nodes.figureLegend)[0];
-  return EditorState.create({
-    doc: legendNode.node,
-    plugins: [buildInputRules(), gapCursor(), dropCursor(), keymap(baseKeymap), SelectPlugin, PlaceholderPlugin('')]
-  });
-}
-
-function getUpdatesForNode(updatedNode: ProsemirrorNode, state: EditorState): Transaction | null {
-  const start = updatedNode.content.findDiffStart(state.doc.content);
-  if (start !== null) {
-    let { a: endA, b: endB } = updatedNode.content.findDiffEnd(get(state, 'doc.content'));
-    const overlap = start - Math.min(endA, endB);
-    if (overlap > 0) {
-      endA += overlap;
-      endB += overlap;
-    }
-    return state.tr.replace(start, endB, updatedNode.slice(start, endA)).setMeta('parentChange', true);
-  }
-
-  return null;
-}
 
 function findChildrenByType(
   node: ProsemirrorNode,
@@ -258,7 +124,7 @@ function findChildrenByType(
     if (nodeType === childNode.type) {
       foundChildren.push({ node: childNode, offset: pos });
     }
-    return !childNode.type.inlineContent;
+    return false;
   });
   return foundChildren;
 }

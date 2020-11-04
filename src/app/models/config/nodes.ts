@@ -1,8 +1,7 @@
 import { DOMOutputSpec } from 'prosemirror-model';
 import { v4 as uuidv4 } from 'uuid';
 import { getTextContentFromPath } from 'app/models/utils';
-import { get } from 'lodash';
-import { createFigureLicenseState } from 'app/models/figure-license';
+import { createEmptyLicenseAttributes, createFigureLicenseAttributes, getFigureImageUrl } from 'app/models/figure';
 
 function getTitleLevel(title: Element): number {
   let parent = title.parentNode;
@@ -173,32 +172,20 @@ export const nodes = {
   },
 
   figure: {
-    content: 'figureTitle figureLegend+',
+    content: 'figureTitle figureLegend+ figureLicense*',
     group: 'block',
     atom: true,
     attrs: {
       label: { default: '' },
-      img: { default: '' },
-      licenses: { default: [] }
+      img: { default: '' }
     },
     parseDOM: [
       {
         tag: 'fig',
         getAttrs(dom) {
-          const paths = get(dom.ownerDocument, 'manuscriptPath').split('/');
-          const id = paths[2];
-          const url = process.env.REACT_APP_NO_SERVER
-            ? get(dom.ownerDocument, 'manuscriptPath') +
-              '/' +
-              get(dom.querySelector('graphic'), 'attributes.xlink:href.value')
-            : `/api/v1/articles/${id}/assets/${get(dom.querySelector('graphic'), 'attributes.xlink:href.value').replace(
-                'tif',
-                'jpg'
-              )}`;
           return {
             label: getTextContentFromPath(dom, 'label') || '',
-            img: url,
-            licenses: Array.from(dom.querySelectorAll('permissions')).map(createFigureLicenseState)
+            img: getFigureImageUrl(dom)
           };
         }
       }
@@ -210,7 +197,13 @@ export const nodes = {
 
   figureTitle: {
     content: 'inline*',
-    parseDOM: [{ tag: 'caption > title' }, { tag: 'label', ignore: true }, { tag: 'permissions', ignore: true }],
+    parseDOM: [
+      { tag: 'caption > title' },
+      { tag: 'label', ignore: true },
+      { tag: 'permissions > copyright-statement', ignore: true },
+      { tag: 'permissions > copyright-year', ignore: true },
+      { tag: 'permissions > copyright-holder', ignore: true }
+    ],
     context: 'figure',
     toDOM() {
       return ['p', 0];
@@ -221,11 +214,31 @@ export const nodes = {
     content: 'inline*',
     parseDOM: [
       { tag: 'caption > p', priority: 100 },
-      { tag: 'label', ignore: true },
-      { tag: 'permissions', ignore: true }
+      { tag: 'label', ignore: true }
     ],
     context: 'figure',
     toDOM() {
+      return ['p', 0];
+    }
+  },
+
+  figureLicense: {
+    content: 'inline*',
+    group: 'block',
+    context: 'figure',
+    attrs: {
+      licenseInfo: { default: createEmptyLicenseAttributes() }
+    },
+    parseDOM: [
+      {
+        tag: 'license > license-p',
+        priority: 100,
+        getAttrs(dom) {
+          return { licenseInfo: createFigureLicenseAttributes(dom.parentNode.parentNode) };
+        }
+      }
+    ],
+    toDOM(node) {
       return ['p', 0];
     }
   },
