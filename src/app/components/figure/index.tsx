@@ -46,7 +46,7 @@ export class FigureNodeView implements NodeView {
   }
 
   handleAttributesChange = (label: string, img: string) => {
-    const change = this.view.state.tr.setNodeMarkup(this.getPos(), null, { label, img });
+    const change = this.view.state.tr.setNodeMarkup(this.getPos(), null, { id: this.node.attrs.id, label, img });
     this.view.dispatch(change);
   };
 
