@@ -276,7 +276,7 @@ export const nodes = {
     content: 'text*',
     group: 'inline',
     attrs: {
-      figIds: { default: [] }
+      figIds: { default: null }
     },
     inline: true,
     parseDOM: [
@@ -284,7 +284,7 @@ export const nodes = {
         tag: 'xref[ref-type="fig"]',
         getAttrs(dom) {
           return {
-            figIds: dom.getAttribute('rid').split(' ')
+            figIds: dom.getAttribute('rid').split(' ').filter(Boolean)
           };
         }
       },

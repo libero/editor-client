@@ -20,3 +20,14 @@ export async function insertFigure(editorState: EditorState, imageSource: string
   }
   return change;
 }
+
+export function insertFigureCitation(editorState: EditorState): Transaction {
+  const { empty, $from, $to } = editorState.selection;
+  const content =
+    !empty && $from.sameParent($to) && $from.parent.inlineContent
+      ? $from.parent.content.cut($from.parentOffset, $to.parentOffset)
+      : null;
+
+  const citationNode = editorState.schema.nodes.figureCitation.createAndFill(null, content);
+  return editorState.tr.replaceSelectionWith(citationNode);
+}

@@ -21,6 +21,10 @@ export class FigureCitationNodeView implements NodeView {
     this.dom.addEventListener('click', this.selectNode);
     this.contentDOM = document.createElement('span');
     this.dom.appendChild(this.contentDOM);
+
+    if (this.node.attrs.figIds === null) {
+      this.open();
+    }
   }
 
   selectNode = () => {
@@ -45,7 +49,7 @@ export class FigureCitationNodeView implements NodeView {
       <ThemeProvider theme={theme}>
         <FigureCitationEditorPopup
           figures={this.getAvailableFigures()}
-          selectedIds={this.node.attrs.figIds}
+          selectedIds={this.node.attrs.figIds || []}
           anchorEl={this.dom}
           onClose={this.close}
           onChange={this.handleChange}

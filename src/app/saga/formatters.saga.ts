@@ -7,7 +7,7 @@ import * as manuscriptActions from 'app/actions/manuscript.actions';
 import { Action } from 'app/utils/action.utils';
 import { getFocusedEditorState, getFocusedEditorStatePath } from 'app/selectors/manuscript-editor.selectors';
 import { insertBox } from 'app/utils/prosemirror/box.helpers';
-import { insertFigure } from 'app/utils/prosemirror/figure.helpers';
+import { insertFigure, insertFigureCitation } from 'app/utils/prosemirror/figure.helpers';
 import { wrapInListOrChangeListType } from 'app/utils/prosemirror/list.helpers';
 
 async function makeTransactionForMark(editorState: EditorState, mark: MarkType): Promise<Transaction> {
@@ -47,6 +47,15 @@ export function* insertBoxSaga() {
   if (editorState && editorState.schema.nodes['boxText']) {
     const path = yield select(getFocusedEditorStatePath);
     const change = yield insertBox(editorState);
+    yield put(manuscriptActions.applyChangeAction({ path, change }));
+  }
+}
+
+export function* insertFigureCitationSaga() {
+  const editorState: EditorState = yield select(getFocusedEditorState);
+  if (editorState && editorState.schema.nodes['figureCitation']) {
+    const path = yield select(getFocusedEditorStatePath);
+    const change = insertFigureCitation(editorState);
     yield put(manuscriptActions.applyChangeAction({ path, change }));
   }
 }
@@ -111,6 +120,7 @@ export default function* () {
     takeLatest(manuscriptActions.insertFigureAction.getType(), insertFigureSaga),
     takeLatest(manuscriptActions.insertListAction.getType(), insertListOrChangeTypeSaga),
     takeLatest(manuscriptActions.insertHeadingAction.getType(), insertHeadingSaga),
+    takeLatest(manuscriptActions.insertFigureCitationAction.getType(), insertFigureCitationSaga),
     takeLatest(manuscriptActions.insertParagraphAction.getType(), insertParagraphSaga)
   ]);
 }

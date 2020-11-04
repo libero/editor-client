@@ -65,6 +65,14 @@ export const canInsertNodeAtSelection = createSelector(
   }
 );
 
+export const canInsertFigureCitationAtSelection = createSelector(
+  getFocusedEditorState,
+  canInsertNodeAtSelection,
+  (editorState: EditorState, checkNodeAllowed) => () => {
+    return editorState && checkNodeAllowed('figureCitation') && !editorState.selection.empty;
+  }
+);
+
 export const canToggleHeadingAtSelection = createSelector(
   getFocusedEditorState,
   (editorState: EditorState) => (headingLevel: number) => {
