@@ -22,7 +22,7 @@ import {
   isMarkAppliedToSelection,
   canToggleParagraphAtSelection,
   isActiveContainer,
-  canToggleListAtSelection
+  canToggleListAtSelection, canInsertFigureCitationAtSelection
 } from 'app/selectors/manuscript-editor.selectors';
 
 import { useToolbarStyles } from './styles';
@@ -47,6 +47,7 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
   const canToggleHeading = useSelector(canToggleHeadingAtSelection);
   const canToggleParagraph = useSelector(canToggleParagraphAtSelection);
   const canToggleList = useSelector(canToggleListAtSelection);
+  const canInsertFigureCitation = useSelector(canInsertFigureCitationAtSelection);
   const checkActiveContainer = useSelector(isActiveContainer);
 
   const invokeUndo = useCallback(() => dispatch(manuscriptActions.undoAction()), [dispatch]);
@@ -58,6 +59,10 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
 
   const insertBox = useCallback(() => {
     dispatch(manuscriptActions.insertBoxAction());
+  }, [dispatch]);
+
+  const insertFigureCitation = useCallback(() => {
+    dispatch(manuscriptActions.insertFigureCitationAction());
   }, [dispatch]);
 
   const toggleOrderList = useCallback(() => {
@@ -202,7 +207,7 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
             { title: 'Inline Math', enabled: false, action: undefined },
             null,
             { title: 'Reference Citation', enabled: canInsert('refCitation'), action: insertReferenceCitation },
-            { title: 'Figure Citation', enabled: false, action: undefined },
+            { title: 'Figure Citation', enabled: canInsertFigureCitation(), action: insertFigureCitation },
             { title: 'Table citation', enabled: false, action: undefined },
             { title: 'Footnote citation', enabled: false, action: undefined },
             { title: 'Equation citation', enabled: false, action: undefined },

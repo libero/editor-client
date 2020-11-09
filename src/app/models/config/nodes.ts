@@ -176,6 +176,7 @@ export const nodes = {
     group: 'block',
     atom: true,
     attrs: {
+      id: { default: '' },
       label: { default: '' },
       img: { default: '' }
     },
@@ -184,6 +185,7 @@ export const nodes = {
         tag: 'fig',
         getAttrs(dom) {
           return {
+            id: dom.getAttribute('id'),
             label: getTextContentFromPath(dom, 'label') || '',
             img: getFigureImageUrl(dom)
           };
@@ -268,6 +270,53 @@ export const nodes = {
       return ['li', 0];
     },
     defining: true
+  },
+
+  figureCitation: {
+    content: 'text*',
+    group: 'inline',
+    attrs: {
+      figIds: { default: null }
+    },
+    inline: true,
+    parseDOM: [
+      {
+        tag: 'xref[ref-type="fig"]',
+        getAttrs(dom) {
+          return {
+            figIds: dom.getAttribute('rid').split(' ').filter(Boolean)
+          };
+        }
+      },
+      {
+        tag: 'a.citation[data-cit-type="figure"]',
+        getAttrs(dom) {
+          return {
+            figIds: dom.getAttribute('data-fig-ids').split(' ')
+          };
+        }
+      }
+    ],
+    toClipboardDOM(node): DOMOutputSpec {
+      const refCitationDom = document.createElement('a');
+      refCitationDom.setAttribute('href', '#');
+      refCitationDom.setAttribute('data-cit-type', 'figure');
+      refCitationDom.setAttribute('data-fig-ids', node.attrs.figIds.join(' '));
+      refCitationDom.classList.add('citation');
+      return refCitationDom;
+    },
+    toDOM(node): DOMOutputSpec {
+      return [
+        'a',
+        {
+          href: '#',
+          class: 'citation',
+          'data-cit-type': 'figure',
+          'data-fig-ids': node.attrs.figIds
+        },
+        0
+      ];
+    }
   },
 
   text: {

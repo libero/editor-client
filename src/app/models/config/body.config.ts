@@ -9,6 +9,7 @@ export const nodes = [
   'figureLicense',
   'figure',
   'figureTitle',
+  'figureCitation',
   'figureLegend',
   'listItem',
   'orderedList',

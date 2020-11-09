@@ -13,6 +13,7 @@ import { BoxTextNodeView } from 'app/components/box-text';
 import { hasParentNodeOf } from 'app/utils/view.utils';
 import { LinkNodeView } from 'app/components/link-editor-popup';
 import { FigureNodeView } from 'app/components/figure';
+import { FigureCitationNodeView } from 'app/components/figure-citation';
 
 export interface RichTextEditorProps {
   editorState: EditorState;
@@ -59,6 +60,9 @@ export class RichTextEditor extends React.Component<ComponentWithId<RichTextEdit
         },
         figure: (node, view, getPos) => {
           return new FigureNodeView(node, view, getPos, () => this.props.isActive);
+        },
+        figureCitation: (node, view, getPos) => {
+          return new FigureCitationNodeView(node, view, getPos);
         }
       },
       handleDOMEvents: {

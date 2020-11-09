@@ -80,5 +80,6 @@ export const insertReferenceCitationAction = createAction<void>('INSERT_REFERENC
 export const insertBoxAction = createAction<void>('INSERT_BOX');
 export const insertListAction = createAction<ListType>('INSERT_LIST');
 export const insertFigureAction = createAction<string>('INSERT_FIGURE');
+export const insertFigureCitationAction = createAction<void>('INSERT_FIGURE_CITATION');
 export const insertHeadingAction = createAction<number>('INSERT_HEADING');
 export const insertParagraphAction = createAction<void>('INSERT_PARAGRAPH');
