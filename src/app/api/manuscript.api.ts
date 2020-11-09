@@ -16,7 +16,10 @@ import { createRelatedArticleState } from 'app/models/related-article';
 import { createArticleInfoState } from 'app/models/article-information';
 
 const manuscriptUrl = (id: string): string => {
-  return process.env.REACT_APP_NO_SERVER ? `./manuscripts/${id}/manuscript.xml` : `/api/v1/articles/${id}`;
+  // TODO
+  // Enable the below once the the article-store is working again!
+  // return process.env.REACT_APP_NO_SERVER ? `./manuscripts/${id}/manuscript.xml` : `/api/v1/articles/${id}`;
+  return `./manuscripts/${id}/manuscript.xml`;
 };
 
 export async function getManuscriptContent(id: string): Promise<Manuscript> {
