@@ -17,11 +17,6 @@ describe('manuscript API', () => {
     expect(result.keywordGroups).toEqual(expect.any(Object));
     expect(result.authors).toEqual(expect.any(Array));
 
-    // TODO
-    // Enable the below once the the article-store is working again!
-    //expect(axios.get).toHaveBeenCalledWith('/api/v1/articles/SOME_ID', { headers: { Accept: 'application/xml' } });
-    expect(axios.get).toHaveBeenCalledWith('./manuscripts/SOME_ID/manuscript.xml', {
-      headers: { Accept: 'application/xml' }
-    });
+    expect(axios.get).toHaveBeenCalledWith('/api/v1/articles/SOME_ID', { headers: { Accept: 'application/xml' } });
   });
 });
