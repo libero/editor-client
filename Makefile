@@ -12,10 +12,10 @@ test:
 	@npm run test
 
 clean:
-	@npm run clean
+	-@rm -rf $(CURDIR)/build $(CURDIR)/coverage
 
-distclean:
-	@npm run distclean
+distclean: clean
+	-@rm -rf $(CURDIR)/node_modules
 
 build: node_modules
 	@npm run build
@@ -28,4 +28,4 @@ dist: build
 
 # Project specific targets
 node_modules:
-	@npm run install
+	npm install
