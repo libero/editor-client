@@ -44,7 +44,7 @@ jobs:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       - name: Publish as 'stable'
-        if: github.repository_owner == 'libero' &&  contains(github.ref, 'refs/tags/v')
+        if: github.repository_owner == 'libero' && contains(github.ref, 'refs/tags/v')
         run: |
           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
           docker build --no-cache -t $DOCKER_USERNAME/$REPO_NAME:stable .
