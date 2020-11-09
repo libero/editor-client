@@ -49,6 +49,18 @@ class FigureContentEditorComponent extends NodeEditor<FigureLicenseEditorProps> 
               />
             ) : undefined}
           </div>
+          {license.licenseType !== FIGURE_LICENSE_CC0 ? (
+            <TextField
+              fullWidth
+              name="copyrightStatement"
+              label={`License ${this.props.index + 1} statement`}
+              classes={{ root: classes.inputField }}
+              InputLabelProps={{ shrink: true }}
+              variant="outlined"
+              value={license.copyrightStatement}
+              onChange={this.handleFormChange}
+            />
+          ) : undefined}
           <div className={classes.inputField}>
             <RichTextEditor
               isActive={this.state.isEditorActive}
@@ -59,27 +71,15 @@ class FigureContentEditorComponent extends NodeEditor<FigureLicenseEditorProps> 
             />
           </div>
           {license.licenseType !== FIGURE_LICENSE_CC0 ? (
-            <>
-              <TextField
-                fullWidth
-                name="copyrightStatement"
-                label={`License ${this.props.index + 1} statement`}
-                classes={{ root: classes.inputField }}
-                InputLabelProps={{ shrink: true }}
-                variant="outlined"
-                value={license.copyrightStatement}
-                onChange={this.handleFormChange}
-              />
-              <TextField
-                fullWidth
-                name="copyrightHolder"
-                label={`License ${this.props.index + 1} holder`}
-                InputLabelProps={{ shrink: true }}
-                variant="outlined"
-                value={license.copyrightHolder}
-                onChange={this.handleFormChange}
-              />
-            </>
+            <TextField
+              fullWidth
+              name="copyrightHolder"
+              label={`License ${this.props.index + 1} holder`}
+              InputLabelProps={{ shrink: true }}
+              variant="outlined"
+              value={license.copyrightHolder}
+              onChange={this.handleFormChange}
+            />
           ) : undefined}
         </div>
         <IconButton classes={{ root: classes.deleteButton }} onClick={this.handleDelete}>

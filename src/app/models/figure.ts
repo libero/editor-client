@@ -14,8 +14,8 @@ export const FIGURE_LICENSE_CC_BY_4 = 'LICENSE_CC_BY_4';
 export const FIGURE_LICENSE_OTHER = 'LICENSE_OTHER';
 
 export const FIGURE_LICENSE_SELECT_OPTIONS = [
-  { label: 'CCO', value: FIGURE_LICENSE_CC0 },
-  { label: 'CC_BY_4', value: FIGURE_LICENSE_CC_BY_4 },
+  { label: 'CC0', value: FIGURE_LICENSE_CC0 },
+  { label: 'CC by 4.0', value: FIGURE_LICENSE_CC_BY_4 },
   { label: 'Other', value: FIGURE_LICENSE_CC_BY_4 }
 ];
 
