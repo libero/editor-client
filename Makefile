@@ -1,12 +1,31 @@
-.PHONY: start_api
+#!/use/bin/make -f
+.PHONY: lint test clean distclean build start container all
 
-start_api:
-	$(MAKE) -C ../editor-article-store start
-	cd ../editor-article-store
-	docker exec localstack awslocal s3 cp /resources/articles/elife-54296-vor-r1.zip s3://kryia/
+.DEFAULT_GOAL := start
 
-start_nginx:
-	docker-compose up -d nginx
+TAG ?= latest
 
-start_all: start_api start_nginx
-	npm run start
+lint:
+	@npm run lint
+
+test:
+	@npm run test
+
+clean:
+	@npm run clean
+
+distclean:
+	@npm run distclean
+
+build: node_modules
+	@npm run build
+
+start: node_modules
+	@npm run start
+
+dist: build
+	@docker build -t liberoadmin/editor-client:$(TAG) .
+
+# Project specific targets
+node_modules:
+	@npm run install
