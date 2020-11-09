@@ -55,6 +55,7 @@ export const FigureCitationEditorPopup: React.FC<FigureCitationEditorPopupProps>
     setFilterValue('');
     setFilteredList(figures);
   }, [setFilterValue, setFilteredList, figures]);
+
   return (
     <Popper open={true} anchorEl={anchorEl}>
       <Paper>
