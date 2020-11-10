@@ -63,11 +63,14 @@ class FigureContentEditorComponent extends NodeEditor<FigureLicenseEditorProps> 
           ) : undefined}
           <div className={classes.inputField}>
             <RichTextEditor
+              ref={this.editorRef}
               isActive={this.state.isEditorActive}
               label={`License ${this.props.index + 1}`}
               variant="outlined"
               editorState={this.state.editorState}
               onChange={this.handleInternalEditorStateChange}
+              onFocus={this.handleEditorFocus}
+              onBlur={this.handleEditorBlur}
             />
           </div>
           {license.licenseType !== FIGURE_LICENSE_CC0 ? (
