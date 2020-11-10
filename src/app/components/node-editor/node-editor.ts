@@ -63,7 +63,6 @@ export abstract class NodeEditor<T> extends React.Component<NodeEditorProps & T,
     this.setState({ isEditorActive: false });
   };
 
-  // this function should handle
   protected handleInternalEditorStateChange = (change: Transaction): void => {
     this.setState({ editorState: this.getInternalState() });
     if (!change.getMeta('parentChange')) {
