@@ -19,6 +19,7 @@ import { makeSchemaFromConfig } from 'app/models/utils';
 import { SelectPlugin } from './plugins/selection.plugin';
 import { PlaceholderPlugin } from 'app/models/plugins/placeholder.plugin';
 import { createListKeymap } from 'app/utils/prosemirror/list.helpers';
+import { collab } from 'prosemirror-collab';
 
 export function createTitleState(content: Element): EditorState {
   const schema = makeSchemaFromConfig(titleConfig.topNode, titleConfig.nodes, titleConfig.marks);
@@ -32,7 +33,7 @@ export function createTitleState(content: Element): EditorState {
   return EditorState.create({
     doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),
     schema,
-    plugins: [buildInputRules(), gapCursor(), dropCursor(), SelectPlugin, PlaceholderPlugin('Enter title')]
+    plugins: [buildInputRules(), gapCursor(), dropCursor(), SelectPlugin, PlaceholderPlugin('Enter title'), collab()]
   });
 }
 
@@ -47,7 +48,7 @@ export function createAbstractState(content: Element): EditorState {
   return EditorState.create({
     doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),
     schema,
-    plugins: [buildInputRules(), gapCursor(), dropCursor(), SelectPlugin, PlaceholderPlugin('Enter abstract')]
+    plugins: [buildInputRules(), gapCursor(), dropCursor(), SelectPlugin, PlaceholderPlugin('Enter abstract'), collab()]
   });
 }
 
@@ -71,7 +72,8 @@ export function createBodyState(content: Element, id: string): EditorState {
       keymap(createListKeymap(schema)),
       keymap(baseKeymap),
       SelectPlugin,
-      PlaceholderPlugin('Enter main text')
+      PlaceholderPlugin('Enter main text'),
+      collab()
     ]
   });
 }
@@ -113,7 +115,7 @@ export function createAcknowledgementsState(content?: Element): EditorState {
   return EditorState.create({
     doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),
     schema,
-    plugins: [buildInputRules(), gapCursor(), dropCursor(), SelectPlugin, PlaceholderPlugin('Enter acknowledgements')]
+    plugins: [buildInputRules(), gapCursor(), dropCursor(), SelectPlugin, PlaceholderPlugin('Enter acknowledgements'), collab()]
   });
 }
 
@@ -150,6 +152,6 @@ function createKeywordState(keyword?: Element): EditorState {
   return EditorState.create({
     doc: keyword ? ProseMirrorDOMParser.fromSchema(schema).parse(keyword) : undefined,
     schema,
-    plugins: [buildInputRules(), gapCursor(), dropCursor(), keymap(baseKeymap)]
+    plugins: [buildInputRules(), gapCursor(), dropCursor(), keymap(baseKeymap), collab()]
   });
 }

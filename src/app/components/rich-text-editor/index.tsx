@@ -3,6 +3,7 @@ import { EditorView } from 'prosemirror-view';
 import { EditorState, Transaction, TextSelection } from 'prosemirror-state';
 import { debounce, get } from 'lodash';
 import { DOMSerializer, Slice } from 'prosemirror-model';
+import {collab, sendableSteps} from "prosemirror-collab";
 
 import 'prosemirror-example-setup/style/style.css';
 import 'prosemirror-menu/style/menu.css';
@@ -127,8 +128,11 @@ export class RichTextEditor extends React.Component<ComponentWithId<RichTextEdit
   }
 
   private handleChange(change: Transaction) {
+    console.log('change', change);
     const newState = this.editorView.state.apply(change);
     this.updateEditorState(newState);
+    let sendable = sendableSteps(newState);
+    console.log('sendable', sendable);
     this.props.onChange(change, this.props.name);
   }
 
