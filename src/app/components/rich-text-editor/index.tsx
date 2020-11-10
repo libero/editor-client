@@ -3,6 +3,7 @@ import { EditorView } from 'prosemirror-view';
 import { EditorState, Transaction, TextSelection } from 'prosemirror-state';
 import { debounce, get } from 'lodash';
 import { DOMSerializer, Slice } from 'prosemirror-model';
+import axios from 'axios';
 
 import 'prosemirror-example-setup/style/style.css';
 import 'prosemirror-menu/style/menu.css';
@@ -14,6 +15,7 @@ import { hasParentNodeOf } from 'app/utils/view.utils';
 import { LinkNodeView } from 'app/components/link-editor-popup';
 import { FigureNodeView } from 'app/components/figure';
 import { FigureCitationNodeView } from 'app/components/figure-citation';
+import Axios from 'axios';
 
 export interface RichTextEditorProps {
   editorState: EditorState;
@@ -126,10 +128,15 @@ export class RichTextEditor extends React.Component<ComponentWithId<RichTextEdit
     );
   }
 
-  private handleChange(change: Transaction) {
+  private async handleChange(change: Transaction) {
     const newState = this.editorView.state.apply(change);
     this.updateEditorState(newState);
     this.props.onChange(change, this.props.name);
+
+    // this should be moved to redux
+    // const { data } = axios.get<string>(manuscriptUrl(id), { headers: { Accept: 'application/xml' } });
+    const id = '00104';
+    await axios.post(`/api/v1/articles/${id}/changes`, { steps: change.steps })
   }
 
   private createEditorView = (element: HTMLElement) => {
