@@ -136,7 +136,7 @@ export class RichTextEditor extends React.Component<ComponentWithId<RichTextEdit
     // this should be moved to redux
     // const { data } = axios.get<string>(manuscriptUrl(id), { headers: { Accept: 'application/xml' } });
     const id = '00104';
-    await axios.post(`/api/v1/articles/${id}/changes`, { steps: change.steps })
+    await axios.post(`/api/v1/articles/${id}/changes`, { steps: change.steps, path: 'abstract' })
   }
 
   private createEditorView = (element: HTMLElement) => {
