@@ -14,6 +14,7 @@ import { createAffiliationsState } from 'app/models/affiliation';
 import { getTextContentFromPath } from 'app/models/utils';
 import { createRelatedArticleState } from 'app/models/related-article';
 import { createArticleInfoState } from 'app/models/article-information';
+import { reduce } from 'lodash';
 
 const manuscriptUrl = (id: string): string => {
   // TODO
@@ -24,6 +25,24 @@ const manuscriptUrl = (id: string): string => {
 
 export async function getManuscriptContent(id: string): Promise<Manuscript> {
   const { data } = await axios.get<string>(manuscriptUrl(id), { headers: { Accept: 'application/xml' } });
+  // data structure that we need for the backend
+  // [{path: 'title', steps: [...]}, {path: 'keywords', steps: [...]}, {path: 'abstract', steps: [...]}] OR
+  // {'title': {steps: []}, 'keywords': {steps: []}, 'abstract': {steps: []}}
+  // db collections:
+  // const steps = await axios.get<any>(`/api/v1/articles/${id}/changes?version=1&status=pending`);
+  // CONSIDER: sort order mattters
+  const steps = await axios.get<Array<any>>(`/api/v1/articles/${id}/changes?version=1&status=pending`);
+
+  // state of changes as per {path: {steps[transcations]}}
+  const paths = steps.data.reduce((acc, step) => {
+    if (acc[step.path]) {
+      acc[step.path].steps.push(step.steps); // push transcation
+    } else {
+      acc[step.path].steps = [step.steps];
+    }
+    return acc;
+  }, {});
+
 
   const parser = new DOMParser();
   const doc = parser.parseFromString(data, 'text/xml');
