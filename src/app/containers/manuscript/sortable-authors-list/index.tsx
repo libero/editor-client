@@ -44,7 +44,10 @@ const SortableItem = SortableElement(({ value, classes, onEdit }) => {
       label={
         <span>
           {authorName}
-          {affLabels.length > 0 ? <sup>({affLabels.join(',')})</sup> : ''}
+          <sup>
+            {affLabels.length > 0 ? affLabels.join(',') : undefined}
+            {value.author.isCorrespondingAuthor ? '*' : undefined}
+          </sup>
         </span>
       }
       onDelete={() => onEdit(value.author)}

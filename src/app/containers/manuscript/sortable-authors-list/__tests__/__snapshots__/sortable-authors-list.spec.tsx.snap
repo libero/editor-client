@@ -19,7 +19,7 @@ exports[`Sortable authors list renders authors list 1`] = `
       >
         <span>
           Fred Atherden
-          
+          <sup />
         </span>
       </div>
       <div
@@ -27,7 +27,7 @@ exports[`Sortable authors list renders authors list 1`] = `
       >
         <span>
           Jeanine Smith III
-          
+          <sup />
         </span>
       </div>
        
