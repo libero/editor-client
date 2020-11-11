@@ -26,7 +26,7 @@ export function insertFigureCitation(editorState: EditorState): Transaction {
   const content =
     !empty && $from.sameParent($to) && $from.parent.inlineContent
       ? $from.parent.content.cut($from.parentOffset, $to.parentOffset)
-      : null;
+      : editorState.schema.text('???');
 
   const citationNode = editorState.schema.nodes.figureCitation.createAndFill(null, content);
   return editorState.tr.replaceSelectionWith(citationNode);

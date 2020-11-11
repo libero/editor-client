@@ -216,7 +216,8 @@ export const nodes = {
     content: 'inline*',
     parseDOM: [
       { tag: 'caption > p', priority: 100 },
-      { tag: 'label', ignore: true }
+      { tag: 'label', ignore: true },
+      { tag: 'attrib', ignore: true }
     ],
     context: 'figure',
     toDOM() {

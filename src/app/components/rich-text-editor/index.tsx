@@ -143,6 +143,9 @@ export class RichTextEditor extends React.Component<ComponentWithId<RichTextEdit
       this.editorView = new EditorView(element, {
         ...additionalOptions,
         clipboardSerializer,
+        handleScrollToSelection: (view: EditorView) => {
+          return this.isFocusControlDelegated();
+        },
         clipboardTextSerializer,
         state: this.props.editorState,
         dispatchTransaction: this.handleChange

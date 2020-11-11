@@ -69,7 +69,7 @@ export const canInsertFigureCitationAtSelection = createSelector(
   getFocusedEditorState,
   canInsertNodeAtSelection,
   (editorState: EditorState, checkNodeAllowed) => () => {
-    return editorState && checkNodeAllowed('figureCitation') && !editorState.selection.empty;
+    return editorState && checkNodeAllowed('figureCitation');
   }
 );
 

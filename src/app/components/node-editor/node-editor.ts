@@ -11,6 +11,7 @@ import { StepMap } from 'prosemirror-transform';
 import { buildInputRules } from 'app/models/plugins/input-rules';
 import { SelectPlugin } from 'app/models/plugins/selection.plugin';
 import { NodeViewContext } from 'app/utils/view.utils';
+import { RichTextEditor } from 'app/components/rich-text-editor';
 
 export interface NodeEditorProps {
   node: ProsemirrorNode;
@@ -25,6 +26,8 @@ export interface NodeEditorState {
 export abstract class NodeEditor<T> extends React.Component<NodeEditorProps & T, NodeEditorState> {
   static contextType = NodeViewContext;
 
+  protected editorRef = React.createRef<RichTextEditor>();
+
   constructor(props) {
     super(props);
     this.state = {
@@ -38,9 +41,9 @@ export abstract class NodeEditor<T> extends React.Component<NodeEditorProps & T,
       return true;
     }
     if (nextProps.node !== this.props.node) {
-      const change = this.getUpdatesForNode(nextProps.node, this.state.editorState);
+      const change = this.getUpdatesForNode(nextProps.node, this.getInternalState());
       if (change) {
-        this.setState({ editorState: this.state.editorState.apply(change) });
+        this.updateInternalEditorState(change);
         this.updateActiveStateFromSelection(this.context.view.state.selection);
       }
       return true;
@@ -60,10 +63,9 @@ export abstract class NodeEditor<T> extends React.Component<NodeEditorProps & T,
     this.setState({ isEditorActive: false });
   };
 
-  // this function should handle
   protected handleInternalEditorStateChange = (change: Transaction): void => {
+    this.setState({ editorState: this.getInternalState() });
     if (!change.getMeta('parentChange')) {
-      this.setState({ editorState: this.state.editorState.apply(change) });
       this.context.view.dispatch(this.translateChanges(change));
     }
   };
@@ -76,11 +78,12 @@ export abstract class NodeEditor<T> extends React.Component<NodeEditorProps & T,
   }
 
   private updateActiveStateFromSelection(selection: Selection): void {
+    const state = this.getInternalState();
     const cursorPos = selection.$from.pos;
     const parentNodePos = this.context.getPos();
     const isCursorInNode =
       parentNodePos + this.props.offset <= cursorPos &&
-      cursorPos <= parentNodePos + this.props.offset + this.state.editorState.doc.nodeSize;
+      cursorPos <= parentNodePos + this.props.offset + state.doc.nodeSize;
 
     if (isCursorInNode) {
       this.setState({ isEditorActive: true });
@@ -128,5 +131,14 @@ export abstract class NodeEditor<T> extends React.Component<NodeEditorProps & T,
     }
 
     return translatedChange;
+  }
+
+  private updateInternalEditorState(change: Transaction): void {
+    const internalEditorView = get(this.editorRef.current, 'editorView');
+    internalEditorView && internalEditorView.dispatch(change);
+  }
+
+  private getInternalState(): EditorState {
+    return get(this.editorRef, 'current.editorView.state');
   }
 }

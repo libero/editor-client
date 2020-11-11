@@ -22,7 +22,8 @@ import {
   isMarkAppliedToSelection,
   canToggleParagraphAtSelection,
   isActiveContainer,
-  canToggleListAtSelection, canInsertFigureCitationAtSelection
+  canToggleListAtSelection,
+  canInsertFigureCitationAtSelection
 } from 'app/selectors/manuscript-editor.selectors';
 
 import { useToolbarStyles } from './styles';

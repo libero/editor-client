@@ -114,7 +114,7 @@ export const ReferenceCitationEditorPopup: React.FC<ReferenceCitationEditorPopup
   }
 
   return (
-    <Popper open={true} anchorEl={anchorEl}>
+    <Popper open={true} anchorEl={anchorEl} style={{ zIndex: 1 }}>
       <Paper>
         <ClickAwayListener onClickAway={onClose} mouseEvent="onMouseUp">
           <div>

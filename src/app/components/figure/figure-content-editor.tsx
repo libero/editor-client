@@ -11,6 +11,7 @@ export class FigureContentEditor extends NodeEditor<FigureContentEditorProps> {
     return (
       <div>
         <RichTextEditor
+          ref={this.editorRef}
           isActive={this.getEditorActiveState()}
           variant="outlined"
           label={this.props.label}

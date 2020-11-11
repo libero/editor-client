@@ -30,7 +30,9 @@ export const useFigureEditorStyles = makeStyles((theme) => ({
   },
   imageContainer: {
     marginBottom: theme.spacing(2.5),
-    position: 'relative'
+    position: 'relative',
+    borderRadius: theme.shape.borderRadius,
+    border: 'solid 1px #C4C4C4'
   },
   uploadImageCta: {
     position: 'absolute',
@@ -48,8 +50,8 @@ export const useFigureEditorStyles = makeStyles((theme) => ({
   image: {
     maxWidth: '100%',
     minHeight: 58,
-    borderRadius: theme.shape.borderRadius,
-    border: 'solid 1px #C4C4C4'
+    display: 'block',
+    borderRadius: theme.shape.borderRadius
   },
 
   addLicenseCta: {
