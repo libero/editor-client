@@ -35,9 +35,16 @@ export function createTitleState(content: Element, changeSteps: [Step]): EditorS
     schema,
     plugins: [buildInputRules(), gapCursor(), dropCursor(), SelectPlugin, PlaceholderPlugin('Enter title')]
   });
-  console.log(changeSteps);
-  const changeTransaction = new Transaction(editorState.doc).step(Step.fromJSON(schema, changeSteps[0]));
-  editorState.applyTransaction(changeTransaction);
+
+  if(changeSteps) {
+    const changeTransaction = editorState.tr;
+
+    changeSteps.forEach(changeStep => {
+      changeTransaction.maybeStep(Step.fromJSON(schema, changeStep));
+    });    
+    return editorState.apply(changeTransaction);
+  }
+
   return editorState;
 }
 
