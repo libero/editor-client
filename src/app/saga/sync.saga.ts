@@ -8,7 +8,7 @@ import { ManuscriptDiff } from 'app/models/manuscript';
 import { setLastSyncTimestamp } from 'app/actions/manuscript-editor.actions';
 import { syncChanges } from 'app/api/manuscript.api';
 
-const SYNC_INTERVAL = 1000;
+const SYNC_INTERVAL = 2000;
 
 function createPollingEventChannel(delay: number) {
   return eventChannel((emitter) => {
@@ -29,7 +29,7 @@ export function* watchChangesSaga() {
     const changes: ManuscriptDiff[] = changesSelector(lastSyncTimeStamp, now);
     if (changes.length > 0) {
       const manuscriptId = yield select(getManuscriptId);
-      put(setLastSyncTimestamp(now));
+      yield put(setLastSyncTimestamp(now));
       yield call(syncChanges, manuscriptId, changes);
     }
   });
