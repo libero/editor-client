@@ -35,11 +35,10 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
 
   // state of changes as per {path: {steps[transcations]}}
   const paths = changes.reduce((acc, step) => {
-    if (acc[step.path]) {
-      acc[step.path].steps.push(step.steps); // push transcation
-    } else {
-      acc[step.path] ? acc[step.path].steps = [step.steps] : acc[step.path] = { steps: [step.steps]};
-    }
+    if (!acc[step.path]) {
+      acc[step.path] = { steps: [] }; // push transcation
+    } 
+    acc[step.path].steps.push(step.steps);
     return acc;
   }, {});
 
