@@ -62,7 +62,7 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
   const authorsState = createAuthorsState(Array.from(authors), authorNotes);
 
   return {
-    title: createTitleState(title, paths.title),
+    title: createTitleState(title, paths.title.steps),
     abstract: createAbstractState(abstract),
     impactStatement: createImpactStatementState(impactStatement),
     keywordGroups: createKeywordGroupsState(Array.from(keywordGroups)),

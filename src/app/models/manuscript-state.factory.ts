@@ -1,5 +1,6 @@
 import { DOMParser as ProseMirrorDOMParser } from 'prosemirror-model';
-import { EditorState } from 'prosemirror-state';
+import { EditorState, Transaction } from 'prosemirror-state';
+import { Step } from 'prosemirror-transform';
 import { gapCursor } from 'prosemirror-gapcursor';
 import { dropCursor } from 'prosemirror-dropcursor';
 import { keymap } from 'prosemirror-keymap';
@@ -29,11 +30,15 @@ export function createTitleState(content: Element, changeSteps: [Step]): EditorS
     xmlContentDocument.appendChild(content);
   }
 
-  return EditorState.create({
+  const editorState = EditorState.create({
     doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),
     schema,
     plugins: [buildInputRules(), gapCursor(), dropCursor(), SelectPlugin, PlaceholderPlugin('Enter title')]
   });
+  console.log(changeSteps);
+  const changeTransaction = new Transaction(editorState.doc).step(Step.fromJSON(schema, changeSteps[0]));
+  editorState.applyTransaction(changeTransaction);
+  return editorState;
 }
 
 export function createAbstractState(content: Element): EditorState {
