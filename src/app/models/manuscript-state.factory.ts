@@ -21,7 +21,7 @@ import { SelectPlugin } from './plugins/selection.plugin';
 import { PlaceholderPlugin } from 'app/models/plugins/placeholder.plugin';
 import { createListKeymap } from 'app/utils/prosemirror/list.helpers';
 
-export function createTitleState(content: Element, changeSteps: [Step]): EditorState {
+export function createTitleState(content: Element, changeSteps?: [Step]): EditorState {
   const schema = makeSchemaFromConfig(titleConfig.topNode, titleConfig.nodes, titleConfig.marks);
 
   const xmlContentDocument = document.implementation.createDocument('', '', null);
@@ -48,7 +48,7 @@ export function createTitleState(content: Element, changeSteps: [Step]): EditorS
   return editorState;
 }
 
-export function createAbstractState(content: Element): EditorState {
+export function createAbstractState(content: Element, changeSteps?: [Step]): EditorState {
   const schema = makeSchemaFromConfig(abstractConfig.topNode, abstractConfig.nodes, abstractConfig.marks);
   const xmlContentDocument = document.implementation.createDocument('', '', null);
 
@@ -56,14 +56,27 @@ export function createAbstractState(content: Element): EditorState {
     xmlContentDocument.appendChild(content);
   }
 
-  return EditorState.create({
+  const editorState =  EditorState.create({
     doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),
     schema,
     plugins: [buildInputRules(), gapCursor(), dropCursor(), SelectPlugin, PlaceholderPlugin('Enter abstract')]
   });
+
+  console.log(changeSteps)
+
+  if(changeSteps) {
+    const changeTransaction = editorState.tr;
+
+    changeSteps.forEach(changeStep => {
+      changeTransaction.maybeStep(Step.fromJSON(schema, changeStep));
+    });    
+    return editorState.apply(changeTransaction);
+  }
+
+  return editorState;
 }
 
-export function createBodyState(content: Element, id: string): EditorState {
+export function createBodyState(content: Element, id: string, changeSteps?: [Step]): EditorState {
   const schema = makeSchemaFromConfig(bodyConfig.topNode, bodyConfig.nodes, bodyConfig.marks);
   const xmlContentDocument = document.implementation.createDocument('', '', null);
 
@@ -73,7 +86,7 @@ export function createBodyState(content: Element, id: string): EditorState {
 
   set(xmlContentDocument, 'manuscriptPath', `/manuscripts/${id}`);
 
-  return EditorState.create({
+  const editorState = EditorState.create({
     doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),
     schema,
     plugins: [
@@ -86,9 +99,20 @@ export function createBodyState(content: Element, id: string): EditorState {
       PlaceholderPlugin('Enter main text')
     ]
   });
+
+  if(changeSteps) {
+    const changeTransaction = editorState.tr;
+
+    changeSteps.forEach(changeStep => {
+      changeTransaction.maybeStep(Step.fromJSON(schema, changeStep));
+    });    
+    return editorState.apply(changeTransaction);
+  }
+
+  return editorState;
 }
 
-export function createImpactStatementState(content: Element): EditorState {
+export function createImpactStatementState(content: Element, changeSteps?:[Step]): EditorState {
   const schema = makeSchemaFromConfig(abstractConfig.topNode, abstractConfig.nodes, abstractConfig.marks);
   const xmlContentDocument = document.implementation.createDocument('', '', null);
 
@@ -96,14 +120,25 @@ export function createImpactStatementState(content: Element): EditorState {
     xmlContentDocument.appendChild(content);
   }
 
-  return EditorState.create({
+  const editorState = EditorState.create({
     doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),
     schema,
     plugins: [buildInputRules(), gapCursor(), dropCursor(), SelectPlugin, PlaceholderPlugin('Enter impact statement')]
   });
+
+  if(changeSteps) {
+    const changeTransaction = editorState.tr;
+
+    changeSteps.forEach(changeStep => {
+      changeTransaction.maybeStep(Step.fromJSON(schema, changeStep));
+    });    
+    return editorState.apply(changeTransaction);
+  }
+
+  return editorState;
 }
 
-export function createAcknowledgementsState(content?: Element): EditorState {
+export function createAcknowledgementsState(content?: Element, changeSteps?: [Step]): EditorState {
   if (content) {
     const ackTitle = content.querySelector('title');
     if (ackTitle) {
@@ -122,18 +157,30 @@ export function createAcknowledgementsState(content?: Element): EditorState {
     xmlContentDocument.appendChild(content);
   }
 
-  return EditorState.create({
+  const editorState = EditorState.create({
     doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),
     schema,
     plugins: [buildInputRules(), gapCursor(), dropCursor(), SelectPlugin, PlaceholderPlugin('Enter acknowledgements')]
   });
+
+  if(changeSteps) {
+    const changeTransaction = editorState.tr;
+
+    changeSteps.forEach(changeStep => {
+      changeTransaction.maybeStep(Step.fromJSON(schema, changeStep));
+    });    
+    return editorState.apply(changeTransaction);
+  }
+
+  return editorState;
 }
 
 export function createKeywordGroupsState(keywordGroupsXml: Element[]): KeywordGroups {
   return keywordGroupsXml.reduce((acc, kwdGroup) => {
     const kwdGroupType = kwdGroup.getAttribute('kwd-group-type') || 'keywords-1';
     const groupTitle = kwdGroup.querySelector('title');
-    const moreKeywords = Array.from(kwdGroup.querySelectorAll('kwd')).map(createKeywordState);
+    // TODO: How do we pass changeSteps to this?
+    const moreKeywords = Array.from(kwdGroup.querySelectorAll('kwd')).map((keyword, _) => createKeywordState(keyword));
     acc[kwdGroupType] = {
       title: groupTitle ? groupTitle.textContent : undefined,
       keywords: moreKeywords,
@@ -157,11 +204,22 @@ export function createReferencesState(referencesXml: Element[]): Reference[] {
   return referencesList;
 }
 
-function createKeywordState(keyword?: Element): EditorState {
+function createKeywordState(keyword?: Element, changeSteps?:[Step]): EditorState {
   const schema = makeSchemaFromConfig(keywordConfig.topNode, keywordConfig.nodes, keywordConfig.marks);
-  return EditorState.create({
+  const editorState = EditorState.create({
     doc: keyword ? ProseMirrorDOMParser.fromSchema(schema).parse(keyword) : undefined,
     schema,
     plugins: [buildInputRules(), gapCursor(), dropCursor(), keymap(baseKeymap)]
   });
+
+  if(changeSteps) {
+    const changeTransaction = editorState.tr;
+
+    changeSteps.forEach(changeStep => {
+      changeTransaction.maybeStep(Step.fromJSON(schema, changeStep));
+    });    
+    return editorState.apply(changeTransaction);
+  }
+
+  return editorState;
 }

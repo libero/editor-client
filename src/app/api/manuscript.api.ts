@@ -34,6 +34,8 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
   const { data: { changes }} = await axios.get<any>(`http://localhost:9000/api/v1/articles/${id}/changes?version=1&status=pending`);
 
   // state of changes as per {path: {steps[transcations]}}
+
+  //TODO: order by timestamp of edit
   const paths = changes.reduce((acc, step) => {
     if (!acc[step.path]) {
       acc[step.path] = { steps: [] }; // push transcation
@@ -41,8 +43,6 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
     acc[step.path].steps = [...acc[step.path].steps, ...step.steps];
     return acc;
   }, {});
-
-  console.log(paths);
 
   const parser = new DOMParser();
   const doc = parser.parseFromString(data, 'text/xml');
@@ -62,16 +62,22 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
 
   return {
     title: createTitleState(title, paths.title?.steps),
-    abstract: createAbstractState(abstract),
-    impactStatement: createImpactStatementState(impactStatement),
+    abstract: createAbstractState(abstract, paths.abstract?.steps),
+    impactStatement: createImpactStatementState(impactStatement, paths.impactStatement?.steps),
+    // TODO: apply chnages to keywordGroups
     keywordGroups: createKeywordGroupsState(Array.from(keywordGroups)),
+    // TODO: apply author state changes
     authors: authorsState,
-    body: createBodyState(body, id),
+    body: createBodyState(body, id, paths.body?.steps),
+    // TODO: apply affiliations changes
     affiliations: createAffiliationsState(Array.from(affiliations)),
+    // TODO: apply references changes
     references: createReferencesState(Array.from(references)),
+    // TODO: Apply related article changes
     relatedArticles: createRelatedArticleState(Array.from(relatedArticles)),
-    acknowledgements: createAcknowledgementsState(acknowledgements),
+    acknowledgements: createAcknowledgementsState(acknowledgements, paths.acknowledgements?.steps),
     articleInfo: createArticleInfoState(doc, authorsState),
+    //TODO: apply journalMetaChanges
     journalMeta: {
       publisherName: getTextContentFromPath(doc, 'journal-meta publisher publisher-name'),
       issn: getTextContentFromPath(doc, 'journal-meta issn')
