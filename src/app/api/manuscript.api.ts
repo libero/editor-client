@@ -19,8 +19,8 @@ import { reduce } from 'lodash';
 const manuscriptUrl = (id: string): string => {
   // TODO
   // Enable the below once the the article-store is working again!
-  return `http://localhost:9000/api/v1/articles/${id}`;
-  //return `./manuscripts/${id}/manuscript.xml`;
+  // return process.env.REACT_APP_NO_SERVER ? `./manuscripts/${id}/manuscript.xml` : `/api/v1/articles/${id}`
+  return `./manuscripts/${id}/manuscript.xml`;
 };
 
 export async function getManuscriptContent(id: string): Promise<Manuscript> {
@@ -31,7 +31,8 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
   // db collections:
   // const steps = await axios.get<any>(`/api/v1/articles/${id}/changes?version=1&status=pending`);
   // CONSIDER: sort order mattters
-  const { data: { changes }} = await axios.get<any>(`http://localhost:9000/api/v1/articles/${id}/changes?version=1&status=pending`);
+  // return process.env.REACT_APP_NO_SERVER ? `./changes/${id}/changes.json` : `/api/v1/articles/${id}/changes?version=1&status=pending`
+  const { data: { changes }} = await axios.get<any>(`./changes/${id}/changes.json`);
 
   // state of changes as per {path: {steps[transcations]}}
 
