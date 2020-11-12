@@ -1,4 +1,7 @@
 import axios from 'axios';
+import { cloneDeepWith } from 'lodash';
+import { EditorState, Transaction } from 'prosemirror-state';
+
 import { Manuscript, ManuscriptDiff } from 'app/models/manuscript';
 import {
   createTitleState,
@@ -62,5 +65,16 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
 
 export function syncChanges(id: string, changes: ManuscriptDiff[]): Promise<void> {
   // TODO: squash changes here
-  return axios.put(manuscriptUrl(id), changes);
+  return axios.put(manuscriptUrl(id), changes.map(makeChangesSeralizable));
+}
+
+function makeChangesSeralizable(diff: ManuscriptDiff): Record<string, any> {
+  return cloneDeepWith(diff, function (value) {
+    if (value instanceof EditorState) {
+      return value.doc.toJSON();
+    }
+    if (value instanceof Transaction) {
+      return value.steps.map((step) => step.toJSON());
+    }
+  });
 }
