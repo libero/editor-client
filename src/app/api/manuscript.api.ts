@@ -32,7 +32,11 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
   // const steps = await axios.get<any>(`/api/v1/articles/${id}/changes?version=1&status=pending`);
   // CONSIDER: sort order mattters
   // return process.env.REACT_APP_NO_SERVER ? `./changes/${id}/changes.json` : `/api/v1/articles/${id}/changes?version=1&status=pending`
-  const { data: { changes }} = await axios.get<any>(`./changes/${id}/changes.json`);
+  // const blah = await axios.get<any>(`./changes/${id}/changes.json`);
+  // console.log('balh', blah);
+  const { data: { changes = [] }} = await axios.get<any>(`./changes/${id}/changes.json`);
+
+  console.log('chamge', changes);
 
   // state of changes as per {path: {steps[transcations]}}
 

@@ -1,5 +1,5 @@
 import { DOMParser as ProseMirrorDOMParser, Schema } from 'prosemirror-model';
-import { EditorState, Transaction } from 'prosemirror-state';
+import { EditorState } from 'prosemirror-state';
 import { Step } from 'prosemirror-transform';
 import { gapCursor } from 'prosemirror-gapcursor';
 import { dropCursor } from 'prosemirror-dropcursor';

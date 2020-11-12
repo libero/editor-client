@@ -1,6 +1,6 @@
 {
-  "data": {
-    "change":  {
+  "changes": [
+    {
       "_id": "000000",
       "articleId": "00104",
       "steps": [
@@ -12,7 +12,7 @@
             "content": [
               {
                 "type": "text",
-                "text": "A"
+                "text": "A change"
               }
             ]
           }
@@ -23,5 +23,5 @@
       "path": "abstract",
       "timestamp": 1605198300275
     }
-  }
+  ]
 }
