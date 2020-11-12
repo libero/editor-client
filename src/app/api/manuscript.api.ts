@@ -19,8 +19,8 @@ import { reduce } from 'lodash';
 const manuscriptUrl = (id: string): string => {
   // TODO
   // Enable the below once the the article-store is working again!
-  // return process.env.REACT_APP_NO_SERVER ? `./manuscripts/${id}/manuscript.xml` : `/api/v1/articles/${id}`;
-  return `./manuscripts/${id}/manuscript.xml`;
+  return `http://localhost:9000/api/v1/articles/${id}`;
+  //return `./manuscripts/${id}/manuscript.xml`;
 };
 
 export async function getManuscriptContent(id: string): Promise<Manuscript> {
@@ -31,18 +31,19 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
   // db collections:
   // const steps = await axios.get<any>(`/api/v1/articles/${id}/changes?version=1&status=pending`);
   // CONSIDER: sort order mattters
-  const steps = await axios.get<Array<any>>(`/api/v1/articles/${id}/changes?version=1&status=pending`);
+  const { data: { changes }} = await axios.get<any>(`http://localhost:9000/api/v1/articles/${id}/changes?version=1&status=pending`);
 
   // state of changes as per {path: {steps[transcations]}}
-  const paths = steps.data.reduce((acc, step) => {
+  const paths = changes.reduce((acc, step) => {
     if (acc[step.path]) {
       acc[step.path].steps.push(step.steps); // push transcation
     } else {
-      acc[step.path].steps = [step.steps];
+      acc[step.path] ? acc[step.path].steps = [step.steps] : acc[step.path] = { steps: [step.steps]};
     }
     return acc;
   }, {});
 
+  console.log(paths);
 
   const parser = new DOMParser();
   const doc = parser.parseFromString(data, 'text/xml');
@@ -61,7 +62,7 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
   const authorsState = createAuthorsState(Array.from(authors), authorNotes);
 
   return {
-    title: createTitleState(title),
+    title: createTitleState(title, paths.title),
     abstract: createAbstractState(abstract),
     impactStatement: createImpactStatementState(impactStatement),
     keywordGroups: createKeywordGroupsState(Array.from(keywordGroups)),

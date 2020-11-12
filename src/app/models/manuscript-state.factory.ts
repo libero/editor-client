@@ -20,7 +20,7 @@ import { SelectPlugin } from './plugins/selection.plugin';
 import { PlaceholderPlugin } from 'app/models/plugins/placeholder.plugin';
 import { createListKeymap } from 'app/utils/prosemirror/list.helpers';
 
-export function createTitleState(content: Element): EditorState {
+export function createTitleState(content: Element, changeSteps: [Step]): EditorState {
   const schema = makeSchemaFromConfig(titleConfig.topNode, titleConfig.nodes, titleConfig.marks);
 
   const xmlContentDocument = document.implementation.createDocument('', '', null);
