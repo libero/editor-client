@@ -3,7 +3,7 @@ import { Node as ProsemirrorNode } from 'prosemirror-model';
 import { ManuscriptHistoryState } from 'app/store';
 import { getRefNodeText, Reference, sortReferencesList } from 'app/models/reference';
 import { cloneManuscript } from 'app/utils/state.utils';
-import { updateManuscriptState } from 'app/utils/history.utils';
+import { createDiff, updateManuscriptState } from 'app/utils/history.utils';
 
 export function updateReference(state: ManuscriptHistoryState, payload: Reference): ManuscriptHistoryState {
   const referenceIndex = state.data.present.references.findIndex(({ id }) => id === payload.id);
@@ -29,9 +29,9 @@ export function updateReference(state: ManuscriptHistoryState, payload: Referenc
 }
 
 export function addReference(state: ManuscriptHistoryState, payload: Reference): ManuscriptHistoryState {
-  const newDiff = {
+  const newDiff = createDiff({
     references: state.data.present.references
-  };
+  });
 
   const newManuscript = cloneManuscript(state.data.present);
   newManuscript.references.push(payload);

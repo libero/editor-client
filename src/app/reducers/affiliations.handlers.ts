@@ -3,6 +3,8 @@ import { Affiliation } from 'app/models/affiliation';
 import { Person } from 'app/models/person';
 import { ManuscriptHistoryState } from 'app/store';
 import { LinkAffiliationsPayload } from 'app/actions/manuscript.actions';
+import { ManuscriptDiff } from 'app/models/manuscript';
+import { createDiff } from 'app/utils/history.utils';
 
 export function getReorderedAffiliations(authors: Person[], affiliations: Affiliation[]): Affiliation[] {
   const newAffiliations = affiliations.map((affiliation) => ({ ...affiliation, label: '' }));
@@ -27,9 +29,7 @@ export function getReorderedAffiliations(authors: Person[], affiliations: Affili
 export function updateAffiliation(state: ManuscriptHistoryState, payload: Affiliation): ManuscriptHistoryState {
   const affiliationIndex = state.data.present.affiliations.findIndex(({ id }) => id === payload.id);
 
-  const newDiff = {
-    affiliations: state.data.present.affiliations
-  };
+  const newDiff: ManuscriptDiff = createDiff({ affiliations: state.data.present.affiliations });
 
   const newManuscript = cloneManuscript(state.data.present);
   newManuscript.affiliations[affiliationIndex] = payload;
@@ -46,9 +46,7 @@ export function updateAffiliation(state: ManuscriptHistoryState, payload: Affili
 }
 
 export function addAffiliation(state: ManuscriptHistoryState, payload: Affiliation): ManuscriptHistoryState {
-  const newDiff = {
-    affiliations: state.data.present.affiliations
-  };
+  const newDiff: ManuscriptDiff = createDiff({ affiliations: state.data.present.affiliations });
 
   const newManuscript = cloneManuscript(state.data.present);
   const newAffiliation = payload;
@@ -69,9 +67,7 @@ export function addAffiliation(state: ManuscriptHistoryState, payload: Affiliati
 export function deleteAffiliation(state: ManuscriptHistoryState, payload: Affiliation): ManuscriptHistoryState {
   const currentIndex = state.data.present.affiliations.findIndex(({ id }) => id === payload.id);
 
-  const newDiff = {
-    affiliations: state.data.present.affiliations
-  };
+  const newDiff: ManuscriptDiff = createDiff({ affiliations: state.data.present.affiliations });
 
   const newManuscript = cloneManuscript(state.data.present);
   newManuscript.affiliations.splice(currentIndex, 1);
@@ -91,10 +87,10 @@ export function linkAffiliations(
   state: ManuscriptHistoryState,
   payload: LinkAffiliationsPayload
 ): ManuscriptHistoryState {
-  const newDiff = {
+  const newDiff: ManuscriptDiff = createDiff({
     authors: state.data.present.authors,
     affiliations: state.data.present.affiliations
-  };
+  });
 
   const authorsIds = new Set(payload.authors.map(({ id }) => id));
   const newManuscript = cloneManuscript(state.data.present);

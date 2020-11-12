@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Manuscript } from 'app/models/manuscript';
+import { Manuscript, ManuscriptDiff } from 'app/models/manuscript';
 import {
   createTitleState,
   createKeywordGroupsState,
@@ -58,4 +58,9 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
       issn: getTextContentFromPath(doc, 'journal-meta issn')
     }
   } as Manuscript;
+}
+
+export function syncChanges(id: string, changes: ManuscriptDiff[]) {
+  // TODO: squash changes here
+  return axios.put(manuscriptUrl(id), changes);
 }

@@ -44,5 +44,6 @@ export type TableOfContents = Array<TOCEntry>;
 
 export type ManuscriptDiff = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [path: string]: Array<any> | Record<string, any> | Transaction | undefined;
+  [path: string]: Array<any> | Record<string, any> | Transaction | undefined | number;
+  _timestamp: number;
 };

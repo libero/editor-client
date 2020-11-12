@@ -4,15 +4,16 @@ import { ManuscriptHistoryState } from 'app/store';
 import { MoveAuthorPayload } from 'app/actions/manuscript.actions';
 import { getReorderedAffiliations } from 'app/reducers/affiliations.handlers';
 import { getCopyrightStatement, LICENSE_CC_BY_4 } from 'app/models/article-information';
-import { Manuscript } from 'app/models/manuscript';
+import { ManuscriptDiff } from 'app/models/manuscript';
+import { createDiff } from 'app/utils/history.utils';
 
 export function updateAuthor(state: ManuscriptHistoryState, payload: Person): ManuscriptHistoryState {
   const authorIndex = state.data.present.authors.findIndex(({ id }) => id === payload.id);
 
-  const newDiff = {
+  const newDiff: ManuscriptDiff = createDiff({
     [`authors.${authorIndex}`]: state.data.present.authors[authorIndex],
     affiliations: state.data.present.affiliations
-  };
+  });
 
   const newManuscript = cloneManuscript(state.data.present);
   newManuscript.authors[authorIndex] = payload;
@@ -29,10 +30,10 @@ export function updateAuthor(state: ManuscriptHistoryState, payload: Person): Ma
 }
 
 export function addAuthor(state: ManuscriptHistoryState, payload: Person): ManuscriptHistoryState {
-  const newDiff = {
+  const newDiff: ManuscriptDiff = createDiff({
     authors: state.data.present.authors,
     affiliations: state.data.present.affiliations
-  };
+  });
 
   const newManuscript = cloneManuscript(state.data.present);
   newManuscript.authors.push(payload);
@@ -57,10 +58,10 @@ export function moveAuthor(state: ManuscriptHistoryState, payload: MoveAuthorPay
   newManuscript.authors.splice(index, 0, author);
   newManuscript.affiliations = getReorderedAffiliations(newManuscript.authors, newManuscript.affiliations);
 
-  const newDiff: Partial<Manuscript> = {
+  const newDiff: ManuscriptDiff = createDiff({
     authors: state.data.present.authors,
     affiliations: state.data.present.affiliations
-  };
+  });
 
   if (state.data.present.articleInfo.licenseType === LICENSE_CC_BY_4) {
     newManuscript.articleInfo.copyrightStatement = getCopyrightStatement(
@@ -83,10 +84,10 @@ export function moveAuthor(state: ManuscriptHistoryState, payload: MoveAuthorPay
 export function deleteAuthor(state: ManuscriptHistoryState, payload: Person): ManuscriptHistoryState {
   const currentIndex = state.data.present.authors.findIndex(({ id }) => id === payload.id);
 
-  const newDiff = {
+  const newDiff: ManuscriptDiff = createDiff({
     authors: state.data.present.authors,
     affiliations: state.data.present.affiliations
-  };
+  });
 
   const newManuscript = cloneManuscript(state.data.present);
   newManuscript.authors.splice(currentIndex, 1);

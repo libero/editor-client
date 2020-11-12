@@ -1,5 +1,6 @@
 import { all, takeLatest, call, put } from 'redux-saga/effects';
 import * as manuscriptActions from 'app/actions/manuscript.actions';
+import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
 import { Action } from 'app/utils/action.utils';
 import { getManuscriptContent } from 'app/api/manuscript.api';
 
@@ -14,6 +15,7 @@ export function* loadManuscriptSaga(action: Action<string>) {
   try {
     const manuscript = yield call(getManuscriptContent, id);
     yield put(manuscriptActions.loadManuscriptAction.success(manuscript));
+    yield put(manuscriptEditorActions.setManuscriptId(id));
   } catch (e) {
     console.error(e);
     yield put(manuscriptActions.loadManuscriptAction.error(e));
