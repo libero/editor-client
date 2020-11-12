@@ -60,7 +60,7 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
   } as Manuscript;
 }
 
-export function syncChanges(id: string, changes: ManuscriptDiff[]) {
+export function syncChanges(id: string, changes: ManuscriptDiff[]): Promise<void> {
   // TODO: squash changes here
   return axios.put(manuscriptUrl(id), changes);
 }

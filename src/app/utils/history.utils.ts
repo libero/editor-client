@@ -2,7 +2,7 @@ import { set, get } from 'lodash';
 import { EditorState, Transaction } from 'prosemirror-state';
 
 import { cloneManuscript, ManuscriptHistory } from './state.utils';
-import { Manuscript, ManuscriptDiff } from 'app/models/manuscript';
+import { Manuscript, ManuscriptDiff, ManuscriptDiffValues } from 'app/models/manuscript';
 
 export function updateManuscriptState(
   state: ManuscriptHistory,
@@ -41,9 +41,7 @@ export function undoChange(state: ManuscriptHistory): ManuscriptHistory {
   };
 }
 
-export function createDiff(
-  changes: Record<string, Array<any> | Record<string, any> | Transaction | undefined>
-): ManuscriptDiff {
+export function createDiff(changes: Record<string, ManuscriptDiffValues>): ManuscriptDiff {
   return {
     ...changes,
     _timestamp: Date.now()

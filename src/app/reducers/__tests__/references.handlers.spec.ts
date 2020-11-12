@@ -6,9 +6,10 @@ import { Reference } from 'app/models/reference';
 import { addReference, deleteReference, updateReference } from 'app/reducers/references.handlers';
 
 jest.mock('app/utils/history.utils', () => ({
+  createDiff: jest.requireActual('app/utils/history.utils').createDiff,
   updateManuscriptState: jest.fn((state) => {
     return {
-      past: [{}],
+      past: [{ _timestamp: expect.any(Number) }],
       present: jest.requireActual('app/utils/state.utils').cloneManuscript(state.present),
       future: []
     };
@@ -48,7 +49,7 @@ describe('references reducers', () => {
     updatedRef.referenceInfo['year'] = 2011;
     const updatedState = cloneDeep(state);
     updatedState.data.present.references[0] = updatedRef;
-    updatedState.data.past = [{ references: state.data.present.references }];
+    updatedState.data.past = [{ references: state.data.present.references, _timestamp: expect.any(Number) }];
     const newState = updateReference(state, updatedRef);
     expect(newState).toEqual(updatedState);
   });
@@ -57,7 +58,7 @@ describe('references reducers', () => {
     const state = givenState({});
     const updatedState = cloneDeep(state);
     updatedState.data.present.references.push(REFERENCE);
-    updatedState.data.past = [{ references: state.data.present.references }];
+    updatedState.data.past = [{ references: state.data.present.references, _timestamp: expect.any(Number) }];
     const newState = addReference(state, REFERENCE);
     expect(newState).toEqual(updatedState);
   });
@@ -69,7 +70,7 @@ describe('references reducers', () => {
 
     const updatedState = cloneDeep(state);
     updatedState.data.present.references = [];
-    updatedState.data.past = [{ references: state.data.present.references }];
+    updatedState.data.past = [{ references: state.data.present.references, _timestamp: expect.any(Number) }];
     const newState = deleteReference(state, REFERENCE);
     expect(newState).toEqual(updatedState);
   });

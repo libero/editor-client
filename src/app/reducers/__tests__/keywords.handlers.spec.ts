@@ -5,9 +5,12 @@ import { givenState } from 'app/test-utils/reducer-test-helpers';
 import { updateManuscriptState } from 'app/utils/history.utils';
 import { addKeyword, deleteKeyword, updateKeyword, updateNewKeyword } from 'app/reducers/keywords.handlers';
 
-jest.mock('../../utils/history.utils');
+jest.mock('app/utils/history.utils', () => ({
+  createDiff: jest.requireActual('app/utils/history.utils').createDiff,
+  updateManuscriptState: jest.fn()
+}));
 
-describe('Keywords reducers', () => {
+describe('Keywords handler', () => {
   it('should delete keyword', () => {
     const state = givenState({
       keywordGroups: {
@@ -21,7 +24,9 @@ describe('Keywords reducers', () => {
 
     const expectedState = cloneDeep(state);
     expectedState.data.present.keywordGroups['kwd-group'].keywords.splice(1, 1);
-    expectedState.data.past = [{ 'keywordGroups.kwd-group': state.data.present.keywordGroups['kwd-group'] }];
+    expectedState.data.past = [
+      { 'keywordGroups.kwd-group': state.data.present.keywordGroups['kwd-group'], _timestamp: expect.any(Number) }
+    ];
     const payload = { keywordGroup: 'kwd-group', index: 1 };
     expect(deleteKeyword(state, payload)).toEqual(expectedState);
   });
@@ -41,7 +46,10 @@ describe('Keywords reducers', () => {
     const actualState = addKeyword(state, payload);
 
     expect(actualState.data.past).toEqual([
-      { 'keywordGroups.kwd-group': state.data.present.keywordGroups['kwd-group'] }
+      {
+        'keywordGroups.kwd-group': state.data.present.keywordGroups['kwd-group'],
+        _timestamp: expect.any(Number)
+      }
     ]);
 
     expect(actualState.data.present.keywordGroups['kwd-group'].keywords).toContain(payload.keyword);

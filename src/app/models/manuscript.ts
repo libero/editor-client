@@ -6,12 +6,14 @@ import { Reference } from 'app/models/reference';
 import { RelatedArticle } from 'app/models/related-article';
 import { ArticleInformation } from 'app/models/article-information';
 
+interface KeywordGroup {
+  title: string | undefined;
+  keywords: EditorState[];
+  newKeyword: EditorState;
+}
+
 export interface KeywordGroups {
-  [keywordType: string]: {
-    title: string | undefined;
-    keywords: EditorState[];
-    newKeyword: EditorState;
-  };
+  [keywordType: string]: KeywordGroup;
 }
 
 interface JournalMeta {
@@ -42,8 +44,17 @@ export interface TOCEntry {
 
 export type TableOfContents = Array<TOCEntry>;
 
+type ManuscriptDiffInferedType<T> = T extends Record<string, infer T>
+  ? T extends EditorState
+    ? Transaction
+    : T extends KeywordGroups
+    ? KeywordGroup
+    : T
+  : T;
+
+export type ManuscriptDiffValues = ManuscriptDiffInferedType<Manuscript> | number | string | Person;
+
 export type ManuscriptDiff = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [path: string]: Array<any> | Record<string, any> | Transaction | undefined | number;
+  [path: string]: ManuscriptDiffValues;
   _timestamp: number;
 };

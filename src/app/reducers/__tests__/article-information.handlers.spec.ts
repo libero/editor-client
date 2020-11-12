@@ -2,7 +2,9 @@ import { givenState } from 'app/test-utils/reducer-test-helpers';
 import { cloneDeep } from 'lodash';
 import { updateArticleInformation } from 'app/reducers/article-information.handlers';
 
-jest.mock('../../utils/history.utils');
+jest.mock('app/utils/history.utils', () => ({
+  createDiff: jest.requireActual('app/utils/history.utils').createDiff
+}));
 
 describe('article information handler', () => {
   it('updates article info', () => {
@@ -32,7 +34,8 @@ describe('article information handler', () => {
           volume: '',
           subjects: [],
           publicationDate: ''
-        }
+        },
+        _timestamp: expect.any(Number)
       }
     ];
 

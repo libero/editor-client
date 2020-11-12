@@ -3,7 +3,10 @@ import { cloneDeep } from 'lodash';
 import { givenState } from 'app/test-utils/reducer-test-helpers';
 import { addRelatedArticle, deleteRelatedArticle, updateRelatedArticle } from 'app/reducers/related-articles.handlers';
 
-jest.mock('../../utils/history.utils');
+jest.mock('app/utils/history.utils', () => ({
+  createDiff: jest.requireActual('app/utils/history.utils').createDiff
+}));
+
 const RELATED_ARTICLES = [
   {
     id: 'ra1',
@@ -31,7 +34,7 @@ describe('related articles reducers', () => {
 
     const updatedState = cloneDeep(state);
     updatedState.data.present.relatedArticles[0] = updateArticle;
-    updatedState.data.past = [{ relatedArticles: state.data.present.relatedArticles }];
+    updatedState.data.past = [{ relatedArticles: state.data.present.relatedArticles, _timestamp: expect.any(Number) }];
     const newState = updateRelatedArticle(state, updateArticle);
     expect(newState).toEqual(updatedState);
   });
@@ -46,7 +49,7 @@ describe('related articles reducers', () => {
     const state = givenState({});
     const updatedState = cloneDeep(state);
     updatedState.data.present.relatedArticles.push(article);
-    updatedState.data.past = [{ relatedArticles: state.data.present.relatedArticles }];
+    updatedState.data.past = [{ relatedArticles: state.data.present.relatedArticles, _timestamp: expect.any(Number) }];
     const newState = addRelatedArticle(state, article);
     expect(newState).toEqual(updatedState);
   });
@@ -58,7 +61,7 @@ describe('related articles reducers', () => {
 
     const updatedState = cloneDeep(state);
     updatedState.data.present.relatedArticles = [RELATED_ARTICLES[1]];
-    updatedState.data.past = [{ relatedArticles: state.data.present.relatedArticles }];
+    updatedState.data.past = [{ relatedArticles: state.data.present.relatedArticles, _timestamp: expect.any(Number) }];
     const newState = deleteRelatedArticle(state, state.data.present.relatedArticles[0]);
     expect(newState).toEqual(updatedState);
   });
