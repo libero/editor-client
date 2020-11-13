@@ -74,7 +74,7 @@ export function syncChanges(id: string, changes: ManuscriptDiff[]): Promise<void
   return axios.put(manuscriptUrl(id), changes.map(makeChangesSeralizable));
 }
 
-function makeChangesSeralizable(diff: ManuscriptDiff): Record<string, any> {
+function makeChangesSeralizable(diff: ManuscriptDiff): Record<string, unknown> {
   return cloneDeepWith(diff, function (value) {
     if (value instanceof EditorState) {
       return value.doc.toJSON();
