@@ -69,7 +69,10 @@ describe('FigureCitationEditorPopup', () => {
     );
     wrapper.find('li').at(1).simulate('click');
     wrapper.update();
-    expect(onChangeListener).toBeCalledWith(['id1', 'id2']);
+    expect(onChangeListener).toBeCalledWith([
+      { id: 'id1', name: 'Figure 1' },
+      { id: 'id2', name: 'Figure 2' }
+    ]);
   });
 
   it('should unselect first figure', () => {
@@ -93,8 +96,7 @@ describe('FigureCitationEditorPopup', () => {
     wrapper.update();
     expect(onChangeListener).toBeCalledWith([]);
   });
-
-
+  
   it('should close popup on clickaway', () => {
     const node = givenFigureCitationNode();
     const onCloseListener = jest.fn();

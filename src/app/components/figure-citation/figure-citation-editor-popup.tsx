@@ -10,12 +10,14 @@ export interface FiguresListEntry {
   name: string;
 }
 
+export const UNLABELLED_FIGURE_TEXT = 'Unlabelled figure';
+
 interface FigureCitationEditorPopupProps {
   selectedIds: string[];
   figures: FiguresListEntry[];
   onClose(): void;
   anchorEl: HTMLElement;
-  onChange(ids: string[]): void;
+  onChange(selectedFigures: FiguresListEntry[]): void;
 }
 
 export const FigureCitationEditorPopup: React.FC<FigureCitationEditorPopupProps> = (props) => {
@@ -46,9 +48,10 @@ export const FigureCitationEditorPopup: React.FC<FigureCitationEditorPopupProps>
         ? internalSelectedIds.filter((id) => id !== figId)
         : [...internalSelectedIds, figId];
       setInternalSelectedIds(updatedIdsList);
-      onChange(updatedIdsList);
+      const selectedFigures = figures.filter((figureEntry) => updatedIdsList.includes(figureEntry.id));
+      onChange(selectedFigures);
     },
-    [onChange, internalSelectedIds, setInternalSelectedIds]
+    [onChange, internalSelectedIds, setInternalSelectedIds, figures]
   );
 
   const clearFilterField = useCallback(() => {
@@ -57,7 +60,7 @@ export const FigureCitationEditorPopup: React.FC<FigureCitationEditorPopupProps>
   }, [setFilterValue, setFilteredList, figures]);
 
   return (
-    <Popper open={true} anchorEl={anchorEl}>
+    <Popper open={true} anchorEl={anchorEl} style={{ zIndex: 1 }}>
       <Paper>
         <ClickAwayListener onClickAway={onClose} mouseEvent="onMouseUp">
           <div>
@@ -84,7 +87,7 @@ export const FigureCitationEditorPopup: React.FC<FigureCitationEditorPopupProps>
             <ul className={classes.figureSelectionList}>
               {filteredList.map((fig) => (
                 <li className={classes.figureSelectionListItem} key={fig.id} data-fig-id={fig.id} onClick={handleClick}>
-                  <div className={classes.figureContent}>{fig.name}</div>
+                  <div className={classes.figureContent}>{fig.name || UNLABELLED_FIGURE_TEXT}</div>
                   <div className={classes.figureTick}>
                     <CheckCircleIcon
                       color="primary"

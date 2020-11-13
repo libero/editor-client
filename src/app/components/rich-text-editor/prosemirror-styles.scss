@@ -84,6 +84,9 @@
       margin-bottom: 16px;
       & > li > ul { list-style: circle; }
       & > li > ul > li > ul { list-style: square; }
+      & > li > ul > li > ul > li > ul { list-style: disc; }
+      & > li > ul > li > ul > li > ul > li > ul { list-style: circle; }
+      & > li > ul > li > ul > li > ul > li > ul > li > ul { list-style: square; }
     }
 
     ol {
@@ -91,6 +94,9 @@
       margin-bottom: 16px;
       & > li > ol { list-style: lower-latin; }
       & > li > ol > li > ol { list-style: lower-roman; }
+      & > li > ol > li > ol > li > ol { list-style: decimal; }
+      & > li > ol > li > ol > li > ol > li > ol { list-style: lower-latin; }
+      & > li > ol > li > ol > li > ol > li > ol > li > ol { list-style: lower-roman; }
     }
 
     li {
