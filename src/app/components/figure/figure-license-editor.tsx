@@ -6,7 +6,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 
 import { FIGURE_LICENSE_CC0, FIGURE_LICENSE_SELECT_OPTIONS, Figure } from 'app/models/figure';
 import { RichTextEditor } from 'app/components/rich-text-editor';
-import { NodeEditor } from 'app/components/node-editor/node-editor';
+import { NodeEditor, NodeEditorState } from 'app/components/node-editor/node-editor';
 import { useFigureLicenseEditorStyles } from 'app/components/figure/styles';
 import { Select } from 'app/components/select';
 import { NodeSelection } from 'prosemirror-state';
@@ -19,6 +19,15 @@ interface FigureLicenseEditorProps extends WithStyles<typeof useFigureLicenseEdi
 }
 
 class FigureContentEditorComponent extends NodeEditor<FigureLicenseEditorProps> {
+  shouldComponentUpdate(nextProps: FigureLicenseEditorProps, nextState: NodeEditorState): boolean {
+    if (this.props.index !== nextProps.index) {
+      this.forceUpdate();
+      return true;
+    }
+
+    return super.shouldComponentUpdate(nextProps, nextState);
+  }
+
   render() {
     const license: Figure = this.props.node.attrs.licenseInfo as Figure;
     const classes = this.props.classes;
@@ -94,11 +103,14 @@ class FigureContentEditorComponent extends NodeEditor<FigureLicenseEditorProps> 
 
   private handleFormChange = (event) => {
     const newAttributes = {
-      ...this.props.node.attrs.licenseInfo,
-      [event.target['name']]: event.target['value']
-    } as Figure;
+      id: this.props.node.attrs.id,
+      licenseInfo: {
+        ...this.props.node.attrs.licenseInfo,
+        [event.target['name']]: event.target['value']
+      }
+    };
     const change = this.context.view.state.tr;
-    change.setNodeMarkup(this.context.getPos() + this.props.offset - 1, null, { licenseInfo: newAttributes });
+    change.setNodeMarkup(this.context.getPos() + this.props.offset - 1, null, newAttributes);
     this.context.view.dispatch(change);
   };
 

@@ -26,10 +26,6 @@ export interface RichTextEditorProps {
   onBlur?: (state: EditorState, name: string) => void;
 }
 
-export interface RichTextEditorState {
-  internalState: EditorState;
-}
-
 const restoreSelection = debounce((editorView, from, to) => {
   if (editorView.state.selection) {
     const $from = editorView.state.doc.resolve(from);
@@ -39,13 +35,12 @@ const restoreSelection = debounce((editorView, from, to) => {
   }
 }, 50);
 
-export class RichTextEditor extends React.Component<ComponentWithId<RichTextEditorProps>, RichTextEditorState> {
+export class RichTextEditor extends React.Component<ComponentWithId<RichTextEditorProps>> {
   private options;
   public editorView: EditorView;
 
   constructor(props: ComponentWithId<RichTextEditorProps>) {
     super(props);
-    this.state = { internalState: this.props.editorState };
     this.handleChange = this.handleChange.bind(this);
     this.options = {
       nodeViews: {
@@ -90,13 +85,21 @@ export class RichTextEditor extends React.Component<ComponentWithId<RichTextEdit
     (this.editorView.dom as HTMLDivElement).blur();
   }
 
-  componentDidUpdate() {
-    // editor state is kept in sync between app state and editor state. App state will change when using formating
+  shouldComponentUpdate(nextProps: RichTextEditorProps) {
+    // editor state is kept in sync between app state and editor state. App state will change when using formatting
     // or any toolbar menu. In this case when change comes from outside it needs to override editor state
-    if (!this.props.editorState.doc.eq(this.editorView.state.doc)) {
-      this.updateEditorState(this.props.editorState);
+    if (!nextProps.editorState.doc.eq(this.props.editorState.doc)) {
+      this.updateEditorState(nextProps.editorState);
     }
 
+    return (
+      this.props.label !== nextProps.label ||
+      this.props.isActive !== nextProps.isActive ||
+      this.props.variant !== nextProps.variant
+    );
+  }
+
+  componentDidUpdate() {
     // when component updates we need to restore focus
     this.restoreFocus();
   }
