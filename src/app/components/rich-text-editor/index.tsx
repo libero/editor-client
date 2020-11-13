@@ -3,8 +3,6 @@ import { EditorView } from 'prosemirror-view';
 import { EditorState, Transaction, TextSelection } from 'prosemirror-state';
 import { debounce, get } from 'lodash';
 import { DOMSerializer, Slice } from 'prosemirror-model';
-import axios from 'axios';
-
 import 'prosemirror-example-setup/style/style.css';
 import 'prosemirror-menu/style/menu.css';
 import { SectionContainer, SectionContainerVariant } from 'app/components/section-container';
