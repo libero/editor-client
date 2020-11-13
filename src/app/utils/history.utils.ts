@@ -9,7 +9,7 @@ export function updateManuscriptState(
   propName: string,
   transaction: Transaction
 ): ManuscriptHistory {
-  const updatedManuscript = applyDiffToManuscript(state.present, createDiff({ [propName]: transaction }));
+  const updatedManuscript = applyDiffToManuscript(state.present, { [propName]: transaction, _timestamp: Date.now() });
 
   // only update history when document changes
   if (transaction.docChanged) {

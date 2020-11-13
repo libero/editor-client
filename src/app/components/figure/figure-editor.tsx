@@ -10,6 +10,7 @@ import { uploadImage } from 'app/utils/view.utils';
 import { FigureContentEditor } from 'app/components/figure/figure-content-editor';
 import { EditorView } from 'prosemirror-view';
 import { FigureLicensesList } from './figure-license-list';
+import { renderConfirmDialog } from 'app/components/prompt-dialog';
 
 /* Prosemirror relies heavily on the positioning of nodes in its internal state presentation.
   Given figure structure
@@ -46,11 +47,25 @@ interface FigureEditorProps {
 export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => {
   const { onDelete, onAttributesChange } = props;
   const [figureNode, setFigureNode] = useState<ProsemirrorNode>(props.node);
+  const [isConfirmShown, setConfirmShown] = useState<boolean>(false);
 
   const classes = useFigureEditorStyles();
   const titleNodeData = findChildrenByType(figureNode, figureNode.type.schema.nodes.figureTitle)[0];
   const legendNodeData = findChildrenByType(figureNode, figureNode.type.schema.nodes.figureLegend)[0];
   const licenseNodesData = findChildrenByType(figureNode, figureNode.type.schema.nodes.figureLicense);
+
+  const handleDeleteAccept = useCallback(() => {
+    setConfirmShown(false);
+    onDelete();
+  }, [onDelete]);
+
+  const handleDeleteReject = useCallback(() => {
+    setConfirmShown(false);
+  }, []);
+
+  const handleDeleteClick = useCallback(() => {
+    setConfirmShown(true);
+  }, []);
 
   const handleLabelChange = useCallback(
     (event) => {
@@ -107,9 +122,17 @@ export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => 
         </div>
         <FigureLicensesList licenses={licenseNodesData} />
       </div>
-      <IconButton classes={{ root: classes.deleteButton }} onClick={onDelete}>
+      <IconButton classes={{ root: classes.deleteButton }} onClick={handleDeleteClick}>
         <DeleteIcon fontSize="small" />
       </IconButton>
+      {isConfirmShown
+        ? renderConfirmDialog(
+            'You are deleting a figure',
+            'Deleting a figure will remove all linked citations from this article. Are you sure you want to proceed?',
+            handleDeleteAccept,
+            handleDeleteReject
+          )
+        : undefined}
     </div>
   );
 });
