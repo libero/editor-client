@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { cloneDeepWith } from 'lodash';
 import { EditorState, Transaction } from 'prosemirror-state';
+import { Step } from 'prosemirror-transform';
 
 import { Manuscript, ManuscriptDiff } from 'app/models/manuscript';
 import {
@@ -24,6 +25,18 @@ const manuscriptUrl = (id: string): string => {
   // return process.env.REACT_APP_NO_SERVER ? `./manuscripts/${id}/manuscript.xml` : `/api/v1/articles/${id}`
   return `./manuscripts/${id}/manuscript.xml`;
 };
+
+export interface ManuscriptChangesResponse {
+  changes: Array<{
+    _id: string;
+    articleId: string;
+    steps: Array<ReturnType<Step['toJSON']>>;
+    applied: boolean;
+    user: string;
+    path: string;
+    timestamp: number;
+  }>;
+}
 
 export async function getManuscriptContent(id: string): Promise<Manuscript> {
   const { data } = await axios.get<string>(manuscriptUrl(id), { headers: { Accept: 'application/xml' } });
@@ -79,30 +92,7 @@ function makeChangesSeralizable(diff: ManuscriptDiff): Record<string, unknown> {
   });
 }
 
-//
-// export async function getManuscriptChanges(id: string) {
-//   const {
-//     data: { changes = [] }
-//   } = await axios.get<any>(`./changes/${id}/changes.json`);
-//
-//   const paths = changes.reduce((acc, step) => {
-//     if (!acc[step.path]) {
-//       acc[step.path] = { steps: [] }; // push transaction
-//     }
-//     acc[step.path].steps = [...acc[step.path].steps, ...step.steps];
-//     return acc;
-//   }, {});
-// }
-//
-// function applyStepsToEditor(editorState: EditorState, schema: Schema, changeSteps?: [Step]): EditorState {
-//   if (changeSteps) {
-//     const changeTransaction = editorState.tr;
-//
-//     changeSteps.forEach((changeStep) => {
-//       changeTransaction.maybeStep(Step.fromJSON(schema, changeStep));
-//     });
-//     return editorState.apply(changeTransaction);
-//   }
-//
-//   return editorState;
-// }
+export async function getManuscriptChanges(id: string): Promise<ManuscriptChangesResponse['changes']> {
+  const manuscriptChangesResponse = await axios.get<ManuscriptChangesResponse>(`./changes/${id}/changes.json`);
+  return manuscriptChangesResponse.data.changes;
+}
