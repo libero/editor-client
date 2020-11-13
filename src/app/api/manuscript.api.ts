@@ -48,20 +48,14 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
     title: createTitleState(title),
     abstract: createAbstractState(abstract),
     impactStatement: createImpactStatementState(impactStatement),
-    // TODO: apply chnages to keywordGroups
     keywordGroups: createKeywordGroupsState(Array.from(keywordGroups)),
-    // TODO: apply author state changes
     authors: authorsState,
     body: createBodyState(body, id),
-    // TODO: apply affiliations changes
     affiliations: createAffiliationsState(Array.from(affiliations)),
-    // TODO: apply references changes
     references: createReferencesState(Array.from(references)),
-    // TODO: Apply related article changes
     relatedArticles: createRelatedArticleState(Array.from(relatedArticles)),
     acknowledgements: createAcknowledgementsState(acknowledgements),
     articleInfo: createArticleInfoState(doc, authorsState),
-    //TODO: apply journalMetaChanges
     journalMeta: {
       publisherName: getTextContentFromPath(doc, 'journal-meta publisher publisher-name'),
       issn: getTextContentFromPath(doc, 'journal-meta issn')
