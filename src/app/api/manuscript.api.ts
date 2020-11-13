@@ -24,19 +24,6 @@ const manuscriptUrl = (id: string): string => {
 
 export async function getManuscriptContent(id: string): Promise<Manuscript> {
   const { data } = await axios.get<string>(manuscriptUrl(id), { headers: { Accept: 'application/xml' } });
-  const {
-    data: { changes = [] }
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  } = await axios.get<any>(`./changes/${id}/changes.json`);
-
-  //TODO: order by timestamp of edit
-  const paths = changes.reduce((acc, step) => {
-    if (!acc[step.path]) {
-      acc[step.path] = { steps: [] }; // push transcation
-    }
-    acc[step.path].steps = [...acc[step.path].steps, ...step.steps];
-    return acc;
-  }, {});
 
   const parser = new DOMParser();
   const doc = parser.parseFromString(data, 'text/xml');
@@ -55,21 +42,21 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
   const authorsState = createAuthorsState(Array.from(authors), authorNotes);
 
   return {
-    title: createTitleState(title, paths.title?.steps),
-    abstract: createAbstractState(abstract, paths.abstract?.steps),
-    impactStatement: createImpactStatementState(impactStatement, paths.impactStatement?.steps),
+    title: createTitleState(title),
+    abstract: createAbstractState(abstract),
+    impactStatement: createImpactStatementState(impactStatement),
     // TODO: apply chnages to keywordGroups
     keywordGroups: createKeywordGroupsState(Array.from(keywordGroups)),
     // TODO: apply author state changes
     authors: authorsState,
-    body: createBodyState(body, id, paths.body?.steps),
+    body: createBodyState(body, id),
     // TODO: apply affiliations changes
     affiliations: createAffiliationsState(Array.from(affiliations)),
     // TODO: apply references changes
     references: createReferencesState(Array.from(references)),
     // TODO: Apply related article changes
     relatedArticles: createRelatedArticleState(Array.from(relatedArticles)),
-    acknowledgements: createAcknowledgementsState(acknowledgements, paths.acknowledgements?.steps),
+    acknowledgements: createAcknowledgementsState(acknowledgements),
     articleInfo: createArticleInfoState(doc, authorsState),
     //TODO: apply journalMetaChanges
     journalMeta: {
@@ -78,3 +65,31 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
     }
   } as Manuscript;
 }
+
+//
+// export async function getManuscriptChanges(id: string) {
+//   const {
+//     data: { changes = [] }
+//   } = await axios.get<any>(`./changes/${id}/changes.json`);
+//
+//   const paths = changes.reduce((acc, step) => {
+//     if (!acc[step.path]) {
+//       acc[step.path] = { steps: [] }; // push transaction
+//     }
+//     acc[step.path].steps = [...acc[step.path].steps, ...step.steps];
+//     return acc;
+//   }, {});
+// }
+//
+// function applyStepsToEditor(editorState: EditorState, schema: Schema, changeSteps?: [Step]): EditorState {
+//   if (changeSteps) {
+//     const changeTransaction = editorState.tr;
+//
+//     changeSteps.forEach((changeStep) => {
+//       changeTransaction.maybeStep(Step.fromJSON(schema, changeStep));
+//     });
+//     return editorState.apply(changeTransaction);
+//   }
+//
+//   return editorState;
+// }

@@ -1,4 +1,4 @@
-import { DOMParser as ProseMirrorDOMParser, Schema } from 'prosemirror-model';
+import { DOMParser as ProseMirrorDOMParser } from 'prosemirror-model';
 import { EditorState } from 'prosemirror-state';
 import { Step } from 'prosemirror-transform';
 import { gapCursor } from 'prosemirror-gapcursor';
@@ -30,13 +30,11 @@ export function createTitleState(content: Element, changeSteps?: [Step]): Editor
     xmlContentDocument.appendChild(content);
   }
 
-  const editorState = EditorState.create({
+  return EditorState.create({
     doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),
     schema,
     plugins: [buildInputRules(), gapCursor(), dropCursor(), SelectPlugin, PlaceholderPlugin('Enter title')]
   });
-
-  return applyStepsToEditor(editorState, schema, changeSteps);
 }
 
 export function createAbstractState(content: Element, changeSteps?: [Step]): EditorState {
@@ -47,13 +45,11 @@ export function createAbstractState(content: Element, changeSteps?: [Step]): Edi
     xmlContentDocument.appendChild(content);
   }
 
-  const editorState = EditorState.create({
+  return EditorState.create({
     doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),
     schema,
     plugins: [buildInputRules(), gapCursor(), dropCursor(), SelectPlugin, PlaceholderPlugin('Enter abstract')]
   });
-
-  return applyStepsToEditor(editorState, schema, changeSteps);
 }
 
 export function createBodyState(content: Element, id: string, changeSteps?: [Step]): EditorState {
@@ -66,7 +62,7 @@ export function createBodyState(content: Element, id: string, changeSteps?: [Ste
 
   set(xmlContentDocument, 'manuscriptPath', `/manuscripts/${id}`);
 
-  const editorState = EditorState.create({
+  return EditorState.create({
     doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),
     schema,
     plugins: [
@@ -79,11 +75,9 @@ export function createBodyState(content: Element, id: string, changeSteps?: [Ste
       PlaceholderPlugin('Enter main text')
     ]
   });
-
-  return applyStepsToEditor(editorState, schema, changeSteps);
 }
 
-export function createImpactStatementState(content: Element, changeSteps?: [Step]): EditorState {
+export function createImpactStatementState(content: Element): EditorState {
   const schema = makeSchemaFromConfig(abstractConfig.topNode, abstractConfig.nodes, abstractConfig.marks);
   const xmlContentDocument = document.implementation.createDocument('', '', null);
 
@@ -91,13 +85,11 @@ export function createImpactStatementState(content: Element, changeSteps?: [Step
     xmlContentDocument.appendChild(content);
   }
 
-  const editorState = EditorState.create({
+  return EditorState.create({
     doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),
     schema,
     plugins: [buildInputRules(), gapCursor(), dropCursor(), SelectPlugin, PlaceholderPlugin('Enter impact statement')]
   });
-
-  return applyStepsToEditor(editorState, schema, changeSteps);
 }
 
 export function createAcknowledgementsState(content?: Element, changeSteps?: [Step]): EditorState {
@@ -119,13 +111,11 @@ export function createAcknowledgementsState(content?: Element, changeSteps?: [St
     xmlContentDocument.appendChild(content);
   }
 
-  const editorState = EditorState.create({
+  return EditorState.create({
     doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),
     schema,
     plugins: [buildInputRules(), gapCursor(), dropCursor(), SelectPlugin, PlaceholderPlugin('Enter acknowledgements')]
   });
-
-  return applyStepsToEditor(editorState, schema, changeSteps);
 }
 
 export function createKeywordGroupsState(keywordGroupsXml: Element[]): KeywordGroups {
@@ -157,26 +147,12 @@ export function createReferencesState(referencesXml: Element[]): Reference[] {
   return referencesList;
 }
 
-function applyStepsToEditor(editorState: EditorState, schema: Schema, changeSteps?: [Step]): EditorState {
-  if (changeSteps) {
-    const changeTransaction = editorState.tr;
-
-    changeSteps.forEach((changeStep) => {
-      changeTransaction.maybeStep(Step.fromJSON(schema, changeStep));
-    });
-    return editorState.apply(changeTransaction);
-  }
-
-  return editorState;
-}
-
 function createKeywordState(keyword?: Element, changeSteps?: [Step]): EditorState {
   const schema = makeSchemaFromConfig(keywordConfig.topNode, keywordConfig.nodes, keywordConfig.marks);
-  const editorState = EditorState.create({
+
+  return EditorState.create({
     doc: keyword ? ProseMirrorDOMParser.fromSchema(schema).parse(keyword) : undefined,
     schema,
     plugins: [buildInputRules(), gapCursor(), dropCursor(), keymap(baseKeymap)]
   });
-
-  return applyStepsToEditor(editorState, schema, changeSteps);
 }
