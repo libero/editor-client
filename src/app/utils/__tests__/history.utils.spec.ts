@@ -10,7 +10,7 @@ describe('history utils', () => {
     const tx = { ...editorState.tr, docChanged: true } as Transaction;
 
     const newState = updateManuscriptState(initialHistory, 'title', tx);
-    expect(newState.past).toContainEqual({ title: tx });
+    expect(newState.past).toContainEqual({ title: tx, _timestamp: expect.any(Number) });
     expect(newState.present).not.toBe(initialHistory.present);
     expect(newState.present.title).not.toBe(editorState);
     expect(newState.future).toEqual([]);
@@ -34,25 +34,25 @@ describe('history utils', () => {
     const state = getInitialHistory({ title: editorState } as Manuscript) as ManuscriptHistory;
     const tx = editorState.tr;
     Object.defineProperty(tx, 'docChanged', { value: true });
-    state.past = [{ title: tx }];
+    state.past = [{ title: tx, _timestamp: expect.any(Number) }];
 
     const revertedState = undoChange(state);
 
     expect(revertedState.past).toEqual([]);
     expect(revertedState.present).not.toBe(state.present);
     expect(revertedState.present.title).not.toBe(editorState);
-    expect(revertedState.future).toEqual([{ title: tx }]);
+    expect(revertedState.future).toEqual([{ title: tx, _timestamp: expect.any(Number) }]);
   });
 
   it('roll on changes', () => {
     const editorState = mockEditorState();
     const state = getInitialHistory({ title: editorState } as Manuscript) as ManuscriptHistory;
     const tx = editorState.tr;
-    state.future = [{ title: tx }];
+    state.future = [{ title: tx, _timestamp: 0 }];
 
     const rolledOnState = redoChange(state);
 
-    expect(rolledOnState.past).toEqual([{ title: tx }]);
+    expect(rolledOnState.past).toEqual([{ title: tx, _timestamp: expect.any(Number) }]);
     expect(rolledOnState.present).not.toBe(state.present);
     expect(rolledOnState.present.title).not.toBe(editorState);
     expect(rolledOnState.future).toEqual([]);

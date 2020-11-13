@@ -1,13 +1,14 @@
 import { cloneManuscript } from 'app/utils/state.utils';
 import { ManuscriptHistoryState } from 'app/store';
 import { RelatedArticle } from 'app/models/related-article';
+import { createDiff } from 'app/utils/history.utils';
 
 export function updateRelatedArticle(state: ManuscriptHistoryState, payload: RelatedArticle): ManuscriptHistoryState {
   const articleIndex = state.data.present.relatedArticles.findIndex(({ id }) => id === payload.id);
 
-  const newDiff = {
+  const newDiff = createDiff({
     relatedArticles: state.data.present.relatedArticles
-  };
+  });
 
   const newManuscript = cloneManuscript(state.data.present);
   newManuscript.relatedArticles[articleIndex] = payload;
@@ -23,9 +24,9 @@ export function updateRelatedArticle(state: ManuscriptHistoryState, payload: Rel
 }
 
 export function addRelatedArticle(state: ManuscriptHistoryState, payload: RelatedArticle): ManuscriptHistoryState {
-  const newDiff = {
+  const newDiff = createDiff({
     relatedArticles: state.data.present.relatedArticles
-  };
+  });
 
   const newManuscript = cloneManuscript(state.data.present);
   newManuscript.relatedArticles.push(payload);
@@ -43,9 +44,9 @@ export function addRelatedArticle(state: ManuscriptHistoryState, payload: Relate
 export function deleteRelatedArticle(state: ManuscriptHistoryState, payload: RelatedArticle): ManuscriptHistoryState {
   const articleIndex = state.data.present.relatedArticles.findIndex(({ id }) => id === payload.id);
 
-  const newDiff = {
+  const newDiff = createDiff({
     relatedArticles: state.data.present.relatedArticles
-  };
+  });
 
   const newManuscript = cloneManuscript(state.data.present);
   newManuscript.relatedArticles.splice(articleIndex, 1);

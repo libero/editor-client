@@ -10,6 +10,7 @@ import { createNewKeywordState } from 'app/models/manuscript-state.factory';
 describe('KeywordsEditorComponent', () => {
   it('renders keyword', () => {
     const props = {
+      isActive: false,
       editorState: new EditorState(),
       onChange: jest.fn(),
       onDelete: jest.fn(),
@@ -23,6 +24,7 @@ describe('KeywordsEditorComponent', () => {
 
   it('sets focus on dbl click', () => {
     const props = {
+      isActive: false,
       editorState: createNewKeywordState(),
       onChange: jest.fn(),
       onDelete: jest.fn(),
@@ -41,6 +43,7 @@ describe('KeywordsEditorComponent', () => {
 
   it('stops single clicks', () => {
     const props = {
+      isActive: false,
       editorState: createNewKeywordState(),
       onChange: jest.fn(),
       onDelete: jest.fn(),
@@ -63,6 +66,7 @@ describe('KeywordsEditorComponent', () => {
 
   it('should unsubscribe on unmount', () => {
     const props = {
+      isActive: false,
       editorState: createNewKeywordState(),
       onChange: jest.fn(),
       onDelete: jest.fn(),
