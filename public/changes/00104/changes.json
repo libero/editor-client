@@ -1,0 +1,27 @@
+{
+  "changes": [
+    {
+      "_id": "000000",
+      "articleId": "00104",
+      "steps": [
+        {
+          "stepType": "replace",
+          "from": 2,
+          "to": 2,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "A change"
+              }
+            ]
+          }
+        }
+      ],
+      "applied": false,
+      "user": "undefined",
+      "path": "abstract",
+      "timestamp": 1605198300275
+    }
+  ]
+}
