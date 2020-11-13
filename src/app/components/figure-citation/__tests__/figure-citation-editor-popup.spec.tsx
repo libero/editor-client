@@ -96,8 +96,7 @@ describe('FigureCitationEditorPopup', () => {
     wrapper.update();
     expect(onChangeListener).toBeCalledWith([]);
   });
-
-
+  
   it('should close popup on clickaway', () => {
     const node = givenFigureCitationNode();
     const onCloseListener = jest.fn();
