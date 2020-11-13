@@ -5,6 +5,8 @@ import { ManuscriptEditorState } from 'app/store';
 const initialState: ManuscriptEditorState = {
   focusedManuscriptPath: undefined,
   manuscriptBodyTOC: [],
+  manuscriptId: '',
+  lastSyncTimestamp: 0,
   modal: {
     isVisible: false
   }
@@ -36,9 +38,19 @@ manuscriptEditorReducer.on(manuscriptEditorAction.showModalDialog, (state, paylo
   }
 }));
 
-manuscriptEditorReducer.on(manuscriptEditorAction.hideModalDialog, (state) => ({
+manuscriptEditorReducer.on(manuscriptEditorAction.hideModalDialog, (state: ManuscriptEditorState) => ({
   ...state,
   modal: {
     isVisible: false
   }
+}));
+
+manuscriptEditorReducer.on(manuscriptEditorAction.setLastSyncTimestamp, (state, payload) => ({
+  ...state,
+  lastSyncTimestamp: payload
+}));
+
+manuscriptEditorReducer.on(manuscriptEditorAction.setManuscriptId, (state, payload) => ({
+  ...state,
+  manuscriptId: payload
 }));

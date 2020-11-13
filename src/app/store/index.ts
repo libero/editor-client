@@ -17,6 +17,8 @@ export type ManuscriptHistoryState = LoadableState<ManuscriptHistory>;
 export interface ManuscriptEditorState {
   focusedManuscriptPath: string | undefined;
   manuscriptBodyTOC: TableOfContents;
+  lastSyncTimestamp: number;
+  manuscriptId: string;
   modal: {
     params?: ModalPayload;
     isVisible: boolean;

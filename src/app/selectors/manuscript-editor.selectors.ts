@@ -28,6 +28,14 @@ export const getFocusedEditorStatePath = createSelector(getManuscriptEditorState
   get(manuscriptEditorState, 'focusedManuscriptPath')
 );
 
+export const getLastSyncTimestamp = createSelector(getManuscriptEditorState, (manuscriptEditorState) =>
+  get(manuscriptEditorState, 'lastSyncTimestamp')
+);
+
+export const getManuscriptId = createSelector(getManuscriptEditorState, (manuscriptEditorState) =>
+  get(manuscriptEditorState, 'manuscriptId')
+);
+
 export const getFocusedEditorState = createSelector(
   getManuscriptEditorState,
   getManuscriptData,

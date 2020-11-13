@@ -10,6 +10,7 @@ import {
 } from 'app/selectors/manuscript-editor.selectors';
 import { Manuscript } from 'app/models/manuscript';
 import { createNewKeywordState } from 'app/models/manuscript-state.factory';
+import { givenState } from 'app/test-utils/reducer-test-helpers';
 
 describe('manuscript selectors', () => {
   let state;
@@ -74,11 +75,6 @@ describe('manuscript selectors', () => {
 });
 
 function givenManuscript(): Manuscript {
-  return {
-    title: new EditorState(),
-    abstract: new EditorState(),
-    keywordGroups: {},
-    authors: [],
-    affiliations: []
-  };
+  const state = givenState({});
+  return state.data.present;
 }

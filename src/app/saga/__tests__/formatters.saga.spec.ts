@@ -42,7 +42,7 @@ describe('formatters saga', () => {
   it('should set text to heading', async () => {
     const dispatched = [];
     const manuscriptState = givenState({
-      body: createBodyState(document.createElement('div'))
+      body: createBodyState(document.createElement('div'), '')
     });
     await runSaga(
       {
@@ -62,9 +62,8 @@ describe('formatters saga', () => {
   it('should insert ref citation', async () => {
     const dispatched = [];
     const manuscriptState = givenState({
-      body: createBodyState(document.createElement('div'))
+      body: createBodyState(document.createElement('div'), '')
     });
-
     await runSaga(
       {
         dispatch: (action) => dispatched.push(action),
