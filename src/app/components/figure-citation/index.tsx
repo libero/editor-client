@@ -7,8 +7,9 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import { theme } from 'app/styles/theme';
 import {
   FigureCitationEditorPopup,
-  FiguresListEntry
+  FiguresListEntry, UNLABELLED_FIGURE_TEXT
 } from 'app/components/figure-citation/figure-citation-editor-popup';
+import { TextSelection } from 'prosemirror-state';
 
 export class FigureCitationNodeView implements NodeView {
   dom?: HTMLAnchorElement;
@@ -76,8 +77,17 @@ export class FigureCitationNodeView implements NodeView {
     }
   };
 
-  handleChange = (ids: string[]) => {
+  handleChange = (figures: FiguresListEntry[]) => {
+    const ids = figures.map(({ id }) => id);
     const change = this.view.state.tr.setNodeMarkup(this.getPos(), null, { figIds: ids });
+
+    if (this.node.textContent === '???' && figures.length > 0) {
+      const nodeContent = (figures[0].name || UNLABELLED_FIGURE_TEXT).replace(/\.$/, '');
+      change
+        .setSelection(TextSelection.create(change.doc, this.getPos() + 1, this.getPos() + this.node.nodeSize - 1))
+        .replaceSelectionWith(this.view.state.schema.text(nodeContent));
+    }
+
     this.view.dispatch(change);
   };
 

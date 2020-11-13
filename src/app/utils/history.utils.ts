@@ -11,8 +11,6 @@ export function updateManuscriptState(
 ): ManuscriptHistory {
   const updatedManuscript = applyDiffToManuscript(state.present, { [propName]: transaction });
 
-  console.log(JSON.stringify(transaction.steps[0]?.toJSON(), null, 4));
-
   // only update history when document changes
   if (transaction.docChanged) {
     return {
