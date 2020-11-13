@@ -86,6 +86,10 @@ export class FigureCitationNodeView implements NodeView {
       change
         .setSelection(TextSelection.create(change.doc, this.getPos() + 1, this.getPos() + this.node.nodeSize - 1))
         .replaceSelectionWith(this.view.state.schema.text(nodeContent));
+    } else if (figures.length === 0) {
+      change
+        .setSelection(TextSelection.create(change.doc, this.getPos() + 1, this.getPos() + this.node.nodeSize - 1))
+        .replaceSelectionWith(this.view.state.schema.text('???'));
     }
 
     this.view.dispatch(change);
