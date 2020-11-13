@@ -14,7 +14,6 @@ import { createAffiliationsState } from 'app/models/affiliation';
 import { getTextContentFromPath } from 'app/models/utils';
 import { createRelatedArticleState } from 'app/models/related-article';
 import { createArticleInfoState } from 'app/models/article-information';
-import { reduce } from 'lodash';
 
 const manuscriptUrl = (id: string): string => {
   // TODO
@@ -25,26 +24,16 @@ const manuscriptUrl = (id: string): string => {
 
 export async function getManuscriptContent(id: string): Promise<Manuscript> {
   const { data } = await axios.get<string>(manuscriptUrl(id), { headers: { Accept: 'application/xml' } });
-  // data structure that we need for the backend
-  // [{path: 'title', steps: [...]}, {path: 'keywords', steps: [...]}, {path: 'abstract', steps: [...]}] OR
-  // {'title': {steps: []}, 'keywords': {steps: []}, 'abstract': {steps: []}}
-  // db collections:
-  // const steps = await axios.get<any>(`/api/v1/articles/${id}/changes?version=1&status=pending`);
-  // CONSIDER: sort order mattters
-  // return process.env.REACT_APP_NO_SERVER ? `./changes/${id}/changes.json` : `/api/v1/articles/${id}/changes?version=1&status=pending`
-  // const blah = await axios.get<any>(`./changes/${id}/changes.json`);
-  // console.log('balh', blah);
-  const { data: { changes = [] }} = await axios.get<any>(`./changes/${id}/changes.json`);
-
-  console.log('chamge', changes);
-
-  // state of changes as per {path: {steps[transcations]}}
+  const {
+    data: { changes = [] }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } = await axios.get<any>(`./changes/${id}/changes.json`);
 
   //TODO: order by timestamp of edit
   const paths = changes.reduce((acc, step) => {
     if (!acc[step.path]) {
       acc[step.path] = { steps: [] }; // push transcation
-    } 
+    }
     acc[step.path].steps = [...acc[step.path].steps, ...step.steps];
     return acc;
   }, {});

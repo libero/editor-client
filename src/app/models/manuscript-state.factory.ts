@@ -47,7 +47,7 @@ export function createAbstractState(content: Element, changeSteps?: [Step]): Edi
     xmlContentDocument.appendChild(content);
   }
 
-  const editorState =  EditorState.create({
+  const editorState = EditorState.create({
     doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),
     schema,
     plugins: [buildInputRules(), gapCursor(), dropCursor(), SelectPlugin, PlaceholderPlugin('Enter abstract')]
@@ -83,7 +83,7 @@ export function createBodyState(content: Element, id: string, changeSteps?: [Ste
   return applyStepsToEditor(editorState, schema, changeSteps);
 }
 
-export function createImpactStatementState(content: Element, changeSteps?:[Step]): EditorState {
+export function createImpactStatementState(content: Element, changeSteps?: [Step]): EditorState {
   const schema = makeSchemaFromConfig(abstractConfig.topNode, abstractConfig.nodes, abstractConfig.marks);
   const xmlContentDocument = document.implementation.createDocument('', '', null);
 
@@ -157,20 +157,20 @@ export function createReferencesState(referencesXml: Element[]): Reference[] {
   return referencesList;
 }
 
-function applyStepsToEditor(editorState: EditorState, schema: Schema, changeSteps?: [Step]) {
-  if(changeSteps) {
+function applyStepsToEditor(editorState: EditorState, schema: Schema, changeSteps?: [Step]): EditorState {
+  if (changeSteps) {
     const changeTransaction = editorState.tr;
 
-    changeSteps.forEach(changeStep => {
+    changeSteps.forEach((changeStep) => {
       changeTransaction.maybeStep(Step.fromJSON(schema, changeStep));
-    });    
+    });
     return editorState.apply(changeTransaction);
   }
 
   return editorState;
 }
 
-function createKeywordState(keyword?: Element, changeSteps?:[Step]): EditorState {
+function createKeywordState(keyword?: Element, changeSteps?: [Step]): EditorState {
   const schema = makeSchemaFromConfig(keywordConfig.topNode, keywordConfig.nodes, keywordConfig.marks);
   const editorState = EditorState.create({
     doc: keyword ? ProseMirrorDOMParser.fromSchema(schema).parse(keyword) : undefined,
