@@ -15,7 +15,6 @@ import { hasParentNodeOf } from 'app/utils/view.utils';
 import { LinkNodeView } from 'app/components/link-editor-popup';
 import { FigureNodeView } from 'app/components/figure';
 import { FigureCitationNodeView } from 'app/components/figure-citation';
-import Axios from 'axios';
 
 export interface RichTextEditorProps {
   editorState: EditorState;
