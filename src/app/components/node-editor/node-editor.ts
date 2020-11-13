@@ -37,9 +37,10 @@ export abstract class NodeEditor<T> extends React.Component<NodeEditorProps & T,
   }
 
   shouldComponentUpdate(nextProps: NodeEditorProps, nextState: NodeEditorState): boolean {
-    if (this.state.isEditorActive !== nextState.isEditorActive) {
+    if (this.state.isEditorActive !== nextState.isEditorActive || this.props.offset !== nextProps.offset) {
       return true;
     }
+
     if (nextProps.node !== this.props.node) {
       const change = this.getUpdatesForNode(nextProps.node, this.getInternalState());
       if (change) {
