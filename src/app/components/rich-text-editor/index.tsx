@@ -131,15 +131,6 @@ export class RichTextEditor extends React.Component<ComponentWithId<RichTextEdit
     const newState = this.editorView.state.apply(change);
     this.updateEditorState(newState);
     this.props.onChange(change, this.props.name);
-
-    // this should be moved to redux
-    // const { data } = axios.get<string>(manuscriptUrl(id), { headers: { Accept: 'application/xml' } });
-    const id = '00104';
-    await axios.post(`/api/v1/articles/${id}/changes`, { steps: change.steps, path: 'abstract' })
-
-    // data structure that we need for the backend
-    // [{path: 'title', steps: [...]}, {path: 'keywords', steps: [...]}, {path: 'abstract', steps: [...]}] OR
-    // {'title': {steps: []}, 'keywords': {steps: []}, 'abstract': {steps: []}}
   }
 
   private createEditorView = (element: HTMLElement) => {
