@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button, PropTypes } from '@material-ui/core';
 import { mapValues, isEqual } from 'lodash';
-import AddIcon from '@material-ui/icons/Add';
 
 import { useActionButtonStyles } from './styles';
 
