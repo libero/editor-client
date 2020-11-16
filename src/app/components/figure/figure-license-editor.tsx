@@ -73,6 +73,7 @@ class FigureContentEditorComponent extends NodeEditor<FigureLicenseEditorProps> 
           <div className={classes.inputField}>
             <RichTextEditor
               ref={this.editorRef}
+              classes={{ root: this.props.classes.richTextEditorField }}
               isActive={this.state.isEditorActive}
               label={`License ${this.props.index + 1}`}
               variant="outlined"
