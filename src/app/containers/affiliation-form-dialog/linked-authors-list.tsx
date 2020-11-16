@@ -88,7 +88,7 @@ export const LinkedAuthorsList: React.FC<LinkedAuthorsListProps> = ({ linkedAuth
       ))}
       <ActionButton
         variant="addEntity"
-        title="Author"
+        title="Add Author"
         onClick={addEmptyRow}
         disabled={userLinkedAuthors.length >= allAuthors.length}
       />

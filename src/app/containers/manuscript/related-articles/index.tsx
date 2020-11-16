@@ -65,7 +65,7 @@ export const RelatedArticles: React.FC<ComponentWithId> = ({ id }) => {
           ))}
         </ul>
       </SectionContainer>
-      <ActionButton variant="addEntity" title="Article" onClick={handleAddRelatedArticle} />
+      <ActionButton variant="addEntity" title="Add Article" onClick={handleAddRelatedArticle} />
     </section>
   );
 };

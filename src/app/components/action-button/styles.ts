@@ -27,9 +27,7 @@ export const useActionButtonStyles = makeStyles((theme) => ({
 
   addEntityButton_root: {
     textTransform: 'none',
-    color: theme.palette.text.secondary,
-    padding: theme.spacing(0, 0.5),
-    fontSize: '0.75rem'
+    fontSize: '0.875rem'
   },
 
   addEntityButton_icon: {

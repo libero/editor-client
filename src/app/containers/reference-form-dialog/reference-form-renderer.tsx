@@ -140,7 +140,7 @@ export const EditorsListInput: React.FC<ReferenceInputTypeProps<ReferenceContrib
       refContributors={props.value}
       onChange={handleChange}
       entityName="editor"
-      addCtaLabel={'Editor'}
+      addCtaLabel={'Add Editor'}
     />
   );
 };

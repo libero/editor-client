@@ -192,7 +192,7 @@ export const ReferenceFormDialog: React.FC<ReferenceFormDialogProps> = ({
       />
       <ReferenceContributorsList
         className={classes.inputField}
-        addCtaLabel={'Author'}
+        addCtaLabel={'Add Author'}
         entityName={'author'}
         test-id={'ref-authors'}
         refContributors={userReference.authors}

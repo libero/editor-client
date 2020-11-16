@@ -41,7 +41,7 @@ export const AuthorsInfoDetails: React.FC<ComponentWithId> = ({ id }) => {
           <AuthorInfo key={author.id} author={author} />
         ))}
       </SectionContainer>
-      <ActionButton variant="addEntity" title="Author" onClick={addAuthor} className={classes.addAuthorButton} />
+      <ActionButton variant="addEntity" title="Add Author" onClick={addAuthor} className={classes.addAuthorButton} />
     </section>
   );
 };

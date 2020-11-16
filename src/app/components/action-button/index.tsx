@@ -39,10 +39,10 @@ const VARIANTS = {
   },
   addEntity: {
     disableElevation: true,
-    size: 'small',
+    size: 'medium',
     classes: { root: 'addEntityButton_root', startIcon: 'addEntityButton_icon' },
     variant: 'text',
-    startIcon: <AddIcon />
+    color: 'primary'
   }
 } as {
   [key: string]: {

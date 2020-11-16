@@ -171,7 +171,7 @@ exports[`Reference form dialog renders form 1`] = `
     <div
       data-cmp="Button"
     >
-      Author
+      Add Author
     </div>
      
   </section>
