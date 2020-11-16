@@ -108,7 +108,7 @@ export const ReferenceList: React.FC<ComponentWithId> = ({ id }) => {
           ))}
         </ul>
       </SectionContainer>
-      <ActionButton variant="addEntity" title="Reference" onClick={handleAddReference} />
+      <ActionButton variant="addEntity" title="Add Reference" onClick={handleAddReference} />
     </section>
   );
 };

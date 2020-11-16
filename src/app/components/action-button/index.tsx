@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button, PropTypes } from '@material-ui/core';
 import { mapValues, isEqual } from 'lodash';
-import AddIcon from '@material-ui/icons/Add';
 
 import { useActionButtonStyles } from './styles';
 
@@ -39,10 +38,10 @@ const VARIANTS = {
   },
   addEntity: {
     disableElevation: true,
-    size: 'small',
+    size: 'medium',
     classes: { root: 'addEntityButton_root', startIcon: 'addEntityButton_icon' },
     variant: 'text',
-    startIcon: <AddIcon />
+    color: 'primary'
   }
 } as {
   [key: string]: {

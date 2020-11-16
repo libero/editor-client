@@ -187,7 +187,7 @@ export const LinkedAffiliationsList: React.FC<LinkedAffiliationsListProps> = (pr
       <ActionButton
         variant="addEntity"
         disabled={userLinkedAffiliations.length > allAffiliations.length}
-        title="Affiliation"
+        title="Add Affiliation"
         onClick={addEmptyRow}
       />
       {isAffiliationDialogShown

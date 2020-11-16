@@ -26,7 +26,7 @@ describe('Reference Contributors List', () => {
     const wrapper = create(
       <ReferenceContributorsList
         entityName="contributor"
-        addCtaLabel="Contributor"
+        addCtaLabel="Add Contributor"
         className="class-name"
         refContributors={AUTHORS}
         onChange={jest.fn()}
@@ -40,7 +40,7 @@ describe('Reference Contributors List', () => {
     const wrapper = create(
       <ReferenceContributorsList
         entityName="contributor"
-        addCtaLabel="Contributor"
+        addCtaLabel="Add Contributor"
         className="class-name"
         refContributors={AUTHORS}
         onChange={onChange}
@@ -58,7 +58,7 @@ describe('Reference Contributors List', () => {
     const wrapper = create(
       <ReferenceContributorsList
         entityName="contributor"
-        addCtaLabel="Contributor"
+        addCtaLabel="Add Contributor"
         className="class-name"
         refContributors={AUTHORS}
         onChange={onChange}
@@ -76,7 +76,7 @@ describe('Reference Contributors List', () => {
     const wrapper = create(
       <ReferenceContributorsList
         entityName="contributor"
-        addCtaLabel="Contributor"
+        addCtaLabel="Add Contributor"
         className="class-name"
         refContributors={AUTHORS}
         onChange={onChange}
@@ -95,7 +95,7 @@ describe('Reference Contributors List', () => {
     const wrapper = create(
       <ReferenceContributorsList
         entityName="contributor"
-        addCtaLabel="Contributor"
+        addCtaLabel="Add Contributor"
         className="class-name"
         refContributors={AUTHORS}
         onChange={onChange}
@@ -113,7 +113,7 @@ describe('Reference Contributors List', () => {
     const wrapper = create(
       <ReferenceContributorsList
         entityName="contributor"
-        addCtaLabel="Contributor"
+        addCtaLabel="Add Contributor"
         className="class-name"
         refContributors={AUTHORS}
         onChange={onChange}
@@ -131,7 +131,7 @@ describe('Reference Contributors List', () => {
     const wrapper = create(
       <ReferenceContributorsList
         entityName="contributor"
-        addCtaLabel="Contributor"
+        addCtaLabel="Add Contributor"
         className="class-name"
         refContributors={AUTHORS}
         onChange={onChange}
