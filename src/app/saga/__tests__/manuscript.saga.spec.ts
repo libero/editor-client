@@ -3,6 +3,7 @@ import { loadManuscriptAction } from 'app/actions/manuscript.actions';
 import { put } from 'redux-saga/effects';
 import { EditorState } from 'prosemirror-state';
 import { Manuscript } from 'app/models/manuscript';
+import { setManuscriptId } from 'app/actions/manuscript-editor.actions';
 
 describe('manuscript saga', () => {
   it('should load data', () => {
@@ -10,8 +11,9 @@ describe('manuscript saga', () => {
     const saga = loadManuscriptSaga(loadManuscriptAction.request('SOME_ID'));
 
     saga.next();
-    const sagaResult = saga.next(response).value;
+    saga.next(response);
 
-    expect(sagaResult).toEqual(put(loadManuscriptAction.success(response)));
+    expect(saga.next([]).value).toEqual(put(loadManuscriptAction.success(response)));
+    expect(saga.next().value).toEqual(put(setManuscriptId('SOME_ID')));
   });
 });

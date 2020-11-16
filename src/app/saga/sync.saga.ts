@@ -29,8 +29,10 @@ export function* watchChangesSaga() {
     const changes: ManuscriptDiff[] = changesSelector(lastSyncTimeStamp, now);
     if (changes.length > 0) {
       const manuscriptId = yield select(getManuscriptId);
-      yield put(setLastSyncTimestamp(now));
-      yield call(syncChanges, manuscriptId, changes);
+      try {
+        yield call(syncChanges, manuscriptId, changes);
+        yield put(setLastSyncTimestamp(now));
+      } catch (e) {}
     }
   });
 }
