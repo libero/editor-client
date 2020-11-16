@@ -172,7 +172,7 @@ export const nodes = {
   },
 
   figure: {
-    content: 'figureTitle figureLegend+ figureLicense*',
+    content: 'figureTitle figureAttribution+ figureLegend+ figureLicense*',
     group: 'block',
     atom: true,
     attrs: {
@@ -215,9 +215,20 @@ export const nodes = {
   figureLegend: {
     content: 'inline*',
     parseDOM: [
+      { tag: 'attrib', priority: 100 },
+      { tag: 'label', ignore: true }
+    ],
+    context: 'figure',
+    toDOM() {
+      return ['p', 0];
+    }
+  },
+
+  figureAttribution: {
+    content: 'inline*',
+    parseDOM: [
       { tag: 'caption > p', priority: 100 },
-      { tag: 'label', ignore: true },
-      { tag: 'attrib', ignore: true }
+      { tag: 'label', ignore: true }
     ],
     context: 'figure',
     toDOM() {
