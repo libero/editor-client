@@ -13,7 +13,6 @@ import { StepMap } from 'prosemirror-transform';
 import { BoxTextEditor, BoxTextEditorHandle } from 'app/components/box-text/box-text-editor';
 import { theme } from 'app/styles/theme';
 import { buildInputRules } from 'app/models/plugins/input-rules';
-import { SelectPlugin } from 'app/models/plugins/selection.plugin';
 import { PlaceholderPlugin } from 'app/models/plugins/placeholder.plugin';
 
 export class BoxTextNodeView implements NodeView {
@@ -103,13 +102,6 @@ export class BoxTextNodeView implements NodeView {
 function createBoxedTextState(node: ProsemirrorNode): EditorState {
   return EditorState.create({
     doc: node,
-    plugins: [
-      buildInputRules(),
-      gapCursor(),
-      dropCursor(),
-      keymap(baseKeymap),
-      SelectPlugin,
-      PlaceholderPlugin('Enter main text')
-    ]
+    plugins: [buildInputRules(), gapCursor(), dropCursor(), keymap(baseKeymap), PlaceholderPlugin('Enter main text')]
   });
 }

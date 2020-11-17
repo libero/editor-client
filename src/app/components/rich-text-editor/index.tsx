@@ -72,6 +72,10 @@ export class RichTextEditor extends React.Component<ComponentWithId<RichTextEdit
           }
           return true;
         },
+        dragstart: (view, event) => {
+          event.preventDefault();
+          event.stopPropagation();
+        },
         blur: ({ state }: EditorView) => {
           if (this.props.onBlur && this.props.isActive) {
             this.props.onBlur(state, this.props.name);

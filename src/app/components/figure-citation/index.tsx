@@ -22,7 +22,6 @@ export class FigureCitationNodeView implements NodeView {
     this.dom.addEventListener('click', this.selectNode);
     this.contentDOM = document.createElement('span');
     this.dom.appendChild(this.contentDOM);
-
     if (this.node.attrs.figIds === null) {
       this.open();
     }

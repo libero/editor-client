@@ -9,7 +9,6 @@ import { baseKeymap } from 'prosemirror-commands';
 import { StepMap } from 'prosemirror-transform';
 
 import { buildInputRules } from 'app/models/plugins/input-rules';
-import { SelectPlugin } from 'app/models/plugins/selection.plugin';
 import { NodeViewContext } from 'app/utils/view.utils';
 import { RichTextEditor } from 'app/components/rich-text-editor';
 
@@ -77,7 +76,7 @@ export abstract class NodeEditor<T> extends React.Component<NodeEditorProps & T,
   private createInternalEditorState(): EditorState {
     return EditorState.create({
       doc: this.props.node,
-      plugins: [buildInputRules(), gapCursor(), dropCursor(), keymap(baseKeymap), SelectPlugin]
+      plugins: [buildInputRules(), gapCursor(), dropCursor(), keymap(baseKeymap)]
     });
   }
 

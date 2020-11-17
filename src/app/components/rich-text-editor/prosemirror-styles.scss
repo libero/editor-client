@@ -16,14 +16,10 @@
     display: none;
   }
 
-  .selection-marker {
-    background: #338FFF;
-    color: white;
-  }
-
   .ProseMirror {
     ::selection {
-      background: transparent;
+      background: #338FFF;
+      color: white;
     }
 
     outline: none;
