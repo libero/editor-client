@@ -78,7 +78,7 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
 export function syncChanges(id: string, changes: ManuscriptDiff[]): Promise<void> {
   // TODO: squash changes here
   const backendTranscations = changes.map(makeChangesSeralizable).filter((transcation) => transcation !== null);
-  return axios.post(manuscriptUrl(id), { changes: backendTranscations });
+  return axios.post(manuscriptUrl(id) + '/changes', { changes: backendTranscations });
 }
 
 function makeChangesSeralizable(diff: ManuscriptDiff): Record<string, unknown> {
