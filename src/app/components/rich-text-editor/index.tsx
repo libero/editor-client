@@ -14,9 +14,15 @@ import { LinkNodeView } from 'app/components/link-editor-popup';
 import { FigureNodeView } from 'app/components/figure';
 import { FigureCitationNodeView } from 'app/components/figure-citation';
 
+/*
+ * available classes:
+ *   - root: applied to SectionContainer
+ * */
+
 export interface RichTextEditorProps {
   editorState: EditorState;
   label?: string;
+  classes?: Record<string, string>;
   name?: string;
   isActive: boolean;
   variant?: SectionContainerVariant;
@@ -119,6 +125,7 @@ export class RichTextEditor extends React.Component<ComponentWithId<RichTextEdit
     return (
       <SectionContainer
         label={this.props.label}
+        className={get(this.props, 'classes.root', '')}
         focused={this.props.isActive}
         id={this.props.id}
         variant={this.props.variant}

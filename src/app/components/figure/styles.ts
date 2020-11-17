@@ -62,6 +62,12 @@ export const useFigureEditorStyles = makeStyles((theme) => ({
   }
 }));
 
+export const useFigureContentEditorStyles = (theme): Record<string, CSSProperties> => ({
+  richTextEditorField: {
+    minHeight: 56
+  }
+});
+
 export const useFigureLicenseEditorStyles = (theme): Record<string, CSSProperties> => ({
   editorContainer: {
     display: 'flex',
@@ -74,7 +80,7 @@ export const useFigureLicenseEditorStyles = (theme): Record<string, CSSPropertie
     borderStyle: 'solid',
     borderWidth: '1px',
     margin: theme.spacing(0, 1, 0, 0),
-    padding: theme.spacing(1.5)
+    padding: theme.spacing(2.5, 1.5, 1.5, 1.5)
   },
   smallField: {
     width: 150,
@@ -93,6 +99,9 @@ export const useFigureLicenseEditorStyles = (theme): Record<string, CSSPropertie
     '&:last-child': {
       marginBottom: 0
     }
+  },
+  richTextEditorField: {
+    minHeight: 56
   },
   fieldsRow: {
     display: 'flex',
