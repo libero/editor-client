@@ -1,6 +1,5 @@
 import axios from 'axios';
-import { cloneDeepWith } from 'lodash';
-import { EditorState, Transaction } from 'prosemirror-state';
+import { Transaction } from 'prosemirror-state';
 import { Step } from 'prosemirror-transform';
 
 import { Manuscript, ManuscriptDiff } from 'app/models/manuscript';
