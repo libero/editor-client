@@ -300,7 +300,6 @@ export const nodes = {
         tag: 'a.citation[data-cit-type="figure"]',
         priority: 100,
         getAttrs(dom) {
-          console.log(dom);
           return {
             figIds: dom.getAttribute('data-fig-ids').split(',')
           };
