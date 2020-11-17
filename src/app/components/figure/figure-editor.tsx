@@ -49,7 +49,6 @@ export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => 
   const { onDelete, onAttributesChange } = props;
   const [figureNode, setFigureNode] = useState<ProsemirrorNode>(props.node);
   const [isConfirmShown, setConfirmShown] = useState<boolean>(false);
-
   const classes = useFigureEditorStyles();
   const titleNodeData = findChildrenByType(figureNode, figureNode.type.schema.nodes.figureTitle)[0];
   const legendNodeData = findChildrenByType(figureNode, figureNode.type.schema.nodes.figureLegend)[0];

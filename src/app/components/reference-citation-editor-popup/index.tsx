@@ -139,7 +139,7 @@ export const ReferenceCitationEditorPopup: React.FC<ReferenceCitationEditorPopup
             />
             <ul className={classes.refSelectionList}>
               <li className={classes.refSelectionListItem} onClick={openReferenceFormDialog}>
-                <AddIcon fontSize="small" classes={{ root: classes.addReferenceIcon }} /> Reference
+                <AddIcon fontSize="small" classes={{ root: classes.addReferenceIcon }} /> Add Reference
               </li>
               {filteredRefs.map((ref) => (
                 <li className={classes.refSelectionListItem} key={ref.id} data-ref-id={ref.id} onClick={handleClick}>
