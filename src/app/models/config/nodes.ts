@@ -124,6 +124,7 @@ export const nodes = {
       },
       {
         tag: 'a.citation[data-cit-type="reference"]',
+        priority: 100,
         getAttrs(dom) {
           return {
             refText: dom.getAttribute('data-ref-text'),
@@ -282,7 +283,6 @@ export const nodes = {
   figureCitation: {
     content: 'text*',
     group: 'inline',
-    draggable: false,
     attrs: {
       figIds: { default: null }
     },
@@ -298,21 +298,15 @@ export const nodes = {
       },
       {
         tag: 'a.citation[data-cit-type="figure"]',
+        priority: 100,
         getAttrs(dom) {
+          console.log(dom);
           return {
-            figIds: dom.getAttribute('data-fig-ids').split(' ')
+            figIds: dom.getAttribute('data-fig-ids').split(',')
           };
         }
       }
     ],
-    toClipboardDOM(node): DOMOutputSpec {
-      const refCitationDom = document.createElement('a');
-      refCitationDom.setAttribute('href', '#');
-      refCitationDom.setAttribute('data-cit-type', 'figure');
-      refCitationDom.setAttribute('data-fig-ids', node.attrs.figIds.join(' '));
-      refCitationDom.classList.add('citation');
-      return refCitationDom;
-    },
     toDOM(node): DOMOutputSpec {
       return [
         'a',
