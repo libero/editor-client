@@ -17,7 +17,6 @@ import { buildInputRules } from './plugins/input-rules';
 import { KeywordGroups } from './manuscript';
 import { createReference, Reference, sortReferencesList } from 'app/models/reference';
 import { makeSchemaFromConfig } from 'app/models/utils';
-import { SelectPlugin } from './plugins/selection.plugin';
 import { PlaceholderPlugin } from 'app/models/plugins/placeholder.plugin';
 import { createListKeymap } from 'app/utils/prosemirror/list.helpers';
 
@@ -33,7 +32,7 @@ export function createTitleState(content: Element, changeSteps?: [Step]): Editor
   return EditorState.create({
     doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),
     schema,
-    plugins: [buildInputRules(), gapCursor(), dropCursor(), SelectPlugin, PlaceholderPlugin('Enter title')]
+    plugins: [buildInputRules(), gapCursor(), dropCursor(), PlaceholderPlugin('Enter title')]
   });
 }
 
@@ -48,7 +47,7 @@ export function createAbstractState(content: Element, changeSteps?: [Step]): Edi
   return EditorState.create({
     doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),
     schema,
-    plugins: [buildInputRules(), gapCursor(), dropCursor(), SelectPlugin, PlaceholderPlugin('Enter abstract')]
+    plugins: [buildInputRules(), gapCursor(), dropCursor(), PlaceholderPlugin('Enter abstract')]
   });
 }
 
@@ -71,7 +70,6 @@ export function createBodyState(content: Element, id: string, changeSteps?: [Ste
       dropCursor(),
       keymap(createListKeymap(schema)),
       keymap(baseKeymap),
-      SelectPlugin,
       PlaceholderPlugin('Enter main text')
     ]
   });
@@ -88,7 +86,7 @@ export function createImpactStatementState(content: Element): EditorState {
   return EditorState.create({
     doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),
     schema,
-    plugins: [buildInputRules(), gapCursor(), dropCursor(), SelectPlugin, PlaceholderPlugin('Enter impact statement')]
+    plugins: [buildInputRules(), gapCursor(), dropCursor(), PlaceholderPlugin('Enter impact statement')]
   });
 }
 
@@ -114,7 +112,7 @@ export function createAcknowledgementsState(content?: Element, changeSteps?: [St
   return EditorState.create({
     doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),
     schema,
-    plugins: [buildInputRules(), gapCursor(), dropCursor(), SelectPlugin, PlaceholderPlugin('Enter acknowledgements')]
+    plugins: [buildInputRules(), gapCursor(), dropCursor(), PlaceholderPlugin('Enter acknowledgements')]
   });
 }
 

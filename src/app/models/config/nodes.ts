@@ -276,6 +276,7 @@ export const nodes = {
   figureCitation: {
     content: 'text*',
     group: 'inline',
+    draggable: false,
     attrs: {
       figIds: { default: null }
     },
