@@ -2,6 +2,7 @@ import { DOMOutputSpec } from 'prosemirror-model';
 import { v4 as uuidv4 } from 'uuid';
 import { getTextContentFromPath } from 'app/models/utils';
 import { createEmptyLicenseAttributes, createFigureLicenseAttributes, getFigureImageUrl } from 'app/models/figure';
+import { parseFigure } from 'app/models/config/figure.parser';
 
 function getTitleLevel(title: Element): number {
   let parent = title.parentNode;
@@ -172,7 +173,7 @@ export const nodes = {
   },
 
   figure: {
-    content: 'figureTitle figureLegend+ figureLicense*',
+    content: '(figureTitle | figureLegend | figureAttribution | figureLicense)*',
     group: 'block',
     atom: true,
     attrs: {
@@ -189,7 +190,8 @@ export const nodes = {
             label: getTextContentFromPath(dom, 'label') || '',
             img: getFigureImageUrl(dom)
           };
-        }
+        },
+        getContent: parseFigure
       }
     ],
     toDOM() {
@@ -199,14 +201,7 @@ export const nodes = {
 
   figureTitle: {
     content: 'inline*',
-    parseDOM: [
-      { tag: 'caption > title' },
-      { tag: 'label', ignore: true },
-      { tag: 'permissions > copyright-statement', ignore: true },
-      { tag: 'permissions > copyright-year', ignore: true },
-      { tag: 'permissions > copyright-holder', ignore: true }
-    ],
-    context: 'figure',
+    parseDOM: [{ tag: 'caption > title' }],
     toDOM() {
       return ['p', 0];
     }
@@ -216,8 +211,19 @@ export const nodes = {
     content: 'inline*',
     parseDOM: [
       { tag: 'caption > p', priority: 100 },
-      { tag: 'label', ignore: true },
-      { tag: 'attrib', ignore: true }
+      { tag: 'label', ignore: true }
+    ],
+    context: 'figure',
+    toDOM() {
+      return ['p', 0];
+    }
+  },
+
+  figureAttribution: {
+    content: 'inline*',
+    parseDOM: [
+      { tag: 'attrib', priority: 100 },
+      { tag: 'label', ignore: true }
     ],
     context: 'figure',
     toDOM() {
@@ -228,18 +234,18 @@ export const nodes = {
   figureLicense: {
     content: 'inline*',
     group: 'block',
-    context: 'figure',
     attrs: {
       licenseInfo: { default: createEmptyLicenseAttributes() }
     },
+    contentElement: 'license > license-p',
     parseDOM: [
       {
-        tag: 'license > license-p',
-        priority: 100,
+        tag: 'permissions',
         getAttrs(dom) {
-          return { licenseInfo: createFigureLicenseAttributes(dom.parentNode.parentNode) };
+          return { licenseInfo: createFigureLicenseAttributes(dom) };
         }
-      }
+      },
+      { tag: 'label', ignore: true }
     ],
     toDOM(node) {
       return ['p', 0];

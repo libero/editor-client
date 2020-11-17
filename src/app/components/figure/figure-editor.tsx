@@ -29,6 +29,7 @@ import { renderConfirmDialog } from 'app/components/prompt-dialog';
 
 const FIGURE_TITLE_CONTENT_OFFSET_CORRECTION = 2;
 const FIGURE_LEGEND_CONTENT_OFFSET_CORRECTION = 2;
+const FIGURE_ATTRIBUTION_CONTENT_OFFSET_CORRECTION = 2;
 
 export interface FigureEditorHandle {
   updateContent(node: ProsemirrorNode): void;
@@ -48,10 +49,10 @@ export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => 
   const { onDelete, onAttributesChange } = props;
   const [figureNode, setFigureNode] = useState<ProsemirrorNode>(props.node);
   const [isConfirmShown, setConfirmShown] = useState<boolean>(false);
-
   const classes = useFigureEditorStyles();
   const titleNodeData = findChildrenByType(figureNode, figureNode.type.schema.nodes.figureTitle)[0];
   const legendNodeData = findChildrenByType(figureNode, figureNode.type.schema.nodes.figureLegend)[0];
+  const attributionNodeData = findChildrenByType(figureNode, figureNode.type.schema.nodes.figureAttribution)[0];
   const licenseNodesData = findChildrenByType(figureNode, figureNode.type.schema.nodes.figureLicense);
 
   const handleDeleteAccept = useCallback(() => {
@@ -113,11 +114,18 @@ export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => 
             offset={titleNodeData.offset + FIGURE_TITLE_CONTENT_OFFSET_CORRECTION}
           />
         </div>
-        <div>
+        <div className={classes.inputField}>
           <FigureContentEditor
             label="Legend"
             node={legendNodeData.node}
             offset={legendNodeData.offset + FIGURE_LEGEND_CONTENT_OFFSET_CORRECTION}
+          />
+        </div>
+        <div>
+          <FigureContentEditor
+            label="Attribution"
+            node={attributionNodeData.node}
+            offset={attributionNodeData.offset + FIGURE_ATTRIBUTION_CONTENT_OFFSET_CORRECTION}
           />
         </div>
         <FigureLicensesList licenses={licenseNodesData} />

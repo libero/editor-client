@@ -198,7 +198,10 @@
       <label>Figure 1.</label>
       <caption>
         <title>Bacterial cells on the surface of a plant leaf.</title>
-        <p><?proof word-spacing=“0.23”?><!--Tracking paragraph to tighten/loosen line(s). Inputs can be between 0.23 and 0.43. ‘0.43’ is the maximum value used to loosen a paragraph, while  ‘0.23’ is the minimum value used to tighten a paragraph. Values between this range can also be applied.-->Pellentesque porta interdum sodales (<xref ref-type="bibr" rid="bib6">Heissler and Sellers, 2016a</xref>). Vestibulum<sub>id</sub> interdum<sup>felis</sup>. <bold>Vestibulum</bold> at <underline>viverra</underline> lorem. <sc>Aliquam Gravida</sc> nulla orci, quis tristique tortor ornare at <ext-link ext-link-type="uri" xlink:href="https://www.biobam.com/">https://www.biobam.com/</ext-link>. Pellentesque accumsan sed ipsum eget hendrerit (<xref ref-type="bibr" rid="bib3">Foley et al., 2018</xref>). Pellentesque cursus, nibh eu <monospace>mattis condimentum</monospace>, massa libero faucibus enim, et tempor orci neque eget<sup>mi</sup>. Phasellus lacus<sub>mi</sub>, ultrices quis placerat id, dignissim ac erat.</p>
+        <p>
+            <?proof word-spacing=“0.23”?>
+            <!--Tracking paragraph to tighten/loosen line(s). Inputs can be between 0.23 and 0.43. ‘0.43’ is the maximum value used to loosen a paragraph, while  ‘0.23’ is the minimum value used to tighten a paragraph. Values between this range can also be applied.-->Pellentesque porta interdum sodales (<xref ref-type="bibr" rid="bib6">Heissler and Sellers, 2016a</xref>). Vestibulum<sub>id</sub> interdum<sup>felis</sup>. <bold>Vestibulum</bold> at <underline>viverra</underline> lorem. <sc>Aliquam Gravida</sc> nulla orci, quis tristique tortor ornare at <ext-link ext-link-type="uri" xlink:href="https://www.biobam.com/">https://www.biobam.com/</ext-link>. Pellentesque accumsan sed ipsum eget hendrerit (<xref ref-type="bibr" rid="bib3">Foley et al., 2018</xref>). Pellentesque cursus, nibh eu <monospace>mattis condimentum</monospace>, massa libero faucibus enim, et tempor orci neque eget<sup>mi</sup>. Phasellus lacus<sub>mi</sub>, ultrices quis placerat id, dignissim ac erat.
+        </p>
       </caption>
       <graphic mime-subtype="jpg" mimetype="image" xlink:href="fig1.jpg"/>
     </fig>
