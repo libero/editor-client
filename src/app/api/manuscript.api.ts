@@ -78,18 +78,25 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
 
 export function syncChanges(id: string, changes: ManuscriptDiff[]): Promise<void> {
   // TODO: squash changes here
-  return axios.put(manuscriptUrl(id), changes.map(makeChangesSeralizable));
+  const backendTranscations = changes.map(makeChangesSeralizable).filter((transcation) => transcation !== null);
+  return axios.post(manuscriptUrl(id), { changes: backendTranscations });
 }
 
 function makeChangesSeralizable(diff: ManuscriptDiff): Record<string, unknown> {
-  return cloneDeepWith(diff, function (value) {
-    if (value instanceof EditorState) {
-      return value.doc.toJSON();
-    }
-    if (value instanceof Transaction) {
-      return value.steps.map((step) => step.toJSON());
-    }
-  });
+  // filter out props that don't refer to a prosemirror transaction.
+  const [transcation = null] = Object.keys(diff)
+    .filter((key) => diff[key] instanceof Transaction)
+    .map((key) => {
+      const transcation = diff[key] as Transaction;
+      return {
+        path: key,
+        steps: transcation.steps
+      };
+    });
+  if (transcation) {
+    return { ...transcation, timestamp: diff._timestamp };
+  }
+  return transcation;
 }
 
 export async function getManuscriptChanges(id: string): Promise<ManuscriptChangesResponse['changes']> {
