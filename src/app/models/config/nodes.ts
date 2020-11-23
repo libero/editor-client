@@ -177,6 +177,7 @@ export const nodes = {
     content: '(figureTitle | figureLegend | figureAttribution | figureLicense)*',
     group: 'block',
     atom: true,
+    draggable: true,
     attrs: {
       id: { default: '' },
       label: { default: '' },
@@ -195,8 +196,17 @@ export const nodes = {
         getContent: parseFigure
       }
     ],
-    toDOM() {
-      return ['section', { class: 'figure' }, 0];
+    toDOM(node) {
+      return [
+        'section',
+        {
+          class: 'figure',
+          'data-fig-id': node.attrs.id,
+          'data-fig-label': node.attrs.label,
+          'data-fig-img': node.attrs.img
+        },
+        0
+      ];
     }
   },
 
