@@ -20,7 +20,7 @@ import { makeSchemaFromConfig } from 'app/models/utils';
 import { PlaceholderPlugin } from 'app/models/plugins/placeholder.plugin';
 import { createListKeymap } from 'app/utils/prosemirror/list.helpers';
 
-export function createTitleState(content: Element, changeSteps?: [Step]): EditorState {
+export function createTitleState(content: Element): EditorState {
   const schema = makeSchemaFromConfig(titleConfig.topNode, titleConfig.nodes, titleConfig.marks);
 
   const xmlContentDocument = document.implementation.createDocument('', '', null);
@@ -36,7 +36,7 @@ export function createTitleState(content: Element, changeSteps?: [Step]): Editor
   });
 }
 
-export function createAbstractState(content: Element, changeSteps?: [Step]): EditorState {
+export function createAbstractState(content: Element): EditorState {
   const schema = makeSchemaFromConfig(abstractConfig.topNode, abstractConfig.nodes, abstractConfig.marks);
   const xmlContentDocument = document.implementation.createDocument('', '', null);
 
@@ -51,7 +51,7 @@ export function createAbstractState(content: Element, changeSteps?: [Step]): Edi
   });
 }
 
-export function createBodyState(content: Element, id: string, changeSteps?: [Step]): EditorState {
+export function createBodyState(content: Element, id: string): EditorState {
   const schema = makeSchemaFromConfig(bodyConfig.topNode, bodyConfig.nodes, bodyConfig.marks);
   const xmlContentDocument = document.implementation.createDocument('', '', null);
 
@@ -145,7 +145,7 @@ export function createReferencesState(referencesXml: Element[]): Reference[] {
   return referencesList;
 }
 
-function createKeywordState(keyword?: Element, changeSteps?: [Step]): EditorState {
+function createKeywordState(keyword?: Element): EditorState {
   const schema = makeSchemaFromConfig(keywordConfig.topNode, keywordConfig.nodes, keywordConfig.marks);
 
   return EditorState.create({

@@ -8,6 +8,11 @@ import { FigureCitationNodeView } from 'app/components/figure-citation/index';
 import { createBodyState } from 'app/models/manuscript-state.factory';
 
 jest.mock('prosemirror-view');
+jest.mock('app/components/figure-citation/figure-citation-editor-popup', () => {
+  return {
+    FigureCitationEditorPopup: () => <div data-cmp="FigureCitationEditorPopup"></div>
+  };
+});
 jest.mock('@material-ui/core/styles', () => {
   return {
     ThemeProvider: ({ children }) => <>{children}</>,

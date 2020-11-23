@@ -7,9 +7,12 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import { theme } from 'app/styles/theme';
 import {
   FigureCitationEditorPopup,
-  FiguresListEntry, UNLABELLED_FIGURE_TEXT
+  FiguresListEntry,
+  UNLABELLED_FIGURE_TEXT
 } from 'app/components/figure-citation/figure-citation-editor-popup';
 import { TextSelection } from 'prosemirror-state';
+import { store } from 'app/store';
+import { Provider } from 'react-redux';
 
 export class FigureCitationNodeView implements NodeView {
   dom?: HTMLAnchorElement;
@@ -46,15 +49,16 @@ export class FigureCitationNodeView implements NodeView {
     this.figureEditorContainer = this.view.dom.parentNode.appendChild(document.createElement('div'));
 
     ReactDOM.render(
-      <ThemeProvider theme={theme}>
-        <FigureCitationEditorPopup
-          figures={this.getAvailableFigures()}
-          selectedIds={this.node.attrs.figIds || []}
-          anchorEl={this.dom}
-          onClose={this.close}
-          onChange={this.handleChange}
-        />
-      </ThemeProvider>,
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <FigureCitationEditorPopup
+            selectedIds={this.node.attrs.figIds || []}
+            anchorEl={this.dom}
+            onClose={this.close}
+            onChange={this.handleChange}
+          />
+        </ThemeProvider>
+      </Provider>,
       this.figureEditorContainer
     );
   }
@@ -93,17 +97,4 @@ export class FigureCitationNodeView implements NodeView {
 
     this.view.dispatch(change);
   };
-
-  private getAvailableFigures(): FiguresListEntry[] {
-    const figureType = this.view.state.schema.nodes.figure;
-    const foundFigures = [] as FiguresListEntry[];
-    this.view.state.doc.descendants((childNode) => {
-      if (childNode.type === figureType) {
-        foundFigures.push({ id: childNode.attrs.id, name: childNode.attrs.label });
-      }
-      // do not descend into a node if it allows inline content since figure is a block node
-      return !childNode.inlineContent;
-    });
-    return foundFigures;
-  }
 }

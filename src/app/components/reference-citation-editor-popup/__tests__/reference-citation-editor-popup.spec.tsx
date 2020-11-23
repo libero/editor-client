@@ -110,7 +110,7 @@ describe('ReferenceCitationEditor', () => {
   it('should render component', () => {
     const el = document.createElement('main-text');
     el.innerHTML = `<p><xref ref-type="bibr" rid="bib5">Harmon (2019)</xref></p>`;
-    const editorState = createBodyState(el);
+    const editorState = createBodyState(el, '');
 
     const viewContainer = document.createElement('div');
     const editorView = new EditorView(viewContainer, {
@@ -144,7 +144,7 @@ describe('ReferenceCitationEditor', () => {
     const handleChange = jest.fn();
     const el = document.createElement('main-text');
     el.innerHTML = `<p><xref ref-type="bibr" rid="bib5">Harmon (2019)</xref></p>`;
-    const editorState = createBodyState(el);
+    const editorState = createBodyState(el, '');
 
     const viewContainer = document.createElement('div');
     const editorView = new EditorView(viewContainer, {
@@ -178,7 +178,7 @@ describe('ReferenceCitationEditor', () => {
     const handleChange = jest.fn();
     const el = document.createElement('main-text');
     el.innerHTML = `<p><xref ref-type="bibr" rid="bib5">Harmon (2019)</xref></p>`;
-    const editorState = createBodyState(el);
+    const editorState = createBodyState(el, '');
 
     const viewContainer = document.createElement('div');
     const editorView = new EditorView(viewContainer, {
@@ -214,7 +214,7 @@ describe('ReferenceCitationEditor', () => {
     const handleChange = jest.fn();
     const el = document.createElement('main-text');
     el.innerHTML = `<p><xref ref-type="bibr" rid="bib5">Harmon (2019)</xref></p>`;
-    const editorState = createBodyState(el);
+    const editorState = createBodyState(el, '');
 
     const viewContainer = document.createElement('div');
     const editorView = new EditorView(viewContainer, {
