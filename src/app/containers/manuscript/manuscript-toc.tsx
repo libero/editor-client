@@ -46,18 +46,18 @@ export const ManuscriptTOC: React.FC<ManuscriptTOCProps> = (props) => {
 
   const drawer = (
     <React.Fragment>
-      <section className={classes.toolbarPlaceholder} aria-hidden="true">
-        <ClearFocus>
+      <ClearFocus>
+        <section className={classes.toolbarPlaceholder} aria-hidden="true">
           <h1 className={classes.title}>Libero Editor</h1>
           <h3 className={classes.infoText}>Software: v{process.env.REACT_APP_VERSION}</h3>
           <h3 className={classNames(classes.infoText, classes.dtd)}>JATS: {articleInfo.dtd} DTD</h3>
           <h3 className={classes.infoText}>Type: {articleInfo.articleType}</h3>
-        </ClearFocus>
-      </section>
+        </section>
+      </ClearFocus>
       <Divider />
       <List>
         {toc.map((entry, index) => (
-          <ListItem button key={index} onClick={handleTOCClick(entry)}>
+          <ListItem button key={index} onClick={handleTOCClick(entry)} style={{ paddingLeft: entry.level * 16 }}>
             <ListItemText
               disableTypography
               classes={{ root: entry.level === 1 ? classes.tocLevel1 : classes.tocLevel2 }}
