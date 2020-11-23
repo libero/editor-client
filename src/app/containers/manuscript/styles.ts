@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const tocWidth = 240;
+const tocWidth = 300;
 
 export const useManuscriptStyles = makeStyles((theme) => ({
   contentWrapper: {
@@ -105,7 +105,7 @@ export const useOutlinePanelStyles = makeStyles((theme) => ({
   tocLevel2: {
     fontSize: '14px',
     lineHeight: '1.4',
-    paddingLeft: theme.spacing(5)
+    marginLeft: theme.spacing(1)
   },
 
   dtd: {

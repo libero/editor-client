@@ -11,12 +11,12 @@ exports[`<ManuscriptTOC> renders 1`] = `
     <div
       data-cmp="drawer"
     >
-      <section
-        aria-hidden="true"
-        className="makeStyles-toolbarPlaceholder-3"
+      <div
+        onClick={[Function]}
       >
-        <div
-          onClick={[Function]}
+        <section
+          aria-hidden="true"
+          className="makeStyles-toolbarPlaceholder-3"
         >
           <h1
             className="makeStyles-title-6"
@@ -40,8 +40,8 @@ exports[`<ManuscriptTOC> renders 1`] = `
           >
             Type: 
           </h3>
-        </div>
-      </section>
+        </section>
+      </div>
       <div
         data-cmp="divider"
       />
@@ -167,12 +167,12 @@ exports[`<ManuscriptTOC> renders 1`] = `
     <div
       data-cmp="drawer"
     >
-      <section
-        aria-hidden="true"
-        className="makeStyles-toolbarPlaceholder-3"
+      <div
+        onClick={[Function]}
       >
-        <div
-          onClick={[Function]}
+        <section
+          aria-hidden="true"
+          className="makeStyles-toolbarPlaceholder-3"
         >
           <h1
             className="makeStyles-title-6"
@@ -196,8 +196,8 @@ exports[`<ManuscriptTOC> renders 1`] = `
           >
             Type: 
           </h3>
-        </div>
-      </section>
+        </section>
+      </div>
       <div
         data-cmp="divider"
       />
