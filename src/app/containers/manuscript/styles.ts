@@ -104,6 +104,7 @@ export const useOutlinePanelStyles = makeStyles((theme) => ({
 
   tocLevel2: {
     fontSize: '14px',
+    'word-break': 'break-all',
     lineHeight: '1.4',
     marginLeft: theme.spacing(1)
   },
