@@ -2,6 +2,7 @@ import { EditorState, Transaction } from 'prosemirror-state';
 import { toggleMark, setBlockType } from 'prosemirror-commands';
 import { all, takeLatest, call, put, select } from 'redux-saga/effects';
 import { MarkType, Fragment } from 'prosemirror-model';
+import { v4 as uuidv4 } from 'uuid';
 
 import * as manuscriptActions from 'app/actions/manuscript.actions';
 import { Action } from 'app/utils/action.utils';
@@ -74,7 +75,10 @@ export function* insertHeadingSaga(action: Action<number>) {
   if (editorState && editorState.schema.nodes['heading']) {
     const path = yield select(getFocusedEditorStatePath);
     const commandAction = new Promise((resolve) => {
-      const command = setBlockType(editorState.schema.nodes['heading'], { level: action.payload });
+      const command = setBlockType(editorState.schema.nodes['heading'], {
+        level: action.payload,
+        domId: uuidv4()
+      });
       command(editorState, (change: Transaction) => {
         resolve(change);
       });

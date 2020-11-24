@@ -8,11 +8,9 @@ import { FigureCitationNodeView } from 'app/components/figure-citation/index';
 import { createBodyState } from 'app/models/manuscript-state.factory';
 
 jest.mock('prosemirror-view');
-jest.mock('app/components/figure-citation/figure-citation-editor-popup', () => {
-  return {
-    FigureCitationEditorPopup: () => <div data-cmp="FigureCitationEditorPopup"></div>
-  };
-});
+jest.mock('app/components/figure-citation/figure-citation-editor-popup', () => ({
+  FigureCitationEditorPopup: () => <div data-cmp="FigureCitationEditorPopup" />
+}));
 jest.mock('@material-ui/core/styles', () => {
   return {
     ThemeProvider: ({ children }) => <>{children}</>,
@@ -53,7 +51,10 @@ describe('Figure citation node view', () => {
     const [state, node] = givenState();
     const view = givenEditorView(state);
     const nodeView = new FigureCitationNodeView(node, view, () => 1);
-    nodeView.handleChange(['id1', 'id2']);
+    nodeView.handleChange([
+      { id: 'id1', name: 'figure 1' },
+      { id: 'id2', name: 'figure 2' }
+    ]);
     expect(view.dispatch['mock'].calls[0][0].steps[0]).toBeInstanceOf(ReplaceAroundStep);
   });
 
