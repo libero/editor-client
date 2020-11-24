@@ -4,6 +4,9 @@ import { Popper, Paper, ClickAwayListener, TextField, InputAdornment } from '@ma
 import ClearIcon from '@material-ui/icons/Clear';
 
 import { useFigureCitationEditorStyles } from 'app/components/figure-citation/styles';
+import { EditorState } from 'prosemirror-state';
+import {getBody} from "app/selectors/manuscript.selectors";
+import { useSelector } from 'react-redux';
 
 export interface FiguresListEntry {
   id: string;
@@ -14,14 +17,17 @@ export const UNLABELLED_FIGURE_TEXT = 'Unlabelled figure';
 
 interface FigureCitationEditorPopupProps {
   selectedIds: string[];
-  figures: FiguresListEntry[];
   onClose(): void;
   anchorEl: HTMLElement;
   onChange(selectedFigures: FiguresListEntry[]): void;
 }
 
 export const FigureCitationEditorPopup: React.FC<FigureCitationEditorPopupProps> = (props) => {
-  const { onClose, onChange, anchorEl, figures, selectedIds } = props;
+  const { onClose, onChange, anchorEl, selectedIds } = props;
+
+  const bodyEditorState = useSelector(getBody);
+  const figures = getAvailableFigures(bodyEditorState);
+
   const [filteredList, setFilteredList] = useState<FiguresListEntry[]>(figures);
   const [filterValue, setFilterValue] = useState<string>('');
   const [internalSelectedIds, setInternalSelectedIds] = useState<string[]>(selectedIds);
@@ -103,3 +109,16 @@ export const FigureCitationEditorPopup: React.FC<FigureCitationEditorPopupProps>
     </Popper>
   );
 };
+
+function getAvailableFigures(editorState: EditorState): FiguresListEntry[] {
+  const figureType = editorState.schema.nodes.figure;
+  const foundFigures = [] as FiguresListEntry[];
+  editorState.doc.descendants((childNode) => {
+    if (childNode.type === figureType) {
+      foundFigures.push({ id: childNode.attrs.id, name: childNode.attrs.label });
+    }
+    // do not descend into a node if it allows inline content since figure is a block node
+    return !childNode.inlineContent;
+  });
+  return foundFigures;
+}

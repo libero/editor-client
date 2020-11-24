@@ -1,5 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Figure citation node view should open editor on click 1`] = `"<div id=\\"view-container\\"></div><div></div>"`;
+exports[`Figure citation node view should open editor on click 1`] = `"<div id=\\"view-container\\"></div><div><div data-cmp=\\"FigureCitationEditorPopup\\"></div></div>"`;
 
 exports[`Figure citation node view should render node 1`] = `"<span></span>"`;
