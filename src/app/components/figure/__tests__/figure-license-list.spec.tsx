@@ -8,7 +8,7 @@ import { Button } from '@material-ui/core';
 import { FigureLicensesList } from 'app/components/figure/figure-license-list';
 import { createBodyState } from 'app/models/manuscript-state.factory';
 import { NodeViewContext } from 'app/utils/view.utils';
-import { ReplaceAroundStep, ReplaceStep } from 'prosemirror-transform';
+import { ReplaceStep } from 'prosemirror-transform';
 
 jest.mock('prosemirror-view');
 jest.mock('@material-ui/core/styles', () => {

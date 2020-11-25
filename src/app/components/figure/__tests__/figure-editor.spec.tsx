@@ -7,7 +7,7 @@ import { Fragment } from 'prosemirror-model';
 import { uploadImage } from 'app/utils/view.utils';
 import { mount } from 'enzyme';
 import { IconButton, TextField } from '@material-ui/core';
-import {renderConfirmDialog} from "app/components/prompt-dialog";
+import { renderConfirmDialog } from 'app/components/prompt-dialog';
 
 jest.mock('prosemirror-view');
 jest.mock('app/components/prompt-dialog');
