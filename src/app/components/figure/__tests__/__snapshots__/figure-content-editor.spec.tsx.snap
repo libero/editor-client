@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FigureContentEditor should render a node 1`] = `
+<div>
+  <div
+    data-cmp="rich-text-editor"
+  />
+</div>
+`;

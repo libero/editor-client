@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FigureLicenseList should render list 1`] = `
+<section>
+  <div
+    data-cmp="FigureLicenseEditor"
+  />
+  <div
+    data-cmp="FigureLicenseEditor"
+  />
+  <button
+    className="MuiButtonBase-root MuiButton-root makeStyles-addLicenseCta-8 MuiButton-text MuiButton-textPrimary"
+    disabled={false}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onDragLeave={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    tabIndex={0}
+    type="button"
+  >
+    <span
+      className="MuiButton-label"
+    >
+      Add Licence
+    </span>
+  </button>
+</section>
+`;
