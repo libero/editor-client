@@ -27,7 +27,7 @@ jest.mock('@material-ui/core/styles', () => {
   };
 });
 
-describe('Figure node view', () => {
+describe('BoxText node view', () => {
   it('should render figure node view', () => {
     const figureNode = givenBoxTextNode();
     const view = new EditorView(null, {

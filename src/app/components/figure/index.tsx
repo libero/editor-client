@@ -49,7 +49,7 @@ export class FigureNodeView implements NodeView {
     const resolvedPosition = this.view.state.doc.resolve(this.getPos());
     const change = this.view.state.tr.setSelection(new NodeSelection(resolvedPosition)).deleteSelection();
     let documentReducedBy = 0;
-    change.doc.descendants((node: ProsemirrorNode, pos: number, parent: ProsemirrorNode) => {
+    change.doc.descendants((node: ProsemirrorNode, pos: number) => {
       if (node.type.name === 'figureCitation' && node.attrs.figIds.includes(this.node.attrs.id)) {
         if (node.attrs.figIds.length > 1) {
           const updatedAttrs = { figIds: node.attrs['figIds'].filter((figId) => figId !== this.node.attrs.id) };
