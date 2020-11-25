@@ -53,13 +53,13 @@ export class RichTextEditor extends React.Component<ComponentWithId<RichTextEdit
           return new ReferenceCitationNodeView(node, view, getPos);
         },
         boxText: (node, view, getPos) => {
-          return new BoxTextNodeView(node, view, getPos, () => this.props.isActive);
+          return new BoxTextNodeView(node, view, getPos);
         },
         link(node, view) {
           return new LinkNodeView(node, view);
         },
         figure: (node, view, getPos) => {
-          return new FigureNodeView(node, view, getPos, () => this.props.isActive);
+          return new FigureNodeView(node, view, getPos);
         },
         figureCitation: (node, view, getPos) => {
           return new FigureCitationNodeView(node, view, getPos);

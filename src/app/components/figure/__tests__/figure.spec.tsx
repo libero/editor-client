@@ -29,12 +29,7 @@ describe('Figure node view', () => {
     });
 
     view.state = createBodyState(document.createElement('body'), '');
-    const nodeView = new FigureNodeView(
-      figureNode,
-      view,
-      jest.fn().mockReturnValue(0),
-      jest.fn().mockReturnValue(true)
-    );
+    const nodeView = new FigureNodeView(figureNode, view, jest.fn().mockReturnValue(0));
 
     expect(nodeView.dom.innerHTML).toMatchSnapshot();
   });
@@ -47,12 +42,7 @@ describe('Figure node view', () => {
     });
 
     view.state = createBodyState(document.createElement('body'), '');
-    const nodeView = new FigureNodeView(
-      figureNode,
-      view,
-      jest.fn().mockReturnValue(0),
-      jest.fn().mockReturnValue(true)
-    );
+    const nodeView = new FigureNodeView(figureNode, view, jest.fn().mockReturnValue(0));
     jest.spyOn(view, 'dispatch');
     nodeView.handleAttributesChange('new label', 'new image base64');
     expect(view.dispatch['mock'].calls[0][0].steps[0]).toBeInstanceOf(ReplaceAroundStep);
@@ -66,12 +56,7 @@ describe('Figure node view', () => {
     });
 
     view.state = createBodyState(document.createElement('body'), '');
-    const nodeView = new FigureNodeView(
-      figureNode,
-      view,
-      jest.fn().mockReturnValue(0),
-      jest.fn().mockReturnValue(true)
-    );
+    const nodeView = new FigureNodeView(figureNode, view, jest.fn().mockReturnValue(0));
     jest.spyOn(view, 'dispatch');
     nodeView.handleDelete();
     expect(view.dispatch['mock'].calls[0][0].steps[0]).toBeInstanceOf(ReplaceStep);

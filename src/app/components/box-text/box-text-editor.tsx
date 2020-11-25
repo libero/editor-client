@@ -1,87 +1,38 @@
-import React, { useCallback, useRef, useImperativeHandle, useState } from 'react';
-import { EditorState, Transaction } from 'prosemirror-state';
+import React, { useImperativeHandle, useState } from 'react';
 import { Node as ProsemirrorNode } from 'prosemirror-model';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { IconButton } from '@material-ui/core';
 
 import { RichTextEditor } from 'app/components/rich-text-editor';
 import { useBoxTextEditorStyles } from 'app/components/box-text/styles';
+import { NodeEditor } from 'app/components/node-editor/node-editor';
+
+const BOX_CONTENT_OFFSET_CORRECTION = 1;
 
 export interface BoxTextEditorHandle {
   updateContent(node: ProsemirrorNode): void;
-  focus(): void;
-  hasFocus(): boolean;
 }
 
 interface BoxTextEditorProps {
-  editorState: EditorState;
+  node: ProsemirrorNode;
   onDelete(): void;
-  onNodeChange(change: Transaction): void;
-  onSelectionChange(from: number, anchor: number): void;
 }
 
 export const BoxTextEditor = React.forwardRef((props: BoxTextEditorProps, ref) => {
-  const { editorState, onNodeChange, onSelectionChange, onDelete } = props;
-  const [isEditorActive, setEditorActive] = useState<boolean>(false);
-  const [internalState, setInternalState] = useState<EditorState>(editorState);
+  const { onDelete } = props;
+  const [boxNode, setBoxNode] = useState<ProsemirrorNode>(props.node);
   const classes = useBoxTextEditorStyles();
-  const boxTextRef = useRef(null);
 
   useImperativeHandle(ref, () => ({
     updateContent: (node: ProsemirrorNode) => {
-      const view = boxTextRef.current.editorView;
-      const start = node.content.findDiffStart(view.state.doc.content);
-      if (start !== null) {
-        let { a: endA, b: endB } = node.content.findDiffEnd(view.state.doc.content);
-        const overlap = start - Math.min(endA, endB);
-        if (overlap > 0) {
-          endA += overlap;
-          endB += overlap;
-        }
-        boxTextRef.current.editorView.dispatch(
-          view.state.tr.replace(start, endB, node.slice(start, endA)).setMeta('parentChange', true)
-        );
-      }
-    },
-    focus: () => {
-      boxTextRef.current.focus();
-    },
-    hasFocus: () => boxTextRef.current.editorView.hasFocus()
+      setBoxNode(node);
+    }
   }));
-
-  const handleContentChange = useCallback(
-    (change: Transaction) => {
-      setInternalState(boxTextRef.current.editorView.state);
-      if (change.docChanged && !change.getMeta('parentChange')) {
-        onNodeChange(change);
-      } else {
-        onSelectionChange(change.selection.$from.pos, change.selection.$to.pos);
-      }
-    },
-    [onNodeChange, onSelectionChange]
-  );
-
-  const handleFocus = useCallback(() => {
-    setEditorActive(true);
-  }, [setEditorActive]);
-
-  const handleBlur = useCallback(() => {
-    setEditorActive(false);
-  }, [setEditorActive]);
 
   return (
     <div className={classes.boxContainer}>
       <div className={classes.boxText}>
-        <RichTextEditor
-          ref={boxTextRef}
-          isActive={isEditorActive}
-          variant="outlined"
-          label="Box text"
-          editorState={internalState}
-          onChange={handleContentChange}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-        ></RichTextEditor>
+        <BoxTextNodeEditor node={boxNode} offset={BOX_CONTENT_OFFSET_CORRECTION}></BoxTextNodeEditor>
       </div>
       <IconButton classes={{ root: classes.editButton }} onClick={onDelete}>
         <DeleteIcon fontSize="small" />
@@ -89,3 +40,20 @@ export const BoxTextEditor = React.forwardRef((props: BoxTextEditorProps, ref) =
     </div>
   );
 });
+
+class BoxTextNodeEditor extends NodeEditor<{}> {
+  render() {
+    return (
+      <RichTextEditor
+        ref={this.editorRef}
+        isActive={this.getEditorActiveState()}
+        variant="outlined"
+        label="Box text"
+        editorState={this.state.editorState}
+        onChange={this.handleInternalEditorStateChange}
+        onFocus={this.handleEditorFocus}
+        onBlur={this.handleEditorBlur}
+      ></RichTextEditor>
+    );
+  }
+}

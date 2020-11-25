@@ -13,12 +13,7 @@ export class FigureNodeView implements NodeView {
   dom?: HTMLElement;
   figureEditor: React.RefObject<FigureEditorHandle>;
 
-  constructor(
-    private node: ProsemirrorNode,
-    private view: EditorView,
-    private getPos: () => number,
-    private isContainerActive: () => boolean
-  ) {
+  constructor(private node: ProsemirrorNode, private view: EditorView, private getPos: () => number) {
     this.dom = document.createElement('section');
     this.figureEditor = React.createRef();
 

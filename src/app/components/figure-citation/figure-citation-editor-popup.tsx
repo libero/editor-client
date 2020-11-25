@@ -5,7 +5,7 @@ import ClearIcon from '@material-ui/icons/Clear';
 
 import { useFigureCitationEditorStyles } from 'app/components/figure-citation/styles';
 import { EditorState } from 'prosemirror-state';
-import {getBody} from "app/selectors/manuscript.selectors";
+import { getBody } from 'app/selectors/manuscript.selectors';
 import { useSelector } from 'react-redux';
 
 export interface FiguresListEntry {
