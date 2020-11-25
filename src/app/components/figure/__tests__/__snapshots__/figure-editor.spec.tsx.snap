@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FigureEditor should render component 1`] = `
+<div
+  className="makeStyles-figureContainer-1"
+>
+  <div
+    className="makeStyles-figureContent-2"
+  >
+    <input
+      data-cmp="TextField"
+      onChange={[Function]}
+      value=""
+    />
+    <div
+      className="makeStyles-imageContainer-5"
+    >
+      <img
+        alt="figure"
+        className="makeStyles-image-7"
+        src=""
+      />
+      <div
+        data-cmp="IconButton"
+      >
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M19 7v2.99s-1.99.01-2 0V7h-3s.01-1.99 0-2h3V2h2v3h3v2h-3zm-3 4V8h-3V5H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-8h-3zM5 19l3-4 2 3 3-4 4 5H5z"
+          />
+        </svg>
+      </div>
+    </div>
+    <div
+      className="makeStyles-inputField-4"
+    >
+      <div
+        data-cmp="FigureContentEditor"
+      />
+    </div>
+    <div
+      className="makeStyles-inputField-4"
+    >
+      <div
+        data-cmp="FigureContentEditor"
+      />
+    </div>
+    <div>
+      <div
+        data-cmp="FigureContentEditor"
+      />
+    </div>
+    <div
+      data-cmp="FigureLicensesList"
+    />
+  </div>
+  <div
+    data-cmp="IconButton"
+  >
+    <svg
+      aria-hidden={true}
+      className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+      focusable="false"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+      />
+    </svg>
+  </div>
+</div>
+`;
