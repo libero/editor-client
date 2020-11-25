@@ -72,35 +72,6 @@ describe('BoxTextEditor', () => {
     wrapper.update();
     expect(onDeleteListener).toBeCalled();
   });
-
-  //
-  // it('should unselect first figure', () => {
-  //   const node = givenBoxTextNode();
-  //   const onChangeListener = jest.fn();
-  //   const wrapper = mount(
-  //     <Provider store={store}>
-  //       <ThemeProvider theme={theme}>
-  //         <BoxTextEditor onDelete={jest.fn()} node={node} />
-  //       </ThemeProvider>
-  //     </Provider>
-  //   );
-  //   wrapper.find('li').at(0).simulate('click');
-  //   wrapper.update();
-  //   expect(onChangeListener).toBeCalledWith([]);
-  // });
-  //
-  // it('should close popup on clickaway', () => {
-  //   const node = givenBoxTextNode();
-  //   const onCloseListener = jest.fn();
-  //   const wrapper = mount(
-  //     <Provider store={store}>
-  //       <ThemeProvider theme={theme}>
-  //         <BoxTextEditor onDelete={jest.fn()} node={node} />
-  //       </ThemeProvider>
-  //     </Provider>
-  //   );
-  //   wrapper.find(ClickAwayListener).props().onClickAway(null);
-  // });
 });
 
 function givenBoxTextNode(): ProsemirrorNode {
