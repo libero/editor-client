@@ -9,7 +9,7 @@ import { getKeyFromQueryParams } from 'app/utils/url.utils';
  * @export
  * @param {LocationChangeAction} action
  */
-export function* routerLocationChanged(action: LocationChangeAction) {
+export function* routerLocationChangeSaga(action: LocationChangeAction) {
   const articleId = getKeyFromQueryParams(action.payload.location.search, 'articleId');
   if (articleId) {
     yield put(manuscriptActions.loadManuscriptAction.request(articleId));
@@ -24,5 +24,5 @@ export function* routerLocationChanged(action: LocationChangeAction) {
  * @export
  */
 export function* routerSaga() {
-  yield all([takeLatest(LOCATION_CHANGE, routerLocationChanged)]);
+  yield all([takeLatest(LOCATION_CHANGE, routerLocationChangeSaga)]);
 }
