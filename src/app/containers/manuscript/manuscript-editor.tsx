@@ -54,7 +54,6 @@ export const ManuscriptEditor: React.FC = () => {
 
   const preventClick = useCallback((event: SyntheticEvent) => {
     event.stopPropagation();
-    event.preventDefault();
   }, []);
 
   const handleKeywordsChange = (keywordGroup: string, index: number, diff: Transaction): void => {
