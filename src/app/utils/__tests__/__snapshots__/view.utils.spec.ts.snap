@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`view utils stringifies editor state content 1`] = `"<p class=\\"paragraph\\">Example text</p><p class=\\"paragraph\\">Example text 2</p><section class=\\"box-text\\"><p class=\\"paragraph\\"><strong>Related research article</strong> <a href=\\"#\\" class=\\"citation\\" data-cit-type=\\"reference\\" data-ref-id=\\"bib5\\" data-ref-text=\\"Harmon (2019)\\"></a></p></section>"`;
