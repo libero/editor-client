@@ -52,10 +52,6 @@ export const ManuscriptEditor: React.FC = () => {
     dispatch(manuscriptEditorActions.removeFocusAction());
   }, [dispatch]);
 
-  const preventClick = useCallback((event: SyntheticEvent) => {
-    event.stopPropagation();
-  }, []);
-
   const handleKeywordsChange = (keywordGroup: string, index: number, diff: Transaction): void => {
     dispatch(manuscriptActions.updateKeywordAction({ keywordGroup, index, change: diff }));
   };
@@ -146,7 +142,7 @@ export const ManuscriptEditor: React.FC = () => {
   return (
     <div onClick={clearFocus} className={classes.contentWrapper} data-test-id="container-wrapper">
       <div aria-hidden="true" className={classes.toolbarPlaceholder} />
-      <div className={classes.content} onClick={preventClick}>
+      <div className={classes.content}>
         <RichTextEditor
           editorState={title}
           label="Title"

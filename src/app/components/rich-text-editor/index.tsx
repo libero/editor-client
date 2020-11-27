@@ -115,6 +115,11 @@ export class RichTextEditor extends React.Component<ComponentWithId<RichTextEdit
     }
   }
 
+  preventClick(e: React.MouseEvent) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+
   updateEditorState(editorState: EditorState) {
     if (editorState !== this.editorView.state) {
       this.editorView.updateState(editorState);
@@ -130,7 +135,7 @@ export class RichTextEditor extends React.Component<ComponentWithId<RichTextEdit
         id={this.props.id}
         variant={this.props.variant}
       >
-        <div ref={this.createEditorView} className="prosemirrorContainer" />
+        <div ref={this.createEditorView} className="prosemirrorContainer" onClick={this.preventClick} />
       </SectionContainer>
     );
   }

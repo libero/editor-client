@@ -34,7 +34,6 @@ Array [
     />
     <div
       className="makeStyles-content-17"
-      onClick={[Function]}
     >
       <div
         className="makeStyles-root-20 makeStyles-plainVariant-22"
@@ -47,6 +46,7 @@ Array [
         </label>
         <div
           className="prosemirrorContainer"
+          onClick={[Function]}
         />
       </div>
       <div
@@ -112,6 +112,7 @@ Array [
         </label>
         <div
           className="prosemirrorContainer"
+          onClick={[Function]}
         />
       </div>
       <div
@@ -130,6 +131,7 @@ Array [
         </label>
         <div
           className="prosemirrorContainer"
+          onClick={[Function]}
         />
       </div>
       <div
@@ -147,6 +149,7 @@ Array [
         </label>
         <div
           className="prosemirrorContainer"
+          onClick={[Function]}
         />
       </div>
       <div
@@ -165,6 +168,7 @@ Array [
         </label>
         <div
           className="prosemirrorContainer"
+          onClick={[Function]}
         />
       </div>
       <div
