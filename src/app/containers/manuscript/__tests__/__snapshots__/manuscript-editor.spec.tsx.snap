@@ -12,7 +12,6 @@ exports[`manuscript editor should render 1`] = `
   />
   <div
     className="makeStyles-content-2"
-    onClick={[Function]}
   >
     <div
       data-cmp="rich-text-editor"
