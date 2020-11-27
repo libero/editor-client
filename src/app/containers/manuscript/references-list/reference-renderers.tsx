@@ -41,7 +41,11 @@ const renderDoi = (doi: string | undefined) => {
     return (
       <>
         {' '}
-        doi: <a href={`https://doi.org/${doi}`}>https://doi.org/{doi}</a>.
+        doi:{' '}
+        <a target="_blank" href={`https://doi.org/${doi}`}>
+          https://doi.org/{doi}
+        </a>
+        .
       </>
     );
   }
