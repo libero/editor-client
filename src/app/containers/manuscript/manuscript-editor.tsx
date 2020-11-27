@@ -1,4 +1,4 @@
-import React, { useCallback, SyntheticEvent } from 'react';
+import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { EditorState, Transaction } from 'prosemirror-state';
 
