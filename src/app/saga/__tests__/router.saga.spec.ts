@@ -1,5 +1,5 @@
 import { put } from 'redux-saga/effects';
-import { LOCATION_CHANGE, LocationChangeAction, LocationChangePayload, push } from 'connected-react-router';
+import { LOCATION_CHANGE, LocationChangePayload, push } from 'connected-react-router';
 
 import { routerLocationChangeSaga } from 'app/saga/router.saga';
 import { loadManuscriptAction } from 'app/actions/manuscript.actions';

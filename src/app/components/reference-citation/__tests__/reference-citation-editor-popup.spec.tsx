@@ -1,17 +1,21 @@
 import React from 'react';
 import { create } from 'react-test-renderer';
+import { act } from 'react-dom/test-utils';
 import { EditorView } from 'prosemirror-view';
 import { mount } from 'enzyme';
-
 import configureMockStore from 'redux-mock-store';
-import { createBodyState } from 'app/models/manuscript-state.factory';
-import { ReferenceCitationEditorPopup } from 'app/components/reference-citation-editor-popup/index';
+import ClearIcon from '@material-ui/icons/Clear';
 import { Provider } from 'react-redux';
-import { createReferenceAnnotatedValue, Reference } from 'app/models/reference';
-import { givenState } from 'app/test-utils/reducer-test-helpers';
 import { ClickAwayListener } from '@material-ui/core';
 import { EditorState } from 'prosemirror-state';
+
+import { createBodyState } from 'app/models/manuscript-state.factory';
+import { ReferenceCitationEditorPopup } from 'app/components/reference-citation/reference-citation-editor-popup';
+import { createBlankReference, createReferenceAnnotatedValue, Reference } from 'app/models/reference';
+import { givenState } from 'app/test-utils/reducer-test-helpers';
 import { ReferenceFormDialog } from 'app/containers/reference-form-dialog/reference-form-dialog';
+import { ModalContainer } from 'app/containers/modal-container';
+import * as manuscriptActions from 'app/actions/manuscript.actions';
 
 jest.mock('@material-ui/core', () => ({
   Popper: ({ children }) => <div data-cmp="Popper">{children}</div>,
@@ -20,10 +24,13 @@ jest.mock('@material-ui/core', () => ({
   IconButton: ({ children }) => <div data-cmp="IconButton">{children}</div>,
   InputAdornment: ({ children }) => <div data-cmp="InputAdornment">{children}</div>,
   Button: ({ children }) => <div data-cmp="Button">{children}</div>,
-  TextField: ({ value, onChange, children }) => (
-    <input onChange={onChange} value={value} data-cmp="TextField">
-      {children}
-    </input>
+  TextField: ({ value, onChange, children, InputProps }) => (
+    <>
+      {InputProps.endAdornment}
+      <input onChange={onChange} value={value} data-cmp="TextField">
+        {children}
+      </input>
+    </>
   )
 }));
 
@@ -209,6 +216,48 @@ describe('ReferenceCitationEditor', () => {
     expect(handleClose).toHaveBeenCalled();
   });
 
+  it('should clear filter field', () => {
+    const handleClose = jest.fn();
+    const handleChange = jest.fn();
+    const el = document.createElement('main-text');
+    el.innerHTML = `<p><xref ref-type="bibr" rid="bib5">Harmon (2019)</xref></p>`;
+    const editorState = createBodyState(el, '');
+
+    const viewContainer = document.createElement('div');
+    const editorView = new EditorView(viewContainer, {
+      state: editorState,
+      dispatchTransaction: jest.fn()
+    });
+
+    const store = mockStore({
+      manuscript: givenState({ references: ReferenceData })
+    });
+
+    const node = editorView.state.doc.firstChild.content.firstChild;
+
+    const wrapper = mount(
+      <Provider store={store}>
+        <ReferenceCitationEditorPopup
+          editorView={editorView}
+          onChange={handleChange}
+          node={node}
+          onClose={handleClose}
+          anchorEl={null}
+        />
+      </Provider>
+    );
+
+    act(() => {
+      wrapper.find('input[data-cmp="TextField"]').simulate('change', { target: { value: 'SOME_TEXT' } });
+      wrapper.update();
+
+      wrapper.find(ClearIcon).prop('onClick').call(null);
+      wrapper.update();
+    });
+
+    expect(wrapper.find('input[data-cmp="TextField"]').prop('value')).toBe('');
+  });
+
   it('should open add reference dialog', () => {
     const handleClose = jest.fn();
     const handleChange = jest.fn();
@@ -244,6 +293,47 @@ describe('ReferenceCitationEditor', () => {
     wrapper.find('li').at(0).simulate('click');
     wrapper.update();
     expect(wrapper.find(ReferenceFormDialog).length).toBe(1);
+  });
+
+  it('should add reference', () => {
+    const handleClose = jest.fn();
+    const handleChange = jest.fn();
+    const el = document.createElement('main-text');
+    el.innerHTML = `<p><xref ref-type="bibr" rid="bib5">Harmon (2019)</xref></p>`;
+    const editorState = createBodyState(el, '');
+
+    const viewContainer = document.createElement('div');
+    const editorView = new EditorView(viewContainer, {
+      state: editorState,
+      dispatchTransaction: jest.fn()
+    });
+
+    const store = mockStore({
+      manuscript: givenState({ references: ReferenceData })
+    });
+    jest.spyOn(store, 'dispatch');
+
+    const node = editorView.state.doc.firstChild.content.firstChild;
+
+    const wrapper = mount(
+      <Provider store={store}>
+        <ReferenceCitationEditorPopup
+          editorView={editorView}
+          onChange={handleChange}
+          node={node}
+          anchorEl={null}
+          onClose={handleClose}
+        />
+      </Provider>
+    );
+
+    wrapper.find('li').at(0).simulate('click');
+    wrapper.update();
+    const ref = createBlankReference();
+    act(() => {
+      wrapper.find(ModalContainer).prop('params')['onAccept'].call(null, ref);
+    });
+    expect(store.dispatch).toBeCalledWith(manuscriptActions.addReferenceAction(ref));
   });
 });
 
