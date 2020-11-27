@@ -106,8 +106,8 @@ export const nodes = {
   refCitation: {
     content: undefined,
     attrs: {
-      refId: { default: undefined },
-      refText: { default: undefined }
+      refId: { default: null },
+      refText: { default: null }
     },
     group: 'inline',
     atom: true,

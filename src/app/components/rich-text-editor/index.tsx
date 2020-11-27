@@ -6,7 +6,7 @@ import { DOMSerializer, Slice } from 'prosemirror-model';
 import 'prosemirror-example-setup/style/style.css';
 import 'prosemirror-menu/style/menu.css';
 import { SectionContainer, SectionContainerVariant } from 'app/components/section-container';
-import { ReferenceCitationNodeView } from 'app/components/reference-citation-editor-popup';
+import { ReferenceCitationNodeView } from 'app/components/reference-citation';
 import { ComponentWithId } from 'app/utils/types';
 import { BoxTextNodeView } from 'app/components/box-text';
 import { hasParentNodeOf } from 'app/utils/view.utils';

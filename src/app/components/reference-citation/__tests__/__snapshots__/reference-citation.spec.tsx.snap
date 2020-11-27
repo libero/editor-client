@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Reference citation node view should open editor on click 1`] = `"<div id=\\"view-container\\"></div><div style=\\"position: absolute; z-index: 10;\\"><div data-cmp=\\"ReferenceCitationEditorPopup\\"></div></div>"`;
+
+exports[`Reference citation node view should render node 1`] = `"???"`;
