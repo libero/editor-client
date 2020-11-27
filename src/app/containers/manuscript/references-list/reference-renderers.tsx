@@ -42,7 +42,7 @@ const renderDoi = (doi: string | undefined) => {
       <>
         {' '}
         doi:{' '}
-        <a target="_blank" href={`https://doi.org/${doi}`}>
+        <a target="_blank" rel="noopener noreferrer" href={`https://doi.org/${doi}`}>
           https://doi.org/{doi}
         </a>
         .
