@@ -30,15 +30,6 @@ describe('BoxTextEditor', () => {
 
   beforeEach(() => {
     const el = document.createElement('main-text');
-    el.innerHTML = `<fig id="id1" position="float"> 
-        <label>Figure 1</label> 
-        <graphic xlink:href="fig2.jpg" mimetype="image" mime-subtype="jpg"/>
-      </fig>
-      <fig id="id2" position="float"> 
-        <label>Figure 2</label> 
-        <graphic xlink:href="fig2.jpg" mimetype="image" mime-subtype="jpg"/>
-      </fig>`;
-
     store = mockStore({
       manuscript: givenState({ body: createBodyState(el, '') })
     });

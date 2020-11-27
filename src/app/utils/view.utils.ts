@@ -37,7 +37,7 @@ export function uploadImage(onSelectCallback: (img: string) => void): void {
   fileInput.type = 'file';
   fileInput.accept = SUPPORTED_IMAGE_TYPES.join(',');
   fileInput.addEventListener('change', () => {
-    const file: File = fileInput.files[0];
+    const file: File = fileInput.files.item(0);
     if (!SUPPORTED_IMAGE_TYPES.includes(file.type)) {
       return;
     }
