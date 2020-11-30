@@ -151,7 +151,7 @@ export const renderSoftwareReference = (reference: Reference) => {
   const authors = getReferenceAuthors(reference);
   return (
     <>
-      {authors}. {referenceInfo.year}. {getAnnotatedText(referenceInfo.dataTitle, '.')}
+      {authors}. {referenceInfo.year}. {getAnnotatedText(referenceInfo.articleTitle, '.')}
       <em>{getAnnotatedText(referenceInfo.source, '.')}</em>
       {referenceInfo.publisherLocation ? ` ${referenceInfo.publisherLocation}:` : undefined}
       {referenceInfo.publisherName ? ` ${referenceInfo.publisherName}. ` : undefined}

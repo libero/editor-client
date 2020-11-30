@@ -475,14 +475,8 @@ Object {
   ],
   "id": "id",
   "referenceInfo": Object {
-    "dataTitle": Object {
+    "articleTitle": Object {
       "doc": Object {
-        "content": Array [
-          Object {
-            "text": "R: A Language and Environment for Statistical Computing",
-            "type": "text",
-          },
-        ],
         "type": "annotatedReferenceInfoDoc",
       },
       "selection": Object {

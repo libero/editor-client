@@ -666,7 +666,7 @@
                     <collab>R Development Core Team</collab>
                   </person-group>
                   <year iso-8601-date="2014">2014</year>
-                  <data-title>R: A Language and Environment for Statistical Computing</data-title>
+                  <article-title>R: A Language and Environment for Statistical Computing</article-title>
                   <publisher-loc>Vienna, Austria</publisher-loc>
                   <publisher-name>R Foundation for Statistical Computing</publisher-name>
                   <ext-link ext-link-type="uri" xlink:href="http://www.R-project.org/">http://www.R-project.org/</ext-link>
