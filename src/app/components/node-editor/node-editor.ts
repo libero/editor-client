@@ -59,6 +59,10 @@ export abstract class NodeEditor<T> extends React.Component<NodeEditorProps & T,
   }
 
   protected handleEditorFocus = (): void => {
+    if (!this.editorRef.current.editorView.state.doc.childCount) {
+      this.updateSelectionOnEmptyContent();
+    }
+
     this.setState({ isEditorActive: true });
   };
 
@@ -104,7 +108,6 @@ export abstract class NodeEditor<T> extends React.Component<NodeEditorProps & T,
       }
       return state.tr.replace(start, endB, updatedNode.slice(start, endA)).setMeta('parentChange', true);
     }
-
     return null;
   }
 
@@ -121,7 +124,6 @@ export abstract class NodeEditor<T> extends React.Component<NodeEditorProps & T,
     const { anchor, head } = change.selection;
     const start = Math.min(anchor, head);
     const end = Math.max(anchor, head);
-
     const selection = TextSelection.create(
       translatedChange.doc,
       start + this.props.offset + this.context.getPos(),
@@ -134,6 +136,23 @@ export abstract class NodeEditor<T> extends React.Component<NodeEditorProps & T,
     }
 
     return translatedChange;
+  }
+
+  /*
+    when a content of a node editor is empty a selection change will happen and we need to manually dispatch a selection
+    change to the parent
+  */
+  private updateSelectionOnEmptyContent(): void {
+    const change = this.context.view.state.tr;
+
+    const selection = TextSelection.create(
+      change.doc,
+      this.props.offset + this.context.getPos(),
+      this.props.offset + this.context.getPos()
+    );
+    change.setSelection(selection);
+    this.context.view.dispatch(change);
+    this.context.view.dom.dispatchEvent(new FocusEvent('focus'));
   }
 
   private updateInternalEditorState(change: Transaction): void {
