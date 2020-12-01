@@ -89,7 +89,7 @@ export const PREPRINT_FORM: Record<string, FormControlConfigType> = {
 
 export const SOFTWARE_FORM: Record<string, FormControlConfigType> = {
   year: { type: 'string', label: 'Year', className: formGrid.firstCol },
-  dataTitle: { type: 'rich-text', label: 'Title', className: formGrid.fullWidth },
+  articleTitle: { type: 'rich-text', label: 'Title', className: formGrid.fullWidth },
   source: { type: 'rich-text', label: 'Source', className: formGrid.fullWidth },
   publisherLocation: { type: 'string', label: 'Publisher location', className: formGrid.fullWidth },
   publisherName: { type: 'string', label: 'Publisher name', className: formGrid.fullWidth },
