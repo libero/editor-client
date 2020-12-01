@@ -71,7 +71,7 @@ export class FigureNodeView implements NodeView {
   }
 
   stopEvent(evt) {
-    return this.dom.contains(evt.target);
+    return !/drag/.test(evt.type); // || this.dom.contains(evt.target);
   }
 
   ignoreMutation() {
