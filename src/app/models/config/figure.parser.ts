@@ -11,7 +11,7 @@ export function parseFigure(dom: Element, schema: Schema): Fragment {
   const missingNodes = Object.entries(MISSING_NODES_SELECTORS_MAP).reduce((acc, nodeEntry) => {
     const [nodeName, selector] = nodeEntry;
     if (!dom.querySelector(selector)) {
-      acc.push(schema.nodes[nodeName].createAndFill(null, schema.text(' ')));
+      acc.push(schema.nodes[nodeName].createAndFill());
     }
     return acc;
   }, [] as ProsemirrorNode[]);
