@@ -147,7 +147,7 @@ export interface ThesisReference {
 export interface SoftwareReference {
   year: string;
   source: EditorState;
-  dataTitle: EditorState;
+  articleTitle: EditorState;
   version: string;
   publisherName: string;
   publisherLocation: string;
@@ -364,7 +364,7 @@ function createNewReportReference(): ReportReference {
 function createSoftwareReference(referenceXml: Element): SoftwareReference {
   return {
     year: getTextContentFromPath(referenceXml, 'year'),
-    dataTitle: createReferenceAnnotatedValue(referenceXml.querySelector('data-title')),
+    articleTitle: createReferenceAnnotatedValue(referenceXml.querySelector('article-title')),
     source: createReferenceAnnotatedValue(referenceXml.querySelector('source')),
     version: getTextContentFromPath(referenceXml, 'version') || '',
     publisherLocation: getTextContentFromPath(referenceXml, 'publisher-loc') || '',
@@ -376,7 +376,7 @@ function createSoftwareReference(referenceXml: Element): SoftwareReference {
 
 function createNewSoftwareReference(): SoftwareReference {
   return {
-    dataTitle: createReferenceAnnotatedValue(),
+    articleTitle: createReferenceAnnotatedValue(),
     doi: '',
     extLink: '',
     publisherLocation: '',
