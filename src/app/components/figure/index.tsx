@@ -8,13 +8,16 @@ import { NodeSelection } from 'prosemirror-state';
 import { theme } from 'app/styles/theme';
 import { FigureEditor, FigureEditorHandle } from 'app/components/figure/figure-editor';
 import { NodeViewContext } from 'app/utils/view.utils';
+import { AutoScroller } from 'app/utils/autoscroller';
 
 export class FigureNodeView implements NodeView {
   dom?: HTMLElement;
   figureEditor: React.RefObject<FigureEditorHandle>;
+  scroller = AutoScroller.getInstance();
 
   constructor(private node: ProsemirrorNode, private view: EditorView, private getPos: () => number) {
     this.dom = document.createElement('section');
+    this.dom.style.outline = 'none';
     this.figureEditor = React.createRef();
 
     ReactDOM.render(
@@ -38,12 +41,20 @@ export class FigureNodeView implements NodeView {
       </ThemeProvider>,
       this.dom
     );
+
+    this.dom.addEventListener('drag', this.handleDrag);
+    this.dom.addEventListener('dragend', this.handleDragEnd);
   }
 
   handleAttributesChange = (label: string, img: string) => {
     const change = this.view.state.tr.setNodeMarkup(this.getPos(), null, { id: this.node.attrs.id, label, img });
     this.view.dispatch(change);
   };
+
+  destroy() {
+    this.dom.removeEventListener('drag', this.handleDrag);
+    this.dom.removeEventListener('dragend', this.handleDragEnd);
+  }
 
   handleDelete = () => {
     const resolvedPosition = this.view.state.doc.resolve(this.getPos());
@@ -70,11 +81,19 @@ export class FigureNodeView implements NodeView {
     return true;
   }
 
-  stopEvent(evt) {
-    return !/drag/.test(evt.type); // || this.dom.contains(evt.target);
+  stopEvent(event) {
+    return !event.target.classList.contains('drag-handle'); // !/drag/.test(event.type);
   }
 
   ignoreMutation() {
     return true;
   }
+
+  private handleDrag = (event) => {
+    this.scroller.updateScroll(this.dom, event, this.view.dom);
+  };
+
+  private handleDragEnd = () => {
+    this.scroller.clear();
+  };
 }

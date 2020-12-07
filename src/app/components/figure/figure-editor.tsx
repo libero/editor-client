@@ -11,6 +11,7 @@ import { FigureContentEditor } from 'app/components/figure/figure-content-editor
 import { EditorView } from 'prosemirror-view';
 import { FigureLicensesList } from './figure-license-list';
 import { renderConfirmDialog } from 'app/components/prompt-dialog';
+import DragIcon from 'app/assets/drag-indicator-grey.svg';
 
 /* Prosemirror relies heavily on the positioning of nodes in its internal state presentation.
   Given figure structure
@@ -90,6 +91,7 @@ export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => 
   return (
     <div className={classes.figureContainer}>
       <div className={classes.figureContent}>
+        <img src={DragIcon} alt="drag handle" aria-hidden={true} className="drag-handle" />
         <TextField
           fullWidth
           name="figureNumber"

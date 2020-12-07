@@ -85,7 +85,7 @@ describe('Figure node view', () => {
     expect(FigureEditor['updateContentSpy']).toBeCalledWith(newNode);
   });
 
-  it('should stop event if target is part of node view', () => {
+  it('should stop event if target does not have drag handle class', () => {
     const figureNode = givenFigureNode();
     const view = new EditorView(null, {
       state: null,
@@ -94,10 +94,8 @@ describe('Figure node view', () => {
 
     view.state = createBodyState(document.createElement('body'), '');
     const nodeView = new FigureNodeView(figureNode, view, jest.fn().mockReturnValue(0));
-    expect(nodeView.stopEvent(new Event('click'))).toBeFalsy();
-    const evt = new Event('click');
-    nodeView.dom.firstChild.dispatchEvent(evt);
-    expect(nodeView.stopEvent(evt)).toBeTruthy();
+    console.log(nodeView.dom.innerHTML);
+    expect(nodeView.stopEvent({ target: nodeView.dom.firstChild })).toBeTruthy();
   });
 
   it('should ignore mutations', () => {

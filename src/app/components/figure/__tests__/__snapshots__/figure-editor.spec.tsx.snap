@@ -7,6 +7,12 @@ exports[`FigureEditor should render component 1`] = `
   <div
     className="makeStyles-figureContent-2"
   >
+    <img
+      alt="drag handle"
+      aria-hidden={true}
+      className="drag-handle"
+      src="drag-indicator-grey.svg"
+    />
     <input
       data-cmp="TextField"
       onChange={[Function]}
