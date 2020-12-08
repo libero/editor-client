@@ -94,7 +94,6 @@ describe('Figure node view', () => {
 
     view.state = createBodyState(document.createElement('body'), '');
     const nodeView = new FigureNodeView(figureNode, view, jest.fn().mockReturnValue(0));
-    console.log(nodeView.dom.innerHTML);
     expect(nodeView.stopEvent({ target: nodeView.dom.firstChild })).toBeTruthy();
   });
 

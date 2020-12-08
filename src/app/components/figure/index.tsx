@@ -82,7 +82,7 @@ export class FigureNodeView implements NodeView {
   }
 
   stopEvent(event) {
-    return !event.target.classList.contains('drag-handle'); // !/drag/.test(event.type);
+    return !event.target.classList.contains('drag-handle');
   }
 
   ignoreMutation() {

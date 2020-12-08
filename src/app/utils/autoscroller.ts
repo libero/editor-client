@@ -1,3 +1,5 @@
+const WINDOW_SCROLL_ZONE = 300;
+
 interface Coords {
   x: number;
   y: number;
@@ -59,8 +61,8 @@ export class AutoScroller {
       minTranslate,
       maxTranslate,
       minScroll,
-      width: 600,
-      height: 600
+      width: WINDOW_SCROLL_ZONE * 2,
+      height: WINDOW_SCROLL_ZONE * 2
     });
   }
 
