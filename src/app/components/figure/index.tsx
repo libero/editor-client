@@ -90,7 +90,7 @@ export class FigureNodeView implements NodeView {
   }
 
   private handleDrag = (event) => {
-    this.scroller.updateScroll(this.dom, event, this.view.dom);
+    this.scroller.updateScroll(event, this.view.dom);
   };
 
   private handleDragEnd = () => {

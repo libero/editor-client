@@ -39,7 +39,7 @@ export class AutoScroller {
     this.interval = null;
   }
 
-  public updateScroll(dragEl: Element, event: DragEvent, dropContainer): void {
+  public updateScroll(event: DragEvent, dropContainer: Element): void {
     const containerRect = this.container.getBoundingClientRect();
     const dropRect = dropContainer.getBoundingClientRect();
 
