@@ -1,5 +1,9 @@
 @import '../../styles/constants.module';
 
+.drop-cursor {
+  border-top: solid 1px #0078CF;
+}
+
 .prosemirrorContainer {
   line-height: initial;
   color: $text-primary;

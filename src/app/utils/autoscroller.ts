@@ -30,7 +30,13 @@ export class AutoScroller {
 
   constructor() {
     this.container = window.document.scrollingElement || window.document.documentElement;
+    this.container.addEventListener('drop', this.handleDrop, true);
   }
+
+  public handleDrop = (): void => {
+    this.clear();
+    window.getSelection().removeAllRanges();
+  };
 
   public clear(): void {
     if (this.interval == null) {
