@@ -23,7 +23,7 @@ jest.mock('app/containers/manuscript/references-list', () => ({
 
 jest.mock('@material-ui/lab', () => ({
   ToggleButtonGroup: ({ children }) => <div data-cmp="ToggleButtonGroup">{children}</div>,
-  ToggleButton: ({ children }) => <div data-cmp="ToggleButton">{children}</div>,
+  ToggleButton: ({ children }) => <div data-cmp="ToggleButton">{children}</div>
 }));
 
 jest.mock('@material-ui/core/styles', () => {

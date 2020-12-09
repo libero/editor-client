@@ -4,7 +4,7 @@ import { EditorState } from 'prosemirror-state';
 import { ProseMirrorEditorView } from 'app/components/rich-text-editor/prosemirror-editor-view';
 import { EditorView } from 'prosemirror-view';
 import { mount } from 'enzyme';
-import {createDummyEditorState} from "app/test-utils/reducer-test-helpers";
+import { createDummyEditorState } from 'app/test-utils/reducer-test-helpers';
 import { DOMSerializer } from 'prosemirror-model';
 
 jest.mock('prosemirror-view');

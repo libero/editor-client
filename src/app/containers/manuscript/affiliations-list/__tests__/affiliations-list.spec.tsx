@@ -6,7 +6,7 @@ import { getInitialHistory, getLoadableStateSuccess } from 'app/utils/state.util
 import { EditorState } from 'prosemirror-state';
 import { create } from 'react-test-renderer';
 import { AffiliationsList } from 'app/containers/manuscript/affiliations-list/index';
-import {givenState} from "app/test-utils/reducer-test-helpers";
+import { givenState } from 'app/test-utils/reducer-test-helpers';
 
 jest.mock('@material-ui/core', () => ({
   Button: ({ label }) => <div data-cmp="Button">{label}</div>,

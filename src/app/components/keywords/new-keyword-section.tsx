@@ -18,7 +18,7 @@ export const NewKeywordSection: React.FC<NewKeywordSection> = ({
   onEnter,
   onChange,
   className,
-  onFocus,
+  onFocus
 }) => {
   const options = {
     handleDOMEvents: {

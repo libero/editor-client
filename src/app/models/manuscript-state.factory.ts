@@ -67,7 +67,7 @@ export function createBodyState(content: Element, id: string): EditorState {
     plugins: [
       buildInputRules(),
       gapCursor(),
-      dropCursor(),
+      dropCursor({ color: '#0078CF', class: 'drop-cursor' }),
       keymap(createListKeymap(schema)),
       keymap(baseKeymap),
       PlaceholderPlugin('Enter main text')

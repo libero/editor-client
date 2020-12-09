@@ -57,7 +57,12 @@ export const AffiliationsList: React.FC<ComponentWithId> = ({ id }) => {
       <SectionContainer label="Affiliations" id={id}>
         <ul className={classes.root}>{affiliations.map(renderAffiliation)}</ul>
       </SectionContainer>
-      <ActionButton title="Add Affiliation" variant="addEntity" onClick={addAffiliation} className={classes.addButton} />
+      <ActionButton
+        title="Add Affiliation"
+        variant="addEntity"
+        onClick={addAffiliation}
+        className={classes.addButton}
+      />
     </section>
   );
 };
