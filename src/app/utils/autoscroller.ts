@@ -33,7 +33,7 @@ export class AutoScroller {
     this.container.addEventListener('drop', this.handleDrop, true);
   }
 
-  public handleDrop = () => {
+  public handleDrop = (): void => {
     this.clear();
     window.getSelection().removeAllRanges();
   };
