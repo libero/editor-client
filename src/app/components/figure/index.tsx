@@ -42,8 +42,9 @@ export class FigureNodeView implements NodeView {
       this.dom
     );
 
-    this.dom.addEventListener('drag', this.handleDrag);
-    this.dom.addEventListener('dragend', this.handleDragEnd);
+    this.dom.addEventListener('drag', this.handleDrag, true);
+    this.dom.addEventListener('dragend', this.handleDragEnd, true);
+    this.dom.addEventListener('dragstart', this.preventFigureBodyDrag, true);
   }
 
   handleAttributesChange = (label: string, img: string) => {
@@ -52,8 +53,9 @@ export class FigureNodeView implements NodeView {
   };
 
   destroy() {
-    this.dom.removeEventListener('drag', this.handleDrag);
-    this.dom.removeEventListener('dragend', this.handleDragEnd);
+    this.dom.removeEventListener('drag', this.handleDrag, true);
+    this.dom.removeEventListener('dragend', this.handleDragEnd, true);
+    this.dom.removeEventListener('dragstart', this.preventFigureBodyDrag, true);
   }
 
   handleDelete = () => {
@@ -91,6 +93,13 @@ export class FigureNodeView implements NodeView {
 
   private handleDrag = (event) => {
     this.scroller.updateScroll(event, this.view.dom);
+  };
+
+  private preventFigureBodyDrag = (event) => {
+    if (!event.target.classList.contains('drag-handle')) {
+      event.stopPropagation();
+      event.preventDefault();
+    }
   };
 
   private handleDragEnd = () => {

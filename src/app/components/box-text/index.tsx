@@ -30,7 +30,14 @@ export class BoxTextNodeView implements NodeView {
       </ThemeProvider>,
       this.dom
     );
+
+    this.dom.addEventListener('drop', this.handleDrop, true);
   }
+
+  handleDrop = (event: Event) => {
+    event.stopPropagation();
+    event.preventDefault();
+  };
 
   handleDelete = () => {
     const change = this.view.state.tr
@@ -46,7 +53,11 @@ export class BoxTextNodeView implements NodeView {
   }
 
   stopEvent(evt) {
-    return this.dom.contains(evt.target);
+    return this.dom.contains(evt.target) || /drag/.test(evt.type);
+  }
+
+  destroy() {
+    this.dom.addEventListener('drop', this.handleDrop, true);
   }
 
   ignoreMutation() {
