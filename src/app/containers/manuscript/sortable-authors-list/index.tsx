@@ -119,7 +119,12 @@ export const SortableAuthorsList: React.FC<ComponentWithId> = React.memo(({ id }
           ))}
         </SortableList>
       </SectionContainer>
-      <ActionButton title="Add Author" variant="addEntity" onClick={onAddNewAuthor} className={classes.addAuthorButton} />
+      <ActionButton
+        title="Add Author"
+        variant="addEntity"
+        onClick={onAddNewAuthor}
+        className={classes.addAuthorButton}
+      />
     </section>
   );
 }, isEqual);

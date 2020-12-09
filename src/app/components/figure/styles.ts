@@ -12,12 +12,20 @@ export const useFigureEditorStyles = makeStyles((theme) => ({
   },
   figureContent: {
     flexGrow: 1,
-    padding: theme.spacing(3, 2, 2, 2),
+    padding: theme.spacing(1.5, 2, 2, 2),
     margin: theme.spacing(5, 0),
     borderRadius: theme.shape.borderRadius,
     borderColor: 'rgba(0, 0, 0, 0.23)',
     borderStyle: 'solid',
-    borderWidth: '1px'
+    borderWidth: '1px',
+
+    '& > .drag-handle': {
+      cursor: 'grab',
+      width: 10,
+      transform: 'rotate(90deg)',
+      height: 16,
+      marginBottom: theme.spacing(1.5)
+    }
   },
   deleteButton: {
     flexGrow: 0,
