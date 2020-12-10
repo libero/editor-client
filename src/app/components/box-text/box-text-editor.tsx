@@ -1,4 +1,4 @@
-import React, { useImperativeHandle, useState } from 'react';
+import React, { ReactNode, useImperativeHandle, useState } from 'react';
 import { Node as ProsemirrorNode } from 'prosemirror-model';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { IconButton } from '@material-ui/core';
@@ -42,7 +42,7 @@ export const BoxTextEditor = React.forwardRef((props: BoxTextEditorProps, ref) =
 });
 
 class BoxTextNodeEditor extends NodeEditor<{}> {
-  render() {
+  render(): ReactNode {
     return (
       <RichTextEditor
         ref={this.editorRef}

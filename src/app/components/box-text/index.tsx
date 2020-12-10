@@ -34,33 +34,33 @@ export class BoxTextNodeView implements NodeView {
     this.dom.addEventListener('drop', this.handleDrop, true);
   }
 
-  handleDrop = (event: Event) => {
+  handleDrop = (event: Event): void => {
     event.stopPropagation();
     event.preventDefault();
   };
 
-  handleDelete = () => {
+  handleDelete = (): void => {
     const change = this.view.state.tr
       .setSelection(new NodeSelection(this.view.state.doc.resolve(this.getPos())))
       .deleteSelection();
     this.view.dispatch(change);
   };
 
-  update(node: ProsemirrorNode) {
+  update(node: ProsemirrorNode): boolean {
     this.node = node;
     this.boxTextEditor.current.updateContent(node);
     return true;
   }
 
-  stopEvent(evt) {
+  stopEvent(evt): boolean {
     return this.dom.contains(evt.target) || /drag/.test(evt.type);
   }
 
-  destroy() {
+  destroy(): void {
     this.dom.addEventListener('drop', this.handleDrop, true);
   }
 
-  ignoreMutation() {
+  ignoreMutation(): boolean {
     return true;
   }
 }
