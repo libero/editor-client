@@ -47,18 +47,19 @@ export class FigureNodeView implements NodeView {
     this.dom.addEventListener('dragstart', this.preventFigureBodyDrag, true);
   }
 
-  handleAttributesChange = (label: string, img: string) => {
+  handleAttributesChange = (label: string, img: string): void => {
     const change = this.view.state.tr.setNodeMarkup(this.getPos(), null, { id: this.node.attrs.id, label, img });
     this.view.dispatch(change);
   };
 
-  destroy() {
+  destroy(): void {
     this.dom.removeEventListener('drag', this.handleDrag, true);
     this.dom.removeEventListener('dragend', this.handleDragEnd, true);
     this.dom.removeEventListener('dragstart', this.preventFigureBodyDrag, true);
+    ReactDOM.unmountComponentAtNode(this.dom);
   }
 
-  handleDelete = () => {
+  handleDelete = (): void => {
     const resolvedPosition = this.view.state.doc.resolve(this.getPos());
     const change = this.view.state.tr.setSelection(new NodeSelection(resolvedPosition)).deleteSelection();
     let documentReducedBy = 0;
@@ -77,32 +78,32 @@ export class FigureNodeView implements NodeView {
     this.view.dispatch(change);
   };
 
-  update(node: ProsemirrorNode) {
+  update(node: ProsemirrorNode): boolean {
     this.node = node;
     this.figureEditor.current.updateContent(node);
     return true;
   }
 
-  stopEvent(event) {
+  stopEvent(event): boolean {
     return !event.target.classList.contains('drag-handle');
   }
 
-  ignoreMutation() {
+  ignoreMutation(): boolean {
     return true;
   }
 
-  private handleDrag = (event) => {
+  private handleDrag = (event): void => {
     this.scroller.updateScroll(event, this.view.dom);
   };
 
-  private preventFigureBodyDrag = (event) => {
+  private preventFigureBodyDrag = (event): void => {
     if (!event.target.classList.contains('drag-handle')) {
       event.stopPropagation();
       event.preventDefault();
     }
   };
 
-  private handleDragEnd = () => {
+  private handleDragEnd = (): void => {
     this.scroller.clear();
   };
 }

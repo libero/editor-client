@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { withStyles, WithStyles } from '@material-ui/core/styles';
 
 import { NodeEditor } from 'app/components/node-editor/node-editor';
@@ -10,7 +10,7 @@ interface FigureContentEditorProps extends WithStyles<typeof useFigureContentEdi
 }
 
 export class FigureContentEditorComponent extends NodeEditor<FigureContentEditorProps> {
-  render() {
+  render(): ReactNode {
     return (
       <div>
         <RichTextEditor

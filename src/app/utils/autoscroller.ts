@@ -1,3 +1,5 @@
+import { debounce } from '@material-ui/core';
+
 const WINDOW_SCROLL_ZONE = 300;
 
 interface Coords {
@@ -33,10 +35,10 @@ export class AutoScroller {
     this.container.addEventListener('drop', this.handleDrop, true);
   }
 
-  public handleDrop = (): void => {
+  public handleDrop = debounce((): void => {
     this.clear();
     window.getSelection().removeAllRanges();
-  };
+  }, 0);
 
   public clear(): void {
     if (this.interval == null) {

@@ -55,7 +55,6 @@ export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => 
   const legendNodeData = findChildrenByType(figureNode, figureNode.type.schema.nodes.figureLegend)[0];
   const attributionNodeData = findChildrenByType(figureNode, figureNode.type.schema.nodes.figureAttribution)[0];
   const licenseNodesData = findChildrenByType(figureNode, figureNode.type.schema.nodes.figureLicense);
-
   const handleDeleteAccept = useCallback(() => {
     setConfirmShown(false);
     onDelete();
@@ -99,7 +98,6 @@ export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => 
           classes={{ root: classes.inputField }}
           InputLabelProps={{ shrink: true }}
           variant="outlined"
-          multiline
           value={figureNode.attrs.label}
           onChange={handleLabelChange}
         />

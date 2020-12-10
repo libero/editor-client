@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { TextField, IconButton } from '@material-ui/core';
 import { withStyles, WithStyles } from '@material-ui/core/styles';
 import { Node as ProsemirrorNode } from 'prosemirror-model';
@@ -28,7 +28,7 @@ class FigureContentEditorComponent extends NodeEditor<FigureLicenseEditorProps> 
     return super.shouldComponentUpdate(nextProps, nextState);
   }
 
-  render() {
+  render(): ReactNode {
     const license: Figure = this.props.node.attrs.licenseInfo as Figure;
     const classes = this.props.classes;
     return (
