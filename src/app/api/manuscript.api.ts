@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Transaction } from 'prosemirror-state';
+import { EditorState, Transaction } from 'prosemirror-state';
 import { Step } from 'prosemirror-transform';
 
 import { Manuscript, ManuscriptDiff } from 'app/models/manuscript';
@@ -24,6 +24,21 @@ const manuscriptUrl = (id: string): string => {
   // return process.env.REACT_APP_NO_SERVER ? `./manuscripts/${id}/manuscript.xml` : `/api/v1/articles/${id}`
   return `./manuscripts/${id}/manuscript.xml`;
 };
+
+type SerializableChangeType = 'steps' | 'object';
+type SerializableObjectValue = Manuscript extends Record<string, infer T>
+  ? T extends EditorState
+    ? unknown
+    : T
+  : unknown;
+
+interface SerializableChanges {
+  path: string;
+  steps?: Step[];
+  object?: SerializableObjectValue;
+  timestamp: number;
+  type: SerializableChangeType;
+}
 
 export interface ManuscriptChangesResponse {
   changes: Array<{
@@ -76,26 +91,31 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
 }
 
 export function syncChanges(id: string, changes: ManuscriptDiff[]): Promise<void> {
-  // TODO: squash changes here
-  const backendTranscations = changes.map(makeChangesSeralizable).filter((transcation) => transcation !== null);
-  return axios.post(manuscriptUrl(id) + '/changes', { changes: backendTranscations });
-}
+  const backendTranscations = changes.reduce((acc: Record<string, SerializableChanges>, diff: ManuscriptDiff) => {
+    Object.keys(diff).forEach((path) => {
+      if (path === '_timestamp') {
+        return;
+      }
 
-function makeChangesSeralizable(diff: ManuscriptDiff): Record<string, unknown> {
-  // filter out props that don't refer to a prosemirror transaction.
-  const [transcation = null] = Object.keys(diff)
-    .filter((key) => diff[key] instanceof Transaction)
-    .map((key) => {
-      const transcation = diff[key] as Transaction;
-      return {
-        path: key,
-        steps: transcation.steps
-      };
+      const type: SerializableChangeType = diff[path] instanceof Transaction ? 'steps' : 'object';
+      if (!acc[path]) {
+        acc[path] = {
+          path,
+          type,
+          timestamp: diff._timestamp
+        };
+      }
+
+      if (diff[path] instanceof Transaction) {
+        acc[path].steps = (acc[path].steps || []).concat((diff[path] as Transaction).steps);
+      } else {
+        acc[path].object = acc[path];
+      }
     });
-  if (transcation) {
-    return { ...transcation, timestamp: diff._timestamp };
-  }
-  return transcation;
+    return acc;
+  }, {});
+  console.log(backendTranscations)
+  return axios.post(manuscriptUrl(id) + '/changes', { changes: backendTranscations });
 }
 
 export async function getManuscriptChanges(id: string): Promise<ManuscriptChangesResponse['changes']> {
