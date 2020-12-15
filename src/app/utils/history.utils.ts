@@ -45,7 +45,7 @@ export function createDiff(changes: Record<string, ManuscriptDiffValues>): Manus
   return {
     ...changes,
     _timestamp: Date.now()
-  };
+  } as ManuscriptDiff;
 }
 
 export function redoChange(state: ManuscriptHistory): ManuscriptHistory {

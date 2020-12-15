@@ -38,7 +38,7 @@ export const Keyword: React.FC<KeywordProps> = (props) => {
         event.preventDefault();
       }
 
-      if(isDeleteButtonClick) {
+      if (isDeleteButtonClick) {
         onDelete();
       }
     },

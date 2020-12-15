@@ -6,7 +6,7 @@ import { Reference } from 'app/models/reference';
 import { RelatedArticle } from 'app/models/related-article';
 import { ArticleInformation } from 'app/models/article-information';
 
-interface KeywordGroup {
+export interface KeywordGroup {
   title: string | undefined;
   keywords: EditorState[];
   newKeyword: EditorState;
@@ -44,17 +44,18 @@ export interface TOCEntry {
 
 export type TableOfContents = Array<TOCEntry>;
 
-type ManuscriptDiffInferedType<T> = T extends Record<string, infer T>
+export type ManuscriptDiffValues = Manuscript extends Record<string, infer T>
   ? T extends EditorState
     ? Transaction
     : T extends KeywordGroups
     ? KeywordGroup
+    : T extends Array<infer V>
+    ? V | Array<V>
     : T
-  : T;
-
-export type ManuscriptDiffValues = ManuscriptDiffInferedType<Manuscript> | number | string | Person;
+  : never;
 
 export type ManuscriptDiff = {
   [path: string]: ManuscriptDiffValues;
+} & {
   _timestamp: number;
 };

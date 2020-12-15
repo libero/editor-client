@@ -2,7 +2,7 @@ import axios from 'axios';
 import { EditorState, Transaction } from 'prosemirror-state';
 import { Step } from 'prosemirror-transform';
 
-import { Manuscript, ManuscriptDiff } from 'app/models/manuscript';
+import { Manuscript, ManuscriptDiff, ManuscriptDiffValues } from 'app/models/manuscript';
 import {
   createTitleState,
   createKeywordGroupsState,
@@ -17,6 +17,7 @@ import { createAffiliationsState } from 'app/models/affiliation';
 import { getTextContentFromPath } from 'app/models/utils';
 import { createRelatedArticleState } from 'app/models/related-article';
 import { createArticleInfoState } from 'app/models/article-information';
+import { has, set, get } from 'lodash';
 
 const manuscriptUrl = (id: string): string => {
   // TODO
@@ -26,11 +27,7 @@ const manuscriptUrl = (id: string): string => {
 };
 
 type SerializableChangeType = 'steps' | 'object';
-type SerializableObjectValue = Manuscript extends Record<string, infer T>
-  ? T extends EditorState
-    ? unknown
-    : T
-  : unknown;
+type SerializableObjectValue = Exclude<ManuscriptDiffValues, Transaction>;
 
 interface SerializableChanges {
   path: string;
@@ -91,34 +88,91 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
 }
 
 export function syncChanges(id: string, changes: ManuscriptDiff[]): Promise<void> {
-  const backendTranscations = changes.reduce((acc: Record<string, SerializableChanges>, diff: ManuscriptDiff) => {
-    Object.keys(diff).forEach((path) => {
-      if (path === '_timestamp') {
-        return;
-      }
-
-      const type: SerializableChangeType = diff[path] instanceof Transaction ? 'steps' : 'object';
-      if (!acc[path]) {
-        acc[path] = {
-          path,
-          type,
-          timestamp: diff._timestamp
-        };
-      }
-
-      if (diff[path] instanceof Transaction) {
-        acc[path].steps = (acc[path].steps || []).concat((diff[path] as Transaction).steps);
-      } else {
-        acc[path].object = acc[path];
-      }
-    });
-    return acc;
-  }, {});
-  console.log(backendTranscations)
+  const backendTranscations = changes.reduce(reduceHistory, {});
+  compressChanges(backendTranscations);
   return axios.post(manuscriptUrl(id) + '/changes', { changes: backendTranscations });
 }
 
 export async function getManuscriptChanges(id: string): Promise<ManuscriptChangesResponse['changes']> {
   const manuscriptChangesResponse = await axios.get<ManuscriptChangesResponse>(`./changes/${id}/changes.json`);
   return manuscriptChangesResponse.data.changes;
+}
+
+function reduceHistory(
+  acc: Record<string, SerializableChanges>,
+  diff: ManuscriptDiff
+): Record<string, SerializableChanges> {
+  Object.keys(diff).forEach((path) => {
+    if (path === '_timestamp') {
+      return;
+    }
+
+    const type: SerializableChangeType = diff[path] instanceof Transaction ? 'steps' : 'object';
+    if (!acc[path]) {
+      acc[path] = {
+        path,
+        type,
+        timestamp: diff._timestamp
+      };
+    }
+
+    if (diff[path] instanceof Transaction) {
+      acc[path].steps = (acc[path].steps || []).concat((diff[path] as Transaction).steps);
+    } else {
+      acc[path].object = diff[path] as SerializableObjectValue;
+    }
+  });
+  return acc;
+}
+
+function compressChanges(changes: Record<string, SerializableChanges>): Record<string, SerializableChanges> {
+  const mergeOptions = Object.keys(changes).reduce((mergeAcc: Record<string, string>, path: string) => {
+    const crumbs = path.split('.');
+
+    for (let i = 1; i < crumbs.length; i++) {
+      const changesPath = crumbs.slice(0, i);
+
+      if (has(changes, changesPath.join('.'))) {
+        mergeAcc[path] = changesPath.join('.');
+        break;
+      }
+    }
+    return mergeAcc;
+  }, {});
+
+  for (const [mergeSourcePath, mergeDestPath] of Object.entries(mergeOptions)) {
+    changes[mergeDestPath] = mergeChanges(changes, mergeSourcePath, mergeDestPath);
+    delete changes[mergeSourcePath];
+  }
+
+  return changes;
+}
+
+function mergeChanges(
+  changes: Record<string, SerializableChanges>,
+  sourcePath: string,
+  destPath: string
+): SerializableChanges {
+  const source = changes[sourcePath];
+  const dest = changes[destPath];
+
+  if (dest.timestamp > source.timestamp) {
+    return dest;
+  }
+
+  if (dest.type === 'object' && source.type === 'object') {
+    const pathToSourceInDest = sourcePath.replace(`${destPath}.`, '');
+    set<SerializableObjectValue>(dest.object, pathToSourceInDest, source);
+  } else if (source.type === 'steps' && dest.type === 'object') {
+    const pathToSourceInDest = sourcePath.replace(`${destPath}.`, '');
+    if (get(dest.object, pathToSourceInDest) instanceof EditorState) {
+      const state = get(dest.object, pathToSourceInDest, source).tr;
+      const transaction = state.tr;
+      source.steps.forEach((stepJson) => {
+        transaction.maybeStep(Step.fromJSON(state.schema, stepJson));
+      });
+      set(dest.object, pathToSourceInDest, state.apply(transaction));
+    }
+  }
+  return dest;
 }
