@@ -23,7 +23,7 @@ export const Keyword: React.FC<KeywordProps> = (props) => {
   const { editorState, onDelete, onChange, onFocus, isActive, onBlur } = props;
   const prosemirrorRef = useRef(null);
   const containerRef = useRef<HTMLDivElement>(null);
-
+  const deleteButtonRef = useRef(null);
   const classes = useKeywordStyles();
 
   const focusOnDblClick = useCallback(() => {
@@ -32,12 +32,17 @@ export const Keyword: React.FC<KeywordProps> = (props) => {
 
   const preventSingleClickWhenInactive = useCallback(
     (event: Event) => {
+      const isDeleteButtonClick = deleteButtonRef.current.contains(event.target);
       if (!isActive) {
         event.stopPropagation();
         event.preventDefault();
       }
+
+      if (isDeleteButtonClick) {
+        onDelete();
+      }
     },
-    [isActive]
+    [isActive, onDelete]
   );
 
   useEffect(() => {
@@ -80,7 +85,7 @@ export const Keyword: React.FC<KeywordProps> = (props) => {
     >
       <ProseMirrorEditorView options={options} ref={prosemirrorRef} editorState={editorState} onChange={onChange} />
       <IconButton
-        onClick={onDelete}
+        ref={deleteButtonRef}
         aria-label="delete keyword"
         tabIndex={0}
         color="primary"

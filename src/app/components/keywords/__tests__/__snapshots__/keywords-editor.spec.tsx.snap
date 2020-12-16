@@ -24,7 +24,6 @@ exports[`KeywordsEditorComponent renders keywords 1`] = `
         className="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorPrimary MuiIconButton-sizeSmall"
         disabled={false}
         onBlur={[Function]}
-        onClick={[Function]}
         onDragLeave={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
