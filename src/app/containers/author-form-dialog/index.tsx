@@ -15,7 +15,7 @@ import { Affiliation } from 'app/models/affiliation';
 import { RichTextInput } from 'app/components/rich-text-input';
 import { OrcidIcon } from 'app/assets/icons';
 import { Select } from 'app/components/select';
-import { ValueOf } from 'app/utils/types';
+import { ValueOf } from 'app/types/utility.types';
 import { objectsEqual } from 'app/utils/view.utils';
 
 interface AuthorFormDialogProps {

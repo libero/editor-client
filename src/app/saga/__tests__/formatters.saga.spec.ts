@@ -8,7 +8,8 @@ import {
   toggleMarkAction
 } from 'app/actions/manuscript.actions';
 import { givenState } from 'app/test-utils/reducer-test-helpers';
-import { createBodyState, createNewKeywordState } from 'app/models/manuscript-state.factory';
+import { createBodyState } from 'app/models/body';
+import { createNewKeywordState } from 'app/models/keyword';
 
 describe('formatters saga', () => {
   it('should format text', async () => {

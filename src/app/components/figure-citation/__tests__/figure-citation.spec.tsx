@@ -5,7 +5,7 @@ import { EditorState } from 'prosemirror-state';
 import { ReplaceAroundStep } from 'prosemirror-transform';
 
 import { FigureCitationNodeView } from 'app/components/figure-citation/index';
-import { createBodyState } from 'app/models/manuscript-state.factory';
+import { createBodyState } from 'app/models/body';
 
 jest.mock('prosemirror-view');
 jest.mock('app/components/figure-citation/figure-citation-editor-popup', () => ({

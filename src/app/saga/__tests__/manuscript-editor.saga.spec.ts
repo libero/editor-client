@@ -4,7 +4,7 @@ import { EditorState, TextSelection } from 'prosemirror-state';
 
 import { setFocusSaga } from 'app/saga/manuscript-editor.saga';
 import { setFocusAction, updateFocusPathAction } from 'app/actions/manuscript-editor.actions';
-import { createBodyState } from 'app/models/manuscript-state.factory';
+import { createBodyState } from 'app/models/body';
 import { applyChangeAction } from 'app/actions/manuscript.actions';
 
 describe('manuscript editor saga', () => {

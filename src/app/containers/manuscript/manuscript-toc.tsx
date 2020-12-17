@@ -7,7 +7,7 @@ import { useOutlinePanelStyles } from './styles';
 import { getArticleInformation, getJournalMeta } from 'app/selectors/manuscript.selectors';
 import { ClearFocus } from 'app/containers/manuscript/clear-focus';
 import { getManuscriptBodyTOC } from 'app/selectors/manuscript-editor.selectors';
-import { TableOfContents, TOCEntry } from 'app/models/manuscript';
+import { TableOfContents, TOCEntry } from 'app/types/manuscript';
 import { scrollIntoViewAction } from 'app/actions/manuscript-editor.actions';
 
 export interface ManuscriptTOCProps {

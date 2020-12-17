@@ -1,7 +1,7 @@
 import { EditorState, TextSelection } from 'prosemirror-state';
 
 import { hasParentNodeOf, objectsEqual, stringifyEditorState, uploadImage } from 'app/utils/view.utils';
-import { createBodyState } from 'app/models/manuscript-state.factory';
+import { createBodyState } from 'app/models/body';
 
 describe('view utils', () => {
   it('stringifies editor state content', () => {

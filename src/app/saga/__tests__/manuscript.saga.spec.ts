@@ -2,7 +2,7 @@ import { loadManuscriptSaga } from 'app/saga/manuscript.saga';
 import { loadManuscriptAction } from 'app/actions/manuscript.actions';
 import { put } from 'redux-saga/effects';
 import { EditorState } from 'prosemirror-state';
-import { Manuscript } from 'app/models/manuscript';
+import { Manuscript } from 'app/types/manuscript';
 import { setManuscriptId } from 'app/actions/manuscript-editor.actions';
 
 describe('manuscript saga', () => {

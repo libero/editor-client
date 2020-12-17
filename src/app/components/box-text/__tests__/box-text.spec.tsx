@@ -2,7 +2,7 @@ import React from 'react';
 import { Node as ProsemirrorNode } from 'prosemirror-model';
 import { ReplaceStep } from 'prosemirror-transform';
 
-import { createBodyState } from 'app/models/manuscript-state.factory';
+import { createBodyState } from 'app/models/body';
 import { EditorView } from 'prosemirror-view';
 import { BoxTextNodeView } from 'app/components/box-text';
 import { BoxTextEditor } from 'app/components/box-text/box-text-editor';

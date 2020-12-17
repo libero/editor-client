@@ -1,29 +1,10 @@
-import {
-  createAbstractState,
-  createKeywordGroupsState,
-  createNewKeywordState,
-  createTitleState
-} from 'app/models/manuscript-state.factory';
+import { createKeywordGroupsState, createNewKeywordState } from 'app/models/keyword';
 
 jest.mock('uuid', () => ({
   v4: () => 'unique_id'
 }));
 
 describe('Manuscript state factory', () => {
-  it('creates title state', () => {
-    const el = document.createElement('article-title');
-    el.innerHTML = 'A sample <italic>text</italic> with <sub>a</sub> variety of <sup>tags</sup>';
-    const editorState = createTitleState(el);
-    expect(editorState).toMatchSnapshot();
-  });
-
-  it('creates abstract state', () => {
-    const el = document.createElement('abstract');
-    el.innerHTML = 'A sample <italic>text</italic> with <sub>a</sub> variety of <sup>tags</sup>';
-    const editorState = createAbstractState(el);
-    expect(editorState).toMatchSnapshot();
-  });
-
   it('creates keywords state', () => {
     const kwdContainer = document.createElement('div');
     kwdContainer.innerHTML = `<kwd-group kwd-group-type="author-keywords">

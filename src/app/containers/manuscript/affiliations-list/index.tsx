@@ -10,7 +10,7 @@ import { Affiliation } from 'app/models/affiliation';
 import { useAffiliationStyles } from './styles';
 import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
 import { ConnectedAffiliationFormDialog } from 'app/containers/affiliation-form-dialog';
-import { ComponentWithId } from 'app/utils/types';
+import { ComponentWithId } from 'app/types/utility.types';
 
 export const AffiliationsList: React.FC<ComponentWithId> = ({ id }) => {
   const classes = useAffiliationStyles();

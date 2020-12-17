@@ -1,14 +1,14 @@
 import { createAction } from 'redux-act';
 import { EditorState, Transaction } from 'prosemirror-state';
 
-import { Manuscript } from 'app/models/manuscript';
+import { Manuscript } from 'app/types/manuscript';
 import { createAsyncAction } from 'app/utils/action.utils';
 import { Person } from 'app/models/person';
 import { Affiliation } from 'app/models/affiliation';
 import { Reference } from 'app/models/reference';
 import { RelatedArticle } from 'app/models/related-article';
 import { ArticleInformation } from 'app/models/article-information';
-import { ListType } from 'app/utils/types';
+import { ListType } from 'app/types/utility.types';
 
 export interface KeywordUpdatePayload {
   keywordGroup: string;

@@ -1,7 +1,7 @@
 import { ManuscriptHistoryState } from 'app/store';
 import { cloneManuscript } from 'app/utils/state.utils';
 import { ArticleInformation } from 'app/models/article-information';
-import { ManuscriptDiff } from 'app/models/manuscript';
+import { ManuscriptDiff } from 'app/types/manuscript';
 import { createDiff } from 'app/utils/history.utils';
 
 export function updateArticleInformation(

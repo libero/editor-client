@@ -10,7 +10,7 @@ import { RelatedArticle } from 'app/models/related-article';
 import { ActionButton } from 'app/components/action-button';
 import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
 import { RelatedArticleFormDialog } from 'app/containers/related-article-form-dialog';
-import { ComponentWithId } from 'app/utils/types';
+import { ComponentWithId } from 'app/types/utility.types';
 
 export const RelatedArticles: React.FC<ComponentWithId> = ({ id }) => {
   const relatedArticles = useSelector(getRelatedArticles);

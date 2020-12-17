@@ -4,7 +4,7 @@ import { eventChannel } from 'redux-saga';
 import * as manuscriptActions from 'app/actions/manuscript.actions';
 import { getLastSyncTimestamp, getManuscriptId } from 'app/selectors/manuscript-editor.selectors';
 import { getChangesMadeBetween } from 'app/selectors/manuscript.selectors';
-import { ManuscriptDiff } from 'app/models/manuscript';
+import { ManuscriptDiff } from 'app/types/manuscript';
 import { setLastSyncTimestamp } from 'app/actions/manuscript-editor.actions';
 import { syncChanges } from 'app/api/manuscript.api';
 

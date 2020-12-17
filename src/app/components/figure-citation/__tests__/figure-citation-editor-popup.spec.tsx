@@ -7,7 +7,7 @@ import configureMockStore from 'redux-mock-store';
 
 import { theme } from 'app/styles/theme';
 import { FigureCitationEditorPopup } from 'app/components/figure-citation/figure-citation-editor-popup';
-import { createBodyState } from 'app/models/manuscript-state.factory';
+import { createBodyState } from 'app/models/body';
 import { ClickAwayListener } from '@material-ui/core';
 import { givenState } from 'app/test-utils/reducer-test-helpers';
 import { Provider } from 'react-redux';

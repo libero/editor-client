@@ -2,7 +2,7 @@ import React from 'react';
 import { Node as ProsemirrorNode } from 'prosemirror-model';
 import { ReplaceAroundStep, ReplaceStep } from 'prosemirror-transform';
 
-import { createBodyState } from 'app/models/manuscript-state.factory';
+import { createBodyState } from 'app/models/body';
 import { FigureNodeView } from 'app/components/figure/index';
 import { EditorView } from 'prosemirror-view';
 import { FigureEditor } from 'app/components/figure/figure-editor';

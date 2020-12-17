@@ -4,7 +4,7 @@ import { create } from 'react-test-renderer';
 
 import { NewKeywordSection } from 'app/components/keywords/new-keyword-section';
 import { ProseMirrorEditorView } from 'app/components/rich-text-editor/prosemirror-editor-view';
-import { createNewKeywordState } from 'app/models/manuscript-state.factory';
+import { createNewKeywordState } from 'app/models/keyword';
 
 describe('KeywordsEditorComponent', () => {
   it('renders keyword', () => {

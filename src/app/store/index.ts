@@ -8,7 +8,7 @@ import { manuscriptEditorReducer } from 'app/reducers/manuscript-editor.reducer'
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { history } from './history';
 import { ModalPayload } from 'app/actions/manuscript-editor.actions';
-import { TableOfContents } from 'app/models/manuscript';
+import { TableOfContents } from 'app/types/manuscript';
 
 const sagaMiddleware = createSagaMiddleware();
 

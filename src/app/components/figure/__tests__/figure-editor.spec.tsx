@@ -2,7 +2,7 @@ import React from 'react';
 import { create } from 'react-test-renderer';
 import { FigureEditor } from 'app/components/figure/figure-editor';
 import { EditorView } from 'prosemirror-view';
-import { createBodyState } from 'app/models/manuscript-state.factory';
+import { createBodyState } from 'app/models/body';
 import { Fragment } from 'prosemirror-model';
 import { uploadImage } from 'app/utils/view.utils';
 import { mount } from 'enzyme';

@@ -8,7 +8,7 @@ import { mount } from 'enzyme';
 
 import { theme } from 'app/styles/theme';
 import { BoxTextEditor } from 'app/components/box-text/box-text-editor';
-import { createBodyState } from 'app/models/manuscript-state.factory';
+import { createBodyState } from 'app/models/body';
 import { givenState } from 'app/test-utils/reducer-test-helpers';
 import { IconButton } from '@material-ui/core';
 

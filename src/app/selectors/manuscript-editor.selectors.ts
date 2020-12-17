@@ -5,7 +5,7 @@ import { get } from 'lodash';
 import { ApplicationState, ManuscriptEditorState } from 'app/store';
 import { getManuscriptData } from './manuscript.selectors';
 import { canWrapInList, isWrappedInList } from 'app/utils/prosemirror/list.helpers';
-import { ListType } from 'app/utils/types';
+import { ListType } from 'app/types/utility.types';
 
 function isMarkActive(state: EditorState, mark: string): boolean {
   const { from, $from, to, empty } = state.selection;

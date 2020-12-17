@@ -18,7 +18,7 @@ import { AuthorFormDialog } from 'app/containers/author-form-dialog';
 import { stringifyEditorState } from 'app/utils/view.utils';
 import { OrcidIcon } from 'app/assets/icons';
 import { getAffiliationDisplayName } from 'app/models/affiliation';
-import { ComponentWithId } from 'app/utils/types';
+import { ComponentWithId } from 'app/types/utility.types';
 
 export const AuthorsInfoDetails: React.FC<ComponentWithId> = ({ id }) => {
   const authors = useSelector(getAuthors);

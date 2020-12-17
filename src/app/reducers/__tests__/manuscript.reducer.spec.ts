@@ -5,7 +5,7 @@ import { getInitialHistory, getInitialLoadableState, ManuscriptHistory } from 'a
 import * as manuscriptActions from 'app/actions/manuscript.actions';
 import { manuscriptReducer } from 'app/reducers/manuscript.reducer';
 import { redoChange, undoChange, updateManuscriptState } from 'app/utils/history.utils';
-import { Manuscript } from 'app/models/manuscript';
+import { Manuscript } from 'app/types/manuscript';
 import { givenState } from 'app/test-utils/reducer-test-helpers';
 
 jest.mock('../../utils/history.utils');

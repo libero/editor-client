@@ -9,7 +9,7 @@ import { useAuthorFormStyles } from 'app/containers/author-form-dialog/styles';
 import { Affiliation, getAffiliationDisplayName } from 'app/models/affiliation';
 import { AffiliationFormDialog } from 'app/containers/affiliation-form-dialog/affiliation-form-dialog';
 import { ModalContainer } from 'app/containers/modal-container';
-import { ReactFCProps } from 'app/utils/types';
+import { ReactFCProps } from 'app/types/utility.types';
 import * as manuscriptActions from 'app/actions/manuscript.actions';
 import { Person } from 'app/models/person';
 import { linkAffiliationsAction } from 'app/actions/manuscript.actions';
