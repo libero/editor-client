@@ -596,3 +596,24 @@ Object {
   "type": "web",
 }
 `;
+
+exports[`Reference model should create reference state from XML 1`] = `
+Array [
+  Object {
+    "authors": Array [
+      Object {
+        "groupName": "
+            Berk
+            V
+          ",
+      },
+      Object {
+        "groupName": "R Development Core Team",
+      },
+    ],
+    "id": null,
+    "referenceInfo": null,
+    "type": null,
+  },
+]
+`;
