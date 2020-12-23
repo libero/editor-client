@@ -8,6 +8,7 @@ import { getManuscriptChanges, getManuscriptContent } from 'app/api/manuscript.a
 import { Manuscript } from 'app/types/manuscript';
 import { ManuscriptChangeJSON } from 'app/types/changes.types';
 import { applyEditorStateChanges } from 'app/utils/changes.utils';
+import { applyAuthorsChanges } from 'app/models/person';
 
 /**
  * Side effect handler to load the specified article from the backend.
@@ -22,7 +23,9 @@ export function* loadManuscriptSaga(action: Action<string>) {
     try {
       const changes = yield call(getManuscriptChanges, id);
       manuscript = applyChangesFromServer(manuscript, changes);
-    } catch (e) {}
+    } catch (e) {
+      console.error('Loading changes failed', e);
+    }
 
     yield put(manuscriptActions.loadManuscriptAction.success(manuscript));
     yield put(manuscriptEditorActions.setManuscriptId(id));
@@ -55,7 +58,9 @@ function applyChangesFromServer(manuscript: Manuscript, changes: Array<Manuscrip
       case 'acknowledgements':
         manuscript.acknowledgements = applyEditorStateChanges(manuscript.acknowledgements, changes);
         break;
-
+      case 'authors1':
+        manuscript.authors = applyAuthorsChanges(manuscript.authors, changes);
+        break;
       // cases remaining
       // keywordGroups authors affiliations references relatedArticles articleInfo journalMeta
     }

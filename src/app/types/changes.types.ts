@@ -13,16 +13,12 @@ export interface SerializableChanges {
   type: SerializableChangeType;
 }
 
-export interface ManuscriptChangeJSON {
+export type ManuscriptChangeJSON = {
   _id: string;
   articleId: string;
-  steps?: Array<ReturnType<Step['toJSON']>>;
   applied: boolean;
   user: string;
-  path: string;
-  type: SerializableChangeType;
-  timestamp: number;
-}
+} & SerializableChanges;
 
 export interface ManuscriptChangesResponse {
   changes: Array<ManuscriptChangeJSON>;

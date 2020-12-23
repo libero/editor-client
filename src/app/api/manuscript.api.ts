@@ -19,7 +19,8 @@ const manuscriptUrl = (id: string): string => {
   // TODO
   // Enable the below once the the article-store is working again!
   // return process.env.REACT_APP_NO_SERVER ? `./manuscripts/${id}/manuscript.xml` : `/api/v1/articles/${id}`
-  return `./manuscripts/${id}/manuscript.xml`;
+  // return `./manuscripts/${id}/manuscript.xml`;
+  return `http://localhost:8080/articles/${id}`;
 };
 
 export async function getManuscriptContent(id: string): Promise<Manuscript> {
