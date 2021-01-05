@@ -84,7 +84,6 @@ export function createBioEditorState(bio?: Element): EditorState {
 }
 
 export function applyAuthorsChanges(authors: Person[], changes: Array<ManuscriptChangeJSON>): Person[] {
-  console.log(changes);
   return changes.reduce((authorsList: Person[], change: ManuscriptChangeJSON) => {
     if (Array.isArray(change.object)) {
       return deserealizeChange(change) as Person[];

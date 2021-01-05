@@ -9,6 +9,8 @@ import { Manuscript } from 'app/types/manuscript';
 import { ManuscriptChangeJSON } from 'app/types/changes.types';
 import { applyEditorStateChanges } from 'app/utils/changes.utils';
 import { applyAuthorsChanges } from 'app/models/person';
+import { applyAffiliationsChanges } from 'app/models/affiliation';
+import { applyArticleInfoChanges } from 'app/models/article-information';
 
 /**
  * Side effect handler to load the specified article from the backend.
@@ -44,25 +46,24 @@ function applyChangesFromServer(manuscript: Manuscript, changes: Array<Manuscrip
   Object.entries(groupedChanges).forEach(([manuscriptSection, changes]) => {
     switch (manuscriptSection) {
       case 'title':
-        manuscript.title = applyEditorStateChanges(manuscript.title, changes);
-        break;
       case 'abstract':
-        manuscript.abstract = applyEditorStateChanges(manuscript.abstract, changes);
-        break;
       case 'impactStatement':
-        manuscript.impactStatement = applyEditorStateChanges(manuscript.impactStatement, changes);
-        break;
       case 'body':
-        manuscript.body = applyEditorStateChanges(manuscript.body, changes);
-        break;
       case 'acknowledgements':
-        manuscript.acknowledgements = applyEditorStateChanges(manuscript.acknowledgements, changes);
+        manuscript[manuscriptSection] = applyEditorStateChanges(manuscript[manuscriptSection], changes);
         break;
-      case 'authors1':
+      case 'authors':
         manuscript.authors = applyAuthorsChanges(manuscript.authors, changes);
         break;
+      case 'affiliations':
+        manuscript.affiliations = applyAffiliationsChanges(manuscript.affiliations, changes);
+        break;
+      case 'articleInfo':
+        manuscript.articleInfo = applyArticleInfoChanges(manuscript.articleInfo, changes);
+        break;
+
       // cases remaining
-      // keywordGroups authors affiliations references relatedArticles articleInfo journalMeta
+      // keywordGroups references relatedArticles journalMeta
     }
   });
   return manuscript;

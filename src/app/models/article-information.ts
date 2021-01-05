@@ -8,6 +8,7 @@ import { getTextContentFromPath, makeSchemaFromConfig } from 'app/models/utils';
 import * as licenseTextConfig from 'app/models/config/license-text.config';
 import { Person } from 'app/models/person';
 import moment from 'moment';
+import { ManuscriptChangeJSON } from 'app/types/changes.types';
 
 export const LICENSE_CC_BY_4 = 'CC-BY-4';
 export const LICENSE_CC0 = 'CC0';
@@ -114,6 +115,49 @@ export function createArticleInfoState(doc: Document, authors: Person[]): Articl
     licenseText: createLicenseTextState(doc.querySelector('article-meta permissions license license-p')),
     publicationDate
   };
+}
+
+/*
+* export function applyAffiliationsChanges(
+  affiliations: Affiliation[],
+  changes: Array<ManuscriptChangeJSON>
+): Affiliation[] {
+  return changes.reduce((affiliationsList: Affiliation[], change: ManuscriptChangeJSON) => {
+    if (Array.isArray(change.object)) {
+      return change.object as Affiliation[];
+    }
+    const index = parseInt(change.path.split('.')[1]);
+    affiliationsList[index] = change.object as Affiliation;
+    return affiliationsList;
+  }, affiliations);
+}
+
+* */
+
+export function applyArticleInfoChanges(
+  articleInfo: ArticleInformation,
+  changes: Array<ManuscriptChangeJSON>
+): ArticleInformation {
+  const lastChange = changes.pop();
+  return {
+    articleDOI: lastChange['articleDOI'],
+    articleType: lastChange['articleType'],
+    copyrightStatement: lastChange['copyrightStatement'],
+    dtd: lastChange['dtd'],
+    elocationId: lastChange['elocationId'],
+    licenseType: lastChange['licenseType'],
+    publicationDate: lastChange['publicationDate'],
+    publisherId: lastChange['publisherId'],
+    subjects: lastChange['subjects'],
+    volume: lastChange['volume'],
+    licenseText: EditorState.fromJSON(
+      {
+        schema: articleInfo.licenseText.schema,
+        plugins: articleInfo.licenseText.plugins
+      },
+      lastChange['licenseText']
+    )
+  } as ArticleInformation;
 }
 
 export function getLicenseTextEditorState(licenseType: string): EditorState {

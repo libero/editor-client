@@ -7,7 +7,7 @@ import {
   SerializableChangeType,
   SerializableObjectValue
 } from 'app/types/changes.types';
-import { ManuscriptDiff } from 'app/types/manuscript';
+import { Manuscript, ManuscriptDiff } from 'app/types/manuscript';
 
 export function compressChanges(changes: Record<string, SerializableChanges>): Record<string, SerializableChanges> {
   const mergeOptions = Object.keys(changes).reduce((mergeAcc: Record<string, string>, path: string) => {
@@ -83,6 +83,23 @@ export function reduceHistory(changes: ManuscriptDiff[]): Record<string, Seriali
         acc[path].object = diff[path] as SerializableObjectValue;
       }
     });
+    return acc;
+  }, {});
+}
+
+export function fixNonIncrementalChanges(
+  backendChanges: Record<string, SerializableChanges>,
+  manuscript: Manuscript
+): Record<string, SerializableChanges> {
+  return Object.entries(backendChanges).reduce((acc, [key, change]) => {
+    if (change.type === 'steps') {
+      acc[key] = change;
+    } else {
+      acc[key] = {
+        ...change,
+        object: get(manuscript, key)
+      };
+    }
     return acc;
   }, {});
 }

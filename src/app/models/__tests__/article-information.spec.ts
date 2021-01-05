@@ -3,7 +3,8 @@ import { EditorState } from 'prosemirror-state';
 import {
   createArticleInfoState,
   getCopyrightStatement,
-  getLicenseTextEditorState, LICENSE_CC0,
+  getLicenseTextEditorState,
+  LICENSE_CC0,
   LICENSE_CC_BY_4
 } from 'app/models/article-information';
 
