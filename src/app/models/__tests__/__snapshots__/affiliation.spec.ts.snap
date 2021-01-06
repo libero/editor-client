@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Affiliation model helpers creates affilitioan state from XML 1`] = `
+Array [
+  Object {
+    "address": Object {
+      "city": "Cambridge",
+    },
+    "country": "United Kingdom",
+    "id": "aff1",
+    "institution": Object {
+      "name": "Production Department, eLife Sciences",
+    },
+    "label": "1",
+  },
+  Object {
+    "address": Object {
+      "city": "City",
+    },
+    "country": "Country",
+    "id": "aff2",
+    "institution": Object {
+      "name": "Department, University",
+    },
+    "label": "2",
+  },
+]
+`;

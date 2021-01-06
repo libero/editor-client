@@ -23,7 +23,7 @@ import {
 } from 'app/containers/manuscript/references-list/reference-renderers';
 import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
 import { ConnectedReferenceFormDialog } from 'app/containers/reference-form-dialog/connected-reference-form-dialog';
-import { ComponentWithId } from 'app/utils/types';
+import { ComponentWithId } from 'app/types/utility.types';
 
 interface ReferenceItemProps {
   onEditCallback: (reference: Reference) => void;

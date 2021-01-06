@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 import { ClickAwayListener } from '@material-ui/core';
 import { EditorState } from 'prosemirror-state';
 
-import { createBodyState } from 'app/models/manuscript-state.factory';
+import { createBodyState } from 'app/models/body';
 import { ReferenceCitationEditorPopup } from 'app/components/reference-citation/reference-citation-editor-popup';
 import { createBlankReference, createReferenceAnnotatedValue, Reference } from 'app/models/reference';
 import { givenState } from 'app/test-utils/reducer-test-helpers';

@@ -1,4 +1,11 @@
-import { createEmptyRefInfoByType, createReference, Reference, sortReferencesList } from 'app/models/reference';
+import {
+  createEmptyRefInfoByType,
+  createReference,
+  createReferencesState,
+  getRefNodeText,
+  Reference,
+  sortReferencesList
+} from 'app/models/reference';
 import { set } from 'lodash';
 
 describe('Reference model', () => {
@@ -194,11 +201,47 @@ describe('Reference model', () => {
     sortReferencesList(sortedList);
     expect(sortedList).toEqual([refs[3], refs[0], refs[2], refs[1]]);
   });
+
+  it('should create ref node text', () => {
+    const ref: Reference = {
+      id: '',
+      type: 'web',
+      authors: [{ groupName: 'Berk' }],
+      referenceInfo: createEmptyRefInfoByType('web')
+    };
+    expect(getRefNodeText(ref)).toBe('Berk');
+
+    set(ref, 'referenceInfo.year', '2009');
+    expect(getRefNodeText(ref)).toBe('Berk, 2009');
+
+    ref.authors.push({ firstName: 'D', lastName: 'Twerk' });
+    expect(getRefNodeText(ref)).toBe('Berk and Twerk, 2009');
+
+    ref.authors.push({ firstName: 'B', lastName: 'Schwerk' });
+    expect(getRefNodeText(ref)).toBe('Berk et al., 2009');
+  });
+
+  it('should create reference state from XML', () => {
+    const xmlWrapper = document.createElement('div');
+    xmlWrapper.innerHTML =
+      '<ref>' +
+      givenReferenceXml(
+        `
+      <year iso-8601-date="2015">2015</year>
+      <article-title>Imidazopyridine Derivative</article-title>
+      <source>World Intellectual Property Organization</source>
+      <patent country="Japan">2015087996</patent>
+      <ext-link ext-link-type="uri" xlink:href="https://patents.google.com/patent/WO2015087996A1/en">https://patents.google.com/patent/WO2015087996A1/en</ext-link>`,
+        'patent'
+      ) +
+      '</ref>';
+    const state = createReferencesState(Array.from(xmlWrapper.querySelectorAll('ref')));
+    expect(state).toMatchSnapshot();
+  });
 });
 
 function givenReferenceXml(referenceData: string, type: string): string {
-  return `
-    <element-citation publication-type="${type}">
+  return `<element-citation publication-type="${type}">
       <person-group person-group-type="author">
           <name>
             <surname>Berk</surname>

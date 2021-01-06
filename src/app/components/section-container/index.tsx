@@ -3,7 +3,7 @@ import { isEqual } from 'lodash';
 import classNames from 'classnames';
 
 import { useSectionContainerStyles } from './styles';
-import { ComponentWithId } from 'app/utils/types';
+import { ComponentWithId } from 'app/types/utility.types';
 
 export type SectionContainerVariant = 'outlined' | 'plain';
 const DEFAULT_VARIANT = 'plain';

@@ -10,7 +10,7 @@ import {
 } from 'app/selectors/manuscript.selectors';
 import { cloneDeep } from 'lodash';
 import { EditorState } from 'prosemirror-state';
-import { Manuscript } from 'app/models/manuscript';
+import { Manuscript } from 'app/types/manuscript';
 import { Person } from 'app/models/person';
 
 describe('manuscript selectors', () => {

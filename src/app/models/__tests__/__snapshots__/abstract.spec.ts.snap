@@ -1,0 +1,129 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Manuscript state factory creates abstract state 1`] = `
+Object {
+  "doc": Object {
+    "content": Array [
+      Object {
+        "content": Array [
+          Object {
+            "content": Array [
+              Object {
+                "text": "A sample ",
+                "type": "text",
+              },
+              Object {
+                "marks": Array [
+                  Object {
+                    "type": "italic",
+                  },
+                ],
+                "text": "text",
+                "type": "text",
+              },
+              Object {
+                "text": " with ",
+                "type": "text",
+              },
+              Object {
+                "marks": Array [
+                  Object {
+                    "type": "subscript",
+                  },
+                ],
+                "text": "a",
+                "type": "text",
+              },
+              Object {
+                "text": " variety of ",
+                "type": "text",
+              },
+              Object {
+                "marks": Array [
+                  Object {
+                    "type": "superscript",
+                  },
+                ],
+                "text": "tags",
+                "type": "text",
+              },
+            ],
+            "type": "paragraph",
+          },
+        ],
+        "type": "abstract",
+      },
+    ],
+    "type": "doc",
+  },
+  "selection": Object {
+    "anchor": 2,
+    "head": 2,
+    "type": "text",
+  },
+}
+`;
+
+exports[`Manuscript state factory creates impact statement state 1`] = `
+Object {
+  "doc": Object {
+    "content": Array [
+      Object {
+        "content": Array [
+          Object {
+            "content": Array [
+              Object {
+                "text": "A sample ",
+                "type": "text",
+              },
+              Object {
+                "marks": Array [
+                  Object {
+                    "type": "italic",
+                  },
+                ],
+                "text": "text",
+                "type": "text",
+              },
+              Object {
+                "text": " with ",
+                "type": "text",
+              },
+              Object {
+                "marks": Array [
+                  Object {
+                    "type": "subscript",
+                  },
+                ],
+                "text": "a",
+                "type": "text",
+              },
+              Object {
+                "text": " variety of ",
+                "type": "text",
+              },
+              Object {
+                "marks": Array [
+                  Object {
+                    "type": "superscript",
+                  },
+                ],
+                "text": "tags",
+                "type": "text",
+              },
+            ],
+            "type": "paragraph",
+          },
+        ],
+        "type": "abstract",
+      },
+    ],
+    "type": "doc",
+  },
+  "selection": Object {
+    "anchor": 2,
+    "head": 2,
+    "type": "text",
+  },
+}
+`;

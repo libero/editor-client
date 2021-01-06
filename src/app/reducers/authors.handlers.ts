@@ -4,7 +4,7 @@ import { ManuscriptHistoryState } from 'app/store';
 import { MoveAuthorPayload } from 'app/actions/manuscript.actions';
 import { getReorderedAffiliations } from 'app/reducers/affiliations.handlers';
 import { getCopyrightStatement, LICENSE_CC_BY_4 } from 'app/models/article-information';
-import { ManuscriptDiff } from 'app/models/manuscript';
+import { ManuscriptDiff } from 'app/types/manuscript';
 import { createDiff } from 'app/utils/history.utils';
 
 export function updateAuthor(state: ManuscriptHistoryState, payload: Person): ManuscriptHistoryState {

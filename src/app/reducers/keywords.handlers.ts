@@ -5,10 +5,10 @@ import {
   KeywordUpdatePayload,
   NewKeywordUpdatePayload
 } from 'app/actions/manuscript.actions';
-import { createNewKeywordState } from 'app/models/manuscript-state.factory';
 import { ManuscriptHistoryState } from 'app/store';
 import { createDiff, updateManuscriptState } from 'app/utils/history.utils';
-import { ManuscriptDiff } from 'app/models/manuscript';
+import { ManuscriptDiff } from 'app/types/manuscript';
+import { createNewKeywordState } from 'app/models/keyword';
 
 export function deleteKeyword(state: ManuscriptHistoryState, payload: KeywordDeletePayload): ManuscriptHistoryState {
   const { keywordGroup, index } = payload;

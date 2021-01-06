@@ -14,7 +14,7 @@ import { SectionContainer } from 'app/components/section-container';
 import { getAuthorAffiliationsLabels, getAuthorDisplayName, Person } from 'app/models/person';
 import { AuthorFormDialog } from 'app/containers/author-form-dialog';
 import { ActionButton } from 'app/components/action-button';
-import { ComponentWithId } from 'app/utils/types';
+import { ComponentWithId } from 'app/types/utility.types';
 
 const DragHandle = React.memo(
   SortableHandle(() => <img src={DragIcon} alt="drag handle" aria-hidden={true} className="drag-handle" />),

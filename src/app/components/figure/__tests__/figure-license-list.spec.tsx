@@ -6,7 +6,7 @@ import { EditorView } from 'prosemirror-view';
 import { Button } from '@material-ui/core';
 
 import { FigureLicensesList } from 'app/components/figure/figure-license-list';
-import { createBodyState } from 'app/models/manuscript-state.factory';
+import { createBodyState } from 'app/models/body';
 import { NodeViewContext } from 'app/utils/view.utils';
 import { ReplaceStep } from 'prosemirror-transform';
 

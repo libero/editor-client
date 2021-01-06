@@ -11,6 +11,7 @@ import * as bioConfig from 'app/models/config/author-bio.config';
 import { Affiliation } from 'app/models/affiliation';
 import { getTextContentFromPath, makeSchemaFromConfig } from 'app/models/utils';
 import { buildInputRules } from 'app/models/plugins/input-rules';
+import { ManuscriptChangeJSON } from 'app/types/changes.types';
 
 export interface Person {
   readonly id: string;
@@ -82,6 +83,17 @@ export function createBioEditorState(bio?: Element): EditorState {
   });
 }
 
+export function applyAuthorsChanges(authors: Person[], changes: Array<ManuscriptChangeJSON>): Person[] {
+  return changes.reduce((authorsList: Person[], change: ManuscriptChangeJSON) => {
+    if (Array.isArray(change.object)) {
+      return deserealizeChange(change) as Person[];
+    }
+    const index = parseInt(change.path.split('.')[1]);
+    authorsList[index] = deserealizeChange(change) as Person;
+    return authorsList;
+  }, authors);
+}
+
 function getCompetingInterest(author: Element, notesXml: Element | undefined): string {
   if (notesXml) {
     const getCompetingInterestsXml = (authorEl: Element): Element => {
@@ -94,6 +106,27 @@ function getCompetingInterest(author: Element, notesXml: Element | undefined): s
     return competingInterestsXml ? competingInterestsXml.textContent.trim() : '';
   }
   return '';
+}
+
+function deserealizeChange(change: ManuscriptChangeJSON): Person | Person[] {
+  const deserializeOne = (obj) => {
+    const emptyBioEditorState = createBioEditorState();
+    const bioEditorState = EditorState.fromJSON(
+      {
+        schema: emptyBioEditorState.schema,
+        plugins: emptyBioEditorState.plugins
+      },
+      obj.bio
+    );
+    return {
+      ...obj,
+      bio: bioEditorState
+    };
+  };
+
+  return Array.isArray(change.object)
+    ? (change.object as Array<unknown>).map(deserializeOne)
+    : deserializeOne(change.object);
 }
 
 function getOrcid(orcidUrl: string): string {

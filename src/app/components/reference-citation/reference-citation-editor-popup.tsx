@@ -14,7 +14,7 @@ import { getRefListAuthorsNames, Reference } from 'app/models/reference';
 import { useReferenceEditorStyles } from 'app/components/reference-citation/styles';
 import * as manuscriptActions from 'app/actions/manuscript.actions';
 import { stringifyEditorState } from 'app/utils/view.utils';
-import { ReactFCProps } from 'app/utils/types';
+import { ReactFCProps } from 'app/types/utility.types';
 import { ReferenceFormDialog } from 'app/containers/reference-form-dialog/reference-form-dialog';
 import { ModalContainer } from 'app/containers/modal-container';
 

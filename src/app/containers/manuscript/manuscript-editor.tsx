@@ -14,7 +14,7 @@ import * as manuscriptActions from 'app/actions/manuscript.actions';
 import { RichTextEditor } from 'app/components/rich-text-editor';
 import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
 import { KeywordsEditor } from 'app/components/keywords';
-import { KeywordGroups } from 'app/models/manuscript';
+import { KeywordGroups } from 'app/types/manuscript';
 import { useManuscriptStyles } from './styles';
 import { SortableAuthorsList } from './sortable-authors-list';
 import { AuthorsInfoDetails } from 'app/containers/manuscript/authors-info-details';

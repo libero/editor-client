@@ -5,7 +5,7 @@ import { EditorState } from 'prosemirror-state';
 import { ReplaceStep } from 'prosemirror-transform';
 
 import { ReferenceCitationNodeView } from 'app/components/reference-citation';
-import { createBodyState } from 'app/models/manuscript-state.factory';
+import { createBodyState } from 'app/models/body';
 import { createBlankReference } from 'app/models/reference';
 
 jest.mock('prosemirror-view');

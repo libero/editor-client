@@ -1,7 +1,7 @@
 import { EditorState } from 'prosemirror-state';
 import { Schema } from 'prosemirror-model';
 
-import { Manuscript } from 'app/models/manuscript';
+import { Manuscript } from 'app/types/manuscript';
 import { getInitialHistory, getLoadableStateSuccess } from 'app/utils/state.utils';
 import { ManuscriptHistoryState } from 'app/store';
 

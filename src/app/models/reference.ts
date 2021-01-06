@@ -635,3 +635,12 @@ function getAuthorLastNamesForSorting(ref: Reference): string {
         .join('')
     : '';
 }
+
+export function createReferencesState(referencesXml: Element[]): Reference[] {
+  const referencesList = referencesXml.map((referenceXml: Element) => {
+    const id = (referenceXml.parentNode as Element).getAttribute('id');
+    return createReference(id, referenceXml);
+  });
+  sortReferencesList(referencesList);
+  return referencesList;
+}

@@ -11,7 +11,7 @@ import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions'
 import { ArticleInfoFormDialog } from 'app/containers/article-info-form-dialog';
 import moment from 'moment';
 import { stringifyEditorState } from 'app/utils/view.utils';
-import { ComponentWithId } from 'app/utils/types';
+import { ComponentWithId } from 'app/types/utility.types';
 
 export const ArticleInformation: React.FC<ComponentWithId> = ({ id }) => {
   const articleInfo = useSelector(getArticleInformation);

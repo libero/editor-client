@@ -8,8 +8,8 @@ import {
   canUndoChanges,
   isMarkAppliedToSelection
 } from 'app/selectors/manuscript-editor.selectors';
-import { Manuscript } from 'app/models/manuscript';
-import { createNewKeywordState } from 'app/models/manuscript-state.factory';
+import { Manuscript } from 'app/types/manuscript';
+import { createNewKeywordState } from 'app/models/keyword';
 import { givenState } from 'app/test-utils/reducer-test-helpers';
 
 describe('manuscript selectors', () => {

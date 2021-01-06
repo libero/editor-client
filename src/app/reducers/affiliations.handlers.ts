@@ -3,7 +3,7 @@ import { Affiliation } from 'app/models/affiliation';
 import { Person } from 'app/models/person';
 import { ManuscriptHistoryState } from 'app/store';
 import { LinkAffiliationsPayload } from 'app/actions/manuscript.actions';
-import { ManuscriptDiff } from 'app/models/manuscript';
+import { ManuscriptDiff } from 'app/types/manuscript';
 import { createDiff } from 'app/utils/history.utils';
 
 export function getReorderedAffiliations(authors: Person[], affiliations: Affiliation[]): Affiliation[] {
