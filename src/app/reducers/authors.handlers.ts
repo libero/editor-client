@@ -6,7 +6,7 @@ import { BatchChange } from 'app/utils/history/change';
 import { getReorderedAffiliations } from 'app/reducers/affiliations.handlers';
 import { UpdateObjectChange } from 'app/utils/history/update-object-change';
 import { AddObjectChange } from 'app/utils/history/add-object-change';
-import {DeleteObjectChange} from "app/utils/history/delete-object-change";
+import { DeleteObjectChange } from 'app/utils/history/delete-object-change';
 
 export function updateAuthor(state: ManuscriptHistoryState, payload: Person): ManuscriptHistoryState {
   const authorIndex = state.data.present.authors.findIndex(({ id }) => id === payload.id);

@@ -1,25 +1,18 @@
 import { ManuscriptHistoryState } from 'app/store';
-import { cloneManuscript } from 'app/utils/state.utils';
 import { ArticleInformation } from 'app/models/article-information';
-import { ManuscriptDiff } from 'app/types/manuscript';
-import { createDiff } from 'app/utils/history.utils';
+import { UpdateObjectChange } from 'app/utils/history/update-object-change';
 
 export function updateArticleInformation(
   state: ManuscriptHistoryState,
   payload: ArticleInformation
 ): ManuscriptHistoryState {
-  const newDiff: ManuscriptDiff = createDiff({
-    articleInfo: state.data.present.articleInfo
-  });
-
-  const newManuscript = cloneManuscript(state.data.present);
-  newManuscript.articleInfo = payload;
+  const change = new UpdateObjectChange('articleInfo', state.data.present.articleInfo, payload);
 
   return {
     ...state,
     data: {
-      past: [...state.data.past, newDiff],
-      present: newManuscript,
+      past: [...state.data.past, change],
+      present: change.applyChange(state.data.present),
       future: []
     }
   };
