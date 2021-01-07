@@ -5,8 +5,11 @@ import { ManuscriptHistoryState } from 'app/store';
 import { LinkAffiliationsPayload } from 'app/actions/manuscript.actions';
 import { ManuscriptDiff } from 'app/types/manuscript';
 import { createDiff } from 'app/utils/history.utils';
+import { ObjectChange } from 'app/utils/history/object-change';
+import { BatchChange } from 'app/utils/history/change';
+import { RearrangingChange } from 'app/utils/history/rearranging-change';
 
-export function getReorderedAffiliations(authors: Person[], affiliations: Affiliation[]): Affiliation[] {
+export function getReorderedAffiliations(authors: Person[], affiliations: Affiliation[]): BatchChange {
   const newAffiliations = affiliations.map((affiliation) => ({ ...affiliation, label: '' }));
   let labelIndex = 1;
   authors.forEach((author) => {
@@ -17,29 +20,41 @@ export function getReorderedAffiliations(authors: Person[], affiliations: Affili
       }
     });
   });
+
   newAffiliations.forEach((affiliation) => {
     if (!affiliation.label) {
       affiliation.label = String(labelIndex++);
     }
   });
-  newAffiliations.sort((a, b) => Number(a.label) - Number(b.label));
-  return newAffiliations;
+
+  const affiliationsUpdates = new ObjectChange('affiliations', affiliations, newAffiliations);
+
+  const sortedAffiliations = [...newAffiliations].sort((a, b) => Number(a.label) - Number(b.label));
+  const affiliationsSort = RearrangingChange.createFromListRearrange(
+    'affiliations',
+    newAffiliations,
+    sortedAffiliations
+  );
+  return new BatchChange([affiliationsUpdates, affiliationsSort]);
 }
 
 export function updateAffiliation(state: ManuscriptHistoryState, payload: Affiliation): ManuscriptHistoryState {
   const affiliationIndex = state.data.present.affiliations.findIndex(({ id }) => id === payload.id);
+  const change = new ObjectChange(
+    `affiliations.${affiliationIndex}`,
+    state.data.present.affiliations[affiliationIndex],
+    payload
+  );
 
-  const newDiff: ManuscriptDiff = createDiff({ affiliations: state.data.present.affiliations });
-
-  const newManuscript = cloneManuscript(state.data.present);
-  newManuscript.affiliations[affiliationIndex] = payload;
-  newManuscript.affiliations = getReorderedAffiliations(newManuscript.authors, newManuscript.affiliations);
+  if (change.isEmpty) {
+    return state;
+  }
 
   return {
     ...state,
     data: {
-      past: [...state.data.past, newDiff],
-      present: newManuscript,
+      past: [...state.data.past, change],
+      present: change.applyChange(state.data.present),
       future: []
     }
   };
@@ -52,15 +67,15 @@ export function addAffiliation(state: ManuscriptHistoryState, payload: Affiliati
   const newAffiliation = payload;
   newAffiliation.label = newAffiliation.label || String(newManuscript.affiliations.length + 1);
   newManuscript.affiliations.push(newAffiliation);
-  newManuscript.affiliations = getReorderedAffiliations(newManuscript.authors, newManuscript.affiliations);
+  // newManuscript.affiliations = getReorderedAffiliations(newManuscript.authors, newManuscript.affiliations);
 
   return {
-    ...state,
-    data: {
-      past: [...state.data.past, newDiff],
-      present: newManuscript,
-      future: []
-    }
+    ...state
+    // data: {
+    //   past: [...state.data.past, newDiff],
+    //   present: newManuscript,
+    //   future: []
+    // }
   };
 }
 
@@ -71,15 +86,15 @@ export function deleteAffiliation(state: ManuscriptHistoryState, payload: Affili
 
   const newManuscript = cloneManuscript(state.data.present);
   newManuscript.affiliations.splice(currentIndex, 1);
-  newManuscript.affiliations = getReorderedAffiliations(newManuscript.authors, newManuscript.affiliations);
+  // newManuscript.affiliations = getReorderedAffiliations(newManuscript.authors, newManuscript.affiliations);
 
   return {
-    ...state,
-    data: {
-      past: [...state.data.past, newDiff],
-      present: newManuscript,
-      future: []
-    }
+    ...state
+    // data: {
+    //   past: [...state.data.past, newDiff],
+    //   present: newManuscript,
+    //   future: []
+    // }
   };
 }
 
@@ -87,30 +102,37 @@ export function linkAffiliations(
   state: ManuscriptHistoryState,
   payload: LinkAffiliationsPayload
 ): ManuscriptHistoryState {
-  const newDiff: ManuscriptDiff = createDiff({
-    authors: state.data.present.authors,
-    affiliations: state.data.present.affiliations
-  });
-
   const authorsIds = new Set(payload.authors.map(({ id }) => id));
-  const newManuscript = cloneManuscript(state.data.present);
+  const affiliatonChanges = state.data.present.authors
+    .map((author, index) => {
+      const affId = payload.affiliation.id;
+      if (!authorsIds.has(author.id) && author.affiliations.includes(affId)) {
+        return new ObjectChange(`authors.${index}`, author, {
+          ...author,
+          affiliations: author.affiliations.filter((id) => id !== affId)
+        });
+      } else if (authorsIds.has(author.id) && !author.affiliations.includes(affId)) {
+        author.affiliations.push(affId);
+        return new ObjectChange(`authors.${index}`, author, {
+          ...author,
+          affiliations: [...author.affiliations, affId]
+        });
+      }
+    })
+    .filter((change) => change && !change.isEmpty);
 
-  newManuscript.authors.forEach((author) => {
-    const affId = payload.affiliation.id;
-    if (!authorsIds.has(author.id) && author.affiliations.includes(affId)) {
-      author.affiliations = author.affiliations.filter((id) => id !== affId);
-    } else if (authorsIds.has(author.id) && !author.affiliations.includes(affId)) {
-      author.affiliations.push(affId);
-    }
-  });
-
-  newManuscript.affiliations = getReorderedAffiliations(newManuscript.authors, newManuscript.affiliations);
+  const authorsBatchChange = new BatchChange(affiliatonChanges);
+  const updatedAuthorsManuscript = authorsBatchChange.applyChange(state.data.present);
+  const affiliationsBatchChange = getReorderedAffiliations(
+    updatedAuthorsManuscript.authors,
+    updatedAuthorsManuscript.affiliations
+  );
 
   return {
     ...state,
     data: {
-      past: [...state.data.past, newDiff],
-      present: newManuscript,
+      past: [...state.data.past, new BatchChange([authorsBatchChange, affiliationsBatchChange])],
+      present: affiliationsBatchChange.applyChange(updatedAuthorsManuscript),
       future: []
     }
   };

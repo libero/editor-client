@@ -1,104 +1,101 @@
-import { cloneManuscript } from 'app/utils/state.utils';
 import { Person } from 'app/models/person';
 import { ManuscriptHistoryState } from 'app/store';
 import { MoveAuthorPayload } from 'app/actions/manuscript.actions';
+import { RearrangingChange } from 'app/utils/history/rearranging-change';
+import { BatchChange } from 'app/utils/history/change';
 import { getReorderedAffiliations } from 'app/reducers/affiliations.handlers';
-import { getCopyrightStatement, LICENSE_CC_BY_4 } from 'app/models/article-information';
-import { ManuscriptDiff } from 'app/types/manuscript';
-import { createDiff } from 'app/utils/history.utils';
 
 export function updateAuthor(state: ManuscriptHistoryState, payload: Person): ManuscriptHistoryState {
-  const authorIndex = state.data.present.authors.findIndex(({ id }) => id === payload.id);
-
-  const newDiff: ManuscriptDiff = createDiff({
-    [`authors.${authorIndex}`]: state.data.present.authors[authorIndex],
-    affiliations: state.data.present.affiliations
-  });
-
-  const newManuscript = cloneManuscript(state.data.present);
-  newManuscript.authors[authorIndex] = payload;
-  newManuscript.affiliations = getReorderedAffiliations(newManuscript.authors, newManuscript.affiliations);
+  // const authorIndex = state.data.present.authors.findIndex(({ id }) => id === payload.id);
+  //
+  // const newDiff: ManuscriptDiff = createDiff({
+  //   [`authors.${authorIndex}`]: state.data.present.authors[authorIndex],
+  //   affiliations: state.data.present.affiliations
+  // });
+  //
+  // const newManuscript = cloneManuscript(state.data.present);
+  // newManuscript.authors[authorIndex] = payload;
+  // newManuscript.affiliations = getReorderedAffiliations(newManuscript.authors, newManuscript.affiliations);
 
   return {
-    ...state,
-    data: {
-      past: [...state.data.past, newDiff],
-      present: newManuscript,
-      future: []
-    }
+    ...state
+    // data: {
+    //   past: [...state.data.past, newDiff],
+    //   present: newManuscript,
+    //   future: []
+    // }
   };
 }
 
 export function addAuthor(state: ManuscriptHistoryState, payload: Person): ManuscriptHistoryState {
-  const newDiff: ManuscriptDiff = createDiff({
-    authors: state.data.present.authors,
-    affiliations: state.data.present.affiliations
-  });
-
-  const newManuscript = cloneManuscript(state.data.present);
-  newManuscript.authors.push(payload);
-  newManuscript.affiliations = getReorderedAffiliations(newManuscript.authors, newManuscript.affiliations);
+  // const newDiff: ManuscriptDiff = createDiff({
+  //   authors: state.data.present.authors,
+  //   affiliations: state.data.present.affiliations
+  // });
+  //
+  // const newManuscript = cloneManuscript(state.data.present);
+  // newManuscript.authors.push(payload);
+  // newManuscript.affiliations = getReorderedAffiliations(newManuscript.authors, newManuscript.affiliations);
+  //
 
   return {
-    ...state,
-    data: {
-      past: [...state.data.past, newDiff],
-      present: newManuscript,
-      future: []
-    }
+    ...state
+    //   data: {
+    //     past: [...state.data.past, newDiff],
+    //     present: newManuscript,
+    //     future: []
+    //   }
   };
 }
 
 export function moveAuthor(state: ManuscriptHistoryState, payload: MoveAuthorPayload): ManuscriptHistoryState {
   const { index, author } = payload;
   const currentIndex = state.data.present.authors.findIndex(({ id }) => id === author.id);
+  const changeAuthors = RearrangingChange.createFromItemMoved(
+    'authors',
+    currentIndex,
+    index,
+    state.data.present.authors
+  );
 
-  const newManuscript = cloneManuscript(state.data.present);
-  newManuscript.authors.splice(currentIndex, 1);
-  newManuscript.authors.splice(index, 0, author);
-  newManuscript.affiliations = getReorderedAffiliations(newManuscript.authors, newManuscript.affiliations);
+  // const newManuscript = changeAuthors.applyChange(state.data.present);
+  // const newAffiliations = getReorderedAffiliations(newManuscript.authors, newManuscript.affiliations);
+  //
+  // const changeAffiliations = RearrangingChange.createFromListRearrange(
+  //   'affiliations',
+  //   state.data.present.affiliations,
+  //   newAffiliations
+  // );
 
-  const newDiff: ManuscriptDiff = createDiff({
-    authors: state.data.present.authors,
-    affiliations: state.data.present.affiliations
-  });
-
-  if (state.data.present.articleInfo.licenseType === LICENSE_CC_BY_4) {
-    newManuscript.articleInfo.copyrightStatement = getCopyrightStatement(
-      newManuscript.authors,
-      state.data.present.articleInfo.publicationDate
-    );
-    newDiff.articleInfo = state.data.present.articleInfo;
-  }
-
+  const change = new BatchChange([changeAuthors /*, changeAffiliations*/]);
   return {
     ...state,
     data: {
-      past: [...state.data.past, newDiff],
-      present: newManuscript,
+      past: [...state.data.past, change],
+      present: change.applyChange(state.data.present),
       future: []
     }
   };
 }
 
 export function deleteAuthor(state: ManuscriptHistoryState, payload: Person): ManuscriptHistoryState {
-  const currentIndex = state.data.present.authors.findIndex(({ id }) => id === payload.id);
-
-  const newDiff: ManuscriptDiff = createDiff({
-    authors: state.data.present.authors,
-    affiliations: state.data.present.affiliations
-  });
-
-  const newManuscript = cloneManuscript(state.data.present);
-  newManuscript.authors.splice(currentIndex, 1);
-  newManuscript.affiliations = getReorderedAffiliations(newManuscript.authors, newManuscript.affiliations);
+  // const currentIndex = state.data.present.authors.findIndex(({ id }) => id === payload.id);
+  //
+  // const newDiff: ManuscriptDiff = createDiff({
+  //   authors: state.data.present.authors,
+  //   affiliations: state.data.present.affiliations
+  // });
+  //
+  // const newManuscript = cloneManuscript(state.data.present);
+  // newManuscript.authors.splice(currentIndex, 1);
+  // newManuscript.affiliations = getReorderedAffiliations(newManuscript.authors, newManuscript.affiliations);
 
   return {
-    ...state,
-    data: {
-      past: [...state.data.past, newDiff],
-      present: newManuscript,
-      future: []
-    }
+    ...state
+    // data: {
+    //   past: [...state.data.past, newDiff],
+    //   present: newManuscript,
+    //   future: []
+    // }
   };
 }

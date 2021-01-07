@@ -28,11 +28,9 @@ export const ConnectedAffiliationFormDialog: React.FC<ConnectedAffiliationsFormD
       if (isNewAffiliation) {
         dispatch(manuscriptActions.addAffiliationAction(userAffiliation));
         dispatch(linkAffiliationsAction({ affiliation: userAffiliation, authors: linkedAuthors }));
-      } else {
-        if (!objectsEqual(props.affiliation, userAffiliation) || !objectsEqual(linkedAuthors, affiliatedAuthors)) {
-          dispatch(manuscriptActions.updateAffiliationAction(userAffiliation));
-          dispatch(linkAffiliationsAction({ affiliation: userAffiliation, authors: linkedAuthors }));
-        }
+      } else if (!objectsEqual(props.affiliation, userAffiliation) || !objectsEqual(linkedAuthors, affiliatedAuthors)) {
+        dispatch(manuscriptActions.updateAffiliationAction(userAffiliation));
+        dispatch(linkAffiliationsAction({ affiliation: userAffiliation, authors: linkedAuthors }));
       }
       closeDialog();
     },
