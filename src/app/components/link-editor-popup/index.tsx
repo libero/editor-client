@@ -117,7 +117,7 @@ export class LinkNodeView implements NodeView {
     }
   }
 
-  openLinkInNewWindow(event: MouseEvent) {
+  openLinkInNewWindow(event: MouseEvent): void {
     event.preventDefault();
     event.stopPropagation();
     const newWindow = window.open();
@@ -125,7 +125,7 @@ export class LinkNodeView implements NodeView {
     newWindow.location = this.node.attrs.href;
   }
 
-  open() {
+  open(): void {
     const { $from } = this.view.state.selection;
     const start = this.view.coordsAtPos($from.pos);
 
@@ -152,7 +152,7 @@ export class LinkNodeView implements NodeView {
     this.dom.classList.add('ProseMirror-selectednode');
   }
 
-  removeMark() {
+  removeMark(): void {
     const markType = this.view.state.schema.marks.link;
     const { from, $from, $to, to } = this.view.state.selection;
     const linkStart = from - $from.nodeBefore.nodeSize;
@@ -162,7 +162,7 @@ export class LinkNodeView implements NodeView {
     this.view.dispatch(transaction);
   }
 
-  updateMark(href: string) {
+  updateMark(href: string): void {
     const markType = this.view.state.schema.marks.link;
     const { $from } = this.view.state.selection as TextSelection;
     const { from: linkStart, to: linkEnd } = this.getMarkExtent($from);
@@ -173,17 +173,17 @@ export class LinkNodeView implements NodeView {
     this.view.dispatch(transaction);
   }
 
-  close() {
+  close(): void {
     this.dom.classList.remove('ProseMirror-selectednode');
     ReactDOM.unmountComponentAtNode(this.linkEditorContainer);
     this.linkEditorContainer.parentNode.removeChild(this.linkEditorContainer);
   }
 
-  stopEvent(event) {
+  stopEvent(event): boolean {
     return this.dom.contains(event.target);
   }
 
-  handleApply(href: string) {
+  handleApply(href: string): void {
     this.close();
     if (href) {
       this.updateMark(href);
@@ -192,13 +192,13 @@ export class LinkNodeView implements NodeView {
     }
   }
 
-  destroy() {
+  destroy(): void {
     if (this.linkEditorView) {
       this.close();
     }
   }
 
-  private getMarkExtent($start: ResolvedPos) {
+  private getMarkExtent($start: ResolvedPos): { from: number; to: number } {
     const markType = this.view.state.schema.marks.link;
     let startIndex = $start.index();
     let endIndex = $start.indexAfter();

@@ -30,7 +30,7 @@ interface ReferenceItemProps {
   reference: Reference;
 }
 
-const renderReferenceContent = (reference: Reference) => {
+const renderReferenceContent = (reference: Reference): React.ReactNode => {
   switch (reference.type) {
     case 'journal':
       return renderJournalReference(reference);

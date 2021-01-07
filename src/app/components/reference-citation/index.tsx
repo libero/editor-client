@@ -27,17 +27,17 @@ export class ReferenceCitationNodeView implements NodeView {
     }
   }
 
-  selectNode = () => {
+  selectNode = (): void => {
     this.dom.classList.add('ProseMirror-selectednode');
     this.open();
   };
 
-  deselectNode() {
+  deselectNode(): void {
     this.dom.classList.remove('ProseMirror-selectednode');
     this.close();
   }
 
-  open() {
+  open(): void {
     this.refEditorContainer = this.view.dom.parentNode.appendChild(document.createElement('div'));
     this.refEditorContainer.style.position = 'absolute';
     this.refEditorContainer.style.zIndex = '10';
@@ -58,15 +58,15 @@ export class ReferenceCitationNodeView implements NodeView {
     );
   }
 
-  stopEvent() {
+  stopEvent(): boolean {
     return true;
   }
 
-  ignoreMutation() {
+  ignoreMutation(): boolean {
     return true;
   }
 
-  close = () => {
+  close = (): void => {
     this.dom.classList.remove('ProseMirror-selectednode');
     if (this.refEditorContainer) {
       ReactDOM.unmountComponentAtNode(this.refEditorContainer);
@@ -75,7 +75,7 @@ export class ReferenceCitationNodeView implements NodeView {
     }
   };
 
-  handleChange = (ref: Reference) => {
+  handleChange = (ref: Reference): void => {
     const attrs = ref
       ? { refId: ref.id || uuidv4(), refText: getRefNodeText(ref) }
       : { refId: undefined, refText: undefined };

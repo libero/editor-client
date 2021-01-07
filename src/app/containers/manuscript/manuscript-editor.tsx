@@ -25,7 +25,7 @@ import { getFocusedEditorStatePath } from 'app/selectors/manuscript-editor.selec
 import { RelatedArticles } from 'app/containers/manuscript/related-articles';
 import { ClearFocus } from 'app/containers/manuscript/clear-focus';
 
-const isInputFocused = (inputName: string, focusedPath?: string) => {
+const isInputFocused = (inputName: string, focusedPath?: string): boolean => {
   return Boolean(focusedPath) && focusedPath.startsWith(inputName);
 };
 

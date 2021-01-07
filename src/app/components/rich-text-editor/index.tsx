@@ -31,7 +31,7 @@ export interface RichTextEditorProps {
   onBlur?: (state: EditorState, name: string) => void;
 }
 
-const restoreSelection = debounce((editorView, from, to) => {
+const restoreSelection = debounce((editorView, from, to): void => {
   if (editorView.state.selection) {
     const $from = editorView.state.doc.resolve(from);
     const $to = editorView.state.doc.resolve(to);
@@ -82,15 +82,15 @@ export class RichTextEditor extends React.Component<ComponentWithId<RichTextEdit
     };
   }
 
-  focus() {
+  focus(): void {
     this.focusEditor();
   }
 
-  blur() {
+  blur(): void {
     (this.editorView.dom as HTMLDivElement).blur();
   }
 
-  shouldComponentUpdate(nextProps: RichTextEditorProps) {
+  shouldComponentUpdate(nextProps: RichTextEditorProps): boolean {
     // editor state is kept in sync between app state and editor state. App state will change when using formatting
     // or any toolbar menu. In this case when change comes from outside it needs to override editor state
     if (!nextProps.editorState.doc.eq(this.props.editorState.doc)) {
@@ -104,29 +104,29 @@ export class RichTextEditor extends React.Component<ComponentWithId<RichTextEdit
     );
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(): void {
     // when component updates we need to restore focus
     this.restoreFocus();
   }
 
-  componentWillUnmount() {
+  componentWillUnmount(): void {
     if (this.editorView) {
       this.editorView.destroy();
     }
   }
 
-  preventClick(e: React.MouseEvent) {
+  preventClick(e: React.MouseEvent): void {
     e.preventDefault();
     e.stopPropagation();
   }
 
-  updateEditorState(editorState: EditorState) {
+  updateEditorState(editorState: EditorState): void {
     if (editorState !== this.editorView.state) {
       this.editorView.updateState(editorState);
     }
   }
 
-  render() {
+  render(): React.ReactNode {
     return (
       <SectionContainer
         label={this.props.label}
@@ -140,13 +140,13 @@ export class RichTextEditor extends React.Component<ComponentWithId<RichTextEdit
     );
   }
 
-  private async handleChange(change: Transaction) {
+  private async handleChange(change: Transaction): void {
     const newState = this.editorView.state.apply(change);
     this.updateEditorState(newState);
     this.props.onChange(change, this.props.name);
   }
 
-  private createEditorView = (element: HTMLElement) => {
+  private createEditorView = (element: HTMLElement): void => {
     if (element) {
       const clipboardSerializer = DOMSerializer.fromSchema(this.props.editorState.schema);
       Object.entries(this.props.editorState.schema.nodes).forEach(([nodeName, nodeType]) => {
@@ -167,13 +167,13 @@ export class RichTextEditor extends React.Component<ComponentWithId<RichTextEdit
     }
   };
 
-  private focusEditor() {
+  private focusEditor(): void {
     const { from, to } = this.editorView.state.selection;
     restoreSelection(this.editorView, from, to);
     this.editorView.focus();
   }
 
-  private isFocusControlDelegated() {
+  private isFocusControlDelegated(): boolean {
     const { $from } = this.editorView.state.selection;
     return this.editorView.dom.contains(document.activeElement) || hasParentNodeOf($from, ['boxText', 'figure']);
   }
@@ -182,7 +182,7 @@ export class RichTextEditor extends React.Component<ComponentWithId<RichTextEdit
   // #1 - component is active acc. to application state (prop: isActive)
   // #2 - editor does not have focus
   // #3 - focus is not delegated to a node view
-  private restoreFocus() {
+  private restoreFocus(): void {
     if (this.props.isActive && this.editorView && !this.editorView.hasFocus()) {
       if (!this.isFocusControlDelegated()) {
         this.focusEditor();

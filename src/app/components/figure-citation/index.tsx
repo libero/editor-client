@@ -30,22 +30,22 @@ export class FigureCitationNodeView implements NodeView {
     }
   }
 
-  selectNode = () => {
+  selectNode = (): void => {
     this.dom.classList.add('ProseMirror-selectednode');
     this.open();
   };
 
-  deselectNode() {
+  deselectNode(): void {
     this.dom.classList.remove('ProseMirror-selectednode');
     this.close();
   }
 
-  update(node: ProsemirrorNode) {
+  update(node: ProsemirrorNode): boolean {
     this.node = node;
     return true;
   }
 
-  open() {
+  open(): void {
     this.figureEditorContainer = this.view.dom.parentNode.appendChild(document.createElement('div'));
 
     ReactDOM.render(
@@ -63,15 +63,15 @@ export class FigureCitationNodeView implements NodeView {
     );
   }
 
-  stopEvent() {
+  stopEvent(): boolean {
     return true;
   }
 
-  ignoreMutation() {
+  ignoreMutation(): boolean {
     return true;
   }
 
-  close = () => {
+  close = (): void => {
     this.dom.classList.remove('ProseMirror-selectednode');
     if (this.figureEditorContainer) {
       ReactDOM.unmountComponentAtNode(this.figureEditorContainer);
@@ -80,7 +80,7 @@ export class FigureCitationNodeView implements NodeView {
     }
   };
 
-  handleChange = (figures: FiguresListEntry[]) => {
+  handleChange = (figures: FiguresListEntry[]): void => {
     const ids = figures.map(({ id }) => id);
     const change = this.view.state.tr.setNodeMarkup(this.getPos(), null, { figIds: ids });
 

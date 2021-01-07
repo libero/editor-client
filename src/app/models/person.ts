@@ -109,7 +109,7 @@ function getCompetingInterest(author: Element, notesXml: Element | undefined): s
 }
 
 function deserealizeChange(change: ManuscriptChangeJSON): Person | Person[] {
-  const deserializeOne = (obj) => {
+  const deserializeOne = (obj): Person => {
     const emptyBioEditorState = createBioEditorState();
     const bioEditorState = EditorState.fromJSON(
       {

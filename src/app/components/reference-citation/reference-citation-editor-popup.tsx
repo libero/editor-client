@@ -26,11 +26,11 @@ interface ReferenceCitationEditorPopupProps {
   node?: ProsemirrorNode;
 }
 
-const renderReferenceModal = (props: ReactFCProps<typeof ReferenceFormDialog>) => {
+const renderReferenceModal = (props: ReactFCProps<typeof ReferenceFormDialog>): React.ReactNode => {
   return <ModalContainer title={'Reference'} params={props} component={ReferenceFormDialog} />;
 };
 
-const getRefListItemText = (ref: Reference) => {
+const getRefListItemText = (ref: Reference): string => {
   return [
     `${getRefListAuthorsNames(ref)}, ${get(ref.referenceInfo, 'year')}`,
     has(ref.referenceInfo, 'chapterTitle') ? stringifyEditorState(get(ref.referenceInfo, 'chapterTitle')) : undefined,

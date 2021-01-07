@@ -17,16 +17,16 @@ import { SubscriptIcon, SuperscriptIcon } from 'app/assets/icons';
 import { LinkEditorPopup } from 'app/components/link-editor-popup';
 import { theme } from 'app/styles/theme';
 
-const applyMark = (markName: string, editorState: EditorState, editorView: EditorView) => {
+const applyMark = (markName: string, editorState: EditorState, editorView: EditorView): void => {
   const mark = editorState.schema.marks[markName];
   toggleMark(mark, {})(editorState, editorView.dispatch);
 };
 
-const canApplyMark = (markName: string, editorState: EditorState) => {
+const canApplyMark = (markName: string, editorState: EditorState): boolean => {
   return Boolean(editorState.schema.marks[markName]);
 };
 
-const isMarkActive = (markName: string, editorState: EditorState) => {
+const isMarkActive = (markName: string, editorState: EditorState): boolean => {
   const { from, $from, to, empty } = editorState.selection;
   const type = editorState.schema.marks[markName];
 
@@ -38,7 +38,7 @@ const isMarkActive = (markName: string, editorState: EditorState) => {
 };
 
 /* Link Actions */
-const canLink = (editorState: EditorState) => {
+const canLink = (editorState: EditorState): boolean => {
   const { from, to } = editorState.selection;
   return (editorState.selection && to - from > 0) || !isMarkActive('link', editorState);
 };
@@ -58,7 +58,7 @@ const makeSelectionLink = (editorState: EditorState, href: string): Transaction 
   return transaction;
 };
 
-const renderLinkPopup = (editorState: EditorState, editorView: EditorView) => {
+const renderLinkPopup = (editorState: EditorState, editorView: EditorView): void => {
   const linkContainer = editorView.dom.parentNode.appendChild(document.createElement('div'));
   linkContainer.style.position = 'absolute';
   linkContainer.style.zIndex = '10';
@@ -69,12 +69,12 @@ const renderLinkPopup = (editorState: EditorState, editorView: EditorView) => {
     y: selectionPosition.bottom
   };
 
-  const onClose = () => {
+  const onClose = (): void => {
     ReactDOM.unmountComponentAtNode(linkContainer);
     linkContainer.parentNode.removeChild(linkContainer);
   };
 
-  const onApply = (href: string) => {
+  const onApply = (href: string): void => {
     if (href) {
       editorView.dispatch(makeSelectionLink(editorState, href));
     }
@@ -90,11 +90,11 @@ const renderLinkPopup = (editorState: EditorState, editorView: EditorView) => {
 };
 
 /* History Actions */
-const canUndo = (editorState: EditorState) => undo(editorState);
-const canRedo = (editorState: EditorState) => redo(editorState);
+const canUndo = (editorState: EditorState): boolean => undo(editorState);
+const canRedo = (editorState: EditorState): boolean => redo(editorState);
 
-const runUndo = (editorState: EditorState, editorView: EditorView) => undo(editorState, editorView.dispatch);
-const runRedo = (editorState: EditorState, editorView: EditorView) => redo(editorState, editorView.dispatch);
+const runUndo = (editorState: EditorState, editorView: EditorView): boolean => undo(editorState, editorView.dispatch);
+const runRedo = (editorState: EditorState, editorView: EditorView): boolean => redo(editorState, editorView.dispatch);
 
 const HISTORY_ACTIONS = [
   {
@@ -151,7 +151,7 @@ const FORMATTING_OPTIONS = {
   }
 };
 
-export const getMenuForEditor = (editorState: EditorState, editorView: EditorView) => {
+export const getMenuForEditor = (editorState: EditorState, editorView: EditorView): React.ReactNode[] => {
   const actionsFromState = Object.entries(FORMATTING_OPTIONS).reduce((acc, [key, option]) => {
     if (editorState.schema.marks[key]) {
       acc.push(option);

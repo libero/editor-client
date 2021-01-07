@@ -10,7 +10,7 @@ import { createDummyEditorState } from 'app/test-utils/reducer-test-helpers';
 
 jest.mock('prosemirror-view');
 
-const createNodeMock = (element) => {
+const createNodeMock = (element: React.ReactElement): React.ReactElement => {
   return element;
 };
 
