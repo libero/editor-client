@@ -4,7 +4,7 @@ import { cloneDeep, get, set } from 'lodash';
 import { Change } from 'app/utils/history/change';
 import { cloneManuscript } from 'app/utils/state.utils';
 
-export class ObjectChange<T> implements Change {
+export class UpdateObjectChange<T> implements Change {
   private differences: deepDiff.Diff<T, T>[];
 
   constructor(private path: string, oldObject: T, newObject: T) {

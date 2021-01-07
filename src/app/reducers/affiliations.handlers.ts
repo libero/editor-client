@@ -1,13 +1,12 @@
-import { cloneManuscript } from 'app/utils/state.utils';
 import { Affiliation } from 'app/models/affiliation';
 import { Person } from 'app/models/person';
 import { ManuscriptHistoryState } from 'app/store';
 import { LinkAffiliationsPayload } from 'app/actions/manuscript.actions';
-import { ManuscriptDiff } from 'app/types/manuscript';
-import { createDiff } from 'app/utils/history.utils';
-import { ObjectChange } from 'app/utils/history/object-change';
+import { UpdateObjectChange } from 'app/utils/history/update-object-change';
 import { BatchChange } from 'app/utils/history/change';
 import { RearrangingChange } from 'app/utils/history/rearranging-change';
+import { DeleteObjectChange } from 'app/utils/history/delete-object-change';
+import { AddObjectChange } from 'app/utils/history/add-object-change';
 
 export function getReorderedAffiliations(authors: Person[], affiliations: Affiliation[]): BatchChange {
   const newAffiliations = affiliations.map((affiliation) => ({ ...affiliation, label: '' }));
@@ -27,7 +26,7 @@ export function getReorderedAffiliations(authors: Person[], affiliations: Affili
     }
   });
 
-  const affiliationsUpdates = new ObjectChange('affiliations', affiliations, newAffiliations);
+  const affiliationsUpdates = new UpdateObjectChange('affiliations', affiliations, newAffiliations);
 
   const sortedAffiliations = [...newAffiliations].sort((a, b) => Number(a.label) - Number(b.label));
   const affiliationsSort = RearrangingChange.createFromListRearrange(
@@ -40,7 +39,7 @@ export function getReorderedAffiliations(authors: Person[], affiliations: Affili
 
 export function updateAffiliation(state: ManuscriptHistoryState, payload: Affiliation): ManuscriptHistoryState {
   const affiliationIndex = state.data.present.affiliations.findIndex(({ id }) => id === payload.id);
-  const change = new ObjectChange(
+  const change = new UpdateObjectChange(
     `affiliations.${affiliationIndex}`,
     state.data.present.affiliations[affiliationIndex],
     payload
@@ -61,40 +60,39 @@ export function updateAffiliation(state: ManuscriptHistoryState, payload: Affili
 }
 
 export function addAffiliation(state: ManuscriptHistoryState, payload: Affiliation): ManuscriptHistoryState {
-  const newDiff: ManuscriptDiff = createDiff({ affiliations: state.data.present.affiliations });
-
-  const newManuscript = cloneManuscript(state.data.present);
-  const newAffiliation = payload;
-  newAffiliation.label = newAffiliation.label || String(newManuscript.affiliations.length + 1);
-  newManuscript.affiliations.push(newAffiliation);
-  // newManuscript.affiliations = getReorderedAffiliations(newManuscript.authors, newManuscript.affiliations);
+  const affiliationsChange = new AddObjectChange('affiliations', payload, 'id');
+  const updatedAffiliationsManuscript = affiliationsChange.applyChange(state.data.present);
+  const rearrangeAffiliationsChange = getReorderedAffiliations(
+    updatedAffiliationsManuscript.authors,
+    updatedAffiliationsManuscript.affiliations
+  );
 
   return {
-    ...state
-    // data: {
-    //   past: [...state.data.past, newDiff],
-    //   present: newManuscript,
-    //   future: []
-    // }
+    ...state,
+    data: {
+      past: [...state.data.past, new BatchChange([affiliationsChange, rearrangeAffiliationsChange])],
+      present: rearrangeAffiliationsChange.applyChange(updatedAffiliationsManuscript),
+      future: []
+    }
   };
 }
 
 export function deleteAffiliation(state: ManuscriptHistoryState, payload: Affiliation): ManuscriptHistoryState {
-  const currentIndex = state.data.present.affiliations.findIndex(({ id }) => id === payload.id);
+  const affiliationsChange = new DeleteObjectChange('affiliations', payload, 'id');
 
-  const newDiff: ManuscriptDiff = createDiff({ affiliations: state.data.present.affiliations });
-
-  const newManuscript = cloneManuscript(state.data.present);
-  newManuscript.affiliations.splice(currentIndex, 1);
-  // newManuscript.affiliations = getReorderedAffiliations(newManuscript.authors, newManuscript.affiliations);
+  const updatedAffiliationsManuscript = affiliationsChange.applyChange(state.data.present);
+  const rearrangeAffiliationsChange = getReorderedAffiliations(
+    updatedAffiliationsManuscript.authors,
+    updatedAffiliationsManuscript.affiliations
+  );
 
   return {
-    ...state
-    // data: {
-    //   past: [...state.data.past, newDiff],
-    //   present: newManuscript,
-    //   future: []
-    // }
+    ...state,
+    data: {
+      past: [...state.data.past, new BatchChange([affiliationsChange, rearrangeAffiliationsChange])],
+      present: rearrangeAffiliationsChange.applyChange(updatedAffiliationsManuscript),
+      future: []
+    }
   };
 }
 
@@ -107,16 +105,17 @@ export function linkAffiliations(
     .map((author, index) => {
       const affId = payload.affiliation.id;
       if (!linkedAuthorsIds.has(author.id) && author.affiliations.includes(affId)) {
-        return new ObjectChange(`authors.${index}`, author, {
+        return new UpdateObjectChange(`authors.${index}`, author, {
           ...author,
           affiliations: author.affiliations.filter((id) => id !== affId)
         });
       } else if (linkedAuthorsIds.has(author.id) && !author.affiliations.includes(affId)) {
-        return new ObjectChange(`authors.${index}`, author, {
+        return new UpdateObjectChange(`authors.${index}`, author, {
           ...author,
           affiliations: [...author.affiliations, affId]
         });
       }
+      return null;
     })
     .filter((change) => change && !change.isEmpty);
 

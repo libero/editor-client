@@ -1,6 +1,3 @@
-import { get, set, cloneDeep } from 'lodash';
-import * as deepDiff from 'deep-diff';
-
 import { Manuscript } from 'app/types/manuscript';
 
 export interface Change {
