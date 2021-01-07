@@ -102,17 +102,16 @@ export function linkAffiliations(
   state: ManuscriptHistoryState,
   payload: LinkAffiliationsPayload
 ): ManuscriptHistoryState {
-  const authorsIds = new Set(payload.authors.map(({ id }) => id));
+  const linkedAuthorsIds = new Set(payload.authors.map(({ id }) => id));
   const affiliatonChanges = state.data.present.authors
     .map((author, index) => {
       const affId = payload.affiliation.id;
-      if (!authorsIds.has(author.id) && author.affiliations.includes(affId)) {
+      if (!linkedAuthorsIds.has(author.id) && author.affiliations.includes(affId)) {
         return new ObjectChange(`authors.${index}`, author, {
           ...author,
           affiliations: author.affiliations.filter((id) => id !== affId)
         });
-      } else if (authorsIds.has(author.id) && !author.affiliations.includes(affId)) {
-        author.affiliations.push(affId);
+      } else if (linkedAuthorsIds.has(author.id) && !author.affiliations.includes(affId)) {
         return new ObjectChange(`authors.${index}`, author, {
           ...author,
           affiliations: [...author.affiliations, affId]
