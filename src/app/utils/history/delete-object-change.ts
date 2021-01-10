@@ -24,12 +24,12 @@ export class DeleteObjectChange<T> implements Change {
   }
 
   rollbackChange(manuscript: Manuscript): Manuscript {
-    const originalSection = get(manuscript, this.path);
+    const updatedSection = [...get(manuscript, this.path)];
 
-    if (!Array.isArray(originalSection)) {
+    if (!Array.isArray(updatedSection)) {
       throw new TypeError('Trying to rollback AddObject change on a non-array section');
     }
-    const updatedSection = originalSection.filter((item) => item[this.idField] === this.object[this.idField]);
+    updatedSection.splice(this.removedIndex, 0, this.object);
     return set(cloneManuscript(manuscript), this.path, updatedSection);
   }
 }

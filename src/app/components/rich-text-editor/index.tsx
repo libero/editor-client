@@ -140,7 +140,7 @@ export class RichTextEditor extends React.Component<ComponentWithId<RichTextEdit
     );
   }
 
-  private async handleChange(change: Transaction): void {
+  private handleChange(change: Transaction): void {
     const newState = this.editorView.state.apply(change);
     this.updateEditorState(newState);
     this.props.onChange(change, this.props.name);
