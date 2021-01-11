@@ -5,10 +5,11 @@ import { Change } from 'app/utils/history/change';
 import { cloneManuscript } from 'app/utils/state.utils';
 import { EditorState } from 'prosemirror-state';
 
-export class UpdateObjectChange<T> implements Change {
+export class UpdateObjectChange<T> extends Change {
   private differences: deepDiff.Diff<T, T>[];
 
   constructor(private path: string, oldObject: T, newObject: T) {
+    super();
     this.differences = deepDiff.diff(oldObject, newObject);
   }
 

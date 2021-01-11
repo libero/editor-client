@@ -3,8 +3,10 @@ import { get, set } from 'lodash';
 import { Change } from 'app/utils/history/change';
 import { cloneManuscript } from 'app/utils/state.utils';
 
-export class AddObjectChange<T> implements Change {
-  constructor(private path: string, private object: T, private idField: string) {}
+export class AddObjectChange<T> extends Change {
+  constructor(private path: string, private object: T, private idField: string) {
+    super();
+  }
 
   get isEmpty(): boolean {
     return false;

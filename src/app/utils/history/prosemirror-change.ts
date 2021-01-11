@@ -4,8 +4,10 @@ import { get, set } from 'lodash';
 import { Change } from 'app/utils/history/change';
 import { cloneManuscript } from 'app/utils/state.utils';
 
-export class ProsemirrorChange implements Change {
-  constructor(private path: string, private transaction: Transaction) {}
+export class ProsemirrorChange extends Change {
+  constructor(private path: string, private transaction: Transaction) {
+    super();
+  }
 
   get isEmpty(): boolean {
     return !this.transaction.docChanged;

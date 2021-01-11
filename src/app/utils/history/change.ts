@@ -1,14 +1,24 @@
 import { Manuscript } from 'app/types/manuscript';
 
-export interface Change {
-  applyChange(manuscript: Manuscript): Manuscript;
-  rollbackChange(manuscript: Manuscript): Manuscript;
+export abstract class Change {
+  abstract applyChange(manuscript: Manuscript): Manuscript;
+  abstract rollbackChange(manuscript: Manuscript): Manuscript;
   readonly isEmpty: boolean;
+
+  private _timestamp: number;
+  constructor() {
+    this._timestamp = Date.now();
+  }
+
+  get timestamp(): number {
+    return this._timestamp;
+  }
 }
 
-export class BatchChange implements Change {
+export class BatchChange extends Change {
   private changes: Change[];
   constructor(changes: Change[] = []) {
+    super();
     this.changes = changes.filter((change) => !change.isEmpty);
   }
 

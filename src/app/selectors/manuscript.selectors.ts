@@ -45,6 +45,6 @@ export const getAuthorAffiliations = createSelector(getManuscriptData, ({ presen
 export const getChangesMadeBetween = createSelector(
   getManuscriptData,
   ({ past }) => (startTs: number, endTs: number) => {
-    return past.filter(({ _timestamp }) => _timestamp >= startTs && _timestamp <= endTs);
+    return past.filter(({ timestamp }) => timestamp >= startTs && timestamp <= endTs);
   }
 );

@@ -3,9 +3,11 @@ import { get, set } from 'lodash';
 import { Change } from 'app/utils/history/change';
 import { cloneManuscript } from 'app/utils/state.utils';
 
-export class DeleteObjectChange<T> implements Change {
+export class DeleteObjectChange<T> extends Change {
   private removedIndex: number;
-  constructor(private path: string, private object: T, private idField: string) {}
+  constructor(private path: string, private object: T, private idField: string) {
+    super();
+  }
 
   get isEmpty(): boolean {
     return false;

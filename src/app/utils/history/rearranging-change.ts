@@ -2,7 +2,7 @@ import { Manuscript } from 'app/types/manuscript';
 import { get, set } from 'lodash';
 import { Change } from 'app/utils/history/change';
 
-export class RearrangingChange<T> implements Change {
+export class RearrangingChange<T> extends Change {
   public static createFromListRearrange<T>(path: string, oldOrder: Array<T>, newOrder: Array<T>): RearrangingChange<T> {
     const order = oldOrder.map((item) => newOrder.indexOf(item));
     return new RearrangingChange<T>(path, order);
@@ -20,7 +20,9 @@ export class RearrangingChange<T> implements Change {
     return new RearrangingChange<T>(path, order);
   }
 
-  private constructor(private path: string, private order: number[]) {}
+  private constructor(private path: string, private order: number[]) {
+    super();
+  }
 
   get isEmpty(): boolean {
     return !this.order.some((el, index) => el !== index);
