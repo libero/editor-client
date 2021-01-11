@@ -2,6 +2,7 @@ import { Transaction } from 'prosemirror-state';
 import { Manuscript } from 'app/types/manuscript';
 import { get, set } from 'lodash';
 import { Change } from 'app/utils/history/change';
+import { cloneManuscript } from 'app/utils/state.utils';
 
 export class ProsemirrorChange implements Change {
   constructor(private path: string, private transaction: Transaction) {}
@@ -12,7 +13,7 @@ export class ProsemirrorChange implements Change {
 
   applyChange(manuscript: Manuscript): Manuscript {
     const editorState = get(manuscript, this.path);
-    return set({ ...manuscript }, this.path, editorState.apply(this.transaction));
+    return set(cloneManuscript(manuscript), this.path, editorState.apply(this.transaction));
   }
 
   rollbackChange(manuscript: Manuscript): Manuscript {
@@ -24,6 +25,6 @@ export class ProsemirrorChange implements Change {
     const rollbackTransaction = editorState.tr;
     invertedSteps.reverse().forEach((step) => rollbackTransaction.maybeStep(step));
 
-    return set({ ...manuscript }, this.path, editorState.apply(rollbackTransaction));
+    return set(cloneManuscript(manuscript), this.path, editorState.apply(rollbackTransaction));
   }
 }

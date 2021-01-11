@@ -4,8 +4,9 @@ import { gapCursor } from 'prosemirror-gapcursor';
 import { dropCursor } from 'prosemirror-dropcursor';
 import { keymap } from 'prosemirror-keymap';
 import { baseKeymap } from 'prosemirror-commands';
+import { v4 as uuidv4 } from 'uuid';
 
-import { KeywordGroups } from 'app/types/manuscript';
+import { Keyword, KeywordGroups } from 'app/types/manuscript';
 import { makeSchemaFromConfig } from 'app/models/utils';
 import * as keywordConfig from 'app/models/config/keywords.config';
 import { buildInputRules } from 'app/models/plugins/input-rules';
@@ -26,16 +27,19 @@ export function createKeywordGroupsState(keywordGroupsXml: Element[]): KeywordGr
   }, {});
 }
 
-export function createNewKeywordState(): EditorState {
+export function createNewKeywordState(): Keyword {
   return createKeywordState();
 }
 
-function createKeywordState(keyword?: Element): EditorState {
+function createKeywordState(keyword?: Element): Keyword {
   const schema = makeSchemaFromConfig(keywordConfig.topNode, keywordConfig.nodes, keywordConfig.marks);
 
-  return EditorState.create({
-    doc: keyword ? ProseMirrorDOMParser.fromSchema(schema).parse(keyword) : undefined,
-    schema,
-    plugins: [buildInputRules(), gapCursor(), dropCursor(), keymap(baseKeymap)]
-  });
+  return {
+    id: uuidv4(),
+    content: EditorState.create({
+      doc: keyword ? ProseMirrorDOMParser.fromSchema(schema).parse(keyword) : undefined,
+      schema,
+      plugins: [buildInputRules(), gapCursor(), dropCursor(), keymap(baseKeymap)]
+    })
+  };
 }

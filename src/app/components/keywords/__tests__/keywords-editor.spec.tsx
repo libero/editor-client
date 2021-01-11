@@ -3,7 +3,7 @@ import { EditorState } from 'prosemirror-state';
 import { KeywordsEditor } from 'app/components/keywords/index';
 import { create } from 'react-test-renderer';
 import { shallow } from 'enzyme';
-import { Keyword } from 'app/components/keywords/keyword';
+import { KeywordSection } from 'app/components/keywords/keyword-section';
 import { NewKeywordSection } from 'app/components/keywords/new-keyword-section';
 
 describe('KeywordsEditorComponent', () => {
@@ -40,7 +40,7 @@ describe('KeywordsEditorComponent', () => {
     };
 
     const component = shallow(<KeywordsEditor {...props} />);
-    const keywordProps = component.find(Keyword).props();
+    const keywordProps = component.find(KeywordSection).props();
     const change = props.keywords[0].tr;
 
     keywordProps.onChange(change);

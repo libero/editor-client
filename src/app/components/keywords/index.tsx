@@ -2,26 +2,27 @@ import React, { useCallback, useRef, useEffect } from 'react';
 import { EditorState, Transaction } from 'prosemirror-state';
 
 import { NewKeywordSection } from './new-keyword-section';
-import { Keyword } from './keyword';
+import { KeywordSection } from 'app/components/keywords/keyword-section';
 import { makeKeywordContainerStyles } from './styles';
 import { SectionContainer } from 'app/components/section-container';
+import { Keyword } from 'app/types/manuscript';
 
 interface KeywordsEditorProps {
-  keywords: EditorState[];
-  newKeyword: EditorState;
+  keywords: Keyword[];
+  newKeyword: Keyword;
   label?: string;
   name: string;
   activeKeywordPath?: string;
-  onDelete: (groupType: string, index: number) => void;
-  onChange: (groupType: string, index: number, change: Transaction) => void;
+  onDelete: (groupType: string, keyword: Keyword) => void;
+  onChange: (groupType: string, id: string, change: Transaction) => void;
   onNewKeywordChange: (groupType: string, change: Transaction) => void;
-  onAdd: (groupType: string, state: EditorState) => void;
-  onFocus: (groupType: string, index: number | undefined, isNewKeywordFocused?: boolean) => void;
+  onAdd: (groupType: string, keyword: Keyword) => void;
+  onFocus: (editorState: EditorState, path: string) => void;
   onBlur: () => void;
 }
 
-const isActiveKeyword = (group: string, index: number, activeKeywordPath?: string) => {
-  return activeKeywordPath === `keywordGroups.${group}.keywords.${index}`;
+const isActiveKeyword = (group: string, index: s, activeKeywordPath?: string) => {
+  return activeKeywordPath === `keywordGroups.${group}.keywords.${index}.content`;
 };
 
 const preventClickPropagation = (e: Event) => {
@@ -47,10 +48,15 @@ export const KeywordsEditor: React.FC<KeywordsEditorProps> = (props) => {
   const keywordsDomContainer = useRef<HTMLElement>();
 
   const handleFocus = useCallback(
-    (index: number) => {
-      onFocus(name, index);
+    (state: EditorState, id: string) => {
+      const index = keywords.findIndex((kwd) => kwd.id === id);
+      if (index === -1) {
+        onBlur();
+      } else {
+        onFocus(state, `keywordGroups.${name}.keywords.${index}.content`);
+      }
     },
-    [name, onFocus]
+    [keywords, name, onBlur, onFocus]
   );
 
   useEffect(() => {
@@ -61,25 +67,35 @@ export const KeywordsEditor: React.FC<KeywordsEditorProps> = (props) => {
     }
   }, [keywordsDomContainer]);
 
-  const renderKeywords = (keywords: EditorState[]) => {
-    return keywords.map((keywordEditorState, index) => {
+  const renderKeywords = (keywords: Keyword[]) => {
+    return keywords.map((keyword, index) => {
       return (
-        <Keyword
+        <KeywordSection
           key={index}
           isActive={isActiveKeyword(name, index, activeKeywordPath)}
-          onChange={onChange.bind(null, name, index)}
-          editorState={keywordEditorState}
-          onDelete={onDelete.bind(null, name, index)}
-          onFocus={handleFocus.bind(null, index)}
+          onChange={onChange.bind(null, name)}
+          keyword={keyword}
+          onDelete={onDelete.bind(null, name)}
+          onFocus={handleFocus.bind(null)}
           onBlur={onBlur}
         />
       );
     });
   };
 
-  const handleNewKeywordFocus = useCallback(() => {
-    onFocus(name, undefined, true);
-  }, [name, onFocus]);
+  const handleNewKeywordFocus = useCallback(
+    (state: EditorState) => {
+      onFocus(state, `keywordGroups.${name}.keywords.newKeyword.content`);
+    },
+    [name, onFocus]
+  );
+
+  const handleAddKeyword = useCallback(
+    (editorState: EditorState) => {
+      onAdd(name, { id: newKeyword.id, content: editorState });
+    },
+    [onAdd, name, newKeyword.id]
+  );
 
   const isGroupFocused = activeKeywordPath && activeKeywordPath.startsWith(`keywordGroups.${name}`);
 
@@ -90,8 +106,8 @@ export const KeywordsEditor: React.FC<KeywordsEditorProps> = (props) => {
         <NewKeywordSection
           className={classes.newKeywordEditor}
           onChange={onNewKeywordChange.bind(null, name)}
-          editorState={newKeyword}
-          onEnter={onAdd.bind(null, name)}
+          editorState={newKeyword.content}
+          onEnter={handleAddKeyword}
           onFocus={handleNewKeywordFocus}
         />
       </section>

@@ -7,20 +7,21 @@ import CancelIcon from '@material-ui/icons/Cancel';
 
 import { ProseMirrorEditorView } from 'app/components/rich-text-editor/prosemirror-editor-view';
 import { useKeywordStyles } from './styles';
+import { Keyword } from 'app/types/manuscript';
 
 const ENTER_KEY_CODE = 'Enter';
 
 interface KeywordProps {
-  editorState: EditorState;
-  onChange: (state: Transaction) => void;
-  onDelete: () => void;
+  keyword: Keyword;
+  onChange: (id: string, state: Transaction) => void;
+  onDelete: (keyword: Keyword) => void;
   isActive: boolean;
-  onFocus: (state: EditorState) => void;
+  onFocus: (state: EditorState, id: string) => void;
   onBlur: () => void;
 }
 
-export const Keyword: React.FC<KeywordProps> = (props) => {
-  const { editorState, onDelete, onChange, onFocus, isActive, onBlur } = props;
+export const KeywordSection: React.FC<KeywordProps> = (props) => {
+  const { keyword, onDelete, onChange, onFocus, isActive, onBlur } = props;
   const prosemirrorRef = useRef(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const deleteButtonRef = useRef(null);
@@ -39,10 +40,11 @@ export const Keyword: React.FC<KeywordProps> = (props) => {
       }
 
       if (isDeleteButtonClick) {
-        onDelete();
+        onDelete(keyword);
+        onBlur();
       }
     },
-    [isActive, onDelete]
+    [isActive, onBlur, onDelete, keyword.id]
   );
 
   useEffect(() => {
@@ -59,7 +61,7 @@ export const Keyword: React.FC<KeywordProps> = (props) => {
   }, [containerRef, focusOnDblClick, preventSingleClickWhenInactive]);
 
   const handleFocusEvent = (view: EditorView): boolean => {
-    onFocus(view.state);
+    onFocus(view.state, keyword.id);
     return true;
   };
 
@@ -77,13 +79,25 @@ export const Keyword: React.FC<KeywordProps> = (props) => {
     }
   };
 
+  const handleChange = useCallback(
+    (transaction: Transaction) => {
+      onChange(keyword.id, transaction);
+    },
+    [onChange, keyword.id]
+  );
+
   return (
     <div
       className={classNames(classes.keyword, { focused: isActive })}
       ref={containerRef}
       data-test-id="keyword-container"
     >
-      <ProseMirrorEditorView options={options} ref={prosemirrorRef} editorState={editorState} onChange={onChange} />
+      <ProseMirrorEditorView
+        options={options}
+        ref={prosemirrorRef}
+        editorState={keyword.content}
+        onChange={handleChange}
+      />
       <IconButton
         ref={deleteButtonRef}
         aria-label="delete keyword"

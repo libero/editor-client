@@ -3,7 +3,7 @@ import { EditorState } from 'prosemirror-state';
 import { create } from 'react-test-renderer';
 import { mount } from 'enzyme';
 
-import { Keyword } from 'app/components/keywords/keyword';
+import { KeywordSection } from 'app/components/keywords/keyword-section';
 import { ProseMirrorEditorView } from 'app/components/rich-text-editor/prosemirror-editor-view';
 import { createNewKeywordState } from 'app/models/keyword';
 
@@ -18,7 +18,7 @@ describe('KeywordsEditorComponent', () => {
       onBlur: jest.fn()
     };
 
-    const component = create(<Keyword {...props} />);
+    const component = create(<KeywordSection {...props} />);
     expect(component).toMatchSnapshot();
   });
 
@@ -32,7 +32,7 @@ describe('KeywordsEditorComponent', () => {
       onBlur: jest.fn()
     };
 
-    const component = mount(<Keyword {...props} />);
+    const component = mount(<KeywordSection {...props} />);
     const prosemirror = component.find(ProseMirrorEditorView).get(0);
     jest.spyOn(prosemirror['ref'].current, 'focus');
 
@@ -51,7 +51,7 @@ describe('KeywordsEditorComponent', () => {
       onBlur: jest.fn()
     };
 
-    const component = mount(<Keyword {...props} />);
+    const component = mount(<KeywordSection {...props} />);
     const prosemirror = component.find(ProseMirrorEditorView).get(0);
 
     jest.spyOn(prosemirror['ref'].current, 'focus');
@@ -74,7 +74,7 @@ describe('KeywordsEditorComponent', () => {
       onBlur: jest.fn()
     };
 
-    const component = mount(<Keyword {...props} />);
+    const component = mount(<KeywordSection {...props} />);
     const containerDiv = component.find('[data-test-id="keyword-container"]').getDOMNode();
     jest.spyOn(containerDiv, 'removeEventListener');
     component.unmount();

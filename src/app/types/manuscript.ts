@@ -6,10 +6,15 @@ import { Reference } from 'app/models/reference';
 import { RelatedArticle } from 'app/models/related-article';
 import { ArticleInformation } from 'app/models/article-information';
 
+export interface Keyword {
+  id: string;
+  content: EditorState;
+}
+
 export interface KeywordGroup {
   title: string | undefined;
-  keywords: EditorState[];
-  newKeyword: EditorState;
+  keywords: Keyword[];
+  newKeyword: Keyword;
 }
 
 export interface KeywordGroups {
