@@ -21,11 +21,11 @@ interface KeywordsEditorProps {
   onBlur: () => void;
 }
 
-const isActiveKeyword = (group: string, index: s, activeKeywordPath?: string) => {
+const isActiveKeyword = (group: string, index: number, activeKeywordPath?: string): boolean => {
   return activeKeywordPath === `keywordGroups.${group}.keywords.${index}.content`;
 };
 
-const preventClickPropagation = (e: Event) => {
+const preventClickPropagation = (e: Event): void => {
   e.stopPropagation();
   e.preventDefault();
 };
@@ -67,7 +67,7 @@ export const KeywordsEditor: React.FC<KeywordsEditorProps> = (props) => {
     }
   }, [keywordsDomContainer]);
 
-  const renderKeywords = (keywords: Keyword[]) => {
+  const renderKeywords = (keywords: Keyword[]): React.ReactNode[] => {
     return keywords.map((keyword, index) => {
       return (
         <KeywordSection

@@ -44,7 +44,7 @@ export const KeywordSection: React.FC<KeywordProps> = (props) => {
         onBlur();
       }
     },
-    [isActive, onBlur, onDelete, keyword.id]
+    [isActive, onDelete, keyword, onBlur]
   );
 
   useEffect(() => {

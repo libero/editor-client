@@ -40,7 +40,7 @@ export const AffiliationsList: React.FC<ComponentWithId> = ({ id }) => {
     );
   }, [dispatch]);
 
-  const renderAffiliation = (aff: Affiliation) => (
+  const renderAffiliation = (aff: Affiliation): React.ReactNode => (
     <li key={aff.id} className={classes.listItem}>
       <div className={classes.orderLabel}>({aff.label})</div>
       <div className={classes.affiliationInfo}>
