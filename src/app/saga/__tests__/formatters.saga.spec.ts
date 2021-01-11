@@ -28,7 +28,7 @@ describe('formatters saga', () => {
         dispatch: (action) => dispatched.push(action),
         getState: () => ({
           manuscript: manuscriptState,
-          manuscriptEditor: { focusedManuscriptPath: 'keywordGroups.kwdGroup.newKeyword' }
+          manuscriptEditor: { focusedManuscriptPath: 'keywordGroups.kwdGroup.newKeyword.content' }
         })
       },
       toggleMarkSaga,
@@ -36,7 +36,7 @@ describe('formatters saga', () => {
     ).toPromise();
 
     expect(dispatched).toEqual([
-      applyChangeAction({ path: 'keywordGroups.kwdGroup.newKeyword', change: expect.any(Object) })
+      applyChangeAction({ path: 'keywordGroups.kwdGroup.newKeyword.content', change: expect.any(Object) })
     ]);
   });
 

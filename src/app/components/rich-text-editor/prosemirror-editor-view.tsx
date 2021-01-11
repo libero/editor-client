@@ -45,34 +45,34 @@ export class ProseMirrorEditorView extends React.Component<ProseMirrorEditorView
   public props;
   public editorView: EditorView;
 
-  focus() {
+  focus(): void {
     this.editorView.focus();
   }
 
-  blur() {
+  blur(): void {
     (this.editorView.dom as HTMLDivElement).blur();
   }
 
-  shouldComponentUpdate(nextProps) {
+  shouldComponentUpdate(nextProps): boolean {
     if (nextProps.editorState !== this.editorView.state) {
       this.editorView.updateState(nextProps.editorState);
     }
     return false;
   }
 
-  componentWillUnmount() {
+  componentWillUnmount(): void {
     if (this.editorView) {
       this.editorView.destroy();
     }
   }
 
-  render() {
+  render(): React.ReactNode {
     // Render just an empty div which is then used as a container for an
     // EditorView instance.
     return <div ref={this.createEditorView} className={classnames('prosemirrorContainer', this.props.className)} />;
   }
 
-  private createEditorView = (element: HTMLElement) => {
+  private createEditorView = (element: HTMLElement): void => {
     if (element) {
       const clipboardSerializer = DOMSerializer.fromSchema(this.props.editorState.schema);
       Object.entries(this.props.editorState.schema.nodes).forEach(([nodeName, nodeType]) => {

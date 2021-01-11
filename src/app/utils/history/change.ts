@@ -3,7 +3,7 @@ import { Manuscript } from 'app/types/manuscript';
 export abstract class Change {
   abstract applyChange(manuscript: Manuscript): Manuscript;
   abstract rollbackChange(manuscript: Manuscript): Manuscript;
-  readonly isEmpty: boolean;
+  abstract get isEmpty(): boolean;
 
   private _timestamp: number;
   constructor() {

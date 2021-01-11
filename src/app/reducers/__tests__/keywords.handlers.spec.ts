@@ -1,9 +1,12 @@
-import { EditorState } from 'prosemirror-state';
 import { cloneDeep } from 'lodash';
 
 import { givenState } from 'app/test-utils/reducer-test-helpers';
 import { updateManuscriptState } from 'app/utils/history.utils';
 import { addKeyword, deleteKeyword, updateKeyword, updateNewKeyword } from 'app/reducers/keywords.handlers';
+import { createNewKeywordState } from 'app/models/keyword';
+import { DeleteObjectChange } from 'app/utils/history/delete-object-change';
+import { KeywordDeletePayload } from 'app/actions/manuscript.actions';
+import { BatchChange } from 'app/utils/history/change';
 
 jest.mock('app/utils/history.utils', () => ({
   createDiff: jest.requireActual('app/utils/history.utils').createDiff,
@@ -16,18 +19,16 @@ describe('Keywords handler', () => {
       keywordGroups: {
         'kwd-group': {
           title: undefined,
-          keywords: [new EditorState(), new EditorState()],
-          newKeyword: new EditorState()
+          keywords: [createNewKeywordState(), createNewKeywordState()],
+          newKeyword: createNewKeywordState()
         }
       }
     });
 
     const expectedState = cloneDeep(state);
-    expectedState.data.present.keywordGroups['kwd-group'].keywords.splice(1, 1);
-    expectedState.data.past = [
-      { 'keywordGroups.kwd-group': state.data.present.keywordGroups['kwd-group'], _timestamp: expect.any(Number) }
-    ];
-    const payload = { keywordGroup: 'kwd-group', index: 1 };
+    const deletedKeyword = expectedState.data.present.keywordGroups['kwd-group'].keywords.splice(1, 1)[0];
+    expectedState.data.past = [expect.any(DeleteObjectChange)];
+    const payload: KeywordDeletePayload = { keywordGroup: 'kwd-group', keyword: deletedKeyword };
     expect(deleteKeyword(state, payload)).toEqual(expectedState);
   });
 
@@ -36,23 +37,18 @@ describe('Keywords handler', () => {
       keywordGroups: {
         'kwd-group': {
           title: undefined,
-          keywords: [new EditorState()],
-          newKeyword: new EditorState()
+          keywords: [createNewKeywordState()],
+          newKeyword: createNewKeywordState()
         }
       }
     });
 
-    const payload = { keywordGroup: 'kwd-group', keyword: new EditorState() };
+    const payload = { keywordGroup: 'kwd-group', keyword: createNewKeywordState() };
     const actualState = addKeyword(state, payload);
 
-    expect(actualState.data.past).toEqual([
-      {
-        'keywordGroups.kwd-group': state.data.present.keywordGroups['kwd-group'],
-        _timestamp: expect.any(Number)
-      }
-    ]);
+    expect(actualState.data.past).toEqual([expect.any(BatchChange)]);
 
-    expect(actualState.data.present.keywordGroups['kwd-group'].keywords).toContain(payload.keyword);
+    expect(actualState.data.present.keywordGroups['kwd-group'].keywords[1]).toEqual(payload.keyword);
   });
 
   it('should update keyword', () => {
@@ -60,20 +56,24 @@ describe('Keywords handler', () => {
       keywordGroups: {
         'kwd-group': {
           title: undefined,
-          keywords: [new EditorState()],
-          newKeyword: new EditorState()
+          keywords: [createNewKeywordState()],
+          newKeyword: createNewKeywordState()
         }
       }
     });
 
     const payload = {
       keywordGroup: 'kwd-group',
-      index: 0,
-      change: state.data.present.keywordGroups['kwd-group'].keywords[0].tr
+      id: state.data.present.keywordGroups['kwd-group'].keywords[0].id,
+      change: state.data.present.keywordGroups['kwd-group'].keywords[0].content.tr
     };
 
     updateKeyword(state, payload);
-    expect(updateManuscriptState).toBeCalledWith(state.data, 'keywordGroups.kwd-group.keywords.0', payload.change);
+    expect(updateManuscriptState).toBeCalledWith(
+      state.data,
+      'keywordGroups.kwd-group.keywords.0.content',
+      payload.change
+    );
   });
 
   it('should update new keyword', () => {
@@ -81,18 +81,22 @@ describe('Keywords handler', () => {
       keywordGroups: {
         'kwd-group': {
           title: undefined,
-          keywords: [new EditorState()],
-          newKeyword: new EditorState()
+          keywords: [createNewKeywordState()],
+          newKeyword: createNewKeywordState()
         }
       }
     });
 
     const payload = {
       keywordGroup: 'kwd-group',
-      change: state.data.present.keywordGroups['kwd-group'].newKeyword.tr
+      change: state.data.present.keywordGroups['kwd-group'].newKeyword.content.tr
     };
 
     updateNewKeyword(state, payload);
-    expect(updateManuscriptState).toBeCalledWith(state.data, 'keywordGroups.kwd-group.newKeyword', payload.change);
+    expect(updateManuscriptState).toBeCalledWith(
+      state.data,
+      'keywordGroups.kwd-group.newKeyword.content',
+      payload.change
+    );
   });
 });

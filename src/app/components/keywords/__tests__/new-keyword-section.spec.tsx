@@ -6,10 +6,10 @@ import { NewKeywordSection } from 'app/components/keywords/new-keyword-section';
 import { ProseMirrorEditorView } from 'app/components/rich-text-editor/prosemirror-editor-view';
 import { createNewKeywordState } from 'app/models/keyword';
 
-describe('KeywordsEditorComponent', () => {
+describe('NewKeywordsEditorComponent', () => {
   it('renders keyword', () => {
     const props = {
-      editorState: createNewKeywordState(),
+      editorState: createNewKeywordState().content,
       onEnter: jest.fn(),
       onFocus: jest.fn(),
       onBlur: jest.fn(),
@@ -22,7 +22,7 @@ describe('KeywordsEditorComponent', () => {
 
   it('triggers onEnter when enter key is pressed', () => {
     const props = {
-      editorState: createNewKeywordState(),
+      editorState: createNewKeywordState().content,
       onEnter: jest.fn(),
       onFocus: jest.fn(),
       onBlur: jest.fn(),

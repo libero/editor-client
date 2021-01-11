@@ -17,7 +17,7 @@ export class DeleteObjectChange<T> extends Change {
     const originalSection = get(manuscript, this.path);
 
     if (!Array.isArray(originalSection)) {
-      throw new TypeError('Trying to make AddObject change on a non-array section');
+      throw new TypeError('Trying to make DeleteObject change on a non-array section');
     }
     this.removedIndex = originalSection.findIndex((item) => item[this.idField] === this.object[this.idField]);
     const updatedSection = [...originalSection];
@@ -29,7 +29,7 @@ export class DeleteObjectChange<T> extends Change {
     const updatedSection = [...get(manuscript, this.path)];
 
     if (!Array.isArray(updatedSection)) {
-      throw new TypeError('Trying to rollback AddObject change on a non-array section');
+      throw new TypeError('Trying to rollback DeleteObject change on a non-array section');
     }
     updatedSection.splice(this.removedIndex, 0, this.object);
     return set(cloneManuscript(manuscript), this.path, updatedSection);

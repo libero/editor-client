@@ -52,16 +52,16 @@ describe('manuscript selectors', () => {
   });
 
   it('checks if selection is already marked', () => {
-    let newKeyword = createNewKeywordState();
+    const newKeyword = createNewKeywordState();
     const docXML = document.createElement('keyword');
     docXML.innerHTML = '<italic>Test</italic>';
-    newKeyword.doc = ProseMirrorDOMParser.fromSchema(newKeyword.schema).parse(docXML);
-    const tr = newKeyword.tr;
-    tr.setSelection(TextSelection.create(newKeyword.apply(tr).doc, newKeyword.selection.from + 4));
-    newKeyword = newKeyword.apply(tr);
+    newKeyword.content.doc = ProseMirrorDOMParser.fromSchema(newKeyword.content.schema).parse(docXML);
+    const tr = newKeyword.content.tr;
+    tr.setSelection(TextSelection.create(newKeyword.content.apply(tr).doc, newKeyword.content.selection.from + 4));
+    newKeyword.content = newKeyword.content.apply(tr);
 
     state.manuscript.data = getInitialHistory(givenManuscript());
-    state.manuscriptEditor.focusedManuscriptPath = 'keywordGroups.group.newKeyword';
+    state.manuscriptEditor.focusedManuscriptPath = 'keywordGroups.group.newKeyword.content';
     state.manuscript.data.present.keywordGroups = {
       group: {
         title: '',

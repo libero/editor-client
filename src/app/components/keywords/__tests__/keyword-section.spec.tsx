@@ -1,5 +1,4 @@
 import React from 'react';
-import { EditorState } from 'prosemirror-state';
 import { create } from 'react-test-renderer';
 import { mount } from 'enzyme';
 
@@ -11,7 +10,7 @@ describe('KeywordsEditorComponent', () => {
   it('renders keyword', () => {
     const props = {
       isActive: false,
-      editorState: new EditorState(),
+      keyword: createNewKeywordState(),
       onChange: jest.fn(),
       onDelete: jest.fn(),
       onFocus: jest.fn(),
@@ -25,7 +24,7 @@ describe('KeywordsEditorComponent', () => {
   it('sets focus on dbl click', () => {
     const props = {
       isActive: false,
-      editorState: createNewKeywordState(),
+      keyword: createNewKeywordState(),
       onChange: jest.fn(),
       onDelete: jest.fn(),
       onFocus: jest.fn(),
@@ -44,7 +43,7 @@ describe('KeywordsEditorComponent', () => {
   it('stops single clicks', () => {
     const props = {
       isActive: false,
-      editorState: createNewKeywordState(),
+      keyword: createNewKeywordState(),
       onChange: jest.fn(),
       onDelete: jest.fn(),
       onFocus: jest.fn(),
@@ -67,7 +66,7 @@ describe('KeywordsEditorComponent', () => {
   it('should unsubscribe on unmount', () => {
     const props = {
       isActive: false,
-      editorState: createNewKeywordState(),
+      keyword: createNewKeywordState(),
       onChange: jest.fn(),
       onDelete: jest.fn(),
       onFocus: jest.fn(),

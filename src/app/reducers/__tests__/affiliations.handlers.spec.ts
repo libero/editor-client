@@ -8,6 +8,8 @@ import {
   updateAffiliation
 } from 'app/reducers/affiliations.handlers';
 import { Person } from 'app/models/person';
+import { BatchChange } from 'app/utils/history/change';
+import { UpdateObjectChange } from 'app/utils/history/update-object-change';
 
 jest.mock('app/utils/history.utils', () => ({
   createDiff: jest.requireActual('app/utils/history.utils').createDiff
@@ -45,7 +47,7 @@ describe('affiliations reducers', () => {
 
     const updatedState = cloneDeep(state);
     updatedState.data.present.affiliations[0] = updateAff;
-    updatedState.data.past = [{ affiliations: state.data.present.affiliations, _timestamp: expect.any(Number) }];
+    updatedState.data.past = [expect.any(UpdateObjectChange)];
     const newState = updateAffiliation(state, updateAff);
     expect(newState).toEqual(updatedState);
   });
@@ -66,7 +68,7 @@ describe('affiliations reducers', () => {
     const state = givenState({});
     const updatedState = cloneDeep(state);
     updatedState.data.present.affiliations.push(aff);
-    updatedState.data.past = [{ affiliations: state.data.present.affiliations, _timestamp: expect.any(Number) }];
+    updatedState.data.past = [expect.any(BatchChange)];
     const newState = addAffiliation(state, aff);
     expect(newState).toEqual(updatedState);
   });
@@ -90,7 +92,7 @@ describe('affiliations reducers', () => {
 
     const updatedState = cloneDeep(state);
     updatedState.data.present.affiliations = [];
-    updatedState.data.past = [{ affiliations: state.data.present.affiliations, _timestamp: expect.any(Number) }];
+    updatedState.data.past = [expect.any(BatchChange)];
     const newState = deleteAffiliation(state, state.data.present.affiliations[0]);
     expect(newState).toEqual(updatedState);
   });
@@ -120,13 +122,7 @@ describe('affiliations reducers', () => {
 
     const updatedState = cloneDeep(state);
     updatedState.data.present.authors.forEach((author) => (author.affiliations = [aff.id]));
-    updatedState.data.past = [
-      {
-        authors: state.data.present.authors,
-        affiliations: state.data.present.affiliations,
-        _timestamp: expect.any(Number)
-      }
-    ];
+    updatedState.data.past = [expect.any(BatchChange)];
     const newState = linkAffiliations(state, { affiliation: aff, authors });
     expect(newState).toEqual(updatedState);
   });

@@ -1,3 +1,5 @@
+import { cloneDeep } from 'lodash';
+
 import { getInitialHistory, getInitialLoadableState } from 'app/utils/state.utils';
 import {
   getAbstract,
@@ -8,10 +10,9 @@ import {
   getTitle,
   isManuscriptLoaded
 } from 'app/selectors/manuscript.selectors';
-import { cloneDeep } from 'lodash';
-import { EditorState } from 'prosemirror-state';
 import { Manuscript } from 'app/types/manuscript';
 import { Person } from 'app/models/person';
+import { givenState } from 'app/test-utils/reducer-test-helpers';
 
 describe('manuscript selectors', () => {
   let state;
@@ -69,12 +70,5 @@ describe('manuscript selectors', () => {
 });
 
 function givenManuscript(overrides: Partial<Manuscript> = {}): Manuscript {
-  return {
-    title: new EditorState(),
-    abstract: new EditorState(),
-    keywordGroups: {},
-    affiliations: [],
-    authors: [],
-    ...overrides
-  };
+  return givenState(overrides).data.present;
 }

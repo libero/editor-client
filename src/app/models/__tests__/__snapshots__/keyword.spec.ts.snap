@@ -2,14 +2,17 @@
 
 exports[`Manuscript state factory creates empty keyword state 1`] = `
 Object {
-  "doc": Object {
-    "type": "keyword",
+  "content": Object {
+    "doc": Object {
+      "type": "keyword",
+    },
+    "selection": Object {
+      "anchor": 0,
+      "head": 0,
+      "type": "text",
+    },
   },
-  "selection": Object {
-    "anchor": 0,
-    "head": 0,
-    "type": "text",
-  },
+  "id": "unique_id",
 }
 `;
 
@@ -18,113 +21,146 @@ Object {
   "author-keywords": Object {
     "keywords": Array [
       Object {
-        "doc": Object {
-          "content": Array [
-            Object {
-              "text": "cerebellum",
-              "type": "text",
-            },
-          ],
-          "type": "keyword",
+        "content": Object {
+          "doc": Object {
+            "content": Array [
+              Object {
+                "text": "cerebellum",
+                "type": "text",
+              },
+            ],
+            "type": "keyword",
+          },
+          "selection": Object {
+            "anchor": 0,
+            "head": 0,
+            "type": "text",
+          },
         },
-        "selection": Object {
-          "anchor": 0,
-          "head": 0,
-          "type": "text",
-        },
+        "id": "unique_id",
       },
       Object {
-        "doc": Object {
-          "content": Array [
-            Object {
-              "text": "climbing fiber",
-              "type": "text",
-            },
-          ],
-          "type": "keyword",
+        "content": Object {
+          "doc": Object {
+            "content": Array [
+              Object {
+                "text": "climbing fiber",
+                "type": "text",
+              },
+            ],
+            "type": "keyword",
+          },
+          "selection": Object {
+            "anchor": 0,
+            "head": 0,
+            "type": "text",
+          },
         },
-        "selection": Object {
-          "anchor": 0,
-          "head": 0,
-          "type": "text",
-        },
+        "id": "unique_id",
       },
       Object {
-        "doc": Object {
-          "content": Array [
-            Object {
-              "text": "reinforcement learning",
-              "type": "text",
-            },
-          ],
-          "type": "keyword",
+        "content": Object {
+          "doc": Object {
+            "content": Array [
+              Object {
+                "text": "reinforcement learning",
+                "type": "text",
+              },
+            ],
+            "type": "keyword",
+          },
+          "selection": Object {
+            "anchor": 0,
+            "head": 0,
+            "type": "text",
+          },
         },
-        "selection": Object {
-          "anchor": 0,
-          "head": 0,
-          "type": "text",
-        },
+        "id": "unique_id",
       },
       Object {
-        "doc": Object {
-          "content": Array [
-            Object {
-              "marks": Array [
-                Object {
-                  "type": "italic",
-                },
-              ],
-              "text": "vitae",
-              "type": "text",
-            },
-          ],
-          "type": "keyword",
+        "content": Object {
+          "doc": Object {
+            "content": Array [
+              Object {
+                "marks": Array [
+                  Object {
+                    "type": "italic",
+                  },
+                ],
+                "text": "vitae",
+                "type": "text",
+              },
+            ],
+            "type": "keyword",
+          },
+          "selection": Object {
+            "anchor": 0,
+            "head": 0,
+            "type": "text",
+          },
         },
-        "selection": Object {
-          "anchor": 0,
-          "head": 0,
-          "type": "text",
-        },
+        "id": "unique_id",
       },
       Object {
-        "doc": Object {
-          "content": Array [
-            Object {
-              "text": "Purkinje cells",
-              "type": "text",
-            },
-          ],
-          "type": "keyword",
+        "content": Object {
+          "doc": Object {
+            "content": Array [
+              Object {
+                "text": "Purkinje cells",
+                "type": "text",
+              },
+            ],
+            "type": "keyword",
+          },
+          "selection": Object {
+            "anchor": 0,
+            "head": 0,
+            "type": "text",
+          },
         },
-        "selection": Object {
-          "anchor": 0,
-          "head": 0,
-          "type": "text",
-        },
+        "id": "unique_id",
       },
     ],
     "newKeyword": Object {
-      "doc": Object {
-        "type": "keyword",
+      "content": Object {
+        "doc": Object {
+          "type": "keyword",
+        },
+        "selection": Object {
+          "anchor": 0,
+          "head": 0,
+          "type": "text",
+        },
       },
-      "selection": Object {
-        "anchor": 0,
-        "head": 0,
-        "type": "text",
-      },
+      "id": "unique_id",
     },
     "title": undefined,
   },
   "research-organism": Object {
     "keywords": Array [
       Object {
+        "content": Object {
+          "doc": Object {
+            "content": Array [
+              Object {
+                "text": "Mouse",
+                "type": "text",
+              },
+            ],
+            "type": "keyword",
+          },
+          "selection": Object {
+            "anchor": 0,
+            "head": 0,
+            "type": "text",
+          },
+        },
+        "id": "unique_id",
+      },
+    ],
+    "newKeyword": Object {
+      "content": Object {
         "doc": Object {
-          "content": Array [
-            Object {
-              "text": "Mouse",
-              "type": "text",
-            },
-          ],
           "type": "keyword",
         },
         "selection": Object {
@@ -133,16 +169,7 @@ Object {
           "type": "text",
         },
       },
-    ],
-    "newKeyword": Object {
-      "doc": Object {
-        "type": "keyword",
-      },
-      "selection": Object {
-        "anchor": 0,
-        "head": 0,
-        "type": "text",
-      },
+      "id": "unique_id",
     },
     "title": "Research organism",
   },
