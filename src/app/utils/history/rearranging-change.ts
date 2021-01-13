@@ -1,10 +1,12 @@
-import { Manuscript } from 'app/types/manuscript';
 import { get, set } from 'lodash';
+
+import { Manuscript } from 'app/types/manuscript';
 import { Change } from 'app/utils/history/change';
+import { cloneManuscript } from 'app/utils/state.utils';
 
 export class RearrangingChange<T> extends Change {
   public static createFromListRearrange<T>(path: string, oldOrder: Array<T>, newOrder: Array<T>): RearrangingChange<T> {
-    const order = oldOrder.map((item) => newOrder.indexOf(item));
+    const order = newOrder.map((item) => oldOrder.indexOf(item));
     return new RearrangingChange<T>(path, order);
   }
 
@@ -29,7 +31,7 @@ export class RearrangingChange<T> extends Change {
   }
 
   applyChange(manuscript: Manuscript): Manuscript {
-    return set({ ...manuscript }, this.path, this.applyOrder(get(manuscript, this.path), this.order));
+    return set(cloneManuscript(manuscript), this.path, this.applyOrder(get(manuscript, this.path), this.order));
   }
 
   rollbackChange(manuscript: Manuscript): Manuscript {

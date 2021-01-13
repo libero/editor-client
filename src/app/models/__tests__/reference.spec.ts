@@ -197,9 +197,7 @@ describe('Reference model', () => {
     set(refs[2], 'referenceInfo.year', '2011');
     set(refs[3], 'referenceInfo.year', '2007');
 
-    const sortedList = [...refs];
-    sortReferencesList(sortedList);
-    expect(sortedList).toEqual([refs[3], refs[0], refs[2], refs[1]]);
+    expect(sortReferencesList(refs)).toEqual([refs[3], refs[0], refs[2], refs[1]]);
   });
 
   it('should create ref node text', () => {

@@ -1,9 +1,10 @@
 import * as deepDiff from 'deep-diff';
-import { Manuscript } from 'app/types/manuscript';
 import { cloneDeep, cloneDeepWith, get, set } from 'lodash';
+import { EditorState } from 'prosemirror-state';
+
+import { Manuscript } from 'app/types/manuscript';
 import { Change } from 'app/utils/history/change';
 import { cloneManuscript } from 'app/utils/state.utils';
-import { EditorState } from 'prosemirror-state';
 
 export class UpdateObjectChange<T> extends Change {
   private differences: deepDiff.Diff<T, T>[];

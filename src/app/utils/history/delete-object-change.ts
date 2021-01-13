@@ -1,5 +1,5 @@
-import { Manuscript } from 'app/types/manuscript';
 import { get, set } from 'lodash';
+import { Manuscript } from 'app/types/manuscript';
 import { Change } from 'app/utils/history/change';
 import { cloneManuscript } from 'app/utils/state.utils';
 

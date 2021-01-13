@@ -27,20 +27,14 @@ export class BatchChange extends Change {
   }
 
   applyChange(manuscript: Manuscript): Manuscript {
-    return this.changes.reduce(
-      (acc: Manuscript, change: Change) => {
-        return change.applyChange(acc);
-      },
-      { ...manuscript }
-    );
+    return this.changes.reduce((acc: Manuscript, change: Change) => {
+      return change.applyChange(acc);
+    }, manuscript);
   }
 
   rollbackChange(manuscript: Manuscript): Manuscript {
-    return this.changes.reduceRight(
-      (acc: Manuscript, change: Change) => {
-        return change.rollbackChange(acc);
-      },
-      { ...manuscript }
-    );
+    return this.changes.reduceRight((acc: Manuscript, change: Change) => {
+      return change.rollbackChange(acc);
+    }, manuscript);
   }
 }

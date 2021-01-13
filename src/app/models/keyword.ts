@@ -15,7 +15,6 @@ export function createKeywordGroupsState(keywordGroupsXml: Element[]): KeywordGr
   return keywordGroupsXml.reduce((acc, kwdGroup) => {
     const kwdGroupType = kwdGroup.getAttribute('kwd-group-type') || 'keywords-1';
     const groupTitle = kwdGroup.querySelector('title');
-    // TODO: How do we pass changeSteps to this?
     const moreKeywords = Array.from(kwdGroup.querySelectorAll('kwd')).map((keyword, _) => createKeywordState(keyword));
     acc[kwdGroupType] = {
       title: groupTitle ? groupTitle.textContent : undefined,

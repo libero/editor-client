@@ -92,7 +92,9 @@ export const KeywordsEditor: React.FC<KeywordsEditorProps> = (props) => {
 
   const handleAddKeyword = useCallback(
     (editorState: EditorState) => {
-      onAdd(name, { id: newKeyword.id, content: editorState });
+      if (editorState.doc.textContent.trim().length > 0) {
+        onAdd(name, { id: newKeyword.id, content: editorState });
+      }
     },
     [onAdd, name, newKeyword.id]
   );

@@ -28,7 +28,14 @@ export function updateReference(state: ManuscriptHistoryState, payload: Referenc
     return Boolean(node.childCount);
   });
 
-  const change = new BatchChange([referenceChange, new ProsemirrorChange('body', transaction)]);
+  const updatedManuscript = referenceChange.applyChange(state.data.present);
+  const sortReferencesChange = RearrangingChange.createFromListRearrange(
+    'references',
+    updatedManuscript.references,
+    sortReferencesList(updatedManuscript.references)
+  );
+
+  const change = new BatchChange([referenceChange, new ProsemirrorChange('body', transaction), sortReferencesChange]);
 
   return {
     ...state,
@@ -43,13 +50,11 @@ export function updateReference(state: ManuscriptHistoryState, payload: Referenc
 export function addReference(state: ManuscriptHistoryState, payload: Reference): ManuscriptHistoryState {
   const addReferenceChange = new AddObjectChange('references', payload, 'id');
   const updatedManuscript = addReferenceChange.applyChange(state.data.present);
-  const updatedReferenceList = [...updatedManuscript.references];
-  sortReferencesList(updatedReferenceList);
 
   const sortReferencesChange = RearrangingChange.createFromListRearrange(
     'references',
     updatedManuscript.references,
-    updatedReferenceList
+    sortReferencesList(updatedManuscript.references)
   );
 
   return {
@@ -67,6 +72,7 @@ export function deleteReference(state: ManuscriptHistoryState, payload: Referenc
   const { body } = state.data.present;
   const transaction = body.tr;
   let documentReducedBy = 0;
+
   transaction.doc.descendants((node: ProsemirrorNode, pos: number, parent: ProsemirrorNode) => {
     if (node.type.name === 'refCitation' && node.attrs['refId'] === payload.id) {
       transaction.replace(pos - documentReducedBy, pos - documentReducedBy + node.nodeSize);

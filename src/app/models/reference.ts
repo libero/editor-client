@@ -610,20 +610,31 @@ export function getRefNodeText(ref: Reference): string {
   return [getRefListAuthorsNames(ref), get(ref.referenceInfo, 'year')].filter(Boolean).join(', ');
 }
 
-export function sortReferencesList(refs: Reference[]): void {
-  refs.sort((ref1, ref2) => {
+export function sortReferencesList(refs: Reference[]): Reference[] {
+  return [...refs].sort((ref1, ref2) => {
     const ref1LastNames = getAuthorLastNamesForSorting(ref1);
     const ref2LastNames = getAuthorLastNamesForSorting(ref2);
-
     if (ref1LastNames < ref2LastNames) {
       return -1;
     } else if (ref1LastNames > ref2LastNames) {
       return 1;
-    } else if (get(ref1, 'referenceInfo.year', '') < get(ref2, 'referenceInfo.year', '')) {
-      return -1;
+    } else {
+      if (get(ref1, 'referenceInfo.year', '') < get(ref2, 'referenceInfo.year', '')) {
+        return -1;
+      } else if (get(ref1, 'referenceInfo.year', '') > get(ref2, 'referenceInfo.year', '')) {
+        return 1;
+      }
     }
-    return 1;
+    return 0;
   });
+}
+
+export function createReferencesState(referencesXml: Element[]): Reference[] {
+  const referencesList = referencesXml.map((referenceXml: Element) => {
+    const id = (referenceXml.parentNode as Element).getAttribute('id');
+    return createReference(id, referenceXml);
+  });
+  return sortReferencesList(referencesList);
 }
 
 function getAuthorLastNamesForSorting(ref: Reference): string {
@@ -634,13 +645,4 @@ function getAuthorLastNamesForSorting(ref: Reference): string {
         })
         .join('')
     : '';
-}
-
-export function createReferencesState(referencesXml: Element[]): Reference[] {
-  const referencesList = referencesXml.map((referenceXml: Element) => {
-    const id = (referenceXml.parentNode as Element).getAttribute('id');
-    return createReference(id, referenceXml);
-  });
-  sortReferencesList(referencesList);
-  return referencesList;
 }
