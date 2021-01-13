@@ -3,10 +3,6 @@ import { cloneDeep } from 'lodash';
 import { updateArticleInformation } from 'app/reducers/article-information.handlers';
 import { UpdateObjectChange } from 'app/utils/history/update-object-change';
 
-jest.mock('app/utils/history.utils', () => ({
-  createDiff: jest.requireActual('app/utils/history.utils').createDiff
-}));
-
 describe('article information handler', () => {
   it('updates article info', () => {
     const state = givenState({});

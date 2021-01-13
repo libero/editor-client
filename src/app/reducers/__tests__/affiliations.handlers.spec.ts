@@ -11,10 +11,6 @@ import { Person } from 'app/models/person';
 import { BatchChange } from 'app/utils/history/change';
 import { UpdateObjectChange } from 'app/utils/history/update-object-change';
 
-jest.mock('app/utils/history.utils', () => ({
-  createDiff: jest.requireActual('app/utils/history.utils').createDiff
-}));
-
 describe('affiliations reducers', () => {
   it('should update affiliation', () => {
     const state = givenState({

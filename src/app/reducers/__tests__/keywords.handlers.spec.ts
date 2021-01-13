@@ -9,7 +9,6 @@ import { KeywordDeletePayload } from 'app/actions/manuscript.actions';
 import { BatchChange } from 'app/utils/history/change';
 
 jest.mock('app/utils/history.utils', () => ({
-  createDiff: jest.requireActual('app/utils/history.utils').createDiff,
   updateManuscriptState: jest.fn()
 }));
 

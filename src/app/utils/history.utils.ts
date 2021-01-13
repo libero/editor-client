@@ -1,7 +1,6 @@
 import { Transaction } from 'prosemirror-state';
 
 import { ManuscriptHistory } from './state.utils';
-import { ManuscriptDiff, ManuscriptDiffValues } from 'app/types/manuscript';
 import { ProsemirrorChange } from 'app/utils/history/prosemirror-change';
 
 export function updateManuscriptState(
@@ -34,13 +33,6 @@ export function undoChange(state: ManuscriptHistory): ManuscriptHistory {
     present: change.rollbackChange(state.present),
     future: [change, ...state.future]
   };
-}
-
-export function createDiff(changes: Record<string, ManuscriptDiffValues>): ManuscriptDiff {
-  return {
-    ...changes,
-    _timestamp: Date.now()
-  } as ManuscriptDiff;
 }
 
 export function redoChange(state: ManuscriptHistory): ManuscriptHistory {

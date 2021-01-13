@@ -6,10 +6,6 @@ import { UpdateObjectChange } from 'app/utils/history/update-object-change';
 import { DeleteObjectChange } from 'app/utils/history/delete-object-change';
 import { AddObjectChange } from 'app/utils/history/add-object-change';
 
-jest.mock('app/utils/history.utils', () => ({
-  createDiff: jest.requireActual('app/utils/history.utils').createDiff
-}));
-
 const RELATED_ARTICLES = [
   {
     id: 'ra1',
