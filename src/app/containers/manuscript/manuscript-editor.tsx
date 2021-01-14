@@ -116,9 +116,8 @@ export const ManuscriptEditor: React.FC = () => {
   const renderKeywords = (keywordGroups: KeywordGroups): JSX.Element[] => {
     return Object.entries(keywordGroups).map(([groupType, group]) => {
       return (
-        <>
+        <React.Fragment key={groupType}>
           <KeywordsEditor
-            key={groupType}
             keywords={group.keywords}
             newKeyword={group.newKeyword}
             activeKeywordPath={focusedPath}
@@ -132,7 +131,7 @@ export const ManuscriptEditor: React.FC = () => {
             onBlur={handleBlur}
           />
           <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
-        </>
+        </React.Fragment>
       );
     });
   };

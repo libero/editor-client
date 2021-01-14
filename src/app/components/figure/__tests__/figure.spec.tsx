@@ -19,10 +19,10 @@ jest.mock('app/components/figure/figure-editor', () => {
   return {
     FigureEditor: class FigureEditorClass extends jest.requireActual('react').Component {
       static updateContentSpy = jest.fn();
-      updateContent(...args) {
+      updateContent(...args): void {
         FigureEditorClass.updateContentSpy(...args);
       }
-      render() {
+      render(): React.ReactNode {
         return <div data-cmp="FigureEditor"></div>;
       }
     }

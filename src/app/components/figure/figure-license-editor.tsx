@@ -102,7 +102,7 @@ class FigureContentEditorComponent extends NodeEditor<FigureLicenseEditorProps> 
     );
   }
 
-  private handleFormChange = (event) => {
+  private handleFormChange = (event): void => {
     const newAttributes = {
       id: this.props.node.attrs.id,
       licenseInfo: {
@@ -115,7 +115,7 @@ class FigureContentEditorComponent extends NodeEditor<FigureLicenseEditorProps> 
     this.context.view.dispatch(change);
   };
 
-  private handleDelete = () => {
+  private handleDelete = (): void => {
     const licenseNodePosition = this.context.view.state.doc.resolve(this.context.getPos() + this.props.offset - 1);
     const change = this.context.view.state.tr.setSelection(new NodeSelection(licenseNodePosition)).deleteSelection();
     this.context.view.dispatch(change);

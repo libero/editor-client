@@ -11,10 +11,10 @@ jest.mock('prosemirror-view');
 jest.mock('app/components/box-text/box-text-editor', () => ({
   BoxTextEditor: class BoxTextEditorClass extends jest.requireActual('react').Component {
     static updateContentSpy = jest.fn();
-    updateContent(...args) {
+    updateContent(...args): void {
       BoxTextEditorClass.updateContentSpy(...args);
     }
-    render() {
+    render(): React.ReactNode {
       return <div data-cmp="BoxTextEditor" />;
     }
   }

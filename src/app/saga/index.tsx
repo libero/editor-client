@@ -1,4 +1,4 @@
-import { fork, all } from 'redux-saga/effects';
+import { fork, all, AllEffect, ForkEffect } from 'redux-saga/effects';
 import manuscriptSaga from './manuscript.saga';
 import formattersSaga from './formatters.saga';
 import manuscriptEditorSaga from './manuscript-editor.saga';
@@ -7,11 +7,11 @@ import tocSaga from './toc.saga';
 import { routerSaga } from 'app/saga/router.saga';
 
 // eslint-disable-next-line require-yield
-function* initialSaga() {
+function* initialSaga(): IterableIterator<void> {
   console.log('Initialising');
 }
 
-export function* rootSaga() {
+export function* rootSaga(): IterableIterator<AllEffect<ForkEffect>> {
   yield all([
     fork(initialSaga),
     fork(routerSaga),

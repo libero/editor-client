@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { Ref, useCallback } from 'react';
 import { Chip } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import { useDispatch, useSelector } from 'react-redux';
@@ -25,14 +25,17 @@ interface ChipRenderComponent {
   className: string;
 }
 
-const ChipRenderComponent: React.FC<ChipRenderComponent> = React.memo((props) => {
-  return (
-    <div className={props.className}>
-      <DragHandle />
-      {props.children}
-    </div>
-  );
-}, isEqual);
+const ChipRenderComponent: React.FC<ChipRenderComponent> = React.memo(
+  React.forwardRef((props, ref: Ref<HTMLDivElement>) => {
+    return (
+      <div className={props.className} ref={ref}>
+        <DragHandle />
+        {props.children}
+      </div>
+    );
+  }),
+  isEqual
+);
 
 const SortableItem = SortableElement(({ value, classes, onEdit }) => {
   const authorName = getAuthorDisplayName(value.author);
