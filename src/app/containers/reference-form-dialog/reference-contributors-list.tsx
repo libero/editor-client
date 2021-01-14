@@ -28,9 +28,9 @@ interface RefContributorInputProps {
 }
 
 const labelProps = { shrink: true };
-const noAutocomplete = () => ({ autocomplete: uuidv4() });
+const noAutocomplete = (): { autocomplete: string } => ({ autocomplete: uuidv4() });
 
-const isGroupRefContributor = (refContributor: ReferenceContributor) => {
+const isGroupRefContributor = (refContributor: ReferenceContributor): boolean => {
   return has(refContributor, 'groupName');
 };
 
@@ -44,7 +44,7 @@ const SortableList = React.memo(
   isEqual
 );
 
-const renderRefContributorForm = (classes, refContributor, handleFormChange) => (
+const renderRefContributorForm = (classes, refContributor, handleFormChange): React.ReactNode => (
   <>
     <TextField
       fullWidth
@@ -70,7 +70,7 @@ const renderRefContributorForm = (classes, refContributor, handleFormChange) => 
   </>
 );
 
-const renderGroupForm = (classes, refGroup, handleFormChange) => (
+const renderGroupForm = (classes, refGroup, handleFormChange): React.ReactNode => (
   <TextField
     fullWidth
     name="groupName"

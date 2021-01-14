@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react';
+import React from 'react';
 import { create } from 'react-test-renderer';
 import { EditorView } from 'prosemirror-view';
 import { mount } from 'enzyme';

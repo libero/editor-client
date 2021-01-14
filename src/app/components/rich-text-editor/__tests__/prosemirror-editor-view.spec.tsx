@@ -9,7 +9,7 @@ import { DOMSerializer } from 'prosemirror-model';
 
 jest.mock('prosemirror-view');
 
-const createNodeMock = (element) => {
+const createNodeMock = (element): React.ReactElement => {
   return element;
 };
 

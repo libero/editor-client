@@ -4,17 +4,8 @@ import { cloneDeep } from 'lodash';
 import { givenState } from 'app/test-utils/reducer-test-helpers';
 import { Reference } from 'app/models/reference';
 import { addReference, deleteReference, updateReference } from 'app/reducers/references.handlers';
-
-jest.mock('app/utils/history.utils', () => ({
-  createDiff: jest.requireActual('app/utils/history.utils').createDiff,
-  updateManuscriptState: jest.fn((state) => {
-    return {
-      past: [{ _timestamp: expect.any(Number) }],
-      present: jest.requireActual('app/utils/state.utils').cloneManuscript(state.present),
-      future: []
-    };
-  })
-}));
+import { BatchChange } from 'app/utils/history/change';
+import { createBodyState } from 'app/models/body';
 
 const REFERENCE: Reference = {
   id: 'bib1',
@@ -45,33 +36,46 @@ describe('references reducers', () => {
       references: [REFERENCE]
     });
 
+    state.data.present.body = givenBodyState('Berk, 2011');
+
     const updatedRef = cloneDeep(REFERENCE);
     updatedRef.referenceInfo['year'] = 2011;
-    const updatedState = cloneDeep(state);
-    updatedState.data.present.references[0] = updatedRef;
-    updatedState.data.past = [{ references: state.data.present.references, _timestamp: expect.any(Number) }];
     const newState = updateReference(state, updatedRef);
-    expect(newState).toEqual(updatedState);
+
+    expect(newState.data.present.references).toEqual([updatedRef]);
+    expect(newState.data.present.body.doc.toJSON()).toEqual(givenBodyState('Berk, 2011').doc.toJSON());
+    expect(newState.data.past[0]).toEqual(expect.any(BatchChange));
   });
 
   it('should add reference', () => {
     const state = givenState({});
     const updatedState = cloneDeep(state);
     updatedState.data.present.references.push(REFERENCE);
-    updatedState.data.past = [{ references: state.data.present.references, _timestamp: expect.any(Number) }];
+    updatedState.data.past = [expect.any(BatchChange)];
     const newState = addReference(state, REFERENCE);
     expect(newState).toEqual(updatedState);
   });
 
   it('should delete reference', () => {
     const state = givenState({
-      references: [REFERENCE]
+      references: [REFERENCE],
+      body: givenBodyState('Berk, 2011')
     });
 
-    const updatedState = cloneDeep(state);
-    updatedState.data.present.references = [];
-    updatedState.data.past = [{ references: state.data.present.references, _timestamp: expect.any(Number) }];
     const newState = deleteReference(state, REFERENCE);
-    expect(newState).toEqual(updatedState);
+    expect(newState.data.present.references).toEqual([]);
+    expect(newState.data.present.body.doc.toJSON()).toEqual(givenBodyState('').doc.toJSON());
+    expect(newState.data.past[0]).toEqual(expect.any(BatchChange));
   });
+
+  function givenBodyState(refText: string): EditorState {
+    const el = document.createElement('div');
+    if (refText) {
+      el.innerHTML = `<p>test<xref ref-type="bibr" rid="bib1">${refText}</xref>test</p>`;
+    } else {
+      el.innerHTML = `<p>testtest</p>`;
+    }
+
+    return createBodyState(el, '');
+  }
 });

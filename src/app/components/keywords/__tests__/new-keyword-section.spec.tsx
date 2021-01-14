@@ -6,29 +6,21 @@ import { NewKeywordSection } from 'app/components/keywords/new-keyword-section';
 import { ProseMirrorEditorView } from 'app/components/rich-text-editor/prosemirror-editor-view';
 import { createNewKeywordState } from 'app/models/keyword';
 
-describe('KeywordsEditorComponent', () => {
-  it('renders keyword', () => {
-    const props = {
-      editorState: createNewKeywordState(),
-      onEnter: jest.fn(),
-      onFocus: jest.fn(),
-      onBlur: jest.fn(),
-      onChange: jest.fn()
-    };
+describe('NewKeywordsEditorComponent', () => {
+  const props = {
+    editorState: createNewKeywordState().content,
+    onEnter: jest.fn(),
+    onFocus: jest.fn(),
+    onBlur: jest.fn(),
+    onChange: jest.fn()
+  };
 
+  it('renders keyword', () => {
     const component = create(<NewKeywordSection {...props} />);
     expect(component).toMatchSnapshot();
   });
 
   it('triggers onEnter when enter key is pressed', () => {
-    const props = {
-      editorState: createNewKeywordState(),
-      onEnter: jest.fn(),
-      onFocus: jest.fn(),
-      onBlur: jest.fn(),
-      onChange: jest.fn()
-    };
-
     const component = mount(<NewKeywordSection {...props} />);
     const prosemirrorOptions = component.find(ProseMirrorEditorView).props().options;
     const keyboardEvent = new KeyboardEvent('keypress', { key: 'Enter' });

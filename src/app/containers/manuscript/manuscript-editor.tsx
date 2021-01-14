@@ -14,7 +14,7 @@ import * as manuscriptActions from 'app/actions/manuscript.actions';
 import { RichTextEditor } from 'app/components/rich-text-editor';
 import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
 import { KeywordsEditor } from 'app/components/keywords';
-import { KeywordGroups } from 'app/types/manuscript';
+import { Keyword, KeywordGroups } from 'app/types/manuscript';
 import { useManuscriptStyles } from './styles';
 import { SortableAuthorsList } from './sortable-authors-list';
 import { AuthorsInfoDetails } from 'app/containers/manuscript/authors-info-details';
@@ -25,7 +25,7 @@ import { getFocusedEditorStatePath } from 'app/selectors/manuscript-editor.selec
 import { RelatedArticles } from 'app/containers/manuscript/related-articles';
 import { ClearFocus } from 'app/containers/manuscript/clear-focus';
 
-const isInputFocused = (inputName: string, focusedPath?: string) => {
+const isInputFocused = (inputName: string, focusedPath?: string): boolean => {
   return Boolean(focusedPath) && focusedPath.startsWith(inputName);
 };
 
@@ -52,8 +52,8 @@ export const ManuscriptEditor: React.FC = () => {
     dispatch(manuscriptEditorActions.removeFocusAction());
   }, [dispatch]);
 
-  const handleKeywordsChange = (keywordGroup: string, index: number, diff: Transaction): void => {
-    dispatch(manuscriptActions.updateKeywordAction({ keywordGroup, index, change: diff }));
+  const handleKeywordsChange = (keywordGroup: string, id: string, diff: Transaction): void => {
+    dispatch(manuscriptActions.updateKeywordAction({ keywordGroup, id, change: diff }));
   };
 
   const handleNewKeywordChange = (keywordGroup: string, diff: Transaction): void => {
@@ -88,13 +88,19 @@ export const ManuscriptEditor: React.FC = () => {
     [dispatch]
   );
 
-  const handleKeywordDelete = (keywordGroup: string, index: number): void => {
-    dispatch(manuscriptActions.deleteKeywordAction({ keywordGroup, index }));
-  };
+  const handleKeywordDelete = useCallback(
+    (keywordGroup: string, keyword: Keyword): void => {
+      dispatch(manuscriptActions.deleteKeywordAction({ keywordGroup, keyword }));
+    },
+    [dispatch]
+  );
 
-  const handleKeywordAdd = (keywordGroup: string, keyword: EditorState): void => {
-    dispatch(manuscriptActions.addNewKeywordAction({ keywordGroup, keyword }));
-  };
+  const handleKeywordAdd = useCallback(
+    (keywordGroup: string, keyword: Keyword): void => {
+      dispatch(manuscriptActions.addNewKeywordAction({ keywordGroup, keyword }));
+    },
+    [dispatch]
+  );
 
   const handleFocusSwitch = useCallback(
     (state: EditorState, path: string) => {
@@ -106,14 +112,6 @@ export const ManuscriptEditor: React.FC = () => {
   const handleBlur = useCallback(() => {
     dispatch(manuscriptEditorActions.removeFocusAction());
   }, [dispatch]);
-
-  const handleKeywordFocus = useCallback(
-    (group: string, index: number | undefined, isNewKeywordFocused: boolean): void => {
-      const kwdIndexPath = isNewKeywordFocused ? 'newKeyword' : `keywords.${index}`;
-      handleFocusSwitch(null, ['keywordGroups', group, kwdIndexPath].join('.'));
-    },
-    [handleFocusSwitch]
-  );
 
   const renderKeywords = (keywordGroups: KeywordGroups): JSX.Element[] => {
     return Object.entries(keywordGroups).map(([groupType, group]) => {
@@ -130,7 +128,7 @@ export const ManuscriptEditor: React.FC = () => {
             onAdd={handleKeywordAdd}
             onChange={handleKeywordsChange}
             onDelete={handleKeywordDelete}
-            onFocus={handleKeywordFocus}
+            onFocus={handleFocusSwitch}
             onBlur={handleBlur}
           />
           <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />

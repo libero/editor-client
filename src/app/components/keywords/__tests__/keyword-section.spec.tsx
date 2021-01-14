@@ -1,38 +1,28 @@
 import React from 'react';
-import { EditorState } from 'prosemirror-state';
 import { create } from 'react-test-renderer';
 import { mount } from 'enzyme';
 
-import { Keyword } from 'app/components/keywords/keyword';
+import { KeywordSection } from 'app/components/keywords/keyword-section';
 import { ProseMirrorEditorView } from 'app/components/rich-text-editor/prosemirror-editor-view';
 import { createNewKeywordState } from 'app/models/keyword';
 
 describe('KeywordsEditorComponent', () => {
-  it('renders keyword', () => {
-    const props = {
-      isActive: false,
-      editorState: new EditorState(),
-      onChange: jest.fn(),
-      onDelete: jest.fn(),
-      onFocus: jest.fn(),
-      onBlur: jest.fn()
-    };
+  const props = {
+    isActive: false,
+    keyword: createNewKeywordState(),
+    onChange: jest.fn(),
+    onDelete: jest.fn(),
+    onFocus: jest.fn(),
+    onBlur: jest.fn()
+  };
 
-    const component = create(<Keyword {...props} />);
+  it('renders keyword', () => {
+    const component = create(<KeywordSection {...props} />);
     expect(component).toMatchSnapshot();
   });
 
   it('sets focus on dbl click', () => {
-    const props = {
-      isActive: false,
-      editorState: createNewKeywordState(),
-      onChange: jest.fn(),
-      onDelete: jest.fn(),
-      onFocus: jest.fn(),
-      onBlur: jest.fn()
-    };
-
-    const component = mount(<Keyword {...props} />);
+    const component = mount(<KeywordSection {...props} />);
     const prosemirror = component.find(ProseMirrorEditorView).get(0);
     jest.spyOn(prosemirror['ref'].current, 'focus');
 
@@ -42,16 +32,7 @@ describe('KeywordsEditorComponent', () => {
   });
 
   it('stops single clicks', () => {
-    const props = {
-      isActive: false,
-      editorState: createNewKeywordState(),
-      onChange: jest.fn(),
-      onDelete: jest.fn(),
-      onFocus: jest.fn(),
-      onBlur: jest.fn()
-    };
-
-    const component = mount(<Keyword {...props} />);
+    const component = mount(<KeywordSection {...props} />);
     const prosemirror = component.find(ProseMirrorEditorView).get(0);
 
     jest.spyOn(prosemirror['ref'].current, 'focus');
@@ -65,16 +46,7 @@ describe('KeywordsEditorComponent', () => {
   });
 
   it('should unsubscribe on unmount', () => {
-    const props = {
-      isActive: false,
-      editorState: createNewKeywordState(),
-      onChange: jest.fn(),
-      onDelete: jest.fn(),
-      onFocus: jest.fn(),
-      onBlur: jest.fn()
-    };
-
-    const component = mount(<Keyword {...props} />);
+    const component = mount(<KeywordSection {...props} />);
     const containerDiv = component.find('[data-test-id="keyword-container"]').getDOMNode();
     jest.spyOn(containerDiv, 'removeEventListener');
     component.unmount();

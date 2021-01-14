@@ -10,7 +10,7 @@ interface NewKeywordSection {
   editorState: EditorState;
   onEnter: (editorState: EditorState) => void;
   onChange: (change: Transaction) => void;
-  onFocus: () => void;
+  onFocus: (state: EditorState) => void;
 }
 
 export const NewKeywordSection: React.FC<NewKeywordSection> = ({
@@ -22,8 +22,8 @@ export const NewKeywordSection: React.FC<NewKeywordSection> = ({
 }) => {
   const options = {
     handleDOMEvents: {
-      focus: () => {
-        onFocus();
+      focus: (view: EditorView): boolean => {
+        onFocus(view.state);
         return false;
       }
     },

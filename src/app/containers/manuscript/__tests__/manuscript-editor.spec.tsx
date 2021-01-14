@@ -175,13 +175,16 @@ describe('manuscript editor', () => {
       </Provider>
     );
 
-    const change = mockEditorState.data.present.keywordGroups.group.keywords[0].tr;
+    const change = mockEditorState.data.present.keywordGroups.group.keywords[0].content.tr;
 
-    wrapper.root.findByProps({ name: 'group' }).props.onChange('group', 0, change);
+    wrapper.root
+      .findByProps({ name: 'group' })
+      .props.onChange('group', mockEditorState.data.present.keywordGroups.group.keywords[0].id, change);
+
     expect(store.dispatch).toBeCalledWith(
       updateKeywordAction({
         keywordGroup: 'group',
-        index: 0,
+        id: mockEditorState.data.present.keywordGroups.group.keywords[0].id,
         change
       })
     );
@@ -206,7 +209,7 @@ describe('manuscript editor', () => {
       </Provider>
     );
 
-    wrapper.root.findByProps({ name: 'group' }).props.onFocus('group', 0, false);
+    wrapper.root.findByProps({ name: 'group' }).props.onFocus(null, 'keywordGroups.group.keywords.0');
     expect(store.dispatch).toBeCalledWith(setFocusAction('keywordGroups.group.keywords.0'));
   });
 
@@ -252,8 +255,15 @@ describe('manuscript editor', () => {
       </Provider>
     );
 
-    wrapper.root.findByProps({ name: 'group' }).props.onDelete('group', 0);
-    expect(store.dispatch).toBeCalledWith(deleteKeywordAction({ keywordGroup: 'group', index: 0 }));
+    wrapper.root
+      .findByProps({ name: 'group' })
+      .props.onDelete('group', mockEditorState.data.present.keywordGroups.group.keywords[0]);
+    expect(store.dispatch).toBeCalledWith(
+      deleteKeywordAction({
+        keywordGroup: 'group',
+        keyword: mockEditorState.data.present.keywordGroups.group.keywords[0]
+      })
+    );
   });
 
   it('should update new keyword', () => {
@@ -269,7 +279,7 @@ describe('manuscript editor', () => {
     const store = mockStore({ manuscript: mockEditorState });
     jest.spyOn(store, 'dispatch');
 
-    const change = mockEditorState.data.present.keywordGroups.group.newKeyword.tr;
+    const change = mockEditorState.data.present.keywordGroups.group.newKeyword.content.tr;
 
     const wrapper = create(
       <Provider store={store}>

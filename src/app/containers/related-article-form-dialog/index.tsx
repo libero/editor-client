@@ -39,7 +39,7 @@ export const RelatedArticleFormDialog: React.FC<RelatedArticleFormDialogProps> =
   }, [setConfirmShow]);
 
   const handleFormChange = useCallback(
-    (event: ChangeEvent<{ name: string; value: any }>) => {
+    (event: ChangeEvent<{ name: string; value: string }>) => {
       const fieldName = event.target['name'];
       const newValue = event.target['value'];
       setUserArticle({

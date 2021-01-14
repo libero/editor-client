@@ -21,7 +21,7 @@ interface LinkedAffiliationsListProps {
   onChange: (selectedAffiliations: Affiliation[]) => void;
 }
 
-const renderAffiliationModal = (props: ReactFCProps<typeof AffiliationFormDialog>) => {
+const renderAffiliationModal = (props: ReactFCProps<typeof AffiliationFormDialog>): React.ReactNode => {
   return (
     <ModalContainer
       title={props.affiliation ? 'Edit Affiliation' : 'Add Affiliation'}

@@ -20,7 +20,7 @@ import {
 } from 'app/models/reference';
 import { stringifyEditorState } from 'app/utils/view.utils';
 
-const getAnnotatedText = (editorState: EditorState, suffix: string = '') => {
+const getAnnotatedText = (editorState: EditorState, suffix: string = ''): React.ReactNode => {
   if (editorState.doc.childCount) {
     const html = stringifyEditorState(editorState);
     return (
@@ -32,11 +32,11 @@ const getAnnotatedText = (editorState: EditorState, suffix: string = '') => {
   }
 };
 
-const formatDate = (isoDate: string) => {
+const formatDate = (isoDate: string): string => {
   return moment(isoDate).format('MMMM D, YYYY');
 };
 
-const renderDoi = (doi: string | undefined) => {
+const renderDoi = (doi: string | undefined): React.ReactNode => {
   if (doi) {
     return (
       <>
@@ -51,7 +51,7 @@ const renderDoi = (doi: string | undefined) => {
   }
 };
 
-const renderPmid = (pmid: string | undefined) => {
+const renderPmid = (pmid: string | undefined): React.ReactNode => {
   if (pmid) {
     return (
       <>
@@ -66,7 +66,7 @@ const renderPmid = (pmid: string | undefined) => {
   }
 };
 
-export const renderJournalReference = (reference: Reference) => {
+export const renderJournalReference = (reference: Reference): React.ReactNode => {
   const referenceInfo = reference.referenceInfo as JournalReference;
   const authors = getReferenceAuthors(reference);
   return (
@@ -84,7 +84,7 @@ export const renderJournalReference = (reference: Reference) => {
   );
 };
 
-export const renderBookReference = (reference: Reference) => {
+export const renderBookReference = (reference: Reference): React.ReactNode => {
   const referenceInfo = reference.referenceInfo as BookReference;
   const authors = getReferenceAuthors(reference);
   const editors = referenceInfo.editors
@@ -112,7 +112,7 @@ export const renderBookReference = (reference: Reference) => {
   );
 };
 
-export const renderConferenceReference = (reference: Reference) => {
+export const renderConferenceReference = (reference: Reference): React.ReactNode => {
   const referenceInfo = reference.referenceInfo as ConferenceReference;
   const authors = getReferenceAuthors(reference);
   return (
@@ -132,7 +132,7 @@ export const renderConferenceReference = (reference: Reference) => {
   );
 };
 
-export const renderThesisReference = (reference: Reference) => {
+export const renderThesisReference = (reference: Reference): React.ReactNode => {
   const referenceInfo = reference.referenceInfo as ThesisReference;
   const authors = getReferenceAuthors(reference);
   return (
@@ -146,7 +146,7 @@ export const renderThesisReference = (reference: Reference) => {
   );
 };
 
-export const renderSoftwareReference = (reference: Reference) => {
+export const renderSoftwareReference = (reference: Reference): React.ReactNode => {
   const referenceInfo = reference.referenceInfo as SoftwareReference;
   const authors = getReferenceAuthors(reference);
   return (
@@ -162,7 +162,7 @@ export const renderSoftwareReference = (reference: Reference) => {
   );
 };
 
-export const renderReportReference = (reference: Reference) => {
+export const renderReportReference = (reference: Reference): React.ReactNode => {
   const referenceInfo = reference.referenceInfo as ReportReference;
   const authors = getReferenceAuthors(reference);
   return (
@@ -179,7 +179,7 @@ export const renderReportReference = (reference: Reference) => {
   );
 };
 
-export const renderPeriodicalReference = (reference: Reference) => {
+export const renderPeriodicalReference = (reference: Reference): React.ReactNode => {
   const referenceInfo = reference.referenceInfo as PeriodicalReference;
   const authors = getReferenceAuthors(reference);
   return (
@@ -195,7 +195,7 @@ export const renderPeriodicalReference = (reference: Reference) => {
   );
 };
 
-export const renderPatentReference = (reference: Reference) => {
+export const renderPatentReference = (reference: Reference): React.ReactNode => {
   const referenceInfo = reference.referenceInfo as PatentReference;
   const authors = getReferenceAuthors(reference);
   return (
@@ -210,7 +210,7 @@ export const renderPatentReference = (reference: Reference) => {
   );
 };
 
-export const renderWebReference = (reference: Reference) => {
+export const renderWebReference = (reference: Reference): React.ReactNode => {
   const referenceInfo = reference.referenceInfo as WebReference;
   const authors = getReferenceAuthors(reference);
   const formattedDate = referenceInfo.dateInCitation ? formatDate(referenceInfo.dateInCitation) : undefined;
@@ -224,7 +224,7 @@ export const renderWebReference = (reference: Reference) => {
   );
 };
 
-export const renderPreprintReference = (reference: Reference) => {
+export const renderPreprintReference = (reference: Reference): React.ReactNode => {
   const referenceInfo = reference.referenceInfo as PrePrintReference;
   const authors = getReferenceAuthors(reference);
   return (
@@ -238,7 +238,7 @@ export const renderPreprintReference = (reference: Reference) => {
   );
 };
 
-export const renderDataReference = (reference: Reference) => {
+export const renderDataReference = (reference: Reference): React.ReactNode => {
   const referenceInfo = reference.referenceInfo as DataReference;
   const specificUse = {
     generated: 'Generated',
@@ -257,7 +257,7 @@ export const renderDataReference = (reference: Reference) => {
   );
 };
 
-const getReferenceAuthors = (reference: Reference) => {
+const getReferenceAuthors = (reference: Reference): string => {
   return reference.authors
     .map((author) => {
       return get(author, 'groupName', `${author['lastName']} ${author['firstName']}`);
@@ -265,7 +265,7 @@ const getReferenceAuthors = (reference: Reference) => {
     .join(', ');
 };
 
-const getExtLinkTag = (url: string) => {
+const getExtLinkTag = (url: string): React.ReactNode => {
   return (
     <>
       {' '}

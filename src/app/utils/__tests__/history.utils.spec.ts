@@ -2,6 +2,7 @@ import { getInitialHistory, ManuscriptHistory } from 'app/utils/state.utils';
 import { redoChange, undoChange, updateManuscriptState } from 'app/utils/history.utils';
 import { Manuscript } from 'app/types/manuscript';
 import { EditorState, Transaction } from 'prosemirror-state';
+import { ProsemirrorChange } from 'app/utils/history/prosemirror-change';
 
 describe('history utils', () => {
   it('updates manuscript state', () => {
@@ -10,7 +11,7 @@ describe('history utils', () => {
     const tx = { ...editorState.tr, docChanged: true } as Transaction;
 
     const newState = updateManuscriptState(initialHistory, 'title', tx);
-    expect(newState.past).toContainEqual({ title: tx, _timestamp: expect.any(Number) });
+    expect(newState.past[0]).toEqual(expect.any(ProsemirrorChange));
     expect(newState.present).not.toBe(initialHistory.present);
     expect(newState.present.title).not.toBe(editorState);
     expect(newState.future).toEqual([]);
@@ -34,25 +35,25 @@ describe('history utils', () => {
     const state = getInitialHistory({ title: editorState } as Manuscript) as ManuscriptHistory;
     const tx = editorState.tr;
     Object.defineProperty(tx, 'docChanged', { value: true });
-    state.past = [{ title: tx, _timestamp: expect.any(Number) }];
+    state.past = [new ProsemirrorChange('title', tx)];
 
     const revertedState = undoChange(state);
 
     expect(revertedState.past).toEqual([]);
     expect(revertedState.present).not.toBe(state.present);
     expect(revertedState.present.title).not.toBe(editorState);
-    expect(revertedState.future).toEqual([{ title: tx, _timestamp: expect.any(Number) }]);
+    expect(revertedState.future).toEqual([state.past[0]]);
   });
 
   it('roll on changes', () => {
     const editorState = mockEditorState();
     const state = getInitialHistory({ title: editorState } as Manuscript) as ManuscriptHistory;
     const tx = editorState.tr;
-    state.future = [{ title: tx, _timestamp: 0 }];
+    state.future = [new ProsemirrorChange('title', tx)];
 
     const rolledOnState = redoChange(state);
 
-    expect(rolledOnState.past).toEqual([{ title: tx, _timestamp: expect.any(Number) }]);
+    expect(rolledOnState.past).toEqual([state.future[0]]);
     expect(rolledOnState.present).not.toBe(state.present);
     expect(rolledOnState.present.title).not.toBe(editorState);
     expect(rolledOnState.future).toEqual([]);

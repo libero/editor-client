@@ -11,17 +11,6 @@ jest.mock('@material-ui/core', () => ({
   IconButton: () => <div data-cmp="IconButton"></div>
 }));
 
-const RELATED_ARTICLES = [
-  {
-    articleType: 'commentary-article',
-    href: '10.7554/eLife.42697'
-  },
-  {
-    articleType: 'commentary-article',
-    href: '10.7554/eLife.00067'
-  }
-];
-
 describe('Related articles info', () => {
   const mockStore = configureMockStore([]);
 

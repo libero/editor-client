@@ -3,7 +3,6 @@ import configureMockStore from 'redux-mock-store';
 import { create } from 'react-test-renderer';
 import { Provider } from 'react-redux';
 
-import { ReferenceFormDialog } from 'app/containers/reference-form-dialog/reference-form-dialog';
 import { givenState } from 'app/test-utils/reducer-test-helpers';
 import { ReferenceType } from 'app/models/reference';
 import { mount } from 'enzyme';

@@ -12,7 +12,7 @@ configure({
   }
 });
 
-const withMod = (shortcut: string) => {
+const withMod = (shortcut: string): string => {
   const mod = isMacOs ? 'cmd' : 'ctrl';
   return `${mod}+${shortcut}`;
 };

@@ -1,7 +1,7 @@
 import { createAction } from 'redux-act';
-import { EditorState, Transaction } from 'prosemirror-state';
+import { Transaction } from 'prosemirror-state';
 
-import { Manuscript } from 'app/types/manuscript';
+import { Keyword, Manuscript } from 'app/types/manuscript';
 import { createAsyncAction } from 'app/utils/action.utils';
 import { Person } from 'app/models/person';
 import { Affiliation } from 'app/models/affiliation';
@@ -12,7 +12,7 @@ import { ListType } from 'app/types/utility.types';
 
 export interface KeywordUpdatePayload {
   keywordGroup: string;
-  index: number;
+  id: string;
   change: Transaction;
 }
 
@@ -23,12 +23,12 @@ export interface NewKeywordUpdatePayload {
 
 export interface KeywordAddPayload {
   keywordGroup: string;
-  keyword: EditorState;
+  keyword: Keyword;
 }
 
 export interface KeywordDeletePayload {
   keywordGroup: string;
-  index: number;
+  keyword: Keyword;
 }
 
 export interface MoveAuthorPayload {
