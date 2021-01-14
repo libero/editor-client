@@ -9,7 +9,6 @@ import {
 import { ManuscriptHistoryState } from 'app/store';
 import { updateManuscriptState } from 'app/utils/history.utils';
 import { AddObjectChange } from 'app/utils/history/add-object-change';
-import { TextSelection } from 'prosemirror-state';
 import { ProsemirrorChange } from 'app/utils/history/prosemirror-change';
 import { UpdateObjectChange } from 'app/utils/history/update-object-change';
 import { BatchChange } from 'app/utils/history/change';
@@ -40,14 +39,7 @@ export function addKeyword(state: ManuscriptHistoryState, payload: KeywordAddPay
   });
 
   const clearKeywordTransaction = newKeywordSection.content.tr;
-  clearKeywordTransaction
-    .setSelection(
-      new TextSelection(
-        newKeywordSection.content.doc.resolve(0),
-        newKeywordSection.content.doc.resolve(newKeywordSection.content.doc.content.size)
-      )
-    )
-    .deleteSelection();
+  clearKeywordTransaction.insertText('', 0, newKeywordSection.content.doc.content.size);
 
   const clearNewKeywordChange = new ProsemirrorChange(
     `keywordGroups.${keywordGroup}.newKeyword.content`,

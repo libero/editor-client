@@ -1,5 +1,5 @@
 import * as deepDiff from 'deep-diff';
-import { cloneDeep, cloneDeepWith, get, set } from 'lodash';
+import { cloneDeepWith, get, set } from 'lodash';
 import { EditorState } from 'prosemirror-state';
 
 import { Manuscript } from 'app/types/manuscript';
@@ -20,7 +20,6 @@ export class UpdateObjectChange<T> extends Change {
 
   applyChange(manuscript: Manuscript): Manuscript {
     const originalSection = get(manuscript, this.path);
-
     const updatedSection = this.differences.reduce((acc: T, diff) => {
       const newAcc = this.cloneWithoutEditorState(acc);
       deepDiff.applyChange(newAcc, acc, diff);
@@ -35,7 +34,7 @@ export class UpdateObjectChange<T> extends Change {
     const originalSection = get(manuscript, this.path);
 
     const updatedSection = this.differences.reduce((acc: T, diff) => {
-      const newAcc = cloneDeep(acc);
+      const newAcc = this.cloneWithoutEditorState(acc);
       deepDiff.revertChange(newAcc, acc, diff);
       return newAcc;
     }, originalSection);
