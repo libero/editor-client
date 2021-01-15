@@ -119,7 +119,7 @@ export const renderConferenceReference = (reference: Reference): React.ReactNode
     <>
       {authors}. {referenceInfo.year}. {getAnnotatedText(referenceInfo.articleTitle, '. ')}
       <strong>{referenceInfo.volume ? ` ${referenceInfo.volume}:` : undefined}</strong>
-      {referenceInfo.conferenceName ? [getAnnotatedText(referenceInfo.conferenceName, '.')] : undefined}
+      {referenceInfo.conferenceName ? getAnnotatedText(referenceInfo.conferenceName, '.') : undefined}
       {referenceInfo.conferenceLocation ? ` ${referenceInfo.conferenceLocation}` : undefined}
       {referenceInfo.firstPage && referenceInfo.lastPage
         ? ` p. ${referenceInfo.firstPage}-${referenceInfo.lastPage}.`

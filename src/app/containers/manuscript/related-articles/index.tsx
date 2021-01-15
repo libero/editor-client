@@ -45,7 +45,7 @@ export const RelatedArticles: React.FC<ComponentWithId> = ({ id }) => {
       <SectionContainer label="Related articles" id={id}>
         <ul className={classes.list}>
           {relatedArticles.map((relatedArticle) => (
-            <li>
+            <li key={relatedArticle.id}>
               <div className={classes.listItem}>
                 <div className={classes.info}>
                   doi:{' '}

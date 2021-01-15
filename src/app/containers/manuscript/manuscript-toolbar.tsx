@@ -120,26 +120,37 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
           <MenuIcon />
         </IconButton>
         <ToggleButtonGroup classes={{ grouped: classes.toolButtonsGroup }}>
-          <ToggleButton disabled={true}>
+          <ToggleButton disabled={true} value={true}>
             <SaveAltIcon />
           </ToggleButton>
-          <ToggleButton disabled={!canUndo} onClick={invokeUndo} selected={false}>
+          <ToggleButton disabled={!canUndo} onClick={invokeUndo} selected={false} value={true}>
             <UndoIcon />
           </ToggleButton>
-          <ToggleButton disabled={!canRedo} onClick={invokeRedo} selected={false}>
+          <ToggleButton disabled={!canRedo} onClick={invokeRedo} selected={false} value={true}>
             <RedoIcon />
           </ToggleButton>
-          <ToggleButton disabled={!canApply('bold')} selected={isApplied('bold')} onClick={invokeToggleMark('bold')}>
+          <ToggleButton
+            disabled={!canApply('bold')}
+            value={true}
+            selected={isApplied('bold')}
+            onClick={invokeToggleMark('bold')}
+          >
             <FormatBoldIcon />
           </ToggleButton>
           <ToggleButton
+            value={true}
             disabled={!canApply('italic')}
             selected={isApplied('italic')}
             onClick={invokeToggleMark('italic')}
           >
             <FormatItalicIcon />
           </ToggleButton>
-          <ToggleButton disabled={!canApply('link')} selected={isApplied('link')} onClick={invokeToggleMark('link')}>
+          <ToggleButton
+            value={true}
+            disabled={!canApply('link')}
+            selected={isApplied('link')}
+            onClick={invokeToggleMark('link')}
+          >
             <LinkIcon />
           </ToggleButton>
         </ToggleButtonGroup>

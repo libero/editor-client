@@ -57,7 +57,7 @@ export class BoxTextNodeView implements NodeView {
   }
 
   destroy(): void {
-    this.dom.addEventListener('drop', this.handleDrop, true);
+    this.dom.removeEventListener('drop', this.handleDrop, true);
   }
 
   ignoreMutation(): boolean {

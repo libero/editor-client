@@ -11,10 +11,10 @@ jest.mock('prosemirror-view');
 jest.mock('app/components/box-text/box-text-editor', () => ({
   BoxTextEditor: class BoxTextEditorClass extends jest.requireActual('react').Component {
     static updateContentSpy = jest.fn();
-    updateContent(...args) {
+    updateContent(...args): void {
       BoxTextEditorClass.updateContentSpy(...args);
     }
-    render() {
+    render(): React.ReactNode {
       return <div data-cmp="BoxTextEditor" />;
     }
   }
@@ -94,6 +94,41 @@ describe('BoxText node view', () => {
     view.state = createBodyState(document.createElement('body'), '');
     const nodeView = new BoxTextNodeView(figureNode, view, jest.fn().mockReturnValue(0));
     expect(nodeView.ignoreMutation()).toBeTruthy();
+  });
+
+  it('should stop and prevent drop event', () => {
+    const figureNode = givenBoxTextNode();
+    const view = new EditorView(null, {
+      state: null,
+      dispatchTransaction: jest.fn()
+    });
+
+    view.state = createBodyState(document.createElement('body'), '');
+    const nodeView = new BoxTextNodeView(figureNode, view, jest.fn().mockReturnValue(0));
+    const evt = new Event('drop');
+    jest.spyOn(evt, 'stopPropagation');
+    jest.spyOn(evt, 'preventDefault');
+    nodeView.dom.dispatchEvent(evt);
+    expect(evt.stopPropagation).toBeCalled();
+    expect(evt.preventDefault).toBeCalled();
+  });
+
+  it('should detach drop event listener when destroyed', () => {
+    const figureNode = givenBoxTextNode();
+    const view = new EditorView(null, {
+      state: null,
+      dispatchTransaction: jest.fn()
+    });
+
+    view.state = createBodyState(document.createElement('body'), '');
+    const nodeView = new BoxTextNodeView(figureNode, view, jest.fn().mockReturnValue(0));
+    const evt = new Event('drop');
+    jest.spyOn(evt, 'stopPropagation');
+    jest.spyOn(evt, 'preventDefault');
+    nodeView.destroy();
+    nodeView.dom.dispatchEvent(evt);
+    expect(evt.stopPropagation).not.toBeCalled();
+    expect(evt.preventDefault).not.toBeCalled();
   });
 });
 
