@@ -1,9 +1,11 @@
 import { Manuscript } from 'app/types/manuscript';
+import { JSONObject } from 'app/types/utility.types';
 
 export abstract class Change {
   abstract applyChange(manuscript: Manuscript): Manuscript;
   abstract rollbackChange(manuscript: Manuscript): Manuscript;
   abstract get isEmpty(): boolean;
+  abstract toJSON(): JSONObject;
 
   private _timestamp: number;
   constructor() {
@@ -36,5 +38,13 @@ export class BatchChange extends Change {
     return this.changes.reduceRight((acc: Manuscript, change: Change) => {
       return change.rollbackChange(acc);
     }, manuscript);
+  }
+
+  toJSON(): JSONObject {
+    return {
+      type: 'batch',
+      changes: this.changes.map((change) => change.toJSON()),
+      timestamp: this.timestamp
+    };
   }
 }

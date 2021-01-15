@@ -5,6 +5,8 @@ import { EditorState } from 'prosemirror-state';
 import { Manuscript } from 'app/types/manuscript';
 import { Change } from 'app/utils/history/change';
 import { cloneManuscript } from 'app/utils/state.utils';
+import { JSONObject } from 'app/types/utility.types';
+import { manuscriptEntityToJson } from 'app/utils/changes.utils';
 
 export class UpdateObjectChange<T> extends Change {
   private differences: deepDiff.Diff<T, T>[];
@@ -40,6 +42,15 @@ export class UpdateObjectChange<T> extends Change {
     }, originalSection);
 
     return set(cloneManuscript(manuscript), this.path, updatedSection);
+  }
+
+  toJSON(): JSONObject {
+    return {
+      type: 'update-object',
+      timestamp: this.timestamp,
+      path: this.path,
+      differences: manuscriptEntityToJson(this.differences)
+    };
   }
 
   private cloneWithoutEditorState(object: T): T {

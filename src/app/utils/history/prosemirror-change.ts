@@ -4,6 +4,7 @@ import { get, set } from 'lodash';
 import { Manuscript } from 'app/types/manuscript';
 import { Change } from 'app/utils/history/change';
 import { cloneManuscript } from 'app/utils/state.utils';
+import { JSONObject } from 'app/types/utility.types';
 
 export class ProsemirrorChange extends Change {
   constructor(private path: string, private transaction: Transaction) {
@@ -29,5 +30,14 @@ export class ProsemirrorChange extends Change {
     invertedSteps.reverse().forEach((step) => rollbackTransaction.maybeStep(step));
 
     return set(cloneManuscript(manuscript), this.path, editorState.apply(rollbackTransaction));
+  }
+
+  toJSON(): JSONObject {
+    return {
+      type: 'prosemirror',
+      timestamp: this.timestamp,
+      path: this.path,
+      transactionSteps: this.transaction.steps.map((step) => step.toJSON())
+    };
   }
 }

@@ -23,4 +23,22 @@ describe('ProsemirrorChange', () => {
 
     expect(prosemirrorChange.isEmpty).toBeTruthy();
   });
+
+  it('should serialize to JSON', () => {
+    const change = new ProsemirrorChange('body', manuscript.body.tr.insertText('test content'));
+
+    expect(change.toJSON()).toEqual({
+      path: 'body',
+      timestamp: expect.any(Number),
+      type: 'prosemirror',
+      transactionSteps: [
+        {
+          from: 0,
+          slice: { content: [{ type: 'text', text: 'test content' }] },
+          stepType: 'replace',
+          to: 0
+        }
+      ]
+    });
+  });
 });
