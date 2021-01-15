@@ -53,7 +53,12 @@ export const PromptDialog: React.FC<PromptDialogProps> = (props) => {
   );
 };
 
-export const renderConfirmDialog = (title: string, msg: string, onAccept: () => void, onReject: () => void) => {
+export const renderConfirmDialog = (
+  title: string,
+  msg: string,
+  onAccept: () => void,
+  onReject: () => void
+): React.ReactNode => {
   return (
     <PromptDialog
       title={title}

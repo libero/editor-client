@@ -5,7 +5,7 @@ import { mount } from 'enzyme';
 import { TextField, Popover } from '@material-ui/core';
 
 import { createBioEditorState } from 'app/models/person';
-import { LinkEditorPopup } from 'app/components/link-editor-popup/index';
+import { LinkEditorPopup } from 'app/components/link-editor-popup/link-editor-popup';
 import { ActionButton } from 'app/components/action-button';
 
 jest.mock('@material-ui/core', () => ({

@@ -14,7 +14,7 @@ import { ToggleButton } from '@material-ui/lab';
 import { ThemeProvider } from '@material-ui/core/styles';
 
 import { SubscriptIcon, SuperscriptIcon } from 'app/assets/icons';
-import { LinkEditorPopup } from 'app/components/link-editor-popup';
+import { LinkEditorPopup } from 'app/components/link-editor-popup/link-editor-popup';
 import { theme } from 'app/styles/theme';
 
 const applyMark = (markName: string, editorState: EditorState, editorView: EditorView): void => {
