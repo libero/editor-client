@@ -2,26 +2,29 @@
   "changes": [
     {
       "_id": "000000",
+      "applied": false,
       "articleId": "00104",
-      "steps": [
+      "path": "abstract",
+      "path": "body",
+      "timestamp": 1610979099826,
+      "transactionSteps": [
         {
           "stepType": "replace",
-          "from": 2,
-          "to": 2,
+          "from": 354,
+          "to": 354,
           "slice": {
             "content": [
               {
                 "type": "text",
-                "text": "A change"
+                "text": "This text is sent from the server"
               }
             ]
           }
         }
       ],
-      "applied": false,
-      "user": "undefined",
-      "path": "abstract",
-      "timestamp": 1605198300275
+      "type": "prosemirror",
+      "user": "undefined"
     }
   ]
 }
+

@@ -7,44 +7,12 @@ export abstract class Change {
   abstract get isEmpty(): boolean;
   abstract toJSON(): JSONObject;
 
-  private _timestamp: number;
+  protected _timestamp: number;
   constructor() {
     this._timestamp = Date.now();
   }
 
   get timestamp(): number {
     return this._timestamp;
-  }
-}
-
-export class BatchChange extends Change {
-  private changes: Change[];
-  constructor(changes: Change[] = []) {
-    super();
-    this.changes = changes.filter((change) => !change.isEmpty);
-  }
-
-  get isEmpty(): boolean {
-    return !Array.isArray(this.changes) || this.changes.length === 0;
-  }
-
-  applyChange(manuscript: Manuscript): Manuscript {
-    return this.changes.reduce((acc: Manuscript, change: Change) => {
-      return change.applyChange(acc);
-    }, manuscript);
-  }
-
-  rollbackChange(manuscript: Manuscript): Manuscript {
-    return this.changes.reduceRight((acc: Manuscript, change: Change) => {
-      return change.rollbackChange(acc);
-    }, manuscript);
-  }
-
-  toJSON(): JSONObject {
-    return {
-      type: 'batch',
-      changes: this.changes.map((change) => change.toJSON()),
-      timestamp: this.timestamp
-    };
   }
 }

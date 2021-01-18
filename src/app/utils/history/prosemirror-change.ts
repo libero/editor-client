@@ -1,5 +1,6 @@
 import { Transaction } from 'prosemirror-state';
 import { get, set } from 'lodash';
+import { Step } from 'prosemirror-transform';
 
 import { Manuscript } from 'app/types/manuscript';
 import { Change } from 'app/utils/history/change';
@@ -7,6 +8,17 @@ import { cloneManuscript } from 'app/utils/state.utils';
 import { JSONObject } from 'app/types/utility.types';
 
 export class ProsemirrorChange extends Change {
+  public static fromJSON(manuscript: Manuscript, data: JSONObject): ProsemirrorChange {
+    const editorState = get(manuscript, data.path as string);
+    const transaction = editorState.tr;
+    (data.transactionSteps as JSONObject[]).forEach((stepJson) => {
+      transaction.maybeStep(Step.fromJSON(editorState.schema, stepJson));
+    });
+    const change = new ProsemirrorChange(data.path as string, transaction);
+    change._timestamp = data.timestamp as number;
+    return change;
+  }
+
   constructor(private path: string, private transaction: Transaction) {
     super();
   }

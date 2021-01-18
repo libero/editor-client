@@ -1,8 +1,11 @@
 import { cloneDeepWith } from 'lodash';
 import { EditorState } from 'prosemirror-state';
-import { Step } from 'prosemirror-transform';
-import { ManuscriptChangeJSON } from 'app/types/changes.types';
 import { JSONObject } from 'app/types/utility.types';
+import { Manuscript } from 'app/types/manuscript';
+import { Change } from 'app/utils/history/change';
+import { BatchChange } from 'app/utils/history/batch-change';
+import { ProsemirrorChange } from 'app/utils/history/prosemirror-change';
+import { RearrangingChange } from 'app/utils/history/rearranging-change';
 
 export function manuscriptEntityToJson<T>(object: T): JSONObject {
   return cloneDeepWith(object, (value) => {
@@ -12,19 +15,27 @@ export function manuscriptEntityToJson<T>(object: T): JSONObject {
   });
 }
 
-export function applyServerChangesToEditorState(editorState: EditorState, change: ManuscriptChangeJSON): EditorState {
-  if (change.type !== 'steps') {
-    throw new TypeError('Invalid manuscript change type provided. Cannot make a transaction from an "object" change');
-  }
-  const transaction = editorState.tr;
-  change.steps.forEach((stepJson) => {
-    transaction.maybeStep(Step.fromJSON(editorState.schema, stepJson));
+export function deserializeChanges(manuscript: Manuscript, changesJson: JSONObject[]): Change[] {
+  return changesJson.map((changeData) => {
+    switch (changeData.type) {
+      case 'prosemirror':
+        return ProsemirrorChange.fromJSON(manuscript, changeData);
+
+      case 'rearranging':
+        return RearrangingChange.fromJSON(manuscript, changeData);
+
+      case 'batch':
+        return BatchChange.fromJSON(manuscript, changeData);
+
+      default:
+        throw new TypeError(
+          `Cannot deserialize ${changeData.type} change. Change type invalid, JSON object malformed or handling not supported.`
+        );
+    }
   });
-  return editorState.apply(transaction);
 }
 
-export function applyEditorStateChanges(titleState: EditorState, changes: Array<ManuscriptChangeJSON>): EditorState {
-  return changes.reduce((accState: EditorState, changeJson: ManuscriptChangeJSON) => {
-    return applyServerChangesToEditorState(accState, changeJson);
-  }, titleState);
+export function applyChangesFromServer(manuscript: Manuscript, changesJson: JSONObject[]): Manuscript {
+  const allChanges = new BatchChange(deserializeChanges(manuscript, changesJson));
+  return allChanges.applyChange(manuscript);
 }

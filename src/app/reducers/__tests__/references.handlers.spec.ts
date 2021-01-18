@@ -4,7 +4,7 @@ import { cloneDeep } from 'lodash';
 import { givenState } from 'app/test-utils/reducer-test-helpers';
 import { Reference } from 'app/models/reference';
 import { addReference, deleteReference, updateReference } from 'app/reducers/references.handlers';
-import { BatchChange } from 'app/utils/history/change';
+import { BatchChange } from 'app/utils/history/batch-change';
 import { createBodyState } from 'app/models/body';
 
 const REFERENCE: Reference = {

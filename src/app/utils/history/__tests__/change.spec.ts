@@ -1,5 +1,5 @@
 import { givenState } from 'app/test-utils/reducer-test-helpers';
-import { BatchChange } from 'app/utils/history/change';
+import { BatchChange } from 'app/utils/history/batch-change';
 import { ProsemirrorChange } from 'app/utils/history/prosemirror-change';
 
 describe('BatchChange', () => {

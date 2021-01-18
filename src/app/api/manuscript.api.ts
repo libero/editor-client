@@ -7,7 +7,6 @@ import { createAffiliationsState } from 'app/models/affiliation';
 import { getTextContentFromPath } from 'app/models/utils';
 import { createRelatedArticleState } from 'app/models/related-article';
 import { createArticleInfoState } from 'app/models/article-information';
-import { ManuscriptChangesResponse } from 'app/types/changes.types';
 import { createKeywordGroupsState } from 'app/models/keyword';
 import { createReferencesState } from 'app/models/reference';
 import { createAbstractState, createImpactStatementState } from 'app/models/abstract';
@@ -15,11 +14,17 @@ import { createBodyState } from 'app/models/body';
 import { createAcknowledgementsState } from 'app/models/acknowledgements';
 import { Change } from 'app/utils/history/change';
 
+import { JSONObject } from 'app/types/utility.types';
+
+export interface ManuscriptChangesResponse {
+  changes: Array<JSONObject>;
+}
+
 const manuscriptUrl = (id: string): string => {
   // TODO
   // Enable the below once the the article-store is working again!
   // return process.env.REACT_APP_NO_SERVER ? `./manuscripts/${id}/manuscript.xml` : `/api/v1/articles/${id}`
-  return `./manuscripts/${id}/manuscript.xml`;
+  return `/api/v1/articles/${id}`;
 };
 
 export async function getManuscriptContent(id: string): Promise<Manuscript> {
@@ -64,7 +69,7 @@ export function syncChanges(id: string, changes: Change[]): Promise<void> {
   return axios.post(manuscriptUrl(id) + '/changes', { changes });
 }
 
-export async function getManuscriptChanges(id: string): Promise<ManuscriptChangesResponse['changes']> {
+export async function getManuscriptChanges(id: string): Promise<JSONObject[]> {
   const manuscriptChangesResponse = await axios.get<ManuscriptChangesResponse>(manuscriptUrl(id) + '/changes');
   return manuscriptChangesResponse.data.changes;
 }

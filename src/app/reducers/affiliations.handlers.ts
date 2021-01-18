@@ -3,7 +3,7 @@ import { Person } from 'app/models/person';
 import { ManuscriptHistoryState } from 'app/store';
 import { LinkAffiliationsPayload } from 'app/actions/manuscript.actions';
 import { UpdateObjectChange } from 'app/utils/history/update-object-change';
-import { BatchChange } from 'app/utils/history/change';
+import { BatchChange } from 'app/utils/history/batch-change';
 import { RearrangingChange } from 'app/utils/history/rearranging-change';
 import { DeleteObjectChange } from 'app/utils/history/delete-object-change';
 import { AddObjectChange } from 'app/utils/history/add-object-change';

@@ -5,10 +5,10 @@ import { Change } from 'app/utils/history/change';
 import { cloneManuscript } from 'app/utils/state.utils';
 import { JSONObject } from 'app/types/utility.types';
 
-export class RearrangingChange<T> extends Change {
-  public static createFromListRearrange<T>(path: string, oldOrder: Array<T>, newOrder: Array<T>): RearrangingChange<T> {
+export class RearrangingChange extends Change {
+  public static createFromListRearrange<T>(path: string, oldOrder: Array<T>, newOrder: Array<T>): RearrangingChange {
     const order = newOrder.map((item) => oldOrder.indexOf(item));
-    return new RearrangingChange<T>(path, order);
+    return new RearrangingChange(path, order);
   }
 
   public static createFromItemMoved<T>(
@@ -16,11 +16,17 @@ export class RearrangingChange<T> extends Change {
     oldIndex: number,
     newIndex: number,
     collection: Array<T>
-  ): RearrangingChange<T> {
+  ): RearrangingChange {
     const order = new Array(collection.length).fill(undefined).map((_, index) => index);
     order.splice(oldIndex, 1);
     order.splice(newIndex, 0, oldIndex);
-    return new RearrangingChange<T>(path, order);
+    return new RearrangingChange(path, order);
+  }
+
+  public static fromJSON<T>(manuscript: Manuscript, data: JSONObject): RearrangingChange {
+    const change = new RearrangingChange(data.path as string, data.order as Array<number>);
+    change._timestamp = data.timestamp as number;
+    return change;
   }
 
   private constructor(private path: string, private order: number[]) {
@@ -49,7 +55,7 @@ export class RearrangingChange<T> extends Change {
     };
   }
 
-  private applyOrder(collection: Array<T>, order: number[]): Array<T> {
+  private applyOrder<T>(collection: Array<T>, order: number[]): Array<T> {
     return order.map((index) => collection[index]);
   }
 

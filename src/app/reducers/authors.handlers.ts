@@ -2,7 +2,7 @@ import { Person } from 'app/models/person';
 import { ManuscriptHistoryState } from 'app/store';
 import { MoveAuthorPayload } from 'app/actions/manuscript.actions';
 import { RearrangingChange } from 'app/utils/history/rearranging-change';
-import { BatchChange } from 'app/utils/history/change';
+import { BatchChange } from 'app/utils/history/batch-change';
 import { getReorderedAffiliations } from 'app/reducers/affiliations.handlers';
 import { UpdateObjectChange } from 'app/utils/history/update-object-change';
 import { AddObjectChange } from 'app/utils/history/add-object-change';
