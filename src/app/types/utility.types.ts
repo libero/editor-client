@@ -9,3 +9,9 @@ export type ComponentWithId<T = {}> = {
 } & { id?: string };
 
 export type ListType = 'order' | 'bullet';
+
+type Primitives = number | string | boolean | null | undefined;
+
+export type JSONObject = {
+  [k: string]: Primitives | JSONObject | Array<Primitives | JSONObject>;
+};

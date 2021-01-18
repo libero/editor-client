@@ -41,4 +41,24 @@ describe('UpdateObjectChange', () => {
     const change = new UpdateObjectChange('affiliations.0', affiliation, updatedAff);
     expect(change.isEmpty).toBeTruthy();
   });
+
+  it('should serialize to JSON', () => {
+    const updatedAff = cloneDeep(affiliation);
+    updatedAff.label = 'eLife Sciences';
+    const change = new UpdateObjectChange('affiliations.0', affiliation, updatedAff);
+
+    expect(change.toJSON()).toEqual({
+      path: 'affiliations.0',
+      timestamp: expect.any(Number),
+      type: 'update-object',
+      differences: [
+        {
+          kind: 'E',
+          lhs: 'elife',
+          path: ['label'],
+          rhs: 'eLife Sciences'
+        }
+      ]
+    });
+  });
 });

@@ -58,9 +58,3 @@ export type ManuscriptDiffValues = Manuscript extends Record<string, infer T>
     ? V | Array<V>
     : T
   : never;
-
-export type ManuscriptDiff = {
-  [path: string]: ManuscriptDiffValues;
-} & {
-  _timestamp: number;
-};

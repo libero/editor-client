@@ -3,10 +3,10 @@ import { eventChannel } from 'redux-saga';
 
 import * as manuscriptActions from 'app/actions/manuscript.actions';
 import { getLastSyncTimestamp, getManuscriptId } from 'app/selectors/manuscript-editor.selectors';
-import { getChangesMadeBetween, getManuscriptData } from 'app/selectors/manuscript.selectors';
-import { ManuscriptDiff } from 'app/types/manuscript';
+import { getChangesMadeBetween } from 'app/selectors/manuscript.selectors';
 import { setLastSyncTimestamp } from 'app/actions/manuscript-editor.actions';
 import { syncChanges } from 'app/api/manuscript.api';
+import { Change } from 'app/utils/history/change';
 
 const SYNC_INTERVAL = 2000;
 
@@ -26,12 +26,11 @@ export function* watchChangesSaga() {
     const now = Date.now();
     const lastSyncTimeStamp = yield select(getLastSyncTimestamp);
     const changesSelector = yield select(getChangesMadeBetween);
-    const changes: ManuscriptDiff[] = changesSelector(lastSyncTimeStamp, now);
+    const changes: Change[] = changesSelector(lastSyncTimeStamp, now);
     if (changes.length > 0) {
       const manuscriptId = yield select(getManuscriptId);
       try {
-        const manuscriptData = yield select(getManuscriptData);
-        yield call(syncChanges, manuscriptId, changes, manuscriptData.present);
+        yield call(syncChanges, manuscriptId, changes);
         yield put(setLastSyncTimestamp(now));
       } catch (e) {}
     }

@@ -54,4 +54,16 @@ describe('RearrangingChange', () => {
     const change = RearrangingChange.createFromItemMoved(path, 2, 2, get(manuscript, path));
     expect(change.isEmpty).toBeTruthy();
   });
+
+  it('should serialize to JSON', () => {
+    const path = 'keywordGroups.kwdGroup.keywords';
+    const change = RearrangingChange.createFromItemMoved(path, 2, 0, get(manuscript, path));
+
+    expect(change.toJSON()).toEqual({
+      path: 'keywordGroups.kwdGroup.keywords',
+      timestamp: expect.any(Number),
+      type: 'rearranging',
+      order: [2, 0, 1]
+    });
+  });
 });

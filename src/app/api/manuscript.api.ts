@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { Manuscript, ManuscriptDiff } from 'app/types/manuscript';
+import { Manuscript } from 'app/types/manuscript';
 import { createTitleState } from 'app/models/title';
 import { createAuthorsState } from 'app/models/person';
 import { createAffiliationsState } from 'app/models/affiliation';
@@ -8,12 +8,12 @@ import { getTextContentFromPath } from 'app/models/utils';
 import { createRelatedArticleState } from 'app/models/related-article';
 import { createArticleInfoState } from 'app/models/article-information';
 import { ManuscriptChangesResponse } from 'app/types/changes.types';
-import { compressChanges, fixNonIncrementalChanges, reduceHistory } from 'app/utils/changes.utils';
 import { createKeywordGroupsState } from 'app/models/keyword';
 import { createReferencesState } from 'app/models/reference';
 import { createAbstractState, createImpactStatementState } from 'app/models/abstract';
 import { createBodyState } from 'app/models/body';
 import { createAcknowledgementsState } from 'app/models/acknowledgements';
+import { Change } from 'app/utils/history/change';
 
 const manuscriptUrl = (id: string): string => {
   // TODO
@@ -60,10 +60,8 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
   } as Manuscript;
 }
 
-export function syncChanges(id: string, changes: ManuscriptDiff[], present: Manuscript): Promise<void> {
-  const backendTranscations = fixNonIncrementalChanges(reduceHistory(changes), present);
-  compressChanges(backendTranscations);
-  return axios.post(manuscriptUrl(id) + '/changes', { changes: backendTranscations });
+export function syncChanges(id: string, changes: Change[]): Promise<void> {
+  return axios.post(manuscriptUrl(id) + '/changes', { changes });
 }
 
 export async function getManuscriptChanges(id: string): Promise<ManuscriptChangesResponse['changes']> {

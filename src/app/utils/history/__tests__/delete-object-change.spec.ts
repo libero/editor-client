@@ -36,4 +36,23 @@ describe('DeleteObjectChange', () => {
     const change = new DeleteObjectChange('', {}, 'id');
     expect(change.isEmpty).toBeFalsy();
   });
+
+  it('should serialize to JSON', () => {
+    const path = 'keywordGroups.kwdGroup.keywords';
+    const deletedObject = get(manuscript, path)[1];
+    const change = new DeleteObjectChange(path, deletedObject, 'id');
+    change.applyChange(manuscript);
+
+    expect(change.toJSON()).toEqual({
+      idField: 'id',
+      removedIndex: 1,
+      path: 'keywordGroups.kwdGroup.keywords',
+      timestamp: expect.any(Number),
+      type: 'delete-object',
+      object: {
+        id: expect.any(String),
+        content: { type: 'keyword' }
+      }
+    });
+  });
 });
