@@ -22,7 +22,7 @@ export function deserializeChanges(manuscript: Manuscript, changesJson: JSONObje
         return ProsemirrorChange.fromJSON(manuscript, changeData);
 
       case 'rearranging':
-        return RearrangingChange.fromJSON(manuscript, changeData);
+        return RearrangingChange.fromJSON(changeData);
 
       case 'batch':
         return BatchChange.fromJSON(manuscript, changeData);

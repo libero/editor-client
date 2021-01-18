@@ -23,7 +23,7 @@ export class RearrangingChange extends Change {
     return new RearrangingChange(path, order);
   }
 
-  public static fromJSON<T>(manuscript: Manuscript, data: JSONObject): RearrangingChange {
+  public static fromJSON<T>(data: JSONObject): RearrangingChange {
     const change = new RearrangingChange(data.path as string, data.order as Array<number>);
     change._timestamp = data.timestamp as number;
     return change;

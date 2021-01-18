@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RearrangingChange should serialize to JSON 1`] = `
+Object {
+  "order": Array [
+    2,
+    0,
+    1,
+  ],
+  "path": "keywordGroups.kwdGroup.keywords",
+  "timestamp": 1610979099826,
+  "type": "rearranging",
+}
+`;
