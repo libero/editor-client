@@ -1,6 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
 import { getTextContentFromPath } from 'app/models/utils';
-import { ManuscriptChangeJSON } from 'app/types/changes.types';
 
 export interface Affiliation {
   readonly id: string;
@@ -43,18 +42,4 @@ export function createAffiliationsState(affiliations: Element[]): Affiliation[] 
       country: getTextContentFromPath(aff, 'country')
     });
   });
-}
-
-export function applyAffiliationsChanges(
-  affiliations: Affiliation[],
-  changes: Array<ManuscriptChangeJSON>
-): Affiliation[] {
-  return changes.reduce((affiliationsList: Affiliation[], change: ManuscriptChangeJSON) => {
-    if (Array.isArray(change.object)) {
-      return change.object as Affiliation[];
-    }
-    const index = parseInt(change.path.split('.')[1]);
-    affiliationsList[index] = change.object as Affiliation;
-    return affiliationsList;
-  }, affiliations);
 }
