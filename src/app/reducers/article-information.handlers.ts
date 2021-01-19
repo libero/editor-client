@@ -6,7 +6,7 @@ export function updateArticleInformation(
   state: ManuscriptHistoryState,
   payload: ArticleInformation
 ): ManuscriptHistoryState {
-  const change = new UpdateObjectChange('articleInfo', state.data.present.articleInfo, payload);
+  const change = UpdateObjectChange.createFromTwoObjects('articleInfo', state.data.present.articleInfo, payload);
 
   return {
     ...state,

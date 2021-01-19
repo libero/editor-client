@@ -11,7 +11,7 @@ import { DeleteObjectChange } from 'app/utils/history/delete-object-change';
 
 export function updateReference(state: ManuscriptHistoryState, payload: Reference): ManuscriptHistoryState {
   const referenceIndex = state.data.present.references.findIndex(({ id }) => id === payload.id);
-  const referenceChange = new UpdateObjectChange(
+  const referenceChange = UpdateObjectChange.createFromTwoObjects(
     `references.${referenceIndex}`,
     state.data.present.references[referenceIndex],
     payload
