@@ -23,7 +23,54 @@
       ],
       "type": "prosemirror",
       "user": "undefined"
+    }, {
+      "type": "batch",
+      "changes": [
+        {
+          "type": "batch",
+          "changes": [
+            {
+              "type": "update-object",
+              "timestamp": 1611064860121,
+              "path": "authors.0",
+              "differences": [
+                {
+                  "kind": "E",
+                  "path": [
+                    "suffix"
+                  ],
+                  "rhs": "11111"
+                }
+              ]
+            },
+            {
+              "type": "prosemirror",
+              "timestamp": 1611064860122,
+              "path": "authors.0.bio",
+              "transactionSteps": [
+                {
+                  "stepType": "replace",
+                  "from": 16,
+                  "to": 79,
+                  "slice": {
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "asdff asdf asdf "
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "timestamp": 1611064860122
+        }
+      ],
+      "timestamp": 1611064860125
     }
   ]
 }
+
+
 

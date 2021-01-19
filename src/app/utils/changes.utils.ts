@@ -6,6 +6,7 @@ import { Change } from 'app/utils/history/change';
 import { BatchChange } from 'app/utils/history/batch-change';
 import { ProsemirrorChange } from 'app/utils/history/prosemirror-change';
 import { RearrangingChange } from 'app/utils/history/rearranging-change';
+import { UpdateObjectChange } from 'app/utils/history/update-object-change';
 
 export function manuscriptEntityToJson<T>(object: T): JSONObject {
   return cloneDeepWith(object, (value) => {
@@ -26,6 +27,9 @@ export function deserializeChanges(manuscript: Manuscript, changesJson: JSONObje
 
       case 'batch':
         return BatchChange.fromJSON(manuscript, changeData);
+
+      case 'update-object':
+        return UpdateObjectChange.fromJSON(manuscript, changeData);
 
       default:
         throw new TypeError(

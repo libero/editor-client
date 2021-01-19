@@ -6,7 +6,6 @@ import { Manuscript } from 'app/types/manuscript';
 import { Change } from 'app/utils/history/change';
 import { cloneManuscript } from 'app/utils/state.utils';
 import { JSONObject } from 'app/types/utility.types';
-import { manuscriptEntityToJson } from 'app/utils/changes.utils';
 import { ProsemirrorChange } from 'app/utils/history/prosemirror-change';
 import { BatchChange } from 'app/utils/history/batch-change';
 
@@ -40,6 +39,12 @@ export class UpdateObjectChange<T> extends Change {
       .filter(Boolean);
 
     return new BatchChange([objectChange, ...prosemirrorChanges]);
+  }
+
+  public static fromJSON<T>(manuscript: Manuscript, data: JSONObject): UpdateObjectChange<T> {
+    const change = new UpdateObjectChange(data.path as string, (data.differences as unknown) as deepDiff.Diff<T, T>[]);
+    change._timestamp = data.timestamp as number;
+    return change;
   }
 
   private constructor(private path: string, private differences: deepDiff.Diff<T, T>[] | undefined) {
@@ -78,7 +83,7 @@ export class UpdateObjectChange<T> extends Change {
       type: 'update-object',
       timestamp: this.timestamp,
       path: this.path,
-      differences: manuscriptEntityToJson(this.differences)
+      differences: (this.differences as unknown) as JSONObject
     };
   }
 
