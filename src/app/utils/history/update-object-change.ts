@@ -78,7 +78,7 @@ export class UpdateObjectChange<T> extends Change {
       type: 'update-object',
       timestamp: this.timestamp,
       path: this.path,
-      simpleDifferences: manuscriptEntityToJson(this.differences)
+      differences: manuscriptEntityToJson(this.differences)
     };
   }
 

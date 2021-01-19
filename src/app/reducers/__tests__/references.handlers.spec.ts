@@ -1,36 +1,46 @@
 import { EditorState } from 'prosemirror-state';
 import { cloneDeep } from 'lodash';
 
-import { givenState } from 'app/test-utils/reducer-test-helpers';
-import { Reference } from 'app/models/reference';
+import { createDummyEditorState, givenState } from 'app/test-utils/reducer-test-helpers';
+import { JournalReference, Reference } from 'app/models/reference';
 import { addReference, deleteReference, updateReference } from 'app/reducers/references.handlers';
 import { BatchChange } from 'app/utils/history/batch-change';
 import { createBodyState } from 'app/models/body';
 
-const REFERENCE: Reference = {
-  id: 'bib1',
-  authors: [
-    {
-      firstName: 'V',
-      lastName: 'Berk'
-    }
-  ],
-  type: 'journal',
-  referenceInfo: {
-    year: '2012',
-    source: new EditorState(),
-    articleTitle: new EditorState(),
-    doi: '',
-    pmid: '',
-    elocationId: '',
-    firstPage: '236',
-    lastPage: '239',
-    inPress: false,
-    volume: '337'
-  }
-};
+let REFERENCE: Reference;
 
 describe('references reducers', () => {
+  beforeEach(() => {
+    REFERENCE = {
+      id: 'bib1',
+      authors: [
+        {
+          firstName: 'V',
+          lastName: 'Berk'
+        }
+      ],
+      type: 'journal',
+      referenceInfo: {
+        year: '2012',
+        source: createDummyEditorState(),
+        articleTitle: createDummyEditorState(),
+        doi: '',
+        pmid: '',
+        elocationId: '',
+        firstPage: '236',
+        lastPage: '239',
+        inPress: false,
+        volume: '337'
+      }
+    };
+    (REFERENCE.referenceInfo as JournalReference).source.apply(
+      (REFERENCE.referenceInfo as JournalReference).source.tr.insertText('Some text')
+    );
+
+    (REFERENCE.referenceInfo as JournalReference).articleTitle.apply(
+      (REFERENCE.referenceInfo as JournalReference).articleTitle.tr.insertText('Some other text')
+    );
+  });
   it('should update reference', () => {
     const state = givenState({
       references: [REFERENCE]

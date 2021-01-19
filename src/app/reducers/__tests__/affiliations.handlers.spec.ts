@@ -9,7 +9,6 @@ import {
 } from 'app/reducers/affiliations.handlers';
 import { Person } from 'app/models/person';
 import { BatchChange } from 'app/utils/history/batch-change';
-import { UpdateObjectChange } from 'app/utils/history/update-object-change';
 
 describe('affiliations reducers', () => {
   it('should update affiliation', () => {
@@ -43,7 +42,7 @@ describe('affiliations reducers', () => {
 
     const updatedState = cloneDeep(state);
     updatedState.data.present.affiliations[0] = updateAff;
-    updatedState.data.past = [expect.any(UpdateObjectChange)];
+    updatedState.data.past = [expect.any(BatchChange)];
     const newState = updateAffiliation(state, updateAff);
     expect(newState).toEqual(updatedState);
   });

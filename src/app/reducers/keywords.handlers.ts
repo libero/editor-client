@@ -33,10 +33,14 @@ export function addKeyword(state: ManuscriptHistoryState, payload: KeywordAddPay
   const insertKeywordChange = new AddObjectChange(`keywordGroups.${keywordGroup}.keywords`, keyword, 'id');
 
   const newKeywordSection = state.data.present.keywordGroups[keywordGroup].newKeyword;
-  const updateIdChange = UpdateObjectChange.createFromTwoObjects(`keywordGroups.${keywordGroup}.newKeyword`, newKeywordSection, {
-    id: uuidv4(),
-    content: newKeywordSection.content
-  });
+  const updateIdChange = UpdateObjectChange.createFromTwoObjects(
+    `keywordGroups.${keywordGroup}.newKeyword`,
+    newKeywordSection,
+    {
+      id: uuidv4(),
+      content: newKeywordSection.content
+    }
+  );
 
   const clearKeywordTransaction = newKeywordSection.content.tr;
   clearKeywordTransaction.insertText('', 0, newKeywordSection.content.doc.content.size);

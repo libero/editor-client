@@ -48,15 +48,21 @@ describe('UpdateObjectChange', () => {
     const change = UpdateObjectChange.createFromTwoObjects('affiliations.0', affiliation, updatedAff);
 
     expect(change.toJSON()).toEqual({
-      path: 'affiliations.0',
       timestamp: expect.any(Number),
-      type: 'update-object',
-      differences: [
+      type: 'batch',
+      changes: [
         {
-          kind: 'E',
-          lhs: 'elife',
-          path: ['label'],
-          rhs: 'eLife Sciences'
+          path: 'affiliations.0',
+          timestamp: expect.any(Number),
+          type: 'update-object',
+          differences: [
+            {
+              kind: 'E',
+              lhs: 'elife',
+              path: ['label'],
+              rhs: 'eLife Sciences'
+            }
+          ]
         }
       ]
     });
