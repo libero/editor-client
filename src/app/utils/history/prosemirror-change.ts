@@ -9,7 +9,6 @@ import { JSONObject } from 'app/types/utility.types';
 
 export class ProsemirrorChange extends Change {
   public static fromJSON(manuscript: Manuscript, data: JSONObject): ProsemirrorChange {
-    console.log(data);
     const editorState = get(manuscript, data.path as string);
     const transaction = editorState.tr;
     (data.transactionSteps as JSONObject[]).forEach((stepJson) => {
