@@ -21,9 +21,6 @@ export interface ManuscriptChangesResponse {
 }
 
 const manuscriptUrl = (id: string): string => {
-  // TODO
-  // Enable the below once the the article-store is working again!
-  // return process.env.REACT_APP_NO_SERVER ? `./manuscripts/${id}/manuscript.xml` : `/api/v1/articles/${id}`
   return `/api/v1/articles/${id}`;
 };
 
