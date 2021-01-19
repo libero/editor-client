@@ -2,9 +2,9 @@ import { cloneDeep } from 'lodash';
 
 import { givenState } from 'app/test-utils/reducer-test-helpers';
 import { addRelatedArticle, deleteRelatedArticle, updateRelatedArticle } from 'app/reducers/related-articles.handlers';
-import { UpdateObjectChange } from 'app/utils/history/update-object-change';
 import { DeleteObjectChange } from 'app/utils/history/delete-object-change';
 import { AddObjectChange } from 'app/utils/history/add-object-change';
+import { BatchChange } from 'app/utils/history/batch-change';
 
 const RELATED_ARTICLES = [
   {
@@ -33,7 +33,7 @@ describe('related articles reducers', () => {
 
     const updatedState = cloneDeep(state);
     updatedState.data.present.relatedArticles[0] = updateArticle;
-    updatedState.data.past = [expect.any(UpdateObjectChange)];
+    updatedState.data.past = [expect.any(BatchChange)];
     const newState = updateRelatedArticle(state, updateArticle);
     expect(newState).toEqual(updatedState);
   });

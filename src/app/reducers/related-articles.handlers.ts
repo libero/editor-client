@@ -7,7 +7,7 @@ import { DeleteObjectChange } from 'app/utils/history/delete-object-change';
 export function updateRelatedArticle(state: ManuscriptHistoryState, payload: RelatedArticle): ManuscriptHistoryState {
   const articleIndex = state.data.present.relatedArticles.findIndex(({ id }) => id === payload.id);
 
-  const change = new UpdateObjectChange(
+  const change = UpdateObjectChange.createFromTwoObjects(
     `relatedArticles.${articleIndex}`,
     state.data.present.relatedArticles[articleIndex],
     payload

@@ -11,7 +11,7 @@ import { DeleteObjectChange } from 'app/utils/history/delete-object-change';
 export function updateAuthor(state: ManuscriptHistoryState, payload: Person): ManuscriptHistoryState {
   const authorIndex = state.data.present.authors.findIndex(({ id }) => id === payload.id);
 
-  const authorUpdateChange = new UpdateObjectChange(
+  const authorUpdateChange = UpdateObjectChange.createFromTwoObjects(
     `authors.${authorIndex}`,
     state.data.present.authors[authorIndex],
     payload

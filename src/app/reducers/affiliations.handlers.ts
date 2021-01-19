@@ -26,7 +26,7 @@ export function getReorderedAffiliations(authors: Person[], affiliations: Affili
     }
   });
 
-  const affiliationsUpdates = new UpdateObjectChange('affiliations', affiliations, newAffiliations);
+  const affiliationsUpdates = UpdateObjectChange.createFromTwoObjects('affiliations', affiliations, newAffiliations);
 
   const sortedAffiliations = [...newAffiliations].sort((a, b) => Number(a.label) - Number(b.label));
   const affiliationsSort = RearrangingChange.createFromListRearrange(
@@ -39,7 +39,7 @@ export function getReorderedAffiliations(authors: Person[], affiliations: Affili
 
 export function updateAffiliation(state: ManuscriptHistoryState, payload: Affiliation): ManuscriptHistoryState {
   const affiliationIndex = state.data.present.affiliations.findIndex(({ id }) => id === payload.id);
-  const change = new UpdateObjectChange(
+  const change = UpdateObjectChange.createFromTwoObjects(
     `affiliations.${affiliationIndex}`,
     state.data.present.affiliations[affiliationIndex],
     payload
@@ -105,12 +105,12 @@ export function linkAffiliations(
     .map((author, index) => {
       const affId = payload.affiliation.id;
       if (!linkedAuthorsIds.has(author.id) && author.affiliations.includes(affId)) {
-        return new UpdateObjectChange(`authors.${index}`, author, {
+        return UpdateObjectChange.createFromTwoObjects(`authors.${index}`, author, {
           ...author,
           affiliations: author.affiliations.filter((id) => id !== affId)
         });
       } else if (linkedAuthorsIds.has(author.id) && !author.affiliations.includes(affId)) {
-        return new UpdateObjectChange(`authors.${index}`, author, {
+        return UpdateObjectChange.createFromTwoObjects(`authors.${index}`, author, {
           ...author,
           affiliations: [...author.affiliations, affId]
         });

@@ -20,7 +20,7 @@ describe('UpdateObjectChange', () => {
   it('should apply change', () => {
     const updatedAff = cloneDeep(affiliation);
     updatedAff.label = 'eLife Sciences';
-    const change = new UpdateObjectChange('affiliations.0', affiliation, updatedAff);
+    const change = UpdateObjectChange.createFromTwoObjects('affiliations.0', affiliation, updatedAff);
 
     const updatedManuscript = change.applyChange(manuscript);
     expect(change.isEmpty).toBeFalsy();
@@ -30,7 +30,7 @@ describe('UpdateObjectChange', () => {
   it('should revert change', () => {
     const updatedAff = cloneDeep(affiliation);
     updatedAff.label = 'eLife Sciences';
-    const change = new UpdateObjectChange('affiliations.0', affiliation, updatedAff);
+    const change = UpdateObjectChange.createFromTwoObjects('affiliations.0', affiliation, updatedAff);
 
     const updatedManuscript = change.applyChange(manuscript);
     expect(change.rollbackChange(updatedManuscript)).toEqual(manuscript);
@@ -38,25 +38,31 @@ describe('UpdateObjectChange', () => {
 
   it('should indicate empty change', () => {
     const updatedAff = cloneDeep(affiliation);
-    const change = new UpdateObjectChange('affiliations.0', affiliation, updatedAff);
+    const change = UpdateObjectChange.createFromTwoObjects('affiliations.0', affiliation, updatedAff);
     expect(change.isEmpty).toBeTruthy();
   });
 
   it('should serialize to JSON', () => {
     const updatedAff = cloneDeep(affiliation);
     updatedAff.label = 'eLife Sciences';
-    const change = new UpdateObjectChange('affiliations.0', affiliation, updatedAff);
+    const change = UpdateObjectChange.createFromTwoObjects('affiliations.0', affiliation, updatedAff);
 
     expect(change.toJSON()).toEqual({
-      path: 'affiliations.0',
       timestamp: expect.any(Number),
-      type: 'update-object',
-      differences: [
+      type: 'batch',
+      changes: [
         {
-          kind: 'E',
-          lhs: 'elife',
-          path: ['label'],
-          rhs: 'eLife Sciences'
+          path: 'affiliations.0',
+          timestamp: expect.any(Number),
+          type: 'update-object',
+          differences: [
+            {
+              kind: 'E',
+              lhs: 'elife',
+              path: ['label'],
+              rhs: 'eLife Sciences'
+            }
+          ]
         }
       ]
     });

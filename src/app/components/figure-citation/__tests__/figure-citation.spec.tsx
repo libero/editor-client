@@ -19,15 +19,6 @@ jest.mock('@material-ui/core/styles', () => {
   };
 });
 
-global['document']['createRange'] = () => ({
-  setStart: jest.fn(),
-  setEnd: jest.fn(),
-  commonAncestorContainer: {
-    nodeName: 'BODY',
-    ownerDocument: document
-  }
-});
-
 describe('Figure citation node view', () => {
   it('should render node', () => {
     const [state, node] = givenState();

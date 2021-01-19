@@ -170,6 +170,7 @@ export const getMenuForEditor = (editorState: EditorState, editorView: EditorVie
           event.preventDefault();
           option.run(editorState, editorView);
         }}
+        value={true}
         disabled={!option.enabled(editorState)}
         selected={option.isActive(editorState)}
         size="small"
