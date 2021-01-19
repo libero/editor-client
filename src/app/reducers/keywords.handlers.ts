@@ -11,7 +11,7 @@ import { updateManuscriptState } from 'app/utils/history.utils';
 import { AddObjectChange } from 'app/utils/history/add-object-change';
 import { ProsemirrorChange } from 'app/utils/history/prosemirror-change';
 import { UpdateObjectChange } from 'app/utils/history/update-object-change';
-import { BatchChange } from 'app/utils/history/change';
+import { BatchChange } from 'app/utils/history/batch-change';
 import { DeleteObjectChange } from 'app/utils/history/delete-object-change';
 
 export function deleteKeyword(state: ManuscriptHistoryState, payload: KeywordDeletePayload): ManuscriptHistoryState {

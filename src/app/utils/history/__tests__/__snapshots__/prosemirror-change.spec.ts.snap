@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProsemirrorChange should deserialize from JSON 1`] = `
+Object {
+  "path": "body",
+  "timestamp": 1610979099826,
+  "transactionSteps": Array [
+    Object {
+      "from": 0,
+      "slice": Object {
+        "content": Array [
+          Object {
+            "text": "This text is sent from the server",
+            "type": "text",
+          },
+        ],
+      },
+      "stepType": "replace",
+      "to": 0,
+    },
+  ],
+  "type": "prosemirror",
+}
+`;

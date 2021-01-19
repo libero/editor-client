@@ -41,4 +41,32 @@ describe('ProsemirrorChange', () => {
       ]
     });
   });
+
+  it('should deserialize from JSON', () => {
+    const JSONObject = {
+      path: 'body',
+      timestamp: 1610979099826,
+      transactionSteps: [
+        {
+          stepType: 'replace',
+          from: 0,
+          to: 0,
+          slice: {
+            content: [
+              {
+                type: 'text',
+                text: 'This text is sent from the server'
+              }
+            ]
+          }
+        }
+      ],
+      type: 'prosemirror'
+    };
+
+    const change = ProsemirrorChange.fromJSON(manuscript, JSONObject);
+
+    expect(change).toMatchSnapshot();
+    expect(change).toBeInstanceOf(ProsemirrorChange);
+  });
 });

@@ -1,5 +1,5 @@
 import { givenState } from 'app/test-utils/reducer-test-helpers';
-import { BatchChange } from 'app/utils/history/change';
+import { BatchChange } from 'app/utils/history/batch-change';
 import { ProsemirrorChange } from 'app/utils/history/prosemirror-change';
 
 describe('BatchChange', () => {
@@ -53,5 +53,45 @@ describe('BatchChange', () => {
       type: 'batch',
       changes: [change1.toJSON(), change2.toJSON()]
     });
+  });
+
+  it('should deserialize from JSON', () => {
+    const JSONObject = {
+      timestamp: 1610979099826,
+      type: 'batch-change',
+      changes: [
+        {
+          timestamp: 1610979099826,
+          path: 'body',
+          transactionSteps: [
+            {
+              stepType: 'replace',
+              from: 0,
+              to: 0,
+              slice: {
+                content: [
+                  {
+                    type: 'text',
+                    text: 'This text is sent from the server'
+                  }
+                ]
+              }
+            }
+          ],
+          type: 'prosemirror'
+        },
+        {
+          path: 'keywordGroups.kwdGroup.keywords',
+          timestamp: 1610979099826,
+          order: [2, 0, 1],
+          type: 'rearranging'
+        }
+      ]
+    };
+
+    const change = BatchChange.fromJSON(manuscript, JSONObject);
+
+    expect(change).toMatchSnapshot();
+    expect(change).toBeInstanceOf(BatchChange);
   });
 });

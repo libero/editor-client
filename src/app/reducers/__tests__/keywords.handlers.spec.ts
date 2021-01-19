@@ -6,7 +6,7 @@ import { addKeyword, deleteKeyword, updateKeyword, updateNewKeyword } from 'app/
 import { createNewKeywordState } from 'app/models/keyword';
 import { DeleteObjectChange } from 'app/utils/history/delete-object-change';
 import { KeywordDeletePayload } from 'app/actions/manuscript.actions';
-import { BatchChange } from 'app/utils/history/change';
+import { BatchChange } from 'app/utils/history/batch-change';
 
 jest.mock('app/utils/history.utils', () => ({
   updateManuscriptState: jest.fn()

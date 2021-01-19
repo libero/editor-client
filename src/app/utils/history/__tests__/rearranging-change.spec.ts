@@ -66,4 +66,18 @@ describe('RearrangingChange', () => {
       order: [2, 0, 1]
     });
   });
+
+  it('should serialize to JSON', () => {
+    const JSONObject = {
+      path: 'keywordGroups.kwdGroup.keywords',
+      timestamp: 1610979099826,
+      order: [2, 0, 1],
+      type: 'prosemirror'
+    };
+
+    const change = RearrangingChange.fromJSON(JSONObject);
+
+    expect(change).toMatchSnapshot();
+    expect(change).toBeInstanceOf(RearrangingChange);
+  });
 });

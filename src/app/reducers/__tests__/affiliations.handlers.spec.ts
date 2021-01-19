@@ -8,7 +8,7 @@ import {
   updateAffiliation
 } from 'app/reducers/affiliations.handlers';
 import { Person } from 'app/models/person';
-import { BatchChange } from 'app/utils/history/change';
+import { BatchChange } from 'app/utils/history/batch-change';
 import { UpdateObjectChange } from 'app/utils/history/update-object-change';
 
 describe('affiliations reducers', () => {
