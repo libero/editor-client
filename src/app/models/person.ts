@@ -50,7 +50,7 @@ export class Person extends BackmatterEntity {
 
   clone(): Person {
     const person = new Person();
-    person._id = this._id
+    person._id = this._id;
     person.firstName = this.firstName;
     person.lastName = this.lastName;
     person.suffix = this.suffix;

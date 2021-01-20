@@ -111,7 +111,7 @@ export function linkAffiliations(
       const affId = payload.affiliation.id;
       if (!linkedAuthorsIds.has(author.id) && author.affiliations.includes(affId)) {
         const updatedAuthor = author.clone();
-        updatedAuthor.affiliations = author.affiliations.filter((id) => id !== affId)
+        updatedAuthor.affiliations = author.affiliations.filter((id) => id !== affId);
         return UpdateObjectChange.createFromTwoObjects(`authors.${index}`, author, updatedAuthor);
       } else if (linkedAuthorsIds.has(author.id) && !author.affiliations.includes(affId)) {
         const updatedAuthor = author.clone();
