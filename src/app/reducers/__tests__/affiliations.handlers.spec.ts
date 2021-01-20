@@ -9,12 +9,13 @@ import {
 } from 'app/reducers/affiliations.handlers';
 import { Person } from 'app/models/person';
 import { BatchChange } from 'app/utils/history/batch-change';
+import { Affiliation } from 'app/models/affiliation';
 
 describe('affiliations reducers', () => {
   it('should update affiliation', () => {
     const state = givenState({
       affiliations: [
-        {
+        new Affiliation({
           id: 'some_id',
           label: '1',
           institution: {
@@ -24,11 +25,11 @@ describe('affiliations reducers', () => {
             city: ''
           },
           country: 'UK'
-        }
+        })
       ]
     });
 
-    const updateAff = {
+    const updateAff = new Affiliation({
       id: 'some_id',
       label: '1',
       institution: {
@@ -38,7 +39,7 @@ describe('affiliations reducers', () => {
         city: 'Cambridge'
       },
       country: 'UK'
-    };
+    });
 
     const updatedState = cloneDeep(state);
     updatedState.data.present.affiliations[0] = updateAff;
@@ -48,7 +49,7 @@ describe('affiliations reducers', () => {
   });
 
   it('should add affiliation', () => {
-    const aff = {
+    const aff = new Affiliation({
       id: 'some_id',
       label: '1',
       institution: {
@@ -58,7 +59,7 @@ describe('affiliations reducers', () => {
         city: ''
       },
       country: 'UK'
-    };
+    });
 
     const state = givenState({});
     const updatedState = cloneDeep(state);
@@ -71,7 +72,7 @@ describe('affiliations reducers', () => {
   it('should delete affiliation', () => {
     const state = givenState({
       affiliations: [
-        {
+        new Affiliation({
           id: 'some_id',
           label: '1',
           institution: {
@@ -81,7 +82,7 @@ describe('affiliations reducers', () => {
             city: ''
           },
           country: 'UK'
-        }
+        })
       ]
     });
 
@@ -93,7 +94,7 @@ describe('affiliations reducers', () => {
   });
 
   it('should link authors to affiliation', () => {
-    const aff = {
+    const aff = new Affiliation({
       id: 'some_id',
       label: '1',
       institution: {
@@ -103,11 +104,11 @@ describe('affiliations reducers', () => {
         city: ''
       },
       country: 'UK'
-    };
+    });
 
     const authors: Person[] = [
-      { id: 'id1', firstName: 'Jules', lastName: 'Verne', affiliations: [] },
-      { id: 'id2', firstName: 'H G', lastName: 'Wells', affiliations: [] }
+      new Person({ id: 'id1', firstName: 'Jules', lastName: 'Verne', affiliations: [], orcid: '' }),
+      new Person({ id: 'id2', firstName: 'H G', lastName: 'Wells', affiliations: [], orcid: '' })
     ];
 
     const state = givenState({
