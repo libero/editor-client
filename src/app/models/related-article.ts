@@ -12,6 +12,7 @@ export class RelatedArticle extends BackmatterEntity {
 
   public clone(): RelatedArticle {
     const newArticle = new RelatedArticle();
+    newArticle._id = this._id;
     newArticle.articleType = this.articleType;
     newArticle.href = this.href;
     return newArticle;

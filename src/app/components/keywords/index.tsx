@@ -93,10 +93,12 @@ export const KeywordsEditor: React.FC<KeywordsEditorProps> = (props) => {
   const handleAddKeyword = useCallback(
     (editorState: EditorState) => {
       if (editorState.doc.textContent.trim().length > 0) {
-        onAdd(name, { id: newKeyword.id, content: editorState });
+        const kwd = newKeyword.clone();
+        kwd.content = editorState;
+        onAdd(name, kwd);
       }
     },
-    [onAdd, name, newKeyword.id]
+    [onAdd, name, newKeyword]
   );
 
   const isGroupFocused = activeKeywordPath && activeKeywordPath.startsWith(`keywordGroups.${name}`);

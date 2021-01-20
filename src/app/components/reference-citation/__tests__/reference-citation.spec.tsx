@@ -12,21 +12,13 @@ jest.mock('prosemirror-view');
 jest.mock('app/components/reference-citation/reference-citation-editor-popup', () => ({
   ReferenceCitationEditorPopup: () => <div data-cmp="ReferenceCitationEditorPopup" />
 }));
+
 jest.mock('@material-ui/core/styles', () => {
   return {
     ThemeProvider: ({ children }) => <>{children}</>,
     createMuiTheme: jest.fn(),
     makeStyles: jest.requireActual('@material-ui/core/styles').makeStyles
   };
-});
-
-global['document']['createRange'] = () => ({
-  setStart: jest.fn(),
-  setEnd: jest.fn(),
-  commonAncestorContainer: {
-    nodeName: 'BODY',
-    ownerDocument: document
-  }
 });
 
 describe('Reference citation node view', () => {

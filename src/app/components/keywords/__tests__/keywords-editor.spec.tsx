@@ -42,7 +42,10 @@ describe('KeywordsEditorComponent', () => {
     const component = shallow(<KeywordsEditor {...props} />);
     const newKeywordProps = component.find(NewKeywordSection).props();
     newKeywordProps.onEnter(newKeywordProps.editorState);
-    expect(props.onAdd).toBeCalledWith(props.name, { id: props.newKeyword.id, content: newKeywordProps.editorState });
+    expect(props.onAdd).toBeCalledWith(
+      props.name,
+      expect.objectContaining({ id: props.newKeyword.id, content: newKeywordProps.editorState })
+    );
   });
 
   it('should not fire events when enter is hit on a new keyword', () => {

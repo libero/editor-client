@@ -14,9 +14,20 @@ import { JSONObject } from 'app/types/utility.types';
 export class Keyword extends BackmatterEntity {
   content: EditorState;
 
-  constructor(data?: JSONObject | Element) {
+  constructor(data?: JSONObject | Element | EditorState) {
     super();
-    this.createEntity(data);
+    if (data instanceof EditorState) {
+      this.content = data;
+    } else {
+      this.createEntity(data);
+    }
+  }
+
+  public clone(): Keyword {
+    const kwd = new Keyword();
+    kwd._id = this.id;
+    kwd.content = this.content.apply(this.content.tr);
+    return kwd;
   }
 
   protected fromXML(xmlNode: Element): void {

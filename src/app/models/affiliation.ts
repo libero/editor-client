@@ -19,6 +19,7 @@ export class Affiliation extends BackmatterEntity {
 
   public clone(): Affiliation {
     const affitiation = new Affiliation();
+    affitiation._id = this._id;
     affitiation.label = this.label;
     affitiation.country = this.country;
     affitiation.institution = { name: this.institution.name };

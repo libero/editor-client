@@ -9,7 +9,12 @@ import { DeleteObjectChange } from 'app/utils/history/delete-object-change';
 import { AddObjectChange } from 'app/utils/history/add-object-change';
 
 export function getReorderedAffiliations(authors: Person[], affiliations: Affiliation[]): BatchChange {
-  const newAffiliations = affiliations.map((affiliation) => ({ ...affiliation, label: '' }));
+  const newAffiliations = affiliations.map((affiliation) => {
+    const aff = affiliation.clone();
+    aff.label = '';
+    return aff;
+  });
+
   let labelIndex = 1;
   authors.forEach((author) => {
     author.affiliations.forEach((affId) => {
@@ -105,15 +110,13 @@ export function linkAffiliations(
     .map((author, index) => {
       const affId = payload.affiliation.id;
       if (!linkedAuthorsIds.has(author.id) && author.affiliations.includes(affId)) {
-        return UpdateObjectChange.createFromTwoObjects(`authors.${index}`, author, {
-          ...author,
-          affiliations: author.affiliations.filter((id) => id !== affId)
-        });
+        const updatedAuthor = author.clone();
+        updatedAuthor.affiliations = author.affiliations.filter((id) => id !== affId)
+        return UpdateObjectChange.createFromTwoObjects(`authors.${index}`, author, updatedAuthor);
       } else if (linkedAuthorsIds.has(author.id) && !author.affiliations.includes(affId)) {
-        return UpdateObjectChange.createFromTwoObjects(`authors.${index}`, author, {
-          ...author,
-          affiliations: [...author.affiliations, affId]
-        });
+        const updatedAuthor = author.clone();
+        updatedAuthor.affiliations = [...author.affiliations, affId];
+        return UpdateObjectChange.createFromTwoObjects(`authors.${index}`, author, updatedAuthor);
       }
       return null;
     })

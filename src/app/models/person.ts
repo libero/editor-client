@@ -50,6 +50,7 @@ export class Person extends BackmatterEntity {
 
   clone(): Person {
     const person = new Person();
+    person._id = this._id
     person.firstName = this.firstName;
     person.lastName = this.lastName;
     person.suffix = this.suffix;
@@ -127,7 +128,7 @@ export class Person extends BackmatterEntity {
     this.hasCompetingInterest = competingInterestEl
       ? competingInterestEl.textContent !== 'No competing interests declared'
       : false;
-    this.competingInterestStatement = competingInterestEl ? competingInterestEl.textContent : '';
+    this.competingInterestStatement = competingInterestEl ? competingInterestEl.textContent.trim() : '';
   }
 
   private createBioEditorStateFromXml(bio?: Element): EditorState {
