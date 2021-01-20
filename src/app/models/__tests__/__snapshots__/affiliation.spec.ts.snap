@@ -2,27 +2,55 @@
 
 exports[`Affiliation model helpers creates affilitioan state from XML 1`] = `
 Array [
-  Object {
+  Affiliation {
+    "_id": "aff1",
     "address": Object {
       "city": "Cambridge",
     },
     "country": "United Kingdom",
-    "id": "aff1",
     "institution": Object {
       "name": "Production Department, eLife Sciences",
     },
     "label": "1",
   },
-  Object {
+  Affiliation {
+    "_id": "aff2",
     "address": Object {
       "city": "City",
     },
     "country": "Country",
-    "id": "aff2",
     "institution": Object {
       "name": "Department, University",
     },
     "label": "2",
   },
 ]
+`;
+
+exports[`Affiliation model helpers creates an affiliation with specified data 1`] = `
+Affiliation {
+  "_id": undefined,
+  "address": Object {
+    "city": "Cambridge",
+  },
+  "country": "UK",
+  "institution": Object {
+    "name": "eLife",
+  },
+  "label": "label",
+}
+`;
+
+exports[`Affiliation model helpers creates an affiliation with specified data and ID 1`] = `
+Affiliation {
+  "_id": "SOME_ID",
+  "address": Object {
+    "city": "Cambridge",
+  },
+  "country": "UK",
+  "institution": Object {
+    "name": "eLife",
+  },
+  "label": "label",
+}
 `;

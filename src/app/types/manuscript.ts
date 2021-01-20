@@ -5,21 +5,7 @@ import { Affiliation } from 'app/models/affiliation';
 import { Reference } from 'app/models/reference';
 import { RelatedArticle } from 'app/models/related-article';
 import { ArticleInformation } from 'app/models/article-information';
-
-export interface Keyword {
-  id: string;
-  content: EditorState;
-}
-
-export interface KeywordGroup {
-  title: string | undefined;
-  keywords: Keyword[];
-  newKeyword: Keyword;
-}
-
-export interface KeywordGroups {
-  [keywordType: string]: KeywordGroup;
-}
+import { KeywordGroup, KeywordGroups } from 'app/models/keyword';
 
 interface JournalMeta {
   publisherName: string;

@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 
 import { ActionButton } from 'app/components/action-button';
 import { useAuthorFormStyles } from 'app/containers/author-form-dialog/styles';
-import { Affiliation, getAffiliationDisplayName } from 'app/models/affiliation';
+import { Affiliation } from 'app/models/affiliation';
 import { AffiliationFormDialog } from 'app/containers/affiliation-form-dialog/affiliation-form-dialog';
 import { ModalContainer } from 'app/containers/modal-container';
 import { ReactFCProps } from 'app/types/utility.types';
@@ -174,7 +174,7 @@ export const LinkedAffiliationsList: React.FC<LinkedAffiliationsListProps> = (pr
             options={[
               { label: 'Add new affiliation', value: null },
               ...getAffiliationsSelectList(affiliation).map((aff) => ({
-                label: getAffiliationDisplayName(aff),
+                label: aff.getDisplayName(),
                 value: aff.id
               }))
             ]}

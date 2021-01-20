@@ -1,4 +1,4 @@
-import { createAuthor, createAuthorsState, getAuthorDisplayName } from 'app/models/person';
+import { createAuthorsState, Person } from 'app/models/person';
 
 jest.mock('uuid', () => ({
   v4: () => 'unique_id'
@@ -11,12 +11,7 @@ describe('Person model helpers', () => {
       lastName: 'Testerson'
     };
 
-    expect(createAuthor(undefined, xmlData)).toEqual({
-      id: expect.any(String),
-      firstName: 'Test',
-      lastName: 'Testerson',
-      affiliations: []
-    });
+    expect(new Person(xmlData)).toMatchSnapshot();
   });
 
   it('creates an author with specified data and ID', () => {
@@ -25,12 +20,7 @@ describe('Person model helpers', () => {
       lastName: 'Testerson'
     };
 
-    expect(createAuthor('ID_FROM_XML', xmlData)).toEqual({
-      id: 'ID_FROM_XML',
-      firstName: 'Test',
-      lastName: 'Testerson',
-      affiliations: []
-    });
+    expect(new Person(xmlData)).toMatchSnapshot();
   });
 
   it('produces author display name with first name last name and suffix', () => {
@@ -41,7 +31,7 @@ describe('Person model helpers', () => {
       suffix: 'Capt.'
     };
 
-    expect(getAuthorDisplayName(author)).toEqual('Test Testerson Capt.');
+    expect(new Person(author).getDisplayName()).toEqual('Test Testerson Capt.');
   });
 
   it('produces author display even when some details are missing', () => {
@@ -52,7 +42,7 @@ describe('Person model helpers', () => {
       suffix: 'Commander'
     };
 
-    expect(getAuthorDisplayName(author)).toEqual('Total Commander');
+    expect(new Person(author).getDisplayName()).toEqual('Total Commander');
   });
 
   it('creates authors state', () => {

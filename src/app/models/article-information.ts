@@ -8,6 +8,8 @@ import { getTextContentFromPath, makeSchemaFromConfig } from 'app/models/utils';
 import * as licenseTextConfig from 'app/models/config/license-text.config';
 import { Person } from 'app/models/person';
 import moment from 'moment';
+import { BackmatterEntity } from 'app/models/backmatter-entity';
+import { JSONObject } from 'app/types/utility.types';
 
 export const LICENSE_CC_BY_4 = 'CC-BY-4';
 export const LICENSE_CC0 = 'CC0';
@@ -22,7 +24,32 @@ const LICENSE_CC0_TEXT = `This is an open-access article, free of all copyright,
     The work is made available under the
     <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/publicdomain/zero/1.0/">Creative Commons CC0 public domain dedication</ext-link>.`;
 
-export interface ArticleInformation {
+export class ArticleInformation extends BackmatterEntity {
+  public static getLicenseText(licenseType: string): EditorState {
+    const paragraph = document.createElement('p');
+    paragraph.innerHTML = {
+      [LICENSE_CC_BY_4]: LICENSE_CC_BY_4_TEXT,
+      [LICENSE_CC0]: LICENSE_CC0_TEXT
+    }[licenseType];
+
+    return ArticleInformation.createLicenseEditorState(paragraph);
+  }
+
+  public static createLicenseEditorState(content?: Element): EditorState {
+    const schema = makeSchemaFromConfig(licenseTextConfig.topNode, licenseTextConfig.nodes, licenseTextConfig.marks);
+    const xmlContentDocument = document.implementation.createDocument('', '', null);
+
+    if (content) {
+      xmlContentDocument.appendChild(content);
+    }
+
+    return EditorState.create({
+      doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),
+      schema,
+      plugins: [buildInputRules(), gapCursor(), dropCursor()]
+    });
+  }
+
   articleType: string;
   dtd: string;
   articleDOI: string;
@@ -34,94 +61,138 @@ export interface ArticleInformation {
   licenseType: string;
   copyrightStatement: string;
   licenseText: EditorState;
-}
 
-function getLicenseType(doc: Document): string {
-  const licenseEl = doc.querySelector('article-meta permissions license');
-  if (!licenseEl) {
-    return '';
-  }
-  const href = licenseEl.getAttribute('xlink:href');
-  if (href === 'http://creativecommons.org/licenses/by/4.0/') {
-    return LICENSE_CC_BY_4;
-  }
-  if (href === 'http://creativecommons.org/publicdomain/zero/1.0/') {
-    return LICENSE_CC0;
-  }
-}
-
-export function createLicenseTextState(content: Element): EditorState {
-  const schema = makeSchemaFromConfig(licenseTextConfig.topNode, licenseTextConfig.nodes, licenseTextConfig.marks);
-
-  const xmlContentDocument = document.implementation.createDocument('', '', null);
-
-  if (content) {
-    xmlContentDocument.appendChild(content);
+  constructor(data?: JSONObject | Element, authors?: Person[]) {
+    super();
+    this.createEntity(data);
+    if (data instanceof Element && authors) {
+      this.updateCopyrightStatementFromXml(data, authors);
+    }
   }
 
-  return EditorState.create({
-    doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),
-    schema,
-    plugins: [buildInputRules(), gapCursor(), dropCursor()]
-  });
-}
+  public clone(): ArticleInformation {
+    const newArticleInformation = new ArticleInformation();
+    newArticleInformation.articleType = this.articleType;
+    newArticleInformation.dtd = this.dtd;
+    newArticleInformation.articleDOI = this.articleDOI;
+    newArticleInformation.elocationId = this.elocationId;
+    newArticleInformation.volume = this.volume;
+    newArticleInformation.publisherId = this.publisherId;
+    newArticleInformation.subjects = [...this.subjects];
 
-export function getCopyrightStatement(authors: Person[], dateStr: string): string {
-  const authorNamesSection =
-    authors.length === 1
-      ? authors[0].lastName
-      : authors.length === 2
-      ? `${authors[0].lastName} and ${authors[1].lastName}`
-      : authors.length > 2
-      ? `${authors[0].lastName} et al`
-      : '';
-  const date = moment(dateStr);
+    newArticleInformation.licenseType = this.licenseType;
+    newArticleInformation.publicationDate = this.publicationDate;
+    newArticleInformation.licenseText = ArticleInformation.createLicenseEditorState();
 
-  return `© ${date.isValid() ? date.format('YYYY') : ''}, ${authorNamesSection}`;
-}
-
-export function createArticleInfoState(doc: Document, authors: Person[]): ArticleInformation {
-  const subjects = Array.from(doc.querySelectorAll('subj-group[subj-group-type="subject"] subject')).map(
-    (el: Element) => el.textContent
-  );
-
-  let publicationDate = '';
-  const pubDateNode = doc.querySelector('pub-date[date-type="pub"][publication-format="electronic"]');
-  if (pubDateNode) {
-    publicationDate = [
-      pubDateNode.querySelector('year').textContent,
-      pubDateNode.querySelector('month').textContent,
-      pubDateNode.querySelector('day').textContent
-    ].join('-');
+    return newArticleInformation;
   }
 
-  const copyrightStatementFromXml = getTextContentFromPath(doc, 'article-meta permissions copyright-statement');
-  const licenseType = getLicenseType(doc);
-  const copyrightStatement =
-    copyrightStatementFromXml ||
-    (licenseType === LICENSE_CC_BY_4 ? getCopyrightStatement(authors, publicationDate) : '');
+  public updateCopyrightStatement(authors: Person[]): void {
+    if (this.licenseType === LICENSE_CC_BY_4) {
+      const authorNamesSection =
+        authors.length === 1
+          ? authors[0].lastName
+          : authors.length === 2
+          ? `${authors[0].lastName} and ${authors[1].lastName}`
+          : authors.length > 2
+          ? `${authors[0].lastName} et al`
+          : '';
+      const date = moment(this.publicationDate);
 
-  return {
-    articleType: getTextContentFromPath(doc, 'article-meta subj-group[subj-group-type="heading"]'),
-    dtd: doc.querySelector('article').getAttribute('dtd-version'),
-    articleDOI: getTextContentFromPath(doc, 'article-meta article-id[pub-id-type="doi"]'),
-    elocationId: getTextContentFromPath(doc, 'article-meta elocation-id'),
-    volume: getTextContentFromPath(doc, 'article-meta volume'),
-    publisherId: getTextContentFromPath(doc, 'article-meta article-id[pub-id-type="publisher-id"]'),
-    subjects: subjects,
-    licenseType,
-    copyrightStatement,
-    licenseText: createLicenseTextState(doc.querySelector('article-meta permissions license license-p')),
-    publicationDate
-  };
-}
+      this.copyrightStatement = `© ${date.isValid() ? date.format('YYYY') : ''}, ${authorNamesSection}`;
+    } else {
+      this.copyrightStatement = '';
+    }
+  }
 
-export function getLicenseTextEditorState(licenseType: string): EditorState {
-  const paragraph = document.createElement('p');
-  paragraph.innerHTML = {
-    [LICENSE_CC_BY_4]: LICENSE_CC_BY_4_TEXT,
-    [LICENSE_CC0]: LICENSE_CC0_TEXT
-  }[licenseType];
+  protected fromXML(xmlNode: Element): void {
+    this.articleType = getTextContentFromPath(xmlNode, 'article-meta subj-group[subj-group-type="heading"]');
+    const articleEl = xmlNode.querySelector('article');
+    this.dtd = articleEl ? articleEl.getAttribute('dtd-version') : '';
+    this.articleDOI = getTextContentFromPath(xmlNode, 'article-meta article-id[pub-id-type="doi"]');
+    this.elocationId = getTextContentFromPath(xmlNode, 'article-meta elocation-id');
+    this.volume = getTextContentFromPath(xmlNode, 'article-meta volume');
+    this.publisherId = getTextContentFromPath(xmlNode, 'article-meta article-id[pub-id-type="publisher-id"]');
+    this.subjects = Array.from(xmlNode.querySelectorAll('subj-group[subj-group-type="subject"] subject')).map(
+      (el: Element) => el.textContent
+    );
 
-  return createLicenseTextState(paragraph);
+    this.licenseType = this.getLicenseTypeFromXml(xmlNode);
+    this.publicationDate = this.getPublicationDateFromXml(xmlNode);
+    this.licenseText = ArticleInformation.createLicenseEditorState(
+      xmlNode.querySelector('article-meta permissions license license-p')
+    );
+  }
+
+  protected fromJSON(json: JSONObject): void {
+    this.articleType = json.articleType as string;
+    this.dtd = json.dtd as string;
+    this.articleDOI = json.articleDOI as string;
+    this.elocationId = json.elocationId as string;
+    this.volume = json.volume as string;
+    this.publisherId = json.publisherId as string;
+    this.subjects = (json.subjects as string[]) || [];
+
+    this.licenseType = json.licenseType as string;
+    this.publicationDate = json.publicationDate as string;
+    const emptyEditorState = ArticleInformation.createLicenseEditorState();
+    this.licenseText = EditorState.fromJSON(
+      {
+        schema: emptyEditorState.schema,
+        plugins: emptyEditorState.plugins
+      },
+      json.licenseText as JSONObject
+    );
+  }
+
+  protected createBlank(): void {
+    this.articleType = '';
+    this.dtd = '';
+    this.articleDOI = '';
+    this.elocationId = '';
+    this.volume = '';
+    this.publisherId = '';
+    this.subjects = [];
+
+    this.licenseType = '';
+    this.publicationDate = '';
+    this.licenseText = ArticleInformation.createLicenseEditorState();
+  }
+
+  private getLicenseTypeFromXml(doc: Element): string {
+    const licenseEl = doc.querySelector('article-meta permissions license');
+    if (!licenseEl) {
+      return '';
+    }
+    const href = licenseEl.getAttribute('xlink:href');
+    if (href === 'http://creativecommons.org/licenses/by/4.0/') {
+      return LICENSE_CC_BY_4;
+    }
+    if (href === 'http://creativecommons.org/publicdomain/zero/1.0/') {
+      return LICENSE_CC0;
+    }
+  }
+
+  private getPublicationDateFromXml(xmlNode: Element): string {
+    let publicationDate = '';
+    const pubDateNode = xmlNode.querySelector('pub-date[date-type="pub"][publication-format="electronic"]');
+    if (pubDateNode) {
+      publicationDate = [
+        pubDateNode.querySelector('year').textContent,
+        pubDateNode.querySelector('month').textContent,
+        pubDateNode.querySelector('day').textContent
+      ].join('-');
+    }
+
+    return publicationDate;
+  }
+
+  private updateCopyrightStatementFromXml(xmlNode: Element, authors: Person[]): void {
+    const copyrightStatementFromXml = getTextContentFromPath(xmlNode, 'article-meta permissions copyright-statement');
+    if (copyrightStatementFromXml) {
+      this.copyrightStatement = copyrightStatementFromXml;
+    } else {
+      this.updateCopyrightStatement(authors);
+    }
+  }
 }

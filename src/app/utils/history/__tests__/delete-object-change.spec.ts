@@ -2,15 +2,15 @@ import { get } from 'lodash';
 
 import { givenState } from 'app/test-utils/reducer-test-helpers';
 import { DeleteObjectChange } from 'app/utils/history/delete-object-change';
-import { createNewKeywordState } from 'app/models/keyword';
+import { Keyword } from 'app/models/keyword';
 
 describe('DeleteObjectChange', () => {
   const manuscript = givenState({}).data.present;
   beforeAll(() => {
     manuscript.keywordGroups['kwdGroup'] = {
       title: 'group',
-      keywords: [createNewKeywordState(), createNewKeywordState()],
-      newKeyword: createNewKeywordState()
+      keywords: [new Keyword(), new Keyword()],
+      newKeyword: new Keyword()
     };
   });
 
@@ -50,7 +50,7 @@ describe('DeleteObjectChange', () => {
       timestamp: expect.any(Number),
       type: 'delete-object',
       object: {
-        id: expect.any(String),
+        _id: expect.any(String),
         content: { type: 'keyword' }
       }
     });

@@ -7,6 +7,16 @@ import { JSONObject } from 'app/types/utility.types';
 import { manuscriptEntityToJson } from 'app/utils/changes.utils';
 
 export class DeleteObjectChange<T> extends Change {
+  public static fromJSON<T>(data: JSONObject): DeleteObjectChange<T> {
+    const change = new DeleteObjectChange<T>(
+      data.path as string,
+      (data.object as unknown) as T,
+      data.idField as string
+    );
+    change._timestamp = data.timestamp as number;
+    return change;
+  }
+
   private removedIndex: number;
   constructor(private path: string, private object: T, private idField: string) {
     super();

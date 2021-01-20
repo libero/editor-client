@@ -9,7 +9,7 @@ import {
 } from 'app/actions/manuscript.actions';
 import { givenState } from 'app/test-utils/reducer-test-helpers';
 import { createBodyState } from 'app/models/body';
-import { createNewKeywordState } from 'app/models/keyword';
+import { Keyword } from 'app/models/keyword';
 
 describe('formatters saga', () => {
   it('should format text', async () => {
@@ -19,7 +19,7 @@ describe('formatters saga', () => {
         kwdGroup: {
           title: 'Test',
           keywords: [],
-          newKeyword: createNewKeywordState()
+          newKeyword: new Keyword()
         }
       }
     });

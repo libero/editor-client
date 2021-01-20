@@ -310,9 +310,7 @@ exports[`manuscript editor should render 1`] = `
           <div>
              
           </div>
-          <div>
-            
-          </div>
+          <div />
           <div>
             <span />
           </div>

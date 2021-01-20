@@ -7,6 +7,7 @@ import { mount } from 'enzyme';
 import { givenState } from 'app/test-utils/reducer-test-helpers';
 import * as manuscriptActions from 'app/actions/manuscript.actions';
 import { RelatedArticleFormDialog } from 'app/containers/related-article-form-dialog/index';
+import { RelatedArticle } from 'app/models/related-article';
 
 jest.mock('@material-ui/core', () => ({
   Select: ({ children }) => <div data-cmp="Index">{children}</div>,
@@ -24,16 +25,16 @@ describe('Related Article Form Dialog', () => {
   beforeEach(() => {
     mockState = givenState({
       relatedArticles: [
-        {
+        new RelatedArticle({
           id: 'ra1',
           articleType: 'commentary-article',
           href: '10.7554/eLife.42697'
-        },
-        {
+        }),
+        new RelatedArticle({
           id: 'ra2',
           articleType: 'commentary-article',
           href: '10.7554/eLife.00067'
-        }
+        })
       ]
     });
   });
@@ -64,8 +65,9 @@ describe('Related Article Form Dialog', () => {
     wrapper.find({ name: 'href' }).prop('onChange')({ target: { name: 'href', value: 'new value' } });
     wrapper.update();
     wrapper.find({ title: 'Done' }).prop('onClick')();
-    const updatedAuthor = { ...mockState.data.present.relatedArticles[0], href: 'new value' };
-    expect(store.dispatch).toHaveBeenCalledWith(manuscriptActions.updateRelatedArticleAction(updatedAuthor));
+    expect(store.dispatch).toHaveBeenCalledWith(
+      manuscriptActions.updateRelatedArticleAction(expect.any(RelatedArticle))
+    );
   });
 
   it('dispatches add related article action', () => {
@@ -79,12 +81,6 @@ describe('Related Article Form Dialog', () => {
     );
 
     wrapper.find({ title: 'Done' }).prop('onClick')();
-    expect(store.dispatch).toHaveBeenCalledWith(
-      manuscriptActions.addRelatedArticleAction({
-        articleType: '',
-        href: '',
-        id: expect.any(String)
-      })
-    );
+    expect(store.dispatch).toHaveBeenCalledWith(manuscriptActions.addRelatedArticleAction(expect.any(RelatedArticle)));
   });
 });

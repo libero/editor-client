@@ -5,8 +5,7 @@ import { shallow } from 'enzyme';
 import { KeywordsEditor } from 'app/components/keywords/index';
 import { KeywordSection } from 'app/components/keywords/keyword-section';
 import { NewKeywordSection } from 'app/components/keywords/new-keyword-section';
-import { createNewKeywordState } from 'app/models/keyword';
-import { Keyword } from 'app/types/manuscript';
+import { Keyword } from 'app/models/keyword';
 
 describe('KeywordsEditorComponent', () => {
   const props = {
@@ -56,7 +55,7 @@ describe('KeywordsEditorComponent', () => {
   });
 
   function givenKeyword(content: string): Keyword {
-    const kwd = createNewKeywordState();
+    const kwd = new Keyword();
     const change = kwd.content.tr.insertText(content);
     kwd.content = kwd.content.apply(change);
     return kwd;

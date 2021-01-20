@@ -23,7 +23,7 @@ jest.mock('app/components/rich-text-input', () => ({
 }));
 
 const AUTHORS: Person[] = [
-  {
+  new Person({
     id: '4d53e405-5225-4858-a87a-aec902ae50b6',
     firstName: 'Fred',
     lastName: 'Atherden',
@@ -31,12 +31,12 @@ const AUTHORS: Person[] = [
     isCorrespondingAuthor: true,
     hasCompetingInterest: true,
     competingInterestStatement: 'Works at eLife'
-  },
-  {
+  }),
+  new Person({
     id: 'c3b008e6-4ae9-4ef9-b7cb-854749a1e897',
     firstName: 'Jeanine',
     lastName: 'Smith'
-  }
+  })
 ];
 
 describe('Authors info details', () => {

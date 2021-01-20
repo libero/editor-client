@@ -6,6 +6,7 @@ import { mount } from 'enzyme';
 import { PromptDialog } from 'app/components/prompt-dialog';
 import { AffiliationFormDialog } from 'app/containers/affiliation-form-dialog/affiliation-form-dialog';
 import { givenState } from 'app/test-utils/reducer-test-helpers';
+import { Affiliation } from 'app/models/affiliation';
 
 jest.mock('@material-ui/core', () => ({
   Dialog: () => <div data-cmp="Dialog"></div>,
@@ -25,7 +26,7 @@ describe('Affiliation Form Dialog', () => {
   beforeEach(() => {
     mockState = givenState({
       affiliations: [
-        {
+        new Affiliation({
           id: 'some_id',
           label: '1',
           institution: {
@@ -35,7 +36,7 @@ describe('Affiliation Form Dialog', () => {
             city: 'Cambridge'
           },
           country: 'UK'
-        }
+        })
       ]
     });
   });
@@ -105,7 +106,7 @@ describe('Affiliation Form Dialog', () => {
 
     expect(onAccept).toBeCalledWith(
       {
-        id: expect.any(String),
+        _id: expect.any(String),
         label: '',
         institution: {
           name: ''

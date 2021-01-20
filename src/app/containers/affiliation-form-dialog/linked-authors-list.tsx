@@ -3,7 +3,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import { get } from 'lodash';
 import { IconButton } from '@material-ui/core';
 
-import { getAuthorDisplayName, Person } from 'app/models/person';
+import { Person } from 'app/models/person';
 import { useAffiliationFormStyles } from './styles';
 import { ActionButton } from 'app/components/action-button';
 import { Select } from 'app/components/select';
@@ -72,9 +72,9 @@ export const LinkedAuthorsList: React.FC<LinkedAuthorsListProps> = ({ linkedAuth
             label="Affiliated Author"
             value={get(author, 'id', '')}
             onChange={updateRow(index)}
-            options={getAuthorSelectList(author).map((aff) => ({
-              label: getAuthorDisplayName(aff),
-              value: aff.id
+            options={getAuthorSelectList(author).map((person) => ({
+              label: person.getDisplayName(),
+              value: person.id
             }))}
           />
           <IconButton

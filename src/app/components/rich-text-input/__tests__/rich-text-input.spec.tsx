@@ -1,9 +1,10 @@
 import React from 'react';
-
-import { createBioEditorState } from 'app/models/person';
-import { create } from 'react-test-renderer';
-import { RichTextInput } from 'app/components/rich-text-input/index';
+import { EditorState } from 'prosemirror-state';
 import { mount } from 'enzyme';
+import { create } from 'react-test-renderer';
+
+import { Person } from 'app/models/person';
+import { RichTextInput } from 'app/components/rich-text-input/index';
 import { ProseMirrorEditorView } from 'app/components/rich-text-editor/prosemirror-editor-view';
 
 jest.mock('@material-ui/lab', () => ({
@@ -21,15 +22,9 @@ jest.mock('@material-ui/core/styles', () => {
 
 describe('RichTextInput', () => {
   it('should render component', () => {
-    const el = document.createElement('bio');
-    el.innerHTML = `<p><bold>Fred Atherden</bold> is in the Production Department, eLife Sciences, Cambridge, United Kingdoms
-                    <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License</ext-link>
-                </p>`;
-
-    const editorState = createBioEditorState(el);
     const wrapper = create(
       <RichTextInput
-        editorState={editorState}
+        editorState={givenEditorState()}
         name="test-editor-input"
         label="Test Editor Input"
         onChange={jest.fn()}
@@ -41,12 +36,7 @@ describe('RichTextInput', () => {
 
   it('should toggle an event', () => {
     const onChangeHandler = jest.fn();
-    const el = document.createElement('bio');
-    el.innerHTML = `<p><bold>Fred Atherden</bold> is in the Production Department, eLife Sciences, Cambridge, United Kingdoms
-                    <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License</ext-link>
-                </p>`;
-
-    const editorState = createBioEditorState(el);
+    const editorState = givenEditorState();
     const wrapper = mount(
       <RichTextInput
         editorState={editorState}
@@ -61,4 +51,19 @@ describe('RichTextInput', () => {
 
     expect(onChangeHandler).toHaveBeenCalledWith(change);
   });
+
+  function givenEditorState(): EditorState {
+    const authorsContainer = document.createElement('div');
+    authorsContainer.innerHTML = `
+        <name><surname>Atherden</surname><given-names>Fred</given-names><suffix>Capt.</suffix></name>
+        <contrib-id authenticated="true" contrib-id-type="orcid">https://orcid.org/0000-0002-6048-1470</contrib-id>
+        <email>f.atherden@elifesciences.org</email>
+        <bio>
+            <p><bold>Fred Atherden</bold> is in the Production Department, eLife Sciences, Cambridge, United Kingdoms
+                <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License</ext-link>
+            </p> 
+        </bio>`;
+    const person = new Person(authorsContainer);
+    return person.bio;
+  }
 });

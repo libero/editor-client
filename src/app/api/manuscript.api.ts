@@ -6,7 +6,7 @@ import { createAuthorsState } from 'app/models/person';
 import { createAffiliationsState } from 'app/models/affiliation';
 import { getTextContentFromPath } from 'app/models/utils';
 import { createRelatedArticleState } from 'app/models/related-article';
-import { createArticleInfoState } from 'app/models/article-information';
+import { ArticleInformation } from 'app/models/article-information';
 import { createKeywordGroupsState } from 'app/models/keyword';
 import { createReferencesState } from 'app/models/reference';
 import { createAbstractState, createImpactStatementState } from 'app/models/abstract';
@@ -42,7 +42,6 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
   const body = doc.querySelector('body');
 
   const authorsState = createAuthorsState(Array.from(authors), authorNotes);
-
   return {
     title: createTitleState(title),
     abstract: createAbstractState(abstract),
@@ -54,7 +53,7 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
     references: createReferencesState(Array.from(references)),
     relatedArticles: createRelatedArticleState(Array.from(relatedArticles)),
     acknowledgements: createAcknowledgementsState(acknowledgements),
-    articleInfo: createArticleInfoState(doc, authorsState),
+    articleInfo: new ArticleInformation(doc.documentElement, authorsState),
     journalMeta: {
       publisherName: getTextContentFromPath(doc, 'journal-meta publisher publisher-name'),
       issn: getTextContentFromPath(doc, 'journal-meta issn')

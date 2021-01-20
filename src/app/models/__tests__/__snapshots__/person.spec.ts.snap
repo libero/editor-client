@@ -1,8 +1,71 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Person model helpers creates an author with specified data 1`] = `
+Person {
+  "_id": "unique_id",
+  "affiliations": Array [],
+  "bio": Object {
+    "doc": Object {
+      "content": Array [
+        Object {
+          "type": "paragraph",
+        },
+      ],
+      "type": "doc",
+    },
+    "selection": Object {
+      "anchor": 1,
+      "head": 1,
+      "type": "text",
+    },
+  },
+  "competingInterestStatement": undefined,
+  "email": undefined,
+  "firstName": "Test",
+  "hasCompetingInterest": undefined,
+  "isAuthenticated": undefined,
+  "isCorrespondingAuthor": undefined,
+  "lastName": "Testerson",
+  "orcid": undefined,
+  "suffix": undefined,
+}
+`;
+
+exports[`Person model helpers creates an author with specified data and ID 1`] = `
+Person {
+  "_id": "unique_id",
+  "affiliations": Array [],
+  "bio": Object {
+    "doc": Object {
+      "content": Array [
+        Object {
+          "type": "paragraph",
+        },
+      ],
+      "type": "doc",
+    },
+    "selection": Object {
+      "anchor": 1,
+      "head": 1,
+      "type": "text",
+    },
+  },
+  "competingInterestStatement": undefined,
+  "email": undefined,
+  "firstName": "Test",
+  "hasCompetingInterest": undefined,
+  "isAuthenticated": undefined,
+  "isCorrespondingAuthor": undefined,
+  "lastName": "Testerson",
+  "orcid": undefined,
+  "suffix": undefined,
+}
+`;
+
 exports[`Person model helpers creates authors state 1`] = `
 Array [
-  Object {
+  Person {
+    "_id": "unique_id",
     "affiliations": Array [],
     "bio": Object {
       "doc": Object {
@@ -22,8 +85,7 @@ Array [
     "competingInterestStatement": "",
     "email": "f.atherden@elifesciences.org",
     "firstName": "Fred",
-    "hasCompetingInterest": undefined,
-    "id": "unique_id",
+    "hasCompetingInterest": false,
     "isAuthenticated": true,
     "isCorrespondingAuthor": false,
     "lastName": "Atherden",

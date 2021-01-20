@@ -1,12 +1,12 @@
 import React, { SyntheticEvent, useCallback, useState } from 'react';
 import { TextField } from '@material-ui/core';
 import { useSelector } from 'react-redux';
-import { set, cloneDeep } from 'lodash';
+import { set } from 'lodash';
 
 import { useAffiliationFormStyles } from './styles';
 import { renderConfirmDialog } from 'app/components/prompt-dialog';
 import { ActionButton } from 'app/components/action-button';
-import { Affiliation, createAffiliation } from 'app/models/affiliation';
+import { Affiliation } from 'app/models/affiliation';
 import { getAffiliatedAuthors, getAuthors } from 'app/selectors/manuscript.selectors';
 import { LinkedAuthorsList } from 'app/containers/affiliation-form-dialog/linked-authors-list';
 import { Person } from 'app/models/person';
@@ -29,19 +29,7 @@ export const AffiliationFormDialog: React.FC<AffiliationFormDialogProps> = (prop
   const [userLinkedAuthors, setUserLinkedAuthors] = useState<Person[]>(affiliatedAuthors);
   const allAuthors = useSelector(getAuthors);
 
-  const [affiliation, setAffiliation] = useState<Affiliation>(
-    props.affiliation ||
-      createAffiliation(undefined, {
-        label: '',
-        institution: {
-          name: ''
-        },
-        address: {
-          city: ''
-        },
-        country: ''
-      })
-  );
+  const [affiliation, setAffiliation] = useState<Affiliation>(props.affiliation || new Affiliation());
   const [isConfirmShown, setConfirmShow] = useState<boolean>(false);
 
   const classes = useAffiliationFormStyles();
@@ -67,7 +55,8 @@ export const AffiliationFormDialog: React.FC<AffiliationFormDialogProps> = (prop
     (event: SyntheticEvent) => {
       const fieldName = event.target['name'];
       const newValue = event.target['value'];
-      const newAffiliation = set(cloneDeep(affiliation), fieldName, newValue);
+      const newAffiliation = affiliation.clone();
+      set(newAffiliation, fieldName, newValue);
       setAffiliation(newAffiliation);
     },
     [affiliation, setAffiliation]

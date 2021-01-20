@@ -5,7 +5,7 @@ import { NewKeywordSection } from './new-keyword-section';
 import { KeywordSection } from 'app/components/keywords/keyword-section';
 import { makeKeywordContainerStyles } from './styles';
 import { SectionContainer } from 'app/components/section-container';
-import { Keyword } from 'app/types/manuscript';
+import { Keyword } from 'app/models/keyword';
 
 interface KeywordsEditorProps {
   keywords: Keyword[];

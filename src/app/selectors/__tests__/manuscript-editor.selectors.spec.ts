@@ -9,7 +9,7 @@ import {
   isMarkAppliedToSelection
 } from 'app/selectors/manuscript-editor.selectors';
 import { Manuscript } from 'app/types/manuscript';
-import { createNewKeywordState } from 'app/models/keyword';
+import { Keyword } from 'app/models/keyword';
 import { givenState } from 'app/test-utils/reducer-test-helpers';
 
 describe('manuscript selectors', () => {
@@ -52,7 +52,7 @@ describe('manuscript selectors', () => {
   });
 
   it('checks if selection is already marked', () => {
-    const newKeyword = createNewKeywordState();
+    const newKeyword = new Keyword();
     const docXML = document.createElement('keyword');
     docXML.innerHTML = '<italic>Test</italic>';
     newKeyword.content.doc = ProseMirrorDOMParser.fromSchema(newKeyword.content.schema).parse(docXML);

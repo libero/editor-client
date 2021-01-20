@@ -11,7 +11,7 @@ import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions'
 import { getAffiliations, getAuthors } from 'app/selectors/manuscript.selectors';
 import { useAuthorsListStyles } from './styles';
 import { SectionContainer } from 'app/components/section-container';
-import { getAuthorAffiliationsLabels, getAuthorDisplayName, Person } from 'app/models/person';
+import { Person } from 'app/models/person';
 import { AuthorFormDialog } from 'app/containers/author-form-dialog';
 import { ActionButton } from 'app/components/action-button';
 import { ComponentWithId } from 'app/types/utility.types';
@@ -38,15 +38,14 @@ const ChipRenderComponent: React.FC<ChipRenderComponent> = React.memo(
 );
 
 const SortableItem = SortableElement(({ value, classes, onEdit }) => {
-  const authorName = getAuthorDisplayName(value.author);
-  const affLabels = getAuthorAffiliationsLabels(value.author, value.affiliations);
+  const affLabels = value.author.getAffiliationsLabels(value.affiliations);
 
   return (
     <Chip
       classes={{ root: classes.chip, label: classes.chipLabel }}
       label={
         <span>
-          {authorName}
+          {value.author.getDisplayName()}
           <sup>
             {affLabels.length > 0 ? affLabels.join(',') : undefined}
             {value.author.isCorrespondingAuthor ? '*' : undefined}

@@ -41,7 +41,7 @@ export class UpdateObjectChange<T> extends Change {
     return new BatchChange([objectChange, ...prosemirrorChanges]);
   }
 
-  public static fromJSON<T>(manuscript: Manuscript, data: JSONObject): UpdateObjectChange<T> {
+  public static fromJSON<T>(data: JSONObject): UpdateObjectChange<T> {
     const change = new UpdateObjectChange(data.path as string, (data.differences as unknown) as deepDiff.Diff<T, T>[]);
     change._timestamp = data.timestamp as number;
     return change;

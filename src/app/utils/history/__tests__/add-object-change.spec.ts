@@ -2,15 +2,15 @@ import { get } from 'lodash';
 
 import { givenState } from 'app/test-utils/reducer-test-helpers';
 import { AddObjectChange } from 'app/utils/history/add-object-change';
-import { createNewKeywordState } from 'app/models/keyword';
+import { Keyword } from 'app/models/keyword';
 
 describe('AddObjectChange', () => {
   const manuscript = givenState({}).data.present;
   beforeAll(() => {
     manuscript.keywordGroups['kwdGroup'] = {
       title: 'group',
-      keywords: [createNewKeywordState()],
-      newKeyword: createNewKeywordState()
+      keywords: [new Keyword()],
+      newKeyword: new Keyword()
     };
 
     const group = manuscript.keywordGroups['kwdGroup'];
@@ -20,7 +20,7 @@ describe('AddObjectChange', () => {
 
   it('should apply change', () => {
     const path = 'keywordGroups.kwdGroup.keywords';
-    const newObject = createNewKeywordState();
+    const newObject = new Keyword();
     const change = new AddObjectChange(path, newObject, 'id');
     const updatedManuscript = change.applyChange(manuscript);
 
@@ -29,7 +29,7 @@ describe('AddObjectChange', () => {
 
   it('should revert change', () => {
     const path = 'keywordGroups.kwdGroup.keywords';
-    const newObject = createNewKeywordState();
+    const newObject = new Keyword();
     const change = new AddObjectChange(path, newObject, 'id');
     const updatedManuscript = change.applyChange(manuscript);
 
@@ -43,7 +43,7 @@ describe('AddObjectChange', () => {
 
   it('should serialize to JSON', () => {
     const path = 'keywordGroups.kwdGroup.keywords';
-    const newObject = createNewKeywordState();
+    const newObject = new Keyword();
     newObject.content.apply(newObject.content.tr.insertText('new keyword'));
 
     const change = new AddObjectChange(path, newObject, 'id');
@@ -53,7 +53,7 @@ describe('AddObjectChange', () => {
       timestamp: expect.any(Number),
       type: 'add-object',
       object: {
-        id: expect.any(String),
+        _id: expect.any(String),
         content: { type: 'keyword' }
       }
     });

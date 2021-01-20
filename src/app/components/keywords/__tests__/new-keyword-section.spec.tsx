@@ -4,11 +4,11 @@ import { create } from 'react-test-renderer';
 
 import { NewKeywordSection } from 'app/components/keywords/new-keyword-section';
 import { ProseMirrorEditorView } from 'app/components/rich-text-editor/prosemirror-editor-view';
-import { createNewKeywordState } from 'app/models/keyword';
+import { Keyword } from 'app/models/keyword';
 
 describe('NewKeywordsEditorComponent', () => {
   const props = {
-    editorState: createNewKeywordState().content,
+    editorState: new Keyword().content,
     onEnter: jest.fn(),
     onFocus: jest.fn(),
     onBlur: jest.fn(),
