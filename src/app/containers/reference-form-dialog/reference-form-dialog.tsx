@@ -68,8 +68,9 @@ export const ReferenceFormDialog: React.FC<ReferenceFormDialogProps> = ({
     (name, value) => {
       const newRef = userReference.clone();
       set(newRef.referenceInfo, name, value);
+      setReference(newRef);
     },
-    [userReference]
+    [userReference, setReference]
   );
 
   const handleMissingFieldsInfoChange = useCallback(
