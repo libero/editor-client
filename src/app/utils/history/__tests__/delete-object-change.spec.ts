@@ -33,7 +33,7 @@ describe('DeleteObjectChange', () => {
   });
 
   it('should indicate empty change', () => {
-    const change = new DeleteObjectChange('', {}, 'id');
+    const change = new DeleteObjectChange('', new Keyword(), 'id');
     expect(change.isEmpty).toBeFalsy();
   });
 
@@ -51,7 +51,7 @@ describe('DeleteObjectChange', () => {
       type: 'delete-object',
       object: {
         _id: expect.any(String),
-        content: { type: 'keyword' }
+        content: deletedObject.content.toJSON()
       }
     });
   });

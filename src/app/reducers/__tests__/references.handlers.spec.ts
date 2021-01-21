@@ -14,14 +14,14 @@ let REFERENCE: Reference;
 describe('references reducers', () => {
   beforeEach(() => {
     REFERENCE = new Reference({
-      id: 'bib1',
+      _id: 'bib1',
       authors: [
         {
           firstName: 'V',
           lastName: 'Berk'
         }
       ],
-      type: 'journal',
+      _type: 'journal',
       referenceInfo: {
         year: '2012',
         source: stringToEditorState('test content'),

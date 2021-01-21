@@ -61,14 +61,14 @@ jest.mock('@material-ui/core/styles', () => {
 
 const ReferenceData = [
   {
-    id: 'bib1',
+    _id: 'bib1',
     authors: [
       {
         firstName: 'V',
         lastName: 'Berk'
       }
     ],
-    type: 'journal',
+    _type: 'journal',
     referenceInfo: {
       year: '2012',
       source: stringToEditorState('Science'),
@@ -85,14 +85,14 @@ const ReferenceData = [
     }
   },
   {
-    id: 'bib2',
+    _id: 'bib2',
     authors: [
       {
         firstName: 'PK',
         lastName: 'Feyerabend'
       }
     ],
-    type: 'book',
+    _type: 'book',
     referenceInfo: {
       year: '2010',
       source: stringToEditorState('The skull and brain'),

@@ -89,7 +89,7 @@ describe('BatchChange', () => {
       ]
     };
 
-    const change = BatchChange.fromJSON(manuscript, JSONObject);
+    const change = BatchChange.fromJSON(JSONObject);
 
     expect(change).toMatchSnapshot();
     expect(change).toBeInstanceOf(BatchChange);

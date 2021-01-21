@@ -4,13 +4,14 @@ import { Manuscript } from 'app/types/manuscript';
 import { Change } from 'app/utils/history/change';
 import { cloneManuscript } from 'app/utils/state.utils';
 import { JSONObject } from 'app/types/utility.types';
-import { manuscriptEntityToJson } from 'app/utils/changes.utils';
+import { deserializeBackmatter, manuscriptEntityToJson } from 'app/utils/changes.utils';
+import { BackmatterEntity } from 'app/models/backmatter-entity';
 
-export class DeleteObjectChange<T> extends Change {
-  public static fromJSON<T>(data: JSONObject): DeleteObjectChange<T> {
-    const change = new DeleteObjectChange<T>(
+export class DeleteObjectChange extends Change {
+  public static fromJSON(data: JSONObject): DeleteObjectChange {
+    const change = new DeleteObjectChange(
       data.path as string,
-      (data.object as unknown) as T,
+      deserializeBackmatter(data.path as string, data.object as JSONObject),
       data.idField as string
     );
     change._timestamp = data.timestamp as number;
@@ -18,7 +19,7 @@ export class DeleteObjectChange<T> extends Change {
   }
 
   private removedIndex: number;
-  constructor(private path: string, private object: T, private idField: string) {
+  constructor(private path: string, private object: BackmatterEntity, private idField: string) {
     super();
   }
 
@@ -55,7 +56,7 @@ export class DeleteObjectChange<T> extends Change {
       path: this.path,
       removedIndex: this.removedIndex,
       idField: this.idField,
-      object: manuscriptEntityToJson<T>(this.object)
+      object: manuscriptEntityToJson(this.object)
     };
   }
 }

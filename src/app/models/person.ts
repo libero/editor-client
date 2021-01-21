@@ -83,7 +83,7 @@ export class Person extends BackmatterEntity {
   }
 
   protected fromJSON(json: JSONObject): void {
-    this._id = (json.id as string) || this._id;
+    this._id = (json._id as string) || this.id;
     this.firstName = json.firstName as string;
     this.lastName = json.lastName as string;
     this.suffix = json.suffix as string;

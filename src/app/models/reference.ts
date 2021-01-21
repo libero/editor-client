@@ -124,9 +124,9 @@ export class Reference extends BackmatterEntity {
   }
 
   protected fromJSON(json: JSONObject): void {
-    this._id = (json.id as string) || this._id;
+    this._id = (json._id as string) || this._id;
     this.authors = cloneDeep(json.authors) as ReferenceContributor[];
-    this.type = json.type as ReferenceType;
+    this.type = json._type as ReferenceType;
     this.referenceInfo = this.createReferenceInfoFromJson(json.referenceInfo as JSONObject);
   }
 
@@ -222,5 +222,6 @@ function getAuthorLastNamesForSorting(ref: Reference): string {
           return get(refAuthor, 'groupName', get(refAuthor, 'lastName'));
         })
         .join('')
+        .toLowerCase()
     : '';
 }

@@ -51,8 +51,8 @@ describe('Reference form dialog', () => {
     mockState = givenState({
       references: [
         new Reference({
-          id: 'some_id',
-          type: 'journal' as ReferenceType,
+          _id: 'some_id',
+          _type: 'journal' as ReferenceType,
           authors: [{ firstName: 'First Name', lastName: 'Last Name' }, { groupName: 'Group Name' }],
           referenceInfo: {
             year: '2012',

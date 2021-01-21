@@ -37,14 +37,14 @@ describe('AddObjectChange', () => {
   });
 
   it('should indicate empty change', () => {
-    const change = new AddObjectChange('', {}, 'id');
+    const change = new AddObjectChange('', new Keyword(), 'id');
     expect(change.isEmpty).toBeFalsy();
   });
 
   it('should serialize to JSON', () => {
     const path = 'keywordGroups.kwdGroup.keywords';
     const newObject = new Keyword();
-    newObject.content.apply(newObject.content.tr.insertText('new keyword'));
+    newObject.content = newObject.content.apply(newObject.content.tr.insertText('new keyword'));
 
     const change = new AddObjectChange(path, newObject, 'id');
     expect(change.toJSON()).toEqual({
@@ -54,7 +54,7 @@ describe('AddObjectChange', () => {
       type: 'add-object',
       object: {
         _id: expect.any(String),
-        content: { type: 'keyword' }
+        content: newObject.content.toJSON()
       }
     });
   });

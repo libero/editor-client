@@ -40,7 +40,7 @@ export class Keyword extends BackmatterEntity {
   }
 
   protected fromJSON(json: JSONObject): void {
-    this._id = (json.id as string) || this._id;
+    this._id = (json._id as string) || this._id;
     const blankState = this.createEmptyEditorState();
     this.content = EditorState.fromJSON(
       { schema: blankState.schema, plugins: blankState.schema.plugins },

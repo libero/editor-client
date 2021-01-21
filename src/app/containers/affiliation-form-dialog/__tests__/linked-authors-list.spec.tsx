@@ -99,35 +99,35 @@ function givenAuthors(): Person[] {
       email: 'f.atherden@elifesciences.org',
       orcid: 'https://orcid.org/0000-0002-6048-1470',
       affiliations: ['aff1', 'aff2'],
-      id: '149aa8ef-ed62-4ef9-aeaa-9758ce99c136'
+      _id: '149aa8ef-ed62-4ef9-aeaa-9758ce99c136'
     },
     {
       firstName: 'Jeanine',
       lastName: 'Smith',
       suffix: 'III',
       affiliations: ['aff2'],
-      id: '8c62aed8-45c5-47fd-93bd-0816c3d2a110'
+      _id: '8c62aed8-45c5-47fd-93bd-0816c3d2a110'
     },
     {
       firstName: 'Jack',
       lastName: 'London',
       suffix: 'III',
       affiliations: ['aff2'],
-      id: '5a0204e2-5f4c-4947-9cbb-2f306d6702f9'
+      _id: '5a0204e2-5f4c-4947-9cbb-2f306d6702f9'
     },
     {
       firstName: 'Mark',
       lastName: 'Twain',
       suffix: 'III',
       affiliations: ['aff2'],
-      id: '9da79de3-a9e2-47dd-bc1d-5c8c633c12f6'
+      _id: '9da79de3-a9e2-47dd-bc1d-5c8c633c12f6'
     },
     {
       firstName: 'Alexandr',
       lastName: 'Solzhenitsin',
       suffix: 'III',
       affiliations: ['aff2'],
-      id: '92f5e98a-e255-4c59-934c-fa174368e9ac'
+      _id: '92f5e98a-e255-4c59-934c-fa174368e9ac'
     }
   ].map((json) => new Person(json));
 }
