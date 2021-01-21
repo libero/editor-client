@@ -17,8 +17,6 @@ export function updateAuthor(state: ManuscriptHistoryState, payload: Person): Ma
     payload
   );
 
-  console.log(authorUpdateChange);
-
   const updatedManuscript = authorUpdateChange.applyChange(state.data.present);
   const affiliationsReorderChange = getReorderedAffiliations(updatedManuscript.authors, updatedManuscript.affiliations);
 

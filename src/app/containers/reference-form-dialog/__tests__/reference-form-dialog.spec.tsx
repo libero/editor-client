@@ -4,12 +4,13 @@ import { create } from 'react-test-renderer';
 import { Provider } from 'react-redux';
 
 import { givenState } from 'app/test-utils/reducer-test-helpers';
-import { ReferenceType } from 'app/models/reference';
 import { mount } from 'enzyme';
 import * as manuscriptActions from 'app/actions/manuscript.actions';
 import { PromptDialog } from 'app/components/prompt-dialog';
-import { cloneDeep } from 'lodash';
 import { ConnectedReferenceFormDialog } from 'app/containers/reference-form-dialog/connected-reference-form-dialog';
+import { createReferenceAnnotatedValue, ReferenceType } from 'app/models/reference-type';
+import { Reference } from 'app/models/reference';
+import { JSONObject } from 'app/types/utility.types';
 
 jest.mock('@material-ui/core', () => ({
   Dialog: () => <div data-cmp="Dialog"></div>,
@@ -49,12 +50,25 @@ describe('Reference form dialog', () => {
   beforeEach(() => {
     mockState = givenState({
       references: [
-        {
+        new Reference({
           id: 'some_id',
           type: 'journal' as ReferenceType,
           authors: [{ firstName: 'First Name', lastName: 'Last Name' }, { groupName: 'Group Name' }],
-          referenceInfo: null
-        }
+          referenceInfo: {
+            year: '2012',
+            source: stringToEditorState('Science'),
+            articleTitle: stringToEditorState(
+              'Molecular architecture and assembly principles of <italic>Vibrio cholerae</italic> biofilms'
+            ),
+            doi: '',
+            pmid: '',
+            elocationId: '',
+            firstPage: '236',
+            lastPage: '239',
+            inPress: false,
+            volume: '337'
+          }
+        })
       ]
     });
   });
@@ -96,7 +110,7 @@ describe('Reference form dialog', () => {
       </Provider>
     );
     wrapper.find({ name: 'firstName' }).at(0).prop('onChange')({ target: { name: 'firstName', value: 'new value' } });
-    const updatedReference = cloneDeep(mockState.data.present.references[0]);
+    const updatedReference = mockState.data.present.references[0].clone();
     updatedReference.authors[0].firstName = 'new value';
 
     wrapper.update();
@@ -121,14 +135,7 @@ describe('Reference form dialog', () => {
     wrapper.update();
     wrapper.find({ title: 'Done' }).prop('onClick')();
 
-    expect(store.dispatch).toHaveBeenCalledWith(
-      manuscriptActions.addReferenceAction({
-        id: expect.any(String),
-        type: 'journal',
-        authors: [{ firstName: 'First Name', lastName: 'last name' }],
-        referenceInfo: expect.any(Object)
-      })
-    );
+    expect(store.dispatch).toHaveBeenCalledWith(manuscriptActions.addReferenceAction(expect.any(Reference)));
   });
 
   it('should dispatch delete action', () => {
@@ -149,4 +156,10 @@ describe('Reference form dialog', () => {
       manuscriptActions.deleteReferenceAction(mockState.data.present.references[0])
     );
   });
+
+  function stringToEditorState(xmlContent: string): JSONObject {
+    const el = document.createElement('div');
+    el.innerHTML = xmlContent;
+    return createReferenceAnnotatedValue(el).toJSON();
+  }
 });

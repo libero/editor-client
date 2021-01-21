@@ -1,12 +1,10 @@
-import {
-  createEmptyRefInfoByType,
-  createReference,
-  createReferencesState,
-  getRefNodeText,
-  Reference,
-  sortReferencesList
-} from 'app/models/reference';
+import { createReferencesState, Reference, sortReferencesList } from 'app/models/reference';
 import { set } from 'lodash';
+import { WebReference } from 'app/models/reference-type';
+
+jest.mock('uuid', () => ({
+  v4: () => 'unique_id'
+}));
 
 describe('Reference model', () => {
   it('creates journal reference', () => {
@@ -21,7 +19,9 @@ describe('Reference model', () => {
         <lpage>239</lpage>`,
       'journal'
     );
-    expect(createReference('id', el.querySelector('element-citation'))).toMatchSnapshot();
+
+    el.setAttribute('id', 'id');
+    expect(new Reference(el.querySelector('element-citation'))).toMatchSnapshot();
   });
 
   it('creates book reference', () => {
@@ -36,7 +36,9 @@ describe('Reference model', () => {
         <pub-id pub-id-type="isbn">978-1844674428</pub-id>`,
       'book'
     );
-    expect(createReference('id', el.querySelector('element-citation'))).toMatchSnapshot();
+
+    el.setAttribute('id', 'id');
+    expect(new Reference(el.querySelector('element-citation'))).toMatchSnapshot();
   });
 
   it('creates periodical reference', () => {
@@ -50,7 +52,9 @@ describe('Reference model', () => {
         <lpage>4</lpage>`,
       'periodical'
     );
-    expect(createReference('id', el.querySelector('element-citation'))).toMatchSnapshot();
+
+    el.setAttribute('id', 'id');
+    expect(new Reference(el.querySelector('element-citation'))).toMatchSnapshot();
   });
 
   it('creates report reference', () => {
@@ -65,7 +69,9 @@ describe('Reference model', () => {
       `,
       'report'
     );
-    expect(createReference('id', el.querySelector('element-citation'))).toMatchSnapshot();
+
+    el.setAttribute('id', 'id');
+    expect(new Reference(el.querySelector('element-citation'))).toMatchSnapshot();
   });
 
   it('creates report reference', () => {
@@ -80,7 +86,8 @@ describe('Reference model', () => {
       `,
       'report'
     );
-    expect(createReference('id', el.querySelector('element-citation'))).toMatchSnapshot();
+    el.setAttribute('id', 'id');
+    expect(new Reference(el.querySelector('element-citation'))).toMatchSnapshot();
   });
 
   it('creates data reference', () => {
@@ -94,7 +101,9 @@ describe('Reference model', () => {
         <version designator="NM_009324.2">NM_009324.2</version>`,
       'data'
     );
-    expect(createReference('id', el.querySelector('element-citation'))).toMatchSnapshot();
+
+    el.setAttribute('id', 'id');
+    expect(new Reference(el.querySelector('element-citation'))).toMatchSnapshot();
   });
 
   it('creates web reference', () => {
@@ -108,7 +117,9 @@ describe('Reference model', () => {
         <date-in-citation iso-8601-date="2019-01-01">January 1, 2019</date-in-citation>`,
       'web'
     );
-    expect(createReference('id', el.querySelector('element-citation'))).toMatchSnapshot();
+
+    el.setAttribute('id', 'id');
+    expect(new Reference(el.querySelector('element-citation'))).toMatchSnapshot();
   });
 
   it('creates preprint reference', () => {
@@ -121,7 +132,9 @@ describe('Reference model', () => {
         <pub-id pub-id-type="doi">10.1101/400515</pub-id>`,
       'preprint'
     );
-    expect(createReference('id', el.querySelector('element-citation'))).toMatchSnapshot();
+
+    el.setAttribute('id', 'id');
+    expect(new Reference(el.querySelector('element-citation'))).toMatchSnapshot();
   });
 
   it('creates software reference', () => {
@@ -135,7 +148,9 @@ describe('Reference model', () => {
         <ext-link ext-link-type="uri" xlink:href="http://www.R-project.org/">http://www.R-project.org/</ext-link>`,
       'software'
     );
-    expect(createReference('id', el.querySelector('element-citation'))).toMatchSnapshot();
+
+    el.setAttribute('id', 'id');
+    expect(new Reference(el.querySelector('element-citation'))).toMatchSnapshot();
   });
 
   it('creates conference reference', () => {
@@ -150,7 +165,9 @@ describe('Reference model', () => {
         <pub-id pub-id-type="doi">10.1145/2623330.2623667</pub-id>`,
       'confproc'
     );
-    expect(createReference('id', el.querySelector('element-citation'))).toMatchSnapshot();
+
+    el.setAttribute('id', 'id');
+    expect(new Reference(el.querySelector('element-citation'))).toMatchSnapshot();
   });
 
   it('creates thesis reference', () => {
@@ -167,7 +184,9 @@ describe('Reference model', () => {
         <pub-id pub-id-type="pmid">31038122</pub-id>`,
       'thesis'
     );
-    expect(createReference('id', el.querySelector('element-citation'))).toMatchSnapshot();
+
+    el.setAttribute('id', 'id');
+    expect(new Reference(el.querySelector('element-citation'))).toMatchSnapshot();
   });
 
   it('creates patent reference', () => {
@@ -181,48 +200,50 @@ describe('Reference model', () => {
         <ext-link ext-link-type="uri" xlink:href="https://patents.google.com/patent/WO2015087996A1/en">https://patents.google.com/patent/WO2015087996A1/en</ext-link>`,
       'patent'
     );
-    expect(createReference('id', el.querySelector('element-citation'))).toMatchSnapshot();
+
+    el.setAttribute('id', 'id');
+    expect(new Reference(el.querySelector('element-citation'))).toMatchSnapshot();
   });
 
   it('should sort references list', () => {
-    const refs: Reference[] = [
-      { id: '', type: 'web', authors: [{ groupName: 'Berk' }], referenceInfo: createEmptyRefInfoByType('web') },
-      { id: '', type: 'web', authors: [{ groupName: 'Twerk' }], referenceInfo: createEmptyRefInfoByType('web') },
-      { id: '', type: 'web', authors: [{ groupName: 'Schwerk' }], referenceInfo: createEmptyRefInfoByType('web') },
-      { id: '', type: 'web', authors: [{ groupName: 'Berk' }], referenceInfo: createEmptyRefInfoByType('web') }
-    ];
-
-    set(refs[0], 'referenceInfo.year', '2009');
-    set(refs[1], 'referenceInfo.year', '2001');
-    set(refs[2], 'referenceInfo.year', '2011');
-    set(refs[3], 'referenceInfo.year', '2007');
+    const refs = [new Reference(), new Reference(), new Reference(), new Reference()];
+    refs[0].type = 'web';
+    refs[0].authors = [{ groupName: 'Berk' }];
+    (refs[0].referenceInfo as WebReference).year = '2009';
+    refs[1].type = 'web';
+    refs[1].authors = [{ groupName: 'Twerk' }];
+    (refs[1].referenceInfo as WebReference).year = '2001';
+    refs[2].type = 'web';
+    refs[2].authors = [{ groupName: 'Schwerk' }];
+    (refs[2].referenceInfo as WebReference).year = '2011';
+    refs[3].type = 'web';
+    refs[3].authors = [{ groupName: 'Berk' }];
+    (refs[3].referenceInfo as WebReference).year = '2007';
 
     expect(sortReferencesList(refs)).toEqual([refs[3], refs[0], refs[2], refs[1]]);
   });
 
   it('should create ref node text', () => {
-    const ref: Reference = {
-      id: '',
-      type: 'web',
-      authors: [{ groupName: 'Berk' }],
-      referenceInfo: createEmptyRefInfoByType('web')
-    };
-    expect(getRefNodeText(ref)).toBe('Berk');
+    const ref = new Reference();
+    ref.type = 'web';
+    ref.authors = [{ groupName: 'Berk' }];
+
+    expect(ref.getCitationDisplayName()).toBe('Berk');
 
     set(ref, 'referenceInfo.year', '2009');
-    expect(getRefNodeText(ref)).toBe('Berk, 2009');
+    expect(ref.getCitationDisplayName()).toBe('Berk, 2009');
 
     ref.authors.push({ firstName: 'D', lastName: 'Twerk' });
-    expect(getRefNodeText(ref)).toBe('Berk and Twerk, 2009');
+    expect(ref.getCitationDisplayName()).toBe('Berk and Twerk, 2009');
 
     ref.authors.push({ firstName: 'B', lastName: 'Schwerk' });
-    expect(getRefNodeText(ref)).toBe('Berk et al., 2009');
+    expect(ref.getCitationDisplayName()).toBe('Berk et al., 2009');
   });
 
   it('should create reference state from XML', () => {
     const xmlWrapper = document.createElement('div');
     xmlWrapper.innerHTML =
-      '<ref>' +
+      '<ref id="test">' +
       givenReferenceXml(
         `
       <year iso-8601-date="2015">2015</year>
@@ -233,7 +254,8 @@ describe('Reference model', () => {
         'patent'
       ) +
       '</ref>';
-    const state = createReferencesState(Array.from(xmlWrapper.querySelectorAll('ref')));
+
+    const state = createReferencesState(Array.from(xmlWrapper.querySelectorAll('ref > element-citation')));
     expect(state).toMatchSnapshot();
   });
 });

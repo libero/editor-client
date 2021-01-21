@@ -7,15 +7,16 @@ import configureMockStore from 'redux-mock-store';
 import ClearIcon from '@material-ui/icons/Clear';
 import { Provider } from 'react-redux';
 import { ClickAwayListener } from '@material-ui/core';
-import { EditorState } from 'prosemirror-state';
 
 import { createBodyState } from 'app/models/body';
 import { ReferenceCitationEditorPopup } from 'app/components/reference-citation/reference-citation-editor-popup';
-import { createBlankReference, createReferenceAnnotatedValue, Reference } from 'app/models/reference';
+import { Reference } from 'app/models/reference';
 import { givenState } from 'app/test-utils/reducer-test-helpers';
 import { ReferenceFormDialog } from 'app/containers/reference-form-dialog/reference-form-dialog';
 import { ModalContainer } from 'app/containers/modal-container';
 import * as manuscriptActions from 'app/actions/manuscript.actions';
+import { JSONObject } from 'app/types/utility.types';
+import { createReferenceAnnotatedValue } from 'app/models/reference-type';
 
 jest.mock('@material-ui/core', () => ({
   Popper: ({ children }) => <div data-cmp="Popper">{children}</div>,
@@ -109,7 +110,7 @@ const ReferenceData = [
       volume: '0'
     }
   }
-] as Reference[];
+].map((json) => new Reference(json));
 
 describe('ReferenceCitationEditor', () => {
   const mockStore = configureMockStore([]);
@@ -329,7 +330,7 @@ describe('ReferenceCitationEditor', () => {
 
     wrapper.find('li').at(0).simulate('click');
     wrapper.update();
-    const ref = createBlankReference();
+    const ref = new Reference();
     act(() => {
       wrapper.find(ModalContainer).prop('params')['onAccept'].call(null, ref);
     });
@@ -337,8 +338,8 @@ describe('ReferenceCitationEditor', () => {
   });
 });
 
-function stringToEditorState(xmlContent: string): EditorState {
+function stringToEditorState(xmlContent: string): JSONObject {
   const el = document.createElement('div');
   el.innerHTML = xmlContent;
-  return createReferenceAnnotatedValue(el);
+  return createReferenceAnnotatedValue(el).toJSON();
 }

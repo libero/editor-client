@@ -5,20 +5,17 @@ import { get } from 'lodash';
 import Interweave from 'interweave';
 
 import {
+  Reference
+} from 'app/models/reference';
+import { stringifyEditorState } from 'app/utils/view.utils';
+import {
   BookReference,
-  ConferenceReference,
-  DataReference,
-  JournalReference,
-  PatentReference,
-  PeriodicalReference,
-  PrePrintReference,
-  Reference,
-  ReportReference,
+  ConferenceReference, DataReference, JournalReference, PatentReference, PeriodicalReference,
+  PrePrintReference, ReportReference,
   SoftwareReference,
   ThesisReference,
   WebReference
-} from 'app/models/reference';
-import { stringifyEditorState } from 'app/utils/view.utils';
+} from "app/models/reference-type";
 
 const getAnnotatedText = (editorState: EditorState, suffix: string = ''): React.ReactNode => {
   if (editorState.doc.childCount) {

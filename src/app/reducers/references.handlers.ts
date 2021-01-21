@@ -1,7 +1,7 @@
 import { Node as ProsemirrorNode } from 'prosemirror-model';
 
 import { ManuscriptHistoryState } from 'app/store';
-import { getRefNodeText, Reference, sortReferencesList } from 'app/models/reference';
+import { Reference, sortReferencesList } from 'app/models/reference';
 import { UpdateObjectChange } from 'app/utils/history/update-object-change';
 import { ProsemirrorChange } from 'app/utils/history/prosemirror-change';
 import { BatchChange } from 'app/utils/history/batch-change';
@@ -19,7 +19,7 @@ export function updateReference(state: ManuscriptHistoryState, payload: Referenc
 
   const { body } = state.data.present;
   const transaction = body.tr;
-  const newAttrs = { refId: payload.id, refText: getRefNodeText(payload) };
+  const newAttrs = { refId: payload.id, refText: payload.getCitationDisplayName() };
 
   body.doc.descendants((node: ProsemirrorNode, pos: number, parent: ProsemirrorNode) => {
     if (node.type.name === 'refCitation' && node.attrs['refId'] === payload.id) {

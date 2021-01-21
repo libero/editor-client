@@ -6,7 +6,7 @@ import { ReplaceStep } from 'prosemirror-transform';
 
 import { ReferenceCitationNodeView } from 'app/components/reference-citation';
 import { createBodyState } from 'app/models/body';
-import { createBlankReference } from 'app/models/reference';
+import { Reference } from 'app/models/reference';
 
 jest.mock('prosemirror-view');
 jest.mock('app/components/reference-citation/reference-citation-editor-popup', () => ({
@@ -44,7 +44,7 @@ describe('Reference citation node view', () => {
     const [state, node] = givenState();
     const view = givenEditorView(state);
     const nodeView = new ReferenceCitationNodeView(node, view, () => 1);
-    const ref = createBlankReference();
+    const ref = new Reference();
     nodeView.handleChange(ref);
     expect(view.dispatch['mock'].calls[0][0].steps[0]).toBeInstanceOf(ReplaceStep);
   });
