@@ -1,4 +1,4 @@
-import { createKeywordGroupsState, createNewKeywordState } from 'app/models/keyword';
+import { createKeywordGroupsState, Keyword } from 'app/models/keyword';
 
 jest.mock('uuid', () => ({
   v4: () => 'unique_id'
@@ -24,6 +24,6 @@ describe('Manuscript state factory', () => {
   });
 
   it('creates empty keyword state', () => {
-    expect(createNewKeywordState()).toMatchSnapshot();
+    expect(new Keyword()).toMatchSnapshot();
   });
 });

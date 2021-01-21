@@ -5,7 +5,7 @@ import { NewKeywordSection } from './new-keyword-section';
 import { KeywordSection } from 'app/components/keywords/keyword-section';
 import { makeKeywordContainerStyles } from './styles';
 import { SectionContainer } from 'app/components/section-container';
-import { Keyword } from 'app/types/manuscript';
+import { Keyword } from 'app/models/keyword';
 
 interface KeywordsEditorProps {
   keywords: Keyword[];
@@ -93,10 +93,12 @@ export const KeywordsEditor: React.FC<KeywordsEditorProps> = (props) => {
   const handleAddKeyword = useCallback(
     (editorState: EditorState) => {
       if (editorState.doc.textContent.trim().length > 0) {
-        onAdd(name, { id: newKeyword.id, content: editorState });
+        const kwd = newKeyword.clone();
+        kwd.content = editorState;
+        onAdd(name, kwd);
       }
     },
-    [onAdd, name, newKeyword.id]
+    [onAdd, name, newKeyword]
   );
 
   const isGroupFocused = activeKeywordPath && activeKeywordPath.startsWith(`keywordGroups.${name}`);

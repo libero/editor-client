@@ -12,13 +12,7 @@ import { useArticleInfoFormStyles } from 'app/containers/article-info-form-dialo
 import { getArticleInformation, getAuthors } from 'app/selectors/manuscript.selectors';
 import formGrid from 'app/styles/form-grid.module.scss';
 import { Select } from 'app/components/select';
-import {
-  ArticleInformation,
-  getCopyrightStatement,
-  getLicenseTextEditorState,
-  LICENSE_CC0,
-  LICENSE_CC_BY_4
-} from 'app/models/article-information';
+import { ArticleInformation, LICENSE_CC0, LICENSE_CC_BY_4 } from 'app/models/article-information';
 import { SectionContainer } from 'app/components/section-container';
 import { stringifyEditorState } from 'app/utils/view.utils';
 
@@ -60,15 +54,10 @@ export const ArticleInfoFormDialog: React.FC<{}> = () => {
     (event: SyntheticEvent) => {
       const fieldName = event.target['name'];
       const newValue = event.target['value'];
-      const newArticleInfo = {
-        ...userArticleInfo,
-        [fieldName]: newValue
-      };
+      const newArticleInfo = userArticleInfo.clone();
+      newArticleInfo[fieldName] = newValue;
       if (fieldName === 'publicationDate') {
-        newArticleInfo.copyrightStatement =
-          newArticleInfo.licenseType === LICENSE_CC_BY_4
-            ? getCopyrightStatement(authors, userArticleInfo.publicationDate)
-            : '';
+        newArticleInfo.updateCopyrightStatement(authors);
       }
       setArticleInfo(newArticleInfo);
     },
@@ -79,29 +68,26 @@ export const ArticleInfoFormDialog: React.FC<{}> = () => {
     (event: ChangeEvent<{ name: string; value: string }>) => {
       const fieldName = event.target['name'];
       const newValue = event.target['value'];
-      const updatedArticleInfo = {
-        ...userArticleInfo,
-        subjects: [...userArticleInfo.subjects]
-      };
-
-      set(updatedArticleInfo, fieldName, newValue);
-      updatedArticleInfo.subjects = updatedArticleInfo.subjects.filter(Boolean);
-      setArticleInfo(updatedArticleInfo);
+      const newArticleInfo = userArticleInfo.clone();
+      newArticleInfo[fieldName] = newValue;
+      if (fieldName === 'publicationDate') {
+        newArticleInfo.updateCopyrightStatement(authors);
+      }
+      set(newArticleInfo, fieldName, newValue);
+      newArticleInfo.subjects = newArticleInfo.subjects.filter(Boolean);
+      setArticleInfo(newArticleInfo);
     },
-    [userArticleInfo, setArticleInfo]
+    [userArticleInfo, authors]
   );
 
   const handleLicenseTypeChange = useCallback(
     (event: ChangeEvent<{ name: string; value: string }>) => {
       const newLicenseType = event.target['value'];
-      const updatedArticleInfo = {
-        ...userArticleInfo,
-        licenseType: newLicenseType,
-        licenseText: getLicenseTextEditorState(newLicenseType),
-        copyrightStatement:
-          newLicenseType === LICENSE_CC_BY_4 ? getCopyrightStatement(authors, userArticleInfo.publicationDate) : ''
-      };
-      setArticleInfo(updatedArticleInfo);
+      const newArticleInfo = userArticleInfo.clone();
+      newArticleInfo.licenseType = newLicenseType;
+      newArticleInfo.licenseText = ArticleInformation.getLicenseText(newLicenseType);
+      newArticleInfo.updateCopyrightStatement(authors);
+      setArticleInfo(newArticleInfo);
     },
     [userArticleInfo, authors]
   );

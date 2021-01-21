@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Manuscript state factory creates empty keyword state 1`] = `
-Object {
+Keyword {
+  "_id": "unique_id",
   "content": Object {
     "doc": Object {
       "type": "keyword",
@@ -12,7 +13,6 @@ Object {
       "type": "text",
     },
   },
-  "id": "unique_id",
 }
 `;
 
@@ -20,7 +20,8 @@ exports[`Manuscript state factory creates keywords state 1`] = `
 Object {
   "author-keywords": Object {
     "keywords": Array [
-      Object {
+      Keyword {
+        "_id": "unique_id",
         "content": Object {
           "doc": Object {
             "content": Array [
@@ -37,9 +38,9 @@ Object {
             "type": "text",
           },
         },
-        "id": "unique_id",
       },
-      Object {
+      Keyword {
+        "_id": "unique_id",
         "content": Object {
           "doc": Object {
             "content": Array [
@@ -56,9 +57,9 @@ Object {
             "type": "text",
           },
         },
-        "id": "unique_id",
       },
-      Object {
+      Keyword {
+        "_id": "unique_id",
         "content": Object {
           "doc": Object {
             "content": Array [
@@ -75,9 +76,9 @@ Object {
             "type": "text",
           },
         },
-        "id": "unique_id",
       },
-      Object {
+      Keyword {
+        "_id": "unique_id",
         "content": Object {
           "doc": Object {
             "content": Array [
@@ -99,9 +100,9 @@ Object {
             "type": "text",
           },
         },
-        "id": "unique_id",
       },
-      Object {
+      Keyword {
+        "_id": "unique_id",
         "content": Object {
           "doc": Object {
             "content": Array [
@@ -118,10 +119,10 @@ Object {
             "type": "text",
           },
         },
-        "id": "unique_id",
       },
     ],
-    "newKeyword": Object {
+    "newKeyword": Keyword {
+      "_id": "unique_id",
       "content": Object {
         "doc": Object {
           "type": "keyword",
@@ -132,13 +133,13 @@ Object {
           "type": "text",
         },
       },
-      "id": "unique_id",
     },
     "title": undefined,
   },
   "research-organism": Object {
     "keywords": Array [
-      Object {
+      Keyword {
+        "_id": "unique_id",
         "content": Object {
           "doc": Object {
             "content": Array [
@@ -155,10 +156,10 @@ Object {
             "type": "text",
           },
         },
-        "id": "unique_id",
       },
     ],
-    "newKeyword": Object {
+    "newKeyword": Keyword {
+      "_id": "unique_id",
       "content": Object {
         "doc": Object {
           "type": "keyword",
@@ -169,7 +170,6 @@ Object {
           "type": "text",
         },
       },
-      "id": "unique_id",
     },
     "title": "Research organism",
   },

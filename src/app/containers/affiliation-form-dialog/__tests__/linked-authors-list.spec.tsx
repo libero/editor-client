@@ -129,5 +129,5 @@ function givenAuthors(): Person[] {
       affiliations: ['aff2'],
       id: '92f5e98a-e255-4c59-934c-fa174368e9ac'
     }
-  ];
+  ].map((json) => new Person(json));
 }

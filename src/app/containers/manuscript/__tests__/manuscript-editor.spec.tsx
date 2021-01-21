@@ -16,7 +16,7 @@ import {
 } from 'app/actions/manuscript.actions';
 import { givenState } from 'app/test-utils/reducer-test-helpers';
 import { removeFocusAction, setFocusAction } from 'app/actions/manuscript-editor.actions';
-import { createNewKeywordState } from 'app/models/keyword';
+import { Keyword } from 'app/models/keyword';
 
 jest.mock('app/components/rich-text-input', () => ({
   RichTextInput: () => <div data-cmp="rich-text-input"></div>
@@ -131,8 +131,8 @@ describe('manuscript editor', () => {
       keywordGroups: {
         group: {
           title: 'test',
-          keywords: [createNewKeywordState()],
-          newKeyword: createNewKeywordState()
+          keywords: [new Keyword()],
+          newKeyword: new Keyword()
         }
       }
     });
@@ -161,8 +161,8 @@ describe('manuscript editor', () => {
       keywordGroups: {
         group: {
           title: 'test',
-          keywords: [createNewKeywordState()],
-          newKeyword: createNewKeywordState()
+          keywords: [new Keyword()],
+          newKeyword: new Keyword()
         }
       }
     });
@@ -195,8 +195,8 @@ describe('manuscript editor', () => {
       keywordGroups: {
         group: {
           title: 'test',
-          keywords: [createNewKeywordState()],
-          newKeyword: createNewKeywordState()
+          keywords: [new Keyword()],
+          newKeyword: new Keyword()
         }
       }
     });
@@ -218,8 +218,8 @@ describe('manuscript editor', () => {
       keywordGroups: {
         group: {
           title: 'test',
-          keywords: [createNewKeywordState()],
-          newKeyword: createNewKeywordState()
+          keywords: [new Keyword()],
+          newKeyword: new Keyword()
         }
       }
     });
@@ -241,8 +241,8 @@ describe('manuscript editor', () => {
       keywordGroups: {
         group: {
           title: 'test',
-          keywords: [createNewKeywordState()],
-          newKeyword: createNewKeywordState()
+          keywords: [new Keyword()],
+          newKeyword: new Keyword()
         }
       }
     });
@@ -271,8 +271,8 @@ describe('manuscript editor', () => {
       keywordGroups: {
         group: {
           title: 'test',
-          keywords: [createNewKeywordState()],
-          newKeyword: createNewKeywordState()
+          keywords: [new Keyword()],
+          newKeyword: new Keyword()
         }
       }
     });

@@ -1,5 +1,3 @@
-import { v4 as uuidv4 } from 'uuid';
-
 import {
   KeywordAddPayload,
   KeywordDeletePayload,
@@ -13,6 +11,7 @@ import { ProsemirrorChange } from 'app/utils/history/prosemirror-change';
 import { UpdateObjectChange } from 'app/utils/history/update-object-change';
 import { BatchChange } from 'app/utils/history/batch-change';
 import { DeleteObjectChange } from 'app/utils/history/delete-object-change';
+import { Keyword } from 'app/models/keyword';
 
 export function deleteKeyword(state: ManuscriptHistoryState, payload: KeywordDeletePayload): ManuscriptHistoryState {
   const { keywordGroup, keyword } = payload;
@@ -36,10 +35,7 @@ export function addKeyword(state: ManuscriptHistoryState, payload: KeywordAddPay
   const updateIdChange = UpdateObjectChange.createFromTwoObjects(
     `keywordGroups.${keywordGroup}.newKeyword`,
     newKeywordSection,
-    {
-      id: uuidv4(),
-      content: newKeywordSection.content
-    }
+    new Keyword()
   );
 
   const clearKeywordTransaction = newKeywordSection.content.tr;

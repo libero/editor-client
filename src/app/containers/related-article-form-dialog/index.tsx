@@ -6,7 +6,7 @@ import { isEqual } from 'lodash';
 import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
 import * as manuscriptActions from 'app/actions/manuscript.actions';
 import { ActionButton } from 'app/components/action-button';
-import { createNewRelatedArticle, RelatedArticle } from 'app/models/related-article';
+import { RelatedArticle } from 'app/models/related-article';
 import { useRelatedArticleStyles } from 'app/containers/related-article-form-dialog/styles';
 import { Select } from 'app/components/select';
 import { renderConfirmDialog } from 'app/components/prompt-dialog';
@@ -18,7 +18,7 @@ interface RelatedArticleFormDialogProps {
 }
 
 export const RelatedArticleFormDialog: React.FC<RelatedArticleFormDialogProps> = ({ article }) => {
-  const [userArticle, setUserArticle] = useState<RelatedArticle>(article || createNewRelatedArticle());
+  const [userArticle, setUserArticle] = useState<RelatedArticle>(article || new RelatedArticle());
   const [isConfirmShown, setConfirmShow] = useState<boolean>(false);
   const isNewArticle = !article;
   const classes = useRelatedArticleStyles();
@@ -42,10 +42,9 @@ export const RelatedArticleFormDialog: React.FC<RelatedArticleFormDialogProps> =
     (event: ChangeEvent<{ name: string; value: string }>) => {
       const fieldName = event.target['name'];
       const newValue = event.target['value'];
-      setUserArticle({
-        ...userArticle,
-        [fieldName]: newValue
-      });
+      const newArticle = userArticle.clone();
+      newArticle[fieldName] = newValue;
+      setUserArticle(newArticle);
     },
     [userArticle, setUserArticle]
   );

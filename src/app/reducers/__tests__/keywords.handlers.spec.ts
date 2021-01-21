@@ -3,7 +3,7 @@ import { cloneDeep } from 'lodash';
 import { givenState } from 'app/test-utils/reducer-test-helpers';
 import { updateManuscriptState } from 'app/utils/history.utils';
 import { addKeyword, deleteKeyword, updateKeyword, updateNewKeyword } from 'app/reducers/keywords.handlers';
-import { createNewKeywordState } from 'app/models/keyword';
+import { Keyword } from 'app/models/keyword';
 import { DeleteObjectChange } from 'app/utils/history/delete-object-change';
 import { KeywordDeletePayload } from 'app/actions/manuscript.actions';
 import { BatchChange } from 'app/utils/history/batch-change';
@@ -18,8 +18,8 @@ describe('Keywords handler', () => {
       keywordGroups: {
         'kwd-group': {
           title: undefined,
-          keywords: [createNewKeywordState(), createNewKeywordState()],
-          newKeyword: createNewKeywordState()
+          keywords: [new Keyword(), new Keyword()],
+          newKeyword: new Keyword()
         }
       }
     });
@@ -36,13 +36,13 @@ describe('Keywords handler', () => {
       keywordGroups: {
         'kwd-group': {
           title: undefined,
-          keywords: [createNewKeywordState()],
-          newKeyword: createNewKeywordState()
+          keywords: [new Keyword()],
+          newKeyword: new Keyword()
         }
       }
     });
 
-    const payload = { keywordGroup: 'kwd-group', keyword: createNewKeywordState() };
+    const payload = { keywordGroup: 'kwd-group', keyword: new Keyword() };
     const actualState = addKeyword(state, payload);
 
     expect(actualState.data.past).toEqual([expect.any(BatchChange)]);
@@ -55,8 +55,8 @@ describe('Keywords handler', () => {
       keywordGroups: {
         'kwd-group': {
           title: undefined,
-          keywords: [createNewKeywordState()],
-          newKeyword: createNewKeywordState()
+          keywords: [new Keyword()],
+          newKeyword: new Keyword()
         }
       }
     });
@@ -80,8 +80,8 @@ describe('Keywords handler', () => {
       keywordGroups: {
         'kwd-group': {
           title: undefined,
-          keywords: [createNewKeywordState()],
-          newKeyword: createNewKeywordState()
+          keywords: [new Keyword()],
+          newKeyword: new Keyword()
         }
       }
     });

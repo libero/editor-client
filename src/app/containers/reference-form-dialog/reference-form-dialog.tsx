@@ -1,19 +1,12 @@
 import React, { useCallback, useState, ChangeEvent } from 'react';
-import { get, has, pick } from 'lodash';
+import { get, has, pick, set } from 'lodash';
 import DeleteIcon from '@material-ui/icons/Delete';
 import classNames from 'classnames';
 import { IconButton } from '@material-ui/core';
 import { EditorState } from 'prosemirror-state';
 import { Alert } from '@material-ui/lab';
 
-import {
-  createBlankReference,
-  Reference,
-  ReferenceContributor,
-  ReferenceType,
-  createEmptyRefInfoByType,
-  ReferenceInfoType
-} from 'app/models/reference';
+import { Reference, ReferenceContributor, ReferenceInfoType } from 'app/models/reference';
 import { Select } from 'app/components/select';
 import { useReferenceFormStyles } from 'app/containers/reference-form-dialog/styles';
 import { ActionButton } from 'app/components/action-button';
@@ -26,6 +19,7 @@ import {
 import { renderFormControl } from 'app/containers/reference-form-dialog/reference-form-renderer';
 import refFormGrid from 'app/styles/form-grid.module.scss';
 import { objectsEqual } from 'app/utils/view.utils';
+import { ReferenceType } from 'app/models/reference-type';
 
 interface ReferenceFormDialogProps {
   reference?: Reference;
@@ -43,19 +37,16 @@ export const ReferenceFormDialog: React.FC<ReferenceFormDialogProps> = ({
   const classes = useReferenceFormStyles();
   const [isConfirmShown, setConfirmShow] = useState<boolean>(false);
   const isNewReference = !reference;
-  const [userReference, setReference] = useState<Reference>(reference || createBlankReference());
+  const [userReference, setReference] = useState<Reference>(reference || new Reference());
   const [missingFieldsInfo, setMissingFieldsInfo] = useState<Partial<ReferenceInfoType>>({});
   const [missingFieldsConfig, setMissingFieldsConfig] = useState<Record<string, FormControlConfigType>>({});
   const handleReferenceTypeChange = useCallback(
     (event: ChangeEvent<{ name: string; value: ReferenceType }>) => {
-      const newRefInfo = createEmptyRefInfoByType(event.target['value']);
-      const newRef = {
-        ...userReference,
-        type: event.target['value'],
-        referenceInfo: transferValues(userReference.referenceInfo, newRefInfo, missingFieldsInfo)
-      };
+      const newRef = userReference.clone();
+      newRef.type = event.target['value'];
+      newRef.referenceInfo = transferValues(userReference.referenceInfo, newRef.referenceInfo, missingFieldsInfo);
       if (userReference.referenceInfo) {
-        const missingInfo = getDiffFieldValues(userReference.referenceInfo, newRefInfo, missingFieldsInfo);
+        const missingInfo = getDiffFieldValues(userReference.referenceInfo, newRef.referenceInfo, missingFieldsInfo);
         setMissingFieldsInfo(missingInfo);
         setMissingFieldsConfig(getDiffFieldsConfig(userReference.type, newRef.type, missingFieldsConfig, missingInfo));
       }
@@ -66,25 +57,20 @@ export const ReferenceFormDialog: React.FC<ReferenceFormDialogProps> = ({
 
   const handleAuthorsListChange = useCallback(
     (refAuthors: ReferenceContributor[]) => {
-      setReference({
-        ...userReference,
-        authors: refAuthors
-      });
+      const newRef = userReference.clone();
+      newRef.authors = refAuthors;
+      setReference(newRef);
     },
     [userReference, setReference]
   );
 
   const handleRefInfoChange = useCallback(
     (name, value) => {
-      setReference({
-        ...userReference,
-        referenceInfo: {
-          ...userReference.referenceInfo,
-          [name]: value
-        }
-      });
+      const newRef = userReference.clone();
+      set(newRef.referenceInfo, name, value);
+      setReference(newRef);
     },
-    [userReference]
+    [userReference, setReference]
   );
 
   const handleMissingFieldsInfoChange = useCallback(

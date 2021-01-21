@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Transaction } from 'prosemirror-state';
 
 import { useAuthorFormStyles } from './styles';
-import { createAuthor, createBioEditorState, Person } from 'app/models/person';
+import { Person } from 'app/models/person';
 import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
 import * as manuscriptActions from 'app/actions/manuscript.actions';
 import { renderConfirmDialog } from 'app/components/prompt-dialog';
@@ -28,9 +28,7 @@ export const AuthorFormDialog: React.FC<AuthorFormDialogProps> = (props) => {
   const dispatch = useDispatch();
   const isNewAuthor = !props.author;
 
-  const [author, setAuthor] = useState<Person>(
-    props.author || createAuthor(undefined, { firstName: '', lastName: '', bio: createBioEditorState() })
-  );
+  const [author, setAuthor] = useState<Person>(props.author || new Person());
   const [isConfirmShown, setConfirmShow] = useState<boolean>(false);
 
   const allAffiliations = useSelector(getAffiliations);
@@ -53,7 +51,9 @@ export const AuthorFormDialog: React.FC<AuthorFormDialogProps> = (props) => {
 
   const updateAuthorInfo = useCallback(
     (fieldName: string, value: ValueOf<Person>) => {
-      setAuthor({ ...author, [fieldName]: value });
+      const newAuthor = author.clone();
+      newAuthor[fieldName] = value;
+      setAuthor(newAuthor);
     },
     [author, setAuthor]
   );
@@ -98,11 +98,10 @@ export const AuthorFormDialog: React.FC<AuthorFormDialogProps> = (props) => {
   const handleOrcidChange = useCallback(
     (event: SyntheticEvent) => {
       const newValue = event.target['value'];
-      setAuthor({
-        ...author,
-        orcid: newValue,
-        isAuthenticated: author.isAuthenticated && props.author.orcid === newValue
-      });
+      const newAuthor = author.clone();
+      newAuthor.orcid = newValue;
+      newAuthor.isAuthenticated = author.isAuthenticated && props.author.orcid === newValue;
+      setAuthor(newAuthor);
     },
     [setAuthor, author, props]
   );

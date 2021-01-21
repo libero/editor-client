@@ -45,9 +45,13 @@ exports[`Authors info details renders authors list 1`] = `
           />
         </div>
         <div
-          className="makeStyles-authorInfoLine-10"
+          className="makeStyles-authorBio-11"
         >
-          Competing interest: Works at eLife
+          <span>
+            <p
+              className="paragraph"
+            />
+          </span>
         </div>
       </div>
       <div
@@ -84,6 +88,15 @@ exports[`Authors info details renders authors list 1`] = `
             rel="noopener noreferrer"
             target="_blank"
           />
+        </div>
+        <div
+          className="makeStyles-authorBio-11"
+        >
+          <span>
+            <p
+              className="paragraph"
+            />
+          </span>
         </div>
       </div>
       <div

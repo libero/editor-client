@@ -14,7 +14,6 @@ import * as manuscriptActions from 'app/actions/manuscript.actions';
 import { RichTextEditor } from 'app/components/rich-text-editor';
 import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
 import { KeywordsEditor } from 'app/components/keywords';
-import { Keyword, KeywordGroups } from 'app/types/manuscript';
 import { useManuscriptStyles } from './styles';
 import { SortableAuthorsList } from './sortable-authors-list';
 import { AuthorsInfoDetails } from 'app/containers/manuscript/authors-info-details';
@@ -24,6 +23,7 @@ import { ArticleInformation } from 'app/containers/manuscript/article-informatio
 import { getFocusedEditorStatePath } from 'app/selectors/manuscript-editor.selectors';
 import { RelatedArticles } from 'app/containers/manuscript/related-articles';
 import { ClearFocus } from 'app/containers/manuscript/clear-focus';
+import { Keyword, KeywordGroups } from 'app/models/keyword';
 
 const isInputFocused = (inputName: string, focusedPath?: string): boolean => {
   return Boolean(focusedPath) && focusedPath.startsWith(inputName);

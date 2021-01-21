@@ -4,6 +4,7 @@ import { Schema } from 'prosemirror-model';
 import { Manuscript } from 'app/types/manuscript';
 import { getInitialHistory, getLoadableStateSuccess } from 'app/utils/state.utils';
 import { ManuscriptHistoryState } from 'app/store';
+import { ArticleInformation } from 'app/models/article-information';
 
 export function givenState(overrides: Partial<Manuscript>): ManuscriptHistoryState {
   return getLoadableStateSuccess(
@@ -21,7 +22,7 @@ export function givenState(overrides: Partial<Manuscript>): ManuscriptHistorySta
       relatedArticles: [],
       affiliations: [],
       keywordGroups: {},
-      articleInfo: {
+      articleInfo: new ArticleInformation({
         dtd: '',
         articleType: '',
         articleDOI: '',
@@ -32,8 +33,8 @@ export function givenState(overrides: Partial<Manuscript>): ManuscriptHistorySta
         publicationDate: '',
         licenseType: 'CC0',
         copyrightStatement: '',
-        licenseText: createDummyEditorState()
-      },
+        licenseText: createDummyEditorState().toJSON()
+      }),
       references: [],
       ...overrides
     })

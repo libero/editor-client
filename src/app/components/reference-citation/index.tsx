@@ -9,7 +9,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import { TextSelection } from 'prosemirror-state';
 
 import { theme } from 'app/styles/theme';
-import { getRefNodeText, Reference } from 'app/models/reference';
+import { Reference } from 'app/models/reference';
 import { store } from 'app/store';
 import { ReferenceCitationEditorPopup } from 'app/components/reference-citation/reference-citation-editor-popup';
 
@@ -77,7 +77,7 @@ export class ReferenceCitationNodeView implements NodeView {
 
   handleChange = (ref: Reference): void => {
     const attrs = ref
-      ? { refId: ref.id || uuidv4(), refText: getRefNodeText(ref) }
+      ? { refId: ref.id || uuidv4(), refText: ref.getCitationDisplayName() }
       : { refId: undefined, refText: undefined };
 
     const schema = this.view.state.schema;

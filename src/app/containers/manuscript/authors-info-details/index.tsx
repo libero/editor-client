@@ -7,7 +7,7 @@ import Interweave from 'interweave';
 
 import { SectionContainer } from 'app/components/section-container';
 import { getAuthorAffiliations, getAuthors } from 'app/selectors/manuscript.selectors';
-import { getAuthorDisplayName, Person } from 'app/models/person';
+import { Person } from 'app/models/person';
 import {
   useAuthorDetailStyles,
   useAuthorsDetailsListStyles
@@ -17,7 +17,6 @@ import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions'
 import { AuthorFormDialog } from 'app/containers/author-form-dialog';
 import { stringifyEditorState } from 'app/utils/view.utils';
 import { OrcidIcon } from 'app/assets/icons';
-import { getAffiliationDisplayName } from 'app/models/affiliation';
 import { ComponentWithId } from 'app/types/utility.types';
 
 export const AuthorsInfoDetails: React.FC<ComponentWithId> = ({ id }) => {
@@ -69,7 +68,7 @@ const AuthorInfo: React.FC<AuthorInfoProps> = React.memo(({ author }) => {
     <section className={classes.root}>
       <div className={classes.authorInfoContainer}>
         <div className={classes.authorInfoLine}>
-          <strong> {getAuthorDisplayName(author)} </strong>
+          <strong> {author.getDisplayName()} </strong>
         </div>
         <div className={classes.authorInfoLine}>
           {author.isCorrespondingAuthor ? 'Corresponding Author: ' : undefined}
@@ -77,7 +76,7 @@ const AuthorInfo: React.FC<AuthorInfoProps> = React.memo(({ author }) => {
         </div>
         <div className={classes.authorInfoLine}>
           {affiliations.map((aff) => (
-            <div key={aff.id}>{getAffiliationDisplayName(aff)}</div>
+            <div key={aff.id}>{aff.getDisplayName()}</div>
           ))}
         </div>
         <div className={classes.authorInfoLine}>

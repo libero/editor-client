@@ -4,12 +4,12 @@ import { mount } from 'enzyme';
 
 import { KeywordSection } from 'app/components/keywords/keyword-section';
 import { ProseMirrorEditorView } from 'app/components/rich-text-editor/prosemirror-editor-view';
-import { createNewKeywordState } from 'app/models/keyword';
+import { Keyword } from 'app/models/keyword';
 
 describe('KeywordsEditorComponent', () => {
   const props = {
     isActive: false,
-    keyword: createNewKeywordState(),
+    keyword: new Keyword(),
     onChange: jest.fn(),
     onDelete: jest.fn(),
     onFocus: jest.fn(),

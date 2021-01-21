@@ -2,9 +2,10 @@ import React, { useCallback, SyntheticEvent, ChangeEvent } from 'react';
 import { TextField, FormControlLabel, Checkbox } from '@material-ui/core';
 import { EditorState, Transaction } from 'prosemirror-state';
 import { RichTextInput } from 'app/components/rich-text-input';
-import { ReferenceContributor, ReferenceType } from 'app/models/reference';
+import { ReferenceContributor } from 'app/models/reference';
 import { ReferenceContributorsList } from 'app/containers/reference-form-dialog/reference-contributors-list';
 import { Select } from 'app/components/select';
+import { ReferenceType } from 'app/models/reference-type';
 
 export type RefInfoChangeCallback<T> = (name: string, value: T) => void;
 

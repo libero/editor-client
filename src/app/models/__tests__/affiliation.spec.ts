@@ -1,9 +1,4 @@
-import {
-  Affiliation,
-  createAffiliation,
-  createAffiliationsState,
-  getAffiliationDisplayName
-} from 'app/models/affiliation';
+import { Affiliation, createAffiliationsState } from 'app/models/affiliation';
 
 jest.mock('uuid', () => ({
   v4: () => 'unique_id'
@@ -11,7 +6,7 @@ jest.mock('uuid', () => ({
 
 describe('Affiliation model helpers', () => {
   it('creates an affiliation with specified data', () => {
-    const xmlData: Omit<Affiliation, 'id'> = {
+    const jsonData = {
       label: 'label',
       institution: {
         name: 'eLife'
@@ -22,14 +17,12 @@ describe('Affiliation model helpers', () => {
       country: 'UK'
     };
 
-    expect(createAffiliation(undefined, xmlData)).toEqual({
-      ...xmlData,
-      id: expect.any(String)
-    });
+    expect(new Affiliation(jsonData)).toMatchSnapshot();
   });
 
   it('creates an affiliation with specified data and ID', () => {
-    const xmlData: Omit<Affiliation, 'id'> = {
+    const jsonData = {
+      id: 'SOME_ID',
       label: 'label',
       institution: {
         name: 'eLife'
@@ -40,14 +33,11 @@ describe('Affiliation model helpers', () => {
       country: 'UK'
     };
 
-    expect(createAffiliation('ID_FROM_XML', xmlData)).toEqual({
-      ...xmlData,
-      id: 'ID_FROM_XML'
-    });
+    expect(new Affiliation(jsonData)).toMatchSnapshot();
   });
 
   it('returns an affilition display name', () => {
-    const name = getAffiliationDisplayName({
+    const aff = new Affiliation({
       id: 'SOME_ID',
       label: 'label',
       institution: {
@@ -58,7 +48,7 @@ describe('Affiliation model helpers', () => {
       },
       country: 'UK'
     });
-    expect(name).toBe('eLife, Cambridge, UK');
+    expect(aff.getDisplayName()).toBe('eLife, Cambridge, UK');
   });
 
   it('creates affilitioan state from XML', () => {

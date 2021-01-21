@@ -2,15 +2,15 @@ import { get } from 'lodash';
 
 import { givenState } from 'app/test-utils/reducer-test-helpers';
 import { RearrangingChange } from 'app/utils/history/rearranging-change';
-import { createNewKeywordState } from 'app/models/keyword';
+import { Keyword } from 'app/models/keyword';
 
 describe('RearrangingChange', () => {
   const manuscript = givenState({}).data.present;
   beforeAll(() => {
     manuscript.keywordGroups['kwdGroup'] = {
       title: 'group',
-      keywords: [createNewKeywordState(), createNewKeywordState(), createNewKeywordState()],
-      newKeyword: createNewKeywordState()
+      keywords: [new Keyword(), new Keyword(), new Keyword()],
+      newKeyword: new Keyword()
     };
   });
 

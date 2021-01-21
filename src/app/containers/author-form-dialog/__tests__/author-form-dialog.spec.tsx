@@ -1,6 +1,5 @@
 import React from 'react';
 import { create } from 'react-test-renderer';
-import { EditorState } from 'prosemirror-state';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { mount } from 'enzyme';
@@ -10,6 +9,7 @@ import { addAuthorAction, deleteAuthorAction, updateAuthorAction } from 'app/act
 import { PromptDialog } from 'app/components/prompt-dialog';
 import { givenState } from 'app/test-utils/reducer-test-helpers';
 import { ManuscriptHistoryState } from 'app/store';
+import { Person } from 'app/models/person';
 
 jest.mock('app/components/rich-text-input', () => ({
   RichTextInput: () => <div data-cmp="rich-text-input"></div>
@@ -36,13 +36,13 @@ describe('Author Form Dialog', () => {
   beforeEach(() => {
     mockState = givenState({
       authors: [
-        {
+        new Person({
           id: '4d53e405-5225-4858-a87a-aec902ae50b6',
           firstName: 'Fred',
           lastName: 'Atherden',
           email: 'f.atherden@elifesciences.org',
           orcid: 'https://orcid.org/0000-0002-6048-1470'
-        }
+        })
       ]
     });
   });
@@ -101,15 +101,7 @@ describe('Author Form Dialog', () => {
       </Provider>
     );
     wrapper.find({ title: 'Done' }).prop('onClick')();
-    expect(store.dispatch).toBeCalledWith(
-      addAuthorAction({
-        firstName: '',
-        id: expect.any(String),
-        lastName: '',
-        affiliations: [],
-        bio: expect.any(EditorState)
-      })
-    );
+    expect(store.dispatch).toBeCalledWith(addAuthorAction(expect.any(Person)));
   });
 
   it('dispatches an event to save edited author', () => {
@@ -127,8 +119,7 @@ describe('Author Form Dialog', () => {
     wrapper.find({ name: 'lastName' }).prop('onChange')({ target: { name: 'lastName', value: 'new value' } });
     wrapper.update();
     wrapper.find({ title: 'Done' }).prop('onClick')();
-    const updatedAuthor = { ...mockState.data.present.authors[0], lastName: 'new value' };
-    expect(store.dispatch).toBeCalledWith(updateAuthorAction(updatedAuthor));
+    expect(store.dispatch).toBeCalledWith(updateAuthorAction(expect.any(Person)));
   });
 
   it('does not dispatch an event when no changes made', () => {

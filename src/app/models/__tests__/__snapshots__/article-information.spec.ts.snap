@@ -1,81 +1,69 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Person model helpers should create license editor state 1`] = `
-Object {
-  "doc": Object {
-    "content": Array [
-      Object {
-        "content": Array [
-          Object {
-            "text": "This article is distributed under the terms of the ",
-            "type": "text",
-          },
-          Object {
-            "marks": Array [
-              Object {
-                "attrs": Object {
-                  "href": "http://creativecommons.org/licenses/by/4.0/",
-                },
-                "type": "link",
-              },
-            ],
-            "text": "Creative Commons Attribution License",
-            "type": "text",
-          },
-          Object {
-            "text": ", which permits unrestricted use and redistribution provided that the original author and source are credited.",
-            "type": "text",
-          },
-        ],
-        "type": "paragraph",
-      },
-    ],
-    "type": "doc",
+exports[`Article Information model helpers creates article info state from XML with CC-BY-4 1`] = `
+ArticleInformation {
+  "_id": "unique_id",
+  "articleDOI": "10.7554/eLife.00104",
+  "articleType": " Insight ",
+  "copyrightStatement": "© 2019, Last name 1",
+  "dtd": "1.2",
+  "elocationId": "e00104",
+  "licenseText": Object {
+    "doc": Object {
+      "content": Array [
+        Object {
+          "type": "paragraph",
+        },
+      ],
+      "type": "doc",
+    },
+    "selection": Object {
+      "anchor": 1,
+      "head": 1,
+      "type": "text",
+    },
   },
-  "selection": Object {
-    "anchor": 1,
-    "head": 1,
-    "type": "text",
-  },
+  "licenseType": "CC-BY-4",
+  "publicationDate": "2019-11-30",
+  "publisherId": "00104",
+  "subjects": Array [
+    "Cell Biology",
+    "Genetics and Genomics",
+  ],
+  "volume": "8",
 }
 `;
 
-exports[`Person model helpers should create license editor state 2`] = `
-Object {
-  "doc": Object {
-    "content": Array [
-      Object {
-        "content": Array [
-          Object {
-            "text": "This is an open-access article, free of all copyright, and may be freely reproduced, distributed, transmitted, modified, built upon, or otherwise used by anyone for any lawful purpose. The work is made available under the ",
-            "type": "text",
-          },
-          Object {
-            "marks": Array [
-              Object {
-                "attrs": Object {
-                  "href": "http://creativecommons.org/publicdomain/zero/1.0/",
-                },
-                "type": "link",
-              },
-            ],
-            "text": "Creative Commons CC0 public domain dedication",
-            "type": "text",
-          },
-          Object {
-            "text": ".",
-            "type": "text",
-          },
-        ],
-        "type": "paragraph",
-      },
-    ],
-    "type": "doc",
+exports[`Article Information model helpers creates article info state from XML with CC0 1`] = `
+ArticleInformation {
+  "_id": "unique_id",
+  "articleDOI": "10.7554/eLife.00104",
+  "articleType": " Insight ",
+  "copyrightStatement": "",
+  "dtd": "1.2",
+  "elocationId": "e00104",
+  "licenseText": Object {
+    "doc": Object {
+      "content": Array [
+        Object {
+          "type": "paragraph",
+        },
+      ],
+      "type": "doc",
+    },
+    "selection": Object {
+      "anchor": 1,
+      "head": 1,
+      "type": "text",
+    },
   },
-  "selection": Object {
-    "anchor": 1,
-    "head": 1,
-    "type": "text",
-  },
+  "licenseType": "CC0",
+  "publicationDate": "2019-11-30",
+  "publisherId": "00104",
+  "subjects": Array [
+    "Cell Biology",
+    "Genetics and Genomics",
+  ],
+  "volume": "8",
 }
 `;

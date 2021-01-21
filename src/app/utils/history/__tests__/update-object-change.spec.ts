@@ -2,16 +2,17 @@ import { cloneDeep } from 'lodash';
 
 import { givenState } from 'app/test-utils/reducer-test-helpers';
 import { UpdateObjectChange } from 'app/utils/history/update-object-change';
+import { Affiliation } from 'app/models/affiliation';
 
 describe('UpdateObjectChange', () => {
   const manuscript = givenState({}).data.present;
-  const affiliation = {
+  const affiliation = new Affiliation({
     id: '1',
     label: 'elife',
     institution: { name: 'Name' },
     address: { city: 'Cambridge' },
     country: 'United Kingdom'
-  };
+  });
 
   beforeAll(() => {
     manuscript.affiliations.push(affiliation);
@@ -28,7 +29,7 @@ describe('UpdateObjectChange', () => {
   });
 
   it('should revert change', () => {
-    const updatedAff = cloneDeep(affiliation);
+    const updatedAff = affiliation.clone();
     updatedAff.label = 'eLife Sciences';
     const change = UpdateObjectChange.createFromTwoObjects('affiliations.0', affiliation, updatedAff);
 

@@ -3,8 +3,9 @@ import { create } from 'react-test-renderer';
 import { EditorView } from 'prosemirror-view';
 import { mount } from 'enzyme';
 import { TextField, Popover } from '@material-ui/core';
+import { EditorState } from 'prosemirror-state';
 
-import { createBioEditorState } from 'app/models/person';
+import { Person } from 'app/models/person';
 import { LinkEditorPopup } from 'app/components/link-editor-popup/link-editor-popup';
 import { ActionButton } from 'app/components/action-button';
 
@@ -30,11 +31,7 @@ jest.mock('@material-ui/core/styles', () => {
 
 describe('LinkEditorPopup', () => {
   it('should render component', () => {
-    const el = document.createElement('bio');
-    el.innerHTML = `<p><bold>Fred Atherden</bold> is in the Production Department, eLife Sciences, Cambridge, United Kingdoms
-                    <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License</ext-link>
-                </p>`;
-    const editorState = createBioEditorState(el);
+    const editorState = givenEditorState();
 
     const viewContainer = document.createElement('div');
     const editorView = new EditorView(viewContainer, {
@@ -52,11 +49,7 @@ describe('LinkEditorPopup', () => {
   it('should trigger apply event', () => {
     const handleClose = jest.fn();
     const handleApply = jest.fn();
-    const el = document.createElement('bio');
-    el.innerHTML = `<p><bold>Fred Atherden</bold> is in the Production Department, eLife Sciences, Cambridge, United Kingdoms
-                    <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License</ext-link>
-                </p>`;
-    const editorState = createBioEditorState(el);
+    const editorState = givenEditorState();
 
     const viewContainer = document.createElement('div');
     const editorView = new EditorView(viewContainer, {
@@ -79,12 +72,7 @@ describe('LinkEditorPopup', () => {
   it('should trigger close event', () => {
     const handleClose = jest.fn();
     const handleApply = jest.fn();
-
-    const el = document.createElement('bio');
-    el.innerHTML = `<p><bold>Fred Atherden</bold> is in the Production Department, eLife Sciences, Cambridge, United Kingdoms
-                    <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License</ext-link>
-                </p>`;
-    const editorState = createBioEditorState(el);
+    const editorState = givenEditorState();
 
     const viewContainer = document.createElement('div');
     const editorView = new EditorView(viewContainer, {
@@ -99,4 +87,19 @@ describe('LinkEditorPopup', () => {
 
     expect(handleClose).toHaveBeenCalled();
   });
+
+  function givenEditorState(): EditorState {
+    const authorsContainer = document.createElement('div');
+    authorsContainer.innerHTML = `
+        <name><surname>Atherden</surname><given-names>Fred</given-names><suffix>Capt.</suffix></name>
+        <contrib-id authenticated="true" contrib-id-type="orcid">https://orcid.org/0000-0002-6048-1470</contrib-id>
+        <email>f.atherden@elifesciences.org</email>
+        <bio>
+            <p><bold>Fred Atherden</bold> is in the Production Department, eLife Sciences, Cambridge, United Kingdoms
+                <ext-link ext-link-type="uri" xlink:href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License</ext-link>
+            </p> 
+        </bio>`;
+    const person = new Person(authorsContainer);
+    return person.bio;
+  }
 });

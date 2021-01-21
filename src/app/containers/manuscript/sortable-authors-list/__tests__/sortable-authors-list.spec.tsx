@@ -9,6 +9,7 @@ import { moveAuthorAction } from 'app/actions/manuscript.actions';
 import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
 import { AuthorFormDialog } from 'app/containers/author-form-dialog';
 import { givenState } from 'app/test-utils/reducer-test-helpers';
+import { Person } from 'app/models/person';
 
 jest.mock('app/components/rich-text-input', () => ({
   RichTextInput: () => <div data-cmp="rich-text-input"></div>
@@ -26,21 +27,21 @@ jest.mock('react-sortable-hoc', () => ({
 }));
 
 const AUTHORS = [
-  {
+  new Person({
     id: '4d53e405-5225-4858-a87a-aec902ae50b6',
     firstName: 'Fred',
     lastName: 'Atherden',
     email: 'f.atherden@elifesciences.org',
     orcid: 'https://orcid.org/0000-0002-6048-1470',
     affiliations: []
-  },
-  {
+  }),
+  new Person({
     id: 'c3b008e6-4ae9-4ef9-b7cb-854749a1e897',
     firstName: 'Jeanine',
     lastName: 'Smith',
     suffix: 'III',
     affiliations: []
-  }
+  })
 ];
 
 describe('Sortable authors list', () => {

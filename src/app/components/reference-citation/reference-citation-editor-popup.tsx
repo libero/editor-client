@@ -10,7 +10,7 @@ import ClearIcon from '@material-ui/icons/Clear';
 import { has, get } from 'lodash';
 
 import { getReferences } from 'app/selectors/manuscript.selectors';
-import { getRefListAuthorsNames, Reference } from 'app/models/reference';
+import { Reference } from 'app/models/reference';
 import { useReferenceEditorStyles } from 'app/components/reference-citation/styles';
 import * as manuscriptActions from 'app/actions/manuscript.actions';
 import { stringifyEditorState } from 'app/utils/view.utils';
@@ -32,7 +32,7 @@ const renderReferenceModal = (props: ReactFCProps<typeof ReferenceFormDialog>): 
 
 const getRefListItemText = (ref: Reference): string => {
   return [
-    `${getRefListAuthorsNames(ref)}, ${get(ref.referenceInfo, 'year')}`,
+    `${ref.getRefListAuthorsNames()}, ${get(ref.referenceInfo, 'year')}`,
     has(ref.referenceInfo, 'chapterTitle') ? stringifyEditorState(get(ref.referenceInfo, 'chapterTitle')) : undefined,
     has(ref.referenceInfo, 'articleTitle') ? stringifyEditorState(get(ref.referenceInfo, 'articleTitle')) : undefined,
     has(ref.referenceInfo, 'dataTitle') ? stringifyEditorState(get(ref.referenceInfo, 'dataTitle')) : undefined,

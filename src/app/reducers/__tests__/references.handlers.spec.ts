@@ -1,17 +1,19 @@
 import { EditorState } from 'prosemirror-state';
 import { cloneDeep } from 'lodash';
 
-import { createDummyEditorState, givenState } from 'app/test-utils/reducer-test-helpers';
-import { JournalReference, Reference } from 'app/models/reference';
+import { givenState } from 'app/test-utils/reducer-test-helpers';
+import { Reference } from 'app/models/reference';
 import { addReference, deleteReference, updateReference } from 'app/reducers/references.handlers';
 import { BatchChange } from 'app/utils/history/batch-change';
 import { createBodyState } from 'app/models/body';
+import { createReferenceAnnotatedValue } from 'app/models/reference-type';
+import { JSONObject } from 'app/types/utility.types';
 
 let REFERENCE: Reference;
 
 describe('references reducers', () => {
   beforeEach(() => {
-    REFERENCE = {
+    REFERENCE = new Reference({
       id: 'bib1',
       authors: [
         {
@@ -22,8 +24,8 @@ describe('references reducers', () => {
       type: 'journal',
       referenceInfo: {
         year: '2012',
-        source: createDummyEditorState(),
-        articleTitle: createDummyEditorState(),
+        source: stringToEditorState('test content'),
+        articleTitle: stringToEditorState('test content'),
         doi: '',
         pmid: '',
         elocationId: '',
@@ -32,14 +34,7 @@ describe('references reducers', () => {
         inPress: false,
         volume: '337'
       }
-    };
-    (REFERENCE.referenceInfo as JournalReference).source.apply(
-      (REFERENCE.referenceInfo as JournalReference).source.tr.insertText('Some text')
-    );
-
-    (REFERENCE.referenceInfo as JournalReference).articleTitle.apply(
-      (REFERENCE.referenceInfo as JournalReference).articleTitle.tr.insertText('Some other text')
-    );
+    });
   });
   it('should update reference', () => {
     const state = givenState({
@@ -48,7 +43,7 @@ describe('references reducers', () => {
 
     state.data.present.body = givenBodyState('Berk, 2011');
 
-    const updatedRef = cloneDeep(REFERENCE);
+    const updatedRef = REFERENCE.clone();
     updatedRef.referenceInfo['year'] = 2011;
     const newState = updateReference(state, updatedRef);
 
@@ -87,5 +82,11 @@ describe('references reducers', () => {
     }
 
     return createBodyState(el, '');
+  }
+
+  function stringToEditorState(xmlContent: string): JSONObject {
+    const el = document.createElement('div');
+    el.innerHTML = xmlContent;
+    return createReferenceAnnotatedValue(el).toJSON();
   }
 });
