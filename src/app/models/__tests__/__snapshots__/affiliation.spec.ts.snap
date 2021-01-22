@@ -29,7 +29,7 @@ Array [
 
 exports[`Affiliation model helpers creates an affiliation with specified data 1`] = `
 Affiliation {
-  "_id": undefined,
+  "_id": "unique_id",
   "address": Object {
     "city": "Cambridge",
   },
@@ -43,7 +43,7 @@ Affiliation {
 
 exports[`Affiliation model helpers creates an affiliation with specified data and ID 1`] = `
 Affiliation {
-  "_id": "SOME_ID",
+  "_id": "unique_id",
   "address": Object {
     "city": "Cambridge",
   },

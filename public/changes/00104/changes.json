@@ -68,6 +68,80 @@
         }
       ],
       "timestamp": 1611064860125
+    },
+    {
+      "changes": [
+        {
+          "type": "delete-object",
+          "timestamp": 1611252958055,
+          "path": "references",
+          "removedIndex": 16,
+          "idField": "id",
+          "object": {
+            "_id": "bib17",
+            "authors": [
+              {
+                "firstName": "K",
+                "lastName": "Read"
+              }
+            ],
+            "referenceInfo": {
+              "year": "2015",
+              "source": {
+                "doc": {
+                  "type": "annotatedReferenceInfoDoc",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Figshare"
+                    }
+                  ]
+                },
+                "selection": {
+                  "type": "text",
+                  "anchor": 0,
+                  "head": 0
+                }
+              },
+              "dataTitle": {
+                "doc": {
+                  "type": "annotatedReferenceInfoDoc",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Sizing the Problem of Improving Discovery and Access to NIH-funded Data: A Preliminary Study (Datasets)"
+                    }
+                  ]
+                },
+                "selection": {
+                  "type": "text",
+                  "anchor": 0,
+                  "head": 0
+                }
+              },
+              "doi": "10.6084/m9.figshare.1285515",
+              "accessionId": "",
+              "extLink": "",
+              "version": ""
+            },
+            "_type": "data"
+          }
+        },
+        {
+          "type": "prosemirror",
+          "timestamp": 1611252958057,
+          "path": "body",
+          "transactionSteps": [
+            {
+              "stepType": "replace",
+              "from": 3650,
+              "to": 3651
+            }
+          ]
+        }
+      ],
+      "timestamp": 1611252958057,
+      "type": "batch"
     }
   ]
 }

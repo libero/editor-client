@@ -24,6 +24,7 @@ export class RelatedArticle extends BackmatterEntity {
   }
 
   protected fromJSON(json: JSONObject): void {
+    this._id = (json._id as string) || this.id;
     this.articleType = json.articleType as string;
     this.href = json.href as string;
   }

@@ -4,10 +4,21 @@ import { Manuscript } from 'app/types/manuscript';
 import { Change } from 'app/utils/history/change';
 import { cloneManuscript } from 'app/utils/state.utils';
 import { JSONObject } from 'app/types/utility.types';
-import { manuscriptEntityToJson } from 'app/utils/changes.utils';
+import { deserializeBackmatter, manuscriptEntityToJson } from 'app/utils/changes.utils';
+import { BackmatterEntity } from 'app/models/backmatter-entity';
 
-export class AddObjectChange<T> extends Change {
-  constructor(private path: string, private object: T, private idField: string) {
+export class AddObjectChange extends Change {
+  static fromJSON(data: JSONObject): AddObjectChange {
+    const change = new AddObjectChange(
+      data.path as string,
+      deserializeBackmatter(data.path as string, data.object as JSONObject),
+      data.idField as string
+    );
+    change._timestamp = data.timestamp as number;
+    return change;
+  }
+
+  constructor(private path: string, private object: BackmatterEntity, private idField: string) {
     super();
   }
 
@@ -41,7 +52,7 @@ export class AddObjectChange<T> extends Change {
       timestamp: this.timestamp,
       path: this.path,
       idField: this.idField,
-      object: manuscriptEntityToJson<T>(this.object)
+      object: manuscriptEntityToJson(this.object)
     };
   }
 }

@@ -46,7 +46,7 @@ export class Affiliation extends BackmatterEntity {
   }
 
   protected fromJSON(json: JSONObject): void {
-    this._id = json.id as string;
+    this._id = (json._id as string) || this.id;
     this.label = json.label as string;
     this.country = json.country as string;
     this.institution = json.institution as { name: string };

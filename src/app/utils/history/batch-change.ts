@@ -4,8 +4,8 @@ import { deserializeChanges } from 'app/utils/changes.utils';
 import { Change } from 'app/utils/history/change';
 
 export class BatchChange extends Change {
-  static fromJSON(manuscript: Manuscript, data: JSONObject): BatchChange {
-    const change = new BatchChange(deserializeChanges(manuscript, data.changes as JSONObject[]));
+  static fromJSON(data: JSONObject): BatchChange {
+    const change = new BatchChange(deserializeChanges(data.changes as JSONObject[]));
     change._timestamp = data.timestamp as number;
     return change;
   }

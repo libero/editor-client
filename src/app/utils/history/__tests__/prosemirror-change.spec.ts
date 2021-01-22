@@ -64,7 +64,7 @@ describe('ProsemirrorChange', () => {
       type: 'prosemirror'
     };
 
-    const change = ProsemirrorChange.fromJSON(manuscript, JSONObject);
+    const change = ProsemirrorChange.fromJSON(JSONObject);
 
     expect(change).toMatchSnapshot();
     expect(change).toBeInstanceOf(ProsemirrorChange);

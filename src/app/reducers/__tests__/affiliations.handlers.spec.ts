@@ -16,7 +16,7 @@ describe('affiliations reducers', () => {
     const state = givenState({
       affiliations: [
         new Affiliation({
-          id: 'some_id',
+          _id: 'some_id',
           label: '1',
           institution: {
             name: 'Hogwarts'
@@ -30,7 +30,7 @@ describe('affiliations reducers', () => {
     });
 
     const updateAff = new Affiliation({
-      id: 'some_id',
+      _id: 'some_id',
       label: '1',
       institution: {
         name: 'Cambridge University'
@@ -50,7 +50,7 @@ describe('affiliations reducers', () => {
 
   it('should add affiliation', () => {
     const aff = new Affiliation({
-      id: 'some_id',
+      _id: 'some_id',
       label: '1',
       institution: {
         name: 'Hogwarts'
@@ -73,7 +73,7 @@ describe('affiliations reducers', () => {
     const state = givenState({
       affiliations: [
         new Affiliation({
-          id: 'some_id',
+          _id: 'some_id',
           label: '1',
           institution: {
             name: 'Hogwarts'
@@ -95,7 +95,7 @@ describe('affiliations reducers', () => {
 
   it('should link authors to affiliation', () => {
     const aff = new Affiliation({
-      id: 'some_id',
+      _id: 'some_id',
       label: '1',
       institution: {
         name: 'Hogwarts'
@@ -107,8 +107,8 @@ describe('affiliations reducers', () => {
     });
 
     const authors: Person[] = [
-      new Person({ id: 'id1', firstName: 'Jules', lastName: 'Verne', affiliations: [], orcid: '' }),
-      new Person({ id: 'id2', firstName: 'H G', lastName: 'Wells', affiliations: [], orcid: '' })
+      new Person({ _id: 'id1', firstName: 'Jules', lastName: 'Verne', affiliations: [], orcid: '' }),
+      new Person({ _id: 'id2', firstName: 'H G', lastName: 'Wells', affiliations: [], orcid: '' })
     ];
 
     const state = givenState({
