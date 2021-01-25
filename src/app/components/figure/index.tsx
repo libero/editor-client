@@ -97,7 +97,7 @@ export class FigureNodeView implements NodeView {
   };
 
   private preventFigureBodyDrag = (event): void => {
-    if (!event.target.classList.contains('drag-handle')) {
+    if (!event.target.classList || !event.target.classList.contains('drag-handle')) {
       event.stopPropagation();
       event.preventDefault();
     }

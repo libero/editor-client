@@ -21,9 +21,12 @@
   }
 
   .ProseMirror {
+    .selection-marker {
+        background: #338FFF;
+        color: white;
+    }
     ::selection {
-      background: #338FFF;
-      color: white;
+      background: transparent;
     }
 
     outline: none;

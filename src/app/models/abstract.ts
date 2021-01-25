@@ -6,6 +6,7 @@ import { makeSchemaFromConfig } from 'app/models/utils';
 import * as abstractConfig from 'app/models/config/abstract.config';
 import { buildInputRules } from 'app/models/plugins/input-rules';
 import { PlaceholderPlugin } from 'app/models/plugins/placeholder.plugin';
+import { SelectionPlugin } from 'app/models/plugins/selection.plugins';
 
 export function createAbstractState(content: Element): EditorState {
   const schema = makeSchemaFromConfig(abstractConfig.topNode, abstractConfig.nodes, abstractConfig.marks);
@@ -18,7 +19,7 @@ export function createAbstractState(content: Element): EditorState {
   return EditorState.create({
     doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),
     schema,
-    plugins: [buildInputRules(), gapCursor(), PlaceholderPlugin('Enter abstract')]
+    plugins: [buildInputRules(), SelectionPlugin, gapCursor(), PlaceholderPlugin('Enter abstract')]
   });
 }
 
@@ -33,6 +34,6 @@ export function createImpactStatementState(content: Element): EditorState {
   return EditorState.create({
     doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),
     schema,
-    plugins: [buildInputRules(), gapCursor(), PlaceholderPlugin('Enter impact statement')]
+    plugins: [buildInputRules(), SelectionPlugin, gapCursor(), PlaceholderPlugin('Enter impact statement')]
   });
 }

@@ -10,6 +10,7 @@ import * as keywordConfig from 'app/models/config/keywords.config';
 import { buildInputRules } from 'app/models/plugins/input-rules';
 import { BackmatterEntity } from 'app/models/backmatter-entity';
 import { JSONObject } from 'app/types/utility.types';
+import { SelectionPlugin } from 'app/models/plugins/selection.plugins';
 
 export class Keyword extends BackmatterEntity {
   content: EditorState;
@@ -35,7 +36,7 @@ export class Keyword extends BackmatterEntity {
     this.content = EditorState.create({
       doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlNode),
       schema,
-      plugins: [buildInputRules(), gapCursor(), dropCursor(), keymap(baseKeymap)]
+      plugins: [buildInputRules(), SelectionPlugin, gapCursor(), dropCursor(), keymap(baseKeymap)]
     });
   }
 
@@ -57,7 +58,7 @@ export class Keyword extends BackmatterEntity {
     return EditorState.create({
       doc: undefined,
       schema,
-      plugins: [buildInputRules(), gapCursor(), dropCursor(), keymap(baseKeymap)]
+      plugins: [buildInputRules(), SelectionPlugin, gapCursor(), dropCursor(), keymap(baseKeymap)]
     });
   }
 }
