@@ -6,6 +6,7 @@ import * as titleConfig from './config/title.config';
 import { buildInputRules } from './plugins/input-rules';
 import { makeSchemaFromConfig } from 'app/models/utils';
 import { PlaceholderPlugin } from 'app/models/plugins/placeholder.plugin';
+import { SelectionPlugin } from 'app/models/plugins/selection.plugins';
 
 export function createTitleState(content: Element): EditorState {
   const schema = makeSchemaFromConfig(titleConfig.topNode, titleConfig.nodes, titleConfig.marks);
@@ -19,6 +20,6 @@ export function createTitleState(content: Element): EditorState {
   return EditorState.create({
     doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),
     schema,
-    plugins: [buildInputRules(), gapCursor(), PlaceholderPlugin('Enter title')]
+    plugins: [buildInputRules(), SelectionPlugin, gapCursor(), PlaceholderPlugin('Enter title')]
   });
 }

@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SelectionPlugin should create a decoration 1`] = `
+<div
+  class="ProseMirror"
+  contenteditable="true"
+>
+  Sa
+  <span
+    class="selection-marker"
+  >
+    mp
+  </span>
+  le text
+</div>
+`;
+
+exports[`SelectionPlugin should not create decoration when no selection 1`] = `
+<div
+  class="ProseMirror"
+  contenteditable="true"
+>
+  Sample text
+</div>
+`;

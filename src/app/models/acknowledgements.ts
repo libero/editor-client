@@ -7,6 +7,7 @@ import * as acknowledgementsConfig from './config/acknowledgements.config';
 import { buildInputRules } from './plugins/input-rules';
 import { makeSchemaFromConfig } from 'app/models/utils';
 import { PlaceholderPlugin } from 'app/models/plugins/placeholder.plugin';
+import { SelectionPlugin } from 'app/models/plugins/selection.plugins';
 
 export function createAcknowledgementsState(content?: Element, changeSteps?: [Step]): EditorState {
   if (content) {
@@ -30,6 +31,6 @@ export function createAcknowledgementsState(content?: Element, changeSteps?: [St
   return EditorState.create({
     doc: ProseMirrorDOMParser.fromSchema(schema).parse(xmlContentDocument),
     schema,
-    plugins: [buildInputRules(), gapCursor(), PlaceholderPlugin('Enter acknowledgements')]
+    plugins: [buildInputRules(), SelectionPlugin, gapCursor(), PlaceholderPlugin('Enter acknowledgements')]
   });
 }
