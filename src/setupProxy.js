@@ -3,7 +3,7 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const ARTICLE_RE = /^\/api\/v1\/articles\/([0-9]+)$/;
 const ARTICLE_CHANGES_RE = /^\/api\/v1\/articles\/([0-9]+)\/changes$/;
-const ARTICLE_ASSETS_RE = /^\/api\/v1\/articles\/([0-9]+)\/assets\/([^\/]+)$/
+const ARTICLE_ASSETS_RE = /^\/api\/v1\/articles\/([0-9]+)\/assets\/([^\/]+)$/;
 
 module.exports = function (app) {
   app.use(
@@ -13,7 +13,7 @@ module.exports = function (app) {
       changeOrigin: true,
       pathRewrite: function (path, req) {
         if (path.match(ARTICLE_RE)) {
-          const articleId = path.match(ARTICLE_RE)[1]
+          const articleId = path.match(ARTICLE_RE)[1];
           return `/manuscripts/${articleId}/manuscript.xml`;
         }
 
