@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { isUndefined } from 'lodash';
 
 import { Manuscript } from 'app/types/manuscript';
 import { createTitleState } from 'app/models/title';
@@ -16,12 +17,19 @@ import { Change } from 'app/utils/history/change';
 
 import { JSONObject } from 'app/types/utility.types';
 
+const RECORDS_PER_PAGE = 100;
+
 export interface ManuscriptChangesResponse {
   changes: Array<JSONObject>;
+  total: number;
 }
 
 const manuscriptUrl = (id: string): string => {
   return `/api/v1/articles/${id}`;
+};
+
+const changesUrl = (id: string, page?: number): string => {
+  return !isUndefined(page) ? `/api/v1/articles/${id}/changes?page=${page}` : `/api/v1/articles/${id}/changes`;
 };
 
 export async function getManuscriptContent(id: string): Promise<Manuscript> {
@@ -62,10 +70,18 @@ export async function getManuscriptContent(id: string): Promise<Manuscript> {
 }
 
 export function syncChanges(id: string, changes: Change[]): Promise<void> {
-  return axios.post(manuscriptUrl(id) + '/changes', { changes });
+  return axios.post(changesUrl(id), { changes });
 }
 
 export async function getManuscriptChanges(id: string): Promise<JSONObject[]> {
-  const manuscriptChangesResponse = await axios.get<ManuscriptChangesResponse>(manuscriptUrl(id) + '/changes');
-  return manuscriptChangesResponse.data.changes;
+  const { data } = await axios.get<ManuscriptChangesResponse>(changesUrl(id, 0));
+  const pagesRemaining = Math.ceil((data.total - data.changes.length) / RECORDS_PER_PAGE);
+
+  const remainingPages = await Promise.all(
+    Array(pagesRemaining)
+      .fill(undefined)
+      .map((_, index) => axios.get<ManuscriptChangesResponse>(changesUrl(id, index + 1)))
+  );
+
+  return remainingPages.reduce((acc, response) => [...acc, ...response.data.changes], data.changes);
 }
