@@ -1,7 +1,11 @@
 import { DOMOutputSpec } from 'prosemirror-model';
 import { v4 as uuidv4 } from 'uuid';
 import { getTextContentFromPath } from 'app/models/utils';
-import { createEmptyLicenseAttributes, createFigureLicenseAttributes, getFigureImageUrl } from 'app/models/figure';
+import {
+  createEmptyLicenseAttributes,
+  createFigureLicenseAttributes,
+  getFigureImageUrlFromXml
+} from 'app/models/figure';
 import { parseFigure } from 'app/models/config/figure.parser';
 
 function getTitleLevel(title: Element): number {
@@ -190,7 +194,7 @@ export const nodes = {
           return {
             id: dom.getAttribute('id'),
             label: getTextContentFromPath(dom, 'label') || '',
-            img: getFigureImageUrl(dom)
+            img: getFigureImageUrlFromXml(dom)
           };
         },
         getContent: parseFigure

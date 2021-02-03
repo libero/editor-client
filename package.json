@@ -39,6 +39,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:localstack": "react-scripts start --localstack",
     "build": "react-scripts build",
     "test": "react-scripts test --coverage --watchAll=true",
     "test:ci": "react-scripts test --coverage --ci",

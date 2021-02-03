@@ -19,13 +19,17 @@ import { JSONObject } from 'app/types/utility.types';
 
 const RECORDS_PER_PAGE = 100;
 
-export interface ManuscriptChangesResponse {
+interface ManuscriptChangesResponse {
   changes: Array<JSONObject>;
   total: number;
 }
 
 const manuscriptUrl = (id: string): string => {
   return `/api/v1/articles/${id}`;
+};
+
+const figureUploadUrl = (id: string): string => {
+  return `/api/v1/articles/${id}/assets`;
 };
 
 const changesUrl = (id: string, page?: number): string => {
@@ -84,4 +88,11 @@ export async function getManuscriptChanges(id: string): Promise<JSONObject[]> {
   );
 
   return remainingPages.reduce((acc, response) => [...acc, ...response.data.changes], data.changes);
+}
+
+export async function uploadFigureImage(articleId: string, file: File): Promise<string> {
+  const formData = new FormData();
+  formData.append('file', file);
+  const { data } = await axios.post<{ assetName: string }>(figureUploadUrl(articleId), formData);
+  return data.assetName;
 }

@@ -6,12 +6,14 @@ import { IconButton, TextField } from '@material-ui/core';
 import AddPhotoAlternateIcon from '@material-ui/icons/AddPhotoAlternate';
 
 import { useFigureEditorStyles } from 'app/components/figure/styles';
-import { uploadImage } from 'app/utils/view.utils';
+import { getImageFileUpload } from 'app/utils/view.utils';
 import { FigureContentEditor } from 'app/components/figure/figure-content-editor';
 import { EditorView } from 'prosemirror-view';
 import { FigureLicensesList } from './figure-license-list';
 import { renderConfirmDialog } from 'app/components/prompt-dialog';
 import DragIcon from 'app/assets/drag-indicator-grey.svg';
+import { useDispatch } from 'react-redux';
+import { updateFigureImageAction } from 'app/actions/manuscript.actions';
 
 /* Prosemirror relies heavily on the positioning of nodes in its internal state presentation.
   Given figure structure
@@ -50,6 +52,7 @@ export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => 
   const { onDelete, onAttributesChange } = props;
   const [figureNode, setFigureNode] = useState<ProsemirrorNode>(props.node);
   const [isConfirmShown, setConfirmShown] = useState<boolean>(false);
+  const dispatch = useDispatch();
   const classes = useFigureEditorStyles();
   const titleNodeData = findChildrenByType(figureNode, figureNode.type.schema.nodes.figureTitle)[0];
   const legendNodeData = findChildrenByType(figureNode, figureNode.type.schema.nodes.figureLegend)[0];
@@ -76,10 +79,10 @@ export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => 
   );
 
   const handleUploadImageClick = useCallback(() => {
-    uploadImage((imgSource: string) => {
-      onAttributesChange(figureNode.attrs.label, imgSource);
+    getImageFileUpload((image: File) => {
+      dispatch(updateFigureImageAction({ figurePos: props.getParentNodePos(), imgFile: image }));
     });
-  }, [onAttributesChange, figureNode]);
+  }, [dispatch, props]);
 
   useImperativeHandle(ref, () => ({
     updateContent: (updatedFigureNode: ProsemirrorNode) => {

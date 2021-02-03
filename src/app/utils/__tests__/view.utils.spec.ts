@@ -1,6 +1,6 @@
 import { EditorState, TextSelection } from 'prosemirror-state';
 
-import { hasParentNodeOf, objectsEqual, stringifyEditorState, uploadImage } from 'app/utils/view.utils';
+import { hasParentNodeOf, objectsEqual, stringifyEditorState, getImageFileUpload } from 'app/utils/view.utils';
 import { createBodyState } from 'app/models/body';
 
 describe('view utils', () => {
@@ -37,47 +37,14 @@ describe('view utils', () => {
 
     const callback = jest.fn();
     jest.spyOn(document, 'createElement');
-    uploadImage(callback);
+    getImageFileUpload(callback);
     const input = (document.createElement as jest.Mock).mock.results[0].value;
     const file = new File(['foo'], 'test.png', { type: 'image/png' });
     jest.spyOn(input.files.__proto__, 'item').mockReturnValue(file);
 
     input.dispatchEvent(new Event('change'));
     fileReader.onload({ target: { result: 'base 64 string' } });
-    expect(callback).toBeCalledWith('base 64 string');
-  });
-
-  it('wont upload an image if the file format is incorrect', () => {
-    const fileReader = new FileReaderMock();
-    jest.spyOn(window, 'FileReader').mockImplementation(() => fileReader);
-
-    const callback = jest.fn();
-    jest.spyOn(document, 'createElement');
-    uploadImage(callback);
-    const input = (document.createElement as jest.Mock).mock.results[0].value;
-    const file = new File(['foo'], 'test.png', { type: 'text/plain' });
-    jest.spyOn(input.files.__proto__, 'item').mockReturnValue(file);
-
-    input.dispatchEvent(new Event('change'));
-    fileReader.onload({ target: { result: 'base 64 string' } });
-    expect(callback).not.toBeCalled();
-  });
-
-  it('throw if the result is not a string', () => {
-    const fileReader = new FileReaderMock();
-    jest.spyOn(window, 'FileReader').mockImplementation(() => fileReader);
-
-    const callback = jest.fn();
-    jest.spyOn(document, 'createElement');
-    uploadImage(callback);
-    const input = (document.createElement as jest.Mock).mock.results[0].value;
-    const file = new File(['foo'], 'test.png', { type: 'image/png' });
-    jest.spyOn(input.files.__proto__, 'item').mockReturnValue(file);
-
-    input.dispatchEvent(new Event('change'));
-    expect(() => fileReader.onload({ target: { result: new ArrayBuffer(1) } })).toThrow(
-      new Error('Invalid FileReader return format. File reader must read a string via readAsDataUrl')
-    );
+    expect(callback).toBeCalledWith(expect.any(File));
   });
 
   afterEach(() => {

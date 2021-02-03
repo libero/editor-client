@@ -42,16 +42,15 @@ export function createEmptyLicenseAttributes(): Figure {
   };
 }
 
-export function getFigureImageUrl(el: Element): string {
+export function getFigureImageUrlFromXml(el: Element): string {
   const paths = get(el.ownerDocument, 'manuscriptPath').split('/');
   const id = paths[2];
+  const fileName = get(el.querySelector('graphic'), 'attributes.xlink:href.value').replace('tif', 'jpg');
+  return getFigureImageUrl(id, fileName);
+}
 
-  return process.env.REACT_APP_NO_SERVER
-    ? get(el.ownerDocument, 'manuscriptPath') + '/' + get(el.querySelector('graphic'), 'attributes.xlink:href.value')
-    : `/api/v1/articles/${id}/assets/${get(el.querySelector('graphic'), 'attributes.xlink:href.value').replace(
-        'tif',
-        'jpg'
-      )}`;
+export function getFigureImageUrl(id: string, fileName: string): string {
+  return `/api/v1/articles/${id}/assets/${fileName.replace('tif', 'jpg')}`;
 }
 
 function getLicenseType(el: Element): string {
