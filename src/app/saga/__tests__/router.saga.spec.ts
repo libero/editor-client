@@ -36,6 +36,6 @@ describe('router saga', () => {
       } as LocationChangePayload<{}>
     });
 
-    expect(saga.next().value).toEqual(put(push('/?articleId=00104')));
+    expect(saga.next().value).toEqual(put(push('/?articleId=54296')));
   });
 });

@@ -1,4 +1,4 @@
-import { EditorState, Transaction } from 'prosemirror-state';
+import { EditorState, NodeSelection, Transaction } from 'prosemirror-state';
 import { toggleMark, setBlockType } from 'prosemirror-commands';
 import { all, takeLatest, call, put, select } from 'redux-saga/effects';
 import { MarkType, Fragment } from 'prosemirror-model';
@@ -6,10 +6,18 @@ import { v4 as uuidv4 } from 'uuid';
 
 import * as manuscriptActions from 'app/actions/manuscript.actions';
 import { Action } from 'app/utils/action.utils';
-import { getFocusedEditorState, getFocusedEditorStatePath } from 'app/selectors/manuscript-editor.selectors';
+import {
+  getFocusedEditorState,
+  getFocusedEditorStatePath,
+  getManuscriptId
+} from 'app/selectors/manuscript-editor.selectors';
 import { insertBox } from 'app/utils/prosemirror/box.helpers';
 import { insertFigure, insertFigureCitation } from 'app/utils/prosemirror/figure.helpers';
 import { wrapInListOrChangeListType } from 'app/utils/prosemirror/list.helpers';
+import { uploadFigureImage } from 'app/api/manuscript.api';
+import { getFigureImageUrl } from 'app/models/figure';
+import { UpdateFigureImagePayload } from 'app/actions/manuscript.actions';
+import { getBody } from 'app/selectors/manuscript.selectors';
 
 async function makeTransactionForMark(editorState: EditorState, mark: MarkType): Promise<Transaction> {
   return new Promise((resolve) => {
@@ -61,12 +69,32 @@ export function* insertFigureCitationSaga() {
   }
 }
 
-export function* insertFigureSaga(action: Action<string>) {
+export function* insertFigureSaga(action: Action<File>) {
   const editorState: EditorState = yield select(getFocusedEditorState);
   if (editorState && editorState.schema.nodes['figure']) {
+    const id = yield select(getManuscriptId);
     const path = yield select(getFocusedEditorStatePath);
-    const change = yield insertFigure(editorState, action.payload);
+    const assetName = yield call(uploadFigureImage, id, action.payload);
+    const change = yield insertFigure(editorState, getFigureImageUrl(id, assetName));
     yield put(manuscriptActions.applyChangeAction({ path, change }));
+  }
+}
+
+export function* updateFigureImageSaga(action: Action<UpdateFigureImagePayload>) {
+  const editorState: EditorState = yield select(getBody);
+  if (editorState && editorState.schema.nodes['figure']) {
+    const id = yield select(getManuscriptId);
+    const { figurePos, imgFile } = action.payload;
+    const figure = editorState.tr.setSelection(new NodeSelection(editorState.doc.resolve(figurePos))).selection['node'];
+    const attrs = figure.attrs;
+
+    const assetName = yield call(uploadFigureImage, id, imgFile);
+    const change = editorState.tr.setNodeMarkup(figurePos, null, {
+      id: attrs.id,
+      label: attrs.label,
+      img: getFigureImageUrl(id, assetName)
+    });
+    yield put(manuscriptActions.applyChangeAction({ path: 'body', change }));
   }
 }
 
@@ -123,6 +151,7 @@ export default function* () {
     takeLatest(manuscriptActions.insertBoxAction.getType(), insertBoxSaga),
     takeLatest(manuscriptActions.insertFigureAction.getType(), insertFigureSaga),
     takeLatest(manuscriptActions.insertListAction.getType(), insertListOrChangeTypeSaga),
+    takeLatest(manuscriptActions.updateFigureImageAction.getType(), updateFigureImageSaga),
     takeLatest(manuscriptActions.insertHeadingAction.getType(), insertHeadingSaga),
     takeLatest(manuscriptActions.insertFigureCitationAction.getType(), insertFigureCitationSaga),
     takeLatest(manuscriptActions.insertParagraphAction.getType(), insertParagraphSaga)

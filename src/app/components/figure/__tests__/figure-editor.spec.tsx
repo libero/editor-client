@@ -1,13 +1,18 @@
 import React from 'react';
 import { create } from 'react-test-renderer';
-import { FigureEditor } from 'app/components/figure/figure-editor';
+import configureMockStore from 'redux-mock-store';
 import { EditorView } from 'prosemirror-view';
-import { createBodyState } from 'app/models/body';
 import { Fragment } from 'prosemirror-model';
-import { uploadImage } from 'app/utils/view.utils';
-import { mount } from 'enzyme';
 import { IconButton, TextField } from '@material-ui/core';
+import { Provider } from 'react-redux';
+import { mount } from 'enzyme';
+
+import { FigureEditor } from 'app/components/figure/figure-editor';
+import { createBodyState } from 'app/models/body';
+import { getImageFileUpload } from 'app/utils/view.utils';
 import { renderConfirmDialog } from 'app/components/prompt-dialog';
+import { givenState } from 'app/test-utils/reducer-test-helpers';
+import { updateFigureImageAction } from 'app/actions/manuscript.actions';
 
 jest.mock('prosemirror-view');
 jest.mock('app/components/prompt-dialog');
@@ -38,6 +43,11 @@ jest.mock('app/components/figure/figure-content-editor', () => ({
 }));
 
 describe('FigureEditor', () => {
+  const mockStore = configureMockStore([]);
+  const store = mockStore({
+    manuscript: givenState({})
+  });
+
   it('should render component', () => {
     const view = new EditorView(null, {
       state: null,
@@ -55,23 +65,28 @@ describe('FigureEditor', () => {
     );
 
     const wrapper = create(
-      <FigureEditor
-        node={node}
-        getParentNodePos={() => 1}
-        parentView={view}
-        onDelete={jest.fn()}
-        onAttributesChange={jest.fn()}
-      />
+      <Provider store={store}>
+        <FigureEditor
+          node={node}
+          getParentNodePos={() => 1}
+          parentView={view}
+          onDelete={jest.fn()}
+          onAttributesChange={jest.fn()}
+        />
+      </Provider>
     );
 
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should upload image', () => {
+    jest.spyOn(store, 'dispatch');
     const view = new EditorView(null, {
       state: null,
       dispatchTransaction: jest.fn()
     });
+
+    const file = new File([], 'file.jpg');
 
     view.state = createBodyState(document.createElement('div'), '');
     const node = view.state.schema.nodes.figure.createAndFill(
@@ -82,20 +97,21 @@ describe('FigureEditor', () => {
         view.state.schema.node('figureAttribution')
       ])
     );
-    const attrsChangeSpy = jest.fn();
     const wrapper = mount(
-      <FigureEditor
-        node={node}
-        getParentNodePos={() => 1}
-        parentView={view}
-        onDelete={jest.fn()}
-        onAttributesChange={attrsChangeSpy}
-      />
+      <Provider store={store}>
+        <FigureEditor
+          node={node}
+          getParentNodePos={() => 1}
+          parentView={view}
+          onDelete={jest.fn()}
+          onAttributesChange={jest.fn()}
+        />
+      </Provider>
     );
 
     wrapper.find(IconButton).at(0).prop('onClick').call(null);
-    (uploadImage as jest.Mock).mock.calls[0][0].call(null, 'IMG_SOURCE');
-    expect(attrsChangeSpy).toBeCalledWith('', 'IMG_SOURCE');
+    (getImageFileUpload as jest.Mock).mock.calls[0][0].call(null, file);
+    expect(store.dispatch).toBeCalledWith(updateFigureImageAction({ figurePos: 1, imgFile: file }));
   });
 
   it('should update label', () => {
@@ -115,13 +131,15 @@ describe('FigureEditor', () => {
     );
     const attrsChangeSpy = jest.fn();
     const wrapper = mount(
-      <FigureEditor
-        node={node}
-        getParentNodePos={() => 1}
-        parentView={view}
-        onDelete={jest.fn()}
-        onAttributesChange={attrsChangeSpy}
-      />
+      <Provider store={store}>
+        <FigureEditor
+          node={node}
+          getParentNodePos={() => 1}
+          parentView={view}
+          onDelete={jest.fn()}
+          onAttributesChange={attrsChangeSpy}
+        />
+      </Provider>
     );
 
     wrapper
@@ -150,13 +168,15 @@ describe('FigureEditor', () => {
     );
     const deleteSpy = jest.fn();
     const wrapper = mount(
-      <FigureEditor
-        node={node}
-        getParentNodePos={() => 1}
-        parentView={view}
-        onDelete={deleteSpy}
-        onAttributesChange={jest.fn()}
-      />
+      <Provider store={store}>
+        <FigureEditor
+          node={node}
+          getParentNodePos={() => 1}
+          parentView={view}
+          onDelete={deleteSpy}
+          onAttributesChange={jest.fn()}
+        />
+      </Provider>
     );
 
     wrapper.find(IconButton).at(1).prop('onClick').call(null);

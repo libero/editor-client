@@ -27,7 +27,7 @@ import {
 } from 'app/selectors/manuscript-editor.selectors';
 
 import { useToolbarStyles } from './styles';
-import { uploadImage } from 'app/utils/view.utils';
+import { getImageFileUpload } from 'app/utils/view.utils';
 
 export interface ManuscriptToolbarProps {
   tocOpen: boolean;
@@ -75,8 +75,8 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
   }, [dispatch]);
 
   const insertFigure = useCallback(() => {
-    uploadImage((imageSource: string) => {
-      dispatch(manuscriptActions.insertFigureAction(imageSource));
+    getImageFileUpload((imageFile: File) => {
+      dispatch(manuscriptActions.insertFigureAction(imageFile));
     });
   }, [dispatch]);
 
