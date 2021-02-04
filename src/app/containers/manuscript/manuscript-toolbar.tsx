@@ -9,6 +9,7 @@ import FormatItalicIcon from '@material-ui/icons/FormatItalic';
 import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
 import LinkIcon from '@material-ui/icons/Link';
 import MenuIcon from '@material-ui/icons/Menu';
+import classNames from 'classnames';
 
 import { DropDownMenu } from 'app/components/drop-down-menu';
 import * as manuscriptActions from 'app/actions/manuscript.actions';
@@ -23,11 +24,13 @@ import {
   canToggleParagraphAtSelection,
   isActiveContainer,
   canToggleListAtSelection,
-  canInsertFigureCitationAtSelection
+  canInsertFigureCitationAtSelection,
+  isLastSyncSuccesful,
+  getLastSyncTimestamp
 } from 'app/selectors/manuscript-editor.selectors';
-
 import { useToolbarStyles } from './styles';
 import { getImageFileUpload } from 'app/utils/view.utils';
+import moment from 'moment';
 
 export interface ManuscriptToolbarProps {
   tocOpen: boolean;
@@ -50,6 +53,8 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
   const canToggleList = useSelector(canToggleListAtSelection);
   const canInsertFigureCitation = useSelector(canInsertFigureCitationAtSelection);
   const checkActiveContainer = useSelector(isActiveContainer);
+  const lastSyncSuccessulf = useSelector(isLastSyncSuccesful);
+  const lastSyncTs = useSelector(getLastSyncTimestamp);
 
   const invokeUndo = useCallback(() => dispatch(manuscriptActions.undoAction()), [dispatch]);
   const invokeRedo = useCallback(() => dispatch(manuscriptActions.redoAction()), [dispatch]);
@@ -226,9 +231,19 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
             { title: 'File Citation', enabled: false, action: undefined }
           ]}
         />
+        <div className={classes.spacer}></div>
+        {lastSyncTs || !lastSyncSuccessulf ? (
+          <div className={classNames(classes.toolbarMessage, { error: !lastSyncSuccessulf })}>
+            {lastSyncSuccessulf ? getFormattedMessage(lastSyncTs) : 'System offline'}
+          </div>
+        ) : undefined}
       </Toolbar>
     </AppBar>
   );
 
   return renderContent();
 };
+
+function getFormattedMessage(time: number): string {
+  return `Last saved: ${moment(time).format('HH:mm')}`;
+}

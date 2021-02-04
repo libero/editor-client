@@ -46,6 +46,17 @@ export const useToolbarStyles = makeStyles((theme) => ({
   menuButtonToggled: {
     backgroundColor: 'rgba(0, 0, 0, 0.1)'
   },
+  spacer: {
+    flexGrow: 1
+  },
+  toolbarMessage: {
+    fontSize: '0.7rem',
+    lineHeight: '20px',
+    color: theme.palette.text.secondary,
+    '&.error': {
+      color: theme.palette.error.main
+    }
+  },
   toolbar: {
     ...theme.mixins.toolbar
   }

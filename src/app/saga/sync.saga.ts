@@ -4,7 +4,7 @@ import { eventChannel } from 'redux-saga';
 import * as manuscriptActions from 'app/actions/manuscript.actions';
 import { getLastSyncTimestamp, getManuscriptId } from 'app/selectors/manuscript-editor.selectors';
 import { getChangesMadeBetween } from 'app/selectors/manuscript.selectors';
-import { setLastSyncTimestamp } from 'app/actions/manuscript-editor.actions';
+import { setLastSyncFailed, setLastSyncTimestamp } from 'app/actions/manuscript-editor.actions';
 import { syncChanges } from 'app/api/manuscript.api';
 import { Change } from 'app/utils/history/change';
 
@@ -32,7 +32,9 @@ export function* watchChangesSaga() {
       try {
         yield call(syncChanges, manuscriptId, changes);
         yield put(setLastSyncTimestamp(now));
-      } catch (e) {}
+      } catch (e) {
+        yield put(setLastSyncFailed());
+      }
     }
   });
 }
