@@ -5,7 +5,7 @@ const ARTICLE_RE = /^\/api\/v1\/articles\/([0-9]+)$/;
 const ARTICLE_CHANGES_RE = /^\/api\/v1\/articles\/([0-9]+)\/changes$/;
 const ARTICLE_ASSETS_RE = /^\/api\/v1\/articles\/([0-9]+)\/assets\/([^\/]+)$/;
 
-module.exports = function (app) {
+function createStaticProxy(app) {
   app.use(
     '/api',
     createProxyMiddleware({
@@ -31,4 +31,19 @@ module.exports = function (app) {
       }
     })
   );
-};
+}
+
+function createLocalstackProxy(app) {
+  app.use(
+    '/api',
+    createProxyMiddleware({
+      target: 'http://localhost:8080/',
+      changeOrigin: true,
+      pathRewrite: {
+        '^/api/v1/articles': '/articles'
+      }
+    })
+  );
+}
+
+module.exports = process.argv[2] === '--localstack' ? createLocalstackProxy : createStaticProxy;

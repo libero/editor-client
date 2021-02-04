@@ -47,6 +47,11 @@ export interface ApplyChangePayload {
   change: Transaction;
 }
 
+export interface UpdateFigureImagePayload {
+  imgFile: File;
+  figurePos: number;
+}
+
 export const loadManuscriptAction = createAsyncAction<string, Manuscript>('LOAD_MANUSCRIPT');
 export const updateTitleAction = createAction<Transaction>('UPDATE_TITLE');
 export const updateAbstractAction = createAction<Transaction>('UPDATE_ABSTRACT');
@@ -80,7 +85,8 @@ export const toggleMarkAction = createAction<string>('TOGGLE_MARK');
 export const insertReferenceCitationAction = createAction<void>('INSERT_REFERENCE_CITATION');
 export const insertBoxAction = createAction<void>('INSERT_BOX');
 export const insertListAction = createAction<ListType>('INSERT_LIST');
-export const insertFigureAction = createAction<string>('INSERT_FIGURE');
+export const insertFigureAction = createAction<File>('INSERT_FIGURE');
+export const updateFigureImageAction = createAction<UpdateFigureImagePayload>('UPDATE_FIGURE_IMAGE');
 export const insertFigureCitationAction = createAction<void>('INSERT_FIGURE_CITATION');
 export const insertHeadingAction = createAction<number>('INSERT_HEADING');
 export const insertParagraphAction = createAction<void>('INSERT_PARAGRAPH');

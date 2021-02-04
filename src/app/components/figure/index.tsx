@@ -9,6 +9,8 @@ import { theme } from 'app/styles/theme';
 import { FigureEditor, FigureEditorHandle } from 'app/components/figure/figure-editor';
 import { NodeViewContext } from 'app/utils/view.utils';
 import { AutoScroller } from 'app/utils/autoscroller';
+import { store } from 'app/store';
+import { Provider } from 'react-redux';
 
 export class FigureNodeView implements NodeView {
   dom?: HTMLElement;
@@ -21,24 +23,26 @@ export class FigureNodeView implements NodeView {
     this.figureEditor = React.createRef();
 
     ReactDOM.render(
-      <ThemeProvider theme={theme}>
-        <NodeViewContext.Provider
-          value={{
-            view: this.view,
-            getPos: this.getPos,
-            getNode: () => this.node
-          }}
-        >
-          <FigureEditor
-            getParentNodePos={this.getPos}
-            parentView={this.view}
-            ref={this.figureEditor}
-            node={this.node}
-            onDelete={this.handleDelete}
-            onAttributesChange={this.handleAttributesChange}
-          />
-        </NodeViewContext.Provider>
-      </ThemeProvider>,
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <NodeViewContext.Provider
+            value={{
+              view: this.view,
+              getPos: this.getPos,
+              getNode: () => this.node
+            }}
+          >
+            <FigureEditor
+              getParentNodePos={this.getPos}
+              parentView={this.view}
+              ref={this.figureEditor}
+              node={this.node}
+              onDelete={this.handleDelete}
+              onAttributesChange={this.handleAttributesChange}
+            />
+          </NodeViewContext.Provider>
+        </ThemeProvider>
+      </Provider>,
       this.dom
     );
 

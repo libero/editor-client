@@ -14,7 +14,7 @@ export function* routerLocationChangeSaga(action: LocationChangeAction) {
   if (articleId) {
     yield put(manuscriptActions.loadManuscriptAction.request(articleId));
   } else if (action.payload.isFirstRendering) {
-    yield put(push('/?articleId=00104'));
+    yield put(push('/?articleId=54296'));
   }
 }
 
