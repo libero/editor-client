@@ -10,6 +10,7 @@ export interface ModalPayload<P = {}> {
 export const setFocusAction = createAction<string>('SET_FOCUS');
 export const setBodyTOCAction = createAction<TableOfContents>('SET_BODY_TOC');
 export const setLastSyncTimestamp = createAction<number>('SET_LAST_SYNC_TIMESTAMP');
+export const setLastSyncFailed = createAction<void>('SET_LAST_SYNC_FAILED');
 export const setManuscriptId = createAction<string>('SET_MANUSCRIPT_ID');
 export const scrollIntoViewAction = createAction<TOCEntry>('SCROLL_INTO_VIEW');
 export const removeFocusAction = createAction<void>('REMOVE_FOCUS');

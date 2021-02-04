@@ -18,6 +18,7 @@ export interface ManuscriptEditorState {
   focusedManuscriptPath: string | undefined;
   manuscriptBodyTOC: TableOfContents;
   lastSyncTimestamp: number;
+  lastSyncSuccessful: boolean;
   manuscriptId: string;
   modal: {
     params?: ModalPayload;

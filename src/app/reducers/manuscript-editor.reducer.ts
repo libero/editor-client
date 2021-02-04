@@ -7,6 +7,7 @@ const initialState: ManuscriptEditorState = {
   manuscriptBodyTOC: [],
   manuscriptId: '',
   lastSyncTimestamp: 0,
+  lastSyncSuccessful: true,
   modal: {
     isVisible: false
   }
@@ -47,7 +48,13 @@ manuscriptEditorReducer.on(manuscriptEditorAction.hideModalDialog, (state: Manus
 
 manuscriptEditorReducer.on(manuscriptEditorAction.setLastSyncTimestamp, (state, payload) => ({
   ...state,
-  lastSyncTimestamp: payload
+  lastSyncTimestamp: payload,
+  lastSyncSuccessful: true
+}));
+
+manuscriptEditorReducer.on(manuscriptEditorAction.setLastSyncFailed, (state, payload) => ({
+  ...state,
+  lastSyncSuccessful: false
 }));
 
 manuscriptEditorReducer.on(manuscriptEditorAction.setManuscriptId, (state, payload) => ({
