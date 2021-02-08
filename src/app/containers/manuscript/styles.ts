@@ -50,7 +50,7 @@ export const useToolbarStyles = makeStyles((theme) => ({
     flexGrow: 1
   },
   toolbarMessage: {
-    fontSize: '0.7rem',
+    fontSize: '0.75rem',
     lineHeight: '20px',
     color: theme.palette.text.secondary,
     '&.error': {
