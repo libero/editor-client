@@ -49,7 +49,7 @@ export function getFigureImageUrlFromXml(el: Element): string {
 }
 
 export function getFigureImageUrl(id: string, fileName: string): string {
-  return `/api/v1/articles/${id}/assets/${fileName.replace(`/.tiff?$/`, '.jpg')}`;
+  return `/api/v1/articles/${id}/assets/${fileName.replace(/\.tiff?$/, '.jpeg')}`;
 }
 
 function getLicenseType(el: Element): string {

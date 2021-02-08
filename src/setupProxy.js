@@ -2,7 +2,7 @@
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const ARTICLE_RE = /^\/api\/v1\/articles\/([0-9]+)$/;
-const ARTICLE_CHANGES_RE = /^\/api\/v1\/articles\/([0-9]+)\/changes$/;
+const ARTICLE_CHANGES_RE = /^\/api\/v1\/articles\/([0-9]+)\/changes/;
 const ARTICLE_ASSETS_RE = /^\/api\/v1\/articles\/([0-9]+)\/assets\/([^\/]+)$/;
 
 function createStaticProxy(app) {
@@ -10,7 +10,7 @@ function createStaticProxy(app) {
     '/api',
     createProxyMiddleware({
       target: 'http://localhost:3000/',
-      changeOrigin: true,
+      changeOrigin: false,
       pathRewrite: function (path, req) {
         if (path.match(ARTICLE_RE)) {
           const articleId = path.match(ARTICLE_RE)[1];

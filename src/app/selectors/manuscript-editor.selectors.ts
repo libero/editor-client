@@ -32,6 +32,10 @@ export const getLastSyncTimestamp = createSelector(getManuscriptEditorState, (ma
   get(manuscriptEditorState, 'lastSyncTimestamp')
 );
 
+export const isLastSyncSuccesful = createSelector(getManuscriptEditorState, (manuscriptEditorState) =>
+  get(manuscriptEditorState, 'lastSyncSuccessful')
+);
+
 export const getManuscriptId = createSelector(getManuscriptEditorState, (manuscriptEditorState) =>
   get(manuscriptEditorState, 'manuscriptId')
 );
