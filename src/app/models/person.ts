@@ -55,6 +55,7 @@ export class Person extends BackmatterEntity {
     person.lastName = this.lastName;
     person.suffix = this.suffix;
     person.isAuthenticated = this.isAuthenticated;
+    person.orcid = this.orcid;
     person.email = this.email;
     person.bio = this.bio;
     person.isCorrespondingAuthor = this.isCorrespondingAuthor;
