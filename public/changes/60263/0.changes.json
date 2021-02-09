@@ -1,0 +1,2617 @@
+{
+  "changes": [
+    {
+      "_id": "600adf903c4abd4b4f2be886",
+      "type": "batch",
+      "changes": [
+        {
+          "type": "rearranging",
+          "timestamp": 1611325327509,
+          "path": "authors",
+          "order": [
+            1,
+            0,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "type": "batch",
+          "changes": [
+            {
+              "type": "batch",
+              "changes": [
+                {
+                  "type": "update-object",
+                  "timestamp": 1611325327517,
+                  "path": "affiliations",
+                  "differences": [
+                    {
+                      "kind": "E",
+                      "path": [
+                        1,
+                        "label"
+                      ],
+                      "lhs": "2",
+                      "rhs": "1"
+                    },
+                    {
+                      "kind": "E",
+                      "path": [
+                        0,
+                        "label"
+                      ],
+                      "lhs": "1",
+                      "rhs": "2"
+                    }
+                  ]
+                }
+              ],
+              "timestamp": 1611325327517
+            },
+            {
+              "type": "rearranging",
+              "timestamp": 1611325327517,
+              "path": "affiliations",
+              "order": [
+                1,
+                0,
+                2,
+                3
+              ]
+            }
+          ],
+          "timestamp": 1611325327517
+        }
+      ],
+      "timestamp": 1611325327517,
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600adf973c4abd4aab2be887",
+      "type": "batch",
+      "changes": [
+        {
+          "type": "rearranging",
+          "timestamp": 1611325334492,
+          "path": "authors",
+          "order": [
+            1,
+            0,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "type": "batch",
+          "changes": [
+            {
+              "type": "batch",
+              "changes": [
+                {
+                  "type": "update-object",
+                  "timestamp": 1611325334497,
+                  "path": "affiliations",
+                  "differences": [
+                    {
+                      "kind": "E",
+                      "path": [
+                        1,
+                        "label"
+                      ],
+                      "lhs": "2",
+                      "rhs": "1"
+                    },
+                    {
+                      "kind": "E",
+                      "path": [
+                        0,
+                        "label"
+                      ],
+                      "lhs": "1",
+                      "rhs": "2"
+                    }
+                  ]
+                }
+              ],
+              "timestamp": 1611325334497
+            },
+            {
+              "type": "rearranging",
+              "timestamp": 1611325334497,
+              "path": "affiliations",
+              "order": [
+                1,
+                0,
+                2,
+                3
+              ]
+            }
+          ],
+          "timestamp": 1611325334497
+        }
+      ],
+      "timestamp": 1611325334497,
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600adfd53c4abd4f482be888",
+      "type": "batch",
+      "changes": [
+        {
+          "type": "rearranging",
+          "timestamp": 1611325396145,
+          "path": "authors",
+          "order": [
+            7,
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            8
+          ]
+        }
+      ],
+      "timestamp": 1611325396149,
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600adfe73c4abdfcd82be889",
+      "type": "prosemirror",
+      "timestamp": 1611325414062,
+      "path": "abstract",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 2,
+          "to": 2,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "a"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600adfe73c4abd44842be88a",
+      "type": "prosemirror",
+      "timestamp": 1611325414084,
+      "path": "abstract",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 3,
+          "to": 3,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "s"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600adfe73c4abd20ee2be88b",
+      "type": "prosemirror",
+      "timestamp": 1611325414153,
+      "path": "abstract",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 4,
+          "to": 4,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "d"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600adfe73c4abd44c42be88c",
+      "type": "prosemirror",
+      "timestamp": 1611325414305,
+      "path": "abstract",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 5,
+          "to": 5,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "s"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600adfe73c4abd592c2be88d",
+      "type": "prosemirror",
+      "timestamp": 1611325414327,
+      "path": "abstract",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 6,
+          "to": 6,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "a"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600adfe73c4abd3aac2be88e",
+      "type": "prosemirror",
+      "timestamp": 1611325414420,
+      "path": "abstract",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 7,
+          "to": 7,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "d"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600adfe73c4abd72582be88f",
+      "type": "prosemirror",
+      "timestamp": 1611325414742,
+      "path": "abstract",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 7,
+          "to": 8
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600adfe73c4abd054e2be890",
+      "type": "prosemirror",
+      "timestamp": 1611325414889,
+      "path": "abstract",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 6,
+          "to": 7
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600adfe73c4abd1c022be891",
+      "type": "prosemirror",
+      "timestamp": 1611325415031,
+      "path": "abstract",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 5,
+          "to": 6
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600adfe73c4abd480d2be892",
+      "type": "prosemirror",
+      "timestamp": 1611325415167,
+      "path": "abstract",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 4,
+          "to": 5
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600adfe93c4abda1062be893",
+      "type": "prosemirror",
+      "timestamp": 1611325415293,
+      "path": "abstract",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 3,
+          "to": 4
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600adfe93c4abd47aa2be894",
+      "type": "prosemirror",
+      "timestamp": 1611325415438,
+      "path": "abstract",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 2,
+          "to": 3
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600adfe93c4abd35632be895",
+      "type": "prosemirror",
+      "timestamp": 1611325416083,
+      "path": "abstract",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 2,
+          "to": 2,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "H"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600adfe93c4abd48a72be896",
+      "type": "prosemirror",
+      "timestamp": 1611325416317,
+      "path": "abstract",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 3,
+          "to": 3,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "e"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600adfe93c4abdfda62be897",
+      "type": "prosemirror",
+      "timestamp": 1611325416415,
+      "path": "abstract",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 4,
+          "to": 4,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "l"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600adfe93c4abd1f502be898",
+      "type": "prosemirror",
+      "timestamp": 1611325416587,
+      "path": "abstract",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 5,
+          "to": 5,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "l"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600adfe93c4abdf3542be899",
+      "type": "prosemirror",
+      "timestamp": 1611325416890,
+      "path": "abstract",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 5,
+          "to": 6
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600adfe93c4abd106f2be89a",
+      "type": "prosemirror",
+      "timestamp": 1611325417212,
+      "path": "abstract",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 5,
+          "to": 5,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "l"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600adfec3c4abd4a302be89b",
+      "type": "prosemirror",
+      "timestamp": 1611325417391,
+      "path": "abstract",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 6,
+          "to": 6,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "o"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600adfec3c4abd61182be89c",
+      "type": "prosemirror",
+      "timestamp": 1611325417613,
+      "path": "abstract",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 7,
+          "to": 7,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": ","
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600adfec3c4abd29c22be89d",
+      "type": "prosemirror",
+      "timestamp": 1611325417836,
+      "path": "abstract",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 8,
+          "to": 8,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": " "
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600adff33c4abdd3e22be89e",
+      "type": "prosemirror",
+      "timestamp": 1611325425840,
+      "path": "abstract",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 8,
+          "to": 9
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600adff33c4abd378c2be89f",
+      "type": "prosemirror",
+      "timestamp": 1611325425990,
+      "path": "abstract",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 7,
+          "to": 8
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600adff33c4abd65c92be8a0",
+      "type": "prosemirror",
+      "timestamp": 1611325426131,
+      "path": "abstract",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 6,
+          "to": 7
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600adff33c4abd711c2be8a1",
+      "type": "prosemirror",
+      "timestamp": 1611325426278,
+      "path": "abstract",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 5,
+          "to": 6
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600adff33c4abd05392be8a2",
+      "type": "prosemirror",
+      "timestamp": 1611325426400,
+      "path": "abstract",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 4,
+          "to": 5
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600adff33c4abd8ba22be8a3",
+      "type": "prosemirror",
+      "timestamp": 1611325426554,
+      "path": "abstract",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 3,
+          "to": 4
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600adff33c4abd2a552be8a4",
+      "type": "prosemirror",
+      "timestamp": 1611325426827,
+      "path": "abstract",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 2,
+          "to": 3
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600ae1d53c4abd3b5c2be8a5",
+      "type": "prosemirror",
+      "timestamp": 1611325907457,
+      "path": "title",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 57,
+          "to": 57,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": " "
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600ae1d53c4abd55c02be8a6",
+      "type": "prosemirror",
+      "timestamp": 1611325907711,
+      "path": "title",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 58,
+          "to": 58,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "d"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600ae1d53c4abd48482be8a7",
+      "type": "prosemirror",
+      "timestamp": 1611325907839,
+      "path": "title",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 59,
+          "to": 59,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "o"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600ae1d53c4abd04af2be8a8",
+      "type": "prosemirror",
+      "timestamp": 1611325907988,
+      "path": "title",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 60,
+          "to": 60,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "e"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600ae1d53c4abd49dc2be8a9",
+      "type": "prosemirror",
+      "timestamp": 1611325908546,
+      "path": "title",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 60,
+          "to": 61
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600ae1d53c4abde6dd2be8aa",
+      "type": "prosemirror",
+      "timestamp": 1611325908835,
+      "path": "title",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 60,
+          "to": 60,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": " "
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600ae1d73c4abd37ad2be8ab",
+      "type": "prosemirror",
+      "timestamp": 1611325909216,
+      "path": "title",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 61,
+          "to": 61,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "i"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600ae1d73c4abdceae2be8ac",
+      "type": "prosemirror",
+      "timestamp": 1611325909346,
+      "path": "title",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 62,
+          "to": 62,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": " "
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600ae1d73c4abd715d2be8ad",
+      "type": "prosemirror",
+      "timestamp": 1611325909736,
+      "path": "title",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 63,
+          "to": 63,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "p"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600ae1d73c4abd7b662be8ae",
+      "type": "prosemirror",
+      "timestamp": 1611325909895,
+      "path": "title",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 64,
+          "to": 64,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "e"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600ae1d73c4abddb142be8af",
+      "type": "prosemirror",
+      "timestamp": 1611325910113,
+      "path": "title",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 65,
+          "to": 65,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "r"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600ae1d73c4abddad22be8b0",
+      "type": "prosemirror",
+      "timestamp": 1611325910316,
+      "path": "title",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 66,
+          "to": 66,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "s"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600ae1d73c4abd2bdf2be8b1",
+      "type": "prosemirror",
+      "timestamp": 1611325910427,
+      "path": "title",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 67,
+          "to": 67,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "i"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600ae1d73c4abd97dd2be8b2",
+      "type": "prosemirror",
+      "timestamp": 1611325910515,
+      "path": "title",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 68,
+          "to": 68,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "s"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600ae1d73c4abdc8572be8b3",
+      "type": "prosemirror",
+      "timestamp": 1611325910852,
+      "path": "title",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 69,
+          "to": 69,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "t"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600ae1d93c4abd61812be8b4",
+      "type": "prosemirror",
+      "timestamp": 1611325911202,
+      "path": "title",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 70,
+          "to": 70,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "?"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600ae1df3c4abd041c2be8b5",
+      "type": "prosemirror",
+      "timestamp": 1611325919222,
+      "path": "title",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 58,
+          "to": 71
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600ae1df3c4abd1e422be8b6",
+      "type": "prosemirror",
+      "timestamp": 1611325919348,
+      "path": "title",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 57,
+          "to": 58
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e995a3c4abd05a22be8da",
+      "type": "prosemirror",
+      "timestamp": 1611569497335,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 15,
+          "to": 15,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "T"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e995a3c4abd78302be8db",
+      "type": "prosemirror",
+      "timestamp": 1611569497628,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 16,
+          "to": 16,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "e"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e995a3c4abd26d02be8dc",
+      "type": "prosemirror",
+      "timestamp": 1611569497658,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 17,
+          "to": 17,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "s"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e995a3c4abd61842be8dd",
+      "type": "prosemirror",
+      "timestamp": 1611569497720,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 18,
+          "to": 18,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "t"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e995b3c4abd4aad2be8de",
+      "type": "prosemirror",
+      "timestamp": 1611569498080,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 19,
+          "to": 19,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": " "
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e995b3c4abd06342be8df",
+      "type": "prosemirror",
+      "timestamp": 1611569498106,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 20,
+          "to": 20,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "t"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e995b3c4abd2c2b2be8e0",
+      "type": "prosemirror",
+      "timestamp": 1611569498191,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 21,
+          "to": 21,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "e"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e995c3c4abd76462be8e1",
+      "type": "prosemirror",
+      "timestamp": 1611569498983,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 22,
+          "to": 22,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "s"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e995c3c4abdba302be8e2",
+      "type": "prosemirror",
+      "timestamp": 1611569499121,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 23,
+          "to": 23,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "t"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e995c3c4abd299e2be8e3",
+      "type": "prosemirror",
+      "timestamp": 1611569499343,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 24,
+          "to": 24,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": " "
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e995c3c4abd8d6f2be8e4",
+      "type": "prosemirror",
+      "timestamp": 1611569499647,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 25,
+          "to": 25,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "t"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e995c3c4abdb5252be8e5",
+      "type": "prosemirror",
+      "timestamp": 1611569499768,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 26,
+          "to": 26,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "e"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e995c3c4abd622b2be8e6",
+      "type": "prosemirror",
+      "timestamp": 1611569499976,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 27,
+          "to": 27,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "s"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e995c3c4abdd4992be8e7",
+      "type": "prosemirror",
+      "timestamp": 1611569500096,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 28,
+          "to": 28,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "t"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e996c3c4abd9bb52be8e8",
+      "type": "prosemirror",
+      "timestamp": 1611569515148,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 15,
+          "to": 29
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e99a43c4abd57d22be8e9",
+      "type": "prosemirror",
+      "timestamp": 1611569572363,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 3662,
+          "to": 3662,
+          "slice": {
+            "content": [
+              {
+                "type": "figureLicense",
+                "attrs": {
+                  "licenseInfo": {
+                    "copyrightHolder": "",
+                    "copyrightStatement": "",
+                    "copyrightYear": ""
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e99ac3c4abd06a62be8ea",
+      "type": "prosemirror",
+      "timestamp": 1611569579730,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 2609,
+          "to": 2609,
+          "slice": {
+            "content": [
+              {
+                "type": "figureLicense",
+                "attrs": {
+                  "licenseInfo": {
+                    "copyrightHolder": "",
+                    "copyrightStatement": "",
+                    "copyrightYear": ""
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e99ae3c4abdce7b2be8eb",
+      "type": "prosemirror",
+      "timestamp": 1611569581378,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 2609,
+          "to": 2611,
+          "gapFrom": 2610,
+          "gapTo": 2610,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureLicense",
+                "attrs": {
+                  "licenseInfo": {
+                    "copyrightHolder": "",
+                    "copyrightStatement": "",
+                    "copyrightYear": "",
+                    "licenseType": "LICENSE_CC_BY_4"
+                  }
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e99b03c4abdc58c2be8ec",
+      "type": "prosemirror",
+      "timestamp": 1611569583823,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 2609,
+          "to": 2611,
+          "gapFrom": 2610,
+          "gapTo": 2610,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureLicense",
+                "attrs": {
+                  "licenseInfo": {
+                    "copyrightHolder": "",
+                    "copyrightStatement": "",
+                    "copyrightYear": "2",
+                    "licenseType": "LICENSE_CC_BY_4"
+                  }
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e99b03c4abd330f2be8ed",
+      "type": "prosemirror",
+      "timestamp": 1611569583926,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 2609,
+          "to": 2611,
+          "gapFrom": 2610,
+          "gapTo": 2610,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureLicense",
+                "attrs": {
+                  "licenseInfo": {
+                    "copyrightHolder": "",
+                    "copyrightStatement": "",
+                    "copyrightYear": "20",
+                    "licenseType": "LICENSE_CC_BY_4"
+                  }
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e99b03c4abd6ee82be8ee",
+      "type": "prosemirror",
+      "timestamp": 1611569584042,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 2609,
+          "to": 2611,
+          "gapFrom": 2610,
+          "gapTo": 2610,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureLicense",
+                "attrs": {
+                  "licenseInfo": {
+                    "copyrightHolder": "",
+                    "copyrightStatement": "",
+                    "copyrightYear": "202",
+                    "licenseType": "LICENSE_CC_BY_4"
+                  }
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e99b03c4abd69b52be8ef",
+      "type": "prosemirror",
+      "timestamp": 1611569584122,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 2609,
+          "to": 2611,
+          "gapFrom": 2610,
+          "gapTo": 2610,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureLicense",
+                "attrs": {
+                  "licenseInfo": {
+                    "copyrightHolder": "",
+                    "copyrightStatement": "",
+                    "copyrightYear": "2020",
+                    "licenseType": "LICENSE_CC_BY_4"
+                  }
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e99b23c4abd51e82be8f0",
+      "type": "prosemirror",
+      "timestamp": 1611569585841,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 2609,
+          "to": 2611,
+          "gapFrom": 2610,
+          "gapTo": 2610,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureLicense",
+                "attrs": {
+                  "licenseInfo": {
+                    "copyrightHolder": "",
+                    "copyrightStatement": "t",
+                    "copyrightYear": "2020",
+                    "licenseType": "LICENSE_CC_BY_4"
+                  }
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e99b23c4abdde532be8f1",
+      "type": "prosemirror",
+      "timestamp": 1611569585961,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 2609,
+          "to": 2611,
+          "gapFrom": 2610,
+          "gapTo": 2610,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureLicense",
+                "attrs": {
+                  "licenseInfo": {
+                    "copyrightHolder": "",
+                    "copyrightStatement": "te",
+                    "copyrightYear": "2020",
+                    "licenseType": "LICENSE_CC_BY_4"
+                  }
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e99b23c4abd28ab2be8f2",
+      "type": "prosemirror",
+      "timestamp": 1611569586098,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 2609,
+          "to": 2611,
+          "gapFrom": 2610,
+          "gapTo": 2610,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureLicense",
+                "attrs": {
+                  "licenseInfo": {
+                    "copyrightHolder": "",
+                    "copyrightStatement": "tes",
+                    "copyrightYear": "2020",
+                    "licenseType": "LICENSE_CC_BY_4"
+                  }
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e99b23c4abd81e02be8f3",
+      "type": "prosemirror",
+      "timestamp": 1611569586186,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 2609,
+          "to": 2611,
+          "gapFrom": 2610,
+          "gapTo": 2610,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureLicense",
+                "attrs": {
+                  "licenseInfo": {
+                    "copyrightHolder": "",
+                    "copyrightStatement": "test",
+                    "copyrightYear": "2020",
+                    "licenseType": "LICENSE_CC_BY_4"
+                  }
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e99b23c4abdb5d22be8f4",
+      "type": "prosemirror",
+      "timestamp": 1611569586323,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 2609,
+          "to": 2611,
+          "gapFrom": 2610,
+          "gapTo": 2610,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureLicense",
+                "attrs": {
+                  "licenseInfo": {
+                    "copyrightHolder": "",
+                    "copyrightStatement": "test ",
+                    "copyrightYear": "2020",
+                    "licenseType": "LICENSE_CC_BY_4"
+                  }
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e99b23c4abd8ca72be8f5",
+      "type": "prosemirror",
+      "timestamp": 1611569586459,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 2609,
+          "to": 2611,
+          "gapFrom": 2610,
+          "gapTo": 2610,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureLicense",
+                "attrs": {
+                  "licenseInfo": {
+                    "copyrightHolder": "",
+                    "copyrightStatement": "test e",
+                    "copyrightYear": "2020",
+                    "licenseType": "LICENSE_CC_BY_4"
+                  }
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e99b23c4abdf1342be8f6",
+      "type": "prosemirror",
+      "timestamp": 1611569586569,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 2609,
+          "to": 2611,
+          "gapFrom": 2610,
+          "gapTo": 2610,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureLicense",
+                "attrs": {
+                  "licenseInfo": {
+                    "copyrightHolder": "",
+                    "copyrightStatement": "test et",
+                    "copyrightYear": "2020",
+                    "licenseType": "LICENSE_CC_BY_4"
+                  }
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e99b43c4abd8b572be8f7",
+      "type": "prosemirror",
+      "timestamp": 1611569586673,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 2609,
+          "to": 2611,
+          "gapFrom": 2610,
+          "gapTo": 2610,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureLicense",
+                "attrs": {
+                  "licenseInfo": {
+                    "copyrightHolder": "",
+                    "copyrightStatement": "test ets",
+                    "copyrightYear": "2020",
+                    "licenseType": "LICENSE_CC_BY_4"
+                  }
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e99b43c4abd65192be8f8",
+      "type": "prosemirror",
+      "timestamp": 1611569586795,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 2609,
+          "to": 2611,
+          "gapFrom": 2610,
+          "gapTo": 2610,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureLicense",
+                "attrs": {
+                  "licenseInfo": {
+                    "copyrightHolder": "",
+                    "copyrightStatement": "test ets ",
+                    "copyrightYear": "2020",
+                    "licenseType": "LICENSE_CC_BY_4"
+                  }
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e99b43c4abd99f12be8f9",
+      "type": "prosemirror",
+      "timestamp": 1611569586938,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 2609,
+          "to": 2611,
+          "gapFrom": 2610,
+          "gapTo": 2610,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureLicense",
+                "attrs": {
+                  "licenseInfo": {
+                    "copyrightHolder": "",
+                    "copyrightStatement": "test ets s",
+                    "copyrightYear": "2020",
+                    "licenseType": "LICENSE_CC_BY_4"
+                  }
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e99b43c4abd9a172be8fa",
+      "type": "prosemirror",
+      "timestamp": 1611569587066,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 2609,
+          "to": 2611,
+          "gapFrom": 2610,
+          "gapTo": 2610,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureLicense",
+                "attrs": {
+                  "licenseInfo": {
+                    "copyrightHolder": "",
+                    "copyrightStatement": "test ets st",
+                    "copyrightYear": "2020",
+                    "licenseType": "LICENSE_CC_BY_4"
+                  }
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e99b43c4abd12012be8fb",
+      "type": "prosemirror",
+      "timestamp": 1611569587258,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 2609,
+          "to": 2611,
+          "gapFrom": 2610,
+          "gapTo": 2610,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureLicense",
+                "attrs": {
+                  "licenseInfo": {
+                    "copyrightHolder": "",
+                    "copyrightStatement": "test ets stv",
+                    "copyrightYear": "2020",
+                    "licenseType": "LICENSE_CC_BY_4"
+                  }
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e99b43c4abd54432be8fc",
+      "type": "prosemirror",
+      "timestamp": 1611569587323,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 2609,
+          "to": 2611,
+          "gapFrom": 2610,
+          "gapTo": 2610,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureLicense",
+                "attrs": {
+                  "licenseInfo": {
+                    "copyrightHolder": "",
+                    "copyrightStatement": "test ets stvh",
+                    "copyrightYear": "2020",
+                    "licenseType": "LICENSE_CC_BY_4"
+                  }
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e99b43c4abd33b12be8fd",
+      "type": "prosemirror",
+      "timestamp": 1611569587473,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 2609,
+          "to": 2611,
+          "gapFrom": 2610,
+          "gapTo": 2610,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureLicense",
+                "attrs": {
+                  "licenseInfo": {
+                    "copyrightHolder": "",
+                    "copyrightStatement": "test ets stvhf",
+                    "copyrightYear": "2020",
+                    "licenseType": "LICENSE_CC_BY_4"
+                  }
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e99b43c4abd40332be8fe",
+      "type": "prosemirror",
+      "timestamp": 1611569587555,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 2609,
+          "to": 2611,
+          "gapFrom": 2610,
+          "gapTo": 2610,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureLicense",
+                "attrs": {
+                  "licenseInfo": {
+                    "copyrightHolder": "",
+                    "copyrightStatement": "test ets stvhfv",
+                    "copyrightYear": "2020",
+                    "licenseType": "LICENSE_CC_BY_4"
+                  }
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e99b43c4abd85f12be8ff",
+      "type": "prosemirror",
+      "timestamp": 1611569587657,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 2609,
+          "to": 2611,
+          "gapFrom": 2610,
+          "gapTo": 2610,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureLicense",
+                "attrs": {
+                  "licenseInfo": {
+                    "copyrightHolder": "",
+                    "copyrightStatement": "test ets stvhfvi",
+                    "copyrightYear": "2020",
+                    "licenseType": "LICENSE_CC_BY_4"
+                  }
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e99b43c4abd36822be900",
+      "type": "prosemirror",
+      "timestamp": 1611569587818,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 2609,
+          "to": 2611,
+          "gapFrom": 2610,
+          "gapTo": 2610,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureLicense",
+                "attrs": {
+                  "licenseInfo": {
+                    "copyrightHolder": "",
+                    "copyrightStatement": "test ets stvhfvif",
+                    "copyrightYear": "2020",
+                    "licenseType": "LICENSE_CC_BY_4"
+                  }
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e99b63c4abd92ee2be901",
+      "type": "prosemirror",
+      "timestamp": 1611569589580,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 2610,
+          "to": 2610,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "T"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e99b63c4abdaabf2be902",
+      "type": "prosemirror",
+      "timestamp": 1611569589674,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 2611,
+          "to": 2611,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "e"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e99b63c4abd60132be903",
+      "type": "prosemirror",
+      "timestamp": 1611569589826,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 2612,
+          "to": 2612,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "s"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e99b63c4abd5abb2be904",
+      "type": "prosemirror",
+      "timestamp": 1611569589959,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 2613,
+          "to": 2613,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": " "
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e99b63c4abd4e5d2be905",
+      "type": "prosemirror",
+      "timestamp": 1611569590334,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 2614,
+          "to": 2614,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "j"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e99b63c4abd31fc2be906",
+      "type": "prosemirror",
+      "timestamp": 1611569590563,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 2615,
+          "to": 2615,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "b"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e99b83c4abd26c32be907",
+      "type": "prosemirror",
+      "timestamp": 1611569590636,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 2616,
+          "to": 2616,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "f"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e99b83c4abd76cb2be908",
+      "type": "prosemirror",
+      "timestamp": 1611569590664,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 2617,
+          "to": 2617,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "j"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e99b83c4abd8d222be909",
+      "type": "prosemirror",
+      "timestamp": 1611569590690,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 2618,
+          "to": 2618,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "k"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e99b83c4abd04702be90a",
+      "type": "prosemirror",
+      "timestamp": 1611569590745,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 2619,
+          "to": 2619,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "o"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e99b83c4abd0afb2be90b",
+      "type": "prosemirror",
+      "timestamp": 1611569590772,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 2620,
+          "to": 2620,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "e"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "600e99b83c4abd372f2be90c",
+      "type": "prosemirror",
+      "timestamp": 1611569590828,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 2621,
+          "to": 2621,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": ";"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    }
+  ],
+  "total": 700
+}

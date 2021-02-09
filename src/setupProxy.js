@@ -18,8 +18,9 @@ function createStaticProxy(app) {
         }
 
         if (path.match(ARTICLE_CHANGES_RE)) {
+          const page = req.query['page'] || 0;
           const articleId = path.match(ARTICLE_CHANGES_RE)[1];
-          return `/changes/${articleId}/changes.json`;
+          return `/changes/${articleId}/${page}.changes.json`;
         }
 
         if (path.match(ARTICLE_ASSETS_RE)) {
