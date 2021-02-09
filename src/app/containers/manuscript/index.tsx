@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Backdrop, CircularProgress } from '@material-ui/core';
 
@@ -7,6 +7,7 @@ import { ManuscriptToolbar } from './manuscript-toolbar';
 import { ManuscriptEditor } from './manuscript-editor';
 import { ManuscriptTOC } from './manuscript-toc';
 import { HotKeyBindings } from './hot-keys';
+import { hasUnsavedChanges } from 'app/selectors/manuscript-editor.selectors';
 
 const renderBackdrop = (): JSX.Element => (
   <Backdrop open={true}>
@@ -16,10 +17,24 @@ const renderBackdrop = (): JSX.Element => (
 
 export const ManuscriptContainer: React.FC = () => {
   const [tocOpen, setTocOpen] = React.useState<boolean>(false);
+  const checkForUnsavedChanges = useSelector(hasUnsavedChanges);
 
   const handleTocToggle = useCallback(() => {
     setTocOpen(!tocOpen);
   }, [tocOpen, setTocOpen]);
+
+  useEffect(() => {
+    const eventHandler = (e): boolean => {
+      if (checkForUnsavedChanges()) {
+        e.preventDefault();
+        e.returnValue = true;
+        return true;
+      }
+    };
+
+    window.addEventListener('beforeunload', eventHandler);
+    return () => window.removeEventListener('beforeunload', eventHandler);
+  }, [checkForUnsavedChanges]);
 
   const isLoaded = useSelector(isManuscriptLoaded);
 

@@ -6,6 +6,7 @@ import { Person } from 'app/models/person';
 const getManuscriptState = (state: ApplicationState): ManuscriptHistoryState => {
   return state.manuscript;
 };
+
 export const getManuscriptData = createSelector(getManuscriptState, (state) => get(state, 'data'));
 
 export const isManuscriptLoaded = createSelector(getManuscriptData, (data) => Boolean(data));

@@ -121,6 +121,16 @@ export const canToggleListAtSelection = createSelector(
   }
 );
 
+export const hasUnsavedChanges = createSelector(
+  (_) => _,
+  (state: ApplicationState) => () => {
+    return (
+      state.manuscriptEditor.lastSyncTimestamp <
+      state.manuscript.data.past[state.manuscript.data.past.length - 1].timestamp
+    );
+  }
+);
+
 export const isActiveContainer = createSelector(
   getFocusedEditorState,
   (editorState: EditorState) => (nodeName: string, attrs?: Record<string, number | string>) => {
