@@ -1,0 +1,2229 @@
+{
+  "changes": [
+    {
+      "_id": "601927ff4892505af7b7dd90",
+      "type": "prosemirror",
+      "timestamp": 1612261353262,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1879,
+          "to": 1879,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": " "
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff48925030ceb7dd89",
+      "type": "prosemirror",
+      "timestamp": 1612261353262,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1879,
+          "to": 1879,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": " "
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff489250fc1fb7dd98",
+      "type": "prosemirror",
+      "timestamp": 1612261353262,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1879,
+          "to": 1879,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": " "
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff4892509d82b7dd9b",
+      "type": "prosemirror",
+      "timestamp": 1612261353644,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1880,
+          "to": 1880,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "I"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff489250413bb7dd8d",
+      "type": "prosemirror",
+      "timestamp": 1612261353644,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1880,
+          "to": 1880,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "I"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff489250e0c4b7dda3",
+      "type": "prosemirror",
+      "timestamp": 1612261353644,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1880,
+          "to": 1880,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "I"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff48925046eab7ddae",
+      "type": "prosemirror",
+      "timestamp": 1612261353644,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1880,
+          "to": 1880,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "I"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff4892500ca3b7dd9f",
+      "type": "prosemirror",
+      "timestamp": 1612261353644,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1880,
+          "to": 1880,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "I"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff489250a60db7dda0",
+      "type": "prosemirror",
+      "timestamp": 1612261353644,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1880,
+          "to": 1880,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "I"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff489250422ab7ddb8",
+      "type": "prosemirror",
+      "timestamp": 1612261353644,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1880,
+          "to": 1880,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "I"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff489250d9c3b7dd8e",
+      "type": "prosemirror",
+      "timestamp": 1612261353644,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1880,
+          "to": 1880,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "I"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff4892500e31b7dda4",
+      "type": "prosemirror",
+      "timestamp": 1612261353644,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1880,
+          "to": 1880,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "I"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff489250a751b7dd94",
+      "type": "prosemirror",
+      "timestamp": 1612261353644,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1880,
+          "to": 1880,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "I"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff489250619bb7dda1",
+      "type": "prosemirror",
+      "timestamp": 1612261353644,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1880,
+          "to": 1880,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "I"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff489250d310b7ddb4",
+      "type": "prosemirror",
+      "timestamp": 1612261354036,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1881,
+          "to": 1881,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": " "
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff489250dc24b7dd95",
+      "type": "prosemirror",
+      "timestamp": 1612261354036,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1881,
+          "to": 1881,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": " "
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff4892502e83b7ddaa",
+      "type": "prosemirror",
+      "timestamp": 1612261354036,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1881,
+          "to": 1881,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": " "
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff4892505e95b7dda6",
+      "type": "prosemirror",
+      "timestamp": 1612261354036,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1881,
+          "to": 1881,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": " "
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff4892508b94b7dd9c",
+      "type": "prosemirror",
+      "timestamp": 1612261354036,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1881,
+          "to": 1881,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": " "
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff489250e62bb7dd9a",
+      "type": "prosemirror",
+      "timestamp": 1612261354036,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1881,
+          "to": 1881,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": " "
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff48925027dcb7ddac",
+      "type": "prosemirror",
+      "timestamp": 1612261354036,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1881,
+          "to": 1881,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": " "
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff4892505ccdb7ddc0",
+      "type": "prosemirror",
+      "timestamp": 1612261354036,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1881,
+          "to": 1881,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": " "
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff489250dde6b7ddb2",
+      "type": "prosemirror",
+      "timestamp": 1612261354036,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1881,
+          "to": 1881,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": " "
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff48925066a4b7ddb1",
+      "type": "prosemirror",
+      "timestamp": 1612261354036,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1881,
+          "to": 1881,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": " "
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff4892505772b7ddab",
+      "type": "prosemirror",
+      "timestamp": 1612261354036,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1881,
+          "to": 1881,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": " "
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601928004892506f3cb7ddff",
+      "type": "prosemirror",
+      "timestamp": 1612261354239,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1882,
+          "to": 1882,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "l"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff489250b07fb7ddbb",
+      "type": "prosemirror",
+      "timestamp": 1612261354239,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1882,
+          "to": 1882,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "l"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff489250548fb7ddc1",
+      "type": "prosemirror",
+      "timestamp": 1612261354239,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1882,
+          "to": 1882,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "l"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff48925073f6b7ddb7",
+      "type": "prosemirror",
+      "timestamp": 1612261354239,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1882,
+          "to": 1882,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "l"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff489250494fb7ddb6",
+      "type": "prosemirror",
+      "timestamp": 1612261354239,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1882,
+          "to": 1882,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "l"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff489250d2bbb7dd9d",
+      "type": "prosemirror",
+      "timestamp": 1612261354239,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1882,
+          "to": 1882,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "l"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff489250349eb7ddb5",
+      "type": "prosemirror",
+      "timestamp": 1612261354239,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1882,
+          "to": 1882,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "l"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff4892501955b7ddaf",
+      "type": "prosemirror",
+      "timestamp": 1612261354239,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1882,
+          "to": 1882,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "l"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff489250f730b7dda7",
+      "type": "prosemirror",
+      "timestamp": 1612261354239,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1882,
+          "to": 1882,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "l"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff489250b509b7dda2",
+      "type": "prosemirror",
+      "timestamp": 1612261354239,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1882,
+          "to": 1882,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "l"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "60192800489250f555b7ddd1",
+      "type": "prosemirror",
+      "timestamp": 1612261354239,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1882,
+          "to": 1882,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "l"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff48925058b9b7ddbc",
+      "type": "prosemirror",
+      "timestamp": 1612261354412,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1883,
+          "to": 1883,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "i"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff4892507b8cb7ddbe",
+      "type": "prosemirror",
+      "timestamp": 1612261354412,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1883,
+          "to": 1883,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "i"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601928004892501c3bb7de00",
+      "type": "prosemirror",
+      "timestamp": 1612261354412,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1883,
+          "to": 1883,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "i"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff489250a78bb7ddad",
+      "type": "prosemirror",
+      "timestamp": 1612261354412,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1883,
+          "to": 1883,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "i"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff489250016eb7ddb0",
+      "type": "prosemirror",
+      "timestamp": 1612261354412,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1883,
+          "to": 1883,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "i"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601928004892508431b7ddd0",
+      "type": "prosemirror",
+      "timestamp": 1612261354412,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1883,
+          "to": 1883,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "i"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff4892506ab6b7ddc2",
+      "type": "prosemirror",
+      "timestamp": 1612261354412,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1883,
+          "to": 1883,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "i"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff4892509629b7ddc8",
+      "type": "prosemirror",
+      "timestamp": 1612261354412,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1883,
+          "to": 1883,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "i"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff48925065b6b7ddbd",
+      "type": "prosemirror",
+      "timestamp": 1612261354412,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1883,
+          "to": 1883,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "i"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff4892509098b7dda8",
+      "type": "prosemirror",
+      "timestamp": 1612261354412,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1883,
+          "to": 1883,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "i"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "60192800489250f1aeb7dde3",
+      "type": "prosemirror",
+      "timestamp": 1612261354412,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1883,
+          "to": 1883,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "i"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff4892503a20b7ddc3",
+      "type": "prosemirror",
+      "timestamp": 1612261354590,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1884,
+          "to": 1884,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "e"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff489250ffd8b7ddc4",
+      "type": "prosemirror",
+      "timestamp": 1612261354590,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1884,
+          "to": 1884,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "e"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "60192800489250f6cbb7ddd9",
+      "type": "prosemirror",
+      "timestamp": 1612261354590,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1884,
+          "to": 1884,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "e"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "60192800489250fd3ab7dde8",
+      "type": "prosemirror",
+      "timestamp": 1612261354590,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1884,
+          "to": 1884,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "e"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6019280048925045c9b7de01",
+      "type": "prosemirror",
+      "timestamp": 1612261354590,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1884,
+          "to": 1884,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "e"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff4892501d10b7ddc5",
+      "type": "prosemirror",
+      "timestamp": 1612261354590,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1884,
+          "to": 1884,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "e"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601928004892507390b7ddcf",
+      "type": "prosemirror",
+      "timestamp": 1612261354590,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1884,
+          "to": 1884,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "e"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff489250b9e8b7ddba",
+      "type": "prosemirror",
+      "timestamp": 1612261354590,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1884,
+          "to": 1884,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "e"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff489250ca4fb7ddb9",
+      "type": "prosemirror",
+      "timestamp": 1612261354590,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1884,
+          "to": 1884,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "e"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6019280048925028eab7ddd2",
+      "type": "prosemirror",
+      "timestamp": 1612261354590,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1884,
+          "to": 1884,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "e"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff489250dc51b7ddb3",
+      "type": "prosemirror",
+      "timestamp": 1612261354590,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1884,
+          "to": 1884,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "e"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601928004892509fafb7de02",
+      "type": "prosemirror",
+      "timestamp": 1612261354609,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1885,
+          "to": 1885,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "k"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff489250c9f5b7ddbf",
+      "type": "prosemirror",
+      "timestamp": 1612261354609,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1885,
+          "to": 1885,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "k"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6019280048925099c2b7dde4",
+      "type": "prosemirror",
+      "timestamp": 1612261354609,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1885,
+          "to": 1885,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "k"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff489250e089b7ddc9",
+      "type": "prosemirror",
+      "timestamp": 1612261354609,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1885,
+          "to": 1885,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "k"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "60192800489250602cb7ddca",
+      "type": "prosemirror",
+      "timestamp": 1612261354609,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1885,
+          "to": 1885,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "k"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff4892504bf4b7ddc7",
+      "type": "prosemirror",
+      "timestamp": 1612261354609,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1885,
+          "to": 1885,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "k"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "60192800489250e0a9b7ddd8",
+      "type": "prosemirror",
+      "timestamp": 1612261354609,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1885,
+          "to": 1885,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "k"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "60192800489250c38cb7dde1",
+      "type": "prosemirror",
+      "timestamp": 1612261354609,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1885,
+          "to": 1885,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "k"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601928004892504b59b7ddf1",
+      "type": "prosemirror",
+      "timestamp": 1612261354609,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1885,
+          "to": 1885,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "k"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601928004892506edeb7ddcb",
+      "type": "prosemirror",
+      "timestamp": 1612261354609,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1885,
+          "to": 1885,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "k"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601928004892502531b7ddcc",
+      "type": "prosemirror",
+      "timestamp": 1612261354609,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1885,
+          "to": 1885,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "k"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601928004892507daab7dde0",
+      "type": "prosemirror",
+      "timestamp": 1612261355521,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1885,
+          "to": 1886
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6019280048925006ecb7de03",
+      "type": "prosemirror",
+      "timestamp": 1612261355521,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1885,
+          "to": 1886
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6019280048925040c4b7ddec",
+      "type": "prosemirror",
+      "timestamp": 1612261355521,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1885,
+          "to": 1886
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601928004892500199b7ddd3",
+      "type": "prosemirror",
+      "timestamp": 1612261355521,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1885,
+          "to": 1886
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff489250437bb7ddc6",
+      "type": "prosemirror",
+      "timestamp": 1612261355521,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1885,
+          "to": 1886
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6019280048925045c8b7ddea",
+      "type": "prosemirror",
+      "timestamp": 1612261355521,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1885,
+          "to": 1886
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6019280048925063f7b7ddd5",
+      "type": "prosemirror",
+      "timestamp": 1612261355521,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1885,
+          "to": 1886
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601928004892503ca7b7ddce",
+      "type": "prosemirror",
+      "timestamp": 1612261355521,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1885,
+          "to": 1886
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601928004892504becb7ddf6",
+      "type": "prosemirror",
+      "timestamp": 1612261355521,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1885,
+          "to": 1886
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "60192800489250a643b7ddda",
+      "type": "prosemirror",
+      "timestamp": 1612261355521,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1885,
+          "to": 1886
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601928004892500475b7ddd4",
+      "type": "prosemirror",
+      "timestamp": 1612261355521,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1885,
+          "to": 1886
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601928004892502951b7ddfa",
+      "type": "prosemirror",
+      "timestamp": 1612261355669,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1884,
+          "to": 1885
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601928004892505a93b7ddcd",
+      "type": "prosemirror",
+      "timestamp": 1612261355669,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1884,
+          "to": 1885
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "60192800489250a167b7dde2",
+      "type": "prosemirror",
+      "timestamp": 1612261355669,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1884,
+          "to": 1885
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "60192800489250405fb7dddb",
+      "type": "prosemirror",
+      "timestamp": 1612261355669,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1884,
+          "to": 1885
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "60192800489250220cb7dddc",
+      "type": "prosemirror",
+      "timestamp": 1612261355669,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1884,
+          "to": 1885
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601928004892505861b7ddf4",
+      "type": "prosemirror",
+      "timestamp": 1612261355669,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1884,
+          "to": 1885
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "60192800489250ce6eb7de04",
+      "type": "prosemirror",
+      "timestamp": 1612261355669,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1884,
+          "to": 1885
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6019280048925073b3b7dddd",
+      "type": "prosemirror",
+      "timestamp": 1612261355669,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1884,
+          "to": 1885
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "60192800489250110eb7ddf2",
+      "type": "prosemirror",
+      "timestamp": 1612261355669,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1884,
+          "to": 1885
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6019280048925066bdb7ddd7",
+      "type": "prosemirror",
+      "timestamp": 1612261355669,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1884,
+          "to": 1885
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "60192800489250d0b6b7ddeb",
+      "type": "prosemirror",
+      "timestamp": 1612261355669,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1884,
+          "to": 1885
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601928004892502574b7dddf",
+      "type": "prosemirror",
+      "timestamp": 1612261355922,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1884,
+          "to": 1884,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "k"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6019280048925087e8b7dde7",
+      "type": "prosemirror",
+      "timestamp": 1612261355922,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1884,
+          "to": 1884,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "k"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601928004892506943b7ddd6",
+      "type": "prosemirror",
+      "timestamp": 1612261355922,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1884,
+          "to": 1884,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "k"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601928004892505c41b7dde6",
+      "type": "prosemirror",
+      "timestamp": 1612261355922,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1884,
+          "to": 1884,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "k"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601928004892501c4eb7ddf9",
+      "type": "prosemirror",
+      "timestamp": 1612261355922,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1884,
+          "to": 1884,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "k"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6019280048925068d7b7ddf3",
+      "type": "prosemirror",
+      "timestamp": 1612261355922,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1884,
+          "to": 1884,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "k"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601928004892503aadb7ddf7",
+      "type": "prosemirror",
+      "timestamp": 1612261355922,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1884,
+          "to": 1884,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "k"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6019280048925016ddb7dde5",
+      "type": "prosemirror",
+      "timestamp": 1612261355922,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1884,
+          "to": 1884,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "k"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "60192800489250e714b7dded",
+      "type": "prosemirror",
+      "timestamp": 1612261355922,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1884,
+          "to": 1884,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "k"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    }
+  ],
+  "total": 700
+}

@@ -12,6 +12,7 @@ import { getTextContentFromPath, makeSchemaFromConfig } from 'app/models/utils';
 import { buildInputRules } from 'app/models/plugins/input-rules';
 import { BackmatterEntity } from 'app/models/backmatter-entity';
 import { JSONObject } from 'app/types/utility.types';
+import { SelectionPlugin } from 'app/models/plugins/selection.plugins';
 
 export class Person extends BackmatterEntity {
   firstName: string;
@@ -137,7 +138,7 @@ export class Person extends BackmatterEntity {
     return EditorState.create({
       doc: bio ? ProseMirrorDOMParser.fromSchema(schema).parse(bio) : undefined,
       schema,
-      plugins: [buildInputRules(), gapCursor(), dropCursor(), keymap(baseKeymap), history()]
+      plugins: [buildInputRules(), gapCursor(), dropCursor(), keymap(baseKeymap), history(), SelectionPlugin]
     });
   }
 

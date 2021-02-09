@@ -1,0 +1,6053 @@
+{
+  "changes": [
+    {
+      "_id": "6012d19aaf901cb0be45494c",
+      "type": "prosemirror",
+      "timestamp": 1611846041305,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 3254,
+          "to": 3744,
+          "gapFrom": 3255,
+          "gapTo": 3743,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figure",
+                "attrs": {
+                  "id": "fig1s2",
+                  "label": "Figure 1—figure suppplement 2.",
+                  "img": "/api/v1/articles/60263/assets/elife-60263-fig1-figsupp2.jpg"
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6012d19aaf901c703e45494d",
+      "type": "prosemirror",
+      "timestamp": 1611846042238,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 3254,
+          "to": 3744,
+          "gapFrom": 3255,
+          "gapTo": 3743,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figure",
+                "attrs": {
+                  "id": "fig1s2",
+                  "label": "Figure 1—figure supplement 2.",
+                  "img": "/api/v1/articles/60263/assets/elife-60263-fig1-figsupp2.jpg"
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6012d1a0af901cf39545494e",
+      "type": "prosemirror",
+      "timestamp": 1611846047256,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 3741,
+          "to": 3743
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6012d1caaf901c6f6c45494f",
+      "type": "prosemirror",
+      "timestamp": 1611846090371,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 17885,
+          "to": 20363
+        },
+        {
+          "stepType": "replace",
+          "from": 15648,
+          "to": 15648,
+          "slice": {
+            "content": [
+              {
+                "type": "figure",
+                "attrs": {
+                  "id": "fig3",
+                  "label": "Figure 3.",
+                  "img": "/api/v1/articles/60263/assets/elife-60263-fig3.jpg"
+                },
+                "content": [
+                  {
+                    "type": "figureTitle",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Membrane perturbations disrupt peptidoglycan biogenesis in "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M."
+                      }
+                    ]
+                  },
+                  {
+                    "type": "figureLegend",
+                    "content": [
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": " and phylogenetically-distant bacilli. ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "A"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") Lysates from wild-type "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": " treated +/- benzyl alcohol (BA) were sedimented in a sucrose density gradient. Density of the cellular material is quantified in "
+                      },
+                      {
+                        "type": "figureCitation",
+                        "attrs": {
+                          "figIds": [
+                            "fig3s1"
+                          ]
+                        },
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Figure 3—figure supplement 1"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": ". ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "B"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") Top, wild-type "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": " was incubated or not with benzyl alcohol or dibucaine, then labeled with alkDADA; merged images correspond to fluorescent image with the corresponding phase contrast. Bottom, the distribution of peptidoglycan labeling from wild-type "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": " that was incubated with BA or dibucaine (DB) for the indicated time was quantitated as in "
+                      },
+                      {
+                        "type": "figureCitation",
+                        "attrs": {
+                          "figIds": [
+                            "fig2"
+                          ]
+                        },
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Figure 2A"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": ", except that signal intensity was not normalized. The changes in fluorescence are further quantified by flow cytometry in "
+                      },
+                      {
+                        "type": "figureCitation",
+                        "attrs": {
+                          "figIds": [
+                            "fig3s5"
+                          ]
+                        },
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Figure 3—figure supplement 5"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": ". ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "C"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") Top left, DivIVA-eGFP-ID "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": " was either treated with benzyl alcohol, depleted of DivIVA, or both, and the peptidoglycan precursors from whole cells were biotinylated as in "
+                      },
+                      {
+                        "type": "figureCitation",
+                        "attrs": {
+                          "figIds": [
+                            "fig2"
+                          ]
+                        },
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Figure 2C"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": ". Bottom left, biotin-derived chemiluminescence was quantified by densitometry; signal is expressed as % of untreated DivIVA-eGFP-ID (first lane). Right, DivIVA-eGFP-ID "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": " was treated as in the left panel but labeled with alkDADA, subjected to CuAAC, and analyzed by flow cytometry. MFI, median fluorescence intensity values for a representative experiment. Error bars denote standard deviation of technical triplicates. ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "D"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") Phylogenetic tree constructed with 16S rDNA sequences (rate of mutation not considered). Taxonomic groups matched with colors to their levels with only diverging points shown. Shapes and growth modes illustrated for select species. ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "E"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") Left, different bacteria treated +/- benzyl alcohol followed by alkDADA incubation. Arrowheads highlight irregular patches of peptidoglycan. Insets are magnified. Where applicable, "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "E. coli"
+                      },
+                      {
+                        "type": "text",
+                        "text": " was preincubated with A22. Right, bacteria were treated with benzyl alcohol, translation-inhibiting kanamycin, or peptidoglycan-acting phosphomycin or ampicillin then labeled as in ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "B"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") and analyzed by flow cytometry (see Methods). MFI values were normalized to untreated controls. Experiments were performed 3–9 times in triplicate. Error bars, standard deviation of biological replicates. *, p<0.05; **, p<0.005; ***, p<0.0005; ****, p<0.00005, ratio paired t-tests and one-way ANOVA with Dunnet´s test for non-normalized MFI of biological replicates. Scale bars, 5 µm."
+                      }
+                    ]
+                  },
+                  {
+                    "type": "figureAttribution"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6012d1d0af901c7a5b454950",
+      "type": "prosemirror",
+      "timestamp": 1611846096082,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 15648,
+          "to": 18126
+        },
+        {
+          "stepType": "replace",
+          "from": 17885,
+          "to": 17885,
+          "slice": {
+            "content": [
+              {
+                "type": "figure",
+                "attrs": {
+                  "id": "fig3",
+                  "label": "Figure 3.",
+                  "img": "/api/v1/articles/60263/assets/elife-60263-fig3.jpg"
+                },
+                "content": [
+                  {
+                    "type": "figureTitle",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Membrane perturbations disrupt peptidoglycan biogenesis in "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M."
+                      }
+                    ]
+                  },
+                  {
+                    "type": "figureLegend",
+                    "content": [
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": " and phylogenetically-distant bacilli. ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "A"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") Lysates from wild-type "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": " treated +/- benzyl alcohol (BA) were sedimented in a sucrose density gradient. Density of the cellular material is quantified in "
+                      },
+                      {
+                        "type": "figureCitation",
+                        "attrs": {
+                          "figIds": [
+                            "fig3s1"
+                          ]
+                        },
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Figure 3—figure supplement 1"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": ". ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "B"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") Top, wild-type "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": " was incubated or not with benzyl alcohol or dibucaine, then labeled with alkDADA; merged images correspond to fluorescent image with the corresponding phase contrast. Bottom, the distribution of peptidoglycan labeling from wild-type "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": " that was incubated with BA or dibucaine (DB) for the indicated time was quantitated as in "
+                      },
+                      {
+                        "type": "figureCitation",
+                        "attrs": {
+                          "figIds": [
+                            "fig2"
+                          ]
+                        },
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Figure 2A"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": ", except that signal intensity was not normalized. The changes in fluorescence are further quantified by flow cytometry in "
+                      },
+                      {
+                        "type": "figureCitation",
+                        "attrs": {
+                          "figIds": [
+                            "fig3s5"
+                          ]
+                        },
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Figure 3—figure supplement 5"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": ". ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "C"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") Top left, DivIVA-eGFP-ID "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": " was either treated with benzyl alcohol, depleted of DivIVA, or both, and the peptidoglycan precursors from whole cells were biotinylated as in "
+                      },
+                      {
+                        "type": "figureCitation",
+                        "attrs": {
+                          "figIds": [
+                            "fig2"
+                          ]
+                        },
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Figure 2C"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": ". Bottom left, biotin-derived chemiluminescence was quantified by densitometry; signal is expressed as % of untreated DivIVA-eGFP-ID (first lane). Right, DivIVA-eGFP-ID "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": " was treated as in the left panel but labeled with alkDADA, subjected to CuAAC, and analyzed by flow cytometry. MFI, median fluorescence intensity values for a representative experiment. Error bars denote standard deviation of technical triplicates. ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "D"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") Phylogenetic tree constructed with 16S rDNA sequences (rate of mutation not considered). Taxonomic groups matched with colors to their levels with only diverging points shown. Shapes and growth modes illustrated for select species. ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "E"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") Left, different bacteria treated +/- benzyl alcohol followed by alkDADA incubation. Arrowheads highlight irregular patches of peptidoglycan. Insets are magnified. Where applicable, "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "E. coli"
+                      },
+                      {
+                        "type": "text",
+                        "text": " was preincubated with A22. Right, bacteria were treated with benzyl alcohol, translation-inhibiting kanamycin, or peptidoglycan-acting phosphomycin or ampicillin then labeled as in ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "B"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") and analyzed by flow cytometry (see Methods). MFI values were normalized to untreated controls. Experiments were performed 3–9 times in triplicate. Error bars, standard deviation of biological replicates. *, p<0.05; **, p<0.005; ***, p<0.0005; ****, p<0.00005, ratio paired t-tests and one-way ANOVA with Dunnet´s test for non-normalized MFI of biological replicates. Scale bars, 5 µm."
+                      }
+                    ]
+                  },
+                  {
+                    "type": "figureAttribution"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6012d1d6af901cb36d454951",
+      "type": "prosemirror",
+      "timestamp": 1611846101926,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 20363,
+          "to": 20841
+        },
+        {
+          "stepType": "replace",
+          "from": 17885,
+          "to": 17885,
+          "slice": {
+            "content": [
+              {
+                "type": "figure",
+                "attrs": {
+                  "id": "fig3s1",
+                  "label": "Figure 3—figure supplement 1.",
+                  "img": "/api/v1/articles/60263/assets/elife-60263-fig3-figsupp1.jpg"
+                },
+                "content": [
+                  {
+                    "type": "figureTitle",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "The effects of benzyl alcohol, DivIVA depletion and spheroplasting on IMD and PM-CW abundance."
+                      }
+                    ]
+                  },
+                  {
+                    "type": "figureLegend",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Cellular material from IMD (red) and PM-CW (blue) fractions that had been separated by sucrose density gradient ("
+                      },
+                      {
+                        "type": "figureCitation",
+                        "attrs": {
+                          "figIds": [
+                            "fig3"
+                          ]
+                        },
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Figures 3A"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": " and "
+                      },
+                      {
+                        "type": "figureCitation",
+                        "attrs": {
+                          "figIds": [
+                            "fig4"
+                          ]
+                        },
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "4A"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": ") was quantified by densitometry. Values were normalized to the combined signal from all of the IMD and PM-CW fractions. For spheroplasts, magenta indicates that IMD and PM-CW fractions were not clearly resolvable by sucrose density gradient."
+                      }
+                    ]
+                  },
+                  {
+                    "type": "figureAttribution"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6012d210af901c4e89454952",
+      "type": "prosemirror",
+      "timestamp": 1611846159096,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 9305,
+          "to": 10221
+        },
+        {
+          "stepType": "replace",
+          "from": 7480,
+          "to": 7480,
+          "slice": {
+            "content": [
+              {
+                "type": "figure",
+                "attrs": {
+                  "id": "fig2",
+                  "label": "Figure 2.",
+                  "img": "/api/v1/articles/60263/assets/elife-60263-fig2.jpg"
+                },
+                "content": [
+                  {
+                    "type": "figureTitle",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Lipid II is synthesized in the IMD and trafficked to the PM-CW."
+                      }
+                    ]
+                  },
+                  {
+                    "type": "figureLegend",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "A"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") Left, conventional microscopy of "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": " coexpressing PonA1-mRFP and MurG-Dendra2 treated +/- benzyl alcohol (BA). Right, fluorescence distribution of the fusion proteins. a.u., arbitrary units. "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "r"
+                      },
+                      {
+                        "type": "text",
+                        "text": " denotes the Pearson´s correlation value. 42>n>57. ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "B"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") Top, detection of lipid-linked peptidoglycan (PG) precursors from membrane fractions. Bottom, metabolic labeling of mycobacterial cell wall synthesis ("
+                      },
+                      {
+                        "type": "refCitation",
+                        "attrs": {
+                          "refId": "bib7",
+                          "refText": "García-Heredia et al., 2018"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "text": "). ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "C"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") PG precursors are labeled as in ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "B"
+                      },
+                      {
+                        "type": "text",
+                        "text": "), top. The labeled precursors are in the IMD and PM-CW of wild-type "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": " but accumulate in the IMD upon MurJ depletion ("
+                      },
+                      {
+                        "type": "refCitation",
+                        "attrs": {
+                          "refId": "bib7",
+                          "refText": "García-Heredia et al., 2018"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "text": "). There is also a reproducible loss in signal from fraction 10 that we do not yet understand. ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "D"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": " expressing MurG-Dendra2 were incubated with alkDADA. Surface-exposed alkynes on fixed cells were detected by CuAAC ("
+                      },
+                      {
+                        "type": "refCitation",
+                        "attrs": {
+                          "refId": "bib7",
+                          "refText": "García-Heredia et al., 2018"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "text": "). Bacteria were imaged by SIM-E."
+                      }
+                    ]
+                  },
+                  {
+                    "type": "figureAttribution"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6012d212af901cd78d454953",
+      "type": "prosemirror",
+      "timestamp": 1611846161734,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 7480,
+          "to": 8396
+        },
+        {
+          "stepType": "replace",
+          "from": 9305,
+          "to": 9305,
+          "slice": {
+            "content": [
+              {
+                "type": "figure",
+                "attrs": {
+                  "id": "fig2",
+                  "label": "Figure 2.",
+                  "img": "/api/v1/articles/60263/assets/elife-60263-fig2.jpg"
+                },
+                "content": [
+                  {
+                    "type": "figureTitle",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Lipid II is synthesized in the IMD and trafficked to the PM-CW."
+                      }
+                    ]
+                  },
+                  {
+                    "type": "figureLegend",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "A"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") Left, conventional microscopy of "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": " coexpressing PonA1-mRFP and MurG-Dendra2 treated +/- benzyl alcohol (BA). Right, fluorescence distribution of the fusion proteins. a.u., arbitrary units. "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "r"
+                      },
+                      {
+                        "type": "text",
+                        "text": " denotes the Pearson´s correlation value. 42>n>57. ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "B"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") Top, detection of lipid-linked peptidoglycan (PG) precursors from membrane fractions. Bottom, metabolic labeling of mycobacterial cell wall synthesis ("
+                      },
+                      {
+                        "type": "refCitation",
+                        "attrs": {
+                          "refId": "bib7",
+                          "refText": "García-Heredia et al., 2018"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "text": "). ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "C"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") PG precursors are labeled as in ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "B"
+                      },
+                      {
+                        "type": "text",
+                        "text": "), top. The labeled precursors are in the IMD and PM-CW of wild-type "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": " but accumulate in the IMD upon MurJ depletion ("
+                      },
+                      {
+                        "type": "refCitation",
+                        "attrs": {
+                          "refId": "bib7",
+                          "refText": "García-Heredia et al., 2018"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "text": "). There is also a reproducible loss in signal from fraction 10 that we do not yet understand. ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "D"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": " expressing MurG-Dendra2 were incubated with alkDADA. Surface-exposed alkynes on fixed cells were detected by CuAAC ("
+                      },
+                      {
+                        "type": "refCitation",
+                        "attrs": {
+                          "refId": "bib7",
+                          "refText": "García-Heredia et al., 2018"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "text": "). Bacteria were imaged by SIM-E."
+                      }
+                    ]
+                  },
+                  {
+                    "type": "figureAttribution"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6012d214af901c314a454954",
+      "type": "prosemirror",
+      "timestamp": 1611846164467,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 9305,
+          "to": 10221,
+          "gapFrom": 9306,
+          "gapTo": 10220,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figure",
+                "attrs": {
+                  "id": "fig2",
+                  "label": "PonA1-mRFP is functional. (A) A plasmid bearing ponA1-mRFP supports the growth of ∆ponA1. In M. smegmatis, ponA1 is essential for viability. ∆ponA1 M. smegmatis complemented with a wild-type copy of ponA1 in the L5 phage integration site (∆ponA1::pL5 wild-type ponA1, Kieser et al., 2015) was transformed with an integrating plasmid bearing either ponA1-mRFP (top right), wild-type ponA1 (center right), or nothing (water; bottom right). Transformants were then selected on kanamycin plates. The kanR ponA1 and kanR ponA1-mRFP cassettes replaced nuoR ponA1 at similar frequencies (not shown), indicating that the fluorescent protein fusion construct can function as the sole copy of ponA1. (B) PonA1-mRFP is active in PM-CW. Lysates from PonA1-mRFP-expressing M. smegmatis were separated by density gradient as in Figure 1B, then incubated with Bocillin-FL as in Figure 1C to label active transpeptidases. The top band corresponds to PonA1-mRFP, and the band immediately below, to endogenous PonA1 (see Figure 1—figure supplement 6). (C) Lysates from wild-type and PonA1-mRFP-expressing M. smegmatis were blotted with anti-RFP. The presence of bands that are not present in wild-type lysates and do not correspond to full-length PonA1-mRFP suggests that the fusion protein may undergo degradation. Figure 2.",
+                  "img": "/api/v1/articles/60263/assets/elife-60263-fig2.jpg"
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6012d220af901c8636454955",
+      "type": "prosemirror",
+      "timestamp": 1611846176153,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 10221,
+          "to": 11513
+        },
+        {
+          "stepType": "replace",
+          "from": 9305,
+          "to": 9305,
+          "slice": {
+            "content": [
+              {
+                "type": "figure",
+                "attrs": {
+                  "id": "fig2s1",
+                  "label": "Figure 2—figure supplement 1.",
+                  "img": "/api/v1/articles/60263/assets/elife-60263-fig2-figsupp1.jpg"
+                },
+                "content": [
+                  {
+                    "type": "figureTitle",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "PonA1-mRFP is functional."
+                      }
+                    ]
+                  },
+                  {
+                    "type": "figureLegend",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "A"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") A plasmid bearing "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "ponA1-mRFP"
+                      },
+                      {
+                        "type": "text",
+                        "text": " supports the growth of "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "∆ponA1"
+                      },
+                      {
+                        "type": "text",
+                        "text": ". In "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": ", "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "ponA1"
+                      },
+                      {
+                        "type": "text",
+                        "text": " is essential for viability. "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "∆ponA1 M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": " complemented with a wild-type copy of "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "ponA1"
+                      },
+                      {
+                        "type": "text",
+                        "text": " in the L5 phage integration site ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "∆ponA1"
+                      },
+                      {
+                        "type": "text",
+                        "text": "::pL5 wild-type "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "ponA1,"
+                      },
+                      {
+                        "type": "text",
+                        "text": " "
+                      },
+                      {
+                        "type": "refCitation",
+                        "attrs": {
+                          "refId": "bib20",
+                          "refText": "Kieser et al., 2015"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "text": ") was transformed with an integrating plasmid bearing either "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "ponA1-mRFP"
+                      },
+                      {
+                        "type": "text",
+                        "text": " (top right), wild-type "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "ponA1"
+                      },
+                      {
+                        "type": "text",
+                        "text": " (center right), or nothing (water; bottom right). Transformants were then selected on kanamycin plates. The kan"
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "superscript"
+                          }
+                        ],
+                        "text": "R"
+                      },
+                      {
+                        "type": "text",
+                        "text": " "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "ponA1"
+                      },
+                      {
+                        "type": "text",
+                        "text": " and kan"
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "superscript"
+                          }
+                        ],
+                        "text": "R"
+                      },
+                      {
+                        "type": "text",
+                        "text": " "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "ponA1-mRFP"
+                      },
+                      {
+                        "type": "text",
+                        "text": " cassettes replaced nuo"
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "superscript"
+                          }
+                        ],
+                        "text": "R"
+                      },
+                      {
+                        "type": "text",
+                        "text": " "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "ponA1"
+                      },
+                      {
+                        "type": "text",
+                        "text": " at similar frequencies (not shown), indicating that the fluorescent protein fusion construct can function as the sole copy of "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "ponA1"
+                      },
+                      {
+                        "type": "text",
+                        "text": ". ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "B"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") PonA1-mRFP is active in PM-CW. Lysates from PonA1-mRFP-expressing "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": " were separated by density gradient as in "
+                      },
+                      {
+                        "type": "figureCitation",
+                        "attrs": {
+                          "figIds": [
+                            "fig1"
+                          ]
+                        },
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Figure 1B"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": ", then incubated with Bocillin-FL as in "
+                      },
+                      {
+                        "type": "figureCitation",
+                        "attrs": {
+                          "figIds": [
+                            "fig1"
+                          ]
+                        },
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Figure 1C"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": " to label active transpeptidases. The top band corresponds to PonA1-mRFP, and the band immediately below, to endogenous PonA1 (see "
+                      },
+                      {
+                        "type": "figureCitation",
+                        "attrs": {
+                          "figIds": [
+                            "fig1s6"
+                          ]
+                        },
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Figure 1—figure supplement 6"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": "). ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "C"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") Lysates from wild-type and PonA1-mRFP-expressing "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": " were blotted with anti-RFP. The presence of bands that are not present in wild-type lysates and do not correspond to full-length PonA1-mRFP suggests that the fusion protein may undergo degradation."
+                      }
+                    ]
+                  },
+                  {
+                    "type": "figureAttribution"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6012d248af901c3391454956",
+      "type": "prosemirror",
+      "timestamp": 1611846214842,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 2045,
+          "to": 2045,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "MurG-DenTest test dra2 is functional."
+              },
+              {
+                "type": "text",
+                "text": "("
+              },
+              {
+                "type": "text",
+                "marks": [
+                  {
+                    "type": "bold"
+                  }
+                ],
+                "text": "A"
+              },
+              {
+                "type": "text",
+                "text": ") MurG-Dendra2 expression rescues depletion of endogenous protein. The MurG-ID depletion strain ("
+              },
+              {
+                "type": "refCitation",
+                "attrs": {
+                  "refId": "bib29",
+                  "refText": "Meniche et al., 2014"
+                }
+              },
+              {
+                "type": "text",
+                "text": ") was transformed with a plasmid containing "
+              },
+              {
+                "type": "text",
+                "marks": [
+                  {
+                    "type": "italic"
+                  }
+                ],
+                "text": "murG-dendra2"
+              },
+              {
+                "type": "text",
+                "text": " and grown +/- 50 ng/mL anhydrotetracycline (ATC) to induce MurG-ID degradation. ("
+              },
+              {
+                "type": "text",
+                "marks": [
+                  {
+                    "type": "bold"
+                  }
+                ],
+                "text": "B"
+              },
+              {
+                "type": "text",
+                "text": ") MurG-ID/MurG-Dendra2 "
+              },
+              {
+                "type": "text",
+                "marks": [
+                  {
+                    "type": "italic"
+                  }
+                ],
+                "text": "M. smegmatis"
+              },
+              {
+                "type": "text",
+                "text": " was grown +/- ATC for 8 hours. Bacteria were lysed and MurG-Dendra2 was visualized by in-gel fluorescence. We observed a single band of the predicted size (and absent from wild-type "
+              },
+              {
+                "type": "text",
+                "marks": [
+                  {
+                    "type": "italic"
+                  }
+                ],
+                "text": "M. smegmatis"
+              },
+              {
+                "type": "text",
+                "text": "), indicating that MurG-Dendra2 does not undergo degradation."
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6012d254af901c27ab454957",
+      "type": "prosemirror",
+      "timestamp": 1611846227085,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 2191,
+          "to": 2191,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "MurG-DenTest test dra2 is functional."
+              },
+              {
+                "type": "text",
+                "text": "("
+              },
+              {
+                "type": "text",
+                "marks": [
+                  {
+                    "type": "bold"
+                  }
+                ],
+                "text": "A"
+              },
+              {
+                "type": "text",
+                "text": ") MurG-Dendra2 expression rescues depletion of endogenous protein. The MurG-ID depletion strain ("
+              },
+              {
+                "type": "refCitation",
+                "attrs": {
+                  "refId": "bib29",
+                  "refText": "Meniche et al., 2014"
+                }
+              },
+              {
+                "type": "text",
+                "text": ") was transformed with a plasmid containing "
+              },
+              {
+                "type": "text",
+                "marks": [
+                  {
+                    "type": "italic"
+                  }
+                ],
+                "text": "murG-dendra2"
+              },
+              {
+                "type": "text",
+                "text": " and grown +/- 50 ng/mL anhydrotetracycline (ATC) to induce MurG-ID degradation. ("
+              },
+              {
+                "type": "text",
+                "marks": [
+                  {
+                    "type": "bold"
+                  }
+                ],
+                "text": "B"
+              },
+              {
+                "type": "text",
+                "text": ") MurG-ID/MurG-Dendra2 "
+              },
+              {
+                "type": "text",
+                "marks": [
+                  {
+                    "type": "italic"
+                  }
+                ],
+                "text": "M. smegmatis"
+              },
+              {
+                "type": "text",
+                "text": " was grown +/- ATC for 8 hours. Bacteria were lysed and MurG-Dendra2 was visualized by in-gel fluorescence. We observed a single band of the predicted size (and absent from wild-type "
+              },
+              {
+                "type": "text",
+                "marks": [
+                  {
+                    "type": "italic"
+                  }
+                ],
+                "text": "M. smegmatis"
+              },
+              {
+                "type": "text",
+                "text": "), indicating that MurG-Dendra2 does not undergo degradation."
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6012d2a6af901c0213454958",
+      "type": "prosemirror",
+      "timestamp": 1611846308707,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 2194,
+          "to": 2194,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "MurG-DenTest test dra2 is functional."
+              },
+              {
+                "type": "text",
+                "text": "("
+              },
+              {
+                "type": "text",
+                "marks": [
+                  {
+                    "type": "bold"
+                  }
+                ],
+                "text": "A"
+              },
+              {
+                "type": "text",
+                "text": ") MurG-Dendra2 expression rescues depletion of endogenous protein. The MurG-ID depletion strain ("
+              },
+              {
+                "type": "refCitation",
+                "attrs": {
+                  "refId": "bib29",
+                  "refText": "Meniche et al., 2014"
+                }
+              },
+              {
+                "type": "text",
+                "text": ") was transformed with a plasmid containing "
+              },
+              {
+                "type": "text",
+                "marks": [
+                  {
+                    "type": "italic"
+                  }
+                ],
+                "text": "murG-dendra2"
+              },
+              {
+                "type": "text",
+                "text": " and grown +/- 50 ng/mL anhydrotetracycline (ATC) to induce MurG-ID degradation. ("
+              },
+              {
+                "type": "text",
+                "marks": [
+                  {
+                    "type": "bold"
+                  }
+                ],
+                "text": "B"
+              },
+              {
+                "type": "text",
+                "text": ") MurG-ID/MurG-Dendra2 "
+              },
+              {
+                "type": "text",
+                "marks": [
+                  {
+                    "type": "italic"
+                  }
+                ],
+                "text": "M. smegmatis"
+              },
+              {
+                "type": "text",
+                "text": " was grown +/- ATC for 8 hours. Bacteria were lysed and MurG-Dendra2 was visualized by in-gel fluorescence. We observed a single band of the predicted size (and absent from wild-type "
+              },
+              {
+                "type": "text",
+                "marks": [
+                  {
+                    "type": "italic"
+                  }
+                ],
+                "text": "M. smegmatis"
+              },
+              {
+                "type": "text",
+                "text": "), indicating that MurG-Dendra2 does not undergo degradation."
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6012d37caf901c93cd454959",
+      "type": "prosemirror",
+      "timestamp": 1611846523693,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 9305,
+          "to": 10597
+        },
+        {
+          "stepType": "replace",
+          "from": 7480,
+          "to": 7480,
+          "slice": {
+            "content": [
+              {
+                "type": "figure",
+                "attrs": {
+                  "id": "fig2s1",
+                  "label": "Figure 2—figure supplement 1.",
+                  "img": "/api/v1/articles/60263/assets/elife-60263-fig2-figsupp1.jpg"
+                },
+                "content": [
+                  {
+                    "type": "figureTitle",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "PonA1-mRFP is functional."
+                      }
+                    ]
+                  },
+                  {
+                    "type": "figureLegend",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "A"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") A plasmid bearing "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "ponA1-mRFP"
+                      },
+                      {
+                        "type": "text",
+                        "text": " supports the growth of "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "∆ponA1"
+                      },
+                      {
+                        "type": "text",
+                        "text": ". In "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": ", "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "ponA1"
+                      },
+                      {
+                        "type": "text",
+                        "text": " is essential for viability. "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "∆ponA1 M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": " complemented with a wild-type copy of "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "ponA1"
+                      },
+                      {
+                        "type": "text",
+                        "text": " in the L5 phage integration site ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "∆ponA1"
+                      },
+                      {
+                        "type": "text",
+                        "text": "::pL5 wild-type "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "ponA1,"
+                      },
+                      {
+                        "type": "text",
+                        "text": " "
+                      },
+                      {
+                        "type": "refCitation",
+                        "attrs": {
+                          "refId": "bib20",
+                          "refText": "Kieser et al., 2015"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "text": ") was transformed with an integrating plasmid bearing either "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "ponA1-mRFP"
+                      },
+                      {
+                        "type": "text",
+                        "text": " (top right), wild-type "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "ponA1"
+                      },
+                      {
+                        "type": "text",
+                        "text": " (center right), or nothing (water; bottom right). Transformants were then selected on kanamycin plates. The kan"
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "superscript"
+                          }
+                        ],
+                        "text": "R"
+                      },
+                      {
+                        "type": "text",
+                        "text": " "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "ponA1"
+                      },
+                      {
+                        "type": "text",
+                        "text": " and kan"
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "superscript"
+                          }
+                        ],
+                        "text": "R"
+                      },
+                      {
+                        "type": "text",
+                        "text": " "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "ponA1-mRFP"
+                      },
+                      {
+                        "type": "text",
+                        "text": " cassettes replaced nuo"
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "superscript"
+                          }
+                        ],
+                        "text": "R"
+                      },
+                      {
+                        "type": "text",
+                        "text": " "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "ponA1"
+                      },
+                      {
+                        "type": "text",
+                        "text": " at similar frequencies (not shown), indicating that the fluorescent protein fusion construct can function as the sole copy of "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "ponA1"
+                      },
+                      {
+                        "type": "text",
+                        "text": ". ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "B"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") PonA1-mRFP is active in PM-CW. Lysates from PonA1-mRFP-expressing "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": " were separated by density gradient as in "
+                      },
+                      {
+                        "type": "figureCitation",
+                        "attrs": {
+                          "figIds": [
+                            "fig1"
+                          ]
+                        },
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Figure 1B"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": ", then incubated with Bocillin-FL as in "
+                      },
+                      {
+                        "type": "figureCitation",
+                        "attrs": {
+                          "figIds": [
+                            "fig1"
+                          ]
+                        },
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Figure 1C"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": " to label active transpeptidases. The top band corresponds to PonA1-mRFP, and the band immediately below, to endogenous PonA1 (see "
+                      },
+                      {
+                        "type": "figureCitation",
+                        "attrs": {
+                          "figIds": [
+                            "fig1s6"
+                          ]
+                        },
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Figure 1—figure supplement 6"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": "). ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "C"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") Lysates from wild-type and PonA1-mRFP-expressing "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": " were blotted with anti-RFP. The presence of bands that are not present in wild-type lysates and do not correspond to full-length PonA1-mRFP suggests that the fusion protein may undergo degradation."
+                      }
+                    ]
+                  },
+                  {
+                    "type": "figureAttribution"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6012d380af901c17b845495a",
+      "type": "prosemirror",
+      "timestamp": 1611846527507,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 7480,
+          "to": 8772
+        },
+        {
+          "stepType": "replace",
+          "from": 9305,
+          "to": 9305,
+          "slice": {
+            "content": [
+              {
+                "type": "figure",
+                "attrs": {
+                  "id": "fig2s1",
+                  "label": "Figure 2—figure supplement 1.",
+                  "img": "/api/v1/articles/60263/assets/elife-60263-fig2-figsupp1.jpg"
+                },
+                "content": [
+                  {
+                    "type": "figureTitle",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "PonA1-mRFP is functional."
+                      }
+                    ]
+                  },
+                  {
+                    "type": "figureLegend",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "A"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") A plasmid bearing "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "ponA1-mRFP"
+                      },
+                      {
+                        "type": "text",
+                        "text": " supports the growth of "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "∆ponA1"
+                      },
+                      {
+                        "type": "text",
+                        "text": ". In "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": ", "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "ponA1"
+                      },
+                      {
+                        "type": "text",
+                        "text": " is essential for viability. "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "∆ponA1 M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": " complemented with a wild-type copy of "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "ponA1"
+                      },
+                      {
+                        "type": "text",
+                        "text": " in the L5 phage integration site ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "∆ponA1"
+                      },
+                      {
+                        "type": "text",
+                        "text": "::pL5 wild-type "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "ponA1,"
+                      },
+                      {
+                        "type": "text",
+                        "text": " "
+                      },
+                      {
+                        "type": "refCitation",
+                        "attrs": {
+                          "refId": "bib20",
+                          "refText": "Kieser et al., 2015"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "text": ") was transformed with an integrating plasmid bearing either "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "ponA1-mRFP"
+                      },
+                      {
+                        "type": "text",
+                        "text": " (top right), wild-type "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "ponA1"
+                      },
+                      {
+                        "type": "text",
+                        "text": " (center right), or nothing (water; bottom right). Transformants were then selected on kanamycin plates. The kan"
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "superscript"
+                          }
+                        ],
+                        "text": "R"
+                      },
+                      {
+                        "type": "text",
+                        "text": " "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "ponA1"
+                      },
+                      {
+                        "type": "text",
+                        "text": " and kan"
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "superscript"
+                          }
+                        ],
+                        "text": "R"
+                      },
+                      {
+                        "type": "text",
+                        "text": " "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "ponA1-mRFP"
+                      },
+                      {
+                        "type": "text",
+                        "text": " cassettes replaced nuo"
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "superscript"
+                          }
+                        ],
+                        "text": "R"
+                      },
+                      {
+                        "type": "text",
+                        "text": " "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "ponA1"
+                      },
+                      {
+                        "type": "text",
+                        "text": " at similar frequencies (not shown), indicating that the fluorescent protein fusion construct can function as the sole copy of "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "ponA1"
+                      },
+                      {
+                        "type": "text",
+                        "text": ". ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "B"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") PonA1-mRFP is active in PM-CW. Lysates from PonA1-mRFP-expressing "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": " were separated by density gradient as in "
+                      },
+                      {
+                        "type": "figureCitation",
+                        "attrs": {
+                          "figIds": [
+                            "fig1"
+                          ]
+                        },
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Figure 1B"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": ", then incubated with Bocillin-FL as in "
+                      },
+                      {
+                        "type": "figureCitation",
+                        "attrs": {
+                          "figIds": [
+                            "fig1"
+                          ]
+                        },
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Figure 1C"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": " to label active transpeptidases. The top band corresponds to PonA1-mRFP, and the band immediately below, to endogenous PonA1 (see "
+                      },
+                      {
+                        "type": "figureCitation",
+                        "attrs": {
+                          "figIds": [
+                            "fig1s6"
+                          ]
+                        },
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Figure 1—figure supplement 6"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": "). ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "C"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") Lysates from wild-type and PonA1-mRFP-expressing "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": " were blotted with anti-RFP. The presence of bands that are not present in wild-type lysates and do not correspond to full-length PonA1-mRFP suggests that the fusion protein may undergo degradation."
+                      }
+                    ]
+                  },
+                  {
+                    "type": "figureAttribution"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6013e6db4892504b8db7dc83",
+      "type": "prosemirror",
+      "timestamp": 1611917020155,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 4510,
+          "to": 4510,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "d"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6013e6db489250430cb7dc84",
+      "type": "prosemirror",
+      "timestamp": 1611917020339,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 4511,
+          "to": 4511,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "d"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6013e6fd4892503eaab7dc85",
+      "type": "batch",
+      "changes": [
+        {
+          "type": "batch",
+          "changes": [
+            {
+              "type": "update-object",
+              "timestamp": 1611917053384,
+              "path": "authors.1",
+              "differences": [
+                {
+                  "kind": "E",
+                  "path": [
+                    "firstName"
+                  ],
+                  "lhs": "Alamo",
+                  "rhs": "Alamos"
+                },
+                {
+                  "kind": "E",
+                  "path": [
+                    "orcid"
+                  ],
+                  "lhs": "0000-0002-6048-1470",
+                  "rhs": ""
+                }
+              ]
+            }
+          ],
+          "timestamp": 1611917053384
+        }
+      ],
+      "timestamp": 1611917053386,
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6013e71b489250156ab7dc86",
+      "type": "batch",
+      "changes": [
+        {
+          "type": "batch",
+          "changes": [
+            {
+              "type": "update-object",
+              "timestamp": 1611917082911,
+              "path": "authors.1",
+              "differences": [
+                {
+                  "kind": "E",
+                  "path": [
+                    "firstName"
+                  ],
+                  "lhs": "Alamos",
+                  "rhs": "Giuliano"
+                },
+                {
+                  "kind": "E",
+                  "path": [
+                    "lastName"
+                  ],
+                  "lhs": "García-Heredia",
+                  "rhs": "Maciocci"
+                }
+              ]
+            }
+          ],
+          "timestamp": 1611917082911
+        }
+      ],
+      "timestamp": 1611917082912,
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6013e79a489250b377b7dc88",
+      "type": "prosemirror",
+      "timestamp": 1611917210551,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 4380,
+          "to": 4957,
+          "gapFrom": 4381,
+          "gapTo": 4956,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figure",
+                "attrs": {
+                  "id": "fig1s1",
+                  "label": "Fluorescent fusions do not change the cell length of M. smegmatis. Wild-type +/- MurG-Dendra2, MurG-Dendra2/PonA1-mRFP and MurG-Dendra2/mCherry-GlfT2 or MurG-ID/MurG-Dendra2 M. smegmatis were grown to log phase and imaged in phase contrast. Cell length was quantified using Oufti (Paintdakhi et al., 2016) and MATLAB (García-Heredia et al., 2018). There was no significant difference between the cell lengths of the mutants compared to that of wild-type M. smegmatis as tested by ANOVA and Dunnet´s multiple comparison. 80<n<148. Figure 1—figure supplement 1.",
+                  "img": "/api/v1/articles/60263/assets/elife-60263-fig1-figsupp1.jpg"
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6013e7a94892500817b7dc89",
+      "type": "prosemirror",
+      "timestamp": 1611917224866,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1924,
+          "to": 4380
+        },
+        {
+          "stepType": "replace",
+          "from": 14,
+          "to": 14,
+          "slice": {
+            "content": [
+              {
+                "type": "figure",
+                "attrs": {
+                  "id": "fig1",
+                  "label": "Figure 1.",
+                  "img": "/api/v1/articles/60263/assets/elife-60263-fig1.jpg"
+                },
+                "content": [
+                  {
+                    "type": "figureTitle",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "MurG is enriched in the IMD and PBPs associate with PM-CW."
+                      }
+                    ]
+                  },
+                  {
+                    "type": "figureLegend",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "A"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") Membrane-bound steps of peptidoglycan synthesis with hyMurG-DenTest test dra2 is functional."
+                      },
+                      {
+                        "type": "text",
+                        "text": "("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "A"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") MurG-Dendra2 expression rescues depletion of endogenous protein. The MurG-ID depletion strain ("
+                      },
+                      {
+                        "type": "refCitation",
+                        "attrs": {
+                          "refId": "bib29",
+                          "refText": "Meniche et al., 2014"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "text": ") was traMurMurG-DenTest test dra2 is functional."
+                      },
+                      {
+                        "type": "text",
+                        "text": "("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "A"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") MurG-Dendra2 expression rescues depletion of endogenous protein. The MurG-ID depletion strain ("
+                      },
+                      {
+                        "type": "refCitation",
+                        "attrs": {
+                          "refId": "bib29",
+                          "refText": "Meniche et al., 2014"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "text": ") was transformed with a plasmid containing "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "murG-dendra2"
+                      },
+                      {
+                        "type": "text",
+                        "text": " and grown +/- 50 ng/mL anhydrotetracycline (ATC) to induce MurG-ID degradation. ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "B"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") MurG-ID/MurG-Dendra2 "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": " was grown +/- ATC for 8 hours. Bacteria were lysed and MurG-Dendra2 was visualized by in-gel fluorescence. We observed a single band of the predicted size (and absent from wild-type "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": "), indicating that MurG-Dendra2 does not undergo degradation.G-DenTest test dra2 is functional."
+                      },
+                      {
+                        "type": "text",
+                        "text": "("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "A"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") MurG-Dendra2 expression rescues depletion of endogenous protein. The MurG-ID depletion strain ("
+                      },
+                      {
+                        "type": "refCitation",
+                        "attrs": {
+                          "refId": "bib29",
+                          "refText": "Meniche et al., 2014"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "text": ") was transformed with a plasmid containing "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "murG-dendra2"
+                      },
+                      {
+                        "type": "text",
+                        "text": " and grown +/- 50 ng/mL anhydrotetracycline (ATC) to induce MurG-ID degradation. ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "B"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") MurG-ID/MurG-Dendra2 "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": " was grown +/- ATC for 8 hours. Bacteria were lysed and MurG-Dendra2 was visualized by in-gel fluorescence. We observed a single band of the predicted size (and absent from wild-type "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": "), indicating that MurG-Dendra2 does not undergo degradation.nsformed with a plasmid containing "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "murG-dendra2"
+                      },
+                      {
+                        "type": "text",
+                        "text": " and grown +/- 50 ng/mL anhydrotetracycline (ATC) to induce MurG-ID degradation. ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "B"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") MurG-ID/MurG-Dendra2 "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": " was grown +/- ATC for 8 hours. Bacteria were lysed and MurG-Dendra2 was visualized by in-gel fluorescence. We observed a single band of the predicted size (and absent from wild-type "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": "), indicating that MurG-Dendra2 does not undergo degradation.pothesized partitioning into IMD and PM-CW. ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "B"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") Bacteria are lysed by nitrogen cavitation and cell lysate is sedimented on a sucrose density gradient. ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "C"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") Lysates from wild-type or MurG-Dendra2-expressing "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": " were fractionated as in ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "B"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") and separated by SDS-PAGE. Top, in-gel fluorescence shows MurG-Dendra2 association with the IMD. Treatment with benzyl alcohol (BA) redistributed the protein across the fractions. Bottom, wild-type "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": " membrane fractions were incubated with Bocillin-FL prior to SDS-PAGE. Labeled PBPs are enriched in PM-CW. Band intensities are quantitated in "
+                      },
+                      {
+                        "type": "figureCitation",
+                        "attrs": {
+                          "figIds": [
+                            "fig1s4"
+                          ]
+                        },
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Figure 1—figure supplement 4"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": "."
+                      }
+                    ]
+                  },
+                  {
+                    "type": "figureAttribution"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6013e7b5489250788fb7dc8a",
+      "type": "prosemirror",
+      "timestamp": 1611917237419,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 14,
+          "to": 2470
+        },
+        {
+          "stepType": "replace",
+          "from": 1924,
+          "to": 1924,
+          "slice": {
+            "content": [
+              {
+                "type": "figure",
+                "attrs": {
+                  "id": "fig1",
+                  "label": "Figure 1.",
+                  "img": "/api/v1/articles/60263/assets/elife-60263-fig1.jpg"
+                },
+                "content": [
+                  {
+                    "type": "figureTitle",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "MurG is enriched in the IMD and PBPs associate with PM-CW."
+                      }
+                    ]
+                  },
+                  {
+                    "type": "figureLegend",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "A"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") Membrane-bound steps of peptidoglycan synthesis with hyMurG-DenTest test dra2 is functional."
+                      },
+                      {
+                        "type": "text",
+                        "text": "("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "A"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") MurG-Dendra2 expression rescues depletion of endogenous protein. The MurG-ID depletion strain ("
+                      },
+                      {
+                        "type": "refCitation",
+                        "attrs": {
+                          "refId": "bib29",
+                          "refText": "Meniche et al., 2014"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "text": ") was traMurMurG-DenTest test dra2 is functional."
+                      },
+                      {
+                        "type": "text",
+                        "text": "("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "A"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") MurG-Dendra2 expression rescues depletion of endogenous protein. The MurG-ID depletion strain ("
+                      },
+                      {
+                        "type": "refCitation",
+                        "attrs": {
+                          "refId": "bib29",
+                          "refText": "Meniche et al., 2014"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "text": ") was transformed with a plasmid containing "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "murG-dendra2"
+                      },
+                      {
+                        "type": "text",
+                        "text": " and grown +/- 50 ng/mL anhydrotetracycline (ATC) to induce MurG-ID degradation. ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "B"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") MurG-ID/MurG-Dendra2 "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": " was grown +/- ATC for 8 hours. Bacteria were lysed and MurG-Dendra2 was visualized by in-gel fluorescence. We observed a single band of the predicted size (and absent from wild-type "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": "), indicating that MurG-Dendra2 does not undergo degradation.G-DenTest test dra2 is functional."
+                      },
+                      {
+                        "type": "text",
+                        "text": "("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "A"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") MurG-Dendra2 expression rescues depletion of endogenous protein. The MurG-ID depletion strain ("
+                      },
+                      {
+                        "type": "refCitation",
+                        "attrs": {
+                          "refId": "bib29",
+                          "refText": "Meniche et al., 2014"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "text": ") was transformed with a plasmid containing "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "murG-dendra2"
+                      },
+                      {
+                        "type": "text",
+                        "text": " and grown +/- 50 ng/mL anhydrotetracycline (ATC) to induce MurG-ID degradation. ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "B"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") MurG-ID/MurG-Dendra2 "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": " was grown +/- ATC for 8 hours. Bacteria were lysed and MurG-Dendra2 was visualized by in-gel fluorescence. We observed a single band of the predicted size (and absent from wild-type "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": "), indicating that MurG-Dendra2 does not undergo degradation.nsformed with a plasmid containing "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "murG-dendra2"
+                      },
+                      {
+                        "type": "text",
+                        "text": " and grown +/- 50 ng/mL anhydrotetracycline (ATC) to induce MurG-ID degradation. ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "B"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") MurG-ID/MurG-Dendra2 "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": " was grown +/- ATC for 8 hours. Bacteria were lysed and MurG-Dendra2 was visualized by in-gel fluorescence. We observed a single band of the predicted size (and absent from wild-type "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": "), indicating that MurG-Dendra2 does not undergo degradation.pothesized partitioning into IMD and PM-CW. ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "B"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") Bacteria are lysed by nitrogen cavitation and cell lysate is sedimented on a sucrose density gradient. ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "C"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") Lysates from wild-type or MurG-Dendra2-expressing "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": " were fractionated as in ("
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "text": "B"
+                      },
+                      {
+                        "type": "text",
+                        "text": ") and separated by SDS-PAGE. Top, in-gel fluorescence shows MurG-Dendra2 association with the IMD. Treatment with benzyl alcohol (BA) redistributed the protein across the fractions. Bottom, wild-type "
+                      },
+                      {
+                        "type": "text",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "text": "M. smegmatis"
+                      },
+                      {
+                        "type": "text",
+                        "text": " membrane fractions were incubated with Bocillin-FL prior to SDS-PAGE. Labeled PBPs are enriched in PM-CW. Band intensities are quantitated in "
+                      },
+                      {
+                        "type": "figureCitation",
+                        "attrs": {
+                          "figIds": [
+                            "fig1s4"
+                          ]
+                        },
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Figure 1—figure supplement 4"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "text": "."
+                      }
+                    ]
+                  },
+                  {
+                    "type": "figureAttribution"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6013e7f64892506cf8b7dc8b",
+      "type": "prosemirror",
+      "timestamp": 1611917302770,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1850,
+          "to": 1904
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6013e7f84892501dbcb7dc8c",
+      "type": "prosemirror",
+      "timestamp": 1611917304347,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1849,
+          "to": 1850
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6013e7fa4892506d58b7dc8d",
+      "type": "prosemirror",
+      "timestamp": 1611917306094,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1849,
+          "to": 1849,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": " "
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6013e7fa489250d11bb7dc8e",
+      "type": "prosemirror",
+      "timestamp": 1611917306281,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1850,
+          "to": 1850,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "a"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6013e7fa4892505f5db7dc8f",
+      "type": "prosemirror",
+      "timestamp": 1611917306533,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1851,
+          "to": 1851,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "s"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6013e7fa4892507db9b7dc90",
+      "type": "prosemirror",
+      "timestamp": 1611917306677,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1852,
+          "to": 1852,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "s"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6013e7fa489250486fb7dc91",
+      "type": "prosemirror",
+      "timestamp": 1611917307288,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1853,
+          "to": 1853,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "e"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "60142c9a48925058c6b7dc9d",
+      "type": "batch",
+      "changes": [
+        {
+          "type": "add-object",
+          "timestamp": 1611934872559,
+          "path": "affiliations",
+          "idField": "id",
+          "object": {
+            "_id": "ee6bf2d5-b969-45ef-9a84-7cc13f9c6a07",
+            "label": "",
+            "institution": {
+              "name": "Product and Experience"
+            },
+            "address": {
+              "city": "Cambridge"
+            },
+            "country": "United Kingdom"
+          }
+        },
+        {
+          "type": "batch",
+          "changes": [
+            {
+              "type": "batch",
+              "changes": [
+                {
+                  "type": "update-object",
+                  "timestamp": 1611934872561,
+                  "path": "affiliations",
+                  "differences": [
+                    {
+                      "kind": "E",
+                      "path": [
+                        4,
+                        "label"
+                      ],
+                      "lhs": "",
+                      "rhs": "5"
+                    }
+                  ]
+                }
+              ],
+              "timestamp": 1611934872561
+            }
+          ],
+          "timestamp": 1611934872561
+        }
+      ],
+      "timestamp": 1611934872561,
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "60142c9a489250567db7dc9e",
+      "type": "batch",
+      "changes": [],
+      "timestamp": 1611934872565,
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "60142c9c489250629fb7dc9f",
+      "type": "batch",
+      "changes": [
+        {
+          "type": "batch",
+          "changes": [
+            {
+              "type": "update-object",
+              "timestamp": 1611934875393,
+              "path": "authors.1",
+              "differences": [
+                {
+                  "kind": "E",
+                  "path": [
+                    "affiliations",
+                    0
+                  ],
+                  "lhs": "aff1",
+                  "rhs": "ee6bf2d5-b969-45ef-9a84-7cc13f9c6a07"
+                }
+              ]
+            }
+          ],
+          "timestamp": 1611934875394
+        },
+        {
+          "type": "batch",
+          "changes": [
+            {
+              "type": "batch",
+              "changes": [
+                {
+                  "type": "update-object",
+                  "timestamp": 1611934875395,
+                  "path": "affiliations",
+                  "differences": [
+                    {
+                      "kind": "E",
+                      "path": [
+                        4,
+                        "label"
+                      ],
+                      "lhs": "5",
+                      "rhs": "3"
+                    },
+                    {
+                      "kind": "E",
+                      "path": [
+                        3,
+                        "label"
+                      ],
+                      "lhs": "4",
+                      "rhs": "5"
+                    },
+                    {
+                      "kind": "E",
+                      "path": [
+                        2,
+                        "label"
+                      ],
+                      "lhs": "3",
+                      "rhs": "4"
+                    }
+                  ]
+                }
+              ],
+              "timestamp": 1611934875395
+            },
+            {
+              "type": "rearranging",
+              "timestamp": 1611934875395,
+              "path": "affiliations",
+              "order": [
+                0,
+                1,
+                4,
+                2,
+                3
+              ]
+            }
+          ],
+          "timestamp": 1611934875395
+        }
+      ],
+      "timestamp": 1611934875395,
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "60181451489250470bb7dcd8",
+      "type": "batch",
+      "changes": [
+        {
+          "type": "update-object",
+          "timestamp": 1612190801877,
+          "path": "affiliations.2",
+          "differences": [
+            {
+              "kind": "E",
+              "path": [
+                "institution",
+                "name"
+              ],
+              "lhs": "Product and Experience",
+              "rhs": "Product and Experience at eLife"
+            }
+          ]
+        }
+      ],
+      "timestamp": 1612190801877,
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "60181452489250d4bbb7dcd9",
+      "type": "batch",
+      "changes": [],
+      "timestamp": 1612190801880,
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "60192740489250deeab7dcef",
+      "type": "batch",
+      "changes": [
+        {
+          "type": "rearranging",
+          "timestamp": 1612261182835,
+          "path": "authors",
+          "order": [
+            1,
+            0,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "type": "batch",
+          "changes": [
+            {
+              "type": "batch",
+              "changes": [
+                {
+                  "type": "update-object",
+                  "timestamp": 1612261182840,
+                  "path": "affiliations",
+                  "differences": [
+                    {
+                      "kind": "E",
+                      "path": [
+                        2,
+                        "label"
+                      ],
+                      "lhs": "3",
+                      "rhs": "1"
+                    },
+                    {
+                      "kind": "E",
+                      "path": [
+                        1,
+                        "label"
+                      ],
+                      "lhs": "2",
+                      "rhs": "3"
+                    },
+                    {
+                      "kind": "E",
+                      "path": [
+                        0,
+                        "label"
+                      ],
+                      "lhs": "1",
+                      "rhs": "2"
+                    }
+                  ]
+                }
+              ],
+              "timestamp": 1612261182840
+            },
+            {
+              "type": "rearranging",
+              "timestamp": 1612261182840,
+              "path": "affiliations",
+              "order": [
+                2,
+                0,
+                1,
+                3,
+                4
+              ]
+            }
+          ],
+          "timestamp": 1612261182840
+        }
+      ],
+      "timestamp": 1612261182841,
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927424892509aabb7dcf0",
+      "type": "batch",
+      "changes": [
+        {
+          "type": "rearranging",
+          "timestamp": 1612261184374,
+          "path": "authors",
+          "order": [
+            0,
+            2,
+            1,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "type": "batch",
+          "changes": [
+            {
+              "type": "batch",
+              "changes": [
+                {
+                  "type": "update-object",
+                  "timestamp": 1612261184377,
+                  "path": "affiliations",
+                  "differences": [
+                    {
+                      "kind": "E",
+                      "path": [
+                        2,
+                        "label"
+                      ],
+                      "lhs": "3",
+                      "rhs": "2"
+                    },
+                    {
+                      "kind": "E",
+                      "path": [
+                        1,
+                        "label"
+                      ],
+                      "lhs": "2",
+                      "rhs": "3"
+                    }
+                  ]
+                }
+              ],
+              "timestamp": 1612261184377
+            },
+            {
+              "type": "rearranging",
+              "timestamp": 1612261184377,
+              "path": "affiliations",
+              "order": [
+                0,
+                2,
+                1,
+                3,
+                4
+              ]
+            }
+          ],
+          "timestamp": 1612261184377
+        }
+      ],
+      "timestamp": 1612261184377,
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "60192746489250acc6b7dcf1",
+      "type": "batch",
+      "changes": [
+        {
+          "type": "rearranging",
+          "timestamp": 1612261189322,
+          "path": "authors",
+          "order": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            4,
+            6,
+            7,
+            8
+          ]
+        }
+      ],
+      "timestamp": 1612261189324,
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6019278248925029d1b7dcf2",
+      "type": "batch",
+      "changes": [
+        {
+          "type": "batch",
+          "changes": [
+            {
+              "type": "update-object",
+              "timestamp": 1612261248945,
+              "path": "authors.0",
+              "differences": [
+                {
+                  "kind": "E",
+                  "path": [
+                    "email"
+                  ],
+                  "rhs": "j.summerfield@elifesciences.org"
+                },
+                {
+                  "kind": "E",
+                  "path": [
+                    "isCorrespondingAuthor"
+                  ],
+                  "lhs": false,
+                  "rhs": true
+                }
+              ]
+            },
+            {
+              "type": "prosemirror",
+              "timestamp": 1612261248946,
+              "path": "authors.0.bio",
+              "transactionSteps": [
+                {
+                  "stepType": "replace",
+                  "from": 1,
+                  "to": 1,
+                  "slice": {
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "marks": [
+                              {
+                                "type": "bold"
+                              }
+                            ],
+                            "text": "sdsadsada d"
+                          },
+                          {
+                            "type": "text",
+                            "marks": [
+                              {
+                                "type": "bold"
+                              },
+                              {
+                                "type": "italic"
+                              }
+                            ],
+                            "text": "sfdsf "
+                          }
+                        ]
+                      },
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "sadasd"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "asdas"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "paragraph"
+                      },
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "sadasda"
+                          }
+                        ]
+                      }
+                    ],
+                    "openStart": 1,
+                    "openEnd": 1
+                  }
+                }
+              ]
+            }
+          ],
+          "timestamp": 1612261248946
+        }
+      ],
+      "timestamp": 1612261248949,
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927944892505006b7dcf4",
+      "type": "batch",
+      "changes": [
+        {
+          "type": "batch",
+          "changes": [
+            {
+              "type": "batch",
+              "changes": [
+                {
+                  "type": "update-object",
+                  "timestamp": 1612261267929,
+                  "path": "authors.2",
+                  "differences": [
+                    {
+                      "kind": "A",
+                      "path": [
+                        "affiliations"
+                      ],
+                      "index": 2,
+                      "item": {
+                        "kind": "N",
+                        "rhs": "ee6bf2d5-b969-45ef-9a84-7cc13f9c6a07"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "timestamp": 1612261267929
+            }
+          ],
+          "timestamp": 1612261267929
+        }
+      ],
+      "timestamp": 1612261267930,
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "6019279a48925041d3b7dcf5",
+      "type": "batch",
+      "changes": [
+        {
+          "type": "rearranging",
+          "timestamp": 1612261272279,
+          "path": "authors",
+          "order": [
+            2,
+            0,
+            1,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "type": "batch",
+          "changes": [
+            {
+              "type": "batch",
+              "changes": [
+                {
+                  "type": "update-object",
+                  "timestamp": 1612261272280,
+                  "path": "affiliations",
+                  "differences": [
+                    {
+                      "kind": "E",
+                      "path": [
+                        2,
+                        "label"
+                      ],
+                      "lhs": "3",
+                      "rhs": "1"
+                    },
+                    {
+                      "kind": "E",
+                      "path": [
+                        0,
+                        "label"
+                      ],
+                      "lhs": "1",
+                      "rhs": "3"
+                    }
+                  ]
+                }
+              ],
+              "timestamp": 1612261272280
+            },
+            {
+              "type": "rearranging",
+              "timestamp": 1612261272280,
+              "path": "affiliations",
+              "order": [
+                2,
+                1,
+                0,
+                3,
+                4
+              ]
+            }
+          ],
+          "timestamp": 1612261272280
+        }
+      ],
+      "timestamp": 1612261272280,
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927c64892500fbfb7dcf6",
+      "type": "prosemirror",
+      "timestamp": 1612261317083,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 4329,
+          "to": 4329,
+          "slice": {
+            "content": [
+              {
+                "type": "figureLicense",
+                "attrs": {
+                  "licenseInfo": {
+                    "copyrightHolder": "",
+                    "copyrightStatement": "",
+                    "copyrightYear": ""
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927c84892502637b7dcf7",
+      "type": "prosemirror",
+      "timestamp": 1612261319184,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 4329,
+          "to": 4331
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927e748925074c2b7dcfb",
+      "type": "prosemirror",
+      "timestamp": 1612261332396,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 384,
+          "to": 385,
+          "slice": {
+            "content": [
+              {
+                "type": "refCitation",
+                "attrs": {
+                  "refId": "bib5",
+                  "refText": "Fujimoto and Parmryd, 2016"
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927e04892505af9b7dcfa",
+      "type": "prosemirror",
+      "timestamp": 1612261332396,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 384,
+          "to": 385,
+          "slice": {
+            "content": [
+              {
+                "type": "refCitation",
+                "attrs": {
+                  "refId": "bib5",
+                  "refText": "Fujimoto and Parmryd, 2016"
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927d8489250769cb7dcf8",
+      "type": "prosemirror",
+      "timestamp": 1612261332396,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 384,
+          "to": 385,
+          "slice": {
+            "content": [
+              {
+                "type": "refCitation",
+                "attrs": {
+                  "refId": "bib5",
+                  "refText": "Fujimoto and Parmryd, 2016"
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927e048925046eab7dcf9",
+      "type": "prosemirror",
+      "timestamp": 1612261332396,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 384,
+          "to": 385,
+          "slice": {
+            "content": [
+              {
+                "type": "refCitation",
+                "attrs": {
+                  "refId": "bib5",
+                  "refText": "Fujimoto and Parmryd, 2016"
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fc489250864fb7dd06",
+      "type": "prosemirror",
+      "timestamp": 1612261343515,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 1860,
+          "to": 1871,
+          "gapFrom": 1861,
+          "gapTo": 1870,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureCitation",
+                "attrs": {
+                  "figIds": [
+                    "fig1",
+                    "fig3s2"
+                  ]
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fa4892505aa6b7dd03",
+      "type": "prosemirror",
+      "timestamp": 1612261343515,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 1860,
+          "to": 1871,
+          "gapFrom": 1861,
+          "gapTo": 1870,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureCitation",
+                "attrs": {
+                  "figIds": [
+                    "fig1",
+                    "fig3s2"
+                  ]
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927e74892502066b7dcfc",
+      "type": "prosemirror",
+      "timestamp": 1612261343515,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 1860,
+          "to": 1871,
+          "gapFrom": 1861,
+          "gapTo": 1870,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureCitation",
+                "attrs": {
+                  "figIds": [
+                    "fig1",
+                    "fig3s2"
+                  ]
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fa4892509f6bb7dd04",
+      "type": "prosemirror",
+      "timestamp": 1612261343515,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 1860,
+          "to": 1871,
+          "gapFrom": 1861,
+          "gapTo": 1870,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureCitation",
+                "attrs": {
+                  "figIds": [
+                    "fig1",
+                    "fig3s2"
+                  ]
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927f94892501f26b7dcff",
+      "type": "prosemirror",
+      "timestamp": 1612261343515,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 1860,
+          "to": 1871,
+          "gapFrom": 1861,
+          "gapTo": 1870,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureCitation",
+                "attrs": {
+                  "figIds": [
+                    "fig1",
+                    "fig3s2"
+                  ]
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927f6489250bc91b7dcfd",
+      "type": "prosemirror",
+      "timestamp": 1612261343515,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 1860,
+          "to": 1871,
+          "gapFrom": 1861,
+          "gapTo": 1870,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureCitation",
+                "attrs": {
+                  "figIds": [
+                    "fig1",
+                    "fig3s2"
+                  ]
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fa4892501d91b7dd00",
+      "type": "prosemirror",
+      "timestamp": 1612261343515,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 1860,
+          "to": 1871,
+          "gapFrom": 1861,
+          "gapTo": 1870,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureCitation",
+                "attrs": {
+                  "figIds": [
+                    "fig1",
+                    "fig3s2"
+                  ]
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927f64892508d8fb7dcfe",
+      "type": "prosemirror",
+      "timestamp": 1612261343515,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 1860,
+          "to": 1871,
+          "gapFrom": 1861,
+          "gapTo": 1870,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureCitation",
+                "attrs": {
+                  "figIds": [
+                    "fig1",
+                    "fig3s2"
+                  ]
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fc4892501594b7dd07",
+      "type": "prosemirror",
+      "timestamp": 1612261343515,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 1860,
+          "to": 1871,
+          "gapFrom": 1861,
+          "gapTo": 1870,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureCitation",
+                "attrs": {
+                  "figIds": [
+                    "fig1",
+                    "fig3s2"
+                  ]
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fa48925070fdb7dd01",
+      "type": "prosemirror",
+      "timestamp": 1612261343515,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 1860,
+          "to": 1871,
+          "gapFrom": 1861,
+          "gapTo": 1870,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureCitation",
+                "attrs": {
+                  "figIds": [
+                    "fig1",
+                    "fig3s2"
+                  ]
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fa4892505090b7dd02",
+      "type": "prosemirror",
+      "timestamp": 1612261343515,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 1860,
+          "to": 1871,
+          "gapFrom": 1861,
+          "gapTo": 1870,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureCitation",
+                "attrs": {
+                  "figIds": [
+                    "fig1",
+                    "fig3s2"
+                  ]
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fd489250b8c1b7dd09",
+      "type": "prosemirror",
+      "timestamp": 1612261343515,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 1860,
+          "to": 1871,
+          "gapFrom": 1861,
+          "gapTo": 1870,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureCitation",
+                "attrs": {
+                  "figIds": [
+                    "fig1",
+                    "fig3s2"
+                  ]
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fd4892504e1ab7dd11",
+      "type": "prosemirror",
+      "timestamp": 1612261345076,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 1860,
+          "to": 1871,
+          "gapFrom": 1861,
+          "gapTo": 1870,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureCitation",
+                "attrs": {
+                  "figIds": [
+                    "fig1",
+                    "fig3s2",
+                    "fig3s3"
+                  ]
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fd48925055beb7dd10",
+      "type": "prosemirror",
+      "timestamp": 1612261345076,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 1860,
+          "to": 1871,
+          "gapFrom": 1861,
+          "gapTo": 1870,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureCitation",
+                "attrs": {
+                  "figIds": [
+                    "fig1",
+                    "fig3s2",
+                    "fig3s3"
+                  ]
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fd4892503114b7dd0c",
+      "type": "prosemirror",
+      "timestamp": 1612261345076,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 1860,
+          "to": 1871,
+          "gapFrom": 1861,
+          "gapTo": 1870,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureCitation",
+                "attrs": {
+                  "figIds": [
+                    "fig1",
+                    "fig3s2",
+                    "fig3s3"
+                  ]
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fd489250dbf1b7dd0b",
+      "type": "prosemirror",
+      "timestamp": 1612261345076,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 1860,
+          "to": 1871,
+          "gapFrom": 1861,
+          "gapTo": 1870,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureCitation",
+                "attrs": {
+                  "figIds": [
+                    "fig1",
+                    "fig3s2",
+                    "fig3s3"
+                  ]
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fb4892501ef9b7dd05",
+      "type": "prosemirror",
+      "timestamp": 1612261345076,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 1860,
+          "to": 1871,
+          "gapFrom": 1861,
+          "gapTo": 1870,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureCitation",
+                "attrs": {
+                  "figIds": [
+                    "fig1",
+                    "fig3s2",
+                    "fig3s3"
+                  ]
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fd489250bc27b7dd0d",
+      "type": "prosemirror",
+      "timestamp": 1612261345076,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 1860,
+          "to": 1871,
+          "gapFrom": 1861,
+          "gapTo": 1870,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureCitation",
+                "attrs": {
+                  "figIds": [
+                    "fig1",
+                    "fig3s2",
+                    "fig3s3"
+                  ]
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fd489250bdd7b7dd0e",
+      "type": "prosemirror",
+      "timestamp": 1612261345076,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 1860,
+          "to": 1871,
+          "gapFrom": 1861,
+          "gapTo": 1870,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureCitation",
+                "attrs": {
+                  "figIds": [
+                    "fig1",
+                    "fig3s2",
+                    "fig3s3"
+                  ]
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fe4892507198b7dd13",
+      "type": "prosemirror",
+      "timestamp": 1612261345076,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 1860,
+          "to": 1871,
+          "gapFrom": 1861,
+          "gapTo": 1870,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureCitation",
+                "attrs": {
+                  "figIds": [
+                    "fig1",
+                    "fig3s2",
+                    "fig3s3"
+                  ]
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fd489250586fb7dd0f",
+      "type": "prosemirror",
+      "timestamp": 1612261345076,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 1860,
+          "to": 1871,
+          "gapFrom": 1861,
+          "gapTo": 1870,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureCitation",
+                "attrs": {
+                  "figIds": [
+                    "fig1",
+                    "fig3s2",
+                    "fig3s3"
+                  ]
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fd4892500a23b7dd0a",
+      "type": "prosemirror",
+      "timestamp": 1612261345076,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 1860,
+          "to": 1871,
+          "gapFrom": 1861,
+          "gapTo": 1870,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureCitation",
+                "attrs": {
+                  "figIds": [
+                    "fig1",
+                    "fig3s2",
+                    "fig3s3"
+                  ]
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fd4892505560b7dd08",
+      "type": "prosemirror",
+      "timestamp": 1612261345076,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 1860,
+          "to": 1871,
+          "gapFrom": 1861,
+          "gapTo": 1870,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureCitation",
+                "attrs": {
+                  "figIds": [
+                    "fig1",
+                    "fig3s2",
+                    "fig3s3"
+                  ]
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fe4892507213b7dd14",
+      "type": "prosemirror",
+      "timestamp": 1612261345076,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 1860,
+          "to": 1871,
+          "gapFrom": 1861,
+          "gapTo": 1870,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureCitation",
+                "attrs": {
+                  "figIds": [
+                    "fig1",
+                    "fig3s2",
+                    "fig3s3"
+                  ]
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fe4892502274b7dd12",
+      "type": "prosemirror",
+      "timestamp": 1612261345076,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replaceAround",
+          "from": 1860,
+          "to": 1871,
+          "gapFrom": 1861,
+          "gapTo": 1870,
+          "insert": 1,
+          "slice": {
+            "content": [
+              {
+                "type": "figureCitation",
+                "attrs": {
+                  "figIds": [
+                    "fig1",
+                    "fig3s2",
+                    "fig3s3"
+                  ]
+                }
+              }
+            ]
+          },
+          "structure": true
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fe48925023d1b7dd1b",
+      "type": "prosemirror",
+      "timestamp": 1612261351048,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1869,
+          "to": 1870
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fe4892507fceb7dd1d",
+      "type": "prosemirror",
+      "timestamp": 1612261351048,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1869,
+          "to": 1870
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fe489250068db7dd1f",
+      "type": "prosemirror",
+      "timestamp": 1612261351048,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1869,
+          "to": 1870
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fe489250c2b2b7dd1a",
+      "type": "prosemirror",
+      "timestamp": 1612261351048,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1869,
+          "to": 1870
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fe48925021b6b7dd34",
+      "type": "prosemirror",
+      "timestamp": 1612261351048,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1869,
+          "to": 1870
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fe4892509ba2b7dd19",
+      "type": "prosemirror",
+      "timestamp": 1612261351048,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1869,
+          "to": 1870
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fe489250841ab7dd16",
+      "type": "prosemirror",
+      "timestamp": 1612261351048,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1869,
+          "to": 1870
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fe4892500d52b7dd15",
+      "type": "prosemirror",
+      "timestamp": 1612261351048,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1869,
+          "to": 1870
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fe4892506271b7dd18",
+      "type": "prosemirror",
+      "timestamp": 1612261351048,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1869,
+          "to": 1870
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fe489250904fb7dd17",
+      "type": "prosemirror",
+      "timestamp": 1612261351048,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1869,
+          "to": 1870
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fe4892500163b7dd1c",
+      "type": "prosemirror",
+      "timestamp": 1612261351048,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1869,
+          "to": 1870
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fe4892501311b7dd20",
+      "type": "prosemirror",
+      "timestamp": 1612261351348,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1869,
+          "to": 1869,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": " "
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fe4892502a31b7dd29",
+      "type": "prosemirror",
+      "timestamp": 1612261351348,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1869,
+          "to": 1869,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": " "
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fe4892502209b7dd23",
+      "type": "prosemirror",
+      "timestamp": 1612261351348,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1869,
+          "to": 1869,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": " "
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fe489250f8ddb7dd22",
+      "type": "prosemirror",
+      "timestamp": 1612261351348,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1869,
+          "to": 1869,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": " "
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fe48925003a8b7dd21",
+      "type": "prosemirror",
+      "timestamp": 1612261351348,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1869,
+          "to": 1869,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": " "
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fe4892501869b7dd1e",
+      "type": "prosemirror",
+      "timestamp": 1612261351348,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1869,
+          "to": 1869,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": " "
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fe4892502154b7dd26",
+      "type": "prosemirror",
+      "timestamp": 1612261351348,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1869,
+          "to": 1869,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": " "
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fe4892500f0ab7dd28",
+      "type": "prosemirror",
+      "timestamp": 1612261351348,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1869,
+          "to": 1869,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": " "
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927ff48925086d1b7dd45",
+      "type": "prosemirror",
+      "timestamp": 1612261351348,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1869,
+          "to": 1869,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": " "
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fe4892507b0db7dd24",
+      "type": "prosemirror",
+      "timestamp": 1612261351348,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1869,
+          "to": 1869,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": " "
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fe489250cbbeb7dd27",
+      "type": "prosemirror",
+      "timestamp": 1612261351348,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1869,
+          "to": 1869,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": " "
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fe4892505e8fb7dd2b",
+      "type": "prosemirror",
+      "timestamp": 1612261351861,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1870,
+          "to": 1870,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "w"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fe489250fc3fb7dd2a",
+      "type": "prosemirror",
+      "timestamp": 1612261351861,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1870,
+          "to": 1870,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "w"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fe489250f216b7dd25",
+      "type": "prosemirror",
+      "timestamp": 1612261351861,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1870,
+          "to": 1870,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "w"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fe489250d79fb7dd2d",
+      "type": "prosemirror",
+      "timestamp": 1612261351861,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1870,
+          "to": 1870,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "w"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fe48925079b4b7dd30",
+      "type": "prosemirror",
+      "timestamp": 1612261351861,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1870,
+          "to": 1870,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "w"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fe489250ce33b7dd32",
+      "type": "prosemirror",
+      "timestamp": 1612261351861,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1870,
+          "to": 1870,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "w"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    },
+    {
+      "_id": "601927fe48925045ffb7dd2c",
+      "type": "prosemirror",
+      "timestamp": 1612261351861,
+      "path": "body",
+      "transactionSteps": [
+        {
+          "stepType": "replace",
+          "from": 1870,
+          "to": 1870,
+          "slice": {
+            "content": [
+              {
+                "type": "text",
+                "text": "w"
+              }
+            ]
+          }
+        }
+      ],
+      "user": "static-for-now",
+      "applied": false,
+      "articleId": "60263"
+    }
+  ],
+  "total": 700
+}
