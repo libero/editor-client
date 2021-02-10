@@ -10,9 +10,28 @@ interface FigureContentEditorProps extends WithStyles<typeof useFigureContentEdi
 }
 
 export class FigureContentEditorComponent extends NodeEditor<FigureContentEditorProps> {
+  containerRef: React.RefObject<HTMLDivElement>;
+  constructor(props) {
+    super(props);
+    this.containerRef = React.createRef<HTMLDivElement>();
+  }
+
+  componentDidMount(): void {
+    if (this.containerRef.current) {
+      this.containerRef.current.addEventListener(
+        'drop',
+        (e) => {
+          e.preventDefault();
+          (e.target as HTMLDivElement).style.cursor = 'default';
+        },
+        true
+      );
+    }
+  }
+
   render(): ReactNode {
     return (
-      <div>
+      <div ref={this.containerRef}>
         <RichTextEditor
           ref={this.editorRef}
           classes={{ root: this.props.classes.richTextEditorField }}

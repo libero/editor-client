@@ -11,6 +11,7 @@ import { StepMap } from 'prosemirror-transform';
 import { buildInputRules } from 'app/models/plugins/input-rules';
 import { NodeViewContext } from 'app/utils/view.utils';
 import { RichTextEditor } from 'app/components/rich-text-editor';
+import { SelectionPlugin } from 'app/models/plugins/selection.plugins';
 
 export interface NodeEditorProps {
   node: ProsemirrorNode;
@@ -80,7 +81,7 @@ export abstract class NodeEditor<T> extends React.Component<NodeEditorProps & T,
   private createInternalEditorState(): EditorState {
     return EditorState.create({
       doc: this.props.node,
-      plugins: [buildInputRules(), gapCursor(), dropCursor(), keymap(baseKeymap)]
+      plugins: [buildInputRules(), gapCursor(), dropCursor(), keymap(baseKeymap), SelectionPlugin]
     });
   }
 
