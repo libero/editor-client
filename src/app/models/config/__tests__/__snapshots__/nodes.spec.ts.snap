@@ -1,0 +1,303 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`nodes spec checks nodes spec definition 1`] = `
+Object {
+  "abstract": Object {
+    "content": "paragraph",
+    "group": "block",
+    "parseDOM": Array [
+      Object {
+        "tag": "abstract",
+      },
+    ],
+    "toDOM": [Function],
+  },
+  "annotatedReferenceInfoDoc": Object {
+    "content": "inline*",
+    "group": "block",
+    "parseDOM": Array [
+      Object {
+        "tag": "article-title",
+      },
+      Object {
+        "tag": "source",
+      },
+    ],
+    "toDOM": [Function],
+  },
+  "article-title": Object {
+    "content": "inline*",
+    "group": "block",
+    "parseDOM": Array [
+      Object {
+        "tag": "article-title",
+      },
+    ],
+    "toDOM": [Function],
+  },
+  "boxText": Object {
+    "content": "paragraph*",
+    "group": "block",
+    "parseDOM": Array [
+      Object {
+        "tag": "boxed-text",
+      },
+    ],
+    "toDOM": [Function],
+  },
+  "bulletList": Object {
+    "content": "listItem+",
+    "group": "block",
+    "parseDOM": Array [
+      Object {
+        "tag": "list[list-type=bullet]",
+      },
+    ],
+    "toDOM": [Function],
+  },
+  "doc": Object {
+    "content": "block+",
+  },
+  "figure": Object {
+    "atom": true,
+    "attrs": Object {
+      "id": Object {
+        "default": "",
+      },
+      "img": Object {
+        "default": "",
+      },
+      "label": Object {
+        "default": "",
+      },
+    },
+    "content": "(figureTitle | figureLegend | figureAttribution | figureLicense)*",
+    "draggable": true,
+    "group": "block",
+    "parseDOM": Array [
+      Object {
+        "getAttrs": [Function],
+        "getContent": [Function],
+        "tag": "fig",
+      },
+    ],
+    "toDOM": [Function],
+  },
+  "figureAttribution": Object {
+    "content": "inline*",
+    "context": "figure",
+    "parseDOM": Array [
+      Object {
+        "priority": 100,
+        "tag": "attrib",
+      },
+      Object {
+        "ignore": true,
+        "tag": "label",
+      },
+    ],
+    "toDOM": [Function],
+  },
+  "figureCitation": Object {
+    "attrs": Object {
+      "figIds": Object {
+        "default": null,
+      },
+    },
+    "content": "text*",
+    "group": "inline",
+    "inline": true,
+    "parseDOM": Array [
+      Object {
+        "getAttrs": [Function],
+        "tag": "xref[ref-type=\\"fig\\"]",
+      },
+      Object {
+        "getAttrs": [Function],
+        "priority": 100,
+        "tag": "a.citation[data-cit-type=\\"figure\\"]",
+      },
+    ],
+    "toDOM": [Function],
+  },
+  "figureLegend": Object {
+    "content": "inline*",
+    "context": "figure",
+    "parseDOM": Array [
+      Object {
+        "priority": 100,
+        "tag": "caption > p",
+      },
+      Object {
+        "ignore": true,
+        "tag": "label",
+      },
+    ],
+    "toDOM": [Function],
+  },
+  "figureLicense": Object {
+    "attrs": Object {
+      "licenseInfo": Object {
+        "default": Object {
+          "copyrightHolder": "",
+          "copyrightStatement": "",
+          "copyrightYear": "",
+          "licenseType": "",
+        },
+      },
+    },
+    "content": "inline*",
+    "contentElement": "license > license-p",
+    "group": "block",
+    "parseDOM": Array [
+      Object {
+        "getAttrs": [Function],
+        "tag": "permissions",
+      },
+      Object {
+        "ignore": true,
+        "tag": "label",
+      },
+    ],
+    "toDOM": [Function],
+  },
+  "figureTitle": Object {
+    "content": "inline*",
+    "parseDOM": Array [
+      Object {
+        "tag": "caption > title",
+      },
+    ],
+    "toDOM": [Function],
+  },
+  "heading": Object {
+    "attrs": Object {
+      "domId": Object {
+        "default": "unique_id",
+      },
+      "level": Object {
+        "default": 1,
+      },
+    },
+    "content": "inline*",
+    "defining": true,
+    "group": "block",
+    "parseDOM": Array [
+      Object {
+        "getAttrs": [Function],
+        "tag": "sec > title",
+      },
+      Object {
+        "attrs": Object {
+          "domId": "unique_id",
+          "level": 1,
+        },
+        "tag": "h1",
+      },
+      Object {
+        "attrs": Object {
+          "domId": "unique_id",
+          "level": 2,
+        },
+        "tag": "h2",
+      },
+      Object {
+        "attrs": Object {
+          "domId": "unique_id",
+          "level": 3,
+        },
+        "tag": "h3",
+      },
+      Object {
+        "attrs": Object {
+          "domId": "unique_id",
+          "level": 4,
+        },
+        "tag": "h4",
+      },
+    ],
+    "toDOM": [Function],
+  },
+  "keyword": Object {
+    "atom": true,
+    "content": "text*",
+    "parseDOM": Array [
+      Object {
+        "tag": "kwd",
+      },
+    ],
+    "toDOM": [Function],
+  },
+  "listItem": Object {
+    "content": "paragraph block*",
+    "defining": true,
+    "parseDOM": Array [
+      Object {
+        "tag": "list-item",
+      },
+    ],
+    "toDOM": [Function],
+  },
+  "orderedList": Object {
+    "content": "listItem+",
+    "group": "block",
+    "parseDOM": Array [
+      Object {
+        "tag": "list[list-type=order]",
+      },
+    ],
+    "toDOM": [Function],
+  },
+  "paragraph": Object {
+    "content": "inline*",
+    "group": "block",
+    "parseDOM": Array [
+      Object {
+        "tag": "p",
+      },
+    ],
+    "toDOM": [Function],
+  },
+  "refCitation": Object {
+    "atom": true,
+    "attrs": Object {
+      "refId": Object {
+        "default": null,
+      },
+      "refText": Object {
+        "default": null,
+      },
+    },
+    "content": undefined,
+    "group": "inline",
+    "inline": true,
+    "parseDOM": Array [
+      Object {
+        "getAttrs": [Function],
+        "tag": "xref[ref-type=\\"bibr\\"]",
+      },
+      Object {
+        "getAttrs": [Function],
+        "priority": 100,
+        "tag": "a.citation[data-cit-type=\\"reference\\"]",
+      },
+    ],
+    "toClipboardDOM": [Function],
+    "toClipboardText": [Function],
+    "toDOM": [Function],
+  },
+  "section": Object {
+    "content": "block*",
+    "group": "block",
+    "parseDOM": Array [
+      Object {
+        "tag": "sec",
+      },
+    ],
+    "toDOM": [Function],
+  },
+  "text": Object {
+    "group": "inline",
+  },
+}
+`;

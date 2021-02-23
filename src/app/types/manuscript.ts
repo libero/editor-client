@@ -1,11 +1,11 @@
-import { EditorState, Transaction } from 'prosemirror-state';
+import { EditorState } from 'prosemirror-state';
 
 import { Person } from 'app/models/person';
 import { Affiliation } from 'app/models/affiliation';
 import { Reference } from 'app/models/reference';
 import { RelatedArticle } from 'app/models/related-article';
 import { ArticleInformation } from 'app/models/article-information';
-import { KeywordGroup, KeywordGroups } from 'app/models/keyword';
+import { KeywordGroups } from 'app/models/keyword';
 
 interface JournalMeta {
   publisherName: string;
@@ -34,13 +34,3 @@ export interface TOCEntry {
 }
 
 export type TableOfContents = Array<TOCEntry>;
-
-export type ManuscriptDiffValues = Manuscript extends Record<string, infer T>
-  ? T extends EditorState
-    ? Transaction
-    : T extends KeywordGroups
-    ? KeywordGroup
-    : T extends Array<infer V>
-    ? V | Array<V>
-    : T
-  : never;
