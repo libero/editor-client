@@ -28,6 +28,11 @@ describe('ProsemirrorChange', () => {
     expect(change.isPathAffected(/^body$/)).toBeTruthy();
   });
 
+  it('should check if path is affected but regex is invalid', () => {
+    const change = new ProsemirrorChange('body', manuscript.body.tr);
+    expect(change.isPathAffected(/^wibble$/)).toBeFalsy();
+  });
+
   it('should serialize to JSON', () => {
     const change = new ProsemirrorChange('body', manuscript.body.tr.insertText('test content'));
 
