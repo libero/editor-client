@@ -10,9 +10,9 @@ import { parseFigure } from 'app/models/config/figure.parser';
 
 function getTitleLevel(title: Element): number {
   let parent = title.parentNode;
-  let level = 1;
-  while (parent && parent.nodeName !== 'body') {
-    if (parent.nodeName === 'sec') {
+  let level = 0;
+  while (parent && parent.nodeName.toLowerCase() !== 'body') {
+    if (parent.nodeName.toLowerCase() === 'sec') {
       level++;
     }
     parent = parent.parentNode;
@@ -29,7 +29,7 @@ export const nodes = {
     group: 'block',
     content: 'inline*',
     parseDOM: [{ tag: 'article-title' }, { tag: 'source' }],
-    toDOM(node) {
+    toDOM() {
       return ['p', 0];
     }
   },
@@ -38,7 +38,7 @@ export const nodes = {
     group: 'block',
     content: 'inline*',
     parseDOM: [{ tag: 'article-title' }],
-    toDOM(node) {
+    toDOM() {
       return ['h1', { class: 'article-title' }, 0];
     }
   },
@@ -47,7 +47,7 @@ export const nodes = {
     group: 'block',
     content: 'paragraph',
     parseDOM: [{ tag: 'abstract' }],
-    toDOM(node) {
+    toDOM() {
       return ['p', { class: 'abstract' }, 0];
     }
   },
@@ -262,7 +262,7 @@ export const nodes = {
       },
       { tag: 'label', ignore: true }
     ],
-    toDOM(node) {
+    toDOM() {
       return ['p', 0];
     }
   },
@@ -271,7 +271,7 @@ export const nodes = {
     group: 'block',
     content: 'listItem+',
     parseDOM: [{ tag: 'list[list-type=order]' }],
-    toDOM(node) {
+    toDOM() {
       return ['ol', 0];
     }
   },
@@ -315,7 +315,7 @@ export const nodes = {
         priority: 100,
         getAttrs(dom) {
           return {
-            figIds: dom.getAttribute('data-fig-ids').split(',')
+            figIds: dom.getAttribute('data-fig-ids').split(' ')
           };
         }
       }
@@ -327,7 +327,7 @@ export const nodes = {
           href: '#',
           class: 'citation',
           'data-cit-type': 'figure',
-          'data-fig-ids': node.attrs.figIds
+          'data-fig-ids': node.attrs.figIds.join(' ')
         },
         0
       ];
