@@ -37,6 +37,10 @@ export class RearrangingChange extends Change {
     return !this.order.some((el, index) => el !== index);
   }
 
+  isPathAffected(pathPattern: RegExp): boolean {
+    return pathPattern.test(this.path);
+  }
+
   applyChange(manuscript: Manuscript): Manuscript {
     return set(cloneManuscript(manuscript), this.path, this.applyOrder(get(manuscript, this.path), this.order));
   }

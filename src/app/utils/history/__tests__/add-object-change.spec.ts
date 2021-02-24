@@ -41,6 +41,11 @@ describe('AddObjectChange', () => {
     expect(change.isEmpty).toBeFalsy();
   });
 
+  it('should check if path is affected', () => {
+    const change = new AddObjectChange('keywords.someKeywordGroup', new Keyword(), 'id');
+    expect(change.isPathAffected(/^keywords\./)).toBeTruthy();
+  });
+
   it('should serialize to JSON', () => {
     const path = 'keywordGroups.kwdGroup.keywords';
     const newObject = new Keyword();

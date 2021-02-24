@@ -52,11 +52,11 @@ export function* updateTOCOnUndoRedoSaga(action: Action<void>) {
   // only update toc when body changes
   const manuscriptHistory = yield select(getManuscriptData);
   if (action.type === manuscriptActions.undoAction.getType()) {
-    if (Object.keys(manuscriptHistory.future[0]).includes('body')) {
+    if (manuscriptHistory.future[0].isPathAffected(/^body$/)) {
       yield updateTOC();
     }
   } else if (action.type === manuscriptActions.redoAction.getType()) {
-    if (Object.keys(manuscriptHistory.past[manuscriptHistory.past.length - 1]).includes('body')) {
+    if (manuscriptHistory.future[0].isPathAffected(/^body$/)) {
       yield updateTOC();
     }
   }

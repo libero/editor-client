@@ -20,6 +20,10 @@ export class BatchChange extends Change {
     return !Array.isArray(this.changes) || this.changes.length === 0;
   }
 
+  isPathAffected(pathPattern: RegExp): boolean {
+    return this.changes.some((change) => change.isPathAffected(pathPattern));
+  }
+
   applyChange(manuscript: Manuscript): Manuscript {
     return this.changes.reduce((acc: Manuscript, change: Change) => {
       return change.applyChange(acc);

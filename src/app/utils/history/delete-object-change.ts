@@ -27,6 +27,10 @@ export class DeleteObjectChange extends Change {
     return false;
   }
 
+  isPathAffected(pathPattern: RegExp): boolean {
+    return pathPattern.test(this.path);
+  }
+
   applyChange(manuscript: Manuscript): Manuscript {
     const originalSection = get(manuscript, this.path);
 

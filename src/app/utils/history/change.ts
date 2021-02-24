@@ -4,6 +4,7 @@ import { JSONObject } from 'app/types/utility.types';
 export abstract class Change {
   abstract applyChange(manuscript: Manuscript): Manuscript;
   abstract rollbackChange(manuscript: Manuscript): Manuscript;
+  abstract isPathAffected(pathPattern: RegExp): boolean;
   abstract get isEmpty(): boolean;
   abstract toJSON(): JSONObject;
 

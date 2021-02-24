@@ -20,8 +20,12 @@ describe('ProsemirrorChange', () => {
 
   it('should indicate empty change', () => {
     const prosemirrorChange = new ProsemirrorChange('body', manuscript.body.tr);
-
     expect(prosemirrorChange.isEmpty).toBeTruthy();
+  });
+
+  it('should check if path is affected', () => {
+    const change = new ProsemirrorChange('body', manuscript.body.tr);
+    expect(change.isPathAffected(/^body$/)).toBeTruthy();
   });
 
   it('should serialize to JSON', () => {
