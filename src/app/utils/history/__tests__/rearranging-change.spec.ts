@@ -25,6 +25,12 @@ describe('RearrangingChange', () => {
     ]);
   });
 
+  it('should check if path is affected', () => {
+    const path = 'keywordGroups.kwdGroup.keywords';
+    const change = RearrangingChange.createFromItemMoved(path, 2, 0, get(manuscript, path));
+    expect(change.isPathAffected(/^keywordGroups\.kwdGroup/)).toBeTruthy();
+  });
+
   it('should apply rearranging change from two lists', () => {
     const path = 'keywordGroups.kwdGroup.keywords';
     const change = RearrangingChange.createFromListRearrange(path, get(manuscript, path), [

@@ -37,6 +37,11 @@ describe('DeleteObjectChange', () => {
     expect(change.isEmpty).toBeFalsy();
   });
 
+  it('should check if path is affected', () => {
+    const change = new DeleteObjectChange('keywords.someKeywordGroup', new Keyword(), 'id');
+    expect(change.isPathAffected(/^keywords\./)).toBeTruthy();
+  });
+
   it('should serialize to JSON', () => {
     const path = 'keywordGroups.kwdGroup.keywords';
     const deletedObject = get(manuscript, path)[1];

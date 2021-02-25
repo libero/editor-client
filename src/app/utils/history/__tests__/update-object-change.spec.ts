@@ -37,6 +37,13 @@ describe('UpdateObjectChange', () => {
     expect(change.rollbackChange(updatedManuscript)).toEqual(manuscript);
   });
 
+  it('should check if path is affected', () => {
+    const updatedAff = affiliation.clone();
+    updatedAff.label = 'eLife Sciences';
+    const change = UpdateObjectChange.createFromTwoObjects('affiliations.0', affiliation, updatedAff);
+    expect(change.isPathAffected(/^affiliations/)).toBeTruthy();
+  });
+
   it('should indicate empty change', () => {
     const updatedAff = cloneDeep(affiliation);
     const change = UpdateObjectChange.createFromTwoObjects('affiliations.0', affiliation, updatedAff);

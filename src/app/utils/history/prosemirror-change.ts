@@ -25,6 +25,10 @@ export class ProsemirrorChange extends Change {
     return this.transaction ? !this.transaction.docChanged : this.unserializedSteps.length === 0;
   }
 
+  isPathAffected(pathPattern: RegExp): boolean {
+    return pathPattern.test(this.path);
+  }
+
   applyChange(manuscript: Manuscript): Manuscript {
     const editorState = get(manuscript, this.path);
     if (!this.transaction) {

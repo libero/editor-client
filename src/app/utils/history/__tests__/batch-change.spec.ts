@@ -43,6 +43,17 @@ describe('BatchChange', () => {
     jest.restoreAllMocks();
   });
 
+  it('should check if path is affected', () => {
+    const batchChange = new BatchChange([
+      new ProsemirrorChange('body', manuscript.body.tr.insertText('test content')),
+      new ProsemirrorChange('title', manuscript.title.tr.insertText('sample content'))
+    ]);
+
+    expect(batchChange.isPathAffected(/^body/)).toBeTruthy();
+    expect(batchChange.isPathAffected(/^title/)).toBeTruthy();
+    expect(batchChange.isPathAffected(/^abstract/)).toBeFalsy();
+  });
+
   it('should apply batch change', () => {
     const change1 = new ProsemirrorChange('body', manuscript.body.tr.insertText('test content'));
     const change2 = new ProsemirrorChange('title', manuscript.title.tr.insertText('sample content'));

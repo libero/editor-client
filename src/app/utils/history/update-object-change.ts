@@ -55,6 +55,10 @@ export class UpdateObjectChange<T> extends Change {
     return !Array.isArray(this.differences) || this.differences.length === 0;
   }
 
+  isPathAffected(pathPattern: RegExp): boolean {
+    return pathPattern.test(this.path);
+  }
+
   applyChange(manuscript: Manuscript): Manuscript {
     const originalSection = get(manuscript, this.path);
     const updatedSection = this.differences.reduce((acc: T, diff) => {
