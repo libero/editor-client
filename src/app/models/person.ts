@@ -40,6 +40,9 @@ export class Person extends BackmatterEntity {
   }
 
   public getAffiliationsLabels(affiliations: Affiliation[]): string[] {
+    if (affiliations.length <= 1) {
+      return [];
+    }
     return this.affiliations
       .map((affiliationId) => {
         const affiliation = affiliations.find(({ id }) => id === affiliationId);

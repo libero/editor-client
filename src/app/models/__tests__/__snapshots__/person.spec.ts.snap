@@ -1,5 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Person model helpers creates a blank authors 1`] = `
+Person {
+  "_id": "unique_id",
+  "affiliations": Array [],
+  "bio": Object {
+    "doc": Object {
+      "content": Array [
+        Object {
+          "type": "paragraph",
+        },
+      ],
+      "type": "doc",
+    },
+    "selection": Object {
+      "anchor": 1,
+      "head": 1,
+      "type": "text",
+    },
+  },
+  "competingInterestStatement": undefined,
+  "email": "",
+  "firstName": "",
+  "hasCompetingInterest": undefined,
+  "isAuthenticated": false,
+  "isCorrespondingAuthor": false,
+  "lastName": "",
+  "orcid": "",
+  "suffix": "",
+}
+`;
+
 exports[`Person model helpers creates an author with specified data 1`] = `
 Person {
   "_id": "unique_id",
@@ -61,6 +92,8 @@ Person {
   "suffix": undefined,
 }
 `;
+
+exports[`Person model helpers creates author from JSON 1`] = `"author-3888"`;
 
 exports[`Person model helpers creates authors state 1`] = `
 Array [
