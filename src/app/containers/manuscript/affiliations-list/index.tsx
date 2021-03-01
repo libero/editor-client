@@ -42,7 +42,7 @@ export const AffiliationsList: React.FC<ComponentWithId> = ({ id }) => {
 
   const renderAffiliation = (aff: Affiliation): React.ReactNode => (
     <li key={aff.id} className={classes.listItem}>
-      <div className={classes.orderLabel}>({aff.label})</div>
+      <div className={classes.orderLabel}>{affiliations.length > 1 ? `(${aff.label})` : undefined}</div>
       <div className={classes.affiliationInfo}>{aff.getDisplayName()}</div>
       <IconButton classes={{ root: classes.editButton }} onClick={editAffiliation.bind(null, aff)}>
         <EditIcon fontSize="small" />
