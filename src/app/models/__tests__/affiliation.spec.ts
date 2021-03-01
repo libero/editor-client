@@ -22,7 +22,7 @@ describe('Affiliation model helpers', () => {
 
   it('creates an affiliation with specified data and ID', () => {
     const jsonData = {
-      id: 'SOME_ID',
+      _id: 'SOME_ID',
       label: 'label',
       institution: {
         name: 'eLife'
@@ -38,7 +38,7 @@ describe('Affiliation model helpers', () => {
 
   it('returns an affilition display name', () => {
     const aff = new Affiliation({
-      id: 'SOME_ID',
+      _id: 'SOME_ID',
       label: 'label',
       institution: {
         name: 'eLife'

@@ -43,7 +43,7 @@ Affiliation {
 
 exports[`Affiliation model helpers creates an affiliation with specified data and ID 1`] = `
 Affiliation {
-  "_id": "unique_id",
+  "_id": "SOME_ID",
   "address": Object {
     "city": "Cambridge",
   },
