@@ -43,25 +43,16 @@ export class LinkNodeView implements NodeView {
   }
 
   open(): void {
-    const { $from } = this.view.state.selection;
-    const start = this.view.coordsAtPos($from.pos);
-
     this.linkEditorContainer = this.view.dom.parentNode.appendChild(document.createElement('div'));
-    this.linkEditorContainer.style.position = 'absolute';
-    this.linkEditorContainer.style.zIndex = '10';
-
-    const x = start.left;
-    const y = start.bottom;
 
     ReactDOM.render(
       <ThemeProvider theme={theme}>
         <LinkEditorPopup
           editorView={this.view}
+          anchorEl={this.dom}
           node={this.node}
           onClose={this.close.bind(this)}
           onApply={this.handleApply.bind(this)}
-          x={x}
-          y={y}
         />
       </ThemeProvider>,
       this.linkEditorContainer

@@ -22,7 +22,12 @@ export const ModalContainer: React.FC<ModalContainerProps<React.FC>> = (props) =
   const Component = props.component;
 
   return (
-    <Dialog aria-labelledby="draggable-dialog-title" open={true} PaperComponent={PaperComponent}>
+    <Dialog
+      aria-labelledby="draggable-dialog-title"
+      disableEnforceFocus={true}
+      open={true}
+      PaperComponent={PaperComponent}
+    >
       <DialogTitle
         style={{ cursor: 'move' }}
         disableTypography={true}
