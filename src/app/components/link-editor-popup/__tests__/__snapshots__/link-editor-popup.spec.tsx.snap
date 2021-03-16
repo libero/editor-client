@@ -2,34 +2,42 @@
 
 exports[`LinkEditorPopup should render component 1`] = `
 <div
-  data-cmp="Popover"
+  data-cmp="Popper"
 >
   <div
-    className="makeStyles-container-1"
+    data-cmp="Paper"
   >
-    <input
-      data-cmp="TextField"
-      onChange={[Function]}
-      value=""
-    />
     <div
-      data-cmp="IconButton"
+      data-cmp="ClickAwayListener"
     >
-      <svg
-        aria-hidden={true}
-        className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
-        focusable="false"
-        viewBox="0 0 24 24"
+      <div
+        className="makeStyles-container-1"
       >
-        <path
-          d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
+        <input
+          data-cmp="TextField"
+          onChange={[Function]}
+          value=""
         />
-      </svg>
-    </div>
-    <div
-      data-cmp="Button"
-    >
-      Apply
+        <div
+          data-cmp="IconButton"
+        >
+          <svg
+            aria-hidden={true}
+            className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
+            />
+          </svg>
+        </div>
+        <div
+          data-cmp="Button"
+        >
+          Apply
+        </div>
+      </div>
     </div>
   </div>
 </div>

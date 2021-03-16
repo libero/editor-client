@@ -2,7 +2,7 @@ import React from 'react';
 import { create } from 'react-test-renderer';
 import { EditorView } from 'prosemirror-view';
 import { mount } from 'enzyme';
-import { TextField, Popover } from '@material-ui/core';
+import { TextField, ClickAwayListener } from '@material-ui/core';
 import { EditorState } from 'prosemirror-state';
 
 import { Person } from 'app/models/person';
@@ -10,8 +10,11 @@ import { LinkEditorPopup } from 'app/components/link-editor-popup/link-editor-po
 import { ActionButton } from 'app/components/action-button';
 
 jest.mock('@material-ui/core', () => ({
-  Popover: ({ children }) => <div data-cmp="Popover">{children}</div>,
+  Popper: ({ children }) => <div data-cmp="Popper">{children}</div>,
+  Paper: ({ children }) => <div data-cmp="Paper">{children}</div>,
+  ClickAwayListener: ({ children }) => <div data-cmp="ClickAwayListener">{children}</div>,
   IconButton: ({ children }) => <div data-cmp="IconButton">{children}</div>,
+  useTheme: () => ({ zIndex: { tooltip: 100 } }),
   InputAdornment: ({ children }) => <div data-cmp="InputAdornment">{children}</div>,
   Button: ({ children }) => <div data-cmp="Button">{children}</div>,
   TextField: ({ value, onChange, children }) => (
@@ -32,7 +35,7 @@ jest.mock('@material-ui/core/styles', () => {
 describe('LinkEditorPopup', () => {
   it('should render component', () => {
     const editorState = givenEditorState();
-
+    const anchorEl = document.createElement('p');
     const viewContainer = document.createElement('div');
     const editorView = new EditorView(viewContainer, {
       state: editorState,
@@ -40,7 +43,7 @@ describe('LinkEditorPopup', () => {
     });
 
     const wrapper = create(
-      <LinkEditorPopup editorView={editorView} onApply={jest.fn()} onClose={jest.fn()} x={100} y={200} />
+      <LinkEditorPopup editorView={editorView} onApply={jest.fn()} onClose={jest.fn()} anchorEl={anchorEl} />
     );
 
     expect(wrapper).toMatchSnapshot();
@@ -50,6 +53,7 @@ describe('LinkEditorPopup', () => {
     const handleClose = jest.fn();
     const handleApply = jest.fn();
     const editorState = givenEditorState();
+    const anchorEl = document.createElement('p');
 
     const viewContainer = document.createElement('div');
     const editorView = new EditorView(viewContainer, {
@@ -58,7 +62,7 @@ describe('LinkEditorPopup', () => {
     });
 
     const wrapper = mount(
-      <LinkEditorPopup editorView={editorView} onApply={handleApply} onClose={handleClose} x={100} y={200} />
+      <LinkEditorPopup editorView={editorView} onApply={handleApply} onClose={handleClose} anchorEl={anchorEl} />
     );
     const event = document.createEvent('Event');
 
@@ -73,6 +77,7 @@ describe('LinkEditorPopup', () => {
     const handleClose = jest.fn();
     const handleApply = jest.fn();
     const editorState = givenEditorState();
+    const anchorEl = document.createElement('p');
 
     const viewContainer = document.createElement('div');
     const editorView = new EditorView(viewContainer, {
@@ -81,9 +86,9 @@ describe('LinkEditorPopup', () => {
     });
 
     const wrapper = mount(
-      <LinkEditorPopup editorView={editorView} onApply={handleApply} onClose={handleClose} x={100} y={200} />
+      <LinkEditorPopup editorView={editorView} onApply={handleApply} onClose={handleClose} anchorEl={anchorEl} />
     );
-    wrapper.find(Popover).prop('onClose')(new Event('input'), 'backdropClick');
+    wrapper.find(ClickAwayListener).prop('onClickAway').call(null);
 
     expect(handleClose).toHaveBeenCalled();
   });

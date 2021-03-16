@@ -1,5 +1,4 @@
 import React, { SyntheticEvent } from 'react';
-import ReactDOM from 'react-dom';
 import { toggleMark } from 'prosemirror-commands';
 import LinkIcon from '@material-ui/icons/Link';
 import UndoIcon from '@material-ui/icons/Undo';
@@ -8,14 +7,11 @@ import { redo, undo } from 'prosemirror-history';
 import FormatBoldIcon from '@material-ui/icons/FormatBold';
 import FormatItalicIcon from '@material-ui/icons/FormatItalic';
 import { history } from 'prosemirror-history';
-import { EditorState, Transaction } from 'prosemirror-state';
+import { EditorState } from 'prosemirror-state';
 import { EditorView } from 'prosemirror-view';
 import { ToggleButton } from '@material-ui/lab';
-import { ThemeProvider } from '@material-ui/core/styles';
 
 import { SubscriptIcon, SuperscriptIcon } from 'app/assets/icons';
-import { LinkEditorPopup } from 'app/components/link-editor-popup/link-editor-popup';
-import { theme } from 'app/styles/theme';
 
 const applyMark = (markName: string, editorState: EditorState, editorView: EditorView): void => {
   const mark = editorState.schema.marks[markName];
@@ -41,52 +37,6 @@ const isMarkActive = (markName: string, editorState: EditorState): boolean => {
 const canLink = (editorState: EditorState): boolean => {
   const { from, to } = editorState.selection;
   return (editorState.selection && to - from > 0) || !isMarkActive('link', editorState);
-};
-
-const getLastTransaction = (state: EditorState): Transaction => {
-  const historyState = history().getState(state);
-  return historyState.done.items.get(historyState.done.items.length - 1);
-};
-
-const makeSelectionLink = (editorState: EditorState, href: string): Transaction => {
-  const markType = editorState.schema.marks.link;
-  const { from, to } = editorState.selection;
-  const transaction = editorState.tr;
-  getLastTransaction(editorState);
-  transaction.removeMark(from, to, markType);
-  transaction.addMark(from, to, markType.create({ href }));
-  return transaction;
-};
-
-const renderLinkPopup = (editorState: EditorState, editorView: EditorView): void => {
-  const linkContainer = editorView.dom.parentNode.appendChild(document.createElement('div'));
-  linkContainer.style.position = 'absolute';
-  linkContainer.style.zIndex = '10';
-  const { from } = editorView.state.selection;
-  const selectionPosition = editorView.coordsAtPos(from) as DOMRect;
-  const coords = {
-    x: selectionPosition.left,
-    y: selectionPosition.bottom
-  };
-
-  const onClose = (): void => {
-    ReactDOM.unmountComponentAtNode(linkContainer);
-    linkContainer.parentNode.removeChild(linkContainer);
-  };
-
-  const onApply = (href: string): void => {
-    if (href) {
-      editorView.dispatch(makeSelectionLink(editorState, href));
-    }
-    onClose();
-  };
-
-  ReactDOM.render(
-    <ThemeProvider theme={theme}>
-      <LinkEditorPopup editorView={editorView} onApply={onApply} onClose={onClose} {...coords} />
-    </ThemeProvider>,
-    linkContainer
-  );
 };
 
 /* History Actions */
@@ -146,7 +96,7 @@ const FORMATTING_OPTIONS = {
     actionName: 'link',
     enabled: canLink,
     isActive: isMarkActive.bind(null, 'link'),
-    run: renderLinkPopup,
+    run: applyMark.bind(null, 'link'),
     icon: LinkIcon
   }
 };
