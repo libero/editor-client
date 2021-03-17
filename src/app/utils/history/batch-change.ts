@@ -26,7 +26,13 @@ export class BatchChange extends Change {
 
   applyChange(manuscript: Manuscript): Manuscript {
     return this.changes.reduce((acc: Manuscript, change: Change) => {
-      return change.applyChange(acc);
+      try {
+        return change.applyChange(acc);
+      } catch (e) {
+        console.log(`Failed to apply change`);
+        console.log(e);
+      }
+      return manuscript;
     }, manuscript);
   }
 
