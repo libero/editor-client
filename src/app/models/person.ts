@@ -73,7 +73,6 @@ export class Person extends BackmatterEntity {
   protected fromXML(xml: Element): void {
     const orcidEl = xml.querySelector('contrib-id[contrib-id-type="orcid"]');
 
-    this._id = xml.getAttribute('id') || this._id;
     this.firstName = getTextContentFromPath(xml, 'name > given-names');
     this.lastName = getTextContentFromPath(xml, 'name > surname');
     this.suffix = getTextContentFromPath(xml, 'name > suffix');
