@@ -32,7 +32,9 @@ Reference {
     "elocationId": "",
     "firstPage": undefined,
     "inPress": false,
+    "isbn": "978-1844674428",
     "lastPage": undefined,
+    "pmcid": "",
     "pmid": "",
     "publisherLocation": "London",
     "publisherName": "Verso",
@@ -107,6 +109,7 @@ Reference {
     "extLink": "",
     "firstPage": "1877",
     "lastPage": "1886",
+    "pmid": "",
     "volume": undefined,
     "year": "2014",
   },
@@ -215,6 +218,7 @@ Reference {
     "firstPage": "236",
     "inPress": false,
     "lastPage": "239",
+    "pmcid": "",
     "pmid": "",
     "source": Object {
       "doc": Object {
@@ -488,6 +492,7 @@ Reference {
     },
     "doi": "",
     "extLink": "http://www.R-project.org/",
+    "pmid": "",
     "publisherLocation": "Vienna, Austria",
     "publisherName": "R Foundation for Statistical Computing",
     "source": Object {

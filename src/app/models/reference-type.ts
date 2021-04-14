@@ -33,6 +33,7 @@ export interface JournalReference {
   inPress: boolean;
   doi: string;
   pmid: string;
+  pmcid: string;
 }
 
 export interface PeriodicalReference {
@@ -58,6 +59,8 @@ export interface BookReference {
   lastPage: string;
   doi: string;
   pmid: string;
+  isbn: string;
+  pmcid: string;
   inPress: boolean;
   elocationId: string;
 }
@@ -131,6 +134,7 @@ export interface SoftwareReference {
   publisherLocation: string;
   extLink: string;
   doi: string;
+  pmid: string;
 }
 
 export interface ConferenceReference {
@@ -143,6 +147,7 @@ export interface ConferenceReference {
   extLink: string;
   elocationId: string;
   doi: string;
+  pmid: string;
   firstPage: string;
   lastPage: string;
 }
@@ -190,6 +195,7 @@ export function createJournalReferenceFromXml(referenceXml: Element): JournalRef
     articleTitle: createReferenceAnnotatedValue(referenceXml.querySelector('article-title')),
     doi: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="doi"]') || '',
     pmid: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="pmid"]') || '',
+    pmcid: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="pmcid"]') || '',
     elocationId: getTextContentFromPath(referenceXml, 'elocation-id') || '',
     firstPage: getTextContentFromPath(referenceXml, 'fpage'),
     lastPage: getTextContentFromPath(referenceXml, 'lpage'),
@@ -207,6 +213,7 @@ export function createJournalReferenceFromJson(json: JSONObject): JournalReferen
     inPress: json.inPress as boolean,
     lastPage: json.lastPage as string,
     pmid: json.pmid as string,
+    pmcid: json.pmcid as string,
     source: deserializeReferenceAnnotatedValue(json.source as JSONObject),
     volume: json.volume as string,
     year: json.year as string
@@ -222,6 +229,7 @@ export function createNewJournalReference(): JournalReference {
     inPress: false,
     lastPage: '',
     pmid: '',
+    pmcid: '',
     source: createReferenceAnnotatedValue(),
     volume: '',
     year: ''
@@ -350,6 +358,7 @@ export function createSoftwareReference(referenceXml: Element): SoftwareReferenc
     version: getTextContentFromPath(referenceXml, 'version') || '',
     publisherLocation: getTextContentFromPath(referenceXml, 'publisher-loc') || '',
     publisherName: getTextContentFromPath(referenceXml, 'publisher-name') || '',
+    pmid: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="pmid"]') || '',
     doi: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="doi"]') || '',
     extLink: getTextContentFromPath(referenceXml, 'ext-link') || ''
   };
@@ -359,6 +368,7 @@ export function createSoftwareReferenceFromJson(json: JSONObject): SoftwareRefer
   return {
     articleTitle: deserializeReferenceAnnotatedValue(json.articleTitle as JSONObject),
     doi: json.doi as string,
+    pmid: json.pmid as string,
     extLink: json.extLink as string,
     publisherLocation: json.publisherLocation as string,
     publisherName: json.publisherName as string,
@@ -372,6 +382,7 @@ export function createNewSoftwareReference(): SoftwareReference {
   return {
     articleTitle: createReferenceAnnotatedValue(),
     doi: '',
+    pmid: '',
     extLink: '',
     publisherLocation: '',
     publisherName: '',
@@ -456,6 +467,7 @@ export function createConferenceReference(referenceXml: Element): ConferenceRefe
     conferenceDate: getTextContentFromPath(referenceXml, 'conf-date') || '',
     extLink: getTextContentFromPath(referenceXml, 'ext-link') || '',
     doi: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="doi"]') || '',
+    pmid: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="pmid"]') || '',
     firstPage: getTextContentFromPath(referenceXml, 'fpage'),
     lastPage: getTextContentFromPath(referenceXml, 'lpage'),
     elocationId: getTextContentFromPath(referenceXml, 'elocation-id') || '',
@@ -470,6 +482,7 @@ export function createConferenceReferenceFromJson(json: JSONObject): ConferenceR
     conferenceLocation: json.conferenceLocation as string,
     conferenceName: deserializeReferenceAnnotatedValue(json.conferenceName as JSONObject),
     doi: json.doi as string,
+    pmid: json.pmid as string,
     elocationId: json.elocationId as string,
     extLink: json.extLink as string,
     firstPage: json.firstPage as string,
@@ -486,6 +499,7 @@ export function createNewConferenceReference(): ConferenceReference {
     conferenceLocation: '',
     conferenceName: createReferenceAnnotatedValue(),
     doi: '',
+    pmid: '',
     elocationId: '',
     extLink: '',
     firstPage: '',
@@ -585,6 +599,8 @@ export function createBookReference(referenceXml: Element): BookReference {
     edition: getTextContentFromPath(referenceXml, 'edition') || '',
     doi: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="doi"]') || '',
     pmid: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="pmid"]') || '',
+    isbn: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="isbn"]') || '',
+    pmcid: getTextContentFromPath(referenceXml, 'pub-id[pub-id-type="pmcid"]') || '',
     elocationId: getTextContentFromPath(referenceXml, 'elocation-id') || '',
     firstPage: getTextContentFromPath(referenceXml, 'fpage'),
     lastPage: getTextContentFromPath(referenceXml, 'lpage'),
@@ -603,6 +619,8 @@ export function createBookReferenceFromJson(json: JSONObject): BookReference {
     inPress: json.inPress as boolean,
     lastPage: json.lastPage as string,
     pmid: json.pmid as string,
+    isbn: json.isbn as string,
+    pmcid: json.pmcid as string,
     publisherLocation: json.publisherLocation as string,
     publisherName: json.publisherName as string,
     volume: json.volume as string,
@@ -622,6 +640,8 @@ export function createNewBookReference(): BookReference {
     inPress: false,
     lastPage: '',
     pmid: '',
+    isbn: '',
+    pmcid: '',
     publisherLocation: '',
     publisherName: '',
     volume: '',
