@@ -57,14 +57,14 @@ describe('Affiliation model helpers', () => {
         <label>1</label>
         <institution content-type="dept">Production Department</institution>
         <institution>eLife Sciences</institution>
-        <addr-line><named-content content-type="city">Cambridge</named-content></addr-line>
+        <city>Cambridge</city>
         <country>United Kingdom</country>
       </aff>
       <aff id="aff2">
         <label>2</label>
         <institution content-type="dept">Department</institution>
         <institution>University</institution>
-        <addr-line><named-content content-type="city">City</named-content></addr-line>
+        <city>City</city>
         <country>Country</country>
       </aff>`;
 
