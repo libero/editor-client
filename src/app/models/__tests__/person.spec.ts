@@ -106,7 +106,7 @@ describe('Person model helpers', () => {
     authorsContainer.innerHTML = `
       <name><surname>Atherden</surname><given-names>Fred</given-names><suffix>Capt.</suffix></name>
       <contrib-id authenticated="true" contrib-id-type="orcid">https://orcid.org/0000-0002-6048-1470</contrib-id>
-      <xref ref-type="fn" rid="con1"/>
+      <xref ref-type="author-notes" rid="con1"/>
       <xref ref-type="aff" rid="aff2">2</xref>
       <email>f.atherden@elifesciences.org</email>`;
     const notesContainer = document.createElement('div');

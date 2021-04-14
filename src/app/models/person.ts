@@ -126,7 +126,7 @@ export class Person extends BackmatterEntity {
     const competingInterestEl = Array.from(notesXml.querySelectorAll('[fn-type="COI-statement"]')).find(
       (fnEl: Element) => {
         const id = fnEl.getAttribute('id');
-        return dataXml.querySelector(`xref[ref-type="fn"][rid="${id}"]`);
+        return dataXml.querySelector(`xref[ref-type="author-notes"][rid="${id}"]`);
       }
     );
 
