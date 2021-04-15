@@ -113,7 +113,7 @@ export class ArticleInformation extends BackmatterEntity {
     this.elocationId = getTextContentFromPath(xmlNode, 'article-meta elocation-id');
     this.volume = getTextContentFromPath(xmlNode, 'article-meta volume');
     this.publisherId = getTextContentFromPath(xmlNode, 'article-meta article-id[pub-id-type="publisher-id"]');
-    this.subjects = Array.from(xmlNode.querySelectorAll('subj-group[subj-group-type="subject"] subject')).map(
+    this.subjects = Array.from(xmlNode.querySelectorAll('subj-group[subj-group-type="major-subject"] subject')).map(
       (el: Element) => el.textContent
     );
 
