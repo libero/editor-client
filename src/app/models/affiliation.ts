@@ -40,7 +40,7 @@ export class Affiliation extends BackmatterEntity {
     };
 
     this.address = {
-      city: getTextContentFromPath(xml, 'addr-line named-content[content-type="city"]')
+      city: getTextContentFromPath(xml, 'city')
     };
     this.country = getTextContentFromPath(xml, 'country');
   }
