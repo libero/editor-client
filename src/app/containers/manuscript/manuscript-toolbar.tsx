@@ -4,15 +4,15 @@ import { AppBar, Toolbar, IconButton } from '@material-ui/core';
 import UndoIcon from '@material-ui/icons/Undo';
 import RedoIcon from '@material-ui/icons/Redo';
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
-import FormatBoldIcon from '@material-ui/icons/FormatBold';
-import FormatItalicIcon from '@material-ui/icons/FormatItalic';
+
 import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
-import LinkIcon from '@material-ui/icons/Link';
+import PdfIcon from '@material-ui/icons/PictureAsPdf';
 import MenuIcon from '@material-ui/icons/Menu';
 import classNames from 'classnames';
 
 import { DropDownMenu } from 'app/components/drop-down-menu';
 import * as manuscriptActions from 'app/actions/manuscript.actions';
+import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
 
 import {
   canApplyMarkToSelection,
@@ -111,6 +111,10 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
     dispatch(manuscriptActions.insertParagraphAction());
   }, [dispatch]);
 
+  const exportPdf = useCallback(() => {
+    dispatch(manuscriptEditorActions.exportPdfAction());
+  }, [dispatch]);
+
   const invokeToggleMark = useCallback(
     (mark: string) => () => {
       dispatch(manuscriptActions.toggleMarkAction(mark));
@@ -134,29 +138,8 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
           <ToggleButton disabled={!canRedo} onClick={invokeRedo} selected={false} value={true}>
             <RedoIcon />
           </ToggleButton>
-          <ToggleButton
-            disabled={!canApply('bold')}
-            value={true}
-            selected={isApplied('bold')}
-            onClick={invokeToggleMark('bold')}
-          >
-            <FormatBoldIcon />
-          </ToggleButton>
-          <ToggleButton
-            value={true}
-            disabled={!canApply('italic')}
-            selected={isApplied('italic')}
-            onClick={invokeToggleMark('italic')}
-          >
-            <FormatItalicIcon />
-          </ToggleButton>
-          <ToggleButton
-            value={true}
-            disabled={!canApply('link')}
-            selected={isApplied('link')}
-            onClick={invokeToggleMark('link')}
-          >
-            <LinkIcon />
+          <ToggleButton onClick={exportPdf} selected={false} value={true}>
+            <PdfIcon />
           </ToggleButton>
         </ToggleButtonGroup>
         <DropDownMenu
