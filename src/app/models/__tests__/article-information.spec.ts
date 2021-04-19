@@ -35,8 +35,8 @@ xmlWrapper.innerHTML = `<pub-date date-type="pub" publication-format="electronic
     <article-id pub-id-type="doi">10.7554/eLife.00104</article-id>
     <volume>8</volume>
     <elocation-id>e00104</elocation-id>
-    <subj-group subj-group-type="subject"> <subject>Cell Biology</subject> </subj-group>
-    <subj-group subj-group-type="subject"> <subject>Genetics and Genomics</subject> </subj-group>
+    <subj-group subj-group-type="major-subject"> <subject>Cell Biology</subject> </subj-group>
+    <subj-group subj-group-type="major-subject"> <subject>Genetics and Genomics</subject> </subj-group>
     <permissions>
       <license xlink:href="http://creativecommons.org/licenses/by/4.0/"></license>
     </permissions>
@@ -77,8 +77,8 @@ describe('Article Information model helpers', () => {
         <article-id pub-id-type="doi">10.7554/eLife.00104</article-id>
         <volume>8</volume>
         <elocation-id>e00104</elocation-id>
-        <subj-group subj-group-type="subject"> <subject>Cell Biology</subject> </subj-group>
-        <subj-group subj-group-type="subject"> <subject>Genetics and Genomics</subject> </subj-group>
+        <subj-group subj-group-type="major-subject"> <subject>Cell Biology</subject> </subj-group>
+        <subj-group subj-group-type="major-subject"> <subject>Genetics and Genomics</subject> </subj-group>
         <permissions>
           <license xlink:href="http://creativecommons.org/publicdomain/zero/1.0/"></license>
         </permissions>
