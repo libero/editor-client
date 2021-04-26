@@ -7,7 +7,6 @@ import {
 import { ManuscriptHistoryState } from 'app/store';
 import { updateManuscriptState } from 'app/utils/history.utils';
 import { AddObjectChange } from 'app/utils/history/add-object-change';
-import { ProsemirrorChange } from 'app/utils/history/prosemirror-change';
 import { UpdateObjectChange } from 'app/utils/history/update-object-change';
 import { BatchChange } from 'app/utils/history/batch-change';
 import { DeleteObjectChange } from 'app/utils/history/delete-object-change';
@@ -38,15 +37,7 @@ export function addKeyword(state: ManuscriptHistoryState, payload: KeywordAddPay
     new Keyword()
   );
 
-  const clearKeywordTransaction = newKeywordSection.content.tr;
-  clearKeywordTransaction.insertText('', 0, newKeywordSection.content.doc.content.size);
-
-  const clearNewKeywordChange = new ProsemirrorChange(
-    `keywordGroups.${keywordGroup}.newKeyword.content`,
-    clearKeywordTransaction
-  );
-
-  const change = new BatchChange([insertKeywordChange, updateIdChange, clearNewKeywordChange]);
+  const change = new BatchChange([insertKeywordChange, updateIdChange]);
   return {
     ...state,
     data: {
