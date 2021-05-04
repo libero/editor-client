@@ -1,11 +1,12 @@
 import { createReducer } from 'redux-act';
 import * as manuscriptEditorAction from 'app/actions/manuscript-editor.actions';
-import { ManuscriptEditorState } from 'app/store';
+import { ManuscriptEditorState, PDF_EXPORT_RUNNING } from 'app/store';
 
 const initialState: ManuscriptEditorState = {
   focusedManuscriptPath: undefined,
   manuscriptBodyTOC: [],
   manuscriptId: '',
+  exportTask: undefined,
   lastSyncTimestamp: 0,
   lastSyncSuccessful: true,
   modal: {
@@ -44,6 +45,27 @@ manuscriptEditorReducer.on(manuscriptEditorAction.hideModalDialog, (state: Manus
   modal: {
     isVisible: false
   }
+}));
+
+manuscriptEditorReducer.on(manuscriptEditorAction.setActiveExportPdfTask, (state: ManuscriptEditorState, payload) => ({
+  ...state,
+  exportTask: {
+    taskId: payload,
+    status: PDF_EXPORT_RUNNING
+  }
+}));
+
+manuscriptEditorReducer.on(manuscriptEditorAction.updateExportPdfStatus, (state: ManuscriptEditorState, payload) => ({
+  ...state,
+  exportTask: {
+    ...state.exportTask,
+    status: payload
+  }
+}));
+
+manuscriptEditorReducer.on(manuscriptEditorAction.cancelExportPdfTask, (state: ManuscriptEditorState, payload) => ({
+  ...state,
+  exportTask: null
 }));
 
 manuscriptEditorReducer.on(manuscriptEditorAction.setLastSyncTimestamp, (state, payload) => ({

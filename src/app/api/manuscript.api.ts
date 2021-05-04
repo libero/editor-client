@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
 import { isUndefined } from 'lodash';
 
 import { Manuscript } from 'app/types/manuscript';
@@ -16,6 +17,7 @@ import { createAcknowledgementsState } from 'app/models/acknowledgements';
 import { Change } from 'app/utils/history/change';
 
 import { JSONObject } from 'app/types/utility.types';
+import { PDF_EXPORT_ERROR, PDF_EXPORT_RUNNING, PDF_EXPORT_SUCCESS } from 'app/store';
 
 const RECORDS_PER_PAGE = 100;
 
@@ -88,6 +90,35 @@ export async function getManuscriptChanges(id: string): Promise<JSONObject[]> {
   );
 
   return remainingPages.reduce((acc, response) => [...acc, ...response.data.changes], data.changes);
+}
+
+// mock call
+// returns export task id
+export async function startManuscriptExport(manuscriptId: string): Promise<string> {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(uuidv4()), 1000);
+  });
+}
+
+// mock call
+// returns export task id
+export async function cancelManuscriptExport(manuscriptId: string): Promise<string> {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(), 1000);
+  });
+}
+
+// mock call
+// returns export task id
+export async function getManuscriptExportStatus(taskId: string): Promise<string> {
+  return new Promise((resolve) => {
+    const coinFlip = Math.round(Math.random() * 10);
+    setTimeout(
+      () =>
+        resolve(coinFlip % 5 === 0 ? PDF_EXPORT_ERROR : coinFlip % 3 === 0 ? PDF_EXPORT_SUCCESS : PDF_EXPORT_RUNNING),
+      500
+    );
+  });
 }
 
 export async function uploadFigureImage(articleId: string, file: File): Promise<string> {

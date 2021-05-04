@@ -26,7 +26,8 @@ import {
   canToggleListAtSelection,
   canInsertFigureCitationAtSelection,
   isLastSyncSuccesful,
-  getLastSyncTimestamp
+  getLastSyncTimestamp,
+  isExportTaskRunning
 } from 'app/selectors/manuscript-editor.selectors';
 import { useToolbarStyles } from './styles';
 import { getImageFileUpload } from 'app/utils/view.utils';
@@ -53,8 +54,9 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
   const canToggleList = useSelector(canToggleListAtSelection);
   const canInsertFigureCitation = useSelector(canInsertFigureCitationAtSelection);
   const checkActiveContainer = useSelector(isActiveContainer);
-  const lastSyncSuccessulf = useSelector(isLastSyncSuccesful);
+  const lastSyncSuccessful = useSelector(isLastSyncSuccesful);
   const lastSyncTs = useSelector(getLastSyncTimestamp);
+  const isExportRunning = useSelector(isExportTaskRunning);
 
   const invokeUndo = useCallback(() => dispatch(manuscriptActions.undoAction()), [dispatch]);
   const invokeRedo = useCallback(() => dispatch(manuscriptActions.redoAction()), [dispatch]);
@@ -138,7 +140,7 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
           <ToggleButton disabled={!canRedo} onClick={invokeRedo} selected={false} value={true}>
             <RedoIcon />
           </ToggleButton>
-          <ToggleButton onClick={exportPdf} selected={false} value={true}>
+          <ToggleButton disabled={isExportRunning} onClick={exportPdf} selected={false} value={true}>
             <PdfIcon />
           </ToggleButton>
         </ToggleButtonGroup>
@@ -215,9 +217,9 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
           ]}
         />
         <div className={classes.spacer}></div>
-        {lastSyncTs || !lastSyncSuccessulf ? (
-          <div className={classNames(classes.toolbarMessage, { error: !lastSyncSuccessulf })}>
-            {lastSyncSuccessulf ? getFormattedMessage(lastSyncTs) : 'System offline'}
+        {lastSyncTs || !lastSyncSuccessful ? (
+          <div className={classNames(classes.toolbarMessage, { error: !lastSyncSuccessful })}>
+            {lastSyncSuccessful ? getFormattedMessage(lastSyncTs) : 'System offline'}
           </div>
         ) : undefined}
       </Toolbar>

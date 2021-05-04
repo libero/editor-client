@@ -2,7 +2,13 @@ import { createSelector } from 'reselect';
 import { EditorState } from 'prosemirror-state';
 import { get } from 'lodash';
 
-import { ApplicationState, ManuscriptEditorState } from 'app/store';
+import {
+  ApplicationState,
+  ManuscriptEditorState,
+  PDF_EXPORT_ERROR,
+  PDF_EXPORT_RUNNING,
+  PDF_EXPORT_SUCCESS
+} from 'app/store';
 import { getManuscriptData } from './manuscript.selectors';
 import { canWrapInList, isWrappedInList } from 'app/utils/prosemirror/list.helpers';
 import { ListType } from 'app/types/utility.types';
@@ -47,6 +53,22 @@ export const getFocusedEditorState = createSelector(
     const path = get(manuscriptEditorState, 'focusedManuscriptPath');
     return get(manuscriptState, ['present', path].join('.'));
   }
+);
+
+export const getExportTask = createSelector(getManuscriptEditorState, ({ exportTask }) => exportTask);
+export const isExportTaskRunning = createSelector(
+  getManuscriptEditorState,
+  ({ exportTask }) => exportTask && exportTask.status === PDF_EXPORT_RUNNING
+);
+
+export const isExportTaskFailed = createSelector(
+  getManuscriptEditorState,
+  ({ exportTask }) => exportTask && exportTask.status === PDF_EXPORT_ERROR
+);
+
+export const isExportTaskFinished = createSelector(
+  getManuscriptEditorState,
+  ({ exportTask }) => exportTask && exportTask.status === PDF_EXPORT_SUCCESS
 );
 
 export const canUndoChanges = createSelector(getManuscriptData, (data) => get(data, 'past.length') > 0);
