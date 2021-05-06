@@ -2,6 +2,20 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const tocWidth = 300;
 
+export const useAlertStyles = makeStyles((theme) => ({
+  snackBarPosition: {
+    top: 76,
+    right: 12
+  },
+  actionButton: {
+    color: 'white',
+    marginLeft: theme.spacing(2)
+  },
+  alertIcon: {
+    alignItems: 'center'
+  }
+}));
+
 export const useManuscriptStyles = makeStyles((theme) => ({
   contentWrapper: {
     [theme.breakpoints.up('sm')]: {

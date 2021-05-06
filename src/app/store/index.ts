@@ -14,11 +14,21 @@ const sagaMiddleware = createSagaMiddleware();
 
 export type ManuscriptHistoryState = LoadableState<ManuscriptHistory>;
 
+export const PDF_EXPORT_RUNNING = 'RUNNING';
+export const PDF_EXPORT_SUCCESS = 'SUCCESS';
+export const PDF_EXPORT_ERROR = 'ERROR';
+
+export type ExportPdfTaskStatus = 'RUNNING' | 'SUCCESS' | 'ERROR';
+
 export interface ManuscriptEditorState {
   focusedManuscriptPath: string | undefined;
   manuscriptBodyTOC: TableOfContents;
   lastSyncTimestamp: number;
   lastSyncSuccessful: boolean;
+  exportTask: {
+    taskId: string;
+    status: ExportPdfTaskStatus;
+  };
   manuscriptId: string;
   modal: {
     params?: ModalPayload;

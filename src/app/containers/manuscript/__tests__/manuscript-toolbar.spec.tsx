@@ -36,6 +36,7 @@ describe('ManuscriptToolbar', () => {
 
   it('renders toolbar', () => {
     const store = mockStore({
+      manuscriptEditor: {},
       manuscript: getLoadableStateSuccess({
         past: [{}],
         present: {},
@@ -54,6 +55,7 @@ describe('ManuscriptToolbar', () => {
 
   it('dispatches an event on undoClick', () => {
     const store = mockStore({
+      manuscriptEditor: {},
       manuscript: getLoadableStateSuccess({
         past: [{}],
         present: {},
@@ -79,6 +81,7 @@ describe('ManuscriptToolbar', () => {
 
   it('dispatches an event on redoClick', () => {
     const store = mockStore({
+      manuscriptEditor: {},
       manuscript: getLoadableStateSuccess({
         past: [{}],
         present: {
@@ -106,6 +109,7 @@ describe('ManuscriptToolbar', () => {
 
   it('dispatches an event on export PDF click', () => {
     const store = mockStore({
+      manuscriptEditor: {},
       manuscript: getLoadableStateSuccess({
         past: [],
         present: { keywords: {} },

@@ -71,7 +71,10 @@ describe('Manuscript container', () => {
     ));
     (CircularProgress['render'] as jest.Mock).mockImplementationOnce(() => <div data-cmp="circular-progress"></div>);
 
-    const store = mockStore({ manuscript: getLoadableStateProgress() });
+    const store = mockStore({
+      manuscriptEditor: {},
+      manuscript: getLoadableStateProgress()
+    });
     const wrapper = create(
       <Provider store={store}>
         <ManuscriptContainer />
