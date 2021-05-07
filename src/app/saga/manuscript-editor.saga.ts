@@ -13,6 +13,7 @@ import {
 } from 'app/selectors/manuscript-editor.selectors';
 import { cancelManuscriptExport, getManuscriptExportStatus, startManuscriptExport } from 'app/api/manuscript.api';
 import { PDF_EXPORT_ERROR, PDF_EXPORT_SUCCESS } from 'app/store';
+import { LocalStorageApi } from 'app/api/local-storage.api';
 
 const POLL_INTERVAL = 1000;
 
@@ -42,7 +43,9 @@ export function* exportPdfSaga() {
   const articleId = yield select(getManuscriptId);
   const taskId = yield call(startManuscriptExport, articleId);
   yield put(manuscriptEditorActions.setActiveExportPdfTask(taskId));
+}
 
+export function* pollExportPdfStatusSaga() {
   const channel = yield call(createPollingEventChannel, POLL_INTERVAL);
   yield takeEvery(channel, function* () {
     const { taskId } = yield select(getExportTask);
@@ -51,6 +54,9 @@ export function* exportPdfSaga() {
       if (status === PDF_EXPORT_ERROR || status === PDF_EXPORT_SUCCESS) {
         yield put(manuscriptEditorActions.updateExportPdfStatus(status));
         channel.close();
+        LocalStorageApi.remove(LocalStorageApi.EXPORT_TASK_KEY);
+      } else {
+        LocalStorageApi.set(LocalStorageApi.EXPORT_TASK_KEY, taskId);
       }
     }
   });
@@ -64,5 +70,7 @@ export function* cancelPdfExportSaga() {
 export default function* () {
   yield all([takeLatest(manuscriptEditorActions.setFocusAction.getType(), setFocusSaga)]);
   yield all([takeLatest(manuscriptEditorActions.exportPdfAction.getType(), exportPdfSaga)]);
+  yield all([takeLatest(manuscriptEditorActions.exportPdfAction.getType(), exportPdfSaga)]);
+  yield all([takeLatest(manuscriptEditorActions.setActiveExportPdfTask.getType(), pollExportPdfStatusSaga)]);
   yield all([takeLatest(manuscriptEditorActions.cancelExportPdfTask.getType(), cancelPdfExportSaga)]);
 }

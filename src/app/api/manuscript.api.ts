@@ -112,10 +112,10 @@ export async function cancelManuscriptExport(manuscriptId: string): Promise<stri
 // returns export task id
 export async function getManuscriptExportStatus(taskId: string): Promise<string> {
   return new Promise((resolve) => {
-    const coinFlip = Math.round(Math.random() * 10);
+    const coinFlip = Math.round(Math.random() * 100);
     setTimeout(
       () =>
-        resolve(coinFlip % 5 === 0 ? PDF_EXPORT_ERROR : coinFlip % 3 === 0 ? PDF_EXPORT_SUCCESS : PDF_EXPORT_RUNNING),
+        resolve(coinFlip % 19 === 0 ? PDF_EXPORT_ERROR : coinFlip % 17 === 0 ? PDF_EXPORT_SUCCESS : PDF_EXPORT_RUNNING),
       500
     );
   });
