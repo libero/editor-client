@@ -1,14 +1,19 @@
-import { fork, all, AllEffect, ForkEffect } from 'redux-saga/effects';
+import { fork, all, AllEffect, ForkEffect, put } from 'redux-saga/effects';
 import manuscriptSaga from './manuscript.saga';
 import formattersSaga from './formatters.saga';
 import manuscriptEditorSaga from './manuscript-editor.saga';
 import syncChangesSaga from './sync.saga';
 import tocSaga from './toc.saga';
 import { routerSaga } from 'app/saga/router.saga';
+import { LocalStorageApi } from 'app/api/local-storage.api';
+import * as manuscriptEditorAction from 'app/actions/manuscript-editor.actions';
 
-// eslint-disable-next-line require-yield
-function* initialSaga(): IterableIterator<void> {
-  console.log('Initialising');
+// eslint-disable-next-line
+function* initialSaga<T>() {
+  const taskId = LocalStorageApi.get(LocalStorageApi.EXPORT_TASK_KEY);
+  if (typeof taskId === 'string') {
+    yield put(manuscriptEditorAction.setActiveExportPdfTask(taskId));
+  }
 }
 
 export function* rootSaga(): IterableIterator<AllEffect<ForkEffect>> {
