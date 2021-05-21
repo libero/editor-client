@@ -89,7 +89,7 @@ Object {
     "parseDOM": Array [
       Object {
         "priority": 100,
-        "tag": "attrib",
+        "tag": "fig > attrib",
       },
       Object {
         "ignore": true,
@@ -126,7 +126,7 @@ Object {
     "parseDOM": Array [
       Object {
         "priority": 100,
-        "tag": "caption > p",
+        "tag": "fig > caption > p",
       },
       Object {
         "ignore": true,
@@ -165,7 +165,7 @@ Object {
     "content": "inline*",
     "parseDOM": Array [
       Object {
-        "tag": "caption > title",
+        "tag": "fig > caption > title",
       },
     ],
     "toDOM": [Function],

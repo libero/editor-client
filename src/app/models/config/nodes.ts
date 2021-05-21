@@ -216,7 +216,7 @@ export const nodes = {
 
   figureTitle: {
     content: 'inline*',
-    parseDOM: [{ tag: 'caption > title' }],
+    parseDOM: [{ tag: 'fig > caption > title' }],
     toDOM() {
       return ['p', 0];
     }
@@ -225,7 +225,7 @@ export const nodes = {
   figureLegend: {
     content: 'inline*',
     parseDOM: [
-      { tag: 'caption > p', priority: 100 },
+      { tag: 'fig > caption > p', priority: 100 },
       { tag: 'label', ignore: true }
     ],
     context: 'figure',
@@ -237,7 +237,7 @@ export const nodes = {
   figureAttribution: {
     content: 'inline*',
     parseDOM: [
-      { tag: 'attrib', priority: 100 },
+      { tag: 'fig > attrib', priority: 100 },
       { tag: 'label', ignore: true }
     ],
     context: 'figure',
