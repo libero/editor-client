@@ -110,7 +110,11 @@ export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => 
           <img
             className={classes.image}
             alt="figure"
-            src={`/api/v1/articles/${manuscriptId}${figureNode.attrs.img.replace(/\.tiff?$/, '.jpeg')}`}
+            src={
+              figureNode.attrs.img
+                ? `/api/v1/articles/${manuscriptId}${figureNode.attrs.img.replace(/\.tiff?$/, '.jpeg')}`
+                : ''
+            }
           />
           <IconButton classes={{ root: classes.uploadImageCta }} onClick={handleUploadImageClick}>
             <AddPhotoAlternateIcon fontSize="small" />
