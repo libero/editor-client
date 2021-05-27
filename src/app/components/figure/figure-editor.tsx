@@ -12,8 +12,9 @@ import { EditorView } from 'prosemirror-view';
 import { FigureLicensesList } from './figure-license-list';
 import { renderConfirmDialog } from 'app/components/prompt-dialog';
 import DragIcon from 'app/assets/drag-indicator-grey.svg';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateFigureImageAction } from 'app/actions/manuscript.actions';
+import { getManuscriptId } from 'app/selectors/manuscript-editor.selectors';
 
 /* Prosemirror relies heavily on the positioning of nodes in its internal state presentation.
   Given figure structure
@@ -50,6 +51,7 @@ interface FigureEditorProps {
 
 export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => {
   const { onDelete, onAttributesChange } = props;
+  const manuscriptId = useSelector(getManuscriptId);
   const [figureNode, setFigureNode] = useState<ProsemirrorNode>(props.node);
   const [isConfirmShown, setConfirmShown] = useState<boolean>(false);
   const dispatch = useDispatch();
@@ -105,7 +107,15 @@ export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => 
           onChange={handleLabelChange}
         />
         <div className={classes.imageContainer}>
-          <img className={classes.image} alt="figure" src={figureNode.attrs.img} />
+          <img
+            className={classes.image}
+            alt="figure"
+            src={
+              figureNode.attrs.img
+                ? `/api/v1/articles/${manuscriptId}${figureNode.attrs.img.replace(/\.tiff?$/, '.jpeg')}`
+                : ''
+            }
+          />
           <IconButton classes={{ root: classes.uploadImageCta }} onClick={handleUploadImageClick}>
             <AddPhotoAlternateIcon fontSize="small" />
           </IconButton>
