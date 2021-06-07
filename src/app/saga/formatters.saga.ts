@@ -15,7 +15,6 @@ import { insertBox } from 'app/utils/prosemirror/box.helpers';
 import { insertFigure, insertFigureCitation } from 'app/utils/prosemirror/figure.helpers';
 import { wrapInListOrChangeListType } from 'app/utils/prosemirror/list.helpers';
 import { uploadFigureImage } from 'app/api/manuscript.api';
-import { getFigureImageUrl } from 'app/models/figure';
 import { UpdateFigureImagePayload } from 'app/actions/manuscript.actions';
 import { getBody } from 'app/selectors/manuscript.selectors';
 
@@ -75,7 +74,7 @@ export function* insertFigureSaga(action: Action<File>) {
     const id = yield select(getManuscriptId);
     const path = yield select(getFocusedEditorStatePath);
     const assetName = yield call(uploadFigureImage, id, action.payload);
-    const change = yield insertFigure(editorState, getFigureImageUrl(id, assetName));
+    const change = yield insertFigure(editorState, assetName || '');
     yield put(manuscriptActions.applyChangeAction({ path, change }));
   }
 }
@@ -92,7 +91,7 @@ export function* updateFigureImageSaga(action: Action<UpdateFigureImagePayload>)
     const change = editorState.tr.setNodeMarkup(figurePos, null, {
       id: attrs.id,
       label: attrs.label,
-      img: getFigureImageUrl(id, assetName)
+      img: assetName || ''
     });
     yield put(manuscriptActions.applyChangeAction({ path: 'body', change }));
   }
