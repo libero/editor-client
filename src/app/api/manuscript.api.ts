@@ -124,6 +124,6 @@ export async function getManuscriptExportStatus(taskId: string): Promise<string>
 export async function uploadFigureImage(articleId: string, file: File): Promise<string> {
   const formData = new FormData();
   formData.append('file', file);
-  const { data } = await axios.post<{ assetName: string }>(figureUploadUrl(articleId), formData);
-  return data.assetName;
+  const { data } = await axios.post<{ assetKey: string }>(figureUploadUrl(articleId), formData);
+  return data.assetKey;
 }

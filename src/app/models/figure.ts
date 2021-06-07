@@ -50,7 +50,7 @@ export function getFigureImageUrlFromXml(el: Element): string {
 
 export function getFigureImageUrl(id: string, fileName: string): string {
   // FIXME: We should cope with bad image URLs better than this, perhaps by using a placeholder instead.
-  return fileName ? `/assets/${fileName}` : '';
+  return fileName || '';
 }
 
 function getLicenseType(el: Element): string {
