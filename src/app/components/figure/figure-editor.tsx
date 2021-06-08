@@ -112,7 +112,7 @@ export const FigureEditor = React.forwardRef((props: FigureEditorProps, ref) => 
             alt="figure"
             src={
               figureNode.attrs.img
-                ? `/api/v1/articles/${manuscriptId}${figureNode.attrs.img.replace(/\.tiff?$/, '.jpeg')}`
+                ? `/api/v1/articles/${manuscriptId}/assets/${figureNode.attrs.img.replace(/\.tiff?$/, '.jpeg')}`
                 : ''
             }
           />

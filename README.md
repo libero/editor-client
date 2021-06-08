@@ -56,5 +56,5 @@ API:
 
 UI:
 1. export REACT_APP_API_URL=http://localhost:8080
-2. npm start
+2. npm run start:localstack
 3. Go to `http://localhost:3000/?articleId=54296`

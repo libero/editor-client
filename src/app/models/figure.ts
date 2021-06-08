@@ -43,14 +43,7 @@ export function createEmptyLicenseAttributes(): Figure {
 }
 
 export function getFigureImageUrlFromXml(el: Element): string {
-  const paths = get(el.ownerDocument, 'manuscriptPath').split('/');
-  const id = paths[2];
-  return getFigureImageUrl(id, get(el.querySelector('graphic'), 'attributes.xlink:href.value'));
-}
-
-export function getFigureImageUrl(id: string, fileName: string): string {
-  // FIXME: We should cope with bad image URLs better than this, perhaps by using a placeholder instead.
-  return fileName ? `/assets/${fileName}` : '';
+  return get(el.querySelector('graphic'), 'attributes.xlink:href.value') || '';
 }
 
 function getLicenseType(el: Element): string {

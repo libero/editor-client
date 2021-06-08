@@ -9,4 +9,4 @@ start_nginx:
 	docker-compose up -d nginx
 
 start_all: start_api start_nginx
-	npm run start
+	npm run start:localstack
