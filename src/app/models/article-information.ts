@@ -178,9 +178,9 @@ export class ArticleInformation extends BackmatterEntity {
     const pubDateNode = xmlNode.querySelector('pub-date[date-type="pub"][publication-format="electronic"]');
     if (pubDateNode) {
       publicationDate = [
-        pubDateNode.querySelector('year').textContent,
-        pubDateNode.querySelector('month').textContent,
-        pubDateNode.querySelector('day').textContent
+        pubDateNode.querySelector('year')?.textContent,
+        pubDateNode.querySelector('month')?.textContent,
+        pubDateNode.querySelector('day')?.textContent
       ].join('-');
     }
 
