@@ -13,6 +13,10 @@ import { buildInputRules } from 'app/models/plugins/input-rules';
 import { BackmatterEntity } from 'app/models/backmatter-entity';
 import { JSONObject } from 'app/types/utility.types';
 import { SelectionPlugin } from 'app/models/plugins/selection.plugins';
+import { v5 } from 'uuid';
+
+// required for creating consistant uuids from a string
+const UUID_NAMESPACE = '123e4567-e89b-12d3-a456-426614174000';
 
 export class Person extends BackmatterEntity {
   firstName: string;
@@ -84,6 +88,7 @@ export class Person extends BackmatterEntity {
     this.affiliations = Array.from(xml.querySelectorAll('xref[ref-type="aff"]')).map((xRef) =>
       xRef.getAttribute('rid')
     );
+    this._id = v5(xml.textContent || '', UUID_NAMESPACE);
   }
 
   protected fromJSON(json: JSONObject): void {

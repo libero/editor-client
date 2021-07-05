@@ -1,6 +1,7 @@
 import { createAuthorsState, Person } from 'app/models/person';
 
 jest.mock('uuid', () => ({
+  v5: () => 'unique_id',
   v4: () => 'unique_id'
 }));
 
