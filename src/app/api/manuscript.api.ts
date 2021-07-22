@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { v4 as uuidv4 } from 'uuid';
 import { isUndefined } from 'lodash';
 
 import { Manuscript } from 'app/types/manuscript';
@@ -17,7 +16,6 @@ import { createAcknowledgementsState } from 'app/models/acknowledgements';
 import { Change } from 'app/utils/history/change';
 
 import { JSONObject } from 'app/types/utility.types';
-import { PDF_EXPORT_ERROR, PDF_EXPORT_RUNNING, PDF_EXPORT_SUCCESS } from 'app/store';
 
 const RECORDS_PER_PAGE = 100;
 
@@ -36,6 +34,14 @@ const figureUploadUrl = (id: string): string => {
 
 const changesUrl = (id: string, page?: number): string => {
   return !isUndefined(page) ? `/api/v1/articles/${id}/changes?page=${page}` : `/api/v1/articles/${id}/changes`;
+};
+
+const pdfGenerateUrl = (id: string): string => {
+  return `/pdf/generate/${id}`;
+};
+
+const pdfStatusUrl = (id: string): string => {
+  return `/pdf/status/${id}`;
 };
 
 export async function getManuscriptContent(id: string): Promise<Manuscript> {
@@ -95,9 +101,8 @@ export async function getManuscriptChanges(id: string): Promise<JSONObject[]> {
 // mock call
 // returns export task id
 export async function startManuscriptExport(manuscriptId: string): Promise<string> {
-  return new Promise((resolve) => {
-    setTimeout(() => resolve(uuidv4()), 1000);
-  });
+  const { data } = await axios.post(pdfGenerateUrl(manuscriptId));
+  return data;
 }
 
 // mock call
@@ -111,14 +116,8 @@ export async function cancelManuscriptExport(manuscriptId: string): Promise<stri
 // mock call
 // returns export task id
 export async function getManuscriptExportStatus(taskId: string): Promise<string> {
-  return new Promise((resolve) => {
-    const coinFlip = Math.round(Math.random() * 100);
-    setTimeout(
-      () =>
-        resolve(coinFlip % 19 === 0 ? PDF_EXPORT_ERROR : coinFlip % 17 === 0 ? PDF_EXPORT_SUCCESS : PDF_EXPORT_RUNNING),
-      500
-    );
-  });
+  const { data } = await axios.get(pdfStatusUrl(taskId));
+  return data;
 }
 
 export async function uploadFigureImage(articleId: string, file: File): Promise<string> {
