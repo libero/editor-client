@@ -2,11 +2,7 @@ import { createSelector } from 'reselect';
 import { EditorState } from 'prosemirror-state';
 import { get } from 'lodash';
 
-import {
-  ApplicationState,
-  ManuscriptEditorState,
-  PDF_TASK_STATUSES,
-} from "app/store";
+import { ApplicationState, ManuscriptEditorState, PDF_TASK_STATUSES } from 'app/store';
 import { getManuscriptData } from './manuscript.selectors';
 import { canWrapInList, isWrappedInList } from 'app/utils/prosemirror/list.helpers';
 import { ListType } from 'app/types/utility.types';
@@ -56,20 +52,17 @@ export const getFocusedEditorState = createSelector(
 export const getExportTask = createSelector(getManuscriptEditorState, ({ exportTask }) => exportTask);
 export const isExportTaskRunning = createSelector(
   getManuscriptEditorState,
-  ({ exportTask }) =>
-    exportTask && exportTask.status === PDF_TASK_STATUSES.PDF_EXPORT_RUNNING
+  ({ exportTask }) => exportTask && exportTask.status === PDF_TASK_STATUSES.PDF_EXPORT_RUNNING
 );
 
 export const isExportTaskFailed = createSelector(
   getManuscriptEditorState,
-  ({ exportTask }) =>
-    exportTask && exportTask.status === PDF_TASK_STATUSES.PDF_EXPORT_ERROR
+  ({ exportTask }) => exportTask && exportTask.status === PDF_TASK_STATUSES.PDF_EXPORT_ERROR
 );
 
 export const isExportTaskFinished = createSelector(
   getManuscriptEditorState,
-  ({ exportTask }) =>
-    exportTask && exportTask.status === PDF_TASK_STATUSES.PDF_EXPORT_SUCCESS
+  ({ exportTask }) => exportTask && exportTask.status === PDF_TASK_STATUSES.PDF_EXPORT_SUCCESS
 );
 
 export const canUndoChanges = createSelector(getManuscriptData, (data) => get(data, 'past.length') > 0);
