@@ -15,7 +15,7 @@ import { cancelManuscriptExport, getManuscriptExportStatus, startManuscriptExpor
 import { PDF_EXPORT_ERROR, PDF_EXPORT_SUCCESS } from 'app/store';
 import { LocalStorageApi } from 'app/api/local-storage.api';
 
-const POLL_INTERVAL = 1000;
+const POLL_INTERVAL = 1500;
 
 function createPollingEventChannel(delay: number) {
   return eventChannel((emitter) => {
@@ -69,7 +69,6 @@ export function* cancelPdfExportSaga() {
 
 export default function* () {
   yield all([takeLatest(manuscriptEditorActions.setFocusAction.getType(), setFocusSaga)]);
-  yield all([takeLatest(manuscriptEditorActions.exportPdfAction.getType(), exportPdfSaga)]);
   yield all([takeLatest(manuscriptEditorActions.exportPdfAction.getType(), exportPdfSaga)]);
   yield all([takeLatest(manuscriptEditorActions.setActiveExportPdfTask.getType(), pollExportPdfStatusSaga)]);
   yield all([takeLatest(manuscriptEditorActions.cancelExportPdfTask.getType(), cancelPdfExportSaga)]);
