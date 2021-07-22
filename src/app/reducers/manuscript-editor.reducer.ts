@@ -1,6 +1,6 @@
 import { createReducer } from 'redux-act';
 import * as manuscriptEditorAction from 'app/actions/manuscript-editor.actions';
-import { ManuscriptEditorState, PDF_EXPORT_RUNNING } from 'app/store';
+import { ManuscriptEditorState, PDF_TASK_STATUSES } from 'app/store';
 
 const initialState: ManuscriptEditorState = {
   focusedManuscriptPath: undefined,
@@ -51,7 +51,7 @@ manuscriptEditorReducer.on(manuscriptEditorAction.setActiveExportPdfTask, (state
   ...state,
   exportTask: {
     taskId: payload,
-    status: PDF_EXPORT_RUNNING
+    status: PDF_TASK_STATUSES.PDF_EXPORT_RUNNING
   }
 }));
 

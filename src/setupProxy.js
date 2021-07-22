@@ -45,6 +45,16 @@ function createLocalstackProxy(app) {
       }
     })
   );
+  app.use(
+    '/pdf',
+    createProxyMiddleware({
+      target: 'http://localhost:4001/',
+      changeOrigin: true,
+      pathRewrite: {
+        '^/pdf': '/'
+      }
+    })
+  );
 }
 
 module.exports = process.argv[2] === '--localstack' ? createLocalstackProxy : createStaticProxy;

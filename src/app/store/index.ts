@@ -14,11 +14,11 @@ const sagaMiddleware = createSagaMiddleware();
 
 export type ManuscriptHistoryState = LoadableState<ManuscriptHistory>;
 
-export const PDF_EXPORT_RUNNING = 'RUNNING';
-export const PDF_EXPORT_SUCCESS = 'SUCCESS';
-export const PDF_EXPORT_ERROR = 'ERROR';
-
-export type ExportPdfTaskStatus = 'RUNNING' | 'SUCCESS' | 'ERROR';
+export enum PDF_TASK_STATUSES {
+  PDF_EXPORT_RUNNING = 'in-progress',
+  PDF_EXPORT_SUCCESS = 'completed',
+  PDF_EXPORT_ERROR = 'failed'
+}
 
 export interface ManuscriptEditorState {
   focusedManuscriptPath: string | undefined;
@@ -27,7 +27,7 @@ export interface ManuscriptEditorState {
   lastSyncSuccessful: boolean;
   exportTask: {
     taskId: string;
-    status: ExportPdfTaskStatus;
+    status: PDF_TASK_STATUSES;
   };
   manuscriptId: string;
   modal: {
