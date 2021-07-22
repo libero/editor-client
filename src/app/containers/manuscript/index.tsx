@@ -11,7 +11,7 @@ import { ManuscriptTOC } from './manuscript-toc';
 import { HotKeyBindings } from './hot-keys';
 import { getExportTask, hasUnsavedChanges } from 'app/selectors/manuscript-editor.selectors';
 import { useAlertStyles } from 'app/containers/manuscript/styles';
-import { PDF_EXPORT_ERROR, PDF_EXPORT_RUNNING, PDF_EXPORT_SUCCESS } from 'app/store';
+import { PDF_TASK_STATUSES } from 'app/store';
 
 const renderBackdrop = (): JSX.Element => (
   <Backdrop open={true}>
@@ -57,7 +57,7 @@ export const ManuscriptContainer: React.FC = () => {
 
   const renderExportTaskAlert = useCallback(
     (exportTaskStatus: string) => {
-      if (exportTaskStatus === PDF_EXPORT_RUNNING) {
+      if (exportTaskStatus === PDF_TASK_STATUSES.PDF_EXPORT_RUNNING) {
         return (
           <Alert severity="info" classes={{ icon: alertClasses.alertIcon }} elevation={6} color="info" variant="filled">
             Your PDF is processing and will be ready shortly.
@@ -66,7 +66,7 @@ export const ManuscriptContainer: React.FC = () => {
             </Button>
           </Alert>
         );
-      } else if (exportTaskStatus === PDF_EXPORT_SUCCESS) {
+      } else if (exportTaskStatus === PDF_TASK_STATUSES.PDF_EXPORT_SUCCESS) {
         return (
           <Alert
             severity="success"
@@ -76,12 +76,16 @@ export const ManuscriptContainer: React.FC = () => {
             variant="filled"
           >
             Your PDF is ready.
-            <Button onClick={handleOpenPDF} classes={{ root: alertClasses.actionButton }} disableElevation>
+            <Button
+              onClick={handleOpenPDF}
+              classes={{ root: alertClasses.actionButton }}
+              disableElevation
+            >
               View now
             </Button>
           </Alert>
         );
-      } else if (exportTaskStatus === PDF_EXPORT_ERROR) {
+      } else if (exportTaskStatus === PDF_TASK_STATUSES.PDF_EXPORT_ERROR) {
         return (
           <Alert
             severity="success"
@@ -91,7 +95,11 @@ export const ManuscriptContainer: React.FC = () => {
             variant="filled"
           >
             Your PDF could not be generated.
-            <Button onClick={handleRetry} classes={{ root: alertClasses.actionButton }} disableElevation>
+            <Button
+              onClick={handleRetry}
+              classes={{ root: alertClasses.actionButton }}
+              disableElevation
+            >
               Try again
             </Button>
           </Alert>

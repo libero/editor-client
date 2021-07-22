@@ -12,10 +12,10 @@ import {
   getManuscriptId
 } from 'app/selectors/manuscript-editor.selectors';
 import { cancelManuscriptExport, getManuscriptExportStatus, startManuscriptExport } from 'app/api/manuscript.api';
-import { PDF_EXPORT_ERROR, PDF_EXPORT_SUCCESS } from 'app/store';
+import { PDF_TASK_STATUSES } from 'app/store';
 import { LocalStorageApi } from 'app/api/local-storage.api';
 
-const POLL_INTERVAL = 1500;
+const POLL_INTERVAL = 5000;
 
 function createPollingEventChannel(delay: number) {
   return eventChannel((emitter) => {
@@ -51,7 +51,7 @@ export function* pollExportPdfStatusSaga() {
     const { taskId } = yield select(getExportTask);
     if (taskId) {
       const status = yield call(getManuscriptExportStatus, taskId);
-      if (status === PDF_EXPORT_ERROR || status === PDF_EXPORT_SUCCESS) {
+      if (status === PDF_TASK_STATUSES.PDF_EXPORT_ERROR || status === PDF_TASK_STATUSES.PDF_EXPORT_SUCCESS) {
         yield put(manuscriptEditorActions.updateExportPdfStatus(status));
         channel.close();
         LocalStorageApi.remove(LocalStorageApi.EXPORT_TASK_KEY);

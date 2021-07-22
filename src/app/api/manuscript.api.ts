@@ -98,7 +98,6 @@ export async function getManuscriptChanges(id: string): Promise<JSONObject[]> {
   return remainingPages.reduce((acc, response) => [...acc, ...response.data.changes], data.changes);
 }
 
-// mock call
 // returns export task id
 export async function startManuscriptExport(manuscriptId: string): Promise<string> {
   const { data } = await axios.post(pdfGenerateUrl(manuscriptId));
@@ -113,7 +112,6 @@ export async function cancelManuscriptExport(manuscriptId: string): Promise<stri
   });
 }
 
-// mock call
 // returns export task id
 export async function getManuscriptExportStatus(taskId: string): Promise<string> {
   const { data } = await axios.get(pdfStatusUrl(taskId));
