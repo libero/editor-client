@@ -1,0 +1,635 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Authors reducers should add new author 1`] = `
+Object {
+  "data": Object {
+    "future": Array [],
+    "past": Array [
+      Object {
+        "changes": Array [
+          Object {
+            "idField": "id",
+            "object": Person {
+              "_id": "newId",
+              "affiliations": Array [],
+              "bio": Object {
+                "doc": Object {
+                  "content": Array [
+                    Object {
+                      "type": "paragraph",
+                    },
+                  ],
+                  "type": "doc",
+                },
+                "selection": Object {
+                  "anchor": 1,
+                  "head": 1,
+                  "type": "text",
+                },
+              },
+              "competingInterestStatement": undefined,
+              "email": undefined,
+              "firstName": "Jules",
+              "hasCompetingInterest": undefined,
+              "isAuthenticated": undefined,
+              "isCorrespondingAuthor": undefined,
+              "lastName": "Verne",
+              "orcid": undefined,
+              "suffix": undefined,
+            },
+            "path": "authors",
+            "timestamp": 1487076708000,
+            "type": "add-object",
+          },
+          Object {
+            "changes": Array [
+              Object {
+                "differences": Array [
+                  DiffEdit {
+                    "kind": "E",
+                    "lhs": undefined,
+                    "path": Array [
+                      "copyrightStatement",
+                    ],
+                    "rhs": "",
+                  },
+                ],
+                "path": "articleInfo",
+                "timestamp": 1487076708000,
+                "type": "update-object",
+              },
+              Object {
+                "path": "articleInfo.licenseText",
+                "timestamp": 1487076708000,
+                "transactionSteps": Array [
+                  Object {
+                    "from": 0,
+                    "slice": Object {
+                      "content": Array [
+                        Object {
+                          "type": "paragraph",
+                        },
+                      ],
+                    },
+                    "stepType": "replace",
+                    "to": 0,
+                  },
+                ],
+                "type": "prosemirror",
+              },
+            ],
+            "timestamp": 1487076708000,
+            "type": "batch",
+          },
+        ],
+        "timestamp": 1487076708000,
+        "type": "batch",
+      },
+    ],
+    "present": Object {
+      "abstract": Object {
+        "doc": Object {
+          "type": "doc",
+        },
+        "selection": Object {
+          "anchor": 0,
+          "head": 0,
+          "type": "text",
+        },
+      },
+      "acknowledgements": Object {
+        "doc": Object {
+          "type": "doc",
+        },
+        "selection": Object {
+          "anchor": 0,
+          "head": 0,
+          "type": "text",
+        },
+      },
+      "affiliations": Array [],
+      "articleInfo": ArticleInformation {
+        "_id": "some_uuid",
+        "articleDOI": "",
+        "articleType": "",
+        "copyrightStatement": "",
+        "dtd": "",
+        "elocationId": "",
+        "licenseText": Object {
+          "doc": Object {
+            "content": Array [
+              Object {
+                "type": "paragraph",
+              },
+            ],
+            "type": "doc",
+          },
+          "selection": Object {
+            "anchor": 1,
+            "head": 1,
+            "type": "text",
+          },
+        },
+        "licenseType": "CC0",
+        "publicationDate": "",
+        "publisherId": "",
+        "subjects": Array [],
+        "volume": "",
+      },
+      "authors": Array [
+        Person {
+          "_id": "newId",
+          "affiliations": Array [],
+          "bio": Object {
+            "doc": Object {
+              "content": Array [
+                Object {
+                  "type": "paragraph",
+                },
+              ],
+              "type": "doc",
+            },
+            "selection": Object {
+              "anchor": 1,
+              "head": 1,
+              "type": "text",
+            },
+          },
+          "competingInterestStatement": undefined,
+          "email": undefined,
+          "firstName": "Jules",
+          "hasCompetingInterest": undefined,
+          "isAuthenticated": undefined,
+          "isCorrespondingAuthor": undefined,
+          "lastName": "Verne",
+          "orcid": undefined,
+          "suffix": undefined,
+        },
+      ],
+      "body": Object {
+        "doc": Object {
+          "type": "doc",
+        },
+        "selection": Object {
+          "anchor": 0,
+          "head": 0,
+          "type": "text",
+        },
+      },
+      "impactStatement": Object {
+        "doc": Object {
+          "type": "doc",
+        },
+        "selection": Object {
+          "anchor": 0,
+          "head": 0,
+          "type": "text",
+        },
+      },
+      "journalMeta": Object {
+        "issn": "",
+        "publisherName": "",
+      },
+      "keywordGroups": Object {},
+      "references": Array [],
+      "relatedArticles": Array [],
+      "title": Object {
+        "doc": Object {
+          "type": "doc",
+        },
+        "selection": Object {
+          "anchor": 0,
+          "head": 0,
+          "type": "text",
+        },
+      },
+    },
+  },
+  "error": undefined,
+  "isLoading": false,
+}
+`;
+
+exports[`Authors reducers should delete author 1`] = `
+Object {
+  "data": Object {
+    "future": Array [],
+    "past": Array [
+      Object {
+        "changes": Array [
+          Object {
+            "idField": "id",
+            "object": Person {
+              "_id": "id1",
+              "affiliations": Array [],
+              "bio": Object {
+                "doc": Object {
+                  "content": Array [
+                    Object {
+                      "type": "paragraph",
+                    },
+                  ],
+                  "type": "doc",
+                },
+                "selection": Object {
+                  "anchor": 1,
+                  "head": 1,
+                  "type": "text",
+                },
+              },
+              "competingInterestStatement": undefined,
+              "email": undefined,
+              "firstName": "Jules",
+              "hasCompetingInterest": undefined,
+              "isAuthenticated": undefined,
+              "isCorrespondingAuthor": undefined,
+              "lastName": "Verne",
+              "orcid": undefined,
+              "suffix": undefined,
+            },
+            "path": "authors",
+            "removedIndex": 0,
+            "timestamp": 1487076708000,
+            "type": "delete-object",
+          },
+          Object {
+            "changes": Array [
+              Object {
+                "differences": Array [
+                  DiffEdit {
+                    "kind": "E",
+                    "lhs": undefined,
+                    "path": Array [
+                      "copyrightStatement",
+                    ],
+                    "rhs": "",
+                  },
+                ],
+                "path": "articleInfo",
+                "timestamp": 1487076708000,
+                "type": "update-object",
+              },
+              Object {
+                "path": "articleInfo.licenseText",
+                "timestamp": 1487076708000,
+                "transactionSteps": Array [
+                  Object {
+                    "from": 0,
+                    "slice": Object {
+                      "content": Array [
+                        Object {
+                          "type": "paragraph",
+                        },
+                      ],
+                    },
+                    "stepType": "replace",
+                    "to": 0,
+                  },
+                ],
+                "type": "prosemirror",
+              },
+            ],
+            "timestamp": 1487076708000,
+            "type": "batch",
+          },
+        ],
+        "timestamp": 1487076708000,
+        "type": "batch",
+      },
+    ],
+    "present": Object {
+      "abstract": Object {
+        "doc": Object {
+          "type": "doc",
+        },
+        "selection": Object {
+          "anchor": 0,
+          "head": 0,
+          "type": "text",
+        },
+      },
+      "acknowledgements": Object {
+        "doc": Object {
+          "type": "doc",
+        },
+        "selection": Object {
+          "anchor": 0,
+          "head": 0,
+          "type": "text",
+        },
+      },
+      "affiliations": Array [],
+      "articleInfo": ArticleInformation {
+        "_id": "some_uuid",
+        "articleDOI": "",
+        "articleType": "",
+        "copyrightStatement": "",
+        "dtd": "",
+        "elocationId": "",
+        "licenseText": Object {
+          "doc": Object {
+            "content": Array [
+              Object {
+                "type": "paragraph",
+              },
+            ],
+            "type": "doc",
+          },
+          "selection": Object {
+            "anchor": 1,
+            "head": 1,
+            "type": "text",
+          },
+        },
+        "licenseType": "CC0",
+        "publicationDate": "",
+        "publisherId": "",
+        "subjects": Array [],
+        "volume": "",
+      },
+      "authors": Array [
+        Person {
+          "_id": "id2",
+          "affiliations": Array [],
+          "bio": Object {
+            "doc": Object {
+              "content": Array [
+                Object {
+                  "type": "paragraph",
+                },
+              ],
+              "type": "doc",
+            },
+            "selection": Object {
+              "anchor": 1,
+              "head": 1,
+              "type": "text",
+            },
+          },
+          "competingInterestStatement": undefined,
+          "email": undefined,
+          "firstName": "H G",
+          "hasCompetingInterest": undefined,
+          "isAuthenticated": undefined,
+          "isCorrespondingAuthor": undefined,
+          "lastName": "Wells",
+          "orcid": undefined,
+          "suffix": undefined,
+        },
+      ],
+      "body": Object {
+        "doc": Object {
+          "type": "doc",
+        },
+        "selection": Object {
+          "anchor": 0,
+          "head": 0,
+          "type": "text",
+        },
+      },
+      "impactStatement": Object {
+        "doc": Object {
+          "type": "doc",
+        },
+        "selection": Object {
+          "anchor": 0,
+          "head": 0,
+          "type": "text",
+        },
+      },
+      "journalMeta": Object {
+        "issn": "",
+        "publisherName": "",
+      },
+      "keywordGroups": Object {},
+      "references": Array [],
+      "relatedArticles": Array [],
+      "title": Object {
+        "doc": Object {
+          "type": "doc",
+        },
+        "selection": Object {
+          "anchor": 0,
+          "head": 0,
+          "type": "text",
+        },
+      },
+    },
+  },
+  "error": undefined,
+  "isLoading": false,
+}
+`;
+
+exports[`Authors reducers should move author 1`] = `
+Object {
+  "data": Object {
+    "future": Array [],
+    "past": Array [
+      Object {
+        "changes": Array [
+          Object {
+            "order": Array [
+              1,
+              0,
+            ],
+            "path": "authors",
+            "timestamp": 1487076708000,
+            "type": "rearranging",
+          },
+          Object {
+            "changes": Array [
+              Object {
+                "differences": Array [
+                  DiffEdit {
+                    "kind": "E",
+                    "lhs": undefined,
+                    "path": Array [
+                      "copyrightStatement",
+                    ],
+                    "rhs": "",
+                  },
+                ],
+                "path": "articleInfo",
+                "timestamp": 1487076708000,
+                "type": "update-object",
+              },
+              Object {
+                "path": "articleInfo.licenseText",
+                "timestamp": 1487076708000,
+                "transactionSteps": Array [
+                  Object {
+                    "from": 0,
+                    "slice": Object {
+                      "content": Array [
+                        Object {
+                          "type": "paragraph",
+                        },
+                      ],
+                    },
+                    "stepType": "replace",
+                    "to": 0,
+                  },
+                ],
+                "type": "prosemirror",
+              },
+            ],
+            "timestamp": 1487076708000,
+            "type": "batch",
+          },
+        ],
+        "timestamp": 1487076708000,
+        "type": "batch",
+      },
+    ],
+    "present": Object {
+      "abstract": Object {
+        "doc": Object {
+          "type": "doc",
+        },
+        "selection": Object {
+          "anchor": 0,
+          "head": 0,
+          "type": "text",
+        },
+      },
+      "acknowledgements": Object {
+        "doc": Object {
+          "type": "doc",
+        },
+        "selection": Object {
+          "anchor": 0,
+          "head": 0,
+          "type": "text",
+        },
+      },
+      "affiliations": Array [],
+      "articleInfo": ArticleInformation {
+        "_id": "some_uuid",
+        "articleDOI": "",
+        "articleType": "",
+        "copyrightStatement": "",
+        "dtd": "",
+        "elocationId": "",
+        "licenseText": Object {
+          "doc": Object {
+            "content": Array [
+              Object {
+                "type": "paragraph",
+              },
+            ],
+            "type": "doc",
+          },
+          "selection": Object {
+            "anchor": 1,
+            "head": 1,
+            "type": "text",
+          },
+        },
+        "licenseType": "CC0",
+        "publicationDate": "",
+        "publisherId": "",
+        "subjects": Array [],
+        "volume": "",
+      },
+      "authors": Array [
+        Person {
+          "_id": "id2",
+          "affiliations": Array [],
+          "bio": Object {
+            "doc": Object {
+              "content": Array [
+                Object {
+                  "type": "paragraph",
+                },
+              ],
+              "type": "doc",
+            },
+            "selection": Object {
+              "anchor": 1,
+              "head": 1,
+              "type": "text",
+            },
+          },
+          "competingInterestStatement": undefined,
+          "email": undefined,
+          "firstName": "H G",
+          "hasCompetingInterest": undefined,
+          "isAuthenticated": undefined,
+          "isCorrespondingAuthor": undefined,
+          "lastName": "Wells",
+          "orcid": undefined,
+          "suffix": undefined,
+        },
+        Person {
+          "_id": "id1",
+          "affiliations": Array [],
+          "bio": Object {
+            "doc": Object {
+              "content": Array [
+                Object {
+                  "type": "paragraph",
+                },
+              ],
+              "type": "doc",
+            },
+            "selection": Object {
+              "anchor": 1,
+              "head": 1,
+              "type": "text",
+            },
+          },
+          "competingInterestStatement": undefined,
+          "email": undefined,
+          "firstName": "Jules",
+          "hasCompetingInterest": undefined,
+          "isAuthenticated": undefined,
+          "isCorrespondingAuthor": undefined,
+          "lastName": "Verne",
+          "orcid": undefined,
+          "suffix": undefined,
+        },
+      ],
+      "body": Object {
+        "doc": Object {
+          "type": "doc",
+        },
+        "selection": Object {
+          "anchor": 0,
+          "head": 0,
+          "type": "text",
+        },
+      },
+      "impactStatement": Object {
+        "doc": Object {
+          "type": "doc",
+        },
+        "selection": Object {
+          "anchor": 0,
+          "head": 0,
+          "type": "text",
+        },
+      },
+      "journalMeta": Object {
+        "issn": "",
+        "publisherName": "",
+      },
+      "keywordGroups": Object {},
+      "references": Array [],
+      "relatedArticles": Array [],
+      "title": Object {
+        "doc": Object {
+          "type": "doc",
+        },
+        "selection": Object {
+          "anchor": 0,
+          "head": 0,
+          "type": "text",
+        },
+      },
+    },
+  },
+  "error": undefined,
+  "isLoading": false,
+}
+`;
