@@ -4,17 +4,23 @@ import { givenState } from 'app/test-utils/reducer-test-helpers';
 import { addAuthor, deleteAuthor, moveAuthor, updateAuthor } from 'app/reducers/authors.handlers';
 import { BatchChange } from 'app/utils/history/batch-change';
 import { Person } from 'app/models/person';
+jest.mock('uuid', () => ({ v4: () => 'some_uuid' }));
 
 describe('Authors reducers', () => {
+  const originalDateNow = Date.now;
+
+  beforeAll(() => {
+    Date.now = jest.fn(() => 1487076708000);
+  });
+
+  afterAll(() => {
+    Date.now = originalDateNow;
+  });
   it('should add new author', () => {
     const state = givenState({});
     const newAuthor = new Person({ _id: 'newId', firstName: 'Jules', lastName: 'Verne', affiliations: [] });
-    const updatedState = cloneDeep(state);
-    updatedState.data.present.authors = [newAuthor];
-    updatedState.data.past = [expect.any(BatchChange)];
-
     const newState = addAuthor(state, newAuthor);
-    expect(newState).toEqual(updatedState);
+    expect(newState).toMatchSnapshot();
   });
 
   it('should update existing author', () => {
@@ -36,12 +42,8 @@ describe('Authors reducers', () => {
         new Person({ _id: 'id2', firstName: 'H G', lastName: 'Wells', affiliations: [] })
       ]
     });
-
-    const updatedState = cloneDeep(state);
-    updatedState.data.present.authors.reverse();
-    updatedState.data.past = [expect.any(BatchChange)];
     const newState = moveAuthor(state, { index: 1, author: state.data.present.authors[0] });
-    expect(newState).toEqual(updatedState);
+    expect(newState).toMatchSnapshot();
   });
 
   it('should delete author', () => {
@@ -52,10 +54,7 @@ describe('Authors reducers', () => {
       ]
     });
 
-    const updatedState = cloneDeep(state);
-    updatedState.data.present.authors = updatedState.data.present.authors.slice(1);
-    updatedState.data.past = [expect.any(BatchChange)];
     const newState = deleteAuthor(state, state.data.present.authors[0]);
-    expect(newState).toEqual(updatedState);
+    expect(newState).toMatchSnapshot();
   });
 });

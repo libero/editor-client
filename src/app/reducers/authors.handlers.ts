@@ -7,23 +7,32 @@ import { getReorderedAffiliations } from 'app/reducers/affiliations.handlers';
 import { UpdateObjectChange } from 'app/utils/history/update-object-change';
 import { AddObjectChange } from 'app/utils/history/add-object-change';
 import { DeleteObjectChange } from 'app/utils/history/delete-object-change';
+import { ArticleInformation } from 'app/models/article-information';
+import { Change } from 'app/utils/history/change';
+
+function getUpdatedArticleInfo(articleInfo: ArticleInformation, authors: Person[]): Change {
+  const newArticleInfo = articleInfo.clone();
+  newArticleInfo.updateCopyrightStatement(authors);
+  return UpdateObjectChange.createFromTwoObjects('articleInfo', articleInfo, newArticleInfo);
+}
 
 export function updateAuthor(state: ManuscriptHistoryState, payload: Person): ManuscriptHistoryState {
   const authorIndex = state.data.present.authors.findIndex(({ id }) => id === payload.id);
-
   const authorUpdateChange = UpdateObjectChange.createFromTwoObjects(
     `authors.${authorIndex}`,
     state.data.present.authors[authorIndex],
     payload
   );
 
-  const updatedManuscript = authorUpdateChange.applyChange(state.data.present);
+  let updatedManuscript = authorUpdateChange.applyChange(state.data.present);
+  const articleInfoChange = getUpdatedArticleInfo(state.data.present.articleInfo, updatedManuscript.authors);
+  updatedManuscript = articleInfoChange.applyChange(updatedManuscript);
   const affiliationsReorderChange = getReorderedAffiliations(updatedManuscript.authors, updatedManuscript.affiliations);
 
   return {
     ...state,
     data: {
-      past: [...state.data.past, new BatchChange([authorUpdateChange, affiliationsReorderChange])],
+      past: [...state.data.past, new BatchChange([authorUpdateChange, affiliationsReorderChange, articleInfoChange])],
       present: affiliationsReorderChange.applyChange(updatedManuscript),
       future: []
     }
@@ -33,13 +42,15 @@ export function updateAuthor(state: ManuscriptHistoryState, payload: Person): Ma
 export function addAuthor(state: ManuscriptHistoryState, payload: Person): ManuscriptHistoryState {
   const addAuthorChange = new AddObjectChange('authors', payload, 'id');
 
-  const updatedManuscript = addAuthorChange.applyChange(state.data.present);
+  let updatedManuscript = addAuthorChange.applyChange(state.data.present);
+  const articleInfoChange = getUpdatedArticleInfo(state.data.present.articleInfo, updatedManuscript.authors);
+  updatedManuscript = articleInfoChange.applyChange(updatedManuscript);
   const affiliationsReorderChange = getReorderedAffiliations(updatedManuscript.authors, updatedManuscript.affiliations);
 
   return {
     ...state,
     data: {
-      past: [...state.data.past, new BatchChange([addAuthorChange, affiliationsReorderChange])],
+      past: [...state.data.past, new BatchChange([addAuthorChange, affiliationsReorderChange, articleInfoChange])],
       present: affiliationsReorderChange.applyChange(updatedManuscript),
       future: []
     }
@@ -56,10 +67,12 @@ export function moveAuthor(state: ManuscriptHistoryState, payload: MoveAuthorPay
     state.data.present.authors
   );
 
-  const updatedManuscript = rearrangeAuthors.applyChange(state.data.present);
+  let updatedManuscript = rearrangeAuthors.applyChange(state.data.present);
+  const articleInfoChange = getUpdatedArticleInfo(state.data.present.articleInfo, updatedManuscript.authors);
+  updatedManuscript = articleInfoChange.applyChange(updatedManuscript);
   const affiliationsReorderChange = getReorderedAffiliations(updatedManuscript.authors, updatedManuscript.affiliations);
 
-  const change = new BatchChange([rearrangeAuthors, affiliationsReorderChange]);
+  const change = new BatchChange([rearrangeAuthors, affiliationsReorderChange, articleInfoChange]);
   return {
     ...state,
     data: {
@@ -73,13 +86,15 @@ export function moveAuthor(state: ManuscriptHistoryState, payload: MoveAuthorPay
 export function deleteAuthor(state: ManuscriptHistoryState, payload: Person): ManuscriptHistoryState {
   const deleteAuthorChange = new DeleteObjectChange('authors', payload, 'id');
 
-  const updatedManuscript = deleteAuthorChange.applyChange(state.data.present);
+  let updatedManuscript = deleteAuthorChange.applyChange(state.data.present);
+  const articleInfoChange = getUpdatedArticleInfo(state.data.present.articleInfo, updatedManuscript.authors);
+  updatedManuscript = articleInfoChange.applyChange(updatedManuscript);
   const affiliationsReorderChange = getReorderedAffiliations(updatedManuscript.authors, updatedManuscript.affiliations);
 
   return {
     ...state,
     data: {
-      past: [...state.data.past, new BatchChange([deleteAuthorChange, affiliationsReorderChange])],
+      past: [...state.data.past, new BatchChange([deleteAuthorChange, affiliationsReorderChange, articleInfoChange])],
       present: affiliationsReorderChange.applyChange(updatedManuscript),
       future: []
     }
