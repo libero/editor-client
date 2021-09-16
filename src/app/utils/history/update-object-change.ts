@@ -100,13 +100,18 @@ export class UpdateObjectChange<T> extends Change {
     const transaction = prevState.tr;
     const start = nextState.doc.content.findDiffStart(prevState.doc.content);
     if (start !== null) {
-      let { a: endA, b: endB } = nextState.doc.content.findDiffEnd(get(prevState, 'doc.content'));
-      const overlap = start - Math.min(endA, endB);
-      if (overlap > 0) {
-        endA += overlap;
-        endB += overlap;
+      let { a: endNext, b: endPrev } = nextState.doc.content.findDiffEnd(get(prevState, 'doc.content'));
+      // FIXME: Workaround to resolve an issue where using transaction.replace when the new state completely overwrites the old results in an empty transaction. The workaround is to detect when the start and end indices encompose the entire size of the previous state, hence we can just return a new transaction derived from the next state.
+      if (endPrev - start >= prevState.doc.content.size) {
+        return nextState.tr;
+      } else {
+        const overlap = start - Math.min(endNext, endPrev);
+        if (overlap > 0) {
+          endNext += overlap;
+          endPrev += overlap;
+        }
+        transaction.replace(start, endPrev, nextState.doc.slice(start, endNext));
       }
-      transaction.replace(start, endB, nextState.doc.slice(start, endA));
     }
     return transaction;
   }

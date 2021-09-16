@@ -1,5 +1,3 @@
-import { cloneDeep } from 'lodash';
-
 import { givenState } from 'app/test-utils/reducer-test-helpers';
 import { addAuthor, deleteAuthor, moveAuthor, updateAuthor } from 'app/reducers/authors.handlers';
 import { BatchChange } from 'app/utils/history/batch-change';

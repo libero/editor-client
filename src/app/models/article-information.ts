@@ -82,7 +82,7 @@ export class ArticleInformation extends BackmatterEntity {
 
     newArticleInformation.licenseType = this.licenseType;
     newArticleInformation.publicationDate = this.publicationDate;
-    newArticleInformation.licenseText = ArticleInformation.createLicenseEditorState();
+    newArticleInformation.licenseText = this.licenseText;
 
     return newArticleInformation;
   }
