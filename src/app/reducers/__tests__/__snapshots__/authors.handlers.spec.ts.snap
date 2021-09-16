@@ -58,25 +58,6 @@ Object {
                 "timestamp": 1487076708000,
                 "type": "update-object",
               },
-              Object {
-                "path": "articleInfo.licenseText",
-                "timestamp": 1487076708000,
-                "transactionSteps": Array [
-                  Object {
-                    "from": 0,
-                    "slice": Object {
-                      "content": Array [
-                        Object {
-                          "type": "paragraph",
-                        },
-                      ],
-                    },
-                    "stepType": "replace",
-                    "to": 0,
-                  },
-                ],
-                "type": "prosemirror",
-              },
             ],
             "timestamp": 1487076708000,
             "type": "batch",
@@ -117,16 +98,11 @@ Object {
         "elocationId": "",
         "licenseText": Object {
           "doc": Object {
-            "content": Array [
-              Object {
-                "type": "paragraph",
-              },
-            ],
             "type": "doc",
           },
           "selection": Object {
-            "anchor": 1,
-            "head": 1,
+            "anchor": 0,
+            "head": 0,
             "type": "text",
           },
         },
@@ -269,25 +245,6 @@ Object {
                 "timestamp": 1487076708000,
                 "type": "update-object",
               },
-              Object {
-                "path": "articleInfo.licenseText",
-                "timestamp": 1487076708000,
-                "transactionSteps": Array [
-                  Object {
-                    "from": 0,
-                    "slice": Object {
-                      "content": Array [
-                        Object {
-                          "type": "paragraph",
-                        },
-                      ],
-                    },
-                    "stepType": "replace",
-                    "to": 0,
-                  },
-                ],
-                "type": "prosemirror",
-              },
             ],
             "timestamp": 1487076708000,
             "type": "batch",
@@ -328,16 +285,11 @@ Object {
         "elocationId": "",
         "licenseText": Object {
           "doc": Object {
-            "content": Array [
-              Object {
-                "type": "paragraph",
-              },
-            ],
             "type": "doc",
           },
           "selection": Object {
-            "anchor": 1,
-            "head": 1,
+            "anchor": 0,
+            "head": 0,
             "type": "text",
           },
         },
@@ -454,25 +406,6 @@ Object {
                 "timestamp": 1487076708000,
                 "type": "update-object",
               },
-              Object {
-                "path": "articleInfo.licenseText",
-                "timestamp": 1487076708000,
-                "transactionSteps": Array [
-                  Object {
-                    "from": 0,
-                    "slice": Object {
-                      "content": Array [
-                        Object {
-                          "type": "paragraph",
-                        },
-                      ],
-                    },
-                    "stepType": "replace",
-                    "to": 0,
-                  },
-                ],
-                "type": "prosemirror",
-              },
             ],
             "timestamp": 1487076708000,
             "type": "batch",
@@ -513,16 +446,11 @@ Object {
         "elocationId": "",
         "licenseText": Object {
           "doc": Object {
-            "content": Array [
-              Object {
-                "type": "paragraph",
-              },
-            ],
             "type": "doc",
           },
           "selection": Object {
-            "anchor": 1,
-            "head": 1,
+            "anchor": 0,
+            "head": 0,
             "type": "text",
           },
         },
