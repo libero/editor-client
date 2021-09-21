@@ -80,6 +80,7 @@ export class FigureNodeView implements NodeView {
       return Boolean(node.childCount);
     });
     this.view.dispatch(change);
+    this.destroy();
   };
 
   update(node: ProsemirrorNode): boolean {
