@@ -67,8 +67,11 @@ describe('Figure node view', () => {
     view.state = createBodyState(document.createElement('body'), '');
     const nodeView = new FigureNodeView(figureNode, view, jest.fn().mockReturnValue(0));
     jest.spyOn(view, 'dispatch');
+    jest.spyOn(nodeView, 'destroy');
+    expect(nodeView.destroy).not.toBeCalled();
     nodeView.handleDelete();
     expect(view.dispatch['mock'].calls[0][0].steps[0]).toBeInstanceOf(ReplaceStep);
+    expect(nodeView.destroy).toBeCalled();
   });
 
   it('should update node', () => {
