@@ -185,7 +185,8 @@ export const nodes = {
     attrs: {
       id: { default: '' },
       label: { default: '' },
-      img: { default: '' }
+      img: { default: '' },
+      position: { default: 'float' }
     },
     parseDOM: [
       {
@@ -194,7 +195,8 @@ export const nodes = {
           return {
             id: dom.getAttribute('id'),
             label: getTextContentFromPath(dom, 'label') || '',
-            img: getFigureImageUrlFromXml(dom)
+            img: getFigureImageUrlFromXml(dom),
+            position: dom.getAttribute('position')
           };
         },
         getContent: parseFigure
@@ -207,7 +209,8 @@ export const nodes = {
           class: 'figure',
           'data-fig-id': node.attrs.id,
           'data-fig-label': node.attrs.label,
-          'data-fig-img': node.attrs.img
+          'data-fig-img': node.attrs.img,
+          'data-fig-position': node.attrs.position
         },
         0
       ];
