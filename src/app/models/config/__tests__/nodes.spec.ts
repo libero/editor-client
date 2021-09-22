@@ -152,11 +152,13 @@ describe('nodes spec', () => {
   it('checks figure spec rendering', () => {
     const node = document.createElement('fig');
     node.setAttribute('id', 'SOME_ID');
+    node.setAttribute('position', 'SOME_POS');
     node.innerHTML = '<label>SOME_LABEL</label>';
     expect(nodes['figure'].parseDOM[0].getAttrs(node)).toEqual({
       id: 'SOME_ID',
       label: 'SOME_LABEL',
-      img: 'IMAGE_URL'
+      img: 'IMAGE_URL',
+      position: 'SOME_POS'
     });
   });
 
