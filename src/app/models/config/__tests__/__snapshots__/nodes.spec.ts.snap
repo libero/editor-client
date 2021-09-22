@@ -70,6 +70,9 @@ Object {
       "label": Object {
         "default": "",
       },
+      "position": Object {
+        "default": "float",
+      },
     },
     "content": "(figureTitle | figureLegend | figureAttribution | figureLicense)*",
     "draggable": true,
