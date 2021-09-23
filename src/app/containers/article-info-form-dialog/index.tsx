@@ -69,15 +69,11 @@ export const ArticleInfoFormDialog: React.FC<{}> = () => {
       const fieldName = event.target['name'];
       const newValue = event.target['value'];
       const newArticleInfo = userArticleInfo.clone();
-      newArticleInfo[fieldName] = newValue;
-      if (fieldName === 'publicationDate') {
-        newArticleInfo.updateCopyrightStatement(authors);
-      }
       set(newArticleInfo, fieldName, newValue);
       newArticleInfo.subjects = newArticleInfo.subjects.filter(Boolean);
       setArticleInfo(newArticleInfo);
     },
-    [userArticleInfo, authors]
+    [userArticleInfo]
   );
 
   const handleLicenseTypeChange = useCallback(

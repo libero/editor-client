@@ -79,7 +79,7 @@ export class ArticleInformation extends BackmatterEntity {
     newArticleInformation.volume = this.volume;
     newArticleInformation.publisherId = this.publisherId;
     newArticleInformation.subjects = [...this.subjects];
-
+    newArticleInformation.copyrightStatement = this.copyrightStatement;
     newArticleInformation.licenseType = this.licenseType;
     newArticleInformation.publicationDate = this.publicationDate;
     newArticleInformation.licenseText = this.licenseText;
