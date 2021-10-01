@@ -190,13 +190,17 @@ export const ArticleInfoFormDialog: React.FC<{}> = () => {
           <SectionContainer
             label="Copyright statement"
             variant="outlined"
-            className={classNames(formGrid.fullWidth, classes.copyrightStatement)}
+            className={classNames(formGrid.fullWidth, classes.contentSection)}
           >
             {userArticleInfo.copyrightStatement}
           </SectionContainer>
         ) : undefined}
         {userArticleInfo.licenseType ? (
-          <SectionContainer label="Permissions" variant="outlined" className={formGrid.fullWidth}>
+          <SectionContainer
+            label="Permissions"
+            variant="outlined"
+            className={classNames(formGrid.fullWidth, classes.contentSection)}
+          >
             <Interweave content={stringifyEditorState(userArticleInfo.licenseText)} />
           </SectionContainer>
         ) : undefined}

@@ -9,9 +9,10 @@ export const useArticleInfoFormStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(2.5)
   },
 
-  copyrightStatement: {
+  contentSection: {
     paddingBottom: theme.spacing(2),
-    paddingTop: theme.spacing(2)
+    paddingTop: theme.spacing(2),
+    minHeight: theme.spacing(7)
   },
 
   buttonPanel: {

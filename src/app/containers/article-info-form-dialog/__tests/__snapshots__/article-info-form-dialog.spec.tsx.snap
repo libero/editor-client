@@ -36,7 +36,7 @@ exports[`Article Info Form Dialog renders edit article information dialog 1`] = 
       value="CC0"
     />
     <div
-      className="fullWidth makeStyles-root-6 makeStyles-outlinedVariant-7"
+      className="fullWidth makeStyles-contentSection-3 makeStyles-root-6 makeStyles-outlinedVariant-7"
     >
       <label
         className="makeStyles-label-9"
