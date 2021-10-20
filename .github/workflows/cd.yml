@@ -32,6 +32,11 @@ jobs:
           npm run test:ci
         env:
           CI: true
+      - name: Browser Test
+        run: |
+          npm run playwright
+        env:
+          CI: true
       - name: Publish as 'unstable'
         if: github.repository_owner == 'libero' && github.ref == 'refs/heads/master'
         run: |
