@@ -32,6 +32,8 @@ jobs:
           npm run test:ci
         env:
           CI: true
+      - name: Install operating system dependencies
+        run: npx playwright install-deps
       - name: Browser Test
         run: |
           npm run playwright
