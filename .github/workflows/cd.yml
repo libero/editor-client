@@ -32,13 +32,19 @@ jobs:
           npm run test:ci
         env:
           CI: true
+      - name: Docker build
+        run: |
+          docker build -f ./Dockerfile.playwright . -t $DOCKER_USERNAME/$REPO_NAME-playwright
       - name: Install operating system dependencies
         run: |
           npx playwright install
           npx playwright install-deps
       - name: Browser Test
         run: |
+          docker run --name editor-client -p 3000:3000 -it -d $DOCKER_USERNAME/$REPO_NAME-playwright
+          ./.scripts/docker/wait-healthy.sh editor-client 60
           npm run playwright
+          docker stop editor-client
         env:
           CI: true
       - name: Publish as 'unstable'
