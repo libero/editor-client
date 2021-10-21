@@ -74,3 +74,9 @@ jobs:
           REPO_NAME: ${{ github.event.repository.name }}
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Archive BrowserTest screenshots
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: playwright-output
+          path: test-results
