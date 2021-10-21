@@ -19,4 +19,6 @@ COPY --from=npm-dev /app/ .
 COPY src/ src/
 COPY public/ public/
 EXPOSE 3000
+HEALTHCHECK --interval=5s --timeout=1s \
+	CMD echo -e "GET /health\n\n" | nc localhost:3000
 CMD ["npm", "start"]
