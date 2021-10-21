@@ -46,9 +46,10 @@ jobs:
           npx playwright install-deps
       - name: Browser Test
         run: |
-          docker run -p 3000:3000 -it -d editor-client
+          docker run --name editor-client -p 3000:3000 -it -d editor-client
           ./.scripts/docker/wait-healthy.sh editor-client 60
           npm run playwright
+          docker stop editor-client
         env:
           CI: true
       - name: Publish as 'unstable'
