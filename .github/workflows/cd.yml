@@ -1,6 +1,11 @@
 name: Continuous Deployment
 
-on: [push, pull_request]
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+    branches:
+      - master
 
 jobs:
   cd:
@@ -32,6 +37,21 @@ jobs:
           npm run test:ci
         env:
           CI: true
+      - name: Docker build
+        run: |
+          docker build -f ./Dockerfile.playwright . -t editor-client
+      - name: Install operating system dependencies
+        run: |
+          npx playwright install
+          npx playwright install-deps
+      - name: Browser Test
+        run: |
+          docker run --name editor-client -p 3000:3000 -it -d --rm editor-client
+          ./.scripts/docker/wait-healthy.sh editor-client 120
+          npm run playwright
+          docker stop editor-client
+        env:
+          CI: true
       - name: Publish as 'unstable'
         if: github.repository_owner == 'libero' && github.ref == 'refs/heads/master'
         run: |
@@ -54,3 +74,9 @@ jobs:
           REPO_NAME: ${{ github.event.repository.name }}
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Archive BrowserTest screenshots
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: playwright-output
+          path: test-results

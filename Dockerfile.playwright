@@ -1,0 +1,23 @@
+FROM node:14.18.1-alpine3.12 AS node
+ENV NODE_OPTIONS --unhandled-rejections=strict --enable-source-maps
+RUN apk add curl
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+
+FROM node AS npm-dev
+RUN npm ci
+
+FROM node AS dev
+ENV NODE_ENV=development
+ENV PRETTY_LOG=true
+
+COPY tsconfig.json \
+./
+COPY --from=npm-dev /app/ .
+COPY src/ src/
+COPY public/ public/
+EXPOSE 3000
+HEALTHCHECK --interval=5s --timeout=1s \
+	CMD curl --fail http://localhost:3000 || exit 1
+CMD ["npm", "start"]

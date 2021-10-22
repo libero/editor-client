@@ -44,7 +44,8 @@
     "eject": "react-scripts eject",
     "lint": "eslint --fix src/**/*.ts src/**/*.tsx",
     "lint:ci": "eslint src/**/*.ts src/**/*.tsx",
-    "release": "standard-version"
+    "release": "standard-version",
+    "playwright": "playwright test"
   },
   "browserslist": {
     "production": [
@@ -59,6 +60,7 @@
     ]
   },
   "devDependencies": {
+    "@playwright/test": "^1.15.2",
     "@types/classnames": "^2.2.11",
     "@types/deep-diff": "^1.0.0",
     "@types/enzyme": "^3.10.8",
