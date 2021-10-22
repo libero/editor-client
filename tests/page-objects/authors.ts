@@ -90,10 +90,6 @@ export class Authors {
     await expect(title).not.toBeVisible();
   }
 
-  async countAuthors(): Promise<number> {
-    return this.authorInformation.count();
-  }
-
   async addAuthor({firstName, lastName, suffix}: AuthorName): Promise<void> {
     await this.addButton.first().click();
     await this.modal.firstName.fill(firstName);

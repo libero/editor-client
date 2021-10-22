@@ -81,13 +81,12 @@ test.describe('authors', () => {
   test('add author', async ({ page }) => {
     await page.goto('http://localhost:3000/?articleId=54296');
     const authors = new Authors(page);
-    const authorCount = await authors.countAuthors();
     await authors.addAuthor({
       firstName: 'Arnold',
       lastName: 'Rimmer',
       suffix: 'BSc SSc'
     });
-    await authors.assertAuthorName('Arnold Rimmer BSc SSc', authorCount);
+    await authors.assertAuthorName('Arnold Rimmer BSc SSc', 3);
   })
 
   test('delete author', async ({ page }) => {
