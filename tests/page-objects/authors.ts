@@ -90,12 +90,25 @@ export class Authors {
     await expect(title).not.toBeVisible();
   }
 
+  async countAuthors(): Promise<number> {
+    return this.authorInformation.count();
+  }
+
   async addAuthor({firstName, lastName, suffix}: AuthorName): Promise<void> {
     await this.addButton.first().click();
     await this.modal.firstName.fill(firstName);
     await this.modal.lastName.fill(lastName);
     await this.modal.suffix.fill(suffix);
     await this.closeModal();
+  }
+
+  async deleteAuthor(authorNumber: number): Promise<void> {
+    const authorInformation = this.authorInformation.nth(authorNumber);
+    const authorName = await authorInformation.locator('strong').first().textContent();
+    await this.openModal(authorNumber);
+    await this.modal.delete.click();
+    await this.page.click('text=Delete >> nth=1');
+    await expect(authorInformation).not.toHaveText(authorName);
   }
 
   async setAuthorName({ firstName, lastName, suffix}: AuthorName, authorNumber: number): Promise<void> {
@@ -202,14 +215,5 @@ export class Authors {
     const authorInformation = this.authorInformation.nth(authorNumber);
     const correspondingAuthor = authorInformation.locator(`text=Corresponding Author: `);
     await expect(correspondingAuthor).toBeVisible();
-  }
-
-  async deleteAuthor(authorNumber: number): Promise<void> {
-    const authorInformation = this.authorInformation.nth(authorNumber);
-    const authorName = await authorInformation.locator('strong').first().textContent();
-    await this.openModal(authorNumber);
-    await this.modal.delete.click();
-    await this.page.click('text=Delete >> nth=1');
-    await expect(authorInformation).not.toHaveText(authorName);
   }
 }
