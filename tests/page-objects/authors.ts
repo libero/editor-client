@@ -81,7 +81,7 @@ export class Authors {
     const editButton = this.editButton.nth(authorNumber);
     await editButton.click();
     const title = await this.modal.heading;
-    await expect(title).toHaveText('Edit Author');
+    await expect(title).toBeVisible();
   }
 
   async closeModal(done = true): Promise<void> {
@@ -117,7 +117,7 @@ export class Authors {
 
   async assertAuthorName(authorName: string, authorNumber: number): Promise<void> {
     const author = this.authorName.nth(authorNumber);
-    const authorInformationName = this.authorInformation.nth(authorNumber).locator('strong').first();
+    const authorInformationName = await this.authorInformation.nth(authorNumber).locator('strong').first();
     await expect(author).toContainText(authorName);
     await expect(authorInformationName).toHaveText(authorName);
   }
@@ -129,8 +129,8 @@ export class Authors {
   };
 
   async assertAuthorEmail(authorEmail: string, authorNumber: number): Promise<void> {
-    const authorInformation = this.authorInformation.nth(authorNumber);
-    const email = authorInformation.locator(`text=${authorEmail}`);
+    const authorInformation = await this.authorInformation.nth(authorNumber);
+    const email = await authorInformation.locator(`text=${authorEmail}`);
     await expect(email).toBeVisible();
   }
 
@@ -176,8 +176,8 @@ export class Authors {
   }
 
   async assertOrcid(id: string, authorNumber: number): Promise<void> {
-    const authorInformation = this.authorInformation.nth(authorNumber);
-    const orcid = authorInformation.locator('a');
+    const authorInformation = await this.authorInformation.nth(authorNumber);
+    const orcid = await authorInformation.locator('a');
     await expect(orcid).toHaveText(id);
   }
 
@@ -196,8 +196,8 @@ export class Authors {
   }
 
   async assertAffiliation({institution, city, country}: Affiliation, authorNumber: number): Promise<void> {
-    const authorInformation = this.authorInformation.nth(authorNumber);
-    const affiliation = authorInformation.locator(`text=${institution}, ${city}, ${country}`);
+    const authorInformation = await this.authorInformation.nth(authorNumber);
+    const affiliation = await authorInformation.locator(`text=${institution}, ${city}, ${country}`);
     await expect(affiliation).toBeVisible();
   }
 
@@ -208,8 +208,8 @@ export class Authors {
   }
 
   async assertCorrespondingAuthor(isCorrespondingAuthor: boolean, authorNumber: number): Promise<void> {
-    const authorInformation = this.authorInformation.nth(authorNumber);
-    const correspondingAuthor = authorInformation.locator(`text=Corresponding Author: `);
+    const authorInformation = await this.authorInformation.nth(authorNumber);
+    const correspondingAuthor = await authorInformation.locator(`text=Corresponding Author: `);
     await expect(correspondingAuthor).toBeVisible();
   }
 }

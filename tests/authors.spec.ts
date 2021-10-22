@@ -24,9 +24,9 @@ test.describe('authors', () => {
       await authors.setAuthorName({
         firstName: 'Arnold',
         lastName: 'Rimmer',
-        suffix: 'BSc SSc'
+        suffix: 'Technician, Second Class'
       }, 0);
-      await authors.assertAuthorName('Arnold Rimmer BSc SSc', 0);
+      await authors.assertAuthorName('Arnold Rimmer Technician, Second Class', 0);
     });
 
     test('edit the email field', async ({ page }) => {
@@ -62,9 +62,9 @@ test.describe('authors', () => {
       await page.goto('http://localhost:3000/?articleId=54296');
       const authors = new Authors(page);
       const affiliation = {
-        institution: 'eLife',
-        city: 'Cambridge',
-        country: 'United Kingdom',
+        institution: 'Jupiter Mining Corporation',
+        city: 'Io',
+        country: 'Jupiter',
       };
       await authors.addAffiliation(affiliation, 0);
       await authors.assertAffiliation(affiliation, 0);
@@ -84,9 +84,9 @@ test.describe('authors', () => {
     await authors.addAuthor({
       firstName: 'Arnold',
       lastName: 'Rimmer',
-      suffix: 'BSc SSc'
+      suffix: 'Technician, Second Class'
     });
-    await authors.assertAuthorName('Arnold Rimmer BSc SSc', 3);
+    await authors.assertAuthorName('Arnold Rimmer Technician, Second Class', 3);
   })
 
   test('delete author', async ({ page }) => {

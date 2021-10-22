@@ -3,9 +3,7 @@ ENV NODE_OPTIONS --unhandled-rejections=strict --enable-source-maps
 RUN apk add curl
 WORKDIR /app
 
-COPY package.json \
-package-lock.json \
-./
+COPY package.json package-lock.json ./
 
 FROM node AS npm-dev
 RUN npm ci
