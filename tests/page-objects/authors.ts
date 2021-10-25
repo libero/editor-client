@@ -139,7 +139,7 @@ export class Authors {
     const selector = await this.modal.competingInterest;
     await selector.click();
     if (hasCompetingInterest) {
-      await this.modal.competingInterestSelector.hasCompetingInterest.click();
+      await this.modal.competingInterestSelector.hasCompetingInterest.last().click();
       await this.modal.competingInterestStatement.fill(competingInterestStatement);
     } else {
       await this.modal.competingInterestSelector.noCompetingInterest.click();

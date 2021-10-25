@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE article PUBLIC
-        "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD v1.1 20151215//EN" "JATS-archivearticle1.dtd">
-<article article-type="article-commentary" dtd-version="1.1"
-         xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ali="http://www.niso.org/schemas/ali/1.0/">
+        "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD with MathML3 v1.2 20190208//EN"
+        "JATS-archivearticle1-mathml3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:ali="http://www.niso.org/schemas/ali/1.0/" article-type="article-commentary" dtd-version="1.2"
+         specific-use="version-of-record">
     <front>
         <journal-meta>
             <journal-id journal-id-type="nlm-ta">elife</journal-id>
@@ -23,19 +25,14 @@
                 </subj-group>
                 <subj-group subj-group-type="major-subject">
                     <subject>Chromosomes and Gene Expression</subject>
-                </subj-group>
-                <subj-group subj-group-type="major-subject">
                     <subject>Genetics and Genomics</subject>
-                </subj-group>
-                <subj-group subj-group-type="sub-display-channel">
-                    <subject>Epigenetics</subject>
                 </subj-group>
             </article-categories>
             <title-group>
-                <article-title>A memory of longevity</article-title>
+                <article-title>Epigenetics: A memory of longevity</article-title>
             </title-group>
-            <contrib-group>
-                <contrib contrib-type="author" id="author-171108">
+            <contrib-group content-type="authors">
+                <contrib contrib-type="author"><!--author-171108-->
                     <name>
                         <surname>Emerson</surname>
                         <given-names>Felicity</given-names>
@@ -44,7 +41,7 @@
                     </contrib-id>
                     <xref ref-type="aff" rid="aff1">1</xref>
                     <xref ref-type="aff" rid="aff2">2</xref>
-                    <xref ref-type="fn" rid="conf1"/>
+                    <xref ref-type="author-notes" rid="conf1"/>
                     <bio>
                         <p>
                             <bold>Felicity Emerson</bold>
@@ -53,7 +50,7 @@
                         </p>
                     </bio>
                 </contrib>
-                <contrib contrib-type="author" id="author-171109">
+                <contrib contrib-type="author"><!--author-171109-->
                     <name>
                         <surname>Li</surname>
                         <given-names>Cheng-Lin</given-names>
@@ -61,7 +58,7 @@
                     <contrib-id contrib-id-type="orcid" authenticated="true">https://orcid.org/0000-0002-2501-6565
                     </contrib-id>
                     <xref ref-type="aff" rid="aff2">2</xref>
-                    <xref ref-type="fn" rid="conf1"/>
+                    <xref ref-type="author-notes" rid="conf1"/>
                     <bio>
                         <p>
                             <bold>Cheng-Lin Li</bold>
@@ -70,7 +67,7 @@
                         </p>
                     </bio>
                 </contrib>
-                <contrib contrib-type="author" corresp="yes" id="author-3888">
+                <contrib contrib-type="author" corresp="yes"><!--author-3888-->
                     <name>
                         <surname>Lee</surname>
                         <given-names>Siu Sylvia</given-names>
@@ -79,7 +76,7 @@
                     </contrib-id>
                     <email>sylvia.lee@cornell.edu</email>
                     <xref ref-type="aff" rid="aff2">2</xref>
-                    <xref ref-type="fn" rid="conf1"/>
+                    <xref ref-type="author-notes" rid="conf1"/>
                     <bio>
                         <p>
                             <bold>Siu Sylvia Lee</bold>
@@ -92,45 +89,31 @@
                     <label>1</label>
                     <institution content-type="dept">Biomedical and Biological Sciences Program</institution>
                     <institution>Cornell University</institution>
-                    <addr-line>
-                        <named-content content-type="city">Ithaca</named-content>
-                    </addr-line>
+                    <city>Ithaca</city>
                     <country>United States</country>
                 </aff>
                 <aff id="aff2">
                     <label>2</label>
                     <institution content-type="dept">Department of Molecular Biology and Genetics</institution>
                     <institution>Cornell University</institution>
-                    <addr-line>
-                        <named-content content-type="city">Ithaca</named-content>
-                    </addr-line>
+                    <city>Ithaca</city>
                     <country>United States</country>
                 </aff>
             </contrib-group>
-            <pub-date date-type="publication" publication-format="electronic">
+            <author-notes>
+                <fn fn-type="COI-statement" id="conf1">
+                    <p>No competing interests declared</p>
+                </fn>
+            </author-notes>
+            <pub-date publication-format="electronic" date-type="pub" iso-8601-date="2020-01-24">
                 <day>24</day>
                 <month>01</month>
                 <year>2020</year>
             </pub-date>
-            <pub-date pub-type="collection">
-                <year>2020</year>
-            </pub-date>
             <volume>9</volume>
             <elocation-id>e54296</elocation-id>
-            <history>
-                <date date-type="received" iso-8601-date="2020-01-20">
-                    <day>20</day>
-                    <month>01</month>
-                    <year>2020</year>
-                </date>
-                <date date-type="accepted" iso-8601-date="2020-01-20">
-                    <day>20</day>
-                    <month>01</month>
-                    <year>2020</year>
-                </date>
-            </history>
             <permissions>
-                <copyright-statement>&#x00A9; 2020, Emerson et al</copyright-statement>
+                <copyright-statement>© 2020, Emerson et al</copyright-statement>
                 <copyright-year>2020</copyright-year>
                 <copyright-holder>Emerson et al</copyright-holder>
                 <ali:free_to_read/>
@@ -143,36 +126,38 @@
                     </license-p>
                 </license>
             </permissions>
-            <self-uri content-type="pdf" xlink:href="elife-54296.pdf"/>
+            <self-uri content-type="pdf" xlink:href="2d1d38a8-1005-457d-b644-f2a5dcd6937e/elife-54296.pdf"/>
             <related-article related-article-type="commentary-article" ext-link-type="doi" id="ra1"
                              xlink:href="10.7554/eLife.48498"/>
+            <abstract abstract-type="toc">
+                <p>Worms with increased levels of the epigenetic mark H3K9me2 have a longer lifespan that can be passed
+                    down to future generations.
+                </p>
+            </abstract>
             <abstract>
                 <p>Worms with increased levels of the epigenetic mark H3K9me2 have a longer lifespan that can be passed
                     down to future generations.
                 </p>
             </abstract>
-            <kwd-group kwd-group-type="author-keywords">
+            <kwd-group kwd-group-type="author-generated">
                 <kwd>transgenerational inheritance</kwd>
                 <kwd>epigenetics</kwd>
                 <kwd>aging</kwd>
                 <kwd>chromatin</kwd>
             </kwd-group>
             <kwd-group kwd-group-type="research-organism">
-                <title>Research organism</title>
                 <kwd>
                     <italic>C. elegans</italic>
                 </kwd>
             </kwd-group>
             <custom-meta-group>
                 <custom-meta specific-use="meta-only">
-                    <meta-name>Author impact statement</meta-name>
-                    <meta-value>Worms with increased levels of the epigenetic mark H3K9me2 have a longer lifespan that
-                        can be passed down to future generations.
-                    </meta-value>
+                    <meta-name>pdf-template</meta-name>
+                    <meta-value>1</meta-value>
                 </custom-meta>
                 <custom-meta specific-use="meta-only">
-                    <meta-name>Template</meta-name>
-                    <meta-value>1</meta-value>
+                    <meta-name>elife-xml-version</meta-name>
+                    <meta-value>2.0</meta-value>
                 </custom-meta>
             </custom-meta-group>
         </article-meta>
@@ -182,8 +167,7 @@
             <p>
                 <bold>Related research article</bold>
                 Lee TW, David HS, Engstrom AK, Carpenter BS, Katz DJ. 2019. Repressive H3K9me2 protects lifespan against
-                the transgenerational burden of COMPASS activity in&#x00A0;<italic>C. elegans</italic>. <italic>eLife
-            </italic>
+                the transgenerational burden of COMPASS activity in <italic>C. elegans</italic>. <italic>eLife</italic>
                 <bold>8</bold>:e48498. doi:
                 <ext-link ext-link-type="uri" xlink:href="http://doi.org/10.7554/eLife.48498">10.7554/eLife.48498
                 </ext-link>
@@ -191,8 +175,7 @@
         </boxed-text>
         <p>It is commonly accepted that genetic sequences coded within DNA are passed down through generations and can
             influence characteristics such as appearance, behavior and health. However, emerging evidence suggests that
-            some traits can also be inherited &#x2018;epigenetically&#x2019; from information that is independent of the
-            DNA sequence.
+            some traits can also be inherited ‘epigenetically’ from information that is independent of the DNA sequence.
         </p>
         <p>One of the ways characteristics may be epigenetically passed down is through the temporary modification of
             histone proteins which help to package DNA into the cell. Histones are adorned with chemical marks that can
@@ -210,10 +193,10 @@
             offspring recover normal levels of H3K4me, they still inherit the long-lived phenotype which they sustain
             for several generations (<xref ref-type="bibr" rid="bib2">Greer et al., 2011</xref>). This observation
             suggests that an epigenetic mechanism that is independent from the gene mutation causes this inherited
-            longevity. Now, in eLife, David Katz and co-workers at the Emory University School of Medicine in Atlanta
-            &#x2013; including Teresa Lee as first author &#x2013; report a possible mechanism to explain how this
-            longer lifespan is epigenetically inherited across multiple generations (<xref ref-type="bibr" rid="bib8">
-                Lee et al., 2019</xref>).
+            longevity. Now, in eLife, David Katz and co-workers at the Emory University School of Medicine in Atlanta –
+            including Teresa Lee as first author – report a possible mechanism to explain how this longer lifespan is
+            epigenetically inherited across multiple generations (<xref ref-type="bibr" rid="bib8">Lee et al.,
+                2019</xref>).
         </p>
         <p>Previous work showed that one of the COMPASS complex mutants, known as <italic>wdr-5,</italic> has increased
             levels of another histone mark called H3K9me2 (<xref ref-type="bibr" rid="bib7">Kerr et al., 2014</xref>).
@@ -259,7 +242,8 @@
                     H3K9me2 (red arrow) inherited from their mutant ancestors.
                 </p>
             </caption>
-            <graphic xlink:href="elife-54296-fig1.tif" mimetype="image" mime-subtype="tiff"/>
+            <graphic xlink:href="elife-54296-fig1.tif" mimetype="image"
+                     mime-subtype="tiff"/>
             <attrib>Image credit: Cheng-Lin Li.</attrib>
         </fig>
         <p>To build on these findings, Lee et al. explored where the H3K9me2 marks were deposited in the genomes of the
@@ -268,8 +252,8 @@
             offspring of <italic>jhdm-1</italic> mutants had higher levels of H3K9me2. These results are intriguing and
             suggest that increasing H3K9me2 levels in certain genes may be the key to passing on this long living
             phenotype to future generations. Exciting future investigations will be to identify all the gene regions
-            associated with the inherited increase in H3K9me2, and to&#x00A0;understand how changes to DNA packaging and
-            gene expression in those regions influence longevity.
+            associated with the inherited increase in H3K9me2, and to understand how changes to DNA packaging and gene
+            expression in those regions influence longevity.
         </p>
         <p>A handful of previous studies in <italic>C. elegans</italic> have demonstrated that specific histone
             modifications can be inherited across generations (<xref ref-type="bibr" rid="bib5">Katz et al., 2009</xref>; <xref
@@ -282,12 +266,6 @@
         </p>
     </body>
     <back>
-        <fn-group content-type="competing-interest">
-            <title>Competing interests</title>
-            <fn fn-type="COI-statement" id="conf1">
-                <p>No competing interests declared</p>
-            </fn>
-        </fn-group>
         <ref-list>
             <title>References</title>
             <ref id="bib1">
