@@ -40,3 +40,7 @@ On any changes the tests will re-run automatically.
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.<br />
+
+## Documentation
+
+Architectural documentation can be found [here](./docs/architecture.md), it is advised to read through this document before attempting to extend `editor-client` as it details many of the abstractions and data model used internally.
