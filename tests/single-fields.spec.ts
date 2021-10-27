@@ -56,7 +56,7 @@ test.describe('single fields', () => {
     test('acknowledgements', async ({ page }) => {
       await page.goto('http://localhost:3000/?articleId=54296');
       const field = new SingleTextField(page, 'acknowledgements');
-      const content = 'Rob Rang & Doug Naylor'
+      const content = 'Rob Grant & Doug Naylor'
       await field.setField(content);
       await field.assertField(content);
     });
