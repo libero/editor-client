@@ -1,9 +1,9 @@
 import React, { ReactNode } from 'react';
 import { withStyles, WithStyles } from '@material-ui/core/styles';
 
-import { NodeEditor } from 'app/components/node-editor/node-editor';
-import { RichTextEditor } from 'app/components/rich-text-editor';
-import { useFigureContentEditorStyles } from 'app/components/figure/styles';
+import { NodeEditor } from '../node-editor/node-editor';
+import { RichTextEditor } from '../rich-text-editor';
+import { useFigureContentEditorStyles } from './styles';
 
 interface FigureContentEditorProps extends WithStyles<typeof useFigureContentEditorStyles> {
   label: string;

@@ -1,6 +1,6 @@
 import { createAction } from 'redux-act';
-import { TableOfContents, TOCEntry } from 'app/types/manuscript';
-import { PDF_TASK_STATUSES } from 'app/store';
+import { TableOfContents, TOCEntry } from '../types/manuscript';
+import { PDF_TASK_STATUSES } from '../store';
 
 export interface ModalPayload<P = {}> {
   component: React.FC<P>;

@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { isMacOs } from 'react-device-detect';
 import { GlobalHotKeys, configure } from 'react-hotkeys';
 
-import { canApplyMarkToSelection, canRedoChanges, canUndoChanges } from 'app/selectors/manuscript-editor.selectors';
-import * as manuscriptActions from 'app/actions/manuscript.actions';
+import { canApplyMarkToSelection, canRedoChanges, canUndoChanges } from '../../selectors/manuscript-editor.selectors';
+import * as manuscriptActions from '../../actions/manuscript.actions';
 
 configure({
   ignoreEventsCondition(event) {

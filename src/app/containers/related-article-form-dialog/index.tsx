@@ -3,13 +3,13 @@ import { TextField } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import { isEqual } from 'lodash';
 
-import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
-import * as manuscriptActions from 'app/actions/manuscript.actions';
-import { ActionButton } from 'app/components/action-button';
-import { RelatedArticle } from 'app/models/related-article';
-import { useRelatedArticleStyles } from 'app/containers/related-article-form-dialog/styles';
-import { Select } from 'app/components/select';
-import { renderConfirmDialog } from 'app/components/prompt-dialog';
+import * as manuscriptEditorActions from '../../actions/manuscript-editor.actions';
+import * as manuscriptActions from '../../actions/manuscript.actions';
+import { ActionButton } from '../../components/action-button';
+import { RelatedArticle } from '../../models/related-article';
+import { useRelatedArticleStyles } from './styles';
+import { Select } from '../../components/select';
+import { renderConfirmDialog } from '../../components/prompt-dialog';
 
 const labelProps = { shrink: true };
 

@@ -1,12 +1,12 @@
 import { cloneDeep } from 'lodash';
 
-import { givenState } from 'app/test-utils/reducer-test-helpers';
-import { updateManuscriptState } from 'app/utils/history.utils';
-import { addKeyword, deleteKeyword, updateKeyword, updateNewKeyword } from 'app/reducers/keywords.handlers';
-import { Keyword } from 'app/models/keyword';
-import { DeleteObjectChange } from 'app/utils/history/delete-object-change';
-import { KeywordDeletePayload } from 'app/actions/manuscript.actions';
-import { BatchChange } from 'app/utils/history/batch-change';
+import { givenState } from '../../test-utils/reducer-test-helpers';
+import { updateManuscriptState } from '../../utils/history.utils';
+import { addKeyword, deleteKeyword, updateKeyword, updateNewKeyword } from '../keywords.handlers';
+import { Keyword } from '../../models/keyword';
+import { DeleteObjectChange } from '../../utils/history/delete-object-change';
+import { KeywordDeletePayload } from '../../actions/manuscript.actions';
+import { BatchChange } from '../../utils/history/batch-change';
 
 jest.mock('app/utils/history.utils', () => ({
   updateManuscriptState: jest.fn()

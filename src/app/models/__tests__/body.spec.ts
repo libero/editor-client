@@ -1,4 +1,4 @@
-import { createBodyState } from 'app/models/body';
+import { createBodyState } from '../body';
 
 describe('Manuscript state factory', () => {
   it('creates body state', () => {

@@ -4,9 +4,9 @@ import { EditorView } from 'prosemirror-view';
 import { EditorState } from 'prosemirror-state';
 import { ReplaceStep } from 'prosemirror-transform';
 
-import { ReferenceCitationNodeView } from 'app/components/reference-citation';
-import { createBodyState } from 'app/models/body';
-import { Reference } from 'app/models/reference';
+import { ReferenceCitationNodeView } from '../';
+import { createBodyState } from '../../../models/body';
+import { Reference } from '../../../models/reference';
 
 jest.mock('prosemirror-view');
 jest.mock('app/components/reference-citation/reference-citation-editor-popup', () => ({

@@ -3,11 +3,11 @@ import { EditorState, Transaction } from 'prosemirror-state';
 import { ToggleButtonGroup } from '@material-ui/lab';
 import classNames from 'classnames';
 
-import { SectionContainer } from 'app/components/section-container';
-import { ProseMirrorEditorView } from 'app/components/rich-text-editor/prosemirror-editor-view';
-import { useRichTextInputStyles } from 'app/components/rich-text-input/styles';
-import { LinkNodeView } from 'app/components/link-editor-popup';
-import { getMenuForEditor } from 'app/components/rich-text-input/toolbar-configurator';
+import { SectionContainer } from '../section-container';
+import { ProseMirrorEditorView } from '../rich-text-editor/prosemirror-editor-view';
+import { useRichTextInputStyles } from '../rich-text-input/styles';
+import { LinkNodeView } from '../link-editor-popup';
+import { getMenuForEditor } from '../rich-text-input/toolbar-configurator';
 
 interface RichTextInputProps {
   editorState: EditorState;

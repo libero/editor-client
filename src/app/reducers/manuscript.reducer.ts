@@ -1,30 +1,25 @@
 import { createReducer } from 'redux-act';
 
-import * as manuscriptActions from 'app/actions/manuscript.actions';
+import * as manuscriptActions from '../actions/manuscript.actions';
 import {
   getInitialHistory,
   getInitialLoadableState,
   getLoadableStateError,
   getLoadableStateProgress,
   getLoadableStateSuccess
-} from 'app/utils/state.utils';
-import { ManuscriptHistoryState } from 'app/store';
-import { updateTitle } from 'app/reducers/title.handlers';
-import { updateAbstract, updateImpactStatement } from 'app/reducers/abstract.handlers';
-import { addAuthor, moveAuthor, updateAuthor, deleteAuthor } from 'app/reducers/authors.handlers';
-import {
-  addAffiliation,
-  deleteAffiliation,
-  linkAffiliations,
-  updateAffiliation
-} from 'app/reducers/affiliations.handlers';
-import { addKeyword, deleteKeyword, updateKeyword, updateNewKeyword } from 'app/reducers/keywords.handlers';
-import { redoChange, undoChange, updateManuscriptState } from 'app/utils/history.utils';
-import { addReference, deleteReference, updateReference } from 'app/reducers/references.handlers';
-import { updateArticleInformation } from 'app/reducers/article-information.handlers';
-import { addRelatedArticle, deleteRelatedArticle, updateRelatedArticle } from 'app/reducers/related-articles.handlers';
-import { updateAcknowledgements } from 'app/reducers/acknowledgements.handlers';
-import { updateBody } from 'app/reducers/body.handlers';
+} from '../utils/state.utils';
+import { ManuscriptHistoryState } from '../store';
+import { updateTitle } from './title.handlers';
+import { updateAbstract, updateImpactStatement } from './abstract.handlers';
+import { addAuthor, moveAuthor, updateAuthor, deleteAuthor } from './authors.handlers';
+import { addAffiliation, deleteAffiliation, linkAffiliations, updateAffiliation } from './affiliations.handlers';
+import { addKeyword, deleteKeyword, updateKeyword, updateNewKeyword } from './keywords.handlers';
+import { redoChange, undoChange, updateManuscriptState } from '../utils/history.utils';
+import { addReference, deleteReference, updateReference } from './references.handlers';
+import { updateArticleInformation } from './article-information.handlers';
+import { addRelatedArticle, deleteRelatedArticle, updateRelatedArticle } from './related-articles.handlers';
+import { updateAcknowledgements } from './acknowledgements.handlers';
+import { updateBody } from './body.handlers';
 
 const initialState = getInitialLoadableState() as ManuscriptHistoryState;
 

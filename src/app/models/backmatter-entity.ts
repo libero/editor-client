@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 
-import { JSONObject } from 'app/types/utility.types';
+import { JSONObject } from '../types/utility.types';
 
 export abstract class BackmatterEntity {
   constructor() {

@@ -5,9 +5,9 @@ import { gapCursor } from 'prosemirror-gapcursor';
 
 import * as acknowledgementsConfig from './config/acknowledgements.config';
 import { buildInputRules } from './plugins/input-rules';
-import { makeSchemaFromConfig } from 'app/models/utils';
-import { PlaceholderPlugin } from 'app/models/plugins/placeholder.plugin';
-import { SelectionPlugin } from 'app/models/plugins/selection.plugins';
+import { makeSchemaFromConfig } from './utils';
+import { PlaceholderPlugin } from './plugins/placeholder.plugin';
+import { SelectionPlugin } from './plugins/selection.plugins';
 
 export function createAcknowledgementsState(content?: Element, changeSteps?: [Step]): EditorState {
   if (content) {

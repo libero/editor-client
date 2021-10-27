@@ -4,14 +4,10 @@ import { Node as ProsemirrorNode } from 'prosemirror-model';
 import { EditorView, NodeView } from 'prosemirror-view';
 import { ThemeProvider } from '@material-ui/core/styles';
 
-import { theme } from 'app/styles/theme';
-import {
-  FigureCitationEditorPopup,
-  FiguresListEntry,
-  UNLABELLED_FIGURE_TEXT
-} from 'app/components/figure-citation/figure-citation-editor-popup';
+import { theme } from '../../styles/theme';
+import { FigureCitationEditorPopup, FiguresListEntry, UNLABELLED_FIGURE_TEXT } from './figure-citation-editor-popup';
 import { TextSelection } from 'prosemirror-state';
-import { store } from 'app/store';
+import { store } from '../../store';
 import { Provider } from 'react-redux';
 
 export class FigureCitationNodeView implements NodeView {

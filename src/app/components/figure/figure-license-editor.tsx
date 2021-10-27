@@ -4,11 +4,11 @@ import { withStyles, WithStyles } from '@material-ui/core/styles';
 import { Node as ProsemirrorNode } from 'prosemirror-model';
 import DeleteIcon from '@material-ui/icons/Delete';
 
-import { FIGURE_LICENSE_CC0, FIGURE_LICENSE_SELECT_OPTIONS, Figure } from 'app/models/figure';
-import { RichTextEditor } from 'app/components/rich-text-editor';
-import { NodeEditor, NodeEditorState } from 'app/components/node-editor/node-editor';
-import { useFigureLicenseEditorStyles } from 'app/components/figure/styles';
-import { Select } from 'app/components/select';
+import { FIGURE_LICENSE_CC0, FIGURE_LICENSE_SELECT_OPTIONS, Figure } from '../../models/figure';
+import { RichTextEditor } from '../rich-text-editor';
+import { NodeEditor, NodeEditorState } from '../node-editor/node-editor';
+import { useFigureLicenseEditorStyles } from './styles';
+import { Select } from '../select';
 import { NodeSelection } from 'prosemirror-state';
 
 interface FigureLicenseEditorProps extends WithStyles<typeof useFigureLicenseEditorStyles> {

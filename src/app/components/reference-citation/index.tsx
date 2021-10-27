@@ -8,10 +8,10 @@ import { ThemeProvider } from '@material-ui/core/styles';
 
 import { TextSelection } from 'prosemirror-state';
 
-import { theme } from 'app/styles/theme';
-import { Reference } from 'app/models/reference';
-import { store } from 'app/store';
-import { ReferenceCitationEditorPopup } from 'app/components/reference-citation/reference-citation-editor-popup';
+import { theme } from '../../styles/theme';
+import { Reference } from '../../models/reference';
+import { store } from '../../store';
+import { ReferenceCitationEditorPopup } from './reference-citation-editor-popup';
 
 export class ReferenceCitationNodeView implements NodeView {
   dom?: HTMLAnchorElement;

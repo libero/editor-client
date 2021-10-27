@@ -1,8 +1,8 @@
 import { get } from 'lodash';
 
-import { givenState } from 'app/test-utils/reducer-test-helpers';
-import { DeleteObjectChange } from 'app/utils/history/delete-object-change';
-import { Keyword } from 'app/models/keyword';
+import { givenState } from '../../../test-utils/reducer-test-helpers';
+import { DeleteObjectChange } from '../delete-object-change';
+import { Keyword } from '../../../models/keyword';
 
 describe('DeleteObjectChange', () => {
   const manuscript = givenState({}).data.present;

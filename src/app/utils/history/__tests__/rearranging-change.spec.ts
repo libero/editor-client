@@ -1,8 +1,8 @@
 import { get } from 'lodash';
 
-import { givenState } from 'app/test-utils/reducer-test-helpers';
-import { RearrangingChange } from 'app/utils/history/rearranging-change';
-import { Keyword } from 'app/models/keyword';
+import { givenState } from '../../../test-utils/reducer-test-helpers';
+import { RearrangingChange } from '../rearranging-change';
+import { Keyword } from '../../../models/keyword';
 
 describe('RearrangingChange', () => {
   const manuscript = givenState({}).data.present;

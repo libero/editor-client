@@ -3,11 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { IconButton } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 
-import { SectionContainer } from 'app/components/section-container';
-import { ActionButton } from 'app/components/action-button';
-import { getReferences } from 'app/selectors/manuscript.selectors';
-import { Reference } from 'app/models/reference';
-import { useReferencesListItemStyles, useReferencesListStyles } from 'app/containers/manuscript/references-list/styles';
+import { SectionContainer } from '../../../components/section-container';
+import { ActionButton } from '../../../components/action-button';
+import { getReferences } from '../../../selectors/manuscript.selectors';
+import { Reference } from '../../../models/reference';
+import { useReferencesListItemStyles, useReferencesListStyles } from './styles';
 import {
   renderBookReference,
   renderConferenceReference,
@@ -20,10 +20,10 @@ import {
   renderSoftwareReference,
   renderThesisReference,
   renderWebReference
-} from 'app/containers/manuscript/references-list/reference-renderers';
-import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
-import { ConnectedReferenceFormDialog } from 'app/containers/reference-form-dialog/connected-reference-form-dialog';
-import { ComponentWithId } from 'app/types/utility.types';
+} from './reference-renderers';
+import * as manuscriptEditorActions from '../../../actions/manuscript-editor.actions';
+import { ConnectedReferenceFormDialog } from '../../reference-form-dialog/connected-reference-form-dialog';
+import { ComponentWithId } from '../../../types/utility.types';
 
 interface ReferenceItemProps {
   onEditCallback: (reference: Reference) => void;

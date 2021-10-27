@@ -1,6 +1,6 @@
-import { givenState } from 'app/test-utils/reducer-test-helpers';
-import { updateManuscriptState } from 'app/utils/history.utils';
-import { updateBody } from 'app/reducers/body.handlers';
+import { givenState } from '../../test-utils/reducer-test-helpers';
+import { updateManuscriptState } from '../../utils/history.utils';
+import { updateBody } from '../body.handlers';
 
 jest.mock('../../utils/history.utils');
 

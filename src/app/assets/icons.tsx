@@ -1,6 +1,6 @@
 import React from 'react';
 import { SvgIcon } from '@material-ui/core';
-import { useIconStyles } from 'app/containers/manuscript/icon-styles';
+import { useIconStyles } from '../containers/manuscript/icon-styles';
 
 export const SubscriptIcon: React.FC<{}> = () => {
   return (

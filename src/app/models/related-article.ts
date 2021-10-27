@@ -1,5 +1,5 @@
-import { BackmatterEntity } from 'app/models/backmatter-entity';
-import { JSONObject } from 'app/types/utility.types';
+import { BackmatterEntity } from './backmatter-entity';
+import { JSONObject } from '../types/utility.types';
 
 export class RelatedArticle extends BackmatterEntity {
   articleType: string;

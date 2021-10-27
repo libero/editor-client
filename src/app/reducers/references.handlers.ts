@@ -1,13 +1,13 @@
 import { Node as ProsemirrorNode } from 'prosemirror-model';
 
-import { ManuscriptHistoryState } from 'app/store';
-import { Reference, sortReferencesList } from 'app/models/reference';
-import { UpdateObjectChange } from 'app/utils/history/update-object-change';
-import { ProsemirrorChange } from 'app/utils/history/prosemirror-change';
-import { BatchChange } from 'app/utils/history/batch-change';
-import { AddObjectChange } from 'app/utils/history/add-object-change';
-import { RearrangingChange } from 'app/utils/history/rearranging-change';
-import { DeleteObjectChange } from 'app/utils/history/delete-object-change';
+import { ManuscriptHistoryState } from '../store';
+import { Reference, sortReferencesList } from '../models/reference';
+import { UpdateObjectChange } from '../utils/history/update-object-change';
+import { ProsemirrorChange } from '../utils/history/prosemirror-change';
+import { BatchChange } from '../utils/history/batch-change';
+import { AddObjectChange } from '../utils/history/add-object-change';
+import { RearrangingChange } from '../utils/history/rearranging-change';
+import { DeleteObjectChange } from '../utils/history/delete-object-change';
 
 export function updateReference(state: ManuscriptHistoryState, payload: Reference): ManuscriptHistoryState {
   const referenceIndex = state.data.present.references.findIndex(({ id }) => id === payload.id);

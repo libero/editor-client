@@ -1,5 +1,5 @@
-import formGrid from 'app/styles/form-grid.module.scss';
-import { ReferenceType } from 'app/models/reference-type';
+import formGrid from '../../styles/form-grid.module.scss';
+import { ReferenceType } from '../../models/reference-type';
 
 export interface FormControlConfigType {
   type: string;

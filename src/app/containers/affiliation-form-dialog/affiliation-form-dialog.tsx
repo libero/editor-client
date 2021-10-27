@@ -4,12 +4,12 @@ import { useSelector } from 'react-redux';
 import { set } from 'lodash';
 
 import { useAffiliationFormStyles } from './styles';
-import { renderConfirmDialog } from 'app/components/prompt-dialog';
-import { ActionButton } from 'app/components/action-button';
-import { Affiliation } from 'app/models/affiliation';
-import { getAffiliatedAuthors, getAuthors } from 'app/selectors/manuscript.selectors';
-import { LinkedAuthorsList } from 'app/containers/affiliation-form-dialog/linked-authors-list';
-import { Person } from 'app/models/person';
+import { renderConfirmDialog } from '../../components/prompt-dialog';
+import { ActionButton } from '../../components/action-button';
+import { Affiliation } from '../../models/affiliation';
+import { getAffiliatedAuthors, getAuthors } from '../../selectors/manuscript.selectors';
+import { LinkedAuthorsList } from './linked-authors-list';
+import { Person } from '../../models/person';
 
 interface AffiliationFormDialogProps {
   affiliation?: Affiliation;

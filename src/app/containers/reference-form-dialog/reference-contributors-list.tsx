@@ -4,11 +4,11 @@ import { TextField, IconButton, Menu, MenuItem } from '@material-ui/core';
 import { has, isEqual } from 'lodash';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { SortableHandle, SortableContainer, SortableElement } from 'react-sortable-hoc';
-import DragIcon from 'app/assets/drag-indicator-grey.svg';
+import DragIcon from '../../assets/drag-indicator-grey.svg';
 
-import { ReferenceContributor } from 'app/models/reference';
-import { useReferenceContributorStyles } from 'app/containers/reference-form-dialog/styles';
-import { ActionButton } from 'app/components/action-button';
+import { ReferenceContributor } from '../../models/reference';
+import { useReferenceContributorStyles } from './styles';
+import { ActionButton } from '../../components/action-button';
 
 interface ReferenceRefContributorsListProps {
   refContributors: ReferenceContributor[];

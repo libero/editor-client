@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 
-import * as manuscriptActions from 'app/actions/manuscript.actions';
-import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
-import { ReferenceFormDialog } from 'app/containers/reference-form-dialog/reference-form-dialog';
-import { Reference } from 'app/models/reference';
+import * as manuscriptActions from '../../actions/manuscript.actions';
+import * as manuscriptEditorActions from '../../actions/manuscript-editor.actions';
+import { ReferenceFormDialog } from './reference-form-dialog';
+import { Reference } from '../../models/reference';
 
 interface ConnectedReferenceFormDialogProps {
   reference?: Reference;

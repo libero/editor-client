@@ -1,6 +1,6 @@
 import { cloneDeep } from 'lodash';
 
-import { getInitialHistory, getInitialLoadableState } from 'app/utils/state.utils';
+import { getInitialHistory, getInitialLoadableState } from '../../utils/state.utils';
 import {
   getAbstract,
   getAffiliatedAuthors,
@@ -9,10 +9,10 @@ import {
   getManuscriptData,
   getTitle,
   isManuscriptLoaded
-} from 'app/selectors/manuscript.selectors';
-import { Manuscript } from 'app/types/manuscript';
-import { Person } from 'app/models/person';
-import { givenState } from 'app/test-utils/reducer-test-helpers';
+} from '../manuscript.selectors';
+import { Manuscript } from '../../types/manuscript';
+import { Person } from '../../models/person';
+import { givenState } from '../../test-utils/reducer-test-helpers';
 
 describe('manuscript selectors', () => {
   let state;

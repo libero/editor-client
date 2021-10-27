@@ -1,15 +1,15 @@
 import { createAction } from 'redux-act';
 import { Transaction } from 'prosemirror-state';
 
-import { Manuscript } from 'app/types/manuscript';
-import { createAsyncAction } from 'app/utils/action.utils';
-import { Person } from 'app/models/person';
-import { Affiliation } from 'app/models/affiliation';
-import { Reference } from 'app/models/reference';
-import { RelatedArticle } from 'app/models/related-article';
-import { ArticleInformation } from 'app/models/article-information';
-import { ListType } from 'app/types/utility.types';
-import { Keyword } from 'app/models/keyword';
+import { Manuscript } from '../types/manuscript';
+import { createAsyncAction } from '../utils/action.utils';
+import { Person } from '../models/person';
+import { Affiliation } from '../models/affiliation';
+import { Reference } from '../models/reference';
+import { RelatedArticle } from '../models/related-article';
+import { ArticleInformation } from '../models/article-information';
+import { ListType } from '../types/utility.types';
+import { Keyword } from '../models/keyword';
 
 export interface KeywordUpdatePayload {
   keywordGroup: string;

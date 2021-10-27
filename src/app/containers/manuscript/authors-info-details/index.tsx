@@ -5,19 +5,16 @@ import EditIcon from '@material-ui/icons/Edit';
 import { isBoolean, isEqual } from 'lodash';
 import Interweave from 'interweave';
 
-import { SectionContainer } from 'app/components/section-container';
-import { getAuthorAffiliations, getAuthors } from 'app/selectors/manuscript.selectors';
-import { Person } from 'app/models/person';
-import {
-  useAuthorDetailStyles,
-  useAuthorsDetailsListStyles
-} from 'app/containers/manuscript/authors-info-details/styles';
-import { ActionButton } from 'app/components/action-button';
-import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
-import { AuthorFormDialog } from 'app/containers/author-form-dialog';
-import { stringifyEditorState } from 'app/utils/view.utils';
-import { OrcidIcon } from 'app/assets/icons';
-import { ComponentWithId } from 'app/types/utility.types';
+import { SectionContainer } from '../../../components/section-container';
+import { getAuthorAffiliations, getAuthors } from '../../../selectors/manuscript.selectors';
+import { Person } from '../../../models/person';
+import { useAuthorDetailStyles, useAuthorsDetailsListStyles } from './styles';
+import { ActionButton } from '../../../components/action-button';
+import * as manuscriptEditorActions from '../../../actions/manuscript-editor.actions';
+import { AuthorFormDialog } from '../../author-form-dialog';
+import { stringifyEditorState } from '../../../utils/view.utils';
+import { OrcidIcon } from '../../../assets/icons';
+import { ComponentWithId } from '../../../types/utility.types';
 
 export const AuthorsInfoDetails: React.FC<ComponentWithId> = ({ id }) => {
   const authors = useSelector(getAuthors);

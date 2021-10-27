@@ -1,5 +1,5 @@
 import React from 'react';
-import { OrcidIcon, SubscriptIcon, SuperscriptIcon } from 'app/assets/icons';
+import { OrcidIcon, SubscriptIcon, SuperscriptIcon } from '../icons';
 import { create } from 'react-test-renderer';
 
 describe('Icons', () => {

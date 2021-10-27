@@ -5,16 +5,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
 import { isEqual } from 'lodash';
 
-import DragIcon from 'app/assets/drag-indicator.svg';
-import * as manuscriptActions from 'app/actions/manuscript.actions';
-import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
-import { getAffiliations, getAuthors } from 'app/selectors/manuscript.selectors';
+import DragIcon from '../../../assets/drag-indicator.svg';
+import * as manuscriptActions from '../../../actions/manuscript.actions';
+import * as manuscriptEditorActions from '../../../actions/manuscript-editor.actions';
+import { getAffiliations, getAuthors } from '../../../selectors/manuscript.selectors';
 import { useAuthorsListStyles } from './styles';
-import { SectionContainer } from 'app/components/section-container';
-import { Person } from 'app/models/person';
-import { AuthorFormDialog } from 'app/containers/author-form-dialog';
-import { ActionButton } from 'app/components/action-button';
-import { ComponentWithId } from 'app/types/utility.types';
+import { SectionContainer } from '../../../components/section-container';
+import { Person } from '../../../models/person';
+import { AuthorFormDialog } from '../../author-form-dialog';
+import { ActionButton } from '../../../components/action-button';
+import { ComponentWithId } from '../../../types/utility.types';
 
 const DragHandle = React.memo(
   SortableHandle(() => <img src={DragIcon} alt="drag handle" aria-hidden={true} className="drag-handle" />),

@@ -1,8 +1,8 @@
 import { cloneDeep } from 'lodash';
 
-import { givenState } from 'app/test-utils/reducer-test-helpers';
-import { UpdateObjectChange } from 'app/utils/history/update-object-change';
-import { Affiliation } from 'app/models/affiliation';
+import { givenState } from '../../../test-utils/reducer-test-helpers';
+import { UpdateObjectChange } from '../update-object-change';
+import { Affiliation } from '../../../models/affiliation';
 
 describe('UpdateObjectChange', () => {
   const manuscript = givenState({}).data.present;

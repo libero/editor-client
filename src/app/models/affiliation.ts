@@ -1,6 +1,6 @@
-import { getTextContentFromPath } from 'app/models/utils';
-import { BackmatterEntity } from 'app/models/backmatter-entity';
-import { JSONObject } from 'app/types/utility.types';
+import { getTextContentFromPath } from './utils';
+import { BackmatterEntity } from './backmatter-entity';
+import { JSONObject } from '../types/utility.types';
 
 export class Affiliation extends BackmatterEntity {
   label: string;

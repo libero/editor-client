@@ -2,13 +2,13 @@ import { all, takeLatest, select, put } from 'redux-saga/effects';
 import { Transaction, EditorState } from 'prosemirror-state';
 import { Node as ProsemirrorNode } from 'prosemirror-model';
 
-import * as manuscriptActions from 'app/actions/manuscript.actions';
-import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
-import { Action } from 'app/utils/action.utils';
-import { TableOfContents, TOCEntry } from 'app/types/manuscript';
-import { getBody, getManuscriptData } from 'app/selectors/manuscript.selectors';
-import { setBodyTOCAction } from 'app/actions/manuscript-editor.actions';
-import { ApplyChangePayload } from 'app/actions/manuscript.actions';
+import * as manuscriptActions from '../actions/manuscript.actions';
+import * as manuscriptEditorActions from '../actions/manuscript-editor.actions';
+import { Action } from '../utils/action.utils';
+import { TableOfContents, TOCEntry } from '../types/manuscript';
+import { getBody, getManuscriptData } from '../selectors/manuscript.selectors';
+import { setBodyTOCAction } from '../actions/manuscript-editor.actions';
+import { ApplyChangePayload } from '../actions/manuscript.actions';
 
 function getElementOffset(el: Element) {
   const rect = el.getBoundingClientRect();

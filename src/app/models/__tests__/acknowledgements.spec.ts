@@ -1,4 +1,4 @@
-import { createAcknowledgementsState } from 'app/models/acknowledgements';
+import { createAcknowledgementsState } from '../acknowledgements';
 
 describe('Manuscript state factory', () => {
   it('creates acknowledgements state', () => {

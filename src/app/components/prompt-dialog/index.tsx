@@ -1,7 +1,7 @@
 import React from 'react';
 import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Typography } from '@material-ui/core';
-import { ActionButton, VariantType } from 'app/components/action-button';
-import { usePromptDialogStyles } from 'app/components/prompt-dialog/styles';
+import { ActionButton, VariantType } from '../action-button';
+import { usePromptDialogStyles } from './styles';
 
 interface PromptDialogProps {
   isOpen: boolean;

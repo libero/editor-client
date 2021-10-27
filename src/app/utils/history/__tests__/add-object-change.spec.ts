@@ -1,8 +1,8 @@
 import { get } from 'lodash';
 
-import { givenState } from 'app/test-utils/reducer-test-helpers';
-import { AddObjectChange } from 'app/utils/history/add-object-change';
-import { Keyword } from 'app/models/keyword';
+import { givenState } from '../../../test-utils/reducer-test-helpers';
+import { AddObjectChange } from '../add-object-change';
+import { Keyword } from '../../../models/keyword';
 
 describe('AddObjectChange', () => {
   const manuscript = givenState({}).data.present;

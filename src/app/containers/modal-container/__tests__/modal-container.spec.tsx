@@ -1,6 +1,6 @@
 import React from 'react';
 import { create } from 'react-test-renderer';
-import { ModalContainer } from 'app/containers/modal-container/modal-container';
+import { ModalContainer } from '../modal-container';
 
 jest.mock('@material-ui/core', () => ({
   Dialog: ({ children }) => <div data-cmp="dialog">{children}</div>,

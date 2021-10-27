@@ -8,10 +8,10 @@ import { get } from 'lodash';
 import { baseKeymap } from 'prosemirror-commands';
 import { StepMap } from 'prosemirror-transform';
 
-import { buildInputRules } from 'app/models/plugins/input-rules';
-import { NodeViewContext } from 'app/utils/view.utils';
-import { RichTextEditor } from 'app/components/rich-text-editor';
-import { SelectionPlugin } from 'app/models/plugins/selection.plugins';
+import { buildInputRules } from '../../models/plugins/input-rules';
+import { NodeViewContext } from '../../utils/view.utils';
+import { RichTextEditor } from '../rich-text-editor';
+import { SelectionPlugin } from '../../models/plugins/selection.plugins';
 
 export interface NodeEditorProps {
   node: ProsemirrorNode;

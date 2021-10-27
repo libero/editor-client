@@ -4,9 +4,9 @@ import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { mount } from 'enzyme';
 
-import { givenState } from 'app/test-utils/reducer-test-helpers';
-import { ArticleInfoFormDialog } from 'app/containers/article-info-form-dialog/index';
-import * as manuscriptActions from 'app/actions/manuscript.actions';
+import { givenState } from '../../../test-utils/reducer-test-helpers';
+import { ArticleInfoFormDialog } from '../';
+import * as manuscriptActions from '../../../actions/manuscript.actions';
 
 jest.mock('@material-ui/core', () => ({
   TextField: () => <div data-cmp="TextField"></div>,

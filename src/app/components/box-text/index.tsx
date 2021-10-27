@@ -5,9 +5,9 @@ import ReactDOM from 'react-dom';
 import { ThemeProvider } from '@material-ui/core/styles';
 import { NodeSelection } from 'prosemirror-state';
 
-import { BoxTextEditor, BoxTextEditorHandle } from 'app/components/box-text/box-text-editor';
-import { theme } from 'app/styles/theme';
-import { NodeViewContext } from 'app/utils/view.utils';
+import { BoxTextEditor, BoxTextEditorHandle } from './box-text-editor';
+import { theme } from '../../styles/theme';
+import { NodeViewContext } from '../../utils/view.utils';
 
 export class BoxTextNodeView implements NodeView {
   dom?: HTMLElement;

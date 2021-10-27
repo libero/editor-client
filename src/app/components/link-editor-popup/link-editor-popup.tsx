@@ -5,8 +5,8 @@ import { EditorView } from 'prosemirror-view';
 import CloseIcon from '@material-ui/icons/Close';
 import LaunchIcon from '@material-ui/icons/Launch';
 
-import { useLinkEditorStyles } from 'app/components/link-editor-popup/styles';
-import { ActionButton } from 'app/components/action-button';
+import { useLinkEditorStyles } from './styles';
+import { ActionButton } from '../action-button';
 
 interface LinkEditorPopupProps {
   editorView: EditorView | undefined;

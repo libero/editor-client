@@ -2,10 +2,10 @@ import { EditorState, Transaction } from 'prosemirror-state';
 import { Step } from 'prosemirror-transform';
 import { get, set } from 'lodash';
 
-import { Manuscript } from 'app/types/manuscript';
-import { Change } from 'app/utils/history/change';
-import { cloneManuscript } from 'app/utils/state.utils';
-import { JSONObject } from 'app/types/utility.types';
+import { Manuscript } from '../../types/manuscript';
+import { Change } from './change';
+import { cloneManuscript } from '../state.utils';
+import { JSONObject } from '../../types/utility.types';
 
 export class ProsemirrorChange extends Change {
   public static fromJSON(data: JSONObject): ProsemirrorChange {

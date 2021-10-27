@@ -5,11 +5,11 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import { mount } from 'enzyme';
 import configureMockStore from 'redux-mock-store';
 
-import { theme } from 'app/styles/theme';
-import { FigureCitationEditorPopup } from 'app/components/figure-citation/figure-citation-editor-popup';
-import { createBodyState } from 'app/models/body';
+import { theme } from '../../../styles/theme';
+import { FigureCitationEditorPopup } from '../figure-citation-editor-popup';
+import { createBodyState } from '../../../models/body';
 import { ClickAwayListener } from '@material-ui/core';
-import { givenState } from 'app/test-utils/reducer-test-helpers';
+import { givenState } from '../../../test-utils/reducer-test-helpers';
 import { Provider } from 'react-redux';
 
 jest.mock('@material-ui/core/styles', () => {

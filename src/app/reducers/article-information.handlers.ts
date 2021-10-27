@@ -1,6 +1,6 @@
-import { ManuscriptHistoryState } from 'app/store';
-import { ArticleInformation } from 'app/models/article-information';
-import { UpdateObjectChange } from 'app/utils/history/update-object-change';
+import { ManuscriptHistoryState } from '../store';
+import { ArticleInformation } from '../models/article-information';
+import { UpdateObjectChange } from '../utils/history/update-object-change';
 
 export function updateArticleInformation(
   state: ManuscriptHistoryState,

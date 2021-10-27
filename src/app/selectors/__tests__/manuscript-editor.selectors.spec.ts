@@ -1,16 +1,16 @@
 import { EditorState, TextSelection } from 'prosemirror-state';
 import { DOMParser as ProseMirrorDOMParser } from 'prosemirror-model';
 
-import { getInitialHistory, getInitialLoadableState } from 'app/utils/state.utils';
+import { getInitialHistory, getInitialLoadableState } from '../../utils/state.utils';
 import {
   canApplyMarkToSelection,
   canRedoChanges,
   canUndoChanges,
   isMarkAppliedToSelection
-} from 'app/selectors/manuscript-editor.selectors';
-import { Manuscript } from 'app/types/manuscript';
-import { Keyword } from 'app/models/keyword';
-import { givenState } from 'app/test-utils/reducer-test-helpers';
+} from '../manuscript-editor.selectors';
+import { Manuscript } from '../../types/manuscript';
+import { Keyword } from '../../models/keyword';
+import { givenState } from '../../test-utils/reducer-test-helpers';
 
 describe('manuscript selectors', () => {
   let state;

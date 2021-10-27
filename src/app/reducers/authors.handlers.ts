@@ -1,14 +1,14 @@
-import { Person } from 'app/models/person';
-import { ManuscriptHistoryState } from 'app/store';
-import { MoveAuthorPayload } from 'app/actions/manuscript.actions';
-import { RearrangingChange } from 'app/utils/history/rearranging-change';
-import { BatchChange } from 'app/utils/history/batch-change';
-import { getReorderedAffiliations } from 'app/reducers/affiliations.handlers';
-import { UpdateObjectChange } from 'app/utils/history/update-object-change';
-import { AddObjectChange } from 'app/utils/history/add-object-change';
-import { DeleteObjectChange } from 'app/utils/history/delete-object-change';
-import { ArticleInformation } from 'app/models/article-information';
-import { Change } from 'app/utils/history/change';
+import { Person } from '../models/person';
+import { ManuscriptHistoryState } from '../store';
+import { MoveAuthorPayload } from '../actions/manuscript.actions';
+import { RearrangingChange } from '../utils/history/rearranging-change';
+import { BatchChange } from '../utils/history/batch-change';
+import { getReorderedAffiliations } from './affiliations.handlers';
+import { UpdateObjectChange } from '../utils/history/update-object-change';
+import { AddObjectChange } from '../utils/history/add-object-change';
+import { DeleteObjectChange } from '../utils/history/delete-object-change';
+import { ArticleInformation } from '../models/article-information';
+import { Change } from '../utils/history/change';
 
 function getUpdatedArticleInfo(articleInfo: ArticleInformation, authors: Person[]): Change {
   const newArticleInfo = articleInfo.clone();

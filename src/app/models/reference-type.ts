@@ -2,12 +2,12 @@ import { EditorState } from 'prosemirror-state';
 import { gapCursor } from 'prosemirror-gapcursor';
 import { dropCursor } from 'prosemirror-dropcursor';
 
-import { ReferenceContributor } from 'app/models/reference';
-import { getTextContentFromPath, makeSchemaFromConfig } from 'app/models/utils';
-import * as referenceInfoConfig from 'app/models/config/reference-info.config';
+import { ReferenceContributor } from './reference';
+import { getTextContentFromPath, makeSchemaFromConfig } from './utils';
+import * as referenceInfoConfig from './config/reference-info.config';
 import { DOMParser as ProseMirrorDOMParser } from 'prosemirror-model';
-import { buildInputRules } from 'app/models/plugins/input-rules';
-import { JSONObject } from 'app/types/utility.types';
+import { buildInputRules } from './plugins/input-rules';
+import { JSONObject } from '../types/utility.types';
 
 export type ReferenceType =
   | 'journal'

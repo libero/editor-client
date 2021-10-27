@@ -11,7 +11,7 @@ import { EditorState } from 'prosemirror-state';
 import { EditorView } from 'prosemirror-view';
 import { ToggleButton } from '@material-ui/lab';
 
-import { SubscriptIcon, SuperscriptIcon } from 'app/assets/icons';
+import { SubscriptIcon, SuperscriptIcon } from '../../assets/icons';
 
 const applyMark = (markName: string, editorState: EditorState, editorView: EditorView): void => {
   const mark = editorState.schema.marks[markName];

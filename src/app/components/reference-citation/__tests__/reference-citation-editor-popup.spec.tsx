@@ -8,15 +8,15 @@ import ClearIcon from '@material-ui/icons/Clear';
 import { Provider } from 'react-redux';
 import { ClickAwayListener } from '@material-ui/core';
 
-import { createBodyState } from 'app/models/body';
-import { ReferenceCitationEditorPopup } from 'app/components/reference-citation/reference-citation-editor-popup';
-import { Reference } from 'app/models/reference';
-import { givenState } from 'app/test-utils/reducer-test-helpers';
-import { ReferenceFormDialog } from 'app/containers/reference-form-dialog/reference-form-dialog';
-import { ModalContainer } from 'app/containers/modal-container';
-import * as manuscriptActions from 'app/actions/manuscript.actions';
-import { JSONObject } from 'app/types/utility.types';
-import { createReferenceAnnotatedValue } from 'app/models/reference-type';
+import { createBodyState } from '../../../models/body';
+import { ReferenceCitationEditorPopup } from '../reference-citation-editor-popup';
+import { Reference } from '../../../models/reference';
+import { givenState } from '../../../test-utils/reducer-test-helpers';
+import { ReferenceFormDialog } from '../../../containers/reference-form-dialog/reference-form-dialog';
+import { ModalContainer } from '../../../containers/modal-container';
+import * as manuscriptActions from '../../../actions/manuscript.actions';
+import { JSONObject } from '../../../types/utility.types';
+import { createReferenceAnnotatedValue } from '../../../models/reference-type';
 
 jest.mock('@material-ui/core', () => ({
   Popper: ({ children }) => <div data-cmp="Popper">{children}</div>,

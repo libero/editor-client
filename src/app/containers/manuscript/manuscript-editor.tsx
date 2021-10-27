@@ -9,21 +9,21 @@ import {
   getImpactStatement,
   getKeywordGroups,
   getTitle
-} from 'app/selectors/manuscript.selectors';
-import * as manuscriptActions from 'app/actions/manuscript.actions';
-import { RichTextEditor } from 'app/components/rich-text-editor';
-import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
-import { KeywordsEditor } from 'app/components/keywords';
+} from '../../selectors/manuscript.selectors';
+import * as manuscriptActions from '../../actions/manuscript.actions';
+import { RichTextEditor } from '../../components/rich-text-editor';
+import * as manuscriptEditorActions from '../../actions/manuscript-editor.actions';
+import { KeywordsEditor } from '../../components/keywords';
 import { useManuscriptStyles } from './styles';
 import { SortableAuthorsList } from './sortable-authors-list';
-import { AuthorsInfoDetails } from 'app/containers/manuscript/authors-info-details';
-import { AffiliationsList } from 'app/containers/manuscript/affiliations-list';
-import { ReferenceList } from 'app/containers/manuscript/references-list';
-import { ArticleInformation } from 'app/containers/manuscript/article-information';
-import { getFocusedEditorStatePath } from 'app/selectors/manuscript-editor.selectors';
-import { RelatedArticles } from 'app/containers/manuscript/related-articles';
-import { ClearFocus } from 'app/containers/manuscript/clear-focus';
-import { Keyword, KeywordGroups } from 'app/models/keyword';
+import { AuthorsInfoDetails } from './authors-info-details';
+import { AffiliationsList } from './affiliations-list';
+import { ReferenceList } from './references-list';
+import { ArticleInformation } from './article-information';
+import { getFocusedEditorStatePath } from '../../selectors/manuscript-editor.selectors';
+import { RelatedArticles } from './related-articles';
+import { ClearFocus } from './clear-focus';
+import { Keyword, KeywordGroups } from '../../models/keyword';
 
 const isInputFocused = (inputName: string, focusedPath?: string): boolean => {
   return Boolean(focusedPath) && focusedPath.startsWith(inputName);

@@ -4,11 +4,11 @@ import { Drawer, Divider, Hidden, List, ListItem, ListItemText } from '@material
 import classNames from 'classnames';
 
 import { useOutlinePanelStyles } from './styles';
-import { getArticleInformation, getJournalMeta } from 'app/selectors/manuscript.selectors';
-import { ClearFocus } from 'app/containers/manuscript/clear-focus';
-import { getManuscriptBodyTOC } from 'app/selectors/manuscript-editor.selectors';
-import { TableOfContents, TOCEntry } from 'app/types/manuscript';
-import { scrollIntoViewAction } from 'app/actions/manuscript-editor.actions';
+import { getArticleInformation, getJournalMeta } from '../../selectors/manuscript.selectors';
+import { ClearFocus } from './clear-focus';
+import { getManuscriptBodyTOC } from '../../selectors/manuscript-editor.selectors';
+import { TableOfContents, TOCEntry } from '../../types/manuscript';
+import { scrollIntoViewAction } from '../../actions/manuscript-editor.actions';
 
 export interface ManuscriptTOCProps {
   tocOpen: boolean;

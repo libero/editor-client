@@ -1,8 +1,8 @@
 import React from 'react';
 import { create, act } from 'react-test-renderer';
 
-import { ReferenceContributorsList } from 'app/containers/reference-form-dialog/reference-contributors-list';
-import { ActionButton } from 'app/components/action-button';
+import { ReferenceContributorsList } from '../reference-contributors-list';
+import { ActionButton } from '../../../components/action-button';
 
 jest.mock('@material-ui/core', () => ({
   Menu: ({ children }) => <div data-cmp="Menu">{children}</div>,

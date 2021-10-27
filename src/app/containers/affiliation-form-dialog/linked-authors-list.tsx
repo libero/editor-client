@@ -3,10 +3,10 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import { get } from 'lodash';
 import { IconButton } from '@material-ui/core';
 
-import { Person } from 'app/models/person';
+import { Person } from '../../models/person';
 import { useAffiliationFormStyles } from './styles';
-import { ActionButton } from 'app/components/action-button';
-import { Select } from 'app/components/select';
+import { ActionButton } from '../../components/action-button';
+import { Select } from '../../components/select';
 
 interface LinkedAuthorsListProps {
   linkedAuthors: Person[];

@@ -1,5 +1,5 @@
-import { givenState } from 'app/test-utils/reducer-test-helpers';
-import { ProsemirrorChange } from 'app/utils/history/prosemirror-change';
+import { givenState } from '../../../test-utils/reducer-test-helpers';
+import { ProsemirrorChange } from '../prosemirror-change';
 
 describe('ProsemirrorChange', () => {
   const manuscript = givenState({}).data.present;

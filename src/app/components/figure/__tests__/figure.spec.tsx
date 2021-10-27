@@ -2,10 +2,10 @@ import React from 'react';
 import { Node as ProsemirrorNode } from 'prosemirror-model';
 import { ReplaceAroundStep, ReplaceStep } from 'prosemirror-transform';
 
-import { createBodyState } from 'app/models/body';
-import { FigureNodeView } from 'app/components/figure/index';
+import { createBodyState } from '../../../models/body';
+import { FigureNodeView } from '../';
 import { EditorView } from 'prosemirror-view';
-import { FigureEditor } from 'app/components/figure/figure-editor';
+import { FigureEditor } from '../figure-editor';
 
 jest.mock('prosemirror-view');
 jest.mock('@material-ui/core/styles', () => {

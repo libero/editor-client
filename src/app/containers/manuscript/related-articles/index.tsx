@@ -3,14 +3,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { IconButton } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 
-import { SectionContainer } from 'app/components/section-container';
-import { getRelatedArticles } from 'app/selectors/manuscript.selectors';
-import { useRelatedArticleStyles } from 'app/containers/manuscript/related-articles/styles';
-import { RelatedArticle } from 'app/models/related-article';
-import { ActionButton } from 'app/components/action-button';
-import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
-import { RelatedArticleFormDialog } from 'app/containers/related-article-form-dialog';
-import { ComponentWithId } from 'app/types/utility.types';
+import { SectionContainer } from '../../../components/section-container';
+import { getRelatedArticles } from '../../../selectors/manuscript.selectors';
+import { useRelatedArticleStyles } from './styles';
+import { RelatedArticle } from '../../../models/related-article';
+import { ActionButton } from '../../../components/action-button';
+import * as manuscriptEditorActions from '../../../actions/manuscript-editor.actions';
+import { RelatedArticleFormDialog } from '../../related-article-form-dialog';
+import { ComponentWithId } from '../../../types/utility.types';
 
 export const RelatedArticles: React.FC<ComponentWithId> = ({ id }) => {
   const relatedArticles = useSelector(getRelatedArticles);

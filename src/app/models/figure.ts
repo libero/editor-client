@@ -1,6 +1,6 @@
 import { get } from 'lodash';
 
-import { getTextContentFromPath } from 'app/models/utils';
+import { getTextContentFromPath } from './utils';
 
 export interface Figure {
   copyrightHolder: string;

@@ -2,10 +2,10 @@ import { createSelector } from 'reselect';
 import { EditorState } from 'prosemirror-state';
 import { get } from 'lodash';
 
-import { ApplicationState, ManuscriptEditorState, PDF_TASK_STATUSES } from 'app/store';
+import { ApplicationState, ManuscriptEditorState, PDF_TASK_STATUSES } from '../store';
 import { getManuscriptData } from './manuscript.selectors';
-import { canWrapInList, isWrappedInList } from 'app/utils/prosemirror/list.helpers';
-import { ListType } from 'app/types/utility.types';
+import { canWrapInList, isWrappedInList } from '../utils/prosemirror/list.helpers';
+import { ListType } from '../types/utility.types';
 
 function isMarkActive(state: EditorState, mark: string): boolean {
   const { from, $from, to, empty } = state.selection;

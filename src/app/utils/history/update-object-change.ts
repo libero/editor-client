@@ -2,12 +2,12 @@ import * as deepDiff from 'deep-diff';
 import { cloneDeepWith, get, set } from 'lodash';
 import { EditorState, Transaction } from 'prosemirror-state';
 
-import { Manuscript } from 'app/types/manuscript';
-import { Change } from 'app/utils/history/change';
-import { cloneManuscript } from 'app/utils/state.utils';
-import { JSONObject } from 'app/types/utility.types';
-import { ProsemirrorChange } from 'app/utils/history/prosemirror-change';
-import { BatchChange } from 'app/utils/history/batch-change';
+import { Manuscript } from '../../types/manuscript';
+import { Change } from './change';
+import { cloneManuscript } from '../state.utils';
+import { JSONObject } from '../../types/utility.types';
+import { ProsemirrorChange } from './prosemirror-change';
+import { BatchChange } from './batch-change';
 
 export class UpdateObjectChange<T> extends Change {
   public static createFromTwoObjects<T>(path: string, oldObject: T, newObject: T): Change {

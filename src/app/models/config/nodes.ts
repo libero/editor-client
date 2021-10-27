@@ -1,12 +1,8 @@
 import { DOMOutputSpec } from 'prosemirror-model';
 import { v4 as uuidv4 } from 'uuid';
-import { getTextContentFromPath } from 'app/models/utils';
-import {
-  createEmptyLicenseAttributes,
-  createFigureLicenseAttributes,
-  getFigureImageUrlFromXml
-} from 'app/models/figure';
-import { parseFigure } from 'app/models/config/figure.parser';
+import { getTextContentFromPath } from '../utils';
+import { createEmptyLicenseAttributes, createFigureLicenseAttributes, getFigureImageUrlFromXml } from '../figure';
+import { parseFigure } from './figure.parser';
 
 function getTitleLevel(title: Element): number {
   let parent = title.parentNode;

@@ -1,11 +1,11 @@
 import { EditorState } from 'prosemirror-state';
 
-import { Person } from 'app/models/person';
-import { Affiliation } from 'app/models/affiliation';
-import { Reference } from 'app/models/reference';
-import { RelatedArticle } from 'app/models/related-article';
-import { ArticleInformation } from 'app/models/article-information';
-import { KeywordGroups } from 'app/models/keyword';
+import { Person } from '../models/person';
+import { Affiliation } from '../models/affiliation';
+import { Reference } from '../models/reference';
+import { RelatedArticle } from '../models/related-article';
+import { ArticleInformation } from '../models/article-information';
+import { KeywordGroups } from '../models/keyword';
 
 interface JournalMeta {
   publisherName: string;

@@ -1,10 +1,10 @@
 import { all, takeLatest, call, put } from 'redux-saga/effects';
 
-import * as manuscriptActions from 'app/actions/manuscript.actions';
-import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
-import { Action } from 'app/utils/action.utils';
-import { getManuscriptChanges, getManuscriptContent } from 'app/api/manuscript.api';
-import { applyChangesFromServer } from 'app/utils/changes.utils';
+import * as manuscriptActions from '../actions/manuscript.actions';
+import * as manuscriptEditorActions from '../actions/manuscript-editor.actions';
+import { Action } from '../utils/action.utils';
+import { getManuscriptChanges, getManuscriptContent } from '../api/manuscript.api';
+import { applyChangesFromServer } from '../utils/changes.utils';
 
 /**
  * Side effect handler to load the specified article from the backend.

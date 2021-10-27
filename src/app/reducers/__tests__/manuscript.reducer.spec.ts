@@ -1,12 +1,12 @@
 import { cloneDeep } from 'lodash';
 import { EditorState } from 'prosemirror-state';
 
-import { getInitialHistory, getInitialLoadableState, ManuscriptHistory } from 'app/utils/state.utils';
-import * as manuscriptActions from 'app/actions/manuscript.actions';
-import { manuscriptReducer } from 'app/reducers/manuscript.reducer';
-import { redoChange, undoChange, updateManuscriptState } from 'app/utils/history.utils';
-import { Manuscript } from 'app/types/manuscript';
-import { givenState } from 'app/test-utils/reducer-test-helpers';
+import { getInitialHistory, getInitialLoadableState, ManuscriptHistory } from '../../utils/state.utils';
+import * as manuscriptActions from '../../actions/manuscript.actions';
+import { manuscriptReducer } from '../manuscript.reducer';
+import { redoChange, undoChange, updateManuscriptState } from '../../utils/history.utils';
+import { Manuscript } from '../../types/manuscript';
+import { givenState } from '../../test-utils/reducer-test-helpers';
 
 jest.mock('../../utils/history.utils');
 

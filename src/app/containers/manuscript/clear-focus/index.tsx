@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import * as manuscriptEditorAction from 'app/actions/manuscript-editor.actions';
+import * as manuscriptEditorAction from '../../../actions/manuscript-editor.actions';
 
 export const ClearFocus: React.FC<{ className?: string }> = ({ children, className }) => {
   const dispatch = useDispatch();

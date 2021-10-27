@@ -3,7 +3,7 @@ import { create } from 'react-test-renderer';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 
-import { ManuscriptEditor } from 'app/containers/manuscript/manuscript-editor';
+import { ManuscriptEditor } from '../manuscript-editor';
 import {
   addNewKeywordAction,
   deleteKeywordAction,
@@ -13,10 +13,10 @@ import {
   updateKeywordAction,
   updateNewKeywordAction,
   updateTitleAction
-} from 'app/actions/manuscript.actions';
-import { givenState } from 'app/test-utils/reducer-test-helpers';
-import { removeFocusAction, setFocusAction } from 'app/actions/manuscript-editor.actions';
-import { Keyword } from 'app/models/keyword';
+} from '../../../actions/manuscript.actions';
+import { givenState } from '../../../test-utils/reducer-test-helpers';
+import { removeFocusAction, setFocusAction } from '../../../actions/manuscript-editor.actions';
+import { Keyword } from '../../../models/keyword';
 
 jest.mock('app/components/rich-text-input', () => ({
   RichTextInput: () => <div data-cmp="rich-text-input"></div>

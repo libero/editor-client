@@ -1,13 +1,13 @@
 import { EditorState } from 'prosemirror-state';
 import { cloneDeep } from 'lodash';
 
-import { givenState } from 'app/test-utils/reducer-test-helpers';
-import { Reference } from 'app/models/reference';
-import { addReference, deleteReference, updateReference } from 'app/reducers/references.handlers';
-import { BatchChange } from 'app/utils/history/batch-change';
-import { createBodyState } from 'app/models/body';
-import { createReferenceAnnotatedValue } from 'app/models/reference-type';
-import { JSONObject } from 'app/types/utility.types';
+import { givenState } from '../../test-utils/reducer-test-helpers';
+import { Reference } from '../../models/reference';
+import { addReference, deleteReference, updateReference } from '../references.handlers';
+import { BatchChange } from '../../utils/history/batch-change';
+import { createBodyState } from '../../models/body';
+import { createReferenceAnnotatedValue } from '../../models/reference-type';
+import { JSONObject } from '../../types/utility.types';
 
 let REFERENCE: Reference;
 

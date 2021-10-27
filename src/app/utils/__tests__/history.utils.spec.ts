@@ -1,8 +1,8 @@
-import { getInitialHistory, ManuscriptHistory } from 'app/utils/state.utils';
-import { redoChange, undoChange, updateManuscriptState } from 'app/utils/history.utils';
-import { Manuscript } from 'app/types/manuscript';
+import { getInitialHistory, ManuscriptHistory } from '../state.utils';
+import { redoChange, undoChange, updateManuscriptState } from '../history.utils';
+import { Manuscript } from '../../types/manuscript';
 import { EditorState, Transaction } from 'prosemirror-state';
-import { ProsemirrorChange } from 'app/utils/history/prosemirror-change';
+import { ProsemirrorChange } from '../history/prosemirror-change';
 
 describe('history utils', () => {
   it('updates manuscript state', () => {

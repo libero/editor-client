@@ -6,10 +6,10 @@ import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { mount } from 'enzyme';
 
-import { theme } from 'app/styles/theme';
-import { BoxTextEditor } from 'app/components/box-text/box-text-editor';
-import { createBodyState } from 'app/models/body';
-import { givenState } from 'app/test-utils/reducer-test-helpers';
+import { theme } from '../../../styles/theme';
+import { BoxTextEditor } from '../box-text-editor';
+import { createBodyState } from '../../../models/body';
+import { givenState } from '../../../test-utils/reducer-test-helpers';
 import { IconButton } from '@material-ui/core';
 
 jest.mock('@material-ui/core/styles', () => {

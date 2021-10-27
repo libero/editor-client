@@ -1,6 +1,6 @@
 import React from 'react';
 import { create } from 'react-test-renderer';
-import { SectionContainer } from 'app/components/section-container/index';
+import { SectionContainer } from '../';
 
 describe('Prompt Dialog', () => {
   it('renders section container', () => {

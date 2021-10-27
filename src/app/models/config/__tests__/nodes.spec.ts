@@ -1,5 +1,5 @@
 import { Node as ProsemirrorNode } from 'prosemirror-model';
-import { nodes } from 'app/models/config/nodes';
+import { nodes } from '../nodes';
 
 jest.mock('uuid', () => ({
   v4: () => 'unique_id'

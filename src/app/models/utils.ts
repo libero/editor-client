@@ -1,8 +1,8 @@
 import { pick, get } from 'lodash';
 import { Schema, SchemaSpec } from 'prosemirror-model';
 
-import { nodes } from 'app/models/config/nodes';
-import { marks } from 'app/models/config/marks';
+import { nodes } from './config/nodes';
+import { marks } from './config/marks';
 
 export function makeSchemaFromConfig(topNode: string, nodeNames: string[], markNames: string[]): Schema {
   const filteredNodes = pick(nodes, nodeNames);

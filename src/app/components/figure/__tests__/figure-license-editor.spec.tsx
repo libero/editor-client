@@ -6,9 +6,9 @@ import { Fragment } from 'prosemirror-model';
 import { ReplaceStep, ReplaceAroundStep } from 'prosemirror-transform';
 import { IconButton, TextField } from '@material-ui/core';
 
-import { createBodyState } from 'app/models/body';
-import { FigureLicenseEditor } from 'app/components/figure/figure-license-editor';
-import { NodeViewContext } from 'app/utils/view.utils';
+import { createBodyState } from '../../../models/body';
+import { FigureLicenseEditor } from '../figure-license-editor';
+import { NodeViewContext } from '../../../utils/view.utils';
 
 jest.mock('prosemirror-view');
 jest.mock('@material-ui/core/styles', () => {

@@ -1,12 +1,12 @@
-import { Affiliation } from 'app/models/affiliation';
-import { Person } from 'app/models/person';
-import { ManuscriptHistoryState } from 'app/store';
-import { LinkAffiliationsPayload } from 'app/actions/manuscript.actions';
-import { UpdateObjectChange } from 'app/utils/history/update-object-change';
-import { BatchChange } from 'app/utils/history/batch-change';
-import { RearrangingChange } from 'app/utils/history/rearranging-change';
-import { DeleteObjectChange } from 'app/utils/history/delete-object-change';
-import { AddObjectChange } from 'app/utils/history/add-object-change';
+import { Affiliation } from '../models/affiliation';
+import { Person } from '../models/person';
+import { ManuscriptHistoryState } from '../store';
+import { LinkAffiliationsPayload } from '../actions/manuscript.actions';
+import { UpdateObjectChange } from '../utils/history/update-object-change';
+import { BatchChange } from '../utils/history/batch-change';
+import { RearrangingChange } from '../utils/history/rearranging-change';
+import { DeleteObjectChange } from '../utils/history/delete-object-change';
+import { AddObjectChange } from '../utils/history/add-object-change';
 
 export function getReorderedAffiliations(authors: Person[], affiliations: Affiliation[]): BatchChange {
   const newAffiliations = affiliations.map((affiliation) => {

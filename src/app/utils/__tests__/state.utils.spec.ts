@@ -7,7 +7,7 @@ import {
   getLoadableStateError,
   getLoadableStateProgress,
   getLoadableStateSuccess
-} from 'app/utils/state.utils';
+} from '../state.utils';
 
 describe('state utils', () => {
   it('creates initial state', () => {

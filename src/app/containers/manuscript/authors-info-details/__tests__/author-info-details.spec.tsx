@@ -2,16 +2,16 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 
-import { AuthorsInfoDetails } from 'app/containers/manuscript/authors-info-details/index';
+import { AuthorsInfoDetails } from '../';
 import { EditorState } from 'prosemirror-state';
 import { create } from 'react-test-renderer';
 import { mount } from 'enzyme';
-import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
-import { AuthorFormDialog } from 'app/containers/author-form-dialog';
+import * as manuscriptEditorActions from '../../../../actions/manuscript-editor.actions';
+import { AuthorFormDialog } from '../../../author-form-dialog';
 import { IconButton } from '@material-ui/core';
-import { ActionButton } from 'app/components/action-button';
-import { Person } from 'app/models/person';
-import { givenState } from 'app/test-utils/reducer-test-helpers';
+import { ActionButton } from '../../../../components/action-button';
+import { Person } from '../../../../models/person';
+import { givenState } from '../../../../test-utils/reducer-test-helpers';
 
 jest.mock('@material-ui/core', () => ({
   Button: ({ label }) => <div data-cmp="Button">{label}</div>,

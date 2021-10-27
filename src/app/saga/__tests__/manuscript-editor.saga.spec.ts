@@ -2,10 +2,10 @@ import { put } from 'redux-saga/effects';
 import { get } from 'lodash';
 import { EditorState, TextSelection } from 'prosemirror-state';
 
-import { setFocusSaga } from 'app/saga/manuscript-editor.saga';
-import { setFocusAction, updateFocusPathAction } from 'app/actions/manuscript-editor.actions';
-import { createBodyState } from 'app/models/body';
-import { applyChangeAction } from 'app/actions/manuscript.actions';
+import { setFocusSaga } from '../manuscript-editor.saga';
+import { setFocusAction, updateFocusPathAction } from '../../actions/manuscript-editor.actions';
+import { createBodyState } from '../../models/body';
+import { applyChangeAction } from '../../actions/manuscript.actions';
 
 describe('manuscript editor saga', () => {
   it('sets focus', () => {

@@ -3,10 +3,10 @@ import { IconButton } from '@material-ui/core';
 import { create, act } from 'react-test-renderer';
 import { mount } from 'enzyme';
 
-import { LinkedAuthorsList } from 'app/containers/affiliation-form-dialog/linked-authors-list';
-import { Person } from 'app/models/person';
-import { ActionButton } from 'app/components/action-button';
-import { Select } from 'app/components/select';
+import { LinkedAuthorsList } from '../../../containers/affiliation-form-dialog/linked-authors-list';
+import { Person } from '../../../models/person';
+import { ActionButton } from '../../../components/action-button';
+import { Select } from '../../../components/select';
 
 jest.mock('app/components/select', () => ({
   Select: ({ onChange, value }) => <input onChange={onChange} value={value} data-cmp="Index" />

@@ -4,12 +4,12 @@ import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { mount } from 'enzyme';
 
-import { AuthorFormDialog } from 'app/containers/author-form-dialog/index';
-import { addAuthorAction, deleteAuthorAction, updateAuthorAction } from 'app/actions/manuscript.actions';
-import { PromptDialog } from 'app/components/prompt-dialog';
-import { givenState } from 'app/test-utils/reducer-test-helpers';
-import { ManuscriptHistoryState } from 'app/store';
-import { Person } from 'app/models/person';
+import { AuthorFormDialog } from '../';
+import { addAuthorAction, deleteAuthorAction, updateAuthorAction } from '../../../actions/manuscript.actions';
+import { PromptDialog } from '../../../components/prompt-dialog';
+import { givenState } from '../../../test-utils/reducer-test-helpers';
+import { ManuscriptHistoryState } from '../../../store';
+import { Person } from '../../../models/person';
 
 jest.mock('app/components/rich-text-input', () => ({
   RichTextInput: () => <div data-cmp="rich-text-input"></div>

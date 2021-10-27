@@ -1,14 +1,14 @@
 import { combineReducers, createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { rootSaga } from 'app/saga';
-import { manuscriptReducer } from 'app/reducers/manuscript.reducer';
-import { LoadableState, ManuscriptHistory } from 'app/utils/state.utils';
-import { manuscriptEditorReducer } from 'app/reducers/manuscript-editor.reducer';
+import { rootSaga } from '../saga';
+import { manuscriptReducer } from '../reducers/manuscript.reducer';
+import { LoadableState, ManuscriptHistory } from '../utils/state.utils';
+import { manuscriptEditorReducer } from '../reducers/manuscript-editor.reducer';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { history } from './history';
-import { ModalPayload } from 'app/actions/manuscript-editor.actions';
-import { TableOfContents } from 'app/types/manuscript';
+import { ModalPayload } from '../actions/manuscript-editor.actions';
+import { TableOfContents } from '../types/manuscript';
 
 const sagaMiddleware = createSagaMiddleware();
 

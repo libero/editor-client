@@ -9,14 +9,14 @@ import AddIcon from '@material-ui/icons/Add';
 import ClearIcon from '@material-ui/icons/Clear';
 import { has, get } from 'lodash';
 
-import { getReferences } from 'app/selectors/manuscript.selectors';
-import { Reference } from 'app/models/reference';
-import { useReferenceEditorStyles } from 'app/components/reference-citation/styles';
-import * as manuscriptActions from 'app/actions/manuscript.actions';
-import { stringifyEditorState } from 'app/utils/view.utils';
-import { ReactFCProps } from 'app/types/utility.types';
-import { ReferenceFormDialog } from 'app/containers/reference-form-dialog/reference-form-dialog';
-import { ModalContainer } from 'app/containers/modal-container';
+import { getReferences } from '../../selectors/manuscript.selectors';
+import { Reference } from '../../models/reference';
+import { useReferenceEditorStyles } from './styles';
+import * as manuscriptActions from '../../actions/manuscript.actions';
+import { stringifyEditorState } from '../../utils/view.utils';
+import { ReactFCProps } from '../../types/utility.types';
+import { ReferenceFormDialog } from '../../containers/reference-form-dialog/reference-form-dialog';
+import { ModalContainer } from '../../containers/modal-container';
 
 interface ReferenceCitationEditorPopupProps {
   editorView: EditorView | undefined;

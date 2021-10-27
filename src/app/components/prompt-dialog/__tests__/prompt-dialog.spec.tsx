@@ -1,6 +1,6 @@
 import React from 'react';
 import { create } from 'react-test-renderer';
-import { PromptDialog } from 'app/components/prompt-dialog/index';
+import { PromptDialog } from '../';
 
 jest.mock('@material-ui/core', () => ({
   Dialog: ({ children }) => <div data-cmp="dialog">{children}</div>,

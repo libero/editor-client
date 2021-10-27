@@ -4,14 +4,14 @@ import EditIcon from '@material-ui/icons/Edit';
 import { useSelector, useDispatch } from 'react-redux';
 import Interweave from 'interweave';
 
-import { SectionContainer } from 'app/components/section-container';
-import { getArticleInformation } from 'app/selectors/manuscript.selectors';
-import { useArticleInformationStyles } from 'app/containers/manuscript/article-information/styles';
-import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
-import { ArticleInfoFormDialog } from 'app/containers/article-info-form-dialog';
+import { SectionContainer } from '../../../components/section-container';
+import { getArticleInformation } from '../../../selectors/manuscript.selectors';
+import { useArticleInformationStyles } from './styles';
+import * as manuscriptEditorActions from '../../../actions/manuscript-editor.actions';
+import { ArticleInfoFormDialog } from '../../article-info-form-dialog';
 import moment from 'moment';
-import { stringifyEditorState } from 'app/utils/view.utils';
-import { ComponentWithId } from 'app/types/utility.types';
+import { stringifyEditorState } from '../../../utils/view.utils';
+import { ComponentWithId } from '../../../types/utility.types';
 
 export const ArticleInformation: React.FC<ComponentWithId> = ({ id }) => {
   const articleInfo = useSelector(getArticleInformation);

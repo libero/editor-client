@@ -1,4 +1,4 @@
-import { AutoScroller } from 'app/utils/autoscroller';
+import { AutoScroller } from '../autoscroller';
 
 class DragEvent extends window.Event {
   constructor(public clientX: number, public clientY: number) {

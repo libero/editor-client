@@ -4,10 +4,10 @@ import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { mount } from 'enzyme';
 
-import { givenState } from 'app/test-utils/reducer-test-helpers';
-import * as manuscriptActions from 'app/actions/manuscript.actions';
-import { RelatedArticleFormDialog } from 'app/containers/related-article-form-dialog/index';
-import { RelatedArticle } from 'app/models/related-article';
+import { givenState } from '../../../test-utils/reducer-test-helpers';
+import * as manuscriptActions from '../../../actions/manuscript.actions';
+import { RelatedArticleFormDialog } from '../';
+import { RelatedArticle } from '../../../models/related-article';
 
 jest.mock('@material-ui/core', () => ({
   Select: ({ children }) => <div data-cmp="Index">{children}</div>,

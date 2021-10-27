@@ -2,11 +2,11 @@ import { EditorState } from 'prosemirror-state';
 import { DOMParser as ProseMirrorDOMParser } from 'prosemirror-model';
 import { gapCursor } from 'prosemirror-gapcursor';
 
-import { makeSchemaFromConfig } from 'app/models/utils';
-import * as abstractConfig from 'app/models/config/abstract.config';
-import { buildInputRules } from 'app/models/plugins/input-rules';
-import { PlaceholderPlugin } from 'app/models/plugins/placeholder.plugin';
-import { SelectionPlugin } from 'app/models/plugins/selection.plugins';
+import { makeSchemaFromConfig } from './utils';
+import * as abstractConfig from './config/abstract.config';
+import { buildInputRules } from './plugins/input-rules';
+import { PlaceholderPlugin } from './plugins/placeholder.plugin';
+import { SelectionPlugin } from './plugins/selection.plugins';
 
 export function createAbstractState(content: Element): EditorState {
   const schema = makeSchemaFromConfig(abstractConfig.topNode, abstractConfig.nodes, abstractConfig.marks);

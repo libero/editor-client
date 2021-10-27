@@ -1,10 +1,10 @@
 import { cloneDeep } from 'lodash';
 
-import { givenState } from 'app/test-utils/reducer-test-helpers';
-import { addRelatedArticle, deleteRelatedArticle, updateRelatedArticle } from 'app/reducers/related-articles.handlers';
-import { DeleteObjectChange } from 'app/utils/history/delete-object-change';
-import { AddObjectChange } from 'app/utils/history/add-object-change';
-import { BatchChange } from 'app/utils/history/batch-change';
+import { givenState } from '../../test-utils/reducer-test-helpers';
+import { addRelatedArticle, deleteRelatedArticle, updateRelatedArticle } from '../related-articles.handlers';
+import { DeleteObjectChange } from '../../utils/history/delete-object-change';
+import { AddObjectChange } from '../../utils/history/add-object-change';
+import { BatchChange } from '../../utils/history/batch-change';
 
 const RELATED_ARTICLES = [
   {
