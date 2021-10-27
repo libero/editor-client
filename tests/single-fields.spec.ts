@@ -33,14 +33,14 @@ test.describe('single fields', () => {
       await page.goto('http://localhost:3000/?articleId=54296');
       const field = new SingleTextField(page, 'title');
       const content = 'Infinity welcomes careful drivers';
-      await field.setField(content)
+      await field.setField(content);
       await field.assertField(content);
     });
 
     test('abstract', async ({ page }) => {
       await page.goto('http://localhost:3000/?articleId=54296');
       const field = new SingleTextField(page, 'abstract');
-      const content = 'The first lesson Lister learned about space travel was you should never try it. But Lister didn\'t have a choice. All he remembered was going on a birthday celebration pub crawl through London. When he came to his senses again, with nothing in his pockets but a passport in the name of Emily Berkenstein.'
+      const content = 'The first lesson Lister learned about space travel was you should never try it. But Lister didn\'t have a choice. All he remembered was going on a birthday celebration pub crawl through London. When he came to his senses again, with nothing in his pockets but a passport in the name of Emily Berkenstein.';
       await field.setField(content);
       await field.assertField(content);
     });
@@ -48,7 +48,7 @@ test.describe('single fields', () => {
     test('impact statement', async ({ page }) => {
       await page.goto('http://localhost:3000/?articleId=54296');
       const field = new SingleTextField(page, 'impactStatement');
-      const content = 'A novel based on BBC2\'s cult comedy series written by the writers of the "Spitting Image Book". Its humour features the epic adventures of a huge clapped-out old space ship with an equally clapped-out crew.'
+      const content = 'A novel based on BBC2\'s cult comedy series written by the writers of the "Spitting Image Book". Its humour features the epic adventures of a huge clapped-out old space ship with an equally clapped-out crew.';
       await field.setField(content);
       await field.assertField(content);
     });
@@ -56,7 +56,7 @@ test.describe('single fields', () => {
     test('acknowledgements', async ({ page }) => {
       await page.goto('http://localhost:3000/?articleId=54296');
       const field = new SingleTextField(page, 'acknowledgements');
-      const content = 'Rob Grant & Doug Naylor'
+      const content = 'Rob Grant & Doug Naylor';
       await field.setField(content);
       await field.assertField(content);
     });
