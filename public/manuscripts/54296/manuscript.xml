@@ -163,16 +163,6 @@
         </article-meta>
     </front>
     <body>
-        <boxed-text>
-            <p>
-                <bold>Related research article</bold>
-                Lee TW, David HS, Engstrom AK, Carpenter BS, Katz DJ. 2019. Repressive H3K9me2 protects lifespan against
-                the transgenerational burden of COMPASS activity in <italic>C. elegans</italic>. <italic>eLife</italic>
-                <bold>8</bold>:e48498. doi:
-                <ext-link ext-link-type="uri" xlink:href="http://doi.org/10.7554/eLife.48498">10.7554/eLife.48498
-                </ext-link>
-            </p>
-        </boxed-text>
         <p>It is commonly accepted that genetic sequences coded within DNA are passed down through generations and can
             influence characteristics such as appearance, behavior and health. However, emerging evidence suggests that
             some traits can also be inherited ‘epigenetically’ from information that is independent of the DNA sequence.
@@ -246,6 +236,16 @@
                      mime-subtype="tiff"/>
             <attrib>Image credit: Cheng-Lin Li.</attrib>
         </fig>
+        <boxed-text>
+            <p>
+                <bold>Related research article</bold>
+                Lee TW, David HS, Engstrom AK, Carpenter BS, Katz DJ. 2019. Repressive H3K9me2 protects lifespan against
+                the transgenerational burden of COMPASS activity in <italic>C. elegans</italic>. <italic>eLife</italic>
+                <bold>8</bold>:e48498. doi:
+                <ext-link ext-link-type="uri" xlink:href="http://doi.org/10.7554/eLife.48498">10.7554/eLife.48498
+                </ext-link>
+            </p>
+        </boxed-text>
         <p>To build on these findings, Lee et al. explored where the H3K9me2 marks were deposited in the genomes of the
             worms. As expected, long-lived <italic>wdr-5</italic> and <italic>jhdm-1</italic> mutants have more H3K9me2
             marks spread across their genomes. Critically, Lee et al. found that specific genes in the wild-type
