@@ -2,8 +2,11 @@ import { test } from '@playwright/test';
 import { Authors } from './page-objects/authors';
 
 test.describe('authors', () => {
-  test('authors are set to correct values', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto('http://localhost:3000/?articleId=54296');
+  });
+
+  test('authors are set to correct values', async ({ page }) => {
     const authors = new Authors(page);
     await authors.assertAuthorName('Felicity Emerson', 0);
     await authors.assertAuthorName('Cheng-Lin Li', 1);
@@ -12,14 +15,12 @@ test.describe('authors', () => {
 
   test.describe('edit author', () => {
     test('Open and close modal', async ({ page }) => {
-      await page.goto('http://localhost:3000/?articleId=54296');
       const authors = new Authors(page);
       await authors.openModal(0);
       await authors.closeModal(false);
     });
 
     test('edit the name fields', async ({ page }) => {
-      await page.goto('http://localhost:3000/?articleId=54296');
       const authors = new Authors(page);
       await authors.setAuthorName({
         firstName: 'Arnold',
@@ -30,14 +31,12 @@ test.describe('authors', () => {
     });
 
     test('edit the email field', async ({ page }) => {
-      await page.goto('http://localhost:3000/?articleId=54296');
       const authors = new Authors(page);
       await authors.setAuthorEmail('foo@foo.com', 0);
       await authors.assertAuthorEmail('foo@foo.com', 0);
     });
 
     test('edit competing interest fields', async ({ page }) => {
-      await page.goto('http://localhost:3000/?articleId=54296');
       const authors = new Authors(page);
       await authors.setCompetingInterest(true, 0, 'foo');
       await authors.assertCompetingInterest(true, 0 , 'foo');
@@ -45,21 +44,18 @@ test.describe('authors', () => {
 
     const bio = 'In a hole in the ground there lived a hobbit. Not a nasty, dirty, wet hole, filled with the ends of worms and an oozy smell, nor yet a dry, bare, sandy hole with nothing in it to sit down on or to eat: it was a hobbit-hole, and that means comfort.';
     test('edit the bio field', async ({ page }) => {
-      await page.goto('http://localhost:3000/?articleId=54296');
       const authors = new Authors(page);
       await authors.setBio(bio, 0);
       await authors.assertBio(bio, 0);
     });
 
     test('edit the orcid field', async ({ page }) => {
-      await page.goto('http://localhost:3000/?articleId=54296');
       const authors = new Authors(page);
       await authors.setOrcidId('12345', 0);
       await authors.assertOrcid('12345', 0);
     });
 
     test('add an affiliation', async ({ page }) => {
-      await page.goto('http://localhost:3000/?articleId=54296');
       const authors = new Authors(page);
       const affiliation = {
         institution: 'Jupiter Mining Corporation',
@@ -71,7 +67,6 @@ test.describe('authors', () => {
     });
 
     test('edit corresponding author field', async ({ page }) => {
-      await page.goto('http://localhost:3000/?articleId=54296');
       const authors = new Authors(page);
       await authors.setCorrespondingAuthor(true, 0);
       await authors.assertCorrespondingAuthor(true, 0);
@@ -79,7 +74,6 @@ test.describe('authors', () => {
   });
 
   test('add author', async ({ page }) => {
-    await page.goto('http://localhost:3000/?articleId=54296');
     const authors = new Authors(page);
     await authors.addAuthor({
       firstName: 'Arnold',
@@ -90,7 +84,6 @@ test.describe('authors', () => {
   })
 
   test('delete author', async ({ page }) => {
-    await page.goto('http://localhost:3000/?articleId=54296');
     const authors = new Authors(page);
     await authors.deleteAuthor(0);
   });
