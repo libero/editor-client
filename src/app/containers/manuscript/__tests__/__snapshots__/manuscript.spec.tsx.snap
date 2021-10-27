@@ -141,6 +141,7 @@ Array [
       />
       <div
         className="makeStyles-root-25 makeStyles-plainVariant-27"
+        id="mainText"
       >
         <label
           className="makeStyles-label-28"
