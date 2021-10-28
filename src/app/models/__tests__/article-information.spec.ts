@@ -1,5 +1,5 @@
-import { ArticleInformation } from 'app/models/article-information';
-import { Person } from 'app/models/person';
+import { ArticleInformation } from '../article-information';
+import { Person } from '../person';
 
 jest.mock('uuid', () => ({
   v4: () => 'unique_id'

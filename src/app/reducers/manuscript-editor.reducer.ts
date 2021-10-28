@@ -1,6 +1,6 @@
 import { createReducer } from 'redux-act';
-import * as manuscriptEditorAction from 'app/actions/manuscript-editor.actions';
-import { ManuscriptEditorState, PDF_TASK_STATUSES } from 'app/store';
+import * as manuscriptEditorAction from '../actions/manuscript-editor.actions';
+import { ManuscriptEditorState, PDF_TASK_STATUSES } from '../store';
 
 const initialState: ManuscriptEditorState = {
   focusedManuscriptPath: undefined,

@@ -6,20 +6,17 @@ import { IconButton } from '@material-ui/core';
 import { EditorState } from 'prosemirror-state';
 import { Alert } from '@material-ui/lab';
 
-import { Reference, ReferenceContributor, ReferenceInfoType } from 'app/models/reference';
-import { Select } from 'app/components/select';
-import { useReferenceFormStyles } from 'app/containers/reference-form-dialog/styles';
-import { ActionButton } from 'app/components/action-button';
-import { renderConfirmDialog } from 'app/components/prompt-dialog';
-import { ReferenceContributorsList } from 'app/containers/reference-form-dialog/reference-contributors-list';
-import {
-  FormControlConfigType,
-  getFormConfigForType
-} from 'app/containers/reference-form-dialog/reference-forms.config';
-import { renderFormControl } from 'app/containers/reference-form-dialog/reference-form-renderer';
-import refFormGrid from 'app/styles/form-grid.module.scss';
-import { objectsEqual } from 'app/utils/view.utils';
-import { ReferenceType } from 'app/models/reference-type';
+import { Reference, ReferenceContributor, ReferenceInfoType } from '../../models/reference';
+import { Select } from '../../components/select';
+import { useReferenceFormStyles } from './styles';
+import { ActionButton } from '../../components/action-button';
+import { renderConfirmDialog } from '../../components/prompt-dialog';
+import { ReferenceContributorsList } from './reference-contributors-list';
+import { FormControlConfigType, getFormConfigForType } from './reference-forms.config';
+import { renderFormControl } from './reference-form-renderer';
+import refFormGrid from '../../styles/form-grid.module.scss';
+import { objectsEqual } from '../../utils/view.utils';
+import { ReferenceType } from '../../models/reference-type';
 
 interface ReferenceFormDialogProps {
   reference?: Reference;

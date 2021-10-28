@@ -6,8 +6,8 @@ import { TextSelection } from 'prosemirror-state';
 import { EditorView, NodeView } from 'prosemirror-view';
 import { Node as ProsemirrorNode, ResolvedPos } from 'prosemirror-model';
 
-import { theme } from 'app/styles/theme';
-import { LinkEditorPopup } from 'app/components/link-editor-popup/link-editor-popup';
+import { theme } from '../../styles/theme';
+import { LinkEditorPopup } from './link-editor-popup';
 
 export class LinkNodeView implements NodeView {
   dom?: HTMLAnchorElement;

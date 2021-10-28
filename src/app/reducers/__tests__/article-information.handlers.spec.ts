@@ -1,8 +1,8 @@
-import { givenState } from 'app/test-utils/reducer-test-helpers';
+import { givenState } from '../../test-utils/reducer-test-helpers';
 import { EditorState } from 'prosemirror-state';
-import { updateArticleInformation } from 'app/reducers/article-information.handlers';
-import { BatchChange } from 'app/utils/history/batch-change';
-import { cloneManuscript } from 'app/utils/state.utils';
+import { updateArticleInformation } from '../article-information.handlers';
+import { BatchChange } from '../../utils/history/batch-change';
+import { cloneManuscript } from '../../utils/state.utils';
 
 describe('article information handler', () => {
   it('updates article info', () => {

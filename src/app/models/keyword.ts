@@ -5,12 +5,12 @@ import { dropCursor } from 'prosemirror-dropcursor';
 import { keymap } from 'prosemirror-keymap';
 import { baseKeymap } from 'prosemirror-commands';
 
-import { makeSchemaFromConfig } from 'app/models/utils';
-import * as keywordConfig from 'app/models/config/keywords.config';
-import { buildInputRules } from 'app/models/plugins/input-rules';
-import { BackmatterEntity } from 'app/models/backmatter-entity';
-import { JSONObject } from 'app/types/utility.types';
-import { SelectionPlugin } from 'app/models/plugins/selection.plugins';
+import { makeSchemaFromConfig } from './utils';
+import * as keywordConfig from './config/keywords.config';
+import { buildInputRules } from './plugins/input-rules';
+import { BackmatterEntity } from './backmatter-entity';
+import { JSONObject } from '../types/utility.types';
+import { SelectionPlugin } from './plugins/selection.plugins';
 
 export class Keyword extends BackmatterEntity {
   content: EditorState;

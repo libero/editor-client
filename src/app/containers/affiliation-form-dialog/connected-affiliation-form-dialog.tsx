@@ -1,13 +1,13 @@
 import React, { useCallback } from 'react';
-import { Affiliation } from 'app/models/affiliation';
+import { Affiliation } from '../../models/affiliation';
 import { useDispatch, useSelector } from 'react-redux';
-import { AffiliationFormDialog } from 'app/containers/affiliation-form-dialog/affiliation-form-dialog';
-import { Person } from 'app/models/person';
-import * as manuscriptActions from 'app/actions/manuscript.actions';
-import { linkAffiliationsAction } from 'app/actions/manuscript.actions';
-import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
-import { objectsEqual } from 'app/utils/view.utils';
-import { getAffiliatedAuthors } from 'app/selectors/manuscript.selectors';
+import { AffiliationFormDialog } from './affiliation-form-dialog';
+import { Person } from '../../models/person';
+import * as manuscriptActions from '../../actions/manuscript.actions';
+import { linkAffiliationsAction } from '../../actions/manuscript.actions';
+import * as manuscriptEditorActions from '../../actions/manuscript-editor.actions';
+import { objectsEqual } from '../../utils/view.utils';
+import { getAffiliatedAuthors } from '../../selectors/manuscript.selectors';
 
 interface ConnectedAffiliationsFormDialogProps {
   affiliation?: Affiliation;

@@ -1,6 +1,6 @@
 import { Transaction } from 'prosemirror-state';
-import { ManuscriptHistoryState } from 'app/store';
-import { updateManuscriptState } from 'app/utils/history.utils';
+import { ManuscriptHistoryState } from '../store';
+import { updateManuscriptState } from '../utils/history.utils';
 
 export function updateAcknowledgements(state: ManuscriptHistoryState, payload: Transaction): ManuscriptHistoryState {
   return {

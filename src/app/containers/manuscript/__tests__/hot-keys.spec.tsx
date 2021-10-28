@@ -2,12 +2,12 @@ import React from 'react';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 
-import { getInitialHistory, getLoadableStateSuccess } from 'app/utils/state.utils';
+import { getInitialHistory, getLoadableStateSuccess } from '../../../utils/state.utils';
 import { EditorState } from 'prosemirror-state';
 import { mount } from 'enzyme';
-import { HotKeyBindings } from 'app/containers/manuscript/hot-keys';
+import { HotKeyBindings } from '../hot-keys';
 import { GlobalHotKeys } from 'react-hotkeys';
-import { undoAction } from 'app/actions/manuscript.actions';
+import { undoAction } from '../../../actions/manuscript.actions';
 
 jest.mock('react-hotkeys', () => ({
   configure: jest.fn(),

@@ -3,9 +3,9 @@ import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import { Popper, Paper, ClickAwayListener, TextField, InputAdornment } from '@material-ui/core';
 import ClearIcon from '@material-ui/icons/Clear';
 
-import { useFigureCitationEditorStyles } from 'app/components/figure-citation/styles';
+import { useFigureCitationEditorStyles } from './styles';
 import { EditorState } from 'prosemirror-state';
-import { getBody } from 'app/selectors/manuscript.selectors';
+import { getBody } from '../../selectors/manuscript.selectors';
 import { useSelector } from 'react-redux';
 
 export interface FiguresListEntry {

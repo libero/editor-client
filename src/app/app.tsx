@@ -9,7 +9,7 @@ import './app.scss';
 import { ManuscriptContainer } from './containers/manuscript';
 import { theme } from './styles/theme';
 import { ConnectedRouter } from 'connected-react-router';
-import { ConnectedModalContainer } from 'app/containers/modal-container';
+import { ConnectedModalContainer } from './containers/modal-container';
 
 export const App: React.FC = () => {
   return (

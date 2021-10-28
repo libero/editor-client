@@ -2,10 +2,10 @@ import React from 'react';
 import { create } from 'react-test-renderer';
 import { shallow } from 'enzyme';
 
-import { KeywordsEditor } from 'app/components/keywords/index';
-import { KeywordSection } from 'app/components/keywords/keyword-section';
-import { NewKeywordSection } from 'app/components/keywords/new-keyword-section';
-import { Keyword } from 'app/models/keyword';
+import { KeywordsEditor } from '../';
+import { KeywordSection } from '../keyword-section';
+import { NewKeywordSection } from '../new-keyword-section';
+import { Keyword } from '../../../models/keyword';
 
 describe('KeywordsEditorComponent', () => {
   const props = {

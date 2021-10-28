@@ -3,9 +3,9 @@ import { Node as ProsemirrorNode } from 'prosemirror-model';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { IconButton } from '@material-ui/core';
 
-import { RichTextEditor } from 'app/components/rich-text-editor';
-import { useBoxTextEditorStyles } from 'app/components/box-text/styles';
-import { NodeEditor } from 'app/components/node-editor/node-editor';
+import { RichTextEditor } from '../rich-text-editor';
+import { useBoxTextEditorStyles } from './styles';
+import { NodeEditor } from '../node-editor/node-editor';
 
 const BOX_CONTENT_OFFSET_CORRECTION = 1;
 

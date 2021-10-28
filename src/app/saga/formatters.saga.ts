@@ -4,19 +4,19 @@ import { all, takeLatest, call, put, select } from 'redux-saga/effects';
 import { MarkType, Fragment } from 'prosemirror-model';
 import { v4 as uuidv4 } from 'uuid';
 
-import * as manuscriptActions from 'app/actions/manuscript.actions';
-import { Action } from 'app/utils/action.utils';
+import * as manuscriptActions from '../actions/manuscript.actions';
+import { Action } from '../utils/action.utils';
 import {
   getFocusedEditorState,
   getFocusedEditorStatePath,
   getManuscriptId
-} from 'app/selectors/manuscript-editor.selectors';
-import { insertBox } from 'app/utils/prosemirror/box.helpers';
-import { insertFigure, insertFigureCitation } from 'app/utils/prosemirror/figure.helpers';
-import { wrapInListOrChangeListType } from 'app/utils/prosemirror/list.helpers';
-import { uploadFigureImage } from 'app/api/manuscript.api';
-import { UpdateFigureImagePayload } from 'app/actions/manuscript.actions';
-import { getBody } from 'app/selectors/manuscript.selectors';
+} from '../selectors/manuscript-editor.selectors';
+import { insertBox } from '../utils/prosemirror/box.helpers';
+import { insertFigure, insertFigureCitation } from '../utils/prosemirror/figure.helpers';
+import { wrapInListOrChangeListType } from '../utils/prosemirror/list.helpers';
+import { uploadFigureImage } from '../api/manuscript.api';
+import { UpdateFigureImagePayload } from '../actions/manuscript.actions';
+import { getBody } from '../selectors/manuscript.selectors';
 
 async function makeTransactionForMark(editorState: EditorState, mark: MarkType): Promise<Transaction> {
   return new Promise((resolve) => {

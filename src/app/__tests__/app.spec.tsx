@@ -1,6 +1,6 @@
 import React from 'react';
 import { create } from 'react-test-renderer';
-import { App } from 'app/app';
+import { App } from '../app';
 
 jest.mock('@material-ui/core/styles', () => {
   return {

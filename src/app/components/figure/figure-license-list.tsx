@@ -2,10 +2,10 @@ import React, { useCallback, useContext } from 'react';
 import { Button } from '@material-ui/core';
 import { Node as ProsemirrorNode } from 'prosemirror-model';
 
-import { FigureLicenseEditor } from 'app/components/figure/figure-license-editor';
-import { NodeViewContext } from 'app/utils/view.utils';
-import { createEmptyLicenseAttributes } from 'app/models/figure';
-import { useFigureEditorStyles } from 'app/components/figure/styles';
+import { FigureLicenseEditor } from './figure-license-editor';
+import { NodeViewContext } from '../../utils/view.utils';
+import { createEmptyLicenseAttributes } from '../../models/figure';
+import { useFigureEditorStyles } from './styles';
 
 interface FigureLicenseListProps {
   licenses: Array<{

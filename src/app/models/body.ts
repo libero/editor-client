@@ -8,10 +8,10 @@ import { set } from 'lodash';
 
 import * as bodyConfig from './config/body.config';
 import { buildInputRules } from './plugins/input-rules';
-import { makeSchemaFromConfig } from 'app/models/utils';
-import { PlaceholderPlugin } from 'app/models/plugins/placeholder.plugin';
-import { createListKeymap } from 'app/utils/prosemirror/list.helpers';
-import { SelectionPlugin } from 'app/models/plugins/selection.plugins';
+import { makeSchemaFromConfig } from './utils';
+import { PlaceholderPlugin } from './plugins/placeholder.plugin';
+import { createListKeymap } from '../utils/prosemirror/list.helpers';
+import { SelectionPlugin } from './plugins/selection.plugins';
 
 export function createBodyState(content: Element, id: string): EditorState {
   const schema = makeSchemaFromConfig(bodyConfig.topNode, bodyConfig.nodes, bodyConfig.marks);

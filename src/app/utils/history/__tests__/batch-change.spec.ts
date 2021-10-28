@@ -1,6 +1,6 @@
-import { givenState } from 'app/test-utils/reducer-test-helpers';
-import { BatchChange } from 'app/utils/history/batch-change';
-import { ProsemirrorChange } from 'app/utils/history/prosemirror-change';
+import { givenState } from '../../../test-utils/reducer-test-helpers';
+import { BatchChange } from '../batch-change';
+import { ProsemirrorChange } from '../prosemirror-change';
 
 describe('BatchChange', () => {
   const manuscript = givenState({}).data.present;

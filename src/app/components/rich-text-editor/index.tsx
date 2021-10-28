@@ -5,14 +5,14 @@ import { debounce, get } from 'lodash';
 import { DOMSerializer, Slice } from 'prosemirror-model';
 import 'prosemirror-example-setup/style/style.css';
 import 'prosemirror-menu/style/menu.css';
-import { SectionContainer, SectionContainerVariant } from 'app/components/section-container';
-import { ReferenceCitationNodeView } from 'app/components/reference-citation';
-import { ComponentWithId } from 'app/types/utility.types';
-import { BoxTextNodeView } from 'app/components/box-text';
-import { hasParentNodeOf } from 'app/utils/view.utils';
-import { LinkNodeView } from 'app/components/link-editor-popup';
-import { FigureNodeView } from 'app/components/figure';
-import { FigureCitationNodeView } from 'app/components/figure-citation';
+import { SectionContainer, SectionContainerVariant } from '../section-container';
+import { ReferenceCitationNodeView } from '../reference-citation';
+import { ComponentWithId } from '../../types/utility.types';
+import { BoxTextNodeView } from '../box-text';
+import { hasParentNodeOf } from '../../utils/view.utils';
+import { LinkNodeView } from '../link-editor-popup';
+import { FigureNodeView } from '../figure';
+import { FigureCitationNodeView } from '../figure-citation';
 
 /*
  * available classes:

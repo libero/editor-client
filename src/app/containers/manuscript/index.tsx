@@ -3,15 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Backdrop, Button, CircularProgress, Snackbar } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 
-import { isManuscriptLoaded } from 'app/selectors/manuscript.selectors';
+import { isManuscriptLoaded } from '../../selectors/manuscript.selectors';
 import { ManuscriptToolbar } from './manuscript-toolbar';
 import { ManuscriptEditor } from './manuscript-editor';
-import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
+import * as manuscriptEditorActions from '../../actions/manuscript-editor.actions';
 import { ManuscriptTOC } from './manuscript-toc';
 import { HotKeyBindings } from './hot-keys';
-import { getExportTask, hasUnsavedChanges } from 'app/selectors/manuscript-editor.selectors';
-import { useAlertStyles } from 'app/containers/manuscript/styles';
-import { PDF_TASK_STATUSES } from 'app/store';
+import { getExportTask, hasUnsavedChanges } from '../../selectors/manuscript-editor.selectors';
+import { useAlertStyles } from './styles';
+import { PDF_TASK_STATUSES } from '../../store';
 
 const renderBackdrop = (): JSX.Element => (
   <Backdrop open={true}>

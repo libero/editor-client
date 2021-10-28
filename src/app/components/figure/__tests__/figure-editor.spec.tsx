@@ -7,12 +7,12 @@ import { IconButton, TextField } from '@material-ui/core';
 import { Provider } from 'react-redux';
 import { mount } from 'enzyme';
 
-import { FigureEditor } from 'app/components/figure/figure-editor';
-import { createBodyState } from 'app/models/body';
-import { getImageFileUpload } from 'app/utils/view.utils';
-import { renderConfirmDialog } from 'app/components/prompt-dialog';
-import { givenState } from 'app/test-utils/reducer-test-helpers';
-import { updateFigureImageAction } from 'app/actions/manuscript.actions';
+import { FigureEditor } from '../figure-editor';
+import { createBodyState } from '../../../models/body';
+import { getImageFileUpload } from '../../../utils/view.utils';
+import { renderConfirmDialog } from '../../prompt-dialog';
+import { givenState } from '../../../test-utils/reducer-test-helpers';
+import { updateFigureImageAction } from '../../../actions/manuscript.actions';
 
 jest.mock('prosemirror-view');
 jest.mock('app/components/prompt-dialog');

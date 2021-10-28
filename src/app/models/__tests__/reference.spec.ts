@@ -1,6 +1,6 @@
-import { createReferencesState, Reference, sortReferencesList } from 'app/models/reference';
+import { createReferencesState, Reference, sortReferencesList } from '../reference';
 import { set } from 'lodash';
-import { WebReference } from 'app/models/reference-type';
+import { WebReference } from '../reference-type';
 
 jest.mock('uuid', () => ({
   v4: () => 'unique_id'

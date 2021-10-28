@@ -5,9 +5,9 @@ import { mount } from 'enzyme';
 import { TextField, ClickAwayListener } from '@material-ui/core';
 import { EditorState } from 'prosemirror-state';
 
-import { Person } from 'app/models/person';
-import { LinkEditorPopup } from 'app/components/link-editor-popup/link-editor-popup';
-import { ActionButton } from 'app/components/action-button';
+import { Person } from '../../../models/person';
+import { LinkEditorPopup } from '../link-editor-popup';
+import { ActionButton } from '../../action-button';
 
 jest.mock('@material-ui/core', () => ({
   Popper: ({ children }) => <div data-cmp="Popper">{children}</div>,

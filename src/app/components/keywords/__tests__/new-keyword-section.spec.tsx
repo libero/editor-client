@@ -2,9 +2,9 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { create } from 'react-test-renderer';
 
-import { NewKeywordSection } from 'app/components/keywords/new-keyword-section';
-import { ProseMirrorEditorView } from 'app/components/rich-text-editor/prosemirror-editor-view';
-import { Keyword } from 'app/models/keyword';
+import { NewKeywordSection } from '../new-keyword-section';
+import { ProseMirrorEditorView } from '../../rich-text-editor/prosemirror-editor-view';
+import { Keyword } from '../../../models/keyword';
 
 describe('NewKeywordsEditorComponent', () => {
   const props = {

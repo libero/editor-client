@@ -3,10 +3,10 @@ import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { mount } from 'enzyme';
 
-import { getLoadableStateSuccess } from 'app/utils/state.utils';
-import { ManuscriptToolbar } from 'app/containers/manuscript/manuscript-toolbar';
-import * as manuscriptActions from 'app/actions/manuscript.actions';
-import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
+import { getLoadableStateSuccess } from '../../../utils/state.utils';
+import { ManuscriptToolbar } from '../manuscript-toolbar';
+import * as manuscriptActions from '../../../actions/manuscript.actions';
+import * as manuscriptEditorActions from '../../../actions/manuscript-editor.actions';
 import { ToggleButton } from '@material-ui/lab';
 import { create } from 'react-test-renderer';
 

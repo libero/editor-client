@@ -1,12 +1,12 @@
 import { all, takeLatest, call, put, takeEvery, select } from 'redux-saga/effects';
 import { eventChannel } from 'redux-saga';
 
-import * as manuscriptActions from 'app/actions/manuscript.actions';
-import { getLastSyncTimestamp, getManuscriptId } from 'app/selectors/manuscript-editor.selectors';
-import { getChangesMadeBetween } from 'app/selectors/manuscript.selectors';
-import { setLastSyncFailed, setLastSyncTimestamp } from 'app/actions/manuscript-editor.actions';
-import { syncChanges } from 'app/api/manuscript.api';
-import { Change } from 'app/utils/history/change';
+import * as manuscriptActions from '../actions/manuscript.actions';
+import { getLastSyncTimestamp, getManuscriptId } from '../selectors/manuscript-editor.selectors';
+import { getChangesMadeBetween } from '../selectors/manuscript.selectors';
+import { setLastSyncFailed, setLastSyncTimestamp } from '../actions/manuscript-editor.actions';
+import { syncChanges } from '../api/manuscript.api';
+import { Change } from '../utils/history/change';
 
 const SYNC_INTERVAL = 2000;
 

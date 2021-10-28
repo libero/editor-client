@@ -1,15 +1,10 @@
 import { cloneDeep } from 'lodash';
 
-import { givenState } from 'app/test-utils/reducer-test-helpers';
-import {
-  addAffiliation,
-  deleteAffiliation,
-  linkAffiliations,
-  updateAffiliation
-} from 'app/reducers/affiliations.handlers';
-import { Person } from 'app/models/person';
-import { BatchChange } from 'app/utils/history/batch-change';
-import { Affiliation } from 'app/models/affiliation';
+import { givenState } from '../../test-utils/reducer-test-helpers';
+import { addAffiliation, deleteAffiliation, linkAffiliations, updateAffiliation } from '../affiliations.handlers';
+import { Person } from '../../models/person';
+import { BatchChange } from '../../utils/history/batch-change';
+import { Affiliation } from '../../models/affiliation';
 
 describe('affiliations reducers', () => {
   it('should update affiliation', () => {

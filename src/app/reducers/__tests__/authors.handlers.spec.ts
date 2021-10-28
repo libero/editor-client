@@ -1,7 +1,7 @@
-import { givenState } from 'app/test-utils/reducer-test-helpers';
-import { addAuthor, deleteAuthor, moveAuthor, updateAuthor } from 'app/reducers/authors.handlers';
-import { BatchChange } from 'app/utils/history/batch-change';
-import { Person } from 'app/models/person';
+import { givenState } from '../../test-utils/reducer-test-helpers';
+import { addAuthor, deleteAuthor, moveAuthor, updateAuthor } from '../authors.handlers';
+import { BatchChange } from '../../utils/history/batch-change';
+import { Person } from '../../models/person';
 jest.mock('uuid', () => ({ v4: () => 'some_uuid' }));
 
 describe('Authors reducers', () => {

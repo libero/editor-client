@@ -3,8 +3,8 @@ import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 
 import { create } from 'react-test-renderer';
-import { givenState } from 'app/test-utils/reducer-test-helpers';
-import { RelatedArticles } from 'app/containers/manuscript/related-articles/index';
+import { givenState } from '../../../../test-utils/reducer-test-helpers';
+import { RelatedArticles } from '../';
 
 jest.mock('@material-ui/core', () => ({
   Button: ({ label }) => <div data-cmp="Button">{label}</div>,

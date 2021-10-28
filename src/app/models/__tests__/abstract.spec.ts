@@ -1,4 +1,4 @@
-import { createAbstractState, createImpactStatementState } from 'app/models/abstract';
+import { createAbstractState, createImpactStatementState } from '../abstract';
 
 describe('Manuscript state factory', () => {
   it('creates abstract state', () => {

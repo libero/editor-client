@@ -3,14 +3,14 @@ import {
   KeywordDeletePayload,
   KeywordUpdatePayload,
   NewKeywordUpdatePayload
-} from 'app/actions/manuscript.actions';
-import { ManuscriptHistoryState } from 'app/store';
-import { updateManuscriptState } from 'app/utils/history.utils';
-import { AddObjectChange } from 'app/utils/history/add-object-change';
-import { UpdateObjectChange } from 'app/utils/history/update-object-change';
-import { BatchChange } from 'app/utils/history/batch-change';
-import { DeleteObjectChange } from 'app/utils/history/delete-object-change';
-import { Keyword } from 'app/models/keyword';
+} from '../actions/manuscript.actions';
+import { ManuscriptHistoryState } from '../store';
+import { updateManuscriptState } from '../utils/history.utils';
+import { AddObjectChange } from '../utils/history/add-object-change';
+import { UpdateObjectChange } from '../utils/history/update-object-change';
+import { BatchChange } from '../utils/history/batch-change';
+import { DeleteObjectChange } from '../utils/history/delete-object-change';
+import { Keyword } from '../models/keyword';
 
 export function deleteKeyword(state: ManuscriptHistoryState, payload: KeywordDeletePayload): ManuscriptHistoryState {
   const { keywordGroup, keyword } = payload;

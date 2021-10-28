@@ -1,10 +1,10 @@
 import { EditorState } from 'prosemirror-state';
 import { Schema } from 'prosemirror-model';
 
-import { Manuscript } from 'app/types/manuscript';
-import { getInitialHistory, getLoadableStateSuccess } from 'app/utils/state.utils';
-import { ManuscriptHistoryState } from 'app/store';
-import { ArticleInformation } from 'app/models/article-information';
+import { Manuscript } from '../types/manuscript';
+import { getInitialHistory, getLoadableStateSuccess } from '../utils/state.utils';
+import { ManuscriptHistoryState } from '../store';
+import { ArticleInformation } from '../models/article-information';
 
 export function givenState(overrides: Partial<Manuscript>): ManuscriptHistoryState {
   return getLoadableStateSuccess(

@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
-import { ApplicationState, ManuscriptHistoryState } from 'app/store';
+import { ApplicationState, ManuscriptHistoryState } from '../store';
 import { get } from 'lodash';
-import { Person } from 'app/models/person';
+import { Person } from '../models/person';
 
 const getManuscriptState = (state: ApplicationState): ManuscriptHistoryState => {
   return state.manuscript;

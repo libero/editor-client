@@ -2,18 +2,18 @@ import { Transaction, TextSelection } from 'prosemirror-state';
 import { all, takeLatest, put, select, call, takeEvery } from 'redux-saga/effects';
 import { eventChannel } from 'redux-saga';
 
-import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
-import * as manuscriptActions from 'app/actions/manuscript.actions';
-import { Action } from 'app/utils/action.utils';
+import * as manuscriptEditorActions from '../actions/manuscript-editor.actions';
+import * as manuscriptActions from '../actions/manuscript.actions';
+import { Action } from '../utils/action.utils';
 import {
   getExportTask,
   getFocusedEditorState,
   getFocusedEditorStatePath,
   getManuscriptId
-} from 'app/selectors/manuscript-editor.selectors';
-import { cancelManuscriptExport, getManuscriptExportStatus, startManuscriptExport } from 'app/api/manuscript.api';
-import { PDF_TASK_STATUSES } from 'app/store';
-import { LocalStorageApi } from 'app/api/local-storage.api';
+} from '../selectors/manuscript-editor.selectors';
+import { cancelManuscriptExport, getManuscriptExportStatus, startManuscriptExport } from '../api/manuscript.api';
+import { PDF_TASK_STATUSES } from '../store';
+import { LocalStorageApi } from '../api/local-storage.api';
 
 const POLL_INTERVAL = 5000;
 

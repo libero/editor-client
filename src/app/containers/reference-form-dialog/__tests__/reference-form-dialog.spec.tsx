@@ -3,14 +3,14 @@ import configureMockStore from 'redux-mock-store';
 import { create } from 'react-test-renderer';
 import { Provider } from 'react-redux';
 
-import { givenState } from 'app/test-utils/reducer-test-helpers';
+import { givenState } from '../../../test-utils/reducer-test-helpers';
 import { mount } from 'enzyme';
-import * as manuscriptActions from 'app/actions/manuscript.actions';
-import { PromptDialog } from 'app/components/prompt-dialog';
-import { ConnectedReferenceFormDialog } from 'app/containers/reference-form-dialog/connected-reference-form-dialog';
-import { createReferenceAnnotatedValue, ReferenceType } from 'app/models/reference-type';
-import { Reference } from 'app/models/reference';
-import { JSONObject } from 'app/types/utility.types';
+import * as manuscriptActions from '../../../actions/manuscript.actions';
+import { PromptDialog } from '../../../components/prompt-dialog';
+import { ConnectedReferenceFormDialog } from '../connected-reference-form-dialog';
+import { createReferenceAnnotatedValue, ReferenceType } from '../../../models/reference-type';
+import { Reference } from '../../../models/reference';
+import { JSONObject } from '../../../types/utility.types';
 
 jest.mock('@material-ui/core', () => ({
   Dialog: () => <div data-cmp="Dialog"></div>,

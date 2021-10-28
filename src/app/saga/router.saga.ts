@@ -1,7 +1,7 @@
 import { all, takeLatest, put } from 'redux-saga/effects';
-import * as manuscriptActions from 'app/actions/manuscript.actions';
+import * as manuscriptActions from '../actions/manuscript.actions';
 import { LOCATION_CHANGE, LocationChangeAction, push } from 'connected-react-router';
-import { getKeyFromQueryParams } from 'app/utils/url.utils';
+import { getKeyFromQueryParams } from '../utils/url.utils';
 
 /**
  * Side effect handler for a location change event that will, if present, start to load the specified article.

@@ -2,10 +2,10 @@ import React, { useCallback, useRef, useEffect } from 'react';
 import { EditorState, Transaction } from 'prosemirror-state';
 
 import { NewKeywordSection } from './new-keyword-section';
-import { KeywordSection } from 'app/components/keywords/keyword-section';
+import { KeywordSection } from './keyword-section';
 import { makeKeywordContainerStyles } from './styles';
-import { SectionContainer } from 'app/components/section-container';
-import { Keyword } from 'app/models/keyword';
+import { SectionContainer } from '../section-container';
+import { Keyword } from '../../models/keyword';
 
 interface KeywordsEditorProps {
   keywords: Keyword[];

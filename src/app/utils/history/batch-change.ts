@@ -1,7 +1,7 @@
-import { Manuscript } from 'app/types/manuscript';
-import { JSONObject } from 'app/types/utility.types';
-import { deserializeChanges } from 'app/utils/changes.utils';
-import { Change } from 'app/utils/history/change';
+import { Manuscript } from '../../types/manuscript';
+import { JSONObject } from '../../types/utility.types';
+import { deserializeChanges } from '../changes.utils';
+import { Change } from './change';
 
 export class BatchChange extends Change {
   static fromJSON(data: JSONObject): BatchChange {

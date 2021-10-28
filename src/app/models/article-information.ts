@@ -1,15 +1,15 @@
 import { EditorState } from 'prosemirror-state';
 import { DOMParser as ProseMirrorDOMParser } from 'prosemirror-model';
-import { buildInputRules } from 'app/models/plugins/input-rules';
+import { buildInputRules } from './plugins/input-rules';
 import { gapCursor } from 'prosemirror-gapcursor';
 import { dropCursor } from 'prosemirror-dropcursor';
 
-import { getTextContentFromPath, makeSchemaFromConfig } from 'app/models/utils';
-import * as licenseTextConfig from 'app/models/config/license-text.config';
-import { Person } from 'app/models/person';
+import { getTextContentFromPath, makeSchemaFromConfig } from './utils';
+import * as licenseTextConfig from './config/license-text.config';
+import { Person } from './person';
 import moment from 'moment';
-import { BackmatterEntity } from 'app/models/backmatter-entity';
-import { JSONObject } from 'app/types/utility.types';
+import { BackmatterEntity } from './backmatter-entity';
+import { JSONObject } from '../types/utility.types';
 
 export const LICENSE_CC_BY_4 = 'CC-BY-4';
 export const LICENSE_CC0 = 'CC0';

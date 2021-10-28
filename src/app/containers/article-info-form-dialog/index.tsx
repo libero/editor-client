@@ -5,16 +5,16 @@ import { isEqual, set } from 'lodash';
 import Interweave from 'interweave';
 import classNames from 'classnames';
 
-import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
-import * as manuscriptActions from 'app/actions/manuscript.actions';
-import { ActionButton } from 'app/components/action-button';
-import { useArticleInfoFormStyles } from 'app/containers/article-info-form-dialog/styles';
-import { getArticleInformation, getAuthors } from 'app/selectors/manuscript.selectors';
-import formGrid from 'app/styles/form-grid.module.scss';
-import { Select } from 'app/components/select';
-import { ArticleInformation, LICENSE_CC0, LICENSE_CC_BY_4 } from 'app/models/article-information';
-import { SectionContainer } from 'app/components/section-container';
-import { stringifyEditorState } from 'app/utils/view.utils';
+import * as manuscriptEditorActions from '../../actions/manuscript-editor.actions';
+import * as manuscriptActions from '../../actions/manuscript.actions';
+import { ActionButton } from '../../components/action-button';
+import { useArticleInfoFormStyles } from './styles';
+import { getArticleInformation, getAuthors } from '../../selectors/manuscript.selectors';
+import formGrid from '../../styles/form-grid.module.scss';
+import { Select } from '../../components/select';
+import { ArticleInformation, LICENSE_CC0, LICENSE_CC_BY_4 } from '../../models/article-information';
+import { SectionContainer } from '../../components/section-container';
+import { stringifyEditorState } from '../../utils/view.utils';
 
 const labelProps = { shrink: true };
 

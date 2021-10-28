@@ -4,9 +4,9 @@ import formattersSaga from './formatters.saga';
 import manuscriptEditorSaga from './manuscript-editor.saga';
 import syncChangesSaga from './sync.saga';
 import tocSaga from './toc.saga';
-import { routerSaga } from 'app/saga/router.saga';
-import { LocalStorageApi } from 'app/api/local-storage.api';
-import * as manuscriptEditorAction from 'app/actions/manuscript-editor.actions';
+import { routerSaga } from './router.saga';
+import { LocalStorageApi } from '../api/local-storage.api';
+import * as manuscriptEditorAction from '../actions/manuscript-editor.actions';
 
 // eslint-disable-next-line
 function* initialSaga<T>() {

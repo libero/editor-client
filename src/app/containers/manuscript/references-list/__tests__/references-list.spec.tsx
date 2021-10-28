@@ -4,10 +4,10 @@ import { create } from 'react-test-renderer';
 import { EditorState } from 'prosemirror-state';
 import { Provider } from 'react-redux';
 
-import { ReferenceList } from 'app/containers/manuscript/references-list/index';
-import { givenState } from 'app/test-utils/reducer-test-helpers';
-import { Reference } from 'app/models/reference';
-import { createReferenceAnnotatedValue } from 'app/models/reference-type';
+import { ReferenceList } from '../';
+import { givenState } from '../../../../test-utils/reducer-test-helpers';
+import { Reference } from '../../../../models/reference';
+import { createReferenceAnnotatedValue } from '../../../../models/reference-type';
 
 jest.mock('@material-ui/core', () => ({
   Button: ({ label }) => <div data-cmp="Button">{label}</div>,

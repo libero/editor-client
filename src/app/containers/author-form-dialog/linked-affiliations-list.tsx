@@ -4,16 +4,16 @@ import { get } from 'lodash';
 import { MenuItem, IconButton, Menu } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 
-import { ActionButton } from 'app/components/action-button';
-import { useAuthorFormStyles } from 'app/containers/author-form-dialog/styles';
-import { Affiliation } from 'app/models/affiliation';
-import { AffiliationFormDialog } from 'app/containers/affiliation-form-dialog/affiliation-form-dialog';
-import { ModalContainer } from 'app/containers/modal-container';
-import { ReactFCProps } from 'app/types/utility.types';
-import * as manuscriptActions from 'app/actions/manuscript.actions';
-import { Person } from 'app/models/person';
-import { linkAffiliationsAction } from 'app/actions/manuscript.actions';
-import { Select } from 'app/components/select';
+import { ActionButton } from '../../components/action-button';
+import { useAuthorFormStyles } from './styles';
+import { Affiliation } from '../../models/affiliation';
+import { AffiliationFormDialog } from '../affiliation-form-dialog/affiliation-form-dialog';
+import { ModalContainer } from '../modal-container';
+import { ReactFCProps } from '../../types/utility.types';
+import * as manuscriptActions from '../../actions/manuscript.actions';
+import { Person } from '../../models/person';
+import { linkAffiliationsAction } from '../../actions/manuscript.actions';
+import { Select } from '../../components/select';
 
 interface LinkedAffiliationsListProps {
   linkedAffiliations: Affiliation[];

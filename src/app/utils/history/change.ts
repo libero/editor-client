@@ -1,5 +1,5 @@
-import { Manuscript } from 'app/types/manuscript';
-import { JSONObject } from 'app/types/utility.types';
+import { Manuscript } from '../../types/manuscript';
+import { JSONObject } from '../../types/utility.types';
 
 export abstract class Change {
   abstract applyChange(manuscript: Manuscript): Manuscript;

@@ -3,7 +3,7 @@ import { Dialog, DialogTitle, DialogContent, Typography, Paper, PaperProps } fro
 import Draggable from 'react-draggable';
 
 import { useModalContainerStyles } from './styles';
-import { ReactFCProps } from 'app/types/utility.types';
+import { ReactFCProps } from '../../types/utility.types';
 
 interface ModalContainerProps<T> {
   title: string;

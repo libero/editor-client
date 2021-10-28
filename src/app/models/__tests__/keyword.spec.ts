@@ -1,4 +1,4 @@
-import { createKeywordGroupsState, Keyword } from 'app/models/keyword';
+import { createKeywordGroupsState, Keyword } from '../keyword';
 
 jest.mock('uuid', () => ({
   v4: () => 'unique_id'

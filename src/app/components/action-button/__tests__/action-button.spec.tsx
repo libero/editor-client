@@ -1,6 +1,6 @@
 import React from 'react';
 import { create } from 'react-test-renderer';
-import { ActionButton } from 'app/components/action-button/index';
+import { ActionButton } from '../index';
 
 describe('Action Button', () => {
   it('renders action button secondaryOutlined', () => {

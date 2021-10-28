@@ -1,9 +1,9 @@
-import { loadManuscriptSaga } from 'app/saga/manuscript.saga';
-import { loadManuscriptAction } from 'app/actions/manuscript.actions';
+import { loadManuscriptSaga } from '../manuscript.saga';
+import { loadManuscriptAction } from '../../actions/manuscript.actions';
 import { put } from 'redux-saga/effects';
 import { EditorState } from 'prosemirror-state';
-import { Manuscript } from 'app/types/manuscript';
-import { setManuscriptId } from 'app/actions/manuscript-editor.actions';
+import { Manuscript } from '../../types/manuscript';
+import { setManuscriptId } from '../../actions/manuscript-editor.actions';
 
 describe('manuscript saga', () => {
   it('should load data', () => {

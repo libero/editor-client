@@ -1,4 +1,4 @@
-import { createAuthorsState, Person } from 'app/models/person';
+import { createAuthorsState, Person } from '../person';
 
 jest.mock('uuid', () => ({
   v5: () => 'unique_id',

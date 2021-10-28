@@ -1,4 +1,4 @@
-import { createAsyncAction } from 'app/utils/action.utils';
+import { createAsyncAction } from '../action.utils';
 
 describe('Async Action', () => {
   it('should create async action', () => {

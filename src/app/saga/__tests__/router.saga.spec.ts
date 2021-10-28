@@ -1,8 +1,8 @@
 import { put } from 'redux-saga/effects';
 import { LOCATION_CHANGE, LocationChangePayload, push } from 'connected-react-router';
 
-import { routerLocationChangeSaga } from 'app/saga/router.saga';
-import { loadManuscriptAction } from 'app/actions/manuscript.actions';
+import { routerLocationChangeSaga } from '../router.saga';
+import { loadManuscriptAction } from '../../actions/manuscript.actions';
 
 describe('router saga', () => {
   it('loads an article by id', () => {

@@ -3,9 +3,9 @@ import { EditorState } from 'prosemirror-state';
 import { mount } from 'enzyme';
 import { create } from 'react-test-renderer';
 
-import { Person } from 'app/models/person';
-import { RichTextInput } from 'app/components/rich-text-input/index';
-import { ProseMirrorEditorView } from 'app/components/rich-text-editor/prosemirror-editor-view';
+import { Person } from '../../../models/person';
+import { RichTextInput } from '../';
+import { ProseMirrorEditorView } from '../../rich-text-editor/prosemirror-editor-view';
 
 jest.mock('@material-ui/lab', () => ({
   ToggleButtonGroup: ({ children }) => <div data-cmp="ToggleButtonGroup">{children}</div>,

@@ -1,6 +1,6 @@
 import { cloneDeep, get } from 'lodash';
-import { BackmatterEntity } from 'app/models/backmatter-entity';
-import { JSONObject } from 'app/types/utility.types';
+import { BackmatterEntity } from './backmatter-entity';
+import { JSONObject } from '../types/utility.types';
 import {
   BookReference,
   ConferenceReference,
@@ -48,7 +48,7 @@ import {
   SoftwareReference,
   ThesisReference,
   WebReference
-} from 'app/models/reference-type';
+} from './reference-type';
 
 export type ReferenceContributor =
   | {

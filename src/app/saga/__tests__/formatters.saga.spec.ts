@@ -1,15 +1,15 @@
 import { runSaga } from 'redux-saga';
 
-import { insertHeadingSaga, insertReferenceCitationSaga, toggleMarkSaga } from 'app/saga/formatters.saga';
+import { insertHeadingSaga, insertReferenceCitationSaga, toggleMarkSaga } from '../formatters.saga';
 import {
   applyChangeAction,
   insertHeadingAction,
   insertReferenceCitationAction,
   toggleMarkAction
-} from 'app/actions/manuscript.actions';
-import { givenState } from 'app/test-utils/reducer-test-helpers';
-import { createBodyState } from 'app/models/body';
-import { Keyword } from 'app/models/keyword';
+} from '../../actions/manuscript.actions';
+import { givenState } from '../../test-utils/reducer-test-helpers';
+import { createBodyState } from '../../models/body';
+import { Keyword } from '../../models/keyword';
 
 describe('formatters saga', () => {
   it('should format text', async () => {

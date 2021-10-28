@@ -4,9 +4,9 @@ import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { Backdrop, CircularProgress, Hidden, Container } from '@material-ui/core';
 
-import { getLoadableStateProgress } from 'app/utils/state.utils';
-import { ManuscriptContainer } from 'app/containers/manuscript/index';
-import { givenState } from 'app/test-utils/reducer-test-helpers';
+import { getLoadableStateProgress } from '../../../utils/state.utils';
+import { ManuscriptContainer } from '../';
+import { givenState } from '../../../test-utils/reducer-test-helpers';
 
 jest.mock('@material-ui/core');
 jest.mock('app/components/rich-text-input', () => ({

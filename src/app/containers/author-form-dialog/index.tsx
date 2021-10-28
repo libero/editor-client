@@ -4,19 +4,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Transaction } from 'prosemirror-state';
 
 import { useAuthorFormStyles } from './styles';
-import { Person } from 'app/models/person';
-import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
-import * as manuscriptActions from 'app/actions/manuscript.actions';
-import { renderConfirmDialog } from 'app/components/prompt-dialog';
-import { ActionButton } from 'app/components/action-button';
+import { Person } from '../../models/person';
+import * as manuscriptEditorActions from '../../actions/manuscript-editor.actions';
+import * as manuscriptActions from '../../actions/manuscript.actions';
+import { renderConfirmDialog } from '../../components/prompt-dialog';
+import { ActionButton } from '../../components/action-button';
 import { LinkedAffiliationsList } from './linked-affiliations-list';
-import { getAffiliations, getAuthorAffiliations } from 'app/selectors/manuscript.selectors';
-import { Affiliation } from 'app/models/affiliation';
-import { RichTextInput } from 'app/components/rich-text-input';
-import { OrcidIcon } from 'app/assets/icons';
-import { Select } from 'app/components/select';
-import { ValueOf } from 'app/types/utility.types';
-import { objectsEqual } from 'app/utils/view.utils';
+import { getAffiliations, getAuthorAffiliations } from '../../selectors/manuscript.selectors';
+import { Affiliation } from '../../models/affiliation';
+import { RichTextInput } from '../../components/rich-text-input';
+import { OrcidIcon } from '../../assets/icons';
+import { Select } from '../../components/select';
+import { ValueOf } from '../../types/utility.types';
+import { objectsEqual } from '../../utils/view.utils';
 
 interface AuthorFormDialogProps {
   author?: Person;

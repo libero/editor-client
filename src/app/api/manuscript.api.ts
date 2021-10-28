@@ -1,21 +1,21 @@
 import axios from 'axios';
 import { isUndefined } from 'lodash';
 
-import { Manuscript } from 'app/types/manuscript';
-import { createTitleState } from 'app/models/title';
-import { createAuthorsState } from 'app/models/person';
-import { createAffiliationsState } from 'app/models/affiliation';
-import { getTextContentFromPath } from 'app/models/utils';
-import { createRelatedArticleState } from 'app/models/related-article';
-import { ArticleInformation } from 'app/models/article-information';
-import { createKeywordGroupsState } from 'app/models/keyword';
-import { createReferencesState } from 'app/models/reference';
-import { createAbstractState, createImpactStatementState } from 'app/models/abstract';
-import { createBodyState } from 'app/models/body';
-import { createAcknowledgementsState } from 'app/models/acknowledgements';
-import { Change } from 'app/utils/history/change';
+import { Manuscript } from '../types/manuscript';
+import { createTitleState } from '../models/title';
+import { createAuthorsState } from '../models/person';
+import { createAffiliationsState } from '../models/affiliation';
+import { getTextContentFromPath } from '../models/utils';
+import { createRelatedArticleState } from '../models/related-article';
+import { ArticleInformation } from '../models/article-information';
+import { createKeywordGroupsState } from '../models/keyword';
+import { createReferencesState } from '../models/reference';
+import { createAbstractState, createImpactStatementState } from '../models/abstract';
+import { createBodyState } from '../models/body';
+import { createAcknowledgementsState } from '../models/acknowledgements';
+import { Change } from '../utils/history/change';
 
-import { JSONObject } from 'app/types/utility.types';
+import { JSONObject } from '../types/utility.types';
 
 const RECORDS_PER_PAGE = 100;
 

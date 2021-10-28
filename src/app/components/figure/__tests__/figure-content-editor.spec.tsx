@@ -1,8 +1,8 @@
 import React from 'react';
 import { create } from 'react-test-renderer';
 
-import { FigureContentEditor } from 'app/components/figure/figure-content-editor';
-import { createBodyState } from 'app/models/body';
+import { FigureContentEditor } from '../figure-content-editor';
+import { createBodyState } from '../../../models/body';
 
 jest.mock('app/components/rich-text-editor', () => ({
   RichTextEditor: () => <div data-cmp="rich-text-editor"></div>

@@ -10,9 +10,9 @@ import PdfIcon from '@material-ui/icons/PictureAsPdf';
 import MenuIcon from '@material-ui/icons/Menu';
 import classNames from 'classnames';
 
-import { DropDownMenu } from 'app/components/drop-down-menu';
-import * as manuscriptActions from 'app/actions/manuscript.actions';
-import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
+import { DropDownMenu } from '../../components/drop-down-menu';
+import * as manuscriptActions from '../../actions/manuscript.actions';
+import * as manuscriptEditorActions from '../../actions/manuscript-editor.actions';
 
 import {
   canApplyMarkToSelection,
@@ -28,9 +28,9 @@ import {
   isLastSyncSuccesful,
   getLastSyncTimestamp,
   isExportTaskRunning
-} from 'app/selectors/manuscript-editor.selectors';
+} from '../../selectors/manuscript-editor.selectors';
 import { useToolbarStyles } from './styles';
-import { getImageFileUpload } from 'app/utils/view.utils';
+import { getImageFileUpload } from '../../utils/view.utils';
 import moment from 'moment';
 
 export interface ManuscriptToolbarProps {

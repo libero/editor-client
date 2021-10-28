@@ -1,7 +1,7 @@
 import { Transaction } from 'prosemirror-state';
 
 import { ManuscriptHistory } from './state.utils';
-import { ProsemirrorChange } from 'app/utils/history/prosemirror-change';
+import { ProsemirrorChange } from './history/prosemirror-change';
 
 export function updateManuscriptState(
   state: ManuscriptHistory,

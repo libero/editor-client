@@ -1,4 +1,4 @@
-import { createTitleState } from 'app/models/title';
+import { createTitleState } from '../title';
 
 describe('Manuscript state factory', () => {
   it('creates title state', () => {

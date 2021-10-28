@@ -5,11 +5,11 @@ import ReactDOM from 'react-dom';
 import { ThemeProvider } from '@material-ui/core/styles';
 import { NodeSelection } from 'prosemirror-state';
 
-import { theme } from 'app/styles/theme';
-import { FigureEditor, FigureEditorHandle } from 'app/components/figure/figure-editor';
-import { NodeViewContext } from 'app/utils/view.utils';
-import { AutoScroller } from 'app/utils/autoscroller';
-import { store } from 'app/store';
+import { theme } from '../../styles/theme';
+import { FigureEditor, FigureEditorHandle } from './figure-editor';
+import { NodeViewContext } from '../../utils/view.utils';
+import { AutoScroller } from '../../utils/autoscroller';
+import { store } from '../../store';
 import { Provider } from 'react-redux';
 
 export class FigureNodeView implements NodeView {

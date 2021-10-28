@@ -1,21 +1,21 @@
 import { cloneDeepWith } from 'lodash';
 import { EditorState } from 'prosemirror-state';
 
-import { JSONObject } from 'app/types/utility.types';
-import { Manuscript } from 'app/types/manuscript';
-import { Change } from 'app/utils/history/change';
-import { BatchChange } from 'app/utils/history/batch-change';
-import { ProsemirrorChange } from 'app/utils/history/prosemirror-change';
-import { RearrangingChange } from 'app/utils/history/rearranging-change';
-import { UpdateObjectChange } from 'app/utils/history/update-object-change';
-import { DeleteObjectChange } from 'app/utils/history/delete-object-change';
-import { BackmatterEntity } from 'app/models/backmatter-entity';
-import { Affiliation } from 'app/models/affiliation';
-import { Person } from 'app/models/person';
-import { Reference } from 'app/models/reference';
-import { RelatedArticle } from 'app/models/related-article';
-import { Keyword } from 'app/models/keyword';
-import { AddObjectChange } from 'app/utils/history/add-object-change';
+import { JSONObject } from '../types/utility.types';
+import { Manuscript } from '../types/manuscript';
+import { Change } from './history/change';
+import { BatchChange } from './history/batch-change';
+import { ProsemirrorChange } from './history/prosemirror-change';
+import { RearrangingChange } from './history/rearranging-change';
+import { UpdateObjectChange } from './history/update-object-change';
+import { DeleteObjectChange } from './history/delete-object-change';
+import { BackmatterEntity } from '../models/backmatter-entity';
+import { Affiliation } from '../models/affiliation';
+import { Person } from '../models/person';
+import { Reference } from '../models/reference';
+import { RelatedArticle } from '../models/related-article';
+import { Keyword } from '../models/keyword';
+import { AddObjectChange } from './history/add-object-change';
 
 export function manuscriptEntityToJson<T>(object: T): JSONObject {
   return cloneDeepWith(object, (value) => {

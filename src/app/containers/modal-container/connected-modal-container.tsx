@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { isModalVisible, getModalParams } from 'app/selectors/manuscript-editor.selectors';
-import { ModalContainer } from 'app/containers/modal-container/modal-container';
+import { isModalVisible, getModalParams } from '../../selectors/manuscript-editor.selectors';
+import { ModalContainer } from './modal-container';
 
 export const ConnectedModalContainer: React.FC<{}> = () => {
   const isVisible = useSelector(isModalVisible);

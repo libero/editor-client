@@ -3,10 +3,10 @@ import { create } from 'react-test-renderer';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { mount } from 'enzyme';
-import { PromptDialog } from 'app/components/prompt-dialog';
-import { AffiliationFormDialog } from 'app/containers/affiliation-form-dialog/affiliation-form-dialog';
-import { givenState } from 'app/test-utils/reducer-test-helpers';
-import { Affiliation } from 'app/models/affiliation';
+import { PromptDialog } from '../../../components/prompt-dialog';
+import { AffiliationFormDialog } from '../affiliation-form-dialog';
+import { givenState } from '../../../test-utils/reducer-test-helpers';
+import { Affiliation } from '../../../models/affiliation';
 
 jest.mock('@material-ui/core', () => ({
   Dialog: () => <div data-cmp="Dialog"></div>,

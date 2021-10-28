@@ -4,11 +4,11 @@ import configureMockStore from 'redux-mock-store';
 import { create } from 'react-test-renderer';
 import { mount } from 'enzyme';
 
-import * as manuscriptEditorActions from 'app/actions/manuscript-editor.actions';
-import { givenState } from 'app/test-utils/reducer-test-helpers';
-import { ArticleInformation } from 'app/containers/manuscript/article-information/index';
+import * as manuscriptEditorActions from '../../../../actions/manuscript-editor.actions';
+import { givenState } from '../../../../test-utils/reducer-test-helpers';
+import { ArticleInformation } from '../';
 import { IconButton } from '@material-ui/core';
-import { ArticleInfoFormDialog } from 'app/containers/article-info-form-dialog';
+import { ArticleInfoFormDialog } from '../../../article-info-form-dialog';
 
 jest.mock('@material-ui/core', () => ({
   Button: ({ label }) => <div data-cmp="Button">{label}</div>,

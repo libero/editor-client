@@ -1,4 +1,4 @@
-import { Affiliation, createAffiliationsState } from 'app/models/affiliation';
+import { Affiliation, createAffiliationsState } from '../affiliation';
 
 jest.mock('uuid', () => ({
   v4: () => 'unique_id'

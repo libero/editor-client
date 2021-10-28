@@ -5,16 +5,16 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import { IconButton, TextField } from '@material-ui/core';
 import AddPhotoAlternateIcon from '@material-ui/icons/AddPhotoAlternate';
 
-import { useFigureEditorStyles } from 'app/components/figure/styles';
-import { getImageFileUpload } from 'app/utils/view.utils';
-import { FigureContentEditor } from 'app/components/figure/figure-content-editor';
+import { useFigureEditorStyles } from './styles';
+import { getImageFileUpload } from '../../utils/view.utils';
+import { FigureContentEditor } from './figure-content-editor';
 import { EditorView } from 'prosemirror-view';
 import { FigureLicensesList } from './figure-license-list';
-import { renderConfirmDialog } from 'app/components/prompt-dialog';
-import DragIcon from 'app/assets/drag-indicator-grey.svg';
+import { renderConfirmDialog } from '../prompt-dialog';
+import DragIcon from '../../assets/drag-indicator-grey.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateFigureImageAction } from 'app/actions/manuscript.actions';
-import { getManuscriptId } from 'app/selectors/manuscript-editor.selectors';
+import { updateFigureImageAction } from '../../actions/manuscript.actions';
+import { getManuscriptId } from '../../selectors/manuscript-editor.selectors';
 
 /* Prosemirror relies heavily on the positioning of nodes in its internal state presentation.
   Given figure structure

@@ -6,13 +6,13 @@ import { dropCursor } from 'prosemirror-dropcursor';
 import { keymap } from 'prosemirror-keymap';
 import { baseKeymap } from 'prosemirror-commands';
 
-import * as bioConfig from 'app/models/config/author-bio.config';
-import { Affiliation } from 'app/models/affiliation';
-import { getTextContentFromPath, makeSchemaFromConfig } from 'app/models/utils';
-import { buildInputRules } from 'app/models/plugins/input-rules';
-import { BackmatterEntity } from 'app/models/backmatter-entity';
-import { JSONObject } from 'app/types/utility.types';
-import { SelectionPlugin } from 'app/models/plugins/selection.plugins';
+import * as bioConfig from './config/author-bio.config';
+import { Affiliation } from './affiliation';
+import { getTextContentFromPath, makeSchemaFromConfig } from './utils';
+import { buildInputRules } from './plugins/input-rules';
+import { BackmatterEntity } from './backmatter-entity';
+import { JSONObject } from '../types/utility.types';
+import { SelectionPlugin } from './plugins/selection.plugins';
 import { v5 } from 'uuid';
 
 // required for creating consistant uuids from a string
