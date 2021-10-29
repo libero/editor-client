@@ -33,7 +33,7 @@ export class MainText {
         type: this.mainTextInput.locator('#mui-component-select-licenseType'),
         year: this.mainTextInput.locator('[name="copyrightYear"]'),
         statement: this.mainTextInput.locator('[name="copyrightStatement"]'),
-        licence: (licenceNumber: number) => this.mainTextInput.locator(`div:below(label:has-text("License ${licenceNumber + 1}"))`), //uncertain
+        licence: (licenceNumber: number) => this.mainTextInput.locator(`div:below(label:has-text("License ${licenceNumber + 1}"))`),
         holder: this.mainTextInput.locator('[name="copyrightHolder"]'),
       }
     }
