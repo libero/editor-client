@@ -18,20 +18,34 @@ const content = `
     You're my home town
   `;
 
+const formatAndAssert  = async (mainText: MainText, format: string, tags: string): Promise<void> => {
+  const text = 'To Ganymede and Titan';
+  await mainText.selectText(text);
+  await mainText.formatText(format);
+  await mainText.assertTextTags(tags, text);
+}
+
+const setHeadingAndAssert  = async (mainText: MainText, heading: string, tags: string): Promise<void> => {
+  const text = 'To Ganymede and Titan';
+  await mainText.selectText(text);
+  await mainText.setTextHeading(heading);
+  await mainText.assertTextTags(tags, text);
+}
+
 test.describe('main-text', () => {
+  let mainText: MainText;
   test.beforeEach(async ({ page }) => {
     await page.goto('http://localhost:3000/?articleId=54296');
+    mainText = new MainText(page);
   });
 
-  test('edit body text', async ({ page }) => {
-    const mainText = new MainText(page);
+  test('edit body text', async () => {
     await mainText.setText(content);
     await mainText.assertText(content);
   });
 
   test.describe('figures', () => {
-    test('figure is loaded', async ({ page }) => {
-      const mainText = new MainText(page);
+    test('figure is loaded', async () => {
       await mainText.assertFigureNumber('Figure 1.');
       await mainText.assertFigureImageVisible();
       await mainText.assertFigureTitle('Certain epigenetic changes are linked to the inheritance of extended lifespans in worms.');
@@ -39,72 +53,62 @@ test.describe('main-text', () => {
       await mainText.assertFigureAttribution('Image credit: Cheng-Lin Li.');
     });
 
-    test('figure number is editable', async ({ page }) => {
-      const mainText = new MainText(page);
+    test('figure number is editable', async () => {
       const figureNumberText = 'Figure 6000';
       await mainText.setFigureNumber(figureNumberText);
       await mainText.assertFigureNumber(figureNumberText);
     });
 
-    test('figure title is editable', async ({ page }) => {
-      const mainText = new MainText(page);
+    test('figure title is editable', async () => {
       const figureTitle = 'Space Hazards: White Hole';
       await mainText.setFigureTitle(figureTitle);
       await mainText.assertFigureTitle(figureTitle);
     });
 
-    test('figure legend is editable', async ({ page }) => {
-      const mainText = new MainText(page);
+    test('figure legend is editable', async () => {
       const figureLegend = 'Every action has an equal and opposite reaction. A black hole sucks time and matter out of the Universe; a white hole returns it';
       await mainText.setFigureLegend(figureLegend);
       await mainText.assertFigureLegend(figureLegend);
     });
 
-    test('figure attribution is editable', async ({ page }) => {
-      const mainText = new MainText(page);
+    test('figure attribution is editable', async () => {
       const figureAttribution = 'The Junior Colour Encyclopedia of Space';
       await mainText.setFigureAttribution(figureAttribution);
       await mainText.assertFigureAttribution(figureAttribution);
     });
 
     test.describe('licence', () => {
-      test('add licence', async ({ page }) => {
-        const mainText = new MainText(page);
+      test('add licence', async () => {
         await mainText.addLicence();
       });
 
-      test('edit licence type', async ({ page }) => {
-        const mainText = new MainText(page);
+      test('edit licence type', async () => {
         await mainText.addLicence();
         await mainText.setLicenceType('CC0', 0);
         await mainText.assertLicenceType('CC0', 0);
       })
 
-      test('edit licence year', async ({ page }) => {
-        const mainText = new MainText(page);
+      test('edit licence year', async () => {
         await mainText.addLicence();
         const year = '2155';
         await mainText.setLicenceYear(year, 0);
         await mainText.assertLicenceYear(year, 0);
       })
 
-      test('edit licence statement', async ({ page }) => {
-        const mainText = new MainText(page);
+      test('edit licence statement', async () => {
         await mainText.addLicence();
         const statement = 'If a jobs worth doing, its worth doing well, if its not worth doing give it to Rimmer';
         await mainText.setLicenceStatement(statement, 0);
         await mainText.assertLicenceStatement(statement, 0);
       })
 
-      test('edit licence licence', async ({ page }) => {
-        const mainText = new MainText(page);
+      test('edit licence licence', async () => {
         await mainText.addLicence();
         await mainText.setLicenceLicence(content, 0);
         await mainText.assertLicenceLicence(content, 0);
       })
 
-      test('edit licence holder', async ({ page }) => {
-        const mainText = new MainText(page);
+      test('edit licence holder', async () => {
         await mainText.addLicence();
         const holder = 'Dave Lister';
         await mainText.setLicenceHolder(holder, 0);
@@ -114,68 +118,79 @@ test.describe('main-text', () => {
   });
 
   test.describe('format text', () => {
-    test('bold text', async ({ page }) => {
-      const mainText = new MainText(page);
+    test.beforeEach(async () => {
       await mainText.setText(content);
-      const text = 'To Ganymede and Titan';
-      await mainText.selectText(text);
-      await mainText.formatText('Bold');
-      await mainText.assertTextFormat('strong', text);
+    });
+    
+    test('bold text', async () => {
+      await formatAndAssert(mainText, 'Bold', 'strong');
     });
 
-    test('italic text', async ({ page }) => {
-      const mainText = new MainText(page);
-      await mainText.setText(content);
-      const text = 'To Ganymede and Titan';
-      await mainText.selectText(text);
-      await mainText.formatText('Italics');
-      await mainText.assertTextFormat('em', text);
+    test('italic text', async () => {
+      await formatAndAssert(mainText, 'Italics', 'em');
     });
 
-    test('subscript text', async ({ page }) => {
-      const mainText = new MainText(page);
-      await mainText.setText(content);
-      const text = 'To Ganymede and Titan';
-      await mainText.selectText(text);
-      await mainText.formatText('Subscript');
-      await mainText.assertTextFormat('sub', text);
+    test('subscript text', async () => {
+      await formatAndAssert(mainText, 'Subscript', 'sub');
     });
 
-    test('superscript text', async ({ page }) => {
-      const mainText = new MainText(page);
-      await mainText.setText(content);
-      const text = 'To Ganymede and Titan';
-      await mainText.selectText(text);
-      await mainText.formatText('Superscript');
-      await mainText.assertTextFormat('sup', text);
+    test('superscript text', async () => {
+      await formatAndAssert(mainText, 'Superscript', 'sup');
     });
 
-    test('underline text', async ({ page }) => {
-      const mainText = new MainText(page);
-      await mainText.setText(content);
-      const text = 'To Ganymede and Titan';
-      await mainText.selectText(text);
-      await mainText.formatText('Underline');
-      await mainText.assertTextFormat('u', text);
+    test('underline text', async () => {
+      await formatAndAssert(mainText, 'Underline', 'u');
     });
 
-    test('strikethrough text', async ({ page }) => {
-      const mainText = new MainText(page);
-      await mainText.setText(content);
-      const text = 'To Ganymede and Titan';
-      await mainText.selectText(text);
-      await mainText.formatText('Strike Through');
-      await mainText.assertTextFormat('strike', text);
+    test('strikethrough text', async () => {
+      await formatAndAssert(mainText, 'Strike Through', 'strike');
     });
 
-    test('combined format text', async ({ page }) => {
-      const mainText = new MainText(page);
-      await mainText.setText(content);
+    test('combined format text', async () => {
       const text = 'To Ganymede and Titan';
       await mainText.selectText(text);
       await mainText.formatText('Bold');
       await mainText.formatText('Italics');
-      await mainText.assertTextFormat('em strong', text);
+      await mainText.assertTextTags('em strong', text);
+    });
+  });
+
+  test.describe('headings', () => {
+    test.beforeEach(async () => {
+      await mainText.setText(content);
+    });
+
+    test('heading 1', async () => {
+      await setHeadingAndAssert(mainText, 'Heading 1', 'h1');
+    });
+
+    test('heading 2', async () => {
+      await setHeadingAndAssert(mainText, 'Heading 2', 'h2');
+    });
+
+    test('heading 3', async () => {
+      await setHeadingAndAssert(mainText, 'Heading 3', 'h3');
+    });
+
+    test('heading 4', async () => {
+      await setHeadingAndAssert(mainText, 'Heading 4', 'h4');
+    });
+
+    test('Bulleted list', async () => {
+      await setHeadingAndAssert(mainText, 'Bulleted List', 'ul li p');
+    });
+
+    test('Numbered list', async () => {
+      await setHeadingAndAssert(mainText, 'Numbered List', 'ol li p');
+    });
+
+    test('revert to paragraph', async () => {
+      const text = 'To Ganymede and Titan';
+      await mainText.selectText(text);
+      await mainText.setTextHeading('Heading 1');
+      await mainText.assertTextTags('h1', text);
+      await mainText.setTextHeading('Paragraph', 'HEADING 1');
+      await mainText.assertTextTags('p', text);
     });
   });
 });

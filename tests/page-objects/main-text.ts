@@ -140,9 +140,14 @@ export class MainText {
     await this.page.click(`text="${format}"`);
   }
 
-  async assertTextFormat(formatTag: string, text: string): Promise<void> {
+  async assertTextTags(formatTag: string, text: string): Promise<void> {
     const formattedElement = await this.mainTextInput.locator(`${formatTag}:has-text("${text}")`);
     await expect(formattedElement).toBeVisible();
+  }
+
+  async setTextHeading(heading: string, currentHeading: string = 'PARAGRAPH'): Promise<void> {
+    await this.page.click(`text="${currentHeading}"`);
+    await this.page.click(`text="${heading}"`);
   }
 }
 
