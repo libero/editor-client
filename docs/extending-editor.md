@@ -1,6 +1,6 @@
 # Extending Editor
 
-This document details how to extend `libero-editor` to support a new fragment of XML. While it focuses on the example of **adding** a new section, alternatively the steps can be reversed to **remove** an existing section from the editor if it is not required for your own specific setup.
+This document details how to extend `libero-editor` to support a new editable fragment of XML. While it focuses on the example of **adding** a new section, alternatively the steps can be reversed to **remove** an existing section from the editor if it is not required for your own specific setup.
 
 The following is a summary of what is needed to add an new editable XML section to `libero-editor`
 
