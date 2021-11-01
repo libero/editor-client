@@ -153,3 +153,44 @@ manuscriptReducer.on(manuscriptActions.updateExtraInfoAction, updateExtraInfo);
 ```
 
 ## <a name="ui-component"></a>UI Component
+
+We can now add the UI component for `extraInfo` and hook it up to our redux store to display and update the information. The editable sections of `libero-editor` are mounted within the [`ManuscriptEditor`](../src/app/containers/manuscript/manuscript-editor.tsx) container component.
+
+(**Note** - As `extraInfo` is a simple rich text field we can extend `ManuscriptEditor` by adding a new `RichTextEditor` component and adding the selectors and change handlers directly to the file. For more complex fields (ie: authors, references ect.) you will likely want to put all of this logic into its own self contained container component, see [`ReferenceList`](../src/app/containers/manuscript/references-list/index.tsx) as an example.)
+
+
+First include the selector call to pull through the current `Manuscript` `extraInfo` value into `ManuscriptEditor`.
+
+```
+import {
+  ...
+  getExtraInfo
+} from '../../selectors/manuscript.selectors';
+...
+const extraInfo: EditorState = useSelector(getTitle);
+```
+
+Then define a callback to dispatch an action to redux on the inputs change 
+
+```
+const handleExtraInfoChange = useCallback(
+    (diff: Transaction) => {
+      dispatch(manuscriptActions.updateExtraInfoAction(diff));
+    },
+    [dispatch]
+  );
+```
+
+Then add a new `RichTextEditor` to the JSX being returned. This can be placed anywhere within the `<div className={classes.content}>` JSX block.
+
+```
+<RichTextEditor
+  editorState={extraInfo}
+  label="Extra Information"
+  id="extraInfo"
+  isActive={isInputFocused('extraInfo', focusedPath)}
+  name="extraInfo"
+  onChange={handleExtraInfoChange}
+  onFocus={handleFocusSwitch}
+/>
+```
