@@ -112,4 +112,70 @@ test.describe('main-text', () => {
       })
     });
   });
+
+  test.describe('format text', () => {
+      test('bold text', async ({ page }) => {
+        const mainText = new MainText(page);
+        await mainText.setText(content);
+        const text = 'To Ganymede and Titan';
+        await mainText.selectText(text);
+        await mainText.formatText('Bold');
+        await mainText.assertTextFormat('strong', text);
+      });
+
+      test('italic text', async ({ page }) => {
+        const mainText = new MainText(page);
+        await mainText.setText(content);
+        const text = 'To Ganymede and Titan';
+        await mainText.selectText(text);
+        await mainText.formatText('Italics');
+        await mainText.assertTextFormat('em', text);
+      });
+
+      test('subscript text', async ({ page }) => {
+        const mainText = new MainText(page);
+        await mainText.setText(content);
+        const text = 'To Ganymede and Titan';
+        await mainText.selectText(text);
+        await mainText.formatText('Subscript');
+        await mainText.assertTextFormat('sub', text);
+      });
+
+      test('superscript text', async ({ page }) => {
+        const mainText = new MainText(page);
+        await mainText.setText(content);
+        const text = 'To Ganymede and Titan';
+        await mainText.selectText(text);
+        await mainText.formatText('Superscript');
+        await mainText.assertTextFormat('sup', text);
+      });
+
+      test('underline text', async ({ page }) => {
+        const mainText = new MainText(page);
+        await mainText.setText(content);
+        const text = 'To Ganymede and Titan';
+        await mainText.selectText(text);
+        await mainText.formatText('Underline');
+        await mainText.assertTextFormat('u', text);
+      });
+
+      test('strikethrough text', async ({ page }) => {
+        const mainText = new MainText(page);
+        await mainText.setText(content);
+        const text = 'To Ganymede and Titan';
+        await mainText.selectText(text);
+        await mainText.formatText('Strike Through');
+        await mainText.assertTextFormat('strike', text);
+      });
+
+      test('combined format text', async ({ page }) => {
+        const mainText = new MainText(page);
+        await mainText.setText(content);
+        const text = 'To Ganymede and Titan';
+        await mainText.selectText(text);
+        await mainText.formatText('Bold');
+        await mainText.formatText('Italics');
+        await mainText.assertTextFormat('em strong', text);
+      });
+    });
 });
