@@ -130,5 +130,19 @@ export class MainText {
   async assertLicenceHolder(holder: string, licenceNumber: number = 0): Promise<void> {
     await expect(this.figure.licence.holder.nth(licenceNumber)).toHaveValue(holder);
   };
+
+  async selectText(text: string): Promise<void> {
+    await this.mainTextInput.locator(`text="${text}"`).selectText();
+  }
+
+  async formatText(format: string): Promise<void> {
+    await this.page.click('text="FORMAT"');
+    await this.page.click(`text="${format}"`);
+  }
+
+  async assertTextFormat(formatTag: string, text: string): Promise<void> {
+    const formattedElement = await this.mainTextInput.locator(`${formatTag}:has-text("${text}")`);
+    await expect(formattedElement).toBeVisible();
+  }
 }
 
