@@ -3,6 +3,7 @@ import { expect, Locator, Page } from '@playwright/test';
 export class MainText {
   private page: Page;
   readonly mainTextInput: Locator;
+  readonly box: Locator;
   readonly figure: {
     number: Locator;
     image: Locator;
@@ -22,6 +23,7 @@ export class MainText {
   constructor(thePage: Page) {
     this.page = thePage;
     this.mainTextInput = this.page.locator(`#mainText>div>div`);
+    this.box = this.mainTextInput.locator('div:below(label:has-text("Box text"))').locator('[contenteditable=true]');
     this.figure = {
       number: this.mainTextInput.locator('section [name="figureNumber"]'),
       image: this.mainTextInput.locator('section img'),
@@ -148,6 +150,26 @@ export class MainText {
   async setTextHeading(heading: string, currentHeading: string = 'PARAGRAPH'): Promise<void> {
     await this.page.click(`text="${currentHeading}"`);
     await this.page.click(`text="${heading}"`);
+  }
+
+  async addBox(): Promise<void> {
+    await this.mainTextInput.locator('p').first().click();
+    await this.page.click('text="INSERT"');
+    await this.page.click('text="Box"');
+    await expect(this.mainTextInput.locator('text="Box text"')).toBeVisible();
+  }
+
+  async setBoxText(text: string): Promise<void> {
+    await this.box.fill(text);
+  }
+
+  async assertBoxText(text: string): Promise<void> {
+    await expect(this.box).toHaveText(text);
+  }
+
+  async deleteBox(): Promise<void> {
+    await this.mainTextInput.locator('button:right-of(label:has-text("Box text"))').click();
+    await expect(this.box).not.toBeVisible();
   }
 }
 

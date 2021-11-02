@@ -193,4 +193,36 @@ test.describe('main-text', () => {
       await mainText.assertTextTags('p', text);
     });
   });
+
+  test.describe('box', () => {
+    test('add box', async () => {
+      await mainText.setText(content);
+      await mainText.addBox();
+    });
+
+    test('edit box text', async () => {
+      await mainText.setText(content);
+      await mainText.addBox();
+      const text = 'Holly Hop Drive';
+      await mainText.setBoxText(text);
+      await mainText.assertBoxText(text)
+    });
+
+    test('delete box', async () => {
+      await mainText.setText(content);
+      await mainText.addBox();
+      await mainText.deleteBox();
+    });
+
+    test('format box text', async () => {
+      await mainText.setText(content);
+      await mainText.addBox();
+      const text = 'Holly Hop Drive';
+      await mainText.setBoxText(text);
+      await mainText.selectText(text);
+      await mainText.formatText('Bold');
+      await mainText.formatText('Italics');
+      await mainText.assertTextTags('em strong', text);
+    });
+  })
 });
