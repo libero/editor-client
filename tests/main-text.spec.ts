@@ -224,5 +224,16 @@ test.describe('main-text', () => {
       await mainText.formatText('Italics');
       await mainText.assertTextTags('em strong', text);
     });
+  });
+
+  test.describe('references', () => {
+    test('add reference citation', async () => {
+      await mainText.setText(content);
+      await mainText.addReferenceCitation(1);
+    });
+
+    test('add figure citation', async () => {
+      await mainText.addFigureCitation(1);
+    });
   })
 });
