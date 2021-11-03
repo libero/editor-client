@@ -171,5 +171,30 @@ export class MainText {
     await this.mainTextInput.locator('button:right-of(label:has-text("Box text"))').click();
     await expect(this.box).not.toBeVisible();
   }
+
+  async addReferenceCitation(referenceNumber: number): Promise<void> {
+    await this.mainTextInput.locator('p').first().click();
+    await this.page.click('text="INSERT"');
+    await this.page.click('text="Reference Citation"');
+    const refOption = this.page.locator(`[data-ref-id="bib${referenceNumber}"]`);
+    const refText = await refOption.textContent();
+    const linkText = refText.split(',')[0]
+    await expect(refOption).toBeVisible();
+    await this.page.locator(`[data-ref-id="bib${referenceNumber}"]`).click();
+    await expect(this.mainTextInput.locator(`a:has-text("${linkText}")`)).toBeVisible();
+  }
+
+  async addFigureCitation(figureNumber: number): Promise<void> {
+    const figNo = await this.figure.number.nth(figureNumber -1).textContent();
+    const existingFigCitationCount = await this.mainTextInput.locator(`a:has-text("${figNo}")`).count();
+    await this.mainTextInput.locator('p').first().click();
+    await this.page.click('text="INSERT"');
+    await this.page.click('text="Figure Citation"');
+    const refOption = this.page.locator(`[data-fig-id="fig${figureNumber}"]`);
+    await expect(refOption).toBeVisible();
+    await this.page.locator(`[data-fig-id="fig${figureNumber}"]`).click();
+    const newCount = await this.mainTextInput.locator(`a:has-text("${figNo}")`).count();
+    expect(newCount).toBeGreaterThan(existingFigCitationCount);
+  }
 }
 
