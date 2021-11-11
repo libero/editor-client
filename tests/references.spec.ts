@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
 import { References } from './page-objects/references';
 
-test.describe.only('references', () => {
+test.describe('references', () => {
   let references: References;
   test.beforeEach(async ({ page }) => {
     await page.goto('http://localhost:3000/?articleId=54296');
