@@ -244,4 +244,8 @@ test.describe('references', () => {
     await references.addPeriodicalArticleReference(reference);
     await references.assertPeriodicalArticleReference(reference, 8);
   });
+
+  test('delete reference', async () => {
+    await references.deleteReference(0);
+  })
 });

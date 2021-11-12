@@ -196,6 +196,7 @@ export class References {
     publisherName: Locator;
     patentNumber: Locator;
     addEditor: Locator;
+    delete: Locator;
     cancel: Locator;
     done: Locator;
   };
@@ -248,8 +249,9 @@ export class References {
       publisherLocation: this.page.locator('[name=publisherLocation]'),
       publisherName: this.page.locator('[name=publisherName]'),
       patentNumber: this.page.locator('[name=patent]'),
+      delete: this.page.locator('.MuiDialogContent-root').locator('text=DELETE'),
       cancel: this.page.locator('text=CANCEL'),
-      done: this.page.locator('text=DONE')
+      done: this.page.locator('text="DONE"'),
     };
   }
 
@@ -287,6 +289,14 @@ export class References {
     await this.modal.firstPage.fill(String(firstPage));
     await this.modal.lastPage.fill(String(lastPage));
     await this.modal.volume.fill(volume);
+  }
+
+  async deleteReference(referenceNumber: number): Promise<void> {
+    const referenceText = await this.reference.nth(referenceNumber).innerText();
+    await this.reference.nth(referenceNumber).locator('svg').click();
+    await this.modal.delete.click();
+    await this.page.click('text=Delete >> nth=1');
+    await expect(this.reference.nth(referenceNumber)).not.toContainText(referenceText);
   }
 
   async addJournalReference(reference: JournalReference): Promise<void> {
