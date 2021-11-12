@@ -1,155 +1,13 @@
 import { expect, Locator, Page } from '@playwright/test';
 import moment from 'moment';
-
-type Names = {
-  lastName: string;
-  firstName: string;
-}[];
-
-type CommonReferenceProperties = {
-  type: string;
-  names: Names;
-  doi?: string;
-}
-
-type JournalReference = CommonReferenceProperties & {
-  type: 'Journal Article';
-  year: number;
-  articleTitle: string;
-  journalTitle: string;
-  volume: string;
-  firstPage: number;
-  lastPage: number;
-  eLocationId: string;
-  pmid: string;
-  inPress: boolean;
-};
-
-type BookReference = CommonReferenceProperties & {
-  type: 'Book';
-  year: number;
-  chapterTitle: string;
-  editorNames: Names;
-  bookTitle: string;
-  edition: string;
-  volume: string;
-  firstPage: number;
-  lastPage: number;
-  eLocationId: string;
-  publisherLocation: string;
-  publisherName: string;
-  pmid: string;
-  inPress: boolean;
-};
-
-type DataReference = CommonReferenceProperties & {
-  type: 'Data';
-  year: number;
-  dataTitle: string;
-  databaseName: string;
-  version: string;
-  accession: string;
-  url: string;
-  generatedOrAnalyzed: 'Generated' | 'Analyzed';
-};
-
-type SoftwareReference = CommonReferenceProperties & {
-  type: 'Software';
-  year: number;
-  title: string;
-  source: string;
-  publisherLocation: string;
-  publisherName: string;
-  version: string;
-  url: string;
-};
-
-type PreprintReference = CommonReferenceProperties & {
-  type: 'Preprint';
-  year: number;
-  articleTitle: string;
-  preprintServer: string;
-  pmid: string;
-  url: string;
-};
-
-type WebArticleReference = CommonReferenceProperties & {
-  type: 'Web Article';
-  year: number;
-  title: string;
-  website: string;
-  url: string;
-  accessedDate: Date;
-};
-
-type ConferenceProceedingsReference = CommonReferenceProperties & {
-  type: 'Conference proceedings';
-  year: number;
-  articleTitle: string;
-  conferenceName: string;
-  conferenceLocation: string;
-  conferenceDate: Date;
-  volume: string;
-  firstPage: number;
-  lastPage: number;
-  eLocationId: string;
-  url: string;
-};
-
-type ReportReference = CommonReferenceProperties & {
-  type: 'Report';
-  year: number;
-  title: string;
-  volume: string;
-  publisherLocation: string;
-  publisherName: string;
-  pmid: string;
-  isbn: string;
-  url: string;
-};
-
-type ThesisReference = CommonReferenceProperties & {
-  type: 'Thesis';
-  year: number;
-  title: string;
-  publisherLocation: string;
-  publisherName: string;
-  pmid: string;
-  url: string;
-};
-
-type PatentReference = CommonReferenceProperties & {
-  type: 'Patent';
-  year: number;
-  title: string;
-  source: string;
-  publisherName: string;
-  patentNumber: string;
-  url: string;
-};
-
-type PeriodicalArticleReference = Omit<CommonReferenceProperties, 'doi'> & {
-  type: 'Periodical Article';
-  publicationDate: Date;
-  articleTitle: string;
-  periodicalTitle: string;
-  volume: string;
-  firstPage: number;
-  lastPage: number;
-  url: string;
-};
-
-type Reference = JournalReference |
-  BookReference |
-  DataReference |
-  SoftwareReference |
-  PreprintReference |
-  WebArticleReference |
-  ConferenceProceedingsReference |
-  ReportReference |
-  ThesisReference |
-  PatentReference |
-  PeriodicalArticleReference;
+import {
+  BookReference, ConferenceProceedingsReference, DataReference, JournalReference,
+  Names, PatentReference, PeriodicalArticleReference,
+  PreprintReference,
+  Reference, ReportReference,
+  SoftwareReference, ThesisReference,
+  WebArticleReference
+} from './rerences-types';
 
 export class References {
   private page: Page;
@@ -251,7 +109,7 @@ export class References {
       patentNumber: this.page.locator('[name=patent]'),
       delete: this.page.locator('.MuiDialogContent-root').locator('text=DELETE'),
       cancel: this.page.locator('text=CANCEL'),
-      done: this.page.locator('text="DONE"'),
+      done: this.page.locator('text=DONE'),
     };
   }
 
@@ -291,11 +149,19 @@ export class References {
     await this.modal.volume.fill(volume);
   }
 
+  private async setInPress(inPress?: boolean): Promise<void> {
+    if (inPress !== undefined) {
+      await this.modal.inPress.check();
+    } else {
+      await this.modal.inPress.uncheck();
+    }
+  }
+
   async deleteReference(referenceNumber: number): Promise<void> {
     const referenceText = await this.reference.nth(referenceNumber).innerText();
     await this.reference.nth(referenceNumber).locator('svg').click();
     await this.modal.delete.click();
-    await this.page.click('text=Delete >> nth=1');
+    await this.page.locator('text=Delete').last().click();
     await expect(this.reference.nth(referenceNumber)).not.toContainText(referenceText);
   }
 
@@ -308,11 +174,7 @@ export class References {
     await this.modal.eLocationId.fill(reference.eLocationId);
     await this.modal.doi.fill(reference.doi);
     await this.modal.pmid.fill(reference.pmid);
-    if (reference.inPress) {
-      await this.modal.inPress.check();
-    } else {
-      await this.modal.inPress.uncheck();
-    }
+    await this.setInPress(reference.inPress)
     await this.modal.done.click();
   }
 
@@ -340,11 +202,7 @@ export class References {
     await this.modal.publisherName.fill(reference.publisherName);
     await this.modal.doi.fill(reference.doi);
     await this.modal.pmid.fill(reference.pmid);
-    if (reference.inPress) {
-      await this.modal.inPress.check();
-    } else {
-      await this.modal.inPress.uncheck();
-    }
+    await this.setInPress(reference.inPress)
     await this.modal.done.click();
   }
 
