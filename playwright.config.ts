@@ -6,4 +6,5 @@ const config: PlaywrightTestConfig = {
     video: 'retain-on-failure',
   },
 };
+
 export default config;

@@ -52,6 +52,7 @@ jobs:
           docker stop editor-client
         env:
           CI: true
+          LANGUAGE: en_GB
       - name: Publish as 'unstable'
         if: github.repository_owner == 'libero' && github.ref == 'refs/heads/master'
         run: |
