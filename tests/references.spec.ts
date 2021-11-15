@@ -133,7 +133,7 @@ test.describe('references', () => {
       title: 'Salt: An epicure\'s delight',
       website: 'Up, Up, And Away',
       url: 'starbug.com',
-      accessedDate: new Date('2155-10-14')
+      accessedDate: new Date(2155, 10, 14),
     };
     await references.addWebArticleReference(reference);
     await references.assertWebArticleReference(reference, 8);
@@ -151,7 +151,7 @@ test.describe('references', () => {
       articleTitle: 'Salt: An epicure\'s delight',
       conferenceName: 'Up, Up, And Away',
       conferenceLocation: 'Red Dwarf',
-      conferenceDate: new Date('2155-10-14'),
+      conferenceDate: new Date(2155, 10, 14),
       volume: "42",
       firstPage: 1,
       lastPage: 6000,
@@ -233,7 +233,7 @@ test.describe('references', () => {
         { firstName: 'The', lastName: 'Cat' },
         { firstName: 'Arnold', lastName: 'Rimmer' },
       ],
-      publicationDate: new Date('2155-10-14'),
+      publicationDate: new Date(2155, 10, 14),
       articleTitle: 'Salt: An epicure\'s delight',
       periodicalTitle: 'Up, Up, And Away',
       volume: "42",
