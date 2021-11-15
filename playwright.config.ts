@@ -4,7 +4,6 @@ const config: PlaywrightTestConfig = {
   use: {
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
-    locale: `en-GB`,
   },
 };
 
