@@ -149,8 +149,8 @@ export class References {
     await this.modal.volume.fill(volume);
   }
 
-  private async setInPress(inPress?: boolean): Promise<void> {
-    if (inPress !== undefined) {
+  private async setInPress(inPress: boolean): Promise<void> {
+    if (inPress) {
       await this.modal.inPress.check();
     } else {
       await this.modal.inPress.uncheck();
