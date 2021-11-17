@@ -22,11 +22,11 @@ export class Keywords {
     }
   }
 
-  async deleteKeyword(keywordNumber: number, keywordsNumber: 0 | 1): Promise<void> {
+  async deleteKeyword(keywordToDelete: number, keywordsNumber: 0 | 1): Promise<void> {
     const keywords = this.keywords.nth(keywordsNumber);
     const keywordsContainer = keywords.locator('[data-test-id="keyword-container"]');
     const keywordCount = await keywordsContainer.count();
-    await keywordsContainer.nth(keywordsNumber).locator('button').click();
+    await keywordsContainer.nth(keywordToDelete).locator('button').click();
     expect(await keywordsContainer.count()).toBeLessThan(keywordCount);
   }
 }
