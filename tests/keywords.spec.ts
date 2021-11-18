@@ -23,4 +23,9 @@ test.describe('keywords', () => {
   test('delete keywords', async ({ page }) => {
     await keywords.deleteKeyword(0, 0);
   });
+
+  test('edit keyword', async ({ page }) => {
+    await keywords.editKeyword(`aging`, `Red Dwarf`, 0);
+    await keywords.editKeyword('C. elegans', 'Starbug', 1)
+  });
 });
