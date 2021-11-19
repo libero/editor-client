@@ -26,6 +26,6 @@ test.describe('keywords', () => {
 
   test('edit keyword', async ({ page }) => {
     await keywords.editKeyword(`aging`, `Red Dwarf`, 0);
-    await keywords.editKeyword('C. elegans', 'Starbug', 1)
+    await keywords.editKeyword('C. elegans', 'Starbug', 1);
   });
 });
