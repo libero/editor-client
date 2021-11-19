@@ -22,6 +22,13 @@ export class Keywords {
     }
   }
 
+  async editKeyword(existingKeyword: string, newKeyword: string, keywordsNumber: 0 | 1): Promise<void> {
+    const existingLocator = this.keywords.nth(keywordsNumber).locator(`text="${existingKeyword}"`);
+    await existingLocator.dblclick();
+    await existingLocator.fill(newKeyword);
+    await expect(this.keywords.nth(keywordsNumber).locator(`text="${newKeyword}"`)).toBeVisible();
+  }
+
   async deleteKeyword(keywordToDelete: number, keywordsNumber: 0 | 1): Promise<void> {
     const keywords = this.keywords.nth(keywordsNumber);
     const keywordsContainer = keywords.locator('[data-test-id="keyword-container"]');
