@@ -2,27 +2,10 @@ import { test, Page } from '@playwright/test';
 import { MainText } from './page-objects/main-text';
 import { Navigation } from './page-objects/navigation';
 
-const content = `
-    To Ganymede and Titan
-    Yes, sir, I've been around
-    But there ain't no place
-    In the whole of Space
-    Like that good ol' toddlin' town
-    Oh! Lunar City Seven
-    You're my idea of heaven
-    Out of ten, you score eleven
-    You good ol' Titan' town
-    Oh! Lunar City Seven
-    Lunar Cities One through Six
-    They always get me down
-    But Lunar City Seven
-    You're my home town
-  `;
-
 const setHeadingAndTestNavigation = async (page: Page, navigation: Navigation, heading: string): Promise<void> => {
   const mainText = new MainText(page);
-  await mainText.setText(content);
   const text = 'To Ganymede and Titan';
+  await mainText.setText(text);
   await mainText.selectText(text);
   await mainText.setTextHeading(heading);
   await navigation.clickLink(text);
