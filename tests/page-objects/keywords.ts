@@ -34,6 +34,8 @@ export class Keywords {
     const keywordsContainer = keywords.locator('[data-test-id="keyword-container"]');
     const keywordCount = await keywordsContainer.count();
     await keywordsContainer.nth(keywordToDelete).locator('button').click();
-    expect(await keywordsContainer.count()).toBeLessThan(keywordCount);
+    const actual = await keywordsContainer.count();
+    await this.page.waitForTimeout(100); // required for promise to properly evaluate
+    expect(actual).toBeLessThan(keywordCount);
   }
 }
