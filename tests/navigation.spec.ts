@@ -9,7 +9,7 @@ const setHeadingAndTestNavigation = async (page: Page, navigation: Navigation, h
   await mainText.selectText(text);
   await mainText.setTextHeading(heading);
   await navigation.clickLink(text);
-  await navigation.assertTargetInViewport(page.locator(`#mainText>div>div`).locator('text="To Ganymede and Titan"'));
+  await navigation.assertTargetInViewport(page.locator(`#mainText>div>div`).locator(`text="${text}"`));
 }
 
 test.describe('navigation', () => {
