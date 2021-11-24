@@ -16,6 +16,8 @@ export class Navigation {
         observer.disconnect();
       });
       observer.observe(element);
+      // Firefox doesn't call IntersectionObserver callback unless
+      // there are rafs.
       requestAnimationFrame(() => undefined);
     });
     return visibleRatio > 0;
