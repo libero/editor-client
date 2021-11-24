@@ -33,9 +33,10 @@ export class Keywords {
     const keywords = this.keywords.nth(keywordsNumber);
     const keywordsContainer = keywords.locator('[data-test-id="keyword-container"]');
     const keywordCount = await keywordsContainer.count();
+    await this.page.waitForTimeout(500);
     await keywordsContainer.nth(keywordToDelete).locator('button').click();
     const actual = await keywordsContainer.count();
-    await this.page.waitForTimeout(1500);
+    await this.page.waitForTimeout(500);
     expect(actual).toBeLessThan(keywordCount);
   }
 }
