@@ -6,6 +6,7 @@ test.describe('keywords', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('http://localhost:3000/?articleId=54296');
     keywords = new Keywords(page);
+    await page.waitForSelector('#title')
   });
 
   test('set first keywords field', async () => {

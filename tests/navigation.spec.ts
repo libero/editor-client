@@ -17,6 +17,7 @@ test.describe('navigation', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('http://localhost:3000/?articleId=54296');
     navigation = new Navigation(page);
+    await page.waitForSelector('#title')
   });
 
   test('title', async ({ page }) => {
