@@ -1,5 +1,5 @@
 import { test } from '@playwright/test';
-import { Authors } from './page-objects/authors';
+import { Authors } from './page-objects';
 
 test.describe('authors', () => {
   test.beforeEach(async ({ page }) => {

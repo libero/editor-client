@@ -1,6 +1,5 @@
 import { test, Page } from '@playwright/test';
-import { MainText } from './page-objects/main-text';
-import { Navigation } from './page-objects/navigation';
+import { MainText, Navigation } from './page-objects';
 
 const setHeadingAndTestNavigation = async (page: Page, navigation: Navigation, heading: string): Promise<void> => {
   const mainText = new MainText(page);

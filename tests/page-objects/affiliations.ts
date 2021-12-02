@@ -131,4 +131,8 @@ export class Affiliations {
     const newAffiliationCount = await this.affiliations.locator('li').count();
     expect(affiliationCount).toBeGreaterThan(newAffiliationCount);
   }
+
+  async affiliationCount(): Promise<number> {
+    return this.affiliations.locator('li').count();
+  }
 }

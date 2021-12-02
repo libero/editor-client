@@ -45,6 +45,10 @@ export class MainText {
     await this.mainTextInput.fill(content);
   }
 
+  async typeText(content: string): Promise<void> {
+    await this.mainTextInput.type(content);
+  }
+
   async assertText(content: string): Promise<void> {
     await expect(this.mainTextInput).toHaveText(content);
   }

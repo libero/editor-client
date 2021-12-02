@@ -1,5 +1,5 @@
 import { test } from '@playwright/test';
-import { ArticleInformation, SubjectOption } from './page-objects/article-information';
+import { ArticleInformation, SubjectOption } from './page-objects';
 
 test.describe('article information', () => {
   let articleInformation: ArticleInformation;

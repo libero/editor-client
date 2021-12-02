@@ -1,5 +1,5 @@
 import { test } from '@playwright/test';
-import { Affiliations } from './page-objects/affiliations';
+import { Affiliations } from './page-objects';
 
 const affiliation = {
   institution: 'Jupiter Mining Corporation',
