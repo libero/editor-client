@@ -13,6 +13,10 @@ export class SingleTextField {
     await this.field.fill(content);
   }
 
+  async typeField(content: string): Promise<void> {
+    await this.field.type(content);
+  }
+
   async assertField(content: string): Promise<void> {
     await expect(this.field).toHaveText(content);
   }

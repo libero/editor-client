@@ -134,10 +134,10 @@ export const ManuscriptToolbar: React.FC<ManuscriptToolbarProps> = (props) => {
           <ToggleButton disabled={true} value={true}>
             <SaveAltIcon />
           </ToggleButton>
-          <ToggleButton disabled={!canUndo} onClick={invokeUndo} selected={false} value={true}>
+          <ToggleButton disabled={!canUndo} onClick={invokeUndo} selected={false} value={true} id="undo">
             <UndoIcon />
           </ToggleButton>
-          <ToggleButton disabled={!canRedo} onClick={invokeRedo} selected={false} value={true}>
+          <ToggleButton disabled={!canRedo} onClick={invokeRedo} selected={false} value={true} id="redo">
             <RedoIcon />
           </ToggleButton>
           <ToggleButton disabled={isExportRunning} onClick={exportPdf} selected={false} value={true}>

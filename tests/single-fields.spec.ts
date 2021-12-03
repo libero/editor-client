@@ -1,5 +1,5 @@
 import { test } from '@playwright/test';
-import { SingleTextField } from './page-objects/single-text-field';
+import { SingleTextField } from './page-objects';
 
 test.describe('single fields', () => {
   test.beforeEach(async ({ page }) => {

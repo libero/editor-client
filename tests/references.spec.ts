@@ -1,5 +1,5 @@
 import { test } from '@playwright/test';
-import { References } from './page-objects/references';
+import { References } from './page-objects';
 
 test.describe('references', () => {
   let references: References;

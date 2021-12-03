@@ -157,6 +157,10 @@ export class References {
     }
   }
 
+  async countReferences(): Promise<number> {
+    return this.reference.count();
+  }
+
   async deleteReference(referenceNumber: number): Promise<void> {
     const referenceText = await this.reference.nth(referenceNumber).innerText();
     await this.reference.nth(referenceNumber).locator('svg').click();

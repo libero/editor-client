@@ -1,5 +1,5 @@
 import { test } from '@playwright/test';
-import { MainText } from './page-objects/main-text';
+import { MainText } from './page-objects';
 
 const content = `
     To Ganymede and Titan

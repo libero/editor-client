@@ -1,5 +1,5 @@
 import { test } from '@playwright/test';
-import { Keywords } from './page-objects/keywords';
+import { Keywords } from './page-objects';
 
 test.describe('keywords', () => {
   let keywords: Keywords
