@@ -25,7 +25,7 @@ test.describe('history', () => {
       const affiliations = new Affiliations(page);
       await affiliations.addAffiliation({ institution: 'JMC', city: 'Ganymede', country: 'Jupiter' });
       const initialCount = await affiliations.affiliationCount();
-      await history.undoNTimes(2);
+      await history.undoNTimes(2); //FIXME this needs to undo twice due to an extra step being added to the history by the test runner
       const newCount = await affiliations.affiliationCount();
       expect(newCount).toBe(initialCount - 1);
     });
@@ -84,7 +84,7 @@ test.describe('history', () => {
       const affiliations = new Affiliations(page);
       await affiliations.addAffiliation({ institution: 'JMC', city: 'Ganymede', country: 'Jupiter' });
       const initialCount = await affiliations.affiliationCount();
-      await history.undoNTimes(2);
+      await history.undoNTimes(2); //FIXME this needs to undo twice due to an extra step being added to the history by the test runner
       const newCount = await affiliations.affiliationCount();
       expect(newCount).toBe(initialCount - 1);
       await history.redoNTimes(1);
