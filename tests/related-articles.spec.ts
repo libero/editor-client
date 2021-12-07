@@ -1,7 +1,6 @@
 import { test } from '@playwright/test';
 import { ArticleType, RelatedArticles } from './page-objects/related-articles';
 
-
 test.describe('related articles', () => {
   let relatedArticles: RelatedArticles;
 
