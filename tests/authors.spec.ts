@@ -4,6 +4,7 @@ import { Authors } from './page-objects';
 test.describe('authors', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('http://localhost:3000/?articleId=54296');
+    await page.waitForSelector('#title');
   });
 
   test('authors are set to correct values', async ({ page }) => {

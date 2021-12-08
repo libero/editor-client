@@ -6,6 +6,7 @@ test.describe('references', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('http://localhost:3000/?articleId=54296');
     references = new References(page);
+    await page.waitForSelector('#title');
   });
 
   test('add journal article reference', async () => {
