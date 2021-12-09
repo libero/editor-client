@@ -204,7 +204,7 @@ export const ManuscriptEditor: React.FC = () => {
           <ArticleInformation id="article-info" />
           <div aria-hidden="true" className={classes.spacer} onClick={clearFocus} />
           {renderKeywords(allKeywords)}
-          <RelatedArticles id="realted-acticles" />
+          <RelatedArticles id="related-articles" />
         </ClearFocus>
       </div>
     </div>

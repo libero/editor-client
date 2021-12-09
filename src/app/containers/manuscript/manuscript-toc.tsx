@@ -34,7 +34,7 @@ export const ManuscriptTOC: React.FC<ManuscriptTOCProps> = (props) => {
     { level: 1, title: 'References', id: 'references' },
     { level: 1, title: 'Author information', id: 'author-details' },
     { level: 1, title: 'Article information', id: 'article-info' },
-    { level: 1, title: 'Related articles', id: 'realted-acticles' }
+    { level: 1, title: 'Related articles', id: 'related-articles' }
   ];
 
   const handleTOCClick = useCallback(
