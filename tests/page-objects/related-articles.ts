@@ -24,7 +24,7 @@ export class RelatedArticles {
 
   constructor(thePage: Page) {
     this.page = thePage;
-    this.relatedArticles = this.page.locator(`#realted-acticles`);
+    this.relatedArticles = this.page.locator(`#related-articles`);
     this.relatedArticle = this.relatedArticles.locator('li');
     this.addArticle = this.page.locator('text="Add Article"');
     this.modal = {

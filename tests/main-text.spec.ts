@@ -37,6 +37,7 @@ test.describe('main-text', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('http://localhost:3000/?articleId=54296');
     mainText = new MainText(page);
+    await page.waitForSelector('#title');
   });
 
   test('edit body text', async () => {

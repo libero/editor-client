@@ -357,7 +357,7 @@ exports[`manuscript editor should render 1`] = `
       <section>
         <div
           className="makeStyles-root-9 makeStyles-plainVariant-11"
-          id="realted-acticles"
+          id="related-articles"
         >
           <label
             className="makeStyles-label-12"

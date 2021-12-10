@@ -66,7 +66,7 @@ test.describe('navigation', () => {
 
   test('related articles', async ({ page }) => {
     await navigation.clickLink('Related articles');
-    await navigation.assertTargetInViewport(page.locator('#realted-acticles'));
+    await navigation.assertTargetInViewport(page.locator('#related-articles'));
   });
 
   test.describe('dynamic main text headings', () => {

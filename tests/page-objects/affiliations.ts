@@ -81,8 +81,7 @@ export class Affiliations {
 
   async assertCity(city: string, affiliationNumber: number): Promise<void> {
     const affiliation = await this.affiliations.locator('li').nth(affiliationNumber);
-    const affiliationText = await affiliation.locator('div').nth(1).textContent();
-    expect(affiliationText.split(',')[2].trim()).toBe(city); //FRAGILE!!!
+    await expect(affiliation.locator('div').nth(1)).toContainText(`, ${city}`);
   }
 
   async setCountry(country: string, affiliationNumber: number): Promise<void> {
@@ -93,8 +92,7 @@ export class Affiliations {
 
   async assertCountry(country: string, affiliationNumber: number): Promise<void> {
     const affiliation = await this.affiliations.locator('li').nth(affiliationNumber);
-    const affiliationText = await affiliation.locator('div').nth(1).textContent();
-    expect(affiliationText.split(',')[3].trim()).toBe(country); //FRAGILE!!!
+    await expect(affiliation.locator('div').nth(1)).toContainText(`, ${country}`);
   }
 
   async assertAffiliation({ institution, city, country }: Affiliation, affiliationNumber: number): Promise<void> {

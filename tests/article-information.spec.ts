@@ -7,6 +7,7 @@ test.describe('article information', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('http://localhost:3000/?articleId=54296');
     articleInformation = new ArticleInformation(page);
+    await page.waitForSelector('#title');
   });
 
   test('article type is set to insight', async () => {

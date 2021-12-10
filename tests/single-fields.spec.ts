@@ -4,6 +4,7 @@ import { SingleTextField } from './page-objects';
 test.describe('single fields', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('http://localhost:3000/?articleId=54296');
+    await page.waitForSelector('#title');
   });
 
   test.describe('fields are set to correct values', () => {
