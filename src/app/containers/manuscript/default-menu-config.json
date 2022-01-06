@@ -1,0 +1,14 @@
+{
+  "button-group": [
+    "save",
+    "undo",
+    "redo",
+    "pdf"
+  ],
+  "menus": [
+    "headings",
+    "typography",
+    "insert"
+  ],
+  "custom-buttons": []
+}

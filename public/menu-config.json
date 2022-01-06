@@ -1,0 +1,20 @@
+{
+  "button-group": [
+    "save",
+    "undo",
+    "redo",
+    "pdf"
+  ],
+  "menus": [
+    "headings",
+    "typography",
+    "insert"
+  ],
+  "custom-buttons": [
+    {
+      "id": "testId2",
+      "url": "https://www.google.com",
+      "icon": "beaker.svg"
+    }
+  ]
+}
